@@ -5,6 +5,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(Item.class)
+
 public interface IStewStackIncrease {
     @Accessor
     void setMaxCount(int maxCount);
