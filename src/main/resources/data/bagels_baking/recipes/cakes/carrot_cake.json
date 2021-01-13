@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "SES",
+        "WCW"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:milk_bucket"
+        },
+        "S": {
+            "item": "minecraft:sugar"
+        },
+        "E": {
+            "item": "minecraft:egg"
+        },
+        "W": {
+            "item": "minecraft:wheat"
+        },
+        "C": {
+            "item": "minecraft:carrot"
+        }
+    },
+    "result": {
+        "item": "bagels_baking:carrot_cake",
+        "count": 1
+    }
+}
