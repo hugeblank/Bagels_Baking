@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "#C#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:wheat"
+        },
+        "C": {
+            "item": "minecraft:cooked_porkchop"
+        }
+    },
+    "result": {
+        "item": "bagels_baking:pork_pocket",
+        "count": 2
+    }
+}

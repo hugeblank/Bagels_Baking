@@ -1,0 +1,33 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:baked_potato"
+        },
+        [
+            {
+                "item": "minecraft:cooked_salmon"
+            },
+            {
+                "item": "minecraft:cooked_cod"
+            }
+        ],
+        {
+            "item": "minecraft:bowl"
+        },
+        {
+            "item": "minecraft:carrot"
+        },
+        [
+            {
+                "item": "minecraft:brown_mushroom"
+            },
+            {
+                "item": "minecraft:red_mushroom"
+            }
+        ]
+    ],
+    "result": {
+        "item": "bagels_baking:fish_stew"
+    }
+}

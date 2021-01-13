@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:glistering_melon_slice"
+        },
+        {
+            "item": "minecraft:enchanted_golden_apple"
+        },
+        {
+            "item": "minecraft:golden_carrot"
+        },
+        {
+            "item": "minecraft:bowl"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:midas_salad",
+        "count": 1
+    }
+}

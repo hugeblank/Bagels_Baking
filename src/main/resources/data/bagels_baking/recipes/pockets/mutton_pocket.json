@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "#C#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:wheat"
+        },
+        "C": {
+            "item": "minecraft:cooked_mutton"
+        }
+    },
+    "result": {
+        "item": "bagels_baking:mutton_pocket",
+        "count": 2
+    }
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "bagels_baking",
+  "version": "${version}",
+
+  "name": "Bagel's Baking",
+  "description": "Little baking mod for my friends and I :)",
+  "authors": [
+    "hugeblank"
+  ],
+  "contact": {
+    "homepage": "https://github.com/hugeblank/",
+    "sources": "https://github.com/hugeblank/"
+  },
+
+  "license": "MIT",
+  "icon": "assets/bagels_baking/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.elexi.hugeblank.bagels_baking.Baking"
+    ]
+  },
+  "mixins": [
+    "bagels_baking.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

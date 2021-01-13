@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "# #",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:wheat"
+        }
+    },
+    "result": {
+        "item": "bagels_baking:bagel",
+        "count": 2
+    }
+}
