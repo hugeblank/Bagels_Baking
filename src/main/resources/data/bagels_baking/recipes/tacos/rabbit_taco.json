@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "   ",
+        "#C#",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:wheat"
+        },
+        "C": {
+            "item": "minecraft:cooked_rabbit"
+        }
+    },
+    "result": {
+        "item": "bagels_baking:rabbit_taco",
+        "count": 2
+    }
+}

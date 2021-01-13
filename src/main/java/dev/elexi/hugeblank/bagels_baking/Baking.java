@@ -58,8 +58,7 @@ public class Baking implements ModInitializer {
 	public static final Item CHICKEN_TACO = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(6).saturationModifier(6.6f).build()));
 	public static final Item PORK_TACO = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(7).saturationModifier(9.4f).build()));
 	public static final Item MUTTON_TACO = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(6).saturationModifier(7.8f).build()));
-	public static final Item COD_TACO = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(5).saturationModifier(6f).build()));
-	public static final Item SALMON_TACO = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(5).saturationModifier(7.8f).build()));
+	public static final Item FISH_TACO = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(5).saturationModifier(6f).build()));
 	public static final Item RABBIT_TACO = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(5).saturationModifier(6f).build()));
 
 	
@@ -112,8 +111,7 @@ public class Baking implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "chicken_taco"), CHICKEN_TACO);
 		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "pork_taco"), PORK_TACO);
 		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "mutton_taco"), MUTTON_TACO);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "cod_taco"), COD_TACO);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "salmon_taco"), SALMON_TACO);
+		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "fish_taco"), FISH_TACO);
 		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "rabbit_taco"), RABBIT_TACO);
 	}
 }
