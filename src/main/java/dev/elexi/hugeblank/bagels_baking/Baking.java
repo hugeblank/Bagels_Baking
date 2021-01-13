@@ -74,6 +74,8 @@ public class Baking implements ModInitializer {
 	public static final BlockItem CARROT_CAKE_ITEM = new BlockItem(CARROT_CAKE, new Item.Settings().group(ItemGroup.FOOD));
 	public static final Block CHOCOLATE_CAKE = new BasicCakeBlock();
 	public static final BlockItem CHOCOLATE_CAKE_ITEM = new BlockItem(CHOCOLATE_CAKE, new Item.Settings().group(ItemGroup.FOOD));
+	public static final Block RED_VELVET_CAKE = new BasicCakeBlock();
+	public static final BlockItem RED_VELVET_CAKE_ITEM = new BlockItem(RED_VELVET_CAKE, new Item.Settings().group(ItemGroup.FOOD));
 
 
 
@@ -123,10 +125,14 @@ public class Baking implements ModInitializer {
 		// Cakes
 		final Identifier carrot_cake =  new Identifier(ID, "carrot_cake");
 		final Identifier chocolate_cake =  new Identifier(ID, "chocolate_cake");
+		final Identifier red_velvet_cake = new Identifier(ID, "red_velvet_cake");
 		Registry.register(Registry.BLOCK, carrot_cake, CARROT_CAKE);
 		Registry.register(Registry.BLOCK, chocolate_cake, CHOCOLATE_CAKE);
+		Registry.register(Registry.BLOCK, red_velvet_cake, RED_VELVET_CAKE);
 		Registry.register(Registry.ITEM, carrot_cake, CARROT_CAKE_ITEM);
 		Registry.register(Registry.ITEM, chocolate_cake, CHOCOLATE_CAKE_ITEM);
+		Registry.register(Registry.ITEM, red_velvet_cake, RED_VELVET_CAKE_ITEM);
+
 
 		// Misc
 		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "surf_n_turf"), SURF_N_TURF);
