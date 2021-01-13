@@ -1,7 +1,11 @@
 package dev.elexi.hugeblank.bagels_baking;
 
+import dev.elexi.hugeblank.bagels_baking.block.BasicCakeBlock;
 import dev.elexi.hugeblank.bagels_baking.item.MidasSaladItem;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.Block;
+import net.minecraft.block.CakeBlock;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
@@ -9,6 +13,9 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class Baking implements ModInitializer {
+
+	private static final String ID = "bagels_baking";
+
 	// Sandwiches - Gives 2 items
 	private static final Item STEAK_SANDWICH = new Item( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(9).saturationModifier(12.4f).build()));
 	private static final Item CHICKEN_SANDWICH = new Item( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(8).saturationModifier(9.6f).build()));
@@ -62,40 +69,64 @@ public class Baking implements ModInitializer {
 	public static final Item FISH_TACO = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(5).saturationModifier(6f).build()));
 	public static final Item RABBIT_TACO = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(5).saturationModifier(6f).build()));
 
-	
+	// Cakes
+	public static final Block CARROT_CAKE = new BasicCakeBlock();
+	public static final BlockItem CARROT_CAKE_ITEM = new BlockItem(CARROT_CAKE, new Item.Settings().group(ItemGroup.FOOD));
+	public static final Block CHOCOLATE_CAKE = new BasicCakeBlock();
+	public static final BlockItem CHOCOLATE_CAKE_ITEM = new BlockItem(CHOCOLATE_CAKE, new Item.Settings().group(ItemGroup.FOOD));
+
+
+
 	@Override
 	public void onInitialize() {
 
 		// Sandwiches
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "steak_sandwich"), STEAK_SANDWICH);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "chicken_sandwich"), CHICKEN_SANDWICH);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "pork_sandwich"), PORK_SANDWICH);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "mutton_sandwich"), MUTTON_SANDWICH);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "fish_sandwich"), FISH_SANDWICH);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "rabbit_sandwich"), RABBIT_SANDWICH);
+		Registry.register(Registry.ITEM, new Identifier(ID, "steak_sandwich"), STEAK_SANDWICH);
+		Registry.register(Registry.ITEM, new Identifier(ID, "chicken_sandwich"), CHICKEN_SANDWICH);
+		Registry.register(Registry.ITEM, new Identifier(ID, "pork_sandwich"), PORK_SANDWICH);
+		Registry.register(Registry.ITEM, new Identifier(ID, "mutton_sandwich"), MUTTON_SANDWICH);
+		Registry.register(Registry.ITEM, new Identifier(ID, "fish_sandwich"), FISH_SANDWICH);
+		Registry.register(Registry.ITEM, new Identifier(ID, "rabbit_sandwich"), RABBIT_SANDWICH);
 
 		// Dinners
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "steak_dinner"), STEAK_DINNER);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "chicken_dinner"), CHICKEN_DINNER);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "pork_dinner"), PORK_DINNER);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "mutton_dinner"), MUTTON_DINNER);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "fish_dinner"), FISH_DINNER);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "rabbit_dinner"), RABBIT_DINNER);
+		Registry.register(Registry.ITEM, new Identifier(ID, "steak_dinner"), STEAK_DINNER);
+		Registry.register(Registry.ITEM, new Identifier(ID, "chicken_dinner"), CHICKEN_DINNER);
+		Registry.register(Registry.ITEM, new Identifier(ID, "pork_dinner"), PORK_DINNER);
+		Registry.register(Registry.ITEM, new Identifier(ID, "mutton_dinner"), MUTTON_DINNER);
+		Registry.register(Registry.ITEM, new Identifier(ID, "fish_dinner"), FISH_DINNER);
+		Registry.register(Registry.ITEM, new Identifier(ID, "rabbit_dinner"), RABBIT_DINNER);
 
 		// Pockets
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "steak_pocket"), STEAK_POCKET);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "chicken_pocket"), CHICKEN_POCKET);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "pork_pocket"), PORK_POCKET);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "mutton_pocket"), MUTTON_POCKET);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "fish_pocket"), FISH_POCKET);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "rabbit_pocket"), RABBIT_POCKET);
+		Registry.register(Registry.ITEM, new Identifier(ID, "steak_pocket"), STEAK_POCKET);
+		Registry.register(Registry.ITEM, new Identifier(ID, "chicken_pocket"), CHICKEN_POCKET);
+		Registry.register(Registry.ITEM, new Identifier(ID, "pork_pocket"), PORK_POCKET);
+		Registry.register(Registry.ITEM, new Identifier(ID, "mutton_pocket"), MUTTON_POCKET);
+		Registry.register(Registry.ITEM, new Identifier(ID, "fish_pocket"), FISH_POCKET);
+		Registry.register(Registry.ITEM, new Identifier(ID, "rabbit_pocket"), RABBIT_POCKET);
 
 		// Stews
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "steak_stew"), STEAK_STEW);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "chicken_stew"), CHICKEN_STEW);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "pork_stew"), PORK_STEW);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "mutton_stew"), MUTTON_STEW);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "fish_stew"), FISH_STEW);
+		Registry.register(Registry.ITEM, new Identifier(ID, "steak_stew"), STEAK_STEW);
+		Registry.register(Registry.ITEM, new Identifier(ID, "chicken_stew"), CHICKEN_STEW);
+		Registry.register(Registry.ITEM, new Identifier(ID, "pork_stew"), PORK_STEW);
+		Registry.register(Registry.ITEM, new Identifier(ID, "mutton_stew"), MUTTON_STEW);
+		Registry.register(Registry.ITEM, new Identifier(ID, "fish_stew"), FISH_STEW);
+		// No need to add rabbit stew!
+
+		// Tacos
+		Registry.register(Registry.ITEM, new Identifier(ID, "steak_taco"), STEAK_TACO);
+		Registry.register(Registry.ITEM, new Identifier(ID, "chicken_taco"), CHICKEN_TACO);
+		Registry.register(Registry.ITEM, new Identifier(ID, "pork_taco"), PORK_TACO);
+		Registry.register(Registry.ITEM, new Identifier(ID, "mutton_taco"), MUTTON_TACO);
+		Registry.register(Registry.ITEM, new Identifier(ID, "fish_taco"), FISH_TACO);
+		Registry.register(Registry.ITEM, new Identifier(ID, "rabbit_taco"), RABBIT_TACO);
+
+		// Cakes
+		final Identifier carrot_cake =  new Identifier(ID, "carrot_cake");
+		final Identifier chocolate_cake =  new Identifier(ID, "chocolate_cake");
+		Registry.register(Registry.BLOCK, carrot_cake, CARROT_CAKE);
+		Registry.register(Registry.BLOCK, chocolate_cake, CHOCOLATE_CAKE);
+		Registry.register(Registry.ITEM, carrot_cake, CARROT_CAKE_ITEM);
+		Registry.register(Registry.ITEM, chocolate_cake, CHOCOLATE_CAKE_ITEM);
 
 		// Misc
 		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "surf_n_turf"), SURF_N_TURF);
@@ -107,14 +138,5 @@ public class Baking implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "shepherds_pie"), SHEPHERDS_PIE);
 		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "cooked_egg"), COOKED_EGG);
 
-		// No need to add rabbit stew!
-		
-		// Tacos
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "steak_taco"), STEAK_TACO);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "chicken_taco"), CHICKEN_TACO);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "pork_taco"), PORK_TACO);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "mutton_taco"), MUTTON_TACO);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "fish_taco"), FISH_TACO);
-		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "rabbit_taco"), RABBIT_TACO);
 	}
 }
