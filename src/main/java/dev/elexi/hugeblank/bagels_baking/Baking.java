@@ -60,6 +60,8 @@ public class Baking implements ModInitializer {
 	private static final Item DONUT = new Item( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(7).saturationModifier(7f).build())); // Give 2 items
 	private static final Item SHEPHERDS_PIE = new Item( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(11).saturationModifier(13.6f).build())); // Give 1 item
 	private static final Item COOKED_EGG = new Item( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(2).saturationModifier(5f).build())); // Give 1 item
+	private static final Item CHEESE = new Item( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(2).saturationModifier(5f).build())); // Give 1 item
+
 
 	// Tacos - Gives 2 Items
 	public static final Item STEAK_TACO = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(7).saturationModifier(9.4f).build()));
@@ -76,6 +78,9 @@ public class Baking implements ModInitializer {
 	public static final BlockItem CHOCOLATE_CAKE_ITEM = new BlockItem(CHOCOLATE_CAKE, new Item.Settings().group(ItemGroup.FOOD).maxCount(1));
 	public static final Block RED_VELVET_CAKE = new BasicCakeBlock();
 	public static final BlockItem RED_VELVET_CAKE_ITEM = new BlockItem(RED_VELVET_CAKE, new Item.Settings().group(ItemGroup.FOOD).maxCount(1));
+
+	// Burgers
+
 
 
 
@@ -143,6 +148,7 @@ public class Baking implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "donut"), DONUT);
 		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "shepherds_pie"), SHEPHERDS_PIE);
 		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "cooked_egg"), COOKED_EGG);
+		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "cheese"), CHEESE);
 
 	}
 }
