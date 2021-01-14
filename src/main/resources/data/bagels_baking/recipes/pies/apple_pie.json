@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:apple"
+        },
+        {
+            "item": "minecraft:sugar"
+        },
+        {
+            "item": "minecraft:wheat"
+        },
+        {
+            "item": "bagels_baking:egg_white"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:apple_pie",
+        "count": 1
+    }
+}

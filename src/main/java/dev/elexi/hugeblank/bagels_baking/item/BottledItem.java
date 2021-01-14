@@ -13,10 +13,13 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.world.World;
 
-public class MayonnaiseItem extends Item {
+public class BottledItem extends Item {
 
-    public MayonnaiseItem(Settings settings) {
+    private SoundEvent soundEffect;
+
+    public BottledItem(Settings settings, SoundEvent drinkSound) {
         super(settings);
+        soundEffect = drinkSound;
     }
 
     @Override
@@ -45,11 +48,11 @@ public class MayonnaiseItem extends Item {
 
     @Override
     public SoundEvent getEatSound() { // Glug Glug Mayonnaise!
-        return SoundEvents.ENTITY_WITCH_DRINK;
+        return soundEffect;
     }
 
     @Override
     public SoundEvent getDrinkSound() {
-        return SoundEvents.ENTITY_WITCH_DRINK;
+        return soundEffect;
     }
 }
