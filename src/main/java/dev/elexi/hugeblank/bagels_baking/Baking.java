@@ -63,6 +63,14 @@ public class Baking implements ModInitializer {
 	public static final Block RED_VELVET_CAKE = new BasicCakeBlock();
 	public static final BlockItem RED_VELVET_CAKE_ITEM = new BlockItem(RED_VELVET_CAKE, new Item.Settings().group(ItemGroup.FOOD).maxCount(1));
 
+	// Cheese Burgers - Gives 2 Items
+	public static final Item STEAK_CHEESEBURGER = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(10).saturationModifier(14.9f).build()));
+	public static final Item CHICKEN_CHEESEBURGER = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(9).saturationModifier(12.1f).build()));
+	public static final Item PORK_CHEESEBURGER = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(10).saturationModifier(14.9f).build()));
+	public static final Item MUTTON_CHEESEBURGER = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(9).saturationModifier(13.3f).build()));
+	public static final Item FISH_CHEESEBURGER = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(8).saturationModifier(11.5f).build()));
+	public static final Item RABBIT_CHEESEBURGER = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(8).saturationModifier(11.5f).build()));
+
 	// Misc - Item amt listed individually
 	public static final Item SURF_N_TURF = new Item( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(7).saturationModifier(14f).build())); // Give 2 items
 	public static final MushroomStewItem VEGGIE_MEDLEY = new MushroomStewItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).recipeRemainder(Items.BOWL).food(new FoodComponent.Builder().hunger(9).saturationModifier(7f).build())); // Give 1 item
@@ -79,57 +87,54 @@ public class Baking implements ModInitializer {
 	public static final Item EGG_WHITES = new MayonnaiseItem( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(2f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()));
 	public static final Item CHEESE = new Item( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(2).saturationModifier(5f).build())); // Give 1 item
+	public static final Item BERRY_PIE = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(7).saturationModifier(6.5f).build()));
 
-	// Cheese Burgers - Gives 2 Items
-	public static final Item STEAK_CHEESEBURGER = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(10).saturationModifier(14.9f).build()));
-	public static final Item CHICKEN_CHEESEBURGER = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(9).saturationModifier(12.1f).build()));
-	public static final Item PORK_CHEESEBURGER = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(10).saturationModifier(14.9f).build()));
-	public static final Item MUTTON_CHEESEBURGER = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(9).saturationModifier(13.3f).build()));
-	public static final Item FISH_CHEESEBURGER = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(8).saturationModifier(11.5f).build()));
-	public static final Item RABBIT_CHEESEBURGER = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(8).saturationModifier(11.5f).build()));
+	private static void register(String name, Item item) { // Make looking at all the item registration a bit more tolerable
+		Registry.register(Registry.ITEM, new Identifier(ID, name), item);
+	}
 
 	@Override
 	public void onInitialize() {
 
 		// Sandwiches
-		Registry.register(Registry.ITEM, new Identifier(ID, "steak_sandwich"), STEAK_SANDWICH);
-		Registry.register(Registry.ITEM, new Identifier(ID, "chicken_sandwich"), CHICKEN_SANDWICH);
-		Registry.register(Registry.ITEM, new Identifier(ID, "pork_sandwich"), PORK_SANDWICH);
-		Registry.register(Registry.ITEM, new Identifier(ID, "mutton_sandwich"), MUTTON_SANDWICH);
-		Registry.register(Registry.ITEM, new Identifier(ID, "fish_sandwich"), FISH_SANDWICH);
-		Registry.register(Registry.ITEM, new Identifier(ID, "rabbit_sandwich"), RABBIT_SANDWICH);
+		register("steak_sandwich", STEAK_SANDWICH);
+		register("chicken_sandwich", CHICKEN_SANDWICH);
+		register("pork_sandwich", PORK_SANDWICH);
+		register("mutton_sandwich", MUTTON_SANDWICH);
+		register("fish_sandwich", FISH_SANDWICH);
+		register("rabbit_sandwich", RABBIT_SANDWICH);
 
 		// Dinners
-		Registry.register(Registry.ITEM, new Identifier(ID, "steak_dinner"), STEAK_DINNER);
-		Registry.register(Registry.ITEM, new Identifier(ID, "chicken_dinner"), CHICKEN_DINNER);
-		Registry.register(Registry.ITEM, new Identifier(ID, "pork_dinner"), PORK_DINNER);
-		Registry.register(Registry.ITEM, new Identifier(ID, "mutton_dinner"), MUTTON_DINNER);
-		Registry.register(Registry.ITEM, new Identifier(ID, "fish_dinner"), FISH_DINNER);
-		Registry.register(Registry.ITEM, new Identifier(ID, "rabbit_dinner"), RABBIT_DINNER);
+		register("steak_dinner", STEAK_DINNER);
+		register("chicken_dinner", CHICKEN_DINNER);
+		register("pork_dinner", PORK_DINNER);
+		register("mutton_dinner", MUTTON_DINNER);
+		register("fish_dinner", FISH_DINNER);
+		register("rabbit_dinner", RABBIT_DINNER);
 
 		// Pockets
-		Registry.register(Registry.ITEM, new Identifier(ID, "steak_pocket"), STEAK_POCKET);
-		Registry.register(Registry.ITEM, new Identifier(ID, "chicken_pocket"), CHICKEN_POCKET);
-		Registry.register(Registry.ITEM, new Identifier(ID, "pork_pocket"), PORK_POCKET);
-		Registry.register(Registry.ITEM, new Identifier(ID, "mutton_pocket"), MUTTON_POCKET);
-		Registry.register(Registry.ITEM, new Identifier(ID, "fish_pocket"), FISH_POCKET);
-		Registry.register(Registry.ITEM, new Identifier(ID, "rabbit_pocket"), RABBIT_POCKET);
+		register("steak_pocket", STEAK_POCKET);
+		register("chicken_pocket", CHICKEN_POCKET);
+		register("pork_pocket", PORK_POCKET);
+		register("mutton_pocket", MUTTON_POCKET);
+		register("fish_pocket", FISH_POCKET);
+		register("rabbit_pocket", RABBIT_POCKET);
 
 		// Stews
-		Registry.register(Registry.ITEM, new Identifier(ID, "steak_stew"), STEAK_STEW);
-		Registry.register(Registry.ITEM, new Identifier(ID, "chicken_stew"), CHICKEN_STEW);
-		Registry.register(Registry.ITEM, new Identifier(ID, "pork_stew"), PORK_STEW);
-		Registry.register(Registry.ITEM, new Identifier(ID, "mutton_stew"), MUTTON_STEW);
-		Registry.register(Registry.ITEM, new Identifier(ID, "fish_stew"), FISH_STEW);
+		register("steak_stew", STEAK_STEW);
+		register("chicken_stew", CHICKEN_STEW);
+		register("pork_stew", PORK_STEW);
+		register("mutton_stew", MUTTON_STEW);
+		register("fish_stew", FISH_STEW);
 		// No need to add rabbit stew!
 
 		// Tacos
-		Registry.register(Registry.ITEM, new Identifier(ID, "steak_taco"), STEAK_TACO);
-		Registry.register(Registry.ITEM, new Identifier(ID, "chicken_taco"), CHICKEN_TACO);
-		Registry.register(Registry.ITEM, new Identifier(ID, "pork_taco"), PORK_TACO);
-		Registry.register(Registry.ITEM, new Identifier(ID, "mutton_taco"), MUTTON_TACO);
-		Registry.register(Registry.ITEM, new Identifier(ID, "fish_taco"), FISH_TACO);
-		Registry.register(Registry.ITEM, new Identifier(ID, "rabbit_taco"), RABBIT_TACO);
+		register("steak_taco", STEAK_TACO);
+		register("chicken_taco", CHICKEN_TACO);
+		register("pork_taco", PORK_TACO);
+		register("mutton_taco", MUTTON_TACO);
+		register("fish_taco", FISH_TACO);
+		register("rabbit_taco", RABBIT_TACO);
 
 		// Cakes
 		final Identifier carrot_cake =  new Identifier(ID, "carrot_cake");
@@ -142,27 +147,27 @@ public class Baking implements ModInitializer {
 		Registry.register(Registry.ITEM, chocolate_cake, CHOCOLATE_CAKE_ITEM);
 		Registry.register(Registry.ITEM, red_velvet_cake, RED_VELVET_CAKE_ITEM);
 
+		// Cheese Burgers
+		register("steak_cheeseburger", STEAK_CHEESEBURGER);
+		register("chicken_cheeseburger", CHICKEN_CHEESEBURGER);
+		register("pork_cheeseburger", PORK_CHEESEBURGER);
+		register("mutton_cheeseburger", MUTTON_CHEESEBURGER);
+		register("fish_cheeseburger", FISH_CHEESEBURGER);
+		register("rabbit_cheeseburger", RABBIT_CHEESEBURGER);
 
 		// Misc
-		Registry.register(Registry.ITEM, new Identifier(ID, "surf_n_turf"), SURF_N_TURF);
-		Registry.register(Registry.ITEM, new Identifier(ID, "veggie_medley"), VEGGIE_MEDLEY);
-		Registry.register(Registry.ITEM, new Identifier(ID, "fruit_salad"), FRUIT_SALAD);
-		Registry.register(Registry.ITEM, new Identifier(ID, "midas_salad"), MIDAS_SALAD);
-		Registry.register(Registry.ITEM, new Identifier(ID, "bagel"), BAGEL);
-		Registry.register(Registry.ITEM, new Identifier(ID, "donut"), DONUT);
-		Registry.register(Registry.ITEM, new Identifier(ID, "shepherds_pie"), SHEPHERDS_PIE);
-		Registry.register(Registry.ITEM, new Identifier(ID, "cooked_egg"), COOKED_EGG);
-		Registry.register(Registry.ITEM, new Identifier(ID, "mayonnaise"), MAYONNAISE);
-		Registry.register(Registry.ITEM, new Identifier(ID, "egg_whites"), EGG_WHITES);
-		Registry.register(Registry.ITEM, new Identifier(ID, "cheese"), CHEESE);
-
-		// Cheese Burgers
-		Registry.register(Registry.ITEM, new Identifier(ID, "steak_cheeseburger"), STEAK_CHEESEBURGER);
-		Registry.register(Registry.ITEM, new Identifier(ID, "chicken_cheeseburger"), CHICKEN_CHEESEBURGER);
-		Registry.register(Registry.ITEM, new Identifier(ID, "pork_cheeseburger"), PORK_CHEESEBURGER);
-		Registry.register(Registry.ITEM, new Identifier(ID, "mutton_cheeseburger"), MUTTON_CHEESEBURGER);
-		Registry.register(Registry.ITEM, new Identifier(ID, "fish_cheeseburger"), FISH_CHEESEBURGER);
-		Registry.register(Registry.ITEM, new Identifier(ID, "rabbit_cheeseburger"), RABBIT_CHEESEBURGER);
+		register("surf_n_turf", SURF_N_TURF);
+		register("veggie_medley", VEGGIE_MEDLEY);
+		register("fruit_salad", FRUIT_SALAD);
+		register("midas_salad", MIDAS_SALAD);
+		register("bagel", BAGEL);
+		register("donut", DONUT);
+		register("shepherds_pie", SHEPHERDS_PIE);
+		register("cooked_egg", COOKED_EGG);
+		register("mayonnaise", MAYONNAISE);
+		register("egg_whites", EGG_WHITES);
+		register("cheese", CHEESE);
+		register("berry_pie", BERRY_PIE);
 
 	}
 }
