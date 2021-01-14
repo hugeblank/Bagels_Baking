@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient": {
+        "item": "bagels_baking:raw_egg_whites"
+    },
+    "result": "bagels_baking:meringue",
+    "experience": 0.25,
+    "cookingtime": 200
+}
