@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " CB",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:bread"
+    },
+    "C": [
+      {
+        "item": "minecraft:cooked_salmon"
+      },
+      {
+        "item": "minecraft:cooked_cod"
+      }
+    ],
+
+    "B": {
+      "item": "bagels_baking:cheese"
+    }
+  },
+  "result": {
+    "item": "bagels_baking:fish_cheeseburger",
+    "count": 2
+  }
+}

@@ -79,10 +79,13 @@ public class Baking implements ModInitializer {
 	public static final Block RED_VELVET_CAKE = new BasicCakeBlock();
 	public static final BlockItem RED_VELVET_CAKE_ITEM = new BlockItem(RED_VELVET_CAKE, new Item.Settings().group(ItemGroup.FOOD).maxCount(1));
 
-	// Burgers
-
-
-
+	// Cheese Burgers - Gives 2 Items
+	public static final Item STEAK_CHEESEBURGER = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(10).saturationModifier(14.9f).build()));
+	public static final Item CHICKEN_CHEESEBURGER = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(9).saturationModifier(12.1f).build()));
+	public static final Item PORK_CHEESEBURGER = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(10).saturationModifier(14.9f).build()));
+	public static final Item MUTTON_CHEESEBURGER = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(9).saturationModifier(13.3f).build()));
+	public static final Item FISH_CHEESEBURGER = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(8).saturationModifier(11.5f).build()));
+	public static final Item RABBIT_CHEESEBURGER = new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(8).saturationModifier(11.5f).build()));
 
 	@Override
 	public void onInitialize() {
@@ -149,6 +152,14 @@ public class Baking implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "shepherds_pie"), SHEPHERDS_PIE);
 		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "cooked_egg"), COOKED_EGG);
 		Registry.register(Registry.ITEM, new Identifier("bagels_baking", "cheese"), CHEESE);
+
+		// Cheese Burgers
+		Registry.register(Registry.ITEM, new Identifier(ID, "steak_cheeseburger"), STEAK_CHEESEBURGER);
+		Registry.register(Registry.ITEM, new Identifier(ID, "chicken_cheeseburger"), CHICKEN_CHEESEBURGER);
+		Registry.register(Registry.ITEM, new Identifier(ID, "pork_cheeseburger"), PORK_CHEESEBURGER);
+		Registry.register(Registry.ITEM, new Identifier(ID, "mutton_cheeseburger"), MUTTON_CHEESEBURGER);
+		Registry.register(Registry.ITEM, new Identifier(ID, "fish_cheeseburger"), FISH_CHEESEBURGER);
+		Registry.register(Registry.ITEM, new Identifier(ID, "rabbit_cheeseburger"), RABBIT_CHEESEBURGER);
 
 	}
 }

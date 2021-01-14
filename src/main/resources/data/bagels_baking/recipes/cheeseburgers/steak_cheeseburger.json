@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " #",
+    "BC",
+    " #"
+  ],
+
+  "key": {
+    "#": {
+      "item": "minecraft:bread"
+    },
+    "B": {
+      "item": "bagels_baking:cheese"
+    },
+    "C": {
+      "item": "minecraft:cooked_beef"
+    }
+  },
+  "result": {
+    "item": "bagels_baking:steak_cheeseburger",
+    "count": 2
+  }
+}
