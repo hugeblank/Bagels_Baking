@@ -1,4 +1,4 @@
-package dev.elexi.hugeblank.bagels_baking.mixin;
+package dev.elexi.hugeblank.bagels_baking.mixin.stew;
 
 import net.minecraft.item.Item;
 import org.spongepowered.asm.mixin.Mixin;

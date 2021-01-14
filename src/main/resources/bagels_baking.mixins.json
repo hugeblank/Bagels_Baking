@@ -4,9 +4,11 @@
   "package": "dev.elexi.hugeblank.bagels_baking.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "BasicStewItem",
-    "IStewStackIncrease",
-    "StewStackIncrease"
+    "furnace.BottleByHand",
+    "furnace.SmeltConversion",
+    "stew.BasicStewItem",
+    "stew.IStewStackIncrease",
+    "stew.StewStackIncrease"
   ],
   "client": [
   ],

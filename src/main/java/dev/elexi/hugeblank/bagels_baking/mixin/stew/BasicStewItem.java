@@ -1,4 +1,4 @@
-package dev.elexi.hugeblank.bagels_baking.mixin;
+package dev.elexi.hugeblank.bagels_baking.mixin.stew;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
