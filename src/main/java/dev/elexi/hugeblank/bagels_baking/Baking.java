@@ -92,7 +92,7 @@ public class Baking implements ModInitializer {
 	public static final Item BERRY_PIE = basicFood(6, 4.5f);
 	public static final Item APPLE_PIE = basicFood(4, 3.4f);
 
-	// Cakes
+	// Cakes - give 1 item
 	public static final Block CARROT_CAKE = new BasicCakeBlock();
 	public static final BlockItem CARROT_CAKE_ITEM = new BlockItem(CARROT_CAKE, new Item.Settings().group(ItemGroup.FOOD).maxCount(1));
 	public static final Block CHOCOLATE_CAKE = new BasicCakeBlock();
@@ -101,7 +101,7 @@ public class Baking implements ModInitializer {
 	public static final BlockItem RED_VELVET_CAKE_ITEM = new BlockItem(RED_VELVET_CAKE, new Item.Settings().group(ItemGroup.FOOD).maxCount(1));
 
 	// Egg stuff
-	public static final Item COOKED_EGG = basicFood(2, 3.3f); // Give 1 item
+	public static final Item COOKED_EGG = basicFood(2, 3.3f);
 	public static final Item RAW_EGG_WHITES = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0.2f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK);
 	public static final Item RAW_EGG_YOLK = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0.2f)
@@ -115,7 +115,7 @@ public class Baking implements ModInitializer {
 	public static final Item SURF_N_TURF = basicFood(7, 14f); // Give 2 items
 	public static final Item BAGEL = basicFood(7, 6.5f); // Give 2 items
 	public static final Item DONUT = basicFood(7, 7f); // Give 2 items
-	public static final Item CHEESE = basicFood(2, 3.5f); // Give 1 item
+	public static final Item CHEESE = new Item(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Items.BUCKET).food(new FoodComponent.Builder().hunger(2).saturationModifier(3.5f).build()));
 	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(9, 7f); // Give 1 item
 	public static final MushroomStewItem FRUIT_SALAD = basicBowlFood(8, 4f); // Give 1 item
 	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(new FoodComponent.Builder().hunger(14).saturationModifier(35f).alwaysEdible() // Give 1 item
