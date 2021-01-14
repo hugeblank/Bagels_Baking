@@ -4,6 +4,7 @@ import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.HoneyBottleItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -13,12 +14,12 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.world.World;
 
-public class BottledItem extends Item {
+public class BottledItem extends HoneyBottleItem {
 
     private SoundEvent soundEffect;
 
     public BottledItem(Settings settings, SoundEvent drinkSound) {
-        super(settings);
+        super(settings.recipeRemainder(Items.GLASS_BOTTLE));
         soundEffect = drinkSound;
     }
 
