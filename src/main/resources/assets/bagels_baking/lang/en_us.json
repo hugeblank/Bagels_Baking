@@ -26,6 +26,7 @@
   "item.bagels_baking.veggie_medley": "Veggie Medley",
   "item.bagels_baking.fruit_salad": "Fruit Salad",
   "item.bagels_baking.midas_salad": "Midas' Salad",
+  "item.bagels_baking.disgusting_dish": "Disgusting Dish",
   "item.bagels_baking.bagel": "Bagel",
   "item.bagels_baking.donut": "Donut",
   "item.bagels_baking.shepherds_pie": "Shepherds Pie",
@@ -47,8 +48,17 @@
   "item.bagels_baking.fish_cheeseburger": "Fish Cheeseburger",
   "item.bagels_baking.rabbit_cheeseburger": "Rabbit Cheeseburger",
   "item.bagels_baking.mayonnaise": "Mayonnaise",
-  "item.bagels_baking.egg_whites": "Egg Whites",
+  "item.bagels_baking.meringue": "Meringue",
+  "item.bagels_baking.raw_egg_yolk": "Raw Egg Yolk",
+  "item.bagels_baking.raw_egg_whites": "Raw Egg Whites",
   "item.bagels_baking.berry_pie": "Berry Meringue Pie",
+  "item.bagels_baking.apple_pie": "Apple Meringue Pie",
   "item.bagels_baking.berry_jam": "Berry Jam",
-  "item.bagels_baking.apple_jam": "Apple Jam"
+  "item.bagels_baking.apple_jam": "Apple Jam",
+  "item.bagels_baking.berry_jam_sandwich": "Berry Jam Sandwich",
+  "item.bagels_baking.apple_jam_sandwich": "Apple Jam Sandwich",
+  "item.bagels_baking.raw_chicken_nuggets": "Raw Chicken Nuggets",
+  "item.bagels_baking.cooked_chicken_nuggets": "Cooked Chicken Nuggets",
+  "item.bagels_baking.raw_french_fries": "Raw French Fries",
+  "item.bagels_baking.cooked_french_fries": "Cooked French Fries"
 }

@@ -4,7 +4,10 @@
   "package": "dev.elexi.hugeblank.bagels_baking.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "crafting.ICIHandlerAccessor",
     "crafting.MultiCraft",
+    "crafting.SwordSliceDamage",
+    "crafting.UpdateSliceDamage",
     "stew.BasicStewItem",
     "stew.IStewStackIncrease",
     "stew.StewStackIncrease"

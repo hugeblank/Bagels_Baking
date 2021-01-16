@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "minecraft:potato"
+    },
+    "result": "bagels_baking:raw_french_fries",
+    "count": 2
+}

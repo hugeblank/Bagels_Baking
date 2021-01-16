@@ -42,6 +42,7 @@ public class Baking implements ModInitializer {
 	public static final Item FISH_SANDWICH = basicFood(7, 9f);
 	public static final Item RABBIT_SANDWICH = basicFood(7, 9f);
 	public static final Item BERRY_JAM_SANDWICH = basicFood(4, 4.3f);
+	public static final Item APPLE_JAM_SANDWICH = basicFood(6, 5.1f);
 
 	// Dinner - Gives 1 item
 	public static final Item STEAK_DINNER = basicFood(13, 18.8f);
@@ -100,16 +101,19 @@ public class Baking implements ModInitializer {
 	public static final Block RED_VELVET_CAKE = new BasicCakeBlock();
 	public static final BlockItem RED_VELVET_CAKE_ITEM = new BlockItem(RED_VELVET_CAKE, new Item.Settings().group(ItemGroup.FOOD).maxCount(1));
 
-	// Egg stuff
-	public static final Item COOKED_EGG = basicFood(2, 3.3f);
+	// Raw/Cooked goods
 	public static final Item RAW_EGG_WHITES = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0.2f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK);
 	public static final Item RAW_EGG_YOLK = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0.2f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK);
+	public static final Item RAW_CHICKEN_NUGGETS = new Item( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(2).saturationModifier(0.6f)
+			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*30), .3f).build()));
+	public static final Item RAW_FRENCH_FRIES = basicFood(1, 0.6f);
+	public static final Item COOKED_CHICKEN_NUGGETS = basicFood(3, 3.2f);
+	public static final Item COOKED_FRENCH_FRIES = basicFood(2, 1.8f);
+	public static final Item COOKED_EGG = basicFood(2, 3.3f);
 	public static final Item MERINGUE = basicJam(1, 0.7f, SoundEvents.ENTITY_WANDERING_TRADER_DRINK_MILK);
 	public static final Item MAYONNAISE = basicJam(1, 0.5f, SoundEvents.ENTITY_WITCH_DRINK);
-
-
 
 	// Misc - Item amt listed individually
 	public static final Item SURF_N_TURF = basicFood(7, 14f); // Give 2 items
@@ -139,6 +143,7 @@ public class Baking implements ModInitializer {
 		register("fish_sandwich", FISH_SANDWICH);
 		register("rabbit_sandwich", RABBIT_SANDWICH);
 		register("berry_jam_sandwich", BERRY_JAM_SANDWICH);
+		register("apple_jam_sandwich", APPLE_JAM_SANDWICH);
 
 		// Dinners
 		register("steak_dinner", STEAK_DINNER);
@@ -200,12 +205,16 @@ public class Baking implements ModInitializer {
 		register("berry_pie", BERRY_PIE);
 		register("apple_pie", APPLE_PIE);
 
-		// Egg Materials
-		register("cooked_egg", COOKED_EGG);
+		// Raw/Cooked Goods
+		register("raw_chicken_nuggets", RAW_CHICKEN_NUGGETS);
+		register("raw_french_fries", RAW_FRENCH_FRIES);
 		register("raw_egg_whites", RAW_EGG_WHITES);
 		register("raw_egg_yolk", RAW_EGG_YOLK);
+		register("cooked_chicken_nuggets", COOKED_CHICKEN_NUGGETS);
+		register("cooked_french_fries", COOKED_FRENCH_FRIES);
 		register("mayonnaise", MAYONNAISE);
 		register("meringue", MERINGUE);
+		register("cooked_egg", COOKED_EGG);
 
 
 		// Misc
