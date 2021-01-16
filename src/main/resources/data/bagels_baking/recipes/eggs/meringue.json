@@ -3,7 +3,7 @@
     "ingredient": {
         "item": "bagels_baking:raw_egg_whites"
     },
-    "result": "bagels_baking:meringue",
+    "result": "minecraft:glass_bottle",
     "experience": 0.25,
     "cookingtime": 200
 }

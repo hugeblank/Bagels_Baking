@@ -5,6 +5,8 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "crafting.MultiCraft",
+    "smelting.SugarComponent",
+    "smelting.SugarComponentClient",
     "stew.BasicStewItem",
     "stew.IStewStackIncrease",
     "stew.StewStackIncrease"
