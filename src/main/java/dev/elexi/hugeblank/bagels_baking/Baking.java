@@ -45,12 +45,14 @@ public class Baking implements ModInitializer {
 	public static final Item APPLE_JAM_SANDWICH = basicFood(6, 5.1f);
 
 	// Dinner - Gives 1 item
+	/* TEMPORARILY REMOVED - Will reimplement in v0.2
 	public static final Item STEAK_DINNER = basicFood(13, 18.8f);
 	public static final Item CHICKEN_DINNER = basicFood(11, 13.2f);
 	public static final Item PORK_DINNER = basicFood(13, 18.8f);
 	public static final Item MUTTON_DINNER = basicFood(11, 15.6f);
 	public static final Item FISH_DINNER = basicFood(10, 12f);
 	public static final Item RABBIT_DINNER = basicFood(10, 12f);
+	*/
 
 	// Pocket - Gives 2 items
 	public static final Item STEAK_POCKET = basicFood(11, 10.9f);
@@ -116,7 +118,6 @@ public class Baking implements ModInitializer {
 	public static final Item MAYONNAISE = basicJam(1, 0.5f, SoundEvents.ENTITY_WITCH_DRINK);
 
 	// Misc - Item amt listed individually
-	public static final Item SURF_N_TURF = basicFood(7, 14f); // Give 2 items
 	public static final Item BAGEL = basicFood(7, 6.5f); // Give 2 items
 	public static final Item DONUT = basicFood(7, 7f); // Give 2 items
 	public static final Item CHEESE = new Item(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Items.BUCKET).food(new FoodComponent.Builder().hunger(2).saturationModifier(3.5f).build()));
@@ -146,12 +147,14 @@ public class Baking implements ModInitializer {
 		register("apple_jam_sandwich", APPLE_JAM_SANDWICH);
 
 		// Dinners
+		/*
 		register("steak_dinner", STEAK_DINNER);
 		register("chicken_dinner", CHICKEN_DINNER);
 		register("pork_dinner", PORK_DINNER);
 		register("mutton_dinner", MUTTON_DINNER);
 		register("fish_dinner", FISH_DINNER);
 		register("rabbit_dinner", RABBIT_DINNER);
+		*/
 
 		// Pockets
 		register("steak_pocket", STEAK_POCKET);
@@ -218,7 +221,6 @@ public class Baking implements ModInitializer {
 
 
 		// Misc
-		register("surf_n_turf", SURF_N_TURF);
 		register("bagel", BAGEL);
 		register("donut", DONUT);
 		register("veggie_medley", VEGGIE_MEDLEY);
