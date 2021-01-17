@@ -22,6 +22,10 @@ public class Baking implements ModInitializer {
 		return new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(hunger).saturationModifier(saturation).build()));
 	}
 
+	private static Item basicFood(int hunger, float saturation, int maxStack) {
+		return new Item(new Item.Settings().maxCount(maxStack).group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(hunger).saturationModifier(saturation).build()));
+	}
+
 	private static MushroomStewItem basicBowlFood(int hunger, float saturation) {
 		return new MushroomStewItem(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(hunger).saturationModifier(saturation).build()));
 	}
@@ -113,7 +117,7 @@ public class Baking implements ModInitializer {
 	public static final Item RAW_FRENCH_FRIES = basicFood(1, 0.6f);
 	public static final Item COOKED_CHICKEN_NUGGETS = basicFood(3, 3.2f);
 	public static final Item COOKED_FRENCH_FRIES = basicFood(2, 1.8f);
-	public static final Item COOKED_EGG = basicFood(2, 3.3f);
+	public static final Item COOKED_EGG = basicFood(2, 3.3f, 16);
 	public static final Item MERINGUE = basicJam(1, 0.7f, SoundEvents.ENTITY_WANDERING_TRADER_DRINK_MILK);
 	public static final Item MAYONNAISE = basicJam(1, 0.5f, SoundEvents.ENTITY_WITCH_DRINK);
 
