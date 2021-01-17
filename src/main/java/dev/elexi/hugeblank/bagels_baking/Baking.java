@@ -19,7 +19,7 @@ public class Baking implements ModInitializer {
 
 	// Beautification Functions
 	private static Item basicFood(int hunger, float saturation) {
-		return new Item(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(hunger).saturationModifier(saturation).build()));
+		return basicFood(hunger, saturation, 64);
 	}
 
 	private static Item basicFood(int hunger, float saturation, int maxStack) {
