@@ -229,10 +229,5 @@ public class Baking implements ModInitializer {
 		register("disgusting_dish", DISGUSTING_DISH);
 		register("cheese", CHEESE);
 
-		// Register Composting
-
-		// Cakes
-
-
 	}
 }
