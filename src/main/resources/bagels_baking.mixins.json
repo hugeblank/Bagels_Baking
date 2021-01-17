@@ -4,6 +4,7 @@
   "package": "dev.elexi.hugeblank.bagels_baking.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "composting.Composting",
     "crafting.MultiCraft",
     "smelting.SugarComponent",
     "smelting.SugarComponentClient",

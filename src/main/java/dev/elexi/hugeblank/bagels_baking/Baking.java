@@ -228,5 +228,11 @@ public class Baking implements ModInitializer {
 		register("midas_salad", MIDAS_SALAD);
 		register("disgusting_dish", DISGUSTING_DISH);
 		register("cheese", CHEESE);
+
+		// Register Composting
+
+		// Cakes
+
+
 	}
 }
