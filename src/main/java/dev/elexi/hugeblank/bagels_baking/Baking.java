@@ -223,7 +223,6 @@ public class Baking implements ModInitializer {
 		register("meringue", MERINGUE);
 		register("cooked_egg", COOKED_EGG);
 
-
 		// Misc
 		register("bagel", BAGEL);
 		register("donut", DONUT);
