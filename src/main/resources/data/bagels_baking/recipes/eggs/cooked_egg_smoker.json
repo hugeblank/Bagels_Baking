@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "minecraft:egg"
+  },
+  "result": "bagels_baking:cooked_egg",
+  "experience": 0.2,
+  "cookingtime": 200
+}

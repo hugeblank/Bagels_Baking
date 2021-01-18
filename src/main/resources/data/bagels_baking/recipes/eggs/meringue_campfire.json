@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:campfire_cooking",
+    "ingredient": {
+        "item": "bagels_baking:raw_egg_whites"
+    },
+    "result": "minecraft:glass_bottle",
+    "experience": 0.25,
+    "cookingtime": 200
+}

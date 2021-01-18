@@ -1,9 +1,9 @@
 {
-    "type": "minecraft:smelting",
+    "type": "minecraft:smoking",
     "ingredient": {
         "item": "bagels_baking:raw_egg_yolk"
     },
     "result": "bagels_baking:mayonnaise",
-    "experience": 0.25,
+    "experience": 0.2,
     "cookingtime": 200
 }
