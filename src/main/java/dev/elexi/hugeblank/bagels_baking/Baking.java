@@ -99,7 +99,7 @@ public class Baking implements ModInitializer {
 	public static final Item BERRY_PIE = basicFood(6, 4.5f);
 	public static final Item APPLE_PIE = basicFood(4, 3.4f);
 
-	// Cakes - give 1 item
+	// Cakes - Give 1 item
 	public static final Block CARROT_CAKE = new BasicCakeBlock();
 	public static final BlockItem CARROT_CAKE_ITEM = new BlockItem(CARROT_CAKE, new Item.Settings().group(ItemGroup.FOOD).maxCount(1));
 	public static final Block CHOCOLATE_CAKE = new BasicCakeBlock();
@@ -107,10 +107,10 @@ public class Baking implements ModInitializer {
 	public static final Block RED_VELVET_CAKE = new BasicCakeBlock();
 	public static final BlockItem RED_VELVET_CAKE_ITEM = new BlockItem(RED_VELVET_CAKE, new Item.Settings().group(ItemGroup.FOOD).maxCount(1));
 
-	// Raw/Cooked goods
+	// Raw/Cooked goods - Give 1 item
 	public static final Item RAW_EGG_WHITES = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0.2f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK);
-	public static final Item RAW_EGG_YOLK = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0.2f)
+	public static final Item RAW_EGG_YOLK = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0.1f).snack()
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK);
 	public static final Item RAW_CHICKEN_NUGGETS = new Item( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(2).saturationModifier(0.6f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*30), .3f).build()));
