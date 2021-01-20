@@ -16,11 +16,12 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Objects;
 
 public class BottledItem extends PotionItem {
 
-    private SoundEvent soundEffect;
-    private boolean brewable;
+    private final SoundEvent soundEffect;
+    private final boolean brewable;
 
     public BottledItem(Settings settings, SoundEvent drinkSound) {
         this(settings, drinkSound, false);
@@ -35,7 +36,7 @@ public class BottledItem extends PotionItem {
     @Override
     public int getMaxUseTime(ItemStack stack) {
         if (stack.getItem().isFood()) {
-            return this.getFoodComponent().isSnack() ? 16 : 32;
+            return Objects.requireNonNull(this.getFoodComponent()).isSnack() ? 16 : 32;
         } else {
             return 0;
         }
