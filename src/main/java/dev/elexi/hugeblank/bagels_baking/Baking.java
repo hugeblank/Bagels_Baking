@@ -125,7 +125,7 @@ public class Baking implements ModInitializer {
 	// Misc - Item amt listed individually
 	public static final Item BAGEL = basicFood(7, 6.5f); // Give 2 items
 	public static final Item DONUT = basicFood(7, 7f); // Give 2 items
-	public static final Item CHEESE = new Item(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Items.BUCKET).food(new FoodComponent.Builder().hunger(2).saturationModifier(3.5f).build()));
+	public static final Item CHEESE = new Item(new Item.Settings().group(ItemGroup.FOOD).maxCount(1).recipeRemainder(Items.BUCKET).food(new FoodComponent.Builder().hunger(2).saturationModifier(3.5f).build()));
 	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(9, 7f); // Give 1 item
 	public static final MushroomStewItem FRUIT_SALAD = basicBowlFood(8, 4f); // Give 1 item
 	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(new FoodComponent.Builder().hunger(14).saturationModifier(35f).alwaysEdible() // Give 1 item
