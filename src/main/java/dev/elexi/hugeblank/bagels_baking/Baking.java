@@ -34,6 +34,7 @@ public class Baking implements ModInitializer {
 		return new BottledItem(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(new FoodComponent.Builder().hunger(hunger).saturationModifier(saturation).build()), drinkSound);
 	}
 
+
 	private static void register(String name, Item item) {
 		Registry.register(Registry.ITEM, new Identifier(ID, name), item);
 	}
@@ -109,7 +110,7 @@ public class Baking implements ModInitializer {
 
 	// Raw/Cooked goods - Give 1 item
 	public static final Item RAW_EGG_WHITES = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0.2f)
-			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK);
+			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK, true);
 	public static final Item RAW_EGG_YOLK = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0.1f).snack()
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK);
 	public static final Item RAW_CHICKEN_NUGGETS = new Item( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(2).saturationModifier(0.6f)
@@ -231,6 +232,7 @@ public class Baking implements ModInitializer {
 		register("midas_salad", MIDAS_SALAD);
 		register("disgusting_dish", DISGUSTING_DISH);
 		register("cheese", CHEESE);
+
 
 	}
 }
