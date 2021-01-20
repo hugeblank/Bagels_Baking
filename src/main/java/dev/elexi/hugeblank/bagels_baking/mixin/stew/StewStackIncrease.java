@@ -13,5 +13,6 @@ public class StewStackIncrease {
         ((IStewStackIncrease) Items.MUSHROOM_STEW).setMaxCount(16);
         ((IStewStackIncrease) Items.BEETROOT_SOUP).setMaxCount(16);
         ((IStewStackIncrease) Items.RABBIT_STEW).setMaxCount(16);
+        ((IStewStackIncrease) Items.SUSPICIOUS_STEW).setMaxCount(16);
     }
 }
