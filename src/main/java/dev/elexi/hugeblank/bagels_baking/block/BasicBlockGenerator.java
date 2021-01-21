@@ -1,7 +1,5 @@
 package dev.elexi.hugeblank.bagels_baking.block;
 
-
-import it.unimi.dsi.fastutil.Hash;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.SlabBlock;
@@ -11,8 +9,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
@@ -32,9 +28,9 @@ public class BasicBlockGenerator { // Mojang pls hire me - hugeblank
     }
 
     public void register(String namespace) {
-        for (int i = 0; i < names.size(); i++) {
-            Identifier id = new Identifier(namespace, names.get(i));
-            Block block = blocks.get(names.get(i));
+        for (String name : names) {
+            Identifier id = new Identifier(namespace, name);
+            Block block = blocks.get(name);
             Registry.register(Registry.BLOCK, id, block);
             Registry.register(Registry.ITEM, id, new BlockItem(block, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
         }

@@ -1,6 +1,7 @@
 package dev.elexi.hugeblank.bagels_baking;
 
 import dev.elexi.hugeblank.bagels_baking.block.BasicBlockGenerator;
+import dev.elexi.hugeblank.bagels_baking.block.BasicBucketDrinkItem;
 import dev.elexi.hugeblank.bagels_baking.block.BasicCakeBlock;
 import dev.elexi.hugeblank.bagels_baking.item.BottledItem;
 import dev.elexi.hugeblank.bagels_baking.item.MidasSaladItem;
@@ -149,7 +150,7 @@ public class Baking implements ModInitializer {
 	public static final Item RAW_EGG_YOLK = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0.1f).snack()
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK);
 	public static final Item RAW_CHICKEN_NUGGETS = new Item( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(2).saturationModifier(0.6f)
-			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*30), .3f).build()));
+			.statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 20*10), .3f).build()));
 	public static final Item RAW_FRENCH_FRIES = basicFood(1, 0.6f);
 	public static final Item COOKED_CHICKEN_NUGGETS = basicFood(3, 3.2f);
 	public static final Item COOKED_FRENCH_FRIES = basicFood(2, 1.8f);
@@ -160,7 +161,8 @@ public class Baking implements ModInitializer {
 	// Misc - Item amt listed individually
 	public static final Item BAGEL = basicFood(7, 6.5f); // Give 2 items
 	public static final Item DONUT = basicFood(7, 7f); // Give 2 items
-	public static final Item CHEESE = new Item(new Item.Settings().group(ItemGroup.FOOD).maxCount(1).recipeRemainder(Items.BUCKET).food(new FoodComponent.Builder().hunger(2).saturationModifier(3.5f).build()));
+	public static final Item CHEESE = new BasicBucketDrinkItem(2, 3.5f);
+	public static final Item CHOCOLATE_MILK = new BasicBucketDrinkItem(2, 4.8f);
 	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(9, 7f); // Give 1 item
 	public static final MushroomStewItem FRUIT_SALAD = basicBowlFood(8, 4f); // Give 1 item
 	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(new FoodComponent.Builder().hunger(14).saturationModifier(35f).alwaysEdible() // Give 1 item
@@ -300,6 +302,7 @@ public class Baking implements ModInitializer {
 		register("midas_salad", MIDAS_SALAD);
 		register("disgusting_dish", DISGUSTING_DISH);
 		register("cheese", CHEESE);
+		register("chocolate_milk", CHOCOLATE_MILK);
 
 
 	}
