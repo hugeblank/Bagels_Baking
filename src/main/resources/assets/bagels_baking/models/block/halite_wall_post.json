@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/template_wall_post",
+    "textures": {
+      "wall": "bagels_baking:block/halite"
+    }
+  }

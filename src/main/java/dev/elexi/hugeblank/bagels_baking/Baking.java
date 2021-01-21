@@ -1,17 +1,36 @@
 package dev.elexi.hugeblank.bagels_baking;
 
+import dev.elexi.hugeblank.bagels_baking.block.BasicBlockGenerator;
 import dev.elexi.hugeblank.bagels_baking.block.BasicCakeBlock;
 import dev.elexi.hugeblank.bagels_baking.item.BottledItem;
 import dev.elexi.hugeblank.bagels_baking.item.MidasSaladItem;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.block.Block;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.impl.biome.modification.BiomeSelectionContextImpl;
+import net.fabricmc.fabric.impl.biome.modification.BuiltInRegistryKeys;
+import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
+import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
+
+import java.util.function.Predicate;
 
 public class Baking implements ModInitializer {
 
@@ -108,6 +127,22 @@ public class Baking implements ModInitializer {
 	public static final Block RED_VELVET_CAKE = new BasicCakeBlock();
 	public static final BlockItem RED_VELVET_CAKE_ITEM = new BlockItem(RED_VELVET_CAKE, new Item.Settings().group(ItemGroup.FOOD).maxCount(1));
 
+	// Halite and Salt
+	public static final BasicBlockGenerator HALITE = new BasicBlockGenerator("halite", new Block(FabricBlockSettings.copy(Blocks.BASALT)));
+	public static final BasicBlockGenerator POLISHED_HALITE = new BasicBlockGenerator("polished_halite", new Block(FabricBlockSettings.copy(Blocks.BASALT)));
+	public static final Item SALT = new Item(new Item.Settings().group(ItemGroup.MATERIALS));
+	private static final ConfiguredFeature<?, ?> HALITE_DESERT = Feature.ORE
+			.configure(new OreFeatureConfig(
+					OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
+					HALITE.getBlock("halite").getDefaultState(),
+					33)) // vein size
+			.decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(
+					0, // bottom offset
+					0, // min y level
+					79))) // max y level
+			.spreadHorizontally()
+			.repeat(10); // number of veins per chunk
+
 	// Raw/Cooked goods - Give 1 item
 	public static final Item RAW_EGG_WHITES = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0.2f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK, true);
@@ -195,6 +230,39 @@ public class Baking implements ModInitializer {
 		Registry.register(Registry.ITEM, carrot_cake, CARROT_CAKE_ITEM);
 		Registry.register(Registry.ITEM, chocolate_cake, CHOCOLATE_CAKE_ITEM);
 		Registry.register(Registry.ITEM, red_velvet_cake, RED_VELVET_CAKE_ITEM);
+
+		// Halite & Salt
+		HALITE.register(ID);
+		POLISHED_HALITE.register(ID);
+		register("salt", SALT);
+		RegistryKey<ConfiguredFeature<?, ?>> haliteDesert = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN,
+				new Identifier(ID, "halite_desert"));
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, haliteDesert.getValue(), HALITE_DESERT);
+		Predicate<BiomeSelectionContext> selector = BiomeSelectors.includeByKey( // Deserts, Oceans, and Rivers
+				BiomeKeys.DESERT,
+				BiomeKeys.DESERT_HILLS,
+				BiomeKeys.DESERT_LAKES,
+				BiomeKeys.BADLANDS,
+				BiomeKeys.BADLANDS_PLATEAU,
+				BiomeKeys.MODIFIED_BADLANDS_PLATEAU,
+				BiomeKeys.ERODED_BADLANDS,
+				BiomeKeys.MODIFIED_WOODED_BADLANDS_PLATEAU,
+				BiomeKeys.WOODED_BADLANDS_PLATEAU,
+				BiomeKeys.OCEAN,
+				BiomeKeys.COLD_OCEAN,
+				BiomeKeys.DEEP_COLD_OCEAN,
+				BiomeKeys.DEEP_FROZEN_OCEAN,
+				BiomeKeys.DEEP_LUKEWARM_OCEAN,
+				BiomeKeys.DEEP_OCEAN,
+				BiomeKeys.DEEP_WARM_OCEAN,
+				BiomeKeys.FROZEN_OCEAN,
+				BiomeKeys.LUKEWARM_OCEAN,
+				BiomeKeys.WARM_OCEAN,
+				BiomeKeys.RIVER,
+				BiomeKeys.FROZEN_RIVER
+
+		);
+		BiomeModifications.addFeature(selector, GenerationStep.Feature.UNDERGROUND_ORES, haliteDesert);
 
 		// Cheese Burgers
 		register("steak_cheeseburger", STEAK_CHEESEBURGER);
