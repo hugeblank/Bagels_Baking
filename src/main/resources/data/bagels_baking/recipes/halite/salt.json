@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:halite"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:salt",
+        "count": 4
+    }
+}
