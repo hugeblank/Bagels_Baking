@@ -9,7 +9,6 @@ import dev.elexi.hugeblank.bagels_baking.item.MidasSaladItem;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreen;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
-import io.netty.channel.epoll.EpollServerDomainSocketChannel;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
@@ -17,9 +16,9 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.Material;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
@@ -80,16 +79,6 @@ public class Baking implements ModInitializer {
 	public static final Item RABBIT_SANDWICH = basicFood(7, 9f);
 	public static final Item BERRY_JAM_SANDWICH = basicFood(4, 4.3f);
 	public static final Item APPLE_JAM_SANDWICH = basicFood(6, 5.1f);
-
-	// Dinner - Gives 1 item
-	/* TEMPORARILY REMOVED - Will reimplement in v0.2
-	public static final Item STEAK_DINNER = basicFood(13, 18.8f);
-	public static final Item CHICKEN_DINNER = basicFood(11, 13.2f);
-	public static final Item PORK_DINNER = basicFood(13, 18.8f);
-	public static final Item MUTTON_DINNER = basicFood(11, 15.6f);
-	public static final Item FISH_DINNER = basicFood(10, 12f);
-	public static final Item RABBIT_DINNER = basicFood(10, 12f);
-	*/
 
 	// Pocket - Gives 2 items
 	public static final Item STEAK_POCKET = basicFood(11, 10.9f);
@@ -171,7 +160,7 @@ public class Baking implements ModInitializer {
 	public static final Item MAYONNAISE = basicJam(1, 0.5f, SoundEvents.ENTITY_WITCH_DRINK);
 
 	// Mill
-	public static final Block MILL = new Mill(FabricBlockSettings.of(Material.METAL).nonOpaque());
+	public static final Block MILL = new Mill(AbstractBlock.Settings.copy(Blocks.STONECUTTER));
 	public static final BlockItem MILL_ITEM = new BlockItem(MILL, new Item.Settings().group(ItemGroup.DECORATIONS));
 	private static final String mill_stat = "interact_with_mill";
 	private static final String mill_rtype_id = "milling";
