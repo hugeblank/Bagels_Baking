@@ -3,26 +3,38 @@ package dev.elexi.hugeblank.bagels_baking;
 import dev.elexi.hugeblank.bagels_baking.block.BasicBlockGenerator;
 import dev.elexi.hugeblank.bagels_baking.block.BasicBucketDrinkItem;
 import dev.elexi.hugeblank.bagels_baking.block.BasicCakeBlock;
+import dev.elexi.hugeblank.bagels_baking.block.Mill;
 import dev.elexi.hugeblank.bagels_baking.item.BottledItem;
 import dev.elexi.hugeblank.bagels_baking.item.MidasSaladItem;
+import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
+import dev.elexi.hugeblank.bagels_baking.screen.MillScreen;
+import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
+import io.netty.channel.epoll.EpollServerDomainSocketChannel;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.impl.biome.modification.BiomeSelectionContextImpl;
-import net.fabricmc.fabric.impl.biome.modification.BuiltInRegistryKeys;
-import net.minecraft.block.*;
+import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.Material;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
+import net.minecraft.recipe.CuttingRecipe;
+import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.recipe.RecipeType;
+import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.stat.StatFormatter;
+import net.minecraft.stat.Stats;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.Decorator;
@@ -158,13 +170,32 @@ public class Baking implements ModInitializer {
 	public static final Item MERINGUE = basicJam(1, 0.7f, SoundEvents.ENTITY_WANDERING_TRADER_DRINK_MILK);
 	public static final Item MAYONNAISE = basicJam(1, 0.5f, SoundEvents.ENTITY_WITCH_DRINK);
 
+	// Mill
+	public static final Block MILL = new Mill(FabricBlockSettings.of(Material.METAL).nonOpaque());
+	public static final BlockItem MILL_ITEM = new BlockItem(MILL, new Item.Settings().group(ItemGroup.DECORATIONS));
+	private static final String mill_stat = "interact_with_mill";
+	private static final String mill_rtype_id = "milling";
+	public static final Identifier INTERACT_WITH_MILL = new Identifier(ID, mill_stat);
+	public static ScreenHandlerType<MillScreenHandler> MILL_SCREEN;
+	public static RecipeType<MillingRecipe> MILLING;
+	public static RecipeSerializer<MillingRecipe> MILLING_SERIALIZER = RecipeSerializer.register(mill_rtype_id, new CuttingRecipe.Serializer(MillingRecipe::new));
+
+	// Mill Based Items
+	public static final Item FLOUR = new Item( new Item.Settings().group(ItemGroup.MATERIALS));
+	public static final Item COCOA_POWDER = new Item( new Item.Settings().group(ItemGroup.MATERIALS));
+	public static final Item RAW_MASHED_POTATOES = new Item( new Item.Settings().group(ItemGroup.MATERIALS));
+	public static final Item LINGUINE = new Item( new Item.Settings().group(ItemGroup.MATERIALS));
+	public static final Item MACARONI = new Item( new Item.Settings().group(ItemGroup.MATERIALS));
+
 	// Misc - Item amt listed individually
-	public static final Item BAGEL = basicFood(7, 6.5f); // Give 2 items
-	public static final Item DONUT = basicFood(7, 7f); // Give 2 items
+	public static final Item BAGEL = basicFood(7, 6.5f);
+	public static final Item DONUT = basicFood(7, 7f);
 	public static final Item CHEESE = new BasicBucketDrinkItem(2, 3.5f);
 	public static final Item CHOCOLATE_MILK = new BasicBucketDrinkItem(2, 4.8f);
-	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(9, 7f); // Give 1 item
-	public static final MushroomStewItem FRUIT_SALAD = basicBowlFood(8, 4f); // Give 1 item
+	public static final Item COOKED_MASHED_POTATOES = basicFood(4, 4.5f);
+	public static final Item DOUGH = new Item( new Item.Settings().group(ItemGroup.MATERIALS)); //  Henry - The inspiration behind the code, my rock and my brain - Redeemed
+	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(9, 7f);
+	public static final MushroomStewItem FRUIT_SALAD = basicBowlFood(8, 4f);
 	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(new FoodComponent.Builder().hunger(14).saturationModifier(35f).alwaysEdible() // Give 1 item
 			.statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 20*120), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 20*20, 1), 1f)
@@ -187,16 +218,6 @@ public class Baking implements ModInitializer {
 		register("rabbit_sandwich", RABBIT_SANDWICH);
 		register("berry_jam_sandwich", BERRY_JAM_SANDWICH);
 		register("apple_jam_sandwich", APPLE_JAM_SANDWICH);
-
-		// Dinners
-		/*
-		register("steak_dinner", STEAK_DINNER);
-		register("chicken_dinner", CHICKEN_DINNER);
-		register("pork_dinner", PORK_DINNER);
-		register("mutton_dinner", MUTTON_DINNER);
-		register("fish_dinner", FISH_DINNER);
-		register("rabbit_dinner", RABBIT_DINNER);
-		*/
 
 		// Pockets
 		register("steak_pocket", STEAK_POCKET);
@@ -294,16 +315,34 @@ public class Baking implements ModInitializer {
 		register("meringue", MERINGUE);
 		register("cooked_egg", COOKED_EGG);
 
+		// Mill
+		Identifier mill_id = new Identifier(ID, "mill");
+		MILLING = RecipeType.register(mill_rtype_id);
+		Registry.register(Registry.CUSTOM_STAT, mill_stat, INTERACT_WITH_MILL);
+		Stats.CUSTOM.getOrCreateStat(INTERACT_WITH_MILL, StatFormatter.DEFAULT);
+		MILL_SCREEN = ScreenHandlerRegistry.registerSimple(mill_id, MillScreenHandler::new);
+		ScreenRegistry.register(MILL_SCREEN, MillScreen::new);
+		Registry.register(Registry.BLOCK, mill_id, MILL);
+		Registry.register(Registry.ITEM, mill_id, MILL_ITEM);
+
+		// Mill Items
+		register("flour", FLOUR);
+		register("cocoa_powder", COCOA_POWDER);
+		register("raw_mashed_potatoes", RAW_MASHED_POTATOES);
+		register("linguine", LINGUINE);
+		register("macaroni", MACARONI);
+
 		// Misc
 		register("bagel", BAGEL);
 		register("donut", DONUT);
+		register("cooked_mashed_potatoes", COOKED_MASHED_POTATOES);
+		register("dough", DOUGH);
 		register("veggie_medley", VEGGIE_MEDLEY);
 		register("fruit_salad", FRUIT_SALAD);
 		register("midas_salad", MIDAS_SALAD);
 		register("disgusting_dish", DISGUSTING_DISH);
 		register("cheese", CHEESE);
 		register("chocolate_milk", CHOCOLATE_MILK);
-
 
 	}
 }

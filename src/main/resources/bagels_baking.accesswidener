@@ -1,0 +1,3 @@
+accessWidener	v1	named
+accessible method net/minecraft/recipe/CuttingRecipe$Serializer <init> (Lnet/minecraft/recipe/CuttingRecipe$Serializer$RecipeFactory;)V
+accessible class net/minecraft/recipe/CuttingRecipe$Serializer$RecipeFactory

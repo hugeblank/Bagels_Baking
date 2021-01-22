@@ -1,9 +1,9 @@
 {
     "type": "minecraft:smoking",
     "ingredient": {
-        "item": "bagels_baking:raw_french_fries"
+        "item": "bagels_baking:raw_mashed_potatoes"
     },
-    "result": "bagels_baking:cooked_french_fries",
+    "result": "bagels_baking:cooked_mashed_potatoes",
     "experience": 0.1,
     "cookingtime": 100
 }

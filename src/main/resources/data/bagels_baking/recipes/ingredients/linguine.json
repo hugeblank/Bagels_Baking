@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:milling",
+    "ingredient": {
+        "item": "minecraft:wheat"
+    },
+    "result": "bagels_baking:linguine",
+    "count": 1
+}

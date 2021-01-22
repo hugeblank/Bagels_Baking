@@ -1,15 +1,22 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
-      "item": "bagels_baking:chocolate_cake"
-    },
-    {
-      "item": "minecraft:red_dye"
-    }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+      " # ",
+      "MCM"
   ],
+  "key": {
+      "#": {
+          "item": "minecraft:red_dye"
+      },
+      "C": {
+          "item": "bagels_baking:chocolate_cake"
+      },
+      "M": {
+          "item": "minecraft:milk_bucket"
+      }
+  },
   "result": {
-    "item": "bagels_baking:red_velvet_cake",
-    "count": 1
+      "item": "bagels_baking:red_velvet_cake",
+      "count": 1
   }
 }

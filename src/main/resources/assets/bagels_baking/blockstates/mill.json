@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "bagels_baking:block/mill",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "bagels_baking:block/mill"
+    },
+    "facing=south": {
+      "model": "bagels_baking:block/mill",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bagels_baking:block/mill",
+      "y": 270
+    }
+  }
+}
