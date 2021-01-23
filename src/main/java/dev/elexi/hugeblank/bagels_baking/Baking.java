@@ -316,9 +316,6 @@ public class Baking implements ModInitializer {
 		register("macaroni", MACARONI);
 		register("cheese", CHEESE);
 		register("chocolate_milk", CHOCOLATE_MILK);
-		register("mashed_potatoes", MASHED_POTATOES);
-
-
 
 		// Stone cut Goods
 		register("chicken_nuggets", CHICKEN_NUGGETS);
@@ -328,6 +325,7 @@ public class Baking implements ModInitializer {
 		register("cut_salmon", CUT_SALMON);
 
 		// Raw/Cooked Goods
+		register("mashed_potatoes", MASHED_POTATOES);
 		register("egg_whites", EGG_WHITES);
 		register("egg_yolk", EGG_YOLK);
 		register("cooked_mashed_potatoes", COOKED_MASHED_POTATOES);
