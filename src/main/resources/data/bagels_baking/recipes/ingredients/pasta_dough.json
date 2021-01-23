@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:flour"
+        },
+        {
+            "item": "bagels_baking:salt"
+        },
+        {
+            "item": "minecraft:egg"
+        },
+        {
+            "item": "minecraft:water_bucket"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:pasta_dough",
+        "count": 1
+    }
+}

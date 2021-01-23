@@ -12,7 +12,7 @@ import net.minecraft.util.registry.Registry;
 
 import java.util.*;
 
-public class BasicBlockGenerator { // Mojang pls hire me - hugeblank
+public class BasicBlockGenerator {
     private final ArrayList<String> names = new ArrayList<>();
     private final HashMap<String, Block> blocks = new HashMap<>();
 

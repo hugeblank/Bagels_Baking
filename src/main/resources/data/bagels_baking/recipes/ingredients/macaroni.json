@@ -1,7 +1,7 @@
 {
-    "type": "minecraft:milling",
+    "type": "minecraft:stonecutting",
     "ingredient": {
-        "item": "minecraft:wheat"
+        "item": "bagels_baking:pasta_dough"
     },
     "result": "bagels_baking:macaroni",
     "count": 1

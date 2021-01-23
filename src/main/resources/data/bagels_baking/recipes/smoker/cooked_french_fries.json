@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smoking",
+    "ingredient": {
+        "item": "bagels_baking:french_fries"
+    },
+    "result": "bagels_baking:cooked_french_fries",
+    "experience": 0.1,
+    "cookingtime": 100
+}

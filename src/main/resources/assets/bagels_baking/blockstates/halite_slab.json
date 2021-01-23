@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bagels_baking:block/halite_slab"
+    },
+    "type=double": {
+      "model": "bagels_baking:block/halite"
+    },
+    "type=top": {
+      "model": "bagels_baking:block/halite_slab_top"
+    }
+  }
+}

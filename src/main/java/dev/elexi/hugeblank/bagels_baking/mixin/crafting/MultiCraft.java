@@ -27,9 +27,9 @@ public class MultiCraft {
 
     @Inject(at = @At(value = "HEAD"), method = "onCraft(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/PlayerEntity;I)V")
     private void doubleResult(World world, PlayerEntity player, int amount, CallbackInfo ci) {
-        if (item.equals(Baking.RAW_EGG_YOLK)) { // If we're crafting egg yolks
-            player.increaseStat(Stats.CRAFTED.getOrCreateStat(Baking.RAW_EGG_WHITES), amount); // Give egg whites too
-            player.inventory.insertStack(new ItemStack(Baking.RAW_EGG_WHITES, amount)); // Keep track of stats
+        if (item.equals(Baking.EGG_YOLK)) { // If we're crafting egg yolks
+            player.increaseStat(Stats.CRAFTED.getOrCreateStat(Baking.EGG_WHITES), amount); // Give egg whites too
+            player.inventory.insertStack(new ItemStack(Baking.EGG_WHITES, amount)); // Keep track of stats
         }
     }
 }

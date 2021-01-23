@@ -49,7 +49,7 @@ public abstract class Composting {
 
         // Raw/Cooked Goods
 
-        registerCompostableItem(f, Baking.RAW_FRENCH_FRIES);
+        registerCompostableItem(f, Baking.FRENCH_FRIES);
         registerCompostableItem(f, Baking.COOKED_FRENCH_FRIES);
 
         // Misc
