@@ -1,5 +1,6 @@
 package dev.elexi.hugeblank.bagels_baking.block;
 
+import dev.elexi.hugeblank.bagels_baking.Baking;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -45,7 +46,18 @@ public class BasicDrinkItem extends Item {
             stack.decrement(1);
         }
 
-        return stack.isEmpty() ? new ItemStack(Items.BUCKET) : stack;
+        if (stack.isEmpty()) {
+            return new ItemStack(isBucket ? Items.BUCKET : Baking.CUP);
+        } else {
+            if (user instanceof PlayerEntity && !((PlayerEntity)user).abilities.creativeMode) {
+                ItemStack itemStack = new ItemStack(isBucket ? Items.BUCKET : Baking.CUP);
+                PlayerEntity playerEntity = (PlayerEntity)user;
+                if (!playerEntity.inventory.insertStack(itemStack)) {
+                    playerEntity.dropItem(itemStack, false);
+                }
+            }
+            return stack;
+        }
     }
 
     public int getMaxUseTime(ItemStack stack) {

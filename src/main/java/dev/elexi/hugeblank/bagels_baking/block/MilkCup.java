@@ -9,6 +9,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.World;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 public class MilkCup extends BasicDrinkItem {
 
@@ -19,9 +20,11 @@ public class MilkCup extends BasicDrinkItem {
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (user instanceof ServerPlayerEntity) {
             ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)user;
-            Collection<StatusEffectInstance> effects = serverPlayerEntity.getStatusEffects();
-            StatusEffect effect = ((StatusEffectInstance) effects.toArray()[0]).getEffectType();
-            serverPlayerEntity.removeStatusEffect(effect);
+            Iterator<StatusEffectInstance> effects = serverPlayerEntity.getActiveStatusEffects().values().iterator();
+            if (effects.hasNext()) {
+                StatusEffect effect = effects.next().getEffectType();
+                serverPlayerEntity.removeStatusEffect(effect);
+            }
         }
         return super.finishUsing(stack, world, user);
     }
