@@ -1,9 +1,6 @@
 package dev.elexi.hugeblank.bagels_baking;
 
-import dev.elexi.hugeblank.bagels_baking.block.BasicBlockGenerator;
-import dev.elexi.hugeblank.bagels_baking.block.BasicBucketDrinkItem;
-import dev.elexi.hugeblank.bagels_baking.block.BasicCakeBlock;
-import dev.elexi.hugeblank.bagels_baking.block.Mill;
+import dev.elexi.hugeblank.bagels_baking.block.*;
 import dev.elexi.hugeblank.bagels_baking.item.BottledItem;
 import dev.elexi.hugeblank.bagels_baking.item.MidasSaladItem;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
@@ -16,9 +13,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
+import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
@@ -26,14 +21,17 @@ import net.minecraft.recipe.CuttingRecipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.StatFormatter;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.Decorator;
@@ -74,6 +72,17 @@ public class Baking implements ModInitializer {
 
 	private static void register(String name, Item item) {
 		Registry.register(Registry.ITEM, new Identifier(ID, name), item);
+	}
+
+	private static void registerBlock(String name, Block block, ItemGroup group) {
+		Identifier id = new Identifier(ID, name);
+		Registry.register(Registry.BLOCK, id, block);
+		Item item = new BlockItem(block, new Item.Settings().group(group));
+		Registry.register(Registry.ITEM, id, item);
+	}
+
+	private static boolean never(BlockState state, BlockView world, BlockPos pos) {
+		return false;
 	}
 
 	// Sandwiches - Gives 2 items
@@ -129,20 +138,28 @@ public class Baking implements ModInitializer {
 
 	// Cakes - Give 1 item
 	public static final Block CARROT_CAKE = new BasicCakeBlock();
-	public static final BlockItem CARROT_CAKE_ITEM = new BlockItem(CARROT_CAKE, new Item.Settings().group(ItemGroup.FOOD).maxCount(1));
 	public static final Block CHOCOLATE_CAKE = new BasicCakeBlock();
-	public static final BlockItem CHOCOLATE_CAKE_ITEM = new BlockItem(CHOCOLATE_CAKE, new Item.Settings().group(ItemGroup.FOOD).maxCount(1));
 	public static final Block RED_VELVET_CAKE = new BasicCakeBlock();
-	public static final BlockItem RED_VELVET_CAKE_ITEM = new BlockItem(RED_VELVET_CAKE, new Item.Settings().group(ItemGroup.FOOD).maxCount(1));
+	public static final Item CARROT_CAKE_ITEM = new BlockItem(CARROT_CAKE, new Item.Settings().group(ItemGroup.FOOD));
+	public static final Item CHOCOLATE_CAKE_ITEM = new BlockItem(CHOCOLATE_CAKE, new Item.Settings().group(ItemGroup.FOOD));
+	public static final Item RED_VELVET_CAKE_ITEM = new BlockItem(RED_VELVET_CAKE, new Item.Settings().group(ItemGroup.FOOD));
 
 	// Halite and Salt
-	public static final BasicBlockGenerator HALITE = new BasicBlockGenerator("halite", new Block(FabricBlockSettings.copy(Blocks.BASALT)));
-	public static final BasicBlockGenerator POLISHED_HALITE = new BasicBlockGenerator("polished_halite", new Block(FabricBlockSettings.copy(Blocks.BASALT)));
+	public static final Block HALITE = new GlassBlock(FabricBlockSettings.of(Material.GLASS).requiresTool().strength(1.25F, 4.2F)
+			.sounds(BlockSoundGroup.BASALT).nonOpaque().solidBlock(Baking::never).blockVision(Baking::never));
+	public static final Block HALITE_STAIR = new StairBlock(HALITE.getDefaultState(), FabricBlockSettings.copy(HALITE));
+	public static final Block HALITE_SLAB = new SlabBlock(FabricBlockSettings.copy(HALITE));
+	public static final Block HALITE_WALL = new WallBlock(FabricBlockSettings.copy(HALITE));
+	public static final Block POLISHED_HALITE = new GlassBlock(FabricBlockSettings.of(Material.GLASS).requiresTool().strength(1.25F, 4.2F)
+			.sounds(BlockSoundGroup.BASALT).nonOpaque().solidBlock(Baking::never).blockVision(Baking::never));
+	public static final Block POLISHED_HALITE_STAIR = new StairBlock(POLISHED_HALITE.getDefaultState(), FabricBlockSettings.copy(POLISHED_HALITE));
+	public static final Block POLISHED_HALITE_SLAB = new SlabBlock(FabricBlockSettings.copy(POLISHED_HALITE));
+	public static final Block POLISHED_HALITE_WALL = new WallBlock(FabricBlockSettings.copy(POLISHED_HALITE));
 	public static final Item SALT = new Item(new Item.Settings().group(ItemGroup.MATERIALS));
 	private static final ConfiguredFeature<?, ?> HALITE_DESERT = Feature.ORE
 			.configure(new OreFeatureConfig(
 					OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
-					HALITE.getBlock("halite").getDefaultState(),
+					HALITE.getDefaultState(),
 					33)) // vein size
 			.decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(
 					0, // bottom offset
@@ -191,11 +208,20 @@ public class Baking implements ModInitializer {
 	public static final Item LINGUINE = basicIngredient();
 	public static final Item MACARONI = basicIngredient();
 
+	// Cups
+	public static final Item CUP = new Item(new Item.Settings().group(ItemGroup.MISC).maxCount(16));
+	public static final Item MILK_CUP = new MilkCup();
+	public static final Item CHOCOLATE_MILK = new BasicDrinkItem(CUP, 1, 1.0f);
+
 	// Misc - Item amt listed individually
 	public static final Item BAGEL = basicFood(7, 6.5f);
 	public static final Item DONUT = basicFood(7, 7f);
-	public static final Item CHEESE = new BasicBucketDrinkItem(2, 3.5f);
-	public static final Item CHOCOLATE_MILK = new BasicBucketDrinkItem(2, 4.8f);
+	public static final Item BROWNIE = basicFood(2, 2.6f);
+	public static final Item CHEESE = new BasicDrinkItem(Items.BUCKET, 2, 3.5f);
+	public static final Item MACARONI_N_CHEESE = basicBowlFood(5, 7.5f);
+	public static final Item BACON_MACARONI_N_CHEESE = basicBowlFood(7, 11.5f);
+	public static final Item LOADED_FRIES = basicFood(3, 3.5f);
+	public static final Item LOADED_POTATO = basicFood(8, 10.2f);
 	public static final Item COOKED_MASHED_POTATOES = basicFood(4, 4.5f);
 	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(9, 7f);
 	public static final MushroomStewItem FRUIT_SALAD = basicBowlFood(8, 4f);
@@ -247,45 +273,30 @@ public class Baking implements ModInitializer {
 		register("rabbit_taco", RABBIT_TACO);
 
 		// Cakes
-		final Identifier carrot_cake =  new Identifier(ID, "carrot_cake");
-		final Identifier chocolate_cake =  new Identifier(ID, "chocolate_cake");
-		final Identifier red_velvet_cake = new Identifier(ID, "red_velvet_cake");
-		Registry.register(Registry.BLOCK, carrot_cake, CARROT_CAKE);
-		Registry.register(Registry.BLOCK, chocolate_cake, CHOCOLATE_CAKE);
-		Registry.register(Registry.BLOCK, red_velvet_cake, RED_VELVET_CAKE);
-		Registry.register(Registry.ITEM, carrot_cake, CARROT_CAKE_ITEM);
-		Registry.register(Registry.ITEM, chocolate_cake, CHOCOLATE_CAKE_ITEM);
-		Registry.register(Registry.ITEM, red_velvet_cake, RED_VELVET_CAKE_ITEM);
+		registerBlock("carrot_cake", CARROT_CAKE, ItemGroup.FOOD);
+		registerBlock("chocolate_cake", CHOCOLATE_CAKE, ItemGroup.FOOD);
+		registerBlock("red_velvet_cake", RED_VELVET_CAKE, ItemGroup.FOOD);
 
 		// Halite & Salt
-		HALITE.register(ID);
-		POLISHED_HALITE.register(ID);
+		registerBlock("halite", HALITE, ItemGroup.BUILDING_BLOCKS);
+		registerBlock("halite_stairs", HALITE_STAIR, ItemGroup.BUILDING_BLOCKS);
+		registerBlock("halite_slab", HALITE_SLAB, ItemGroup.BUILDING_BLOCKS);
+		registerBlock("halite_wall", HALITE_WALL, ItemGroup.BUILDING_BLOCKS);
+		registerBlock("polished_halite", POLISHED_HALITE, ItemGroup.BUILDING_BLOCKS);
+		registerBlock("polished_halite_stairs", POLISHED_HALITE_STAIR, ItemGroup.BUILDING_BLOCKS);
+		registerBlock("polished_halite_slab", POLISHED_HALITE_SLAB, ItemGroup.BUILDING_BLOCKS);
+		registerBlock("polished_halite_wall", POLISHED_HALITE_WALL, ItemGroup.BUILDING_BLOCKS);
 		register("salt", SALT);
 		RegistryKey<ConfiguredFeature<?, ?>> haliteDesert = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN,
 				new Identifier(ID, "halite_desert"));
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, haliteDesert.getValue(), HALITE_DESERT);
 		Predicate<BiomeSelectionContext> selector = BiomeSelectors.includeByKey( // Deserts, Oceans, and Rivers
-				BiomeKeys.DESERT,
-				BiomeKeys.DESERT_HILLS,
-				BiomeKeys.DESERT_LAKES,
-				BiomeKeys.BADLANDS,
-				BiomeKeys.BADLANDS_PLATEAU,
-				BiomeKeys.MODIFIED_BADLANDS_PLATEAU,
-				BiomeKeys.ERODED_BADLANDS,
-				BiomeKeys.MODIFIED_WOODED_BADLANDS_PLATEAU,
-				BiomeKeys.WOODED_BADLANDS_PLATEAU,
-				BiomeKeys.OCEAN,
-				BiomeKeys.COLD_OCEAN,
-				BiomeKeys.DEEP_COLD_OCEAN,
-				BiomeKeys.DEEP_FROZEN_OCEAN,
-				BiomeKeys.DEEP_LUKEWARM_OCEAN,
-				BiomeKeys.DEEP_OCEAN,
-				BiomeKeys.DEEP_WARM_OCEAN,
-				BiomeKeys.FROZEN_OCEAN,
-				BiomeKeys.LUKEWARM_OCEAN,
-				BiomeKeys.WARM_OCEAN,
-				BiomeKeys.RIVER,
-				BiomeKeys.FROZEN_RIVER
+				BiomeKeys.DESERT, BiomeKeys.DESERT_HILLS, BiomeKeys.DESERT_LAKES, BiomeKeys.BADLANDS,
+				BiomeKeys.BADLANDS_PLATEAU, BiomeKeys.MODIFIED_BADLANDS_PLATEAU, BiomeKeys.ERODED_BADLANDS,
+				BiomeKeys.MODIFIED_WOODED_BADLANDS_PLATEAU, BiomeKeys.WOODED_BADLANDS_PLATEAU, BiomeKeys.OCEAN,
+				BiomeKeys.COLD_OCEAN, BiomeKeys.DEEP_COLD_OCEAN, BiomeKeys.DEEP_FROZEN_OCEAN,
+				BiomeKeys.DEEP_LUKEWARM_OCEAN, BiomeKeys.DEEP_OCEAN, BiomeKeys.DEEP_WARM_OCEAN, BiomeKeys.FROZEN_OCEAN,
+				BiomeKeys.LUKEWARM_OCEAN, BiomeKeys.WARM_OCEAN, BiomeKeys.RIVER, BiomeKeys.FROZEN_RIVER
 
 		);
 		BiomeModifications.addFeature(selector, GenerationStep.Feature.UNDERGROUND_ORES, haliteDesert);
@@ -315,7 +326,6 @@ public class Baking implements ModInitializer {
 		register("linguine", LINGUINE);
 		register("macaroni", MACARONI);
 		register("cheese", CHEESE);
-		register("chocolate_milk", CHOCOLATE_MILK);
 
 		// Stone cut Goods
 		register("chicken_nuggets", CHICKEN_NUGGETS);
@@ -348,9 +358,19 @@ public class Baking implements ModInitializer {
 		Registry.register(Registry.BLOCK, mill_id, MILL);
 		Registry.register(Registry.ITEM, mill_id, MILL_ITEM);
 
+		// Cups
+		register("cup", CUP);
+		register("cup_of_milk", MILK_CUP);
+		register("chocolate_milk", CHOCOLATE_MILK);
+
 		// Misc
 		register("bagel", BAGEL);
 		register("donut", DONUT);
+		register("brownie", BROWNIE);
+		register("macaroni_n_cheese", MACARONI_N_CHEESE);
+		register("bacon_macaroni_n_cheese", BACON_MACARONI_N_CHEESE);
+		register("loaded_fries", LOADED_FRIES);
+		register("loaded_potato", LOADED_POTATO);
 		register("veggie_medley", VEGGIE_MEDLEY);
 		register("fruit_salad", FRUIT_SALAD);
 		register("midas_salad", MIDAS_SALAD);

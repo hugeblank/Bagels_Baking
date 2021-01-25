@@ -85,5 +85,13 @@
   "item.bagels_baking.cut_salmon": "Raw Salmon Filet",
   "item.bagels_baking.smoked_jerky": "Smoked Jerky",
   "item.bagels_baking.smoked_bacon": "Smoked Bacon",
-  "item.bagels_baking.smoked_salmon": "Smoked Salmon"
+  "item.bagels_baking.smoked_salmon": "Smoked Salmon",
+  "item.bagels_baking.macaroni_n_cheese": "Macaroni n' Cheese",
+  "item.bagels_baking.bacon_macaroni_n_cheese": "Bacon Macaroni n' Cheese",
+  "item.bagels_baking.brownie": "Brownie",
+  "item.bagels_baking.cup": "Cup",
+  "item.bagels_baking.cup_of_milk": "Cup of Milk",
+  "item.bagels_baking.chocolate_milk": "Chocolate Milk",
+  "item.bagels_baking.loaded_fries": "Loaded Fries",
+  "item.bagels_baking.loaded_potato": "Loaded Potato"
 }

@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:bowl"
+        },
+        {
+            "item": "minecraft:bowl"
+        },
+        {
+            "item": "bagels_baking:macaroni"
+        },
+        {
+            "item": "bagels_baking:macaroni"
+        },
+        {
+            "item": "bagels_baking:cheese"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:macaroni_n_cheese",
+        "count": 2
+    }
+}

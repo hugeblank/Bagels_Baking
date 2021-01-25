@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "dev.elexi.hugeblank.bagels_baking.Baking"
+    ],
+    "client": [
+      "dev.elexi.hugeblank.bagels_baking.ClientBaking"
     ]
   },
   "mixins": [

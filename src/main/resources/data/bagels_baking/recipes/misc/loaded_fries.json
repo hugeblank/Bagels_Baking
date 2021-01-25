@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:cooked_french_fries"
+        },
+        {
+            "item": "bagels_baking:cooked_french_fries"
+        },
+        {
+            "item": "bagels_baking:cooked_french_fries"
+        },
+        {
+            "item": "bagels_baking:cooked_french_fries"
+        },
+        {
+            "item": "bagels_baking:smoked_bacon"
+        },
+        {
+            "item": "bagels_baking:cheese"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:loaded_fries",
+        "count": 4
+    }
+}
