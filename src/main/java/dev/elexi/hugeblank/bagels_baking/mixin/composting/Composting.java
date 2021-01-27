@@ -58,13 +58,12 @@ public abstract class Composting {
 
         // Raw/Cooked Goods
 
-        registerCompostableItem(f, Baking.MASHED_POTATOES);
-        registerCompostableItem(i, Baking.COOKED_MASHED_POTATOES);
         registerCompostableItem(f, Baking.FRENCH_FRIES);
         registerCompostableItem(i, Baking.COOKED_FRENCH_FRIES);
 
         // Misc
 
+        registerCompostableItem(f, Baking.MASHED_POTATOES);
         registerCompostableItem(f, Baking.BAGEL);
         registerCompostableItem(f, Baking.DONUT);
     }

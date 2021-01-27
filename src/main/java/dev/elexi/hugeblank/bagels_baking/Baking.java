@@ -202,7 +202,6 @@ public class Baking implements ModInitializer {
 	// Ingredients
 	public static final Item FLOUR = basicIngredient();
 	public static final Item COCOA_POWDER = basicIngredient();
-	public static final Item MASHED_POTATOES = basicIngredient();
 	public static final Item DOUGH = basicIngredient(); //  Henry - The inspiration behind the code, my rock and my brain - Redeemed
 	public static final Item PASTA_DOUGH = basicIngredient();
 	public static final Item LINGUINE = basicIngredient();
@@ -222,7 +221,7 @@ public class Baking implements ModInitializer {
 	public static final Item BACON_MACARONI_N_CHEESE = basicBowlFood(7, 11.5f);
 	public static final Item LOADED_FRIES = basicFood(3, 3.5f);
 	public static final Item LOADED_POTATO = basicFood(8, 10.2f);
-	public static final Item COOKED_MASHED_POTATOES = basicFood(4, 4.5f);
+	public static final Item MASHED_POTATOES = basicFood(4, 4.5f);
 	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(9, 7f);
 	public static final MushroomStewItem FRUIT_SALAD = basicBowlFood(8, 4f);
 	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(new FoodComponent.Builder().hunger(14).saturationModifier(35f).alwaysEdible() // Give 1 item
@@ -334,10 +333,8 @@ public class Baking implements ModInitializer {
 		register("cut_salmon", CUT_SALMON);
 
 		// Raw/Cooked Goods
-		register("mashed_potatoes", MASHED_POTATOES);
 		register("egg_whites", EGG_WHITES);
 		register("egg_yolk", EGG_YOLK);
-		register("cooked_mashed_potatoes", COOKED_MASHED_POTATOES);
 		register("cooked_chicken_nuggets", COOKED_CHICKEN_NUGGETS);
 		register("cooked_french_fries", COOKED_FRENCH_FRIES);
 		register("cooked_egg", COOKED_EGG);
@@ -370,6 +367,7 @@ public class Baking implements ModInitializer {
 		register("bacon_macaroni_n_cheese", BACON_MACARONI_N_CHEESE);
 		register("loaded_fries", LOADED_FRIES);
 		register("loaded_potato", LOADED_POTATO);
+		register("mashed_potatoes", MASHED_POTATOES);
 		register("veggie_medley", VEGGIE_MEDLEY);
 		register("fruit_salad", FRUIT_SALAD);
 		register("midas_salad", MIDAS_SALAD);

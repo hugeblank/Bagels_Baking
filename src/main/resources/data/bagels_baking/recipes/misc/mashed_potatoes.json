@@ -1,7 +1,7 @@
 {
     "type": "minecraft:milling",
     "ingredient": {
-        "item": "minecraft:potato"
+        "item": "minecraft:baked_potato"
     },
     "result": "bagels_baking:mashed_potatoes",
     "count": 1

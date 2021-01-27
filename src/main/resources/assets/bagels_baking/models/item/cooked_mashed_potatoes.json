@@ -1,6 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "bagels_baking:item/cooked_mashed_potatoes"
-    }
-}
