@@ -2,16 +2,11 @@ package dev.elexi.hugeblank.bagels_baking.block;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.block.StonecutterBlock;
-import net.minecraft.block.entity.Hopper;
+import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.screen.*;
-import net.minecraft.stat.Stats;
-import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandlerContext;
+import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
@@ -19,7 +14,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
@@ -47,6 +41,7 @@ public class Mill extends StonecutterBlock {
 
     public Mill(Settings settings) {
         super(settings);
+
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -60,6 +55,11 @@ public class Mill extends StonecutterBlock {
             default:
                 return NORTH_SHAPE;
         }
+    }
+
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
     }
 
     @Override

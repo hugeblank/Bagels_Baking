@@ -190,7 +190,7 @@ public class Baking implements ModInitializer {
 	public static final Item SMOKED_SALMON = basicFood(6, 10.5f);
 
 	// Mill
-	public static final Block MILL = new Mill(AbstractBlock.Settings.copy(Blocks.STONECUTTER));
+	public static final Block MILL = new Mill(FabricBlockSettings.copy(Blocks.STONECUTTER));
 	public static final BlockItem MILL_ITEM = new BlockItem(MILL, new Item.Settings().group(ItemGroup.DECORATIONS));
 	private static final String mill_stat = "interact_with_mill";
 	private static final String mill_rtype_id = "milling";

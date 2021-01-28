@@ -8,7 +8,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.World;
 
-import java.util.Collection;
 import java.util.Iterator;
 
 public class MilkCup extends BasicDrinkItem {
