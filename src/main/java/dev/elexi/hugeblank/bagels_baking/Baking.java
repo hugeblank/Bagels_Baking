@@ -1,8 +1,9 @@
 package dev.elexi.hugeblank.bagels_baking;
 
-import dev.elexi.hugeblank.bagels_baking.block.*;
-import dev.elexi.hugeblank.bagels_baking.item.BottledItem;
-import dev.elexi.hugeblank.bagels_baking.item.MidasSaladItem;
+import dev.elexi.hugeblank.bagels_baking.block.BasicCakeBlock;
+import dev.elexi.hugeblank.bagels_baking.block.Mill;
+import dev.elexi.hugeblank.bagels_baking.block.StairBlock;
+import dev.elexi.hugeblank.bagels_baking.item.*;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreen;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
@@ -62,7 +63,7 @@ public class Baking implements ModInitializer {
 	}
 
 	private static MushroomStewItem basicBowlFood(int hunger, float saturation) {
-		return new MushroomStewItem(new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(hunger).saturationModifier(saturation).build()));
+		return new MushroomStewItem(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(new FoodComponent.Builder().hunger(hunger).saturationModifier(saturation).build()));
 	}
 
 	private static BottledItem basicJam(int hunger, float saturation, SoundEvent drinkSound) {
@@ -112,12 +113,12 @@ public class Baking implements ModInitializer {
 	public static final Item RABBIT_TACO = basicFood(5, 6f);
 
 	// Cheese Burgers - Gives 2 Items
-	public static final Item STEAK_CHEESEBURGER = basicFood(10, 13.6f);
-	public static final Item CHICKEN_CHEESEBURGER = basicFood(9, 11.2f);
-	public static final Item PORK_CHEESEBURGER = basicFood(10, 13.6f);
-	public static final Item MUTTON_CHEESEBURGER = basicFood(9, 12.6f);
-	public static final Item FISH_CHEESEBURGER = basicFood(8, 10.5f);
-	public static final Item RABBIT_CHEESEBURGER = basicFood(8, 10.5f);
+	public static final Item STEAK_CHEESEBURGER = basicFood(9, 12.6f);
+	public static final Item CHICKEN_CHEESEBURGER = basicFood(8, 10.2f);
+	public static final Item PORK_CHEESEBURGER = basicFood(9, 12.6f);
+	public static final Item MUTTON_CHEESEBURGER = basicFood(8, 11.6f);
+	public static final Item FISH_CHEESEBURGER = basicFood(7, 9.5f);
+	public static final Item RABBIT_CHEESEBURGER = basicFood(7, 9.5f);
 
 	// The rest of the stews - Gives 1 item
 	public static final MushroomStewItem STEAK_STEW = basicBowlFood(14, 15.8f);
@@ -202,23 +203,26 @@ public class Baking implements ModInitializer {
 	// Ingredients
 	public static final Item FLOUR = basicIngredient();
 	public static final Item COCOA_POWDER = basicIngredient();
+	public static final Item BACON_BITS = basicFood(2, 5.2f);
 	public static final Item DOUGH = basicIngredient(); //  Henry - The inspiration behind the code, my rock and my brain - Redeemed
 	public static final Item PASTA_DOUGH = basicIngredient();
 	public static final Item LINGUINE = basicIngredient();
 	public static final Item MACARONI = basicIngredient();
 
 	// Cups
-	public static final Item CUP = new Item(new Item.Settings().group(ItemGroup.MISC).maxCount(16));
-	public static final Item MILK_CUP = new MilkCup();
-	public static final Item CHOCOLATE_MILK = new BasicDrinkItem(CUP, 1, 1.0f);
+	public static final Item CUP = new CupItem(new Item.Settings().group(ItemGroup.MISC).maxCount(16));
+	public static final Item MILK_CUP = new MilkCupItem();
+	public static final Item WATER_CUP = new BasicDrink(CUP);
+	public static final Item CHEESE_CUP = new BasicDrink(CUP, 0, 0.3f);
+	public static final Item CHOCOLATE_MILK = new BasicDrink(CUP, 1, 1.0f);
 
 	// Misc - Item amt listed individually
 	public static final Item BAGEL = basicFood(7, 6.5f);
 	public static final Item DONUT = basicFood(7, 7f);
 	public static final Item BROWNIE = basicFood(2, 2.6f);
-	public static final Item CHEESE = new BasicDrinkItem(Items.BUCKET, 2, 3.5f);
-	public static final Item MACARONI_N_CHEESE = basicBowlFood(5, 7.5f);
-	public static final Item BACON_MACARONI_N_CHEESE = basicBowlFood(7, 11.5f);
+	public static final Item CHEESE = new BasicDrink(Items.BUCKET, 2, 3.5f);
+	public static final Item MACARONI_N_CHEESE = basicBowlFood(4, 6.5f);
+	public static final Item BACON_MACARONI_N_CHEESE = basicBowlFood(6, 11.2f);
 	public static final Item LOADED_FRIES = basicFood(3, 3.5f);
 	public static final Item LOADED_POTATO = basicFood(8, 10.2f);
 	public static final Item MASHED_POTATOES = basicFood(4, 4.5f);
@@ -318,9 +322,10 @@ public class Baking implements ModInitializer {
 
 		// Ingredients
 		register("flour", FLOUR);
+		register("cocoa_powder", COCOA_POWDER);
+		register("bacon_bits", BACON_BITS);
 		register("dough", DOUGH);
 		register("pasta_dough", PASTA_DOUGH);
-		register("cocoa_powder", COCOA_POWDER);
 		register("linguine", LINGUINE);
 		register("macaroni", MACARONI);
 		register("cheese", CHEESE);
@@ -357,6 +362,8 @@ public class Baking implements ModInitializer {
 		// Cups
 		register("cup", CUP);
 		register("cup_of_milk", MILK_CUP);
+		register("cup_of_water", WATER_CUP);
+		register("cup_of_cheese", CHEESE_CUP);
 		register("chocolate_milk", CHOCOLATE_MILK);
 
 		// Misc

@@ -11,7 +11,7 @@
             "item": "minecraft:egg"
         },
         {
-            "item": "minecraft:water_bucket"
+            "item": "bagels_baking:cup_of_water"
         }
     ],
     "result": {

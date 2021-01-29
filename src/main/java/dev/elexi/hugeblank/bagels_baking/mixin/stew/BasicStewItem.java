@@ -45,8 +45,5 @@ public class BasicStewItem extends Item {
 
             cir.setReturnValue(stack);
         }
-        if (user instanceof PlayerEntity && !((PlayerEntity) user).isCreative()) {
-            ((PlayerEntity) user).giveItemStack(new ItemStack(Items.BOWL));
-        }
     }
 }

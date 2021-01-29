@@ -5,24 +5,17 @@
             "item": "minecraft:bowl"
         },
         {
-            "item": "minecraft:bowl"
-        },
-        {
             "item": "bagels_baking:macaroni"
         },
         {
-            "item": "bagels_baking:macaroni"
+            "item": "bagels_baking:cup_of_cheese"
         },
         {
-            "item": "bagels_baking:cheese"
-        },
-        
-        {
-            "item": "bagels_baking:smoked_bacon"
+            "item": "bagels_baking:bacon_bits"
         }
     ],
     "result": {
         "item": "bagels_baking:bacon_macaroni_n_cheese",
-        "count": 2
+        "count": 1
     }
 }

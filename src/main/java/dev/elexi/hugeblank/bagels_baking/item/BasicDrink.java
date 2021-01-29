@@ -1,4 +1,4 @@
-package dev.elexi.hugeblank.bagels_baking.block;
+package dev.elexi.hugeblank.bagels_baking.item;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
 import net.minecraft.advancement.criterion.Criteria;
@@ -12,7 +12,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
-public class BasicDrinkItem extends Item {
+public class BasicDrink extends Item {
 
     private static Item.Settings genSettings(Item type) {
         return new Item.Settings().group(ItemGroup.FOOD)
@@ -25,11 +25,11 @@ public class BasicDrinkItem extends Item {
         this.isBucket = type.equals(Items.BUCKET);
     }
 
-    public BasicDrinkItem(Item type) {
+    public BasicDrink(Item type) {
         super(genSettings(type));
         bucketDrink(type);
     }
-    public BasicDrinkItem(Item type, int hunger, float saturation) {
+    public BasicDrink(Item type, int hunger, float saturation) {
         super(genSettings(type)
         .food(new FoodComponent.Builder().hunger(hunger).saturationModifier(saturation).build()));
         bucketDrink(type);
@@ -70,5 +70,9 @@ public class BasicDrinkItem extends Item {
 
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         return ItemUsage.consumeHeldItem(world, user, hand);
+    }
+
+    public boolean isBucket() {
+        return isBucket;
     }
 }

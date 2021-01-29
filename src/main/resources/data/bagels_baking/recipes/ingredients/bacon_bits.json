@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:milling",
+    "ingredient": {
+        "item": "bagels_baking:smoked_bacon"
+    },
+    "result": "bagels_baking:bacon_bits",
+    "count": 4
+}

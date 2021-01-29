@@ -1,4 +1,4 @@
-package dev.elexi.hugeblank.bagels_baking.block;
+package dev.elexi.hugeblank.bagels_baking.item;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
 import net.minecraft.entity.LivingEntity;
@@ -10,9 +10,9 @@ import net.minecraft.world.World;
 
 import java.util.Iterator;
 
-public class MilkCup extends BasicDrinkItem {
+public class MilkCupItem extends BasicDrink {
 
-    public MilkCup() {
+    public MilkCupItem() {
         super(Baking.CUP);
     }
 
