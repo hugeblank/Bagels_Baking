@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smoking",
+    "ingredient": {
+        "item": "bagels_baking:jerky"
+    },
+    "result": "bagels_baking:smoked_jerky",
+    "experience": 0.1,
+    "cookingtime": 100
+}

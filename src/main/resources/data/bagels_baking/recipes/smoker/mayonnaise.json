@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smoking",
+    "ingredient": {
+        "item": "bagels_baking:egg_yolk"
+    },
+    "result": "bagels_baking:mayonnaise",
+    "experience": 0.2,
+    "cookingtime": 100
+}

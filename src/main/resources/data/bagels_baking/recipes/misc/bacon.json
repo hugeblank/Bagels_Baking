@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "minecraft:porkchop"
+    },
+    "result": "bagels_baking:bacon",
+    "count": 1
+}

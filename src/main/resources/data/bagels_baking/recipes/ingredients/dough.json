@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:flour"
+        },
+        {
+            "item": "bagels_baking:salt"
+        },
+        {
+            "item": "bagels_baking:cup_of_water"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:dough",
+        "count": 1
+    }
+}

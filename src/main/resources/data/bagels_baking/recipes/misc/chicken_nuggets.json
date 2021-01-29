@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "minecraft:chicken"
+    },
+    "result": "bagels_baking:chicken_nuggets",
+    "count": 4
+}

@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:milling",
+    "ingredient": {
+        "item": "minecraft:cocoa_beans"
+    },
+    "result": "bagels_baking:cocoa_powder",
+    "count": 1
+}

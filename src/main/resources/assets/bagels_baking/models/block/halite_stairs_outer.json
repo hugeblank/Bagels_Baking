@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "bagels_baking:block/halite",
+    "top": "bagels_baking:block/halite",
+    "side": "bagels_baking:block/halite"
+  }
+}

@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:baked_potato"
+        },
+        {
+            "item": "bagels_baking:smoked_bacon"
+        },
+        {
+            "item": "bagels_baking:cup_of_cheese"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:loaded_potato",
+        "count": 2
+    }
+}

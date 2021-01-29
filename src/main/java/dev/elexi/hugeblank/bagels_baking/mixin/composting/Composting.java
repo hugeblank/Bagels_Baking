@@ -47,13 +47,23 @@ public abstract class Composting {
         registerCompostableItem(j, Baking.CHOCOLATE_CAKE_ITEM);
         registerCompostableItem(j, Baking.RED_VELVET_CAKE_ITEM);
 
+        // Ingredients
+
+        registerCompostableItem(h, Baking.FLOUR);
+        registerCompostableItem(h, Baking.DOUGH);
+        registerCompostableItem(h, Baking.PASTA_DOUGH);
+        registerCompostableItem(h, Baking.LINGUINE);
+        registerCompostableItem(h, Baking.MACARONI);
+        registerCompostableItem(h, Baking.MASHED_POTATOES);
+
         // Raw/Cooked Goods
 
-        registerCompostableItem(f, Baking.RAW_FRENCH_FRIES);
-        registerCompostableItem(f, Baking.COOKED_FRENCH_FRIES);
+        registerCompostableItem(f, Baking.FRENCH_FRIES);
+        registerCompostableItem(i, Baking.COOKED_FRENCH_FRIES);
 
         // Misc
 
+        registerCompostableItem(f, Baking.MASHED_POTATOES);
         registerCompostableItem(f, Baking.BAGEL);
         registerCompostableItem(f, Baking.DONUT);
     }

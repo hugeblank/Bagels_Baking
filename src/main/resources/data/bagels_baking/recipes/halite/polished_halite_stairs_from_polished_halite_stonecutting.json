@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "bagels_baking:polished_halite"
+    },
+    "result": "bagels_baking:polished_halite_stairs",
+    "count": 1
+}

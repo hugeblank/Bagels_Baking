@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "bagels_baking:pasta_dough"
+    },
+    "result": "bagels_baking:linguine",
+    "count": 1
+}
