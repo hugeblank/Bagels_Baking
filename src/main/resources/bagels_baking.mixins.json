@@ -4,6 +4,7 @@
   "package": "dev.elexi.hugeblank.bagels_baking.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "Splashes",
     "brewing.BrewingRecipeRegistryInvoker",
     "brewing.BrewingRecipes",
     "brewing.BrewingSlots",
@@ -12,7 +13,8 @@
     "crafting.MultiCraft",
     "stew.BasicStewItem",
     "stew.IStewStackIncrease",
-    "stew.StewStackIncrease"
+    "stew.StewStackIncrease",
+    "world.CoffeeBeansTreeDecorator"
   ],
   "client": [
   ],

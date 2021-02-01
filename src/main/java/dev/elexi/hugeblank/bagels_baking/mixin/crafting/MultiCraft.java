@@ -8,7 +8,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.slot.CraftingResultSlot;
 import net.minecraft.stat.Stats;
-import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -16,7 +15,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @Mixin(CraftingResultSlot.class)
 public class MultiCraft {
@@ -32,13 +33,21 @@ public class MultiCraft {
     @Shadow
     private int amount;
 
+    private static final ArrayList<Item> cupBlacklist = new ArrayList<>();
+
+    static {
+        cupBlacklist.add(Baking.CHOCOLATE_MILK);
+    }
+
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;onCraft(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/PlayerEntity;I)V"), method = "onCrafted(Lnet/minecraft/item/ItemStack;)V")
-    private void doubleResult(ItemStack stack, CallbackInfo ci) {
-        Item item = stack.getItem();
-        for (int i = 0; i < input.size(); i++) { // Drop bucket outputs
-            Item inputItem = input.getStack(i).getItem();
-            if (inputItem instanceof BasicDrink && !((BasicDrink) inputItem).isBucket()) {
-                this.giveItem(Baking.CUP);
+    private void doubleResult(ItemStack output, CallbackInfo ci) {
+        Item item = output.getItem();
+        if (!cupBlacklist.contains(item)) {
+            for (int i = 0; i < input.size(); i++) { // Drop bucket outputs
+                Item inputItem = input.getStack(i).getItem();
+                if (inputItem instanceof BasicDrink && !((BasicDrink) inputItem).isBucket()) {
+                    this.giveItem(Baking.CUP);
+                }
             }
         }
 

@@ -95,5 +95,12 @@
   "item.bagels_baking.cup_of_cheese": "Cup of Cheese",
   "item.bagels_baking.chocolate_milk": "Chocolate Milk",
   "item.bagels_baking.loaded_fries": "Loaded Fries",
-  "item.bagels_baking.loaded_potato": "Loaded Potato"
+  "item.bagels_baking.loaded_potato": "Loaded Potato",
+  "block.bagels_baking.coffee": "Coffee Beans",
+  "block.bagels_baking.tea_tree": "Tea Tree Leaves",
+  "death.attack.teaTree": "%1$s was poked to death by a tea tree",
+  "death.attack.teaTree.player": "%1$s was poked to death by a tea tree whilst trying to escape %2$s",
+  "block.bagels_baking.tomato_plant": "Tomato",
+  "block.bagels_baking.corn": "Corn Seeds",
+  "item.bagels_baking.corn": "Corn"
 }

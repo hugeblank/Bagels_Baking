@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/crop",
+    "textures": {
+      "crop": "bagels_baking:block/corn_top_stage3"
+    }
+  }

@@ -1,8 +1,7 @@
 package dev.elexi.hugeblank.bagels_baking;
 
-import dev.elexi.hugeblank.bagels_baking.block.BasicCakeBlock;
-import dev.elexi.hugeblank.bagels_baking.block.Mill;
-import dev.elexi.hugeblank.bagels_baking.block.StairBlock;
+import com.google.common.collect.ImmutableSet;
+import dev.elexi.hugeblank.bagels_baking.block.*;
 import dev.elexi.hugeblank.bagels_baking.item.*;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreen;
@@ -15,6 +14,7 @@ import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.*;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
@@ -37,9 +37,10 @@ import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.placer.SimpleBlockPlacer;
+import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
+import net.minecraft.world.gen.tree.TreeDecoratorType;
 
 import java.util.function.Predicate;
 
@@ -71,14 +72,27 @@ public class Baking implements ModInitializer {
 	}
 
 
-	private static void register(String name, Item item) {
+	private static void registerItem(String name, Item item) {
 		Registry.register(Registry.ITEM, new Identifier(ID, name), item);
 	}
 
 	private static void registerBlock(String name, Block block, ItemGroup group) {
 		Identifier id = new Identifier(ID, name);
 		Registry.register(Registry.BLOCK, id, block);
-		Item item = new BlockItem(block, new Item.Settings().group(group));
+		if (group != null) {
+			Item item = new BlockItem(block, new Item.Settings().group(group));
+			Registry.register(Registry.ITEM, id, item);
+		}
+	}
+
+	private static void registerBlock(String name, Block block) {
+		Identifier id = new Identifier(ID, name);
+		Registry.register(Registry.BLOCK, id, block);
+	}
+
+	private static void registerBlock(String name, Block block, BlockItem item) {
+		Identifier id = new Identifier(ID, name);
+		Registry.register(Registry.BLOCK, id, block);
 		Registry.register(Registry.ITEM, id, item);
 	}
 
@@ -113,10 +127,10 @@ public class Baking implements ModInitializer {
 	public static final Item RABBIT_TACO = basicFood(5, 6f);
 
 	// Cheese Burgers - Gives 2 Items
-	public static final Item STEAK_CHEESEBURGER = basicFood(9, 12.6f);
-	public static final Item CHICKEN_CHEESEBURGER = basicFood(8, 10.2f);
-	public static final Item PORK_CHEESEBURGER = basicFood(9, 12.6f);
-	public static final Item MUTTON_CHEESEBURGER = basicFood(8, 11.6f);
+	public static final Item STEAK_CHEESEBURGER = basicFood(9, 12.9f);
+	public static final Item CHICKEN_CHEESEBURGER = basicFood(8, 10.1f);
+	public static final Item PORK_CHEESEBURGER = basicFood(9, 12.9f);
+	public static final Item MUTTON_CHEESEBURGER = basicFood(8, 11.3f);
 	public static final Item FISH_CHEESEBURGER = basicFood(7, 9.5f);
 	public static final Item RABBIT_CHEESEBURGER = basicFood(7, 9.5f);
 
@@ -216,6 +230,25 @@ public class Baking implements ModInitializer {
 	public static final Item CHEESE_CUP = new BasicDrink(CUP, 0, 0.3f);
 	public static final Item CHOCOLATE_MILK = new BasicDrink(CUP, 1, 1.0f);
 
+	// Crops - Here's to v0.3!
+	public static final Block COFFEE = new CocoaBlock(FabricBlockSettings.copy(Blocks.COCOA));
+	public static final BlockItem COFFEE_BEANS = new BlockItem(COFFEE, new Item.Settings().group(ItemGroup.MATERIALS));
+	public static final Block TEA = new TeaTreeBlock(FabricBlockSettings.copy(Blocks.SWEET_BERRY_BUSH));
+	public static final BlockItem TEA_LEAVES = new BlockItem(TEA, new Item.Settings().group(ItemGroup.MATERIALS));
+	public static final DamageSource TEA_TREE_DMGSRC = new DamageSource("teaTree");
+	private static final ConfiguredFeature<?, ?> TEA_TREES = Feature.RANDOM_PATCH
+			.configure(new RandomPatchFeatureConfig.Builder(
+					new SimpleBlockStateProvider(TEA.getDefaultState().with(SweetBerryBushBlock.AGE, 3)), SimpleBlockPlacer.INSTANCE)
+					.tries(64).whitelist(ImmutableSet.of(Blocks.GRASS_BLOCK)).cannotProject().build())
+			.decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP_SPREAD_DOUBLE);
+	public static final Block TOMATO_PLANT = new TomatoBlock(FabricBlockSettings.copy(Blocks.WHEAT));
+	public static final Item TOMATO = new BlockItem(TOMATO_PLANT, new Item.Settings().group(ItemGroup.FOOD).food(
+			new FoodComponent.Builder().hunger(3).saturationModifier(4.2f).build()
+	));
+	public static final Block CORN_STALK = new DoubleCrop(FabricBlockSettings.copy(Blocks.WHEAT));
+	public static final Item CORN = basicFood(3, 2.4f);
+	public static final Item CORN_SEEDS = new BlockItem(CORN_STALK, new Item.Settings().group(ItemGroup.MISC));
+
 	// Misc - Item amt listed individually
 	public static final Item BAGEL = basicFood(7, 6.5f);
 	public static final Item DONUT = basicFood(7, 7f);
@@ -242,38 +275,38 @@ public class Baking implements ModInitializer {
 	public void onInitialize() {
 
 		// Sandwiches
-		register("steak_sandwich", STEAK_SANDWICH);
-		register("chicken_sandwich", CHICKEN_SANDWICH);
-		register("pork_sandwich", PORK_SANDWICH);
-		register("mutton_sandwich", MUTTON_SANDWICH);
-		register("fish_sandwich", FISH_SANDWICH);
-		register("rabbit_sandwich", RABBIT_SANDWICH);
-		register("berry_jam_sandwich", BERRY_JAM_SANDWICH);
-		register("apple_jam_sandwich", APPLE_JAM_SANDWICH);
+		registerItem("steak_sandwich", STEAK_SANDWICH);
+		registerItem("chicken_sandwich", CHICKEN_SANDWICH);
+		registerItem("pork_sandwich", PORK_SANDWICH);
+		registerItem("mutton_sandwich", MUTTON_SANDWICH);
+		registerItem("fish_sandwich", FISH_SANDWICH);
+		registerItem("rabbit_sandwich", RABBIT_SANDWICH);
+		registerItem("berry_jam_sandwich", BERRY_JAM_SANDWICH);
+		registerItem("apple_jam_sandwich", APPLE_JAM_SANDWICH);
 
 		// Pockets
-		register("steak_pocket", STEAK_POCKET);
-		register("chicken_pocket", CHICKEN_POCKET);
-		register("pork_pocket", PORK_POCKET);
-		register("mutton_pocket", MUTTON_POCKET);
-		register("fish_pocket", FISH_POCKET);
-		register("rabbit_pocket", RABBIT_POCKET);
+		registerItem("steak_pocket", STEAK_POCKET);
+		registerItem("chicken_pocket", CHICKEN_POCKET);
+		registerItem("pork_pocket", PORK_POCKET);
+		registerItem("mutton_pocket", MUTTON_POCKET);
+		registerItem("fish_pocket", FISH_POCKET);
+		registerItem("rabbit_pocket", RABBIT_POCKET);
 
 		// Stews
-		register("steak_stew", STEAK_STEW);
-		register("chicken_stew", CHICKEN_STEW);
-		register("pork_stew", PORK_STEW);
-		register("mutton_stew", MUTTON_STEW);
-		register("fish_stew", FISH_STEW);
+		registerItem("steak_stew", STEAK_STEW);
+		registerItem("chicken_stew", CHICKEN_STEW);
+		registerItem("pork_stew", PORK_STEW);
+		registerItem("mutton_stew", MUTTON_STEW);
+		registerItem("fish_stew", FISH_STEW);
 		// No need to add rabbit stew!
 
 		// Tacos
-		register("steak_taco", STEAK_TACO);
-		register("chicken_taco", CHICKEN_TACO);
-		register("pork_taco", PORK_TACO);
-		register("mutton_taco", MUTTON_TACO);
-		register("fish_taco", FISH_TACO);
-		register("rabbit_taco", RABBIT_TACO);
+		registerItem("steak_taco", STEAK_TACO);
+		registerItem("chicken_taco", CHICKEN_TACO);
+		registerItem("pork_taco", PORK_TACO);
+		registerItem("mutton_taco", MUTTON_TACO);
+		registerItem("fish_taco", FISH_TACO);
+		registerItem("rabbit_taco", RABBIT_TACO);
 
 		// Cakes
 		registerBlock("carrot_cake", CARROT_CAKE, ItemGroup.FOOD);
@@ -289,11 +322,11 @@ public class Baking implements ModInitializer {
 		registerBlock("polished_halite_stairs", POLISHED_HALITE_STAIR, ItemGroup.BUILDING_BLOCKS);
 		registerBlock("polished_halite_slab", POLISHED_HALITE_SLAB, ItemGroup.BUILDING_BLOCKS);
 		registerBlock("polished_halite_wall", POLISHED_HALITE_WALL, ItemGroup.BUILDING_BLOCKS);
-		register("salt", SALT);
+		registerItem("salt", SALT);
 		RegistryKey<ConfiguredFeature<?, ?>> haliteDesert = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN,
 				new Identifier(ID, "halite_desert"));
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, haliteDesert.getValue(), HALITE_DESERT);
-		Predicate<BiomeSelectionContext> selector = BiomeSelectors.includeByKey( // Deserts, Oceans, and Rivers
+		Predicate<BiomeSelectionContext> haliteSelector = BiomeSelectors.includeByKey( // Deserts, Oceans, and Rivers
 				BiomeKeys.DESERT, BiomeKeys.DESERT_HILLS, BiomeKeys.DESERT_LAKES, BiomeKeys.BADLANDS,
 				BiomeKeys.BADLANDS_PLATEAU, BiomeKeys.MODIFIED_BADLANDS_PLATEAU, BiomeKeys.ERODED_BADLANDS,
 				BiomeKeys.MODIFIED_WOODED_BADLANDS_PLATEAU, BiomeKeys.WOODED_BADLANDS_PLATEAU, BiomeKeys.OCEAN,
@@ -301,53 +334,53 @@ public class Baking implements ModInitializer {
 				BiomeKeys.DEEP_LUKEWARM_OCEAN, BiomeKeys.DEEP_OCEAN, BiomeKeys.DEEP_WARM_OCEAN, BiomeKeys.FROZEN_OCEAN,
 				BiomeKeys.LUKEWARM_OCEAN, BiomeKeys.WARM_OCEAN, BiomeKeys.RIVER, BiomeKeys.FROZEN_RIVER
 		);
-		BiomeModifications.addFeature(selector, GenerationStep.Feature.UNDERGROUND_ORES, haliteDesert);
+		BiomeModifications.addFeature(haliteSelector, GenerationStep.Feature.UNDERGROUND_ORES, haliteDesert);
 
 		// Cheese Burgers
-		register("steak_cheeseburger", STEAK_CHEESEBURGER);
-		register("chicken_cheeseburger", CHICKEN_CHEESEBURGER);
-		register("pork_cheeseburger", PORK_CHEESEBURGER);
-		register("mutton_cheeseburger", MUTTON_CHEESEBURGER);
-		register("fish_cheeseburger", FISH_CHEESEBURGER);
-		register("rabbit_cheeseburger", RABBIT_CHEESEBURGER);
+		registerItem("steak_cheeseburger", STEAK_CHEESEBURGER);
+		registerItem("chicken_cheeseburger", CHICKEN_CHEESEBURGER);
+		registerItem("pork_cheeseburger", PORK_CHEESEBURGER);
+		registerItem("mutton_cheeseburger", MUTTON_CHEESEBURGER);
+		registerItem("fish_cheeseburger", FISH_CHEESEBURGER);
+		registerItem("rabbit_cheeseburger", RABBIT_CHEESEBURGER);
 
 		// Jams
-		register("berry_jam", BERRY_JAM);
-		register("apple_jam", APPLE_JAM);
+		registerItem("berry_jam", BERRY_JAM);
+		registerItem("apple_jam", APPLE_JAM);
 
 		// Pies
-		register("shepherds_pie", SHEPHERDS_PIE);
-		register("berry_pie", BERRY_PIE);
-		register("apple_pie", APPLE_PIE);
+		registerItem("shepherds_pie", SHEPHERDS_PIE);
+		registerItem("berry_pie", BERRY_PIE);
+		registerItem("apple_pie", APPLE_PIE);
 
 		// Ingredients
-		register("flour", FLOUR);
-		register("cocoa_powder", COCOA_POWDER);
-		register("bacon_bits", BACON_BITS);
-		register("dough", DOUGH);
-		register("pasta_dough", PASTA_DOUGH);
-		register("linguine", LINGUINE);
-		register("macaroni", MACARONI);
-		register("cheese", CHEESE);
+		registerItem("flour", FLOUR);
+		registerItem("cocoa_powder", COCOA_POWDER);
+		registerItem("bacon_bits", BACON_BITS);
+		registerItem("dough", DOUGH);
+		registerItem("pasta_dough", PASTA_DOUGH);
+		registerItem("linguine", LINGUINE);
+		registerItem("macaroni", MACARONI);
+		registerItem("cheese", CHEESE);
 
 		// Stone cut Goods
-		register("chicken_nuggets", CHICKEN_NUGGETS);
-		register("french_fries", FRENCH_FRIES);
-		register("bacon", BACON);
-		register("jerky", JERKY);
-		register("cut_salmon", CUT_SALMON);
+		registerItem("chicken_nuggets", CHICKEN_NUGGETS);
+		registerItem("french_fries", FRENCH_FRIES);
+		registerItem("bacon", BACON);
+		registerItem("jerky", JERKY);
+		registerItem("cut_salmon", CUT_SALMON);
 
 		// Raw/Cooked Goods
-		register("egg_whites", EGG_WHITES);
-		register("egg_yolk", EGG_YOLK);
-		register("cooked_chicken_nuggets", COOKED_CHICKEN_NUGGETS);
-		register("cooked_french_fries", COOKED_FRENCH_FRIES);
-		register("cooked_egg", COOKED_EGG);
-		register("smoked_jerky", SMOKED_JERKY);
-		register("smoked_bacon", SMOKED_BACON);
-		register("smoked_salmon", SMOKED_SALMON);
-		register("mayonnaise", MAYONNAISE);
-		register("meringue", MERINGUE);
+		registerItem("egg_whites", EGG_WHITES);
+		registerItem("egg_yolk", EGG_YOLK);
+		registerItem("cooked_chicken_nuggets", COOKED_CHICKEN_NUGGETS);
+		registerItem("cooked_french_fries", COOKED_FRENCH_FRIES);
+		registerItem("cooked_egg", COOKED_EGG);
+		registerItem("smoked_jerky", SMOKED_JERKY);
+		registerItem("smoked_bacon", SMOKED_BACON);
+		registerItem("smoked_salmon", SMOKED_SALMON);
+		registerItem("mayonnaise", MAYONNAISE);
+		registerItem("meringue", MERINGUE);
 
 		// Mill
 		Identifier mill_id = new Identifier(ID, "mill");
@@ -360,25 +393,47 @@ public class Baking implements ModInitializer {
 		Registry.register(Registry.ITEM, mill_id, MILL_ITEM);
 
 		// Cups
-		register("cup", CUP);
-		register("cup_of_milk", MILK_CUP);
-		register("cup_of_water", WATER_CUP);
-		register("cup_of_cheese", CHEESE_CUP);
-		register("chocolate_milk", CHOCOLATE_MILK);
+		registerItem("cup", CUP);
+		registerItem("cup_of_milk", MILK_CUP);
+		registerItem("cup_of_water", WATER_CUP);
+		registerItem("cup_of_cheese", CHEESE_CUP);
+		registerItem("chocolate_milk", CHOCOLATE_MILK);
+
+		// Crops
+		registerBlock("coffee", COFFEE);
+		registerItem("coffee_beans", COFFEE_BEANS);
+		registerBlock("tea_tree", TEA);
+		registerItem("tea_leaves", TEA_LEAVES);
+		RegistryKey<ConfiguredFeature<?, ?>> teaTrees = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN,
+				new Identifier(ID, "tea_tree_mountains"));
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, teaTrees.getValue(), TEA_TREES);
+		Predicate<BiomeSelectionContext> teaTreeSelector = BiomeSelectors.includeByKey( // Mountain & Birch biomes
+				BiomeKeys.MOUNTAIN_EDGE, BiomeKeys.MOUNTAINS, BiomeKeys.GRAVELLY_MOUNTAINS,
+				BiomeKeys.MODIFIED_GRAVELLY_MOUNTAINS, BiomeKeys.BIRCH_FOREST, BiomeKeys.BIRCH_FOREST_HILLS,
+				BiomeKeys.TALL_BIRCH_FOREST, BiomeKeys.TALL_BIRCH_HILLS
+		);
+		BiomeModifications.addFeature(teaTreeSelector, GenerationStep.Feature.VEGETAL_DECORATION, teaTrees);
+		registerBlock("tomato_plant", TOMATO_PLANT);
+		registerItem("tomato", TOMATO);
+		registerBlock("corn", CORN_STALK);
+		registerItem("corn", CORN);
+		registerItem("corn_seeds", CORN_SEEDS);
+		// RICE
+
 
 		// Misc
-		register("bagel", BAGEL);
-		register("donut", DONUT);
-		register("brownie", BROWNIE);
-		register("macaroni_n_cheese", MACARONI_N_CHEESE);
-		register("bacon_macaroni_n_cheese", BACON_MACARONI_N_CHEESE);
-		register("loaded_fries", LOADED_FRIES);
-		register("loaded_potato", LOADED_POTATO);
-		register("mashed_potatoes", MASHED_POTATOES);
-		register("veggie_medley", VEGGIE_MEDLEY);
-		register("fruit_salad", FRUIT_SALAD);
-		register("midas_salad", MIDAS_SALAD);
-		register("disgusting_dish", DISGUSTING_DISH);
+		registerItem("bagel", BAGEL);
+		registerItem("donut", DONUT);
+		registerItem("brownie", BROWNIE);
+		registerItem("macaroni_n_cheese", MACARONI_N_CHEESE);
+		registerItem("bacon_macaroni_n_cheese", BACON_MACARONI_N_CHEESE);
+		registerItem("loaded_fries", LOADED_FRIES);
+		registerItem("loaded_potato", LOADED_POTATO);
+		registerItem("mashed_potatoes", MASHED_POTATOES);
+		registerItem("veggie_medley", VEGGIE_MEDLEY);
+		registerItem("fruit_salad", FRUIT_SALAD);
+		registerItem("midas_salad", MIDAS_SALAD);
+		registerItem("disgusting_dish", DISGUSTING_DISH);
 
 	}
 }

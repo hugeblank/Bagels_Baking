@@ -1,0 +1,149 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "bagels_baking:corn"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "bagels_baking:corn",
+          "properties": {
+            "half": "lower"
+          }
+        },
+        {
+          "condition": "minecraft:location_check",
+          "predicate": {
+            "block": {
+              "block": "bagels_baking:corn",
+              "state": {
+                "half": "upper"
+              }
+            }
+          },
+          "offsetY": 1
+        }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "bagels_baking:corn"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "bagels_baking:corn",
+          "properties": {
+            "half": "upper"
+          }
+        },
+        {
+          "condition": "minecraft:location_check",
+          "predicate": {
+            "block": {
+              "block": "bagels_baking:corn",
+              "state": {
+                "half": "lower"
+              }
+            }
+          },
+          "offsetY": -1
+        }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:apply_bonus",
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:binomial_with_bonus_count",
+              "parameters": {
+                "extra": 3,
+                "probability": 0.5714286
+              }
+            }
+          ],
+          "name": "bagels_baking:corn"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "bagels_baking:corn",
+          "properties": {
+            "half": "lower",
+            "age": 7
+          }
+        },
+        {
+          "condition": "minecraft:location_check",
+          "predicate": {
+            "block": {
+              "block": "bagels_baking:corn",
+              "state": {
+                "half": "upper"
+              }
+            }
+          },
+          "offsetY": 1
+        }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:apply_bonus",
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:binomial_with_bonus_count",
+              "parameters": {
+                "extra": 3,
+                "probability": 0.5714286
+              }
+            }
+          ],
+          "name": "bagels_baking:corn"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "bagels_baking:corn",
+          "properties": {
+            "half": "upper",
+            "age": 3
+          }
+        },
+        {
+          "condition": "minecraft:location_check",
+          "predicate": {
+            "block": {
+              "block": "bagels_baking:corn",
+              "state": {
+                "half": "lower"
+              }
+            }
+          },
+          "offsetY": -1
+        }
+      ]
+    }
+  ]
+}

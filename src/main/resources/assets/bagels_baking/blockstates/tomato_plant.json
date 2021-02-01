@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "bagels_baking:block/tomato_plant_stage0"
+    },
+    "age=1": {
+      "model": "bagels_baking:block/tomato_plant_stage0"
+    },
+    "age=2": {
+      "model": "bagels_baking:block/tomato_plant_stage1"
+    },
+    "age=3": {
+      "model": "bagels_baking:block/tomato_plant_stage1"
+    },
+    "age=4": {
+      "model": "bagels_baking:block/tomato_plant_stage2"
+    },
+    "age=5": {
+      "model": "bagels_baking:block/tomato_plant_stage2"
+    },
+    "age=6": {
+      "model": "bagels_baking:block/tomato_plant_stage2"
+    },
+    "age=7": {
+      "model": "bagels_baking:block/tomato_plant_stage3"
+    }
+  }
+}

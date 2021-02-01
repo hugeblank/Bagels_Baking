@@ -16,5 +16,9 @@ public class ClientBaking implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.POLISHED_HALITE_STAIR, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.POLISHED_HALITE_SLAB, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.POLISHED_HALITE_WALL, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.COFFEE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.TEA, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.TOMATO_PLANT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.CORN_STALK, RenderLayer.getCutout());
     }
 }
