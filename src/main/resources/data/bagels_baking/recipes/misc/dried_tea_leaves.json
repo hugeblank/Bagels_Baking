@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:dried_tea_block"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:dried_tea_leaves",
+        "count": 9
+    }
+}

@@ -11,6 +11,8 @@
     "brewing.BrewingSlotsClient",
     "composting.Composting",
     "crafting.MultiCraft",
+    "entity.ChickenSeeds",
+    "entity.LivingEntityTeaDamage",
     "stew.BasicStewItem",
     "stew.IStewStackIncrease",
     "stew.StewStackIncrease",

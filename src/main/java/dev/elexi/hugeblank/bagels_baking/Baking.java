@@ -234,18 +234,23 @@ public class Baking implements ModInitializer {
 	public static final Block COFFEE = new CocoaBlock(FabricBlockSettings.copy(Blocks.COCOA));
 	public static final BlockItem COFFEE_BEANS = new BlockItem(COFFEE, new Item.Settings().group(ItemGroup.MATERIALS));
 	public static final Block TEA = new TeaTreeBlock(FabricBlockSettings.copy(Blocks.SWEET_BERRY_BUSH));
-	public static final BlockItem TEA_LEAVES = new BlockItem(TEA, new Item.Settings().group(ItemGroup.MATERIALS));
+	public static final BlockItem TEA_SEEDS = new BlockItem(TEA, new Item.Settings().group(ItemGroup.MATERIALS));
+	public static final Item TEA_LEAVES = basicIngredient();
+	public static final Item DRIED_TEA_LEAVES = basicIngredient();
+	public static final Block DRIED_TEA_BLOCK = new Block(FabricBlockSettings.copy(Blocks.DRIED_KELP_BLOCK));
 	public static final DamageSource TEA_TREE_DMGSRC = new DamageSource("teaTree");
 	private static final ConfiguredFeature<?, ?> TEA_TREES = Feature.RANDOM_PATCH
 			.configure(new RandomPatchFeatureConfig.Builder(
 					new SimpleBlockStateProvider(TEA.getDefaultState().with(SweetBerryBushBlock.AGE, 3)), SimpleBlockPlacer.INSTANCE)
 					.tries(64).whitelist(ImmutableSet.of(Blocks.GRASS_BLOCK)).cannotProject().build())
 			.decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP_SPREAD_DOUBLE);
-	public static final Block TOMATO_PLANT = new TomatoBlock(FabricBlockSettings.copy(Blocks.WHEAT));
+	public static final Block TOMATO_PLANT = new BasicCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item TOMATO = new BlockItem(TOMATO_PLANT, new Item.Settings().group(ItemGroup.FOOD).food(
 			new FoodComponent.Builder().hunger(3).saturationModifier(4.2f).build()
 	));
-	public static final Block CORN_STALK = new DoubleCrop(FabricBlockSettings.copy(Blocks.WHEAT));
+	public static final Block RICE_PLANT = new BasicCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
+	public static final Item RICE = new BlockItem(RICE_PLANT, new Item.Settings().group(ItemGroup.MISC));
+	public static final Block CORN_STALK = new DoubleCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item CORN = basicFood(3, 2.4f);
 	public static final Item CORN_SEEDS = new BlockItem(CORN_STALK, new Item.Settings().group(ItemGroup.MISC));
 
@@ -259,7 +264,7 @@ public class Baking implements ModInitializer {
 	public static final Item LOADED_FRIES = basicFood(3, 3.5f);
 	public static final Item LOADED_POTATO = basicFood(8, 10.2f);
 	public static final Item MASHED_POTATOES = basicFood(4, 4.5f);
-	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(9, 7f);
+	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(11, 11.4f);
 	public static final MushroomStewItem FRUIT_SALAD = basicBowlFood(8, 4f);
 	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(new FoodComponent.Builder().hunger(14).saturationModifier(35f).alwaysEdible() // Give 1 item
 			.statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 20*120), 1f)
@@ -402,8 +407,10 @@ public class Baking implements ModInitializer {
 		// Crops
 		registerBlock("coffee", COFFEE);
 		registerItem("coffee_beans", COFFEE_BEANS);
-		registerBlock("tea_tree", TEA);
+		registerBlock("tea", TEA, TEA_SEEDS);
 		registerItem("tea_leaves", TEA_LEAVES);
+		registerItem("dried_tea_leaves", DRIED_TEA_LEAVES);
+		registerBlock("dried_tea_block", DRIED_TEA_BLOCK, ItemGroup.BUILDING_BLOCKS);
 		RegistryKey<ConfiguredFeature<?, ?>> teaTrees = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN,
 				new Identifier(ID, "tea_tree_mountains"));
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, teaTrees.getValue(), TEA_TREES);
@@ -413,8 +420,10 @@ public class Baking implements ModInitializer {
 				BiomeKeys.TALL_BIRCH_FOREST, BiomeKeys.TALL_BIRCH_HILLS
 		);
 		BiomeModifications.addFeature(teaTreeSelector, GenerationStep.Feature.VEGETAL_DECORATION, teaTrees);
-		registerBlock("tomato_plant", TOMATO_PLANT);
-		registerItem("tomato", TOMATO);
+		registerBlock("tomato", TOMATO_PLANT, (BlockItem) TOMATO);
+		((BasicCropBlock)TOMATO_PLANT).setSeed(TOMATO);
+		registerBlock("rice", RICE_PLANT, (BlockItem) RICE);
+		((BasicCropBlock)RICE_PLANT).setSeed(RICE);
 		registerBlock("corn", CORN_STALK);
 		registerItem("corn", CORN);
 		registerItem("corn_seeds", CORN_SEEDS);

@@ -29,9 +29,9 @@ public class TeaTreeBlock extends SweetBerryBushBlock {
 
     @Environment(EnvType.CLIENT)
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
-        return new ItemStack(Baking.TEA_LEAVES);
+        return new ItemStack(Baking.TEA_SEEDS);
     }
-
+    
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (entity instanceof LivingEntity && entity.getType() != EntityType.FOX && entity.getType() != EntityType.BEE) {
             entity.slowMovement(state, new Vec3d(0.800000011920929D, 0.75D, 0.800000011920929D));
@@ -54,7 +54,10 @@ public class TeaTreeBlock extends SweetBerryBushBlock {
         } else if (i > 1) {
             int j = 1 + world.random.nextInt(2);
             dropStack(world, pos, new ItemStack(Baking.TEA_LEAVES, j + (bl ? 1 : 0)));
-            world.playSound(null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
+            if (bl && world.random.nextFloat() < 0.25f) {
+                dropStack(world, pos, new ItemStack(Baking.TEA_SEEDS));
+            }
+            world.playSound(null, pos, SoundEvents.BLOCK_GRASS_HIT, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
             world.setBlockState(pos, state.with(AGE, 1), 2);
             return ActionResult.success(world.isClient);
         } else {

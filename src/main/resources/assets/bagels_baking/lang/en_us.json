@@ -97,10 +97,14 @@
   "item.bagels_baking.loaded_fries": "Loaded Fries",
   "item.bagels_baking.loaded_potato": "Loaded Potato",
   "block.bagels_baking.coffee": "Coffee Beans",
-  "block.bagels_baking.tea_tree": "Tea Tree Leaves",
+  "block.bagels_baking.tea": "Tea Tree Seeds",
+  "item.bagels_baking.tea_leaves": "Tea Leaves",
+  "item.bagels_baking.dried_tea_leaves": "Dried Tea Leaves",
+  "block.bagels_baking.dried_tea_block": "Dried Tea Block",
   "death.attack.teaTree": "%1$s was poked to death by a tea tree",
   "death.attack.teaTree.player": "%1$s was poked to death by a tea tree whilst trying to escape %2$s",
-  "block.bagels_baking.tomato_plant": "Tomato",
+  "block.bagels_baking.tomato": "Tomato",
+  "block.bagels_baking.rice": "Rice",
   "block.bagels_baking.corn": "Corn Seeds",
   "item.bagels_baking.corn": "Corn"
 }
