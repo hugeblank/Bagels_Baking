@@ -2,6 +2,7 @@ package dev.elexi.hugeblank.bagels_baking;
 
 import com.google.common.collect.ImmutableSet;
 import dev.elexi.hugeblank.bagels_baking.block.*;
+import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
 import dev.elexi.hugeblank.bagels_baking.item.*;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreen;
@@ -10,13 +11,22 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.*;
+import net.minecraft.client.render.entity.ItemEntityRenderer;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.projectile.thrown.SnowballEntity;
+import net.minecraft.entity.projectile.thrown.ThrownEntity;
 import net.minecraft.item.*;
 import net.minecraft.recipe.CuttingRecipe;
 import net.minecraft.recipe.RecipeSerializer;
@@ -245,9 +255,17 @@ public class Baking implements ModInitializer {
 					.tries(64).whitelist(ImmutableSet.of(Blocks.GRASS_BLOCK)).cannotProject().build())
 			.decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP_SPREAD_DOUBLE);
 	public static final Block TOMATO_PLANT = new BasicCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
-	public static final Item TOMATO = new BlockItem(TOMATO_PLANT, new Item.Settings().group(ItemGroup.FOOD).food(
+	public static final Item TOMATO = new TomatoItem(TOMATO_PLANT, new Item.Settings().group(ItemGroup.FOOD).food(
 			new FoodComponent.Builder().hunger(3).saturationModifier(4.2f).build()
 	));
+	public static final Identifier TOMATO_PACKET = new Identifier(ID, "spawn_packet");
+	public static final EntityType<TomatoEntity> TOMATO_THROWABLE = Registry.register(Registry.ENTITY_TYPE, new Identifier(ID, "tomato"),
+			FabricEntityTypeBuilder.<TomatoEntity>create()
+					.spawnGroup(SpawnGroup.MISC)
+					.dimensions(new EntityDimensions(0.25f, 0.25f, true))
+					.trackedUpdateRate(10)
+					.trackRangeChunks(4)
+					.build());
 	public static final Block RICE_PLANT = new BasicCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item RICE = new BlockItem(RICE_PLANT, new Item.Settings().group(ItemGroup.MISC));
 	public static final Block CORN_STALK = new DoubleCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
