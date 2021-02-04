@@ -1,4 +1,4 @@
-package dev.elexi.hugeblank.bagels_baking;
+package dev.elexi.hugeblank.bagels_baking.item;
 
 import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
 import net.minecraft.block.Block;

@@ -11,22 +11,17 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.*;
-import net.minecraft.client.render.entity.ItemEntityRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.projectile.thrown.SnowballEntity;
-import net.minecraft.entity.projectile.thrown.ThrownEntity;
 import net.minecraft.item.*;
 import net.minecraft.recipe.CuttingRecipe;
 import net.minecraft.recipe.RecipeSerializer;
@@ -50,7 +45,6 @@ import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placer.SimpleBlockPlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
-import net.minecraft.world.gen.tree.TreeDecoratorType;
 
 import java.util.function.Predicate;
 
@@ -59,12 +53,21 @@ public class Baking implements ModInitializer {
 	private static final String ID = "bagels_baking";
 
 	// Beautification Functions
-	private static Item basicFood(int hunger, float saturation) {
-		return basicFood(hunger, saturation, 64);
+
+	private static FoodComponent.Builder foodComponent(int hunger, float saturation) {
+		return new FoodComponent.Builder().hunger(hunger).saturationModifier((saturation/hunger)/2.0f);
 	}
 
-	private static Item basicFood(int hunger, float saturation, int maxStack) {
-		return new Item(new Item.Settings().maxCount(maxStack).group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(hunger).saturationModifier(saturation).build()));
+	private static Item basicFood(FoodComponent.Builder fc, int maxStack) {
+		return new Item(new Item.Settings().maxCount(maxStack).group(ItemGroup.FOOD).food(fc.build()));
+	}
+
+	private static Item basicFood(FoodComponent.Builder fc) {
+		return basicFood(fc, 64);
+	}
+
+	private static Item basicFood(int hunger, float saturation) {
+		return basicFood(foodComponent(hunger, saturation), 64);
 	}
 
 	private static Item basicIngredient() { return basicIngredient(64); }
@@ -74,11 +77,11 @@ public class Baking implements ModInitializer {
 	}
 
 	private static MushroomStewItem basicBowlFood(int hunger, float saturation) {
-		return new MushroomStewItem(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(new FoodComponent.Builder().hunger(hunger).saturationModifier(saturation).build()));
+		return new MushroomStewItem(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(foodComponent(hunger, saturation).build()));
 	}
 
 	private static BottledItem basicJam(int hunger, float saturation, SoundEvent drinkSound) {
-		return new BottledItem(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(new FoodComponent.Builder().hunger(hunger).saturationModifier(saturation).build()), drinkSound);
+		return new BottledItem(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(foodComponent(hunger, saturation).build()), drinkSound);
 	}
 
 
@@ -194,24 +197,32 @@ public class Baking implements ModInitializer {
 			.repeat(10); // number of veins per chunk
 
 	// Raw/Cooked goods - Give 1 item
-	public static final Item EGG_WHITES = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0.2f)
-			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK, true);
-	public static final Item EGG_YOLK = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0.1f).snack()
-			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK);
-	public static final Item CHICKEN_NUGGETS = new Item( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(2).saturationModifier(0.6f)
+	public static final Item CALAMARI = basicFood(2, 1.2f);
+	public static final Item COOKED_CALAMARI = basicFood(foodComponent(6, 8.5f).meat());
+	public static final Item BATTERED_CALAMARI = basicFood(3, 1.8f);
+	public static final Item FRIED_CALAMARI = basicFood(8, 10.2f);
+	public static final Item CHICKEN_NUGGETS = new Item( new Item.Settings().group(ItemGroup.FOOD).food(foodComponent(2, 0.6f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 20*10), .3f).build()));
-	public static final Item FRENCH_FRIES = basicFood(1, 0.6f);
-	public static final Item BACON = basicFood(3, 1.8f);
-	public static final Item JERKY = basicFood(3, 1.8f);
-	public static final Item CUT_SALMON = basicFood(2, 0.4f);
 	public static final Item COOKED_CHICKEN_NUGGETS = basicFood(3, 3.2f);
+	public static final Item BATTERED_CHICKEN_NUGGETS = basicFood(foodComponent(3, 0.9f)
+			.statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 20*10), .3f));
+	public static final Item FRIED_CHICKEN_NUGGETS = basicFood(4, 4.8f);
+	public static final Item BATTERED_CHICKEN = basicFood(foodComponent(3, 1.5f)
+			.statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 20*10), .3f));
+	public static final Item FRIED_CHICKEN = basicFood(7, 8.5f);
+	public static final Item FRENCH_FRIES = basicFood(1, 0.6f);
 	public static final Item COOKED_FRENCH_FRIES = basicFood(2, 1.8f);
-	public static final Item COOKED_EGG = basicFood(2, 3.3f, 16);
+	public static final Item EGG_WHITES = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(foodComponent(1, 0.2f)
+			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK, true);
 	public static final Item MERINGUE = basicJam(1, 0.7f, SoundEvents.ENTITY_WANDERING_TRADER_DRINK_MILK);
+	public static final Item EGG_YOLK = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(foodComponent(1, 0.1f).snack()
+			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK, true);
 	public static final Item MAYONNAISE = basicJam(1, 0.5f, SoundEvents.ENTITY_WITCH_DRINK);
-	// Smoker & Campfire Exclusive
+	public static final Item BACON = basicFood(3, 1.8f);
 	public static final Item SMOKED_BACON = basicFood(8, 13.8f);
+	public static final Item JERKY = basicFood(3, 1.8f);
 	public static final Item SMOKED_JERKY = basicFood(8, 13.8f);
+	public static final Item CUT_SALMON = basicFood(2, 0.4f);
 	public static final Item SMOKED_SALMON = basicFood(6, 10.5f);
 
 	// Mill
@@ -226,12 +237,16 @@ public class Baking implements ModInitializer {
 
 	// Ingredients
 	public static final Item FLOUR = basicIngredient();
+	public static final Item CORN_MEAL = basicIngredient();
+	public static final Item BATTER = basicIngredient(16);
 	public static final Item COCOA_POWDER = basicIngredient();
 	public static final Item BACON_BITS = basicFood(2, 5.2f);
 	public static final Item DOUGH = basicIngredient(); //  Henry - The inspiration behind the code, my rock and my brain - Redeemed
 	public static final Item PASTA_DOUGH = basicIngredient();
 	public static final Item LINGUINE = basicIngredient();
 	public static final Item MACARONI = basicIngredient();
+	public static final Item CHEESE = new BasicDrink(Items.BUCKET, 2, 3.5f);
+
 
 	// Cups
 	public static final Item CUP = new CupItem(new Item.Settings().group(ItemGroup.MISC).maxCount(16));
@@ -276,7 +291,7 @@ public class Baking implements ModInitializer {
 	public static final Item BAGEL = basicFood(7, 6.5f);
 	public static final Item DONUT = basicFood(7, 7f);
 	public static final Item BROWNIE = basicFood(2, 2.6f);
-	public static final Item CHEESE = new BasicDrink(Items.BUCKET, 2, 3.5f);
+	public static final Item COOKED_EGG = basicFood(2, 3.3f);
 	public static final Item MACARONI_N_CHEESE = basicBowlFood(4, 6.5f);
 	public static final Item BACON_MACARONI_N_CHEESE = basicBowlFood(6, 11.2f);
 	public static final Item LOADED_FRIES = basicFood(3, 3.5f);
@@ -378,6 +393,8 @@ public class Baking implements ModInitializer {
 
 		// Ingredients
 		registerItem("flour", FLOUR);
+		registerItem("corn_meal", CORN_MEAL);
+		registerItem("batter", BATTER);
 		registerItem("cocoa_powder", COCOA_POWDER);
 		registerItem("bacon_bits", BACON_BITS);
 		registerItem("dough", DOUGH);
@@ -386,23 +403,28 @@ public class Baking implements ModInitializer {
 		registerItem("macaroni", MACARONI);
 		registerItem("cheese", CHEESE);
 
-		// Stone cut Goods
-		registerItem("chicken_nuggets", CHICKEN_NUGGETS);
-		registerItem("french_fries", FRENCH_FRIES);
-		registerItem("bacon", BACON);
-		registerItem("jerky", JERKY);
-		registerItem("cut_salmon", CUT_SALMON);
-
 		// Raw/Cooked Goods
-		registerItem("egg_whites", EGG_WHITES);
-		registerItem("egg_yolk", EGG_YOLK);
+		registerItem("calamari", CALAMARI);
+		registerItem("cooked_calamari", COOKED_CALAMARI);
+		registerItem("battered_calamari", BATTERED_CALAMARI);
+		registerItem("fried_calamari", FRIED_CALAMARI);
+		registerItem("chicken_nuggets", CHICKEN_NUGGETS);
 		registerItem("cooked_chicken_nuggets", COOKED_CHICKEN_NUGGETS);
+		registerItem("battered_chicken_nuggets", BATTERED_CHICKEN_NUGGETS);
+		registerItem("fried_chicken_nuggets", FRIED_CHICKEN_NUGGETS);
+		registerItem("battered_chicken", BATTERED_CHICKEN);
+		registerItem("fried_chicken", FRIED_CHICKEN);
+		registerItem("french_fries", FRENCH_FRIES);
 		registerItem("cooked_french_fries", COOKED_FRENCH_FRIES);
-		registerItem("cooked_egg", COOKED_EGG);
+		registerItem("jerky", JERKY);
 		registerItem("smoked_jerky", SMOKED_JERKY);
+		registerItem("bacon", BACON);
 		registerItem("smoked_bacon", SMOKED_BACON);
+		registerItem("cut_salmon", CUT_SALMON);
 		registerItem("smoked_salmon", SMOKED_SALMON);
+		registerItem("egg_yolk", EGG_YOLK);
 		registerItem("mayonnaise", MAYONNAISE);
+		registerItem("egg_whites", EGG_WHITES);
 		registerItem("meringue", MERINGUE);
 
 		// Mill
@@ -445,13 +467,12 @@ public class Baking implements ModInitializer {
 		registerBlock("corn", CORN_STALK);
 		registerItem("corn", CORN);
 		registerItem("corn_seeds", CORN_SEEDS);
-		// RICE
-
 
 		// Misc
 		registerItem("bagel", BAGEL);
 		registerItem("donut", DONUT);
 		registerItem("brownie", BROWNIE);
+		registerItem("cooked_egg", COOKED_EGG);
 		registerItem("macaroni_n_cheese", MACARONI_N_CHEESE);
 		registerItem("bacon_macaroni_n_cheese", BACON_MACARONI_N_CHEESE);
 		registerItem("loaded_fries", LOADED_FRIES);

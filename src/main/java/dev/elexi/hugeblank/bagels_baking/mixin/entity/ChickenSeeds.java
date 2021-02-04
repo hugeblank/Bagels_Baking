@@ -21,7 +21,7 @@ public class ChickenSeeds {
     private static void validSeeds(CallbackInfo ci) {
         BREEDING_INGREDIENT = Ingredient.ofItems(
                 Items.WHEAT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.BEETROOT_SEEDS, Baking.CORN_SEEDS,
-                Baking.RICE, Baking.TEA_SEEDS
+                Baking.RICE, Baking.TEA_SEEDS, Baking.CORN_MEAL
         );
         ci.cancel();
     }

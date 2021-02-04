@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:flour"
+        },
+        {
+            "item": "bagels_baking:corn_meal"
+        },
+        {
+            "item": "minecraft:egg"
+        },
+        {
+            "item": "minecraft:bowl"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:batter",
+        "count": 1
+    }
+}

@@ -106,5 +106,15 @@
   "block.bagels_baking.tomato": "Tomato",
   "block.bagels_baking.rice": "Rice",
   "block.bagels_baking.corn": "Corn Seeds",
-  "item.bagels_baking.corn": "Corn"
+  "item.bagels_baking.corn": "Corn",
+  "item.bagels_baking.corn_meal": "Corn Meal",
+  "item.bagels_baking.batter": "Batter",
+  "item.bagels_baking.calamari": "Raw Calamari",
+  "item.bagels_baking.cooked_calamari": "Cooked Calamari",
+  "item.bagels_baking.battered_calamari": "Battered Calamari",
+  "item.bagels_baking.fried_calamari": "Fried Calamari",
+  "item.bagels_baking.battered_chicken_nuggets": "Fried Chicken Nuggets",
+  "item.bagels_baking.fried_chicken_nuggets": "Fried Chicken Nuggets",
+  "item.bagels_baking.battered_chicken": "Fried Chicken",
+  "item.bagels_baking.fried_chicken": "Fried Chicken"
 }
