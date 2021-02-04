@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:milling",
+    "ingredient": {
+        "tag": "c:glass"
+    },
+    "result": "minecraft:sand",
+    "count": 1
+}
