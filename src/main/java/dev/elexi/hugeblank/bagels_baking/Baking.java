@@ -30,6 +30,7 @@ import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.stat.Stat;
 import net.minecraft.stat.StatFormatter;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Identifier;
@@ -238,8 +239,9 @@ public class Baking implements ModInitializer {
 	// Ingredients
 	public static final Item FLOUR = basicIngredient();
 	public static final Item CORN_MEAL = basicIngredient();
-	public static final Item BATTER = basicIngredient(16);
 	public static final Item COCOA_POWDER = basicIngredient();
+	public static final Item GROUND_COFFEE = basicIngredient();
+	public static final Item BATTER = basicIngredient(16);
 	public static final Item BACON_BITS = basicFood(2, 5.2f);
 	public static final Item DOUGH = basicIngredient(); //  Henry - The inspiration behind the code, my rock and my brain - Redeemed
 	public static final Item PASTA_DOUGH = basicIngredient();
@@ -247,13 +249,15 @@ public class Baking implements ModInitializer {
 	public static final Item MACARONI = basicIngredient();
 	public static final Item CHEESE = new BasicDrink(Items.BUCKET, 2, 3.5f);
 
-
 	// Cups
 	public static final Item CUP = new CupItem(new Item.Settings().group(ItemGroup.MISC).maxCount(16));
 	public static final Item MILK_CUP = new MilkCupItem();
-	public static final Item WATER_CUP = new BasicDrink(CUP);
+	public static final Item WATER_CUP = new BasicDrink(CUP, true);
 	public static final Item CHEESE_CUP = new BasicDrink(CUP, 0, 0.3f);
 	public static final Item CHOCOLATE_MILK = new BasicDrink(CUP, 1, 1.0f);
+	public static final Item COFFEE_CUP = new BasicDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 30, 1));
+	public static final Item COFFEE_W_CREAMER = new BasicDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 45));
+	public static final Item CREAMER_CUP = new BasicDrink(CUP, 0, 0.1f);
 
 	// Crops - Here's to v0.3!
 	public static final Block COFFEE = new CocoaBlock(FabricBlockSettings.copy(Blocks.COCOA));
@@ -394,8 +398,9 @@ public class Baking implements ModInitializer {
 		// Ingredients
 		registerItem("flour", FLOUR);
 		registerItem("corn_meal", CORN_MEAL);
-		registerItem("batter", BATTER);
+		registerItem("ground_coffee", GROUND_COFFEE);
 		registerItem("cocoa_powder", COCOA_POWDER);
+		registerItem("batter", BATTER);
 		registerItem("bacon_bits", BACON_BITS);
 		registerItem("dough", DOUGH);
 		registerItem("pasta_dough", PASTA_DOUGH);
@@ -439,10 +444,13 @@ public class Baking implements ModInitializer {
 
 		// Cups
 		registerItem("cup", CUP);
-		registerItem("cup_of_milk", MILK_CUP);
-		registerItem("cup_of_water", WATER_CUP);
-		registerItem("cup_of_cheese", CHEESE_CUP);
-		registerItem("chocolate_milk", CHOCOLATE_MILK);
+		registerItem("milk_cup", MILK_CUP);
+		registerItem("water_cup", WATER_CUP);
+		registerItem("cheese_cup", CHEESE_CUP);
+		registerItem("chocolate_milk_cup", CHOCOLATE_MILK);
+		registerItem("creamer_cup", CREAMER_CUP);
+		registerItem("coffee_cup", COFFEE_CUP);
+		registerItem("creamy_coffee_cup", COFFEE_W_CREAMER);
 
 		// Crops
 		registerBlock("coffee", COFFEE);

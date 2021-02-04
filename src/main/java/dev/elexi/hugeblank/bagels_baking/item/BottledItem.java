@@ -21,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Objects;
 
-public class BottledItem extends PotionItem {
+public class BottledItem extends PotionItem implements BrewableItem {
 
     private final SoundEvent soundEffect;
     private final boolean brewable;
@@ -101,7 +101,7 @@ public class BottledItem extends PotionItem {
         return soundEffect;
     }
 
-    public boolean getBrewable() {
+    public boolean isBrewable() {
         return this.brewable;
     }
 

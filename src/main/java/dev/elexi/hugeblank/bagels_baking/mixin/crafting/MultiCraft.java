@@ -46,8 +46,8 @@ public class MultiCraft {
         if (!cupBlacklist.contains(item)) {
             for (int i = 0; i < input.size(); i++) { // Drop bucket outputs
                 Item inputItem = input.getStack(i).getItem();
-                if (inputItem instanceof BasicDrink && !((BasicDrink) inputItem).isBucket()) {
-                    this.giveItem(Baking.CUP);
+                if (inputItem instanceof BasicDrink && !((BasicDrink) inputItem).isBucket() && !((BasicDrink) inputItem).isBrewable()) {
+                    this.giveItem(Baking.CUP, amount/3);
                 }
             }
         }
@@ -64,6 +64,13 @@ public class MultiCraft {
 
     private void giveItem(Item item) {
         ItemStack stack = new ItemStack(item, amount);
+        if (!player.inventory.insertStack(stack)) {
+            player.dropItem(stack, false);
+        }
+    }
+
+    private void giveItem(Item item, int amt) {
+        ItemStack stack = new ItemStack(item, amt);
         if (!player.inventory.insertStack(stack)) {
             player.dropItem(stack, false);
         }

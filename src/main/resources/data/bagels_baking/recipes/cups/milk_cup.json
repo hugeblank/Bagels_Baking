@@ -26,11 +26,11 @@
             "item": "bagels_baking:cup"
         },
         {
-            "item": "bagels_baking:cheese"
+            "item": "minecraft:milk_bucket"
         }
     ],
     "result": {
-        "item": "bagels_baking:cup_of_cheese",
+        "item": "bagels_baking:milk_cup",
         "count": 8
     }
 }

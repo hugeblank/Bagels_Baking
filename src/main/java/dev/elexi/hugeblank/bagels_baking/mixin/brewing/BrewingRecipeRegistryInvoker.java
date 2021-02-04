@@ -8,12 +8,12 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(BrewingRecipeRegistry.class)
 public interface BrewingRecipeRegistryInvoker {
     @Invoker("registerItemRecipe")
-    public static void registerItemRecipe(Item input, Item ingredient, Item output) {
+    static void registerItemRecipe(Item input, Item ingredient, Item output) {
         throw new AssertionError();
     }
 
     @Invoker("registerPotionType")
-    public static void invokeRegisterPotionType(Item item) {
+    static void invokeRegisterPotionType(Item item) {
         throw new AssertionError();
     }
 

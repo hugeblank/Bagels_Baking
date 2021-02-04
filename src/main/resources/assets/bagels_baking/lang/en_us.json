@@ -90,10 +90,10 @@
   "item.bagels_baking.bacon_macaroni_n_cheese": "Bacon Macaroni n' Cheese",
   "item.bagels_baking.brownie": "Brownie",
   "item.bagels_baking.cup": "Cup",
-  "item.bagels_baking.cup_of_milk": "Cup of Milk",
-  "item.bagels_baking.cup_of_water": "Cup of Water",
-  "item.bagels_baking.cup_of_cheese": "Cup of Cheese",
-  "item.bagels_baking.chocolate_milk": "Chocolate Milk",
+  "item.bagels_baking.milk_cup": "Cup of Milk",
+  "item.bagels_baking.water_cup": "Cup of Water",
+  "item.bagels_baking.cheese_cup": "Cup of Cheese",
+  "item.bagels_baking.chocolate_milk_cup": "Chocolate Milk",
   "item.bagels_baking.loaded_fries": "Loaded Fries",
   "item.bagels_baking.loaded_potato": "Loaded Potato",
   "block.bagels_baking.coffee": "Coffee Beans",
@@ -116,5 +116,9 @@
   "item.bagels_baking.battered_chicken_nuggets": "Fried Chicken Nuggets",
   "item.bagels_baking.fried_chicken_nuggets": "Fried Chicken Nuggets",
   "item.bagels_baking.battered_chicken": "Fried Chicken",
-  "item.bagels_baking.fried_chicken": "Fried Chicken"
+  "item.bagels_baking.fried_chicken": "Fried Chicken",
+  "item.bagels_baking.ground_coffee": "Ground Coffee",
+  "item.bagels_baking.coffee_cup": "Cup of Coffee",
+  "item.bagels_baking.creamer_cup": "Cup of Creamer",
+  "item.bagels_baking.creamy_coffee_cup": "Cup of Coffee with Creamer"
 }
