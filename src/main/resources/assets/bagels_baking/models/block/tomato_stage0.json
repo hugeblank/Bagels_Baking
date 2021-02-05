@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:block/cross",
     "textures": {
-      "crop": "bagels_baking:block/tomato_stage0"
+      "cross": "bagels_baking:block/tomato_stage0"
     }
   }
