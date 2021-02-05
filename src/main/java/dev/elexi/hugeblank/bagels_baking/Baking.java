@@ -255,8 +255,8 @@ public class Baking implements ModInitializer {
 	public static final Item WATER_CUP = new BasicDrink(CUP, true);
 	public static final Item CHEESE_CUP = new BasicDrink(CUP, 0, 0.3f);
 	public static final Item CHOCOLATE_MILK = new BasicDrink(CUP, 1, 1.0f);
-	public static final Item COFFEE_CUP = new BasicDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 30, 1));
-	public static final Item COFFEE_W_CREAMER = new BasicDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 45));
+	public static final Item COFFEE_CUP = new BasicDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 20*30, 1));
+	public static final Item COFFEE_W_CREAMER = new BasicDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 20*45));
 	public static final Item CREAMER_CUP = new BasicDrink(CUP, 0, 0.1f);
 
 	// Crops - Here's to v0.3!

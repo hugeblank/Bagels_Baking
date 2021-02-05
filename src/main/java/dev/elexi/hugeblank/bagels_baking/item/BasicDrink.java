@@ -84,8 +84,8 @@ public class BasicDrink extends PotionItem implements BrewableItem {
             serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
         }
 
-        if (user instanceof PlayerEntity && !((PlayerEntity)user).abilities.creativeMode) {
-            stack.decrement(1);
+        if (this.isFood()) {
+            user.eatFood(world, stack);
         }
 
         if (stack.isEmpty()) {
