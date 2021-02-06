@@ -119,6 +119,9 @@
   "item.bagels_baking.fried_chicken": "Fried Chicken",
   "item.bagels_baking.ground_coffee": "Ground Coffee",
   "item.bagels_baking.coffee_cup": "Cup of Coffee",
+  "item.bagels_baking.creamy_coffee_cup": "Cup of Coffee with Creamer",
   "item.bagels_baking.creamer_cup": "Cup of Creamer",
-  "item.bagels_baking.creamy_coffee_cup": "Cup of Coffee with Creamer"
+  "item.bagels_baking.ground_tea": "Ground Tea Leaves",
+  "item.bagels_baking.tea_cup": "Cup of Tea",
+  "item.bagels_baking.creamy_tea_cup": "Cup of Tea with Creamer"
 }

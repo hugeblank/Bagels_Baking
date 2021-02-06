@@ -241,6 +241,7 @@ public class Baking implements ModInitializer {
 	public static final Item CORN_MEAL = basicIngredient();
 	public static final Item COCOA_POWDER = basicIngredient();
 	public static final Item GROUND_COFFEE = basicIngredient();
+	public static final Item GROUND_TEA = basicIngredient();
 	public static final Item BATTER = basicIngredient(16);
 	public static final Item BACON_BITS = basicFood(2, 5.2f);
 	public static final Item DOUGH = basicIngredient(); //  Henry - The inspiration behind the code, my rock and my brain - Redeemed
@@ -257,6 +258,8 @@ public class Baking implements ModInitializer {
 	public static final Item CHOCOLATE_MILK = new BasicDrink(CUP, 1, 1.0f);
 	public static final Item COFFEE_CUP = new BasicDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 20*30, 1));
 	public static final Item COFFEE_W_CREAMER = new BasicDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 20*45));
+	public static final Item TEA_CUP = new BasicDrink(2, 1.8f, new StatusEffectInstance(StatusEffects.SPEED, 20*25));
+	public static final Item TEA_W_CREAMER = new BasicDrink(2, 1.8f, new StatusEffectInstance(StatusEffects.SPEED, 20*30));
 	public static final Item CREAMER_CUP = new BasicDrink(CUP, 0, 0.1f);
 
 	// Crops - Here's to v0.3!
@@ -399,6 +402,7 @@ public class Baking implements ModInitializer {
 		registerItem("flour", FLOUR);
 		registerItem("corn_meal", CORN_MEAL);
 		registerItem("ground_coffee", GROUND_COFFEE);
+		registerItem("ground_tea", GROUND_TEA);
 		registerItem("cocoa_powder", COCOA_POWDER);
 		registerItem("batter", BATTER);
 		registerItem("bacon_bits", BACON_BITS);
@@ -451,6 +455,8 @@ public class Baking implements ModInitializer {
 		registerItem("creamer_cup", CREAMER_CUP);
 		registerItem("coffee_cup", COFFEE_CUP);
 		registerItem("creamy_coffee_cup", COFFEE_W_CREAMER);
+		registerItem("tea_cup", TEA_CUP);
+		registerItem("creamy_tea_cup", TEA_W_CREAMER);
 
 		// Crops
 		registerBlock("coffee", COFFEE);

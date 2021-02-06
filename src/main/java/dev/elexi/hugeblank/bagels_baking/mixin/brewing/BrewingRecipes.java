@@ -26,12 +26,14 @@ public class BrewingRecipes {
         // Recipes
         recipe(Baking.EGG_WHITES, Items.SUGAR, Baking.MERINGUE);
         recipe(Baking.WATER_CUP, Baking.GROUND_COFFEE, Baking.COFFEE_CUP);
+        recipe(Baking.WATER_CUP, Baking.GROUND_TEA, Baking.TEA_CUP);
 
         // Items
         item(Baking.EGG_WHITES);
         item(Baking.MERINGUE);
         item(Baking.WATER_CUP);
         item(Baking.COFFEE_CUP);
+        item(Baking.TEA_CUP);
     }
 
 }

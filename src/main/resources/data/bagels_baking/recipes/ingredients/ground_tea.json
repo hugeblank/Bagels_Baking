@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:milling",
+    "ingredient": {
+        "item": "bagels_baking:dried_tea_leaves"
+    },
+    "result": "bagels_baking:ground_tea",
+    "count": 1
+}

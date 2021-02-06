@@ -92,7 +92,7 @@ public class BottledItem extends PotionItem implements BrewableItem {
     }
 
     @Override
-    public SoundEvent getEatSound() { // Glug Glug Mayonnaise!
+    public SoundEvent getEatSound() {
         return soundEffect;
     }
 
