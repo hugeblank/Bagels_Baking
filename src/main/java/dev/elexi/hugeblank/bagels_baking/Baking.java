@@ -173,7 +173,7 @@ public class Baking implements ModInitializer {
 	public static final Item CHOCOLATE_CAKE_ITEM = new BlockItem(CHOCOLATE_CAKE, new Item.Settings().group(ItemGroup.FOOD));
 	public static final Item RED_VELVET_CAKE_ITEM = new BlockItem(RED_VELVET_CAKE, new Item.Settings().group(ItemGroup.FOOD));
 
-	// Halite and Salt
+	// Halite Blocks
 	public static final Block HALITE = new GlassBlock(FabricBlockSettings.of(Material.STONE).requiresTool().strength(1.25F, 4.2F)
 			.sounds(BlockSoundGroup.BASALT).nonOpaque().solidBlock(Baking::never).blockVision(Baking::never));
 	public static final Block HALITE_STAIR = new StairBlock(HALITE.getDefaultState(), FabricBlockSettings.copy(HALITE));
@@ -184,7 +184,6 @@ public class Baking implements ModInitializer {
 	public static final Block POLISHED_HALITE_STAIR = new StairBlock(POLISHED_HALITE.getDefaultState(), FabricBlockSettings.copy(POLISHED_HALITE));
 	public static final Block POLISHED_HALITE_SLAB = new SlabBlock(FabricBlockSettings.copy(POLISHED_HALITE));
 	public static final Block POLISHED_HALITE_WALL = new WallBlock(FabricBlockSettings.copy(POLISHED_HALITE));
-	public static final Item SALT = new Item(new Item.Settings().group(ItemGroup.MATERIALS));
 	private static final ConfiguredFeature<?, ?> HALITE_DESERT = Feature.ORE
 			.configure(new OreFeatureConfig(
 					OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
@@ -237,6 +236,7 @@ public class Baking implements ModInitializer {
 	public static RecipeSerializer<MillingRecipe> MILLING_SERIALIZER = RecipeSerializer.register(mill_rtype_id, new CuttingRecipe.Serializer(MillingRecipe::new));
 
 	// Ingredients
+	public static final Item SALT = basicIngredient();
 	public static final Item FLOUR = basicIngredient();
 	public static final Item CORN_MEAL = basicIngredient();
 	public static final Item COCOA_POWDER = basicIngredient();
@@ -261,6 +261,10 @@ public class Baking implements ModInitializer {
 	public static final Item TEA_CUP = new BasicDrink(2, 1.8f, new StatusEffectInstance(StatusEffects.SPEED, 20*25));
 	public static final Item TEA_W_CREAMER = new BasicDrink(2, 1.8f, new StatusEffectInstance(StatusEffects.SPEED, 20*30));
 	public static final Item CREAMER_CUP = new BasicDrink(CUP, 0, 0.1f);
+	public static final Item WILD_RICE_CUP = new BasicDrink(CUP, 1, 0.3f);
+	public static final Item RICE_CUP = new BasicDrink(CUP, 1, 0.3f);
+	public static final Item COOKED_WILD_RICE_CUP = new BasicDrink(CUP, 1, 0.3f);
+	public static final Item COOKED_RICE_CUP = new BasicDrink(CUP, 1, 0.3f);
 
 	// Crops - Here's to v0.3!
 	public static final Block COFFEE = new CocoaBlock(FabricBlockSettings.copy(Blocks.COCOA));
@@ -289,12 +293,13 @@ public class Baking implements ModInitializer {
 					.trackRangeChunks(4)
 					.build());
 	public static final Block RICE_PLANT = new BasicCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
-	public static final Item RICE = new BlockItem(RICE_PLANT, new Item.Settings().group(ItemGroup.MISC));
+	public static final Item WILD_RICE = new BlockItem(RICE_PLANT, new Item.Settings().group(ItemGroup.MISC));
+	public static final Item RICE = basicIngredient();
 	public static final Block CORN_STALK = new DoubleCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item CORN = basicFood(3, 2.4f);
 	public static final Item CORN_SEEDS = new BlockItem(CORN_STALK, new Item.Settings().group(ItemGroup.MISC));
 
-	// Misc - Item amt listed individually
+	// Misc
 	public static final Item BAGEL = basicFood(7, 6.5f);
 	public static final Item DONUT = basicFood(7, 7f);
 	public static final Item BROWNIE = basicFood(2, 2.6f);
@@ -457,6 +462,10 @@ public class Baking implements ModInitializer {
 		registerItem("creamy_coffee_cup", COFFEE_W_CREAMER);
 		registerItem("tea_cup", TEA_CUP);
 		registerItem("creamy_tea_cup", TEA_W_CREAMER);
+		registerItem("wild_rice_cup", WILD_RICE_CUP);
+		registerItem("rice_cup", RICE_CUP);
+		registerItem("cooked_wild_rice_cup", COOKED_WILD_RICE_CUP);
+		registerItem("cooked_rice_cup", COOKED_RICE_CUP);
 
 		// Crops
 		registerBlock("coffee", COFFEE);
@@ -476,7 +485,7 @@ public class Baking implements ModInitializer {
 		BiomeModifications.addFeature(teaTreeSelector, GenerationStep.Feature.VEGETAL_DECORATION, teaTrees);
 		registerBlock("tomato", TOMATO_PLANT, (BlockItem) TOMATO);
 		((BasicCropBlock)TOMATO_PLANT).setSeed(TOMATO);
-		registerBlock("rice", RICE_PLANT, (BlockItem) RICE);
+		registerBlock("rice", RICE_PLANT, (BlockItem) WILD_RICE);
 		((BasicCropBlock)RICE_PLANT).setSeed(RICE);
 		registerBlock("corn", CORN_STALK);
 		registerItem("corn", CORN);
