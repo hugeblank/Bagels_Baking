@@ -1,0 +1,44 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bagels_baking:cakes/carrot_cake",
+      "bagels_baking:cakes/chocolate_cake",
+      "bagels_baking:cakes/red_velvet_cake",
+      "bagels_baking:ingredients/pasta_dough",
+      "bagels_baking:ingredients/batter",
+      "bagels_baking:misc/brownie",
+      "bagels_baking:misc/yolk_and_white",
+      "bagels_baking:campfire/cooked_egg",
+      "bagels_baking:furnace/cooked_egg",
+      "bagels_baking:smoker/cooked_egg",
+      "bagels_baking:campfire/mayonnaise",
+      "bagels_baking:furnace/mayonnaise",
+      "bagels_baking:smoker/mayonnaise"
+    ]
+  },
+  "criteria": {
+    "has_egg": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:egg"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bagels_baking:on_egg"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_egg",
+      "has_the_recipe"
+    ]
+  ]
+}

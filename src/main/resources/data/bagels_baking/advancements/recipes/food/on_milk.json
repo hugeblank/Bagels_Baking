@@ -1,0 +1,40 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bagels_baking:campfire/cheese",
+      "bagels_baking:furnace/cheese",
+      "bagels_baking:smoker/cheese",
+      "bagels_baking:cups/cheese_cup",
+      "bagels_baking:cups/creamer_cup",
+      "bagels_baking:cups/chocolate_milk",
+      "bagels_baking:cups/milk_cup",
+      "bagels_baking:cups/creamy_coffee_cup",
+      "bagels_baking:cups/creamy_tea_cup"
+    ]
+  },
+  "criteria": {
+    "has_milk": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:milk_bucket"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bagels_baking:on_milk"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_milk",
+      "has_the_recipe"
+    ]
+  ]
+}

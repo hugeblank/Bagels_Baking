@@ -1,0 +1,36 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:pockets/chicken_pocket",
+            "bagels_baking:sandwiches/chicken_sandwich",
+            "bagels_baking:cheeseburgers/chicken_cheeseburger",
+            "bagels_baking:tacos/chicken_taco",
+            "bagels_baking:stews/chicken_stew"
+        ]
+    },
+    "criteria": {
+        "has_cooked_chicken": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:cooked_chicken"
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:on_cooked_chicken"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_cooked_chicken",
+            "has_the_recipe"
+        ]
+    ]
+}

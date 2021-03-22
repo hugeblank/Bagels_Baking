@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bagels_baking:ingredients/pepperoni",
+      "bagels_baking:misc/jerky"
+    ]
+  },
+  "criteria": {
+    "has_beef": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:beef"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bagels_baking:on_beef"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_beef",
+      "has_the_recipe"
+    ]
+  ]
+}

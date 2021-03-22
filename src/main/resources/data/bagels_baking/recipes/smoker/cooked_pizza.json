@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smoking",
+    "ingredient": {
+        "item": "bagels_baking:pizza"
+    },
+    "result": "bagels_baking:cooked_pizza",
+    "experience": 0.1,
+    "cookingtime": 100
+}

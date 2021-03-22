@@ -218,6 +218,8 @@ public class Baking implements ModInitializer {
 	public static final Item EGG_YOLK = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(foodComponent(1, 0.1f).snack()
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK, true);
 	public static final Item MAYONNAISE = basicJam(1, 0.5f, SoundEvents.ENTITY_WITCH_DRINK);
+	public static final Item PIZZA = basicFood(2, 2.5f);
+	public static final Item COOKED_PIZZA = basicFood(5, 7.8f);
 	public static final Item BACON = basicFood(3, 1.8f);
 	public static final Item SMOKED_BACON = basicFood(8, 13.8f);
 	public static final Item JERKY = basicFood(3, 1.8f);
@@ -244,18 +246,21 @@ public class Baking implements ModInitializer {
 	public static final Item GROUND_TEA = basicIngredient();
 	public static final Item BATTER = basicIngredient(16);
 	public static final Item BACON_BITS = basicFood(2, 5.2f);
+	public static final Item MASHED_POTATOES = basicFood(4, 4.5f);
 	public static final Item DOUGH = basicIngredient(); //  Henry - The inspiration behind the code, my rock and my brain - Redeemed
 	public static final Item PASTA_DOUGH = basicIngredient();
 	public static final Item LINGUINE = basicIngredient();
 	public static final Item MACARONI = basicIngredient();
 	public static final Item CHEESE = new BasicDrink(Items.BUCKET, 2, 3.5f);
+	public static final Item TOMATO_SAUCE = basicIngredient();
+	// hunt was here <3 - redeemed by rrricohu on 3/21/21
 
 	// Cups
 	public static final Item CUP = new CupItem(new Item.Settings().group(ItemGroup.MISC).maxCount(16));
 	public static final Item MILK_CUP = new MilkCupItem();
 	public static final Item WATER_CUP = new BasicDrink(CUP, true);
 	public static final Item CHEESE_CUP = new BasicDrink(CUP, 0, 0.3f);
-	public static final Item CHOCOLATE_MILK = new BasicDrink(CUP, 1, 1.0f);
+	public static final Item CHOCOLATE_MILK = new BasicDrink(CUP, 1, 1.0f); // frick i would like some choccy milk rn - redeemed by rrricohu on 3/21/21
 	public static final Item COFFEE_CUP = new BasicDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 20*30, 1));
 	public static final Item COFFEE_W_CREAMER = new BasicDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 20*45));
 	public static final Item TEA_CUP = new BasicDrink(2, 1.8f, new StatusEffectInstance(StatusEffects.SPEED, 20*25));
@@ -298,17 +303,16 @@ public class Baking implements ModInitializer {
 	public static final Block CORN_STALK = new DoubleCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item CORN = basicFood(3, 2.4f);
 	public static final Item CORN_SEEDS = new BlockItem(CORN_STALK, new Item.Settings().group(ItemGroup.MISC));
-
 	// Misc
 	public static final Item BAGEL = basicFood(7, 6.5f);
 	public static final Item DONUT = basicFood(7, 7f);
 	public static final Item BROWNIE = basicFood(2, 2.6f);
+	public static final Item PEPPERONI = basicFood(4, 3.1f);
 	public static final Item COOKED_EGG = basicFood(2, 3.3f);
 	public static final Item MACARONI_N_CHEESE = basicBowlFood(4, 6.5f);
 	public static final Item BACON_MACARONI_N_CHEESE = basicBowlFood(6, 11.2f);
 	public static final Item LOADED_FRIES = basicFood(3, 3.5f);
 	public static final Item LOADED_POTATO = basicFood(8, 10.2f);
-	public static final Item MASHED_POTATOES = basicFood(4, 4.5f);
 	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(11, 11.4f);
 	public static final MushroomStewItem FRUIT_SALAD = basicBowlFood(8, 4f);
 	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(new FoodComponent.Builder().hunger(14).saturationModifier(35f).alwaysEdible() // Give 1 item
@@ -416,6 +420,7 @@ public class Baking implements ModInitializer {
 		registerItem("linguine", LINGUINE);
 		registerItem("macaroni", MACARONI);
 		registerItem("cheese", CHEESE);
+		registerItem("tomato_sauce", TOMATO_SAUCE);
 
 		// Raw/Cooked Goods
 		registerItem("calamari", CALAMARI);
@@ -430,6 +435,8 @@ public class Baking implements ModInitializer {
 		registerItem("fried_chicken", FRIED_CHICKEN);
 		registerItem("french_fries", FRENCH_FRIES);
 		registerItem("cooked_french_fries", COOKED_FRENCH_FRIES);
+		registerItem("pizza", PIZZA);
+		registerItem("cooked_pizza", COOKED_PIZZA);
 		registerItem("jerky", JERKY);
 		registerItem("smoked_jerky", SMOKED_JERKY);
 		registerItem("bacon", BACON);
@@ -496,6 +503,7 @@ public class Baking implements ModInitializer {
 		registerItem("donut", DONUT);
 		registerItem("brownie", BROWNIE);
 		registerItem("cooked_egg", COOKED_EGG);
+		registerItem("pepperoni", PEPPERONI);
 		registerItem("macaroni_n_cheese", MACARONI_N_CHEESE);
 		registerItem("bacon_macaroni_n_cheese", BACON_MACARONI_N_CHEESE);
 		registerItem("loaded_fries", LOADED_FRIES);

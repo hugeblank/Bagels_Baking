@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bagels_baking:ingredients/linguine",
+      "bagels_baking:ingredients/macaroni"
+    ]
+  },
+  "criteria": {
+    "has_pasta_dough": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bagels_baking:pasta_dough"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bagels_baking:on_pasta_dough"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_pasta_dough",
+      "has_the_recipe"
+    ]
+  ]
+}

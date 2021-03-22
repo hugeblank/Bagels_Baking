@@ -1,0 +1,37 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:pockets/mutton_pocket",
+            "bagels_baking:sandwiches/mutton_sandwich",
+            "bagels_baking:cheeseburgers/mutton_cheeseburger",
+            "bagels_baking:tacos/mutton_taco",
+            "bagels_baking:stews/mutton_stew",
+            "bagels_baking:pies/shepherds_pie"
+        ]
+    },
+    "criteria": {
+        "has_cooked_mutton": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:cooked_mutton"
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:on_cooked_mutton"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_cooked_mutton",
+            "has_the_recipe"
+        ]
+    ]
+}

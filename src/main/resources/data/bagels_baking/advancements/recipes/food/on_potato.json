@@ -1,0 +1,39 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/french_fries",
+			"bagels_baking:campfire/cooked_french_fries",
+			"bagels_baking:furnace/cooked_french_fries",
+			"bagels_baking:smoker/cooked_french_fries",
+			"bagels_baking:misc/loaded_fries",
+			"bagels_baking:misc/loaded_potato",
+			"bagels_baking:misc/mashed_potatoes",
+			"bagels_baking:misc/veggie_medley"
+		]
+	},
+	"criteria": {
+		"has_potato": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "minecraft:potato"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:on_potato"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_potato",
+			"has_the_recipe"
+		]
+	]
+}

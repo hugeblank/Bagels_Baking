@@ -37,35 +37,17 @@ public class BottledItem extends PotionItem implements BrewableItem {
     }
 
     @Override
+    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+        super.finishUsing(stack, world, user);
+        return this.isFood() ? user.eatFood(world, stack) : stack;
+    }
+
+    @Override
     public int getMaxUseTime(ItemStack stack) {
         if (stack.getItem().isFood()) {
             return Objects.requireNonNull(this.getFoodComponent()).isSnack() ? 16 : 32;
         } else {
             return 0;
-        }
-    }
-
-    @Override
-    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        super.finishUsing(stack, world, user);
-        if (user instanceof ServerPlayerEntity) {
-            ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)user;
-            Criteria.CONSUME_ITEM.trigger(serverPlayerEntity, stack);
-            serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
-        }
-
-        if (stack.isEmpty()) {
-            return new ItemStack(Items.GLASS_BOTTLE);
-        } else {
-            if (user instanceof PlayerEntity && !((PlayerEntity)user).abilities.creativeMode) {
-                ItemStack itemStack = new ItemStack(Items.GLASS_BOTTLE);
-                PlayerEntity playerEntity = (PlayerEntity)user;
-                if (!playerEntity.inventory.insertStack(itemStack)) {
-                    playerEntity.dropItem(itemStack, false);
-                }
-            }
-
-            return stack;
         }
     }
 

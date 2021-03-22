@@ -1,0 +1,32 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/midas_salad"
+		]
+	},
+	"criteria": {
+		"has_golden_apple": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "minecraft:golden_apple"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:on_golden_apple"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_golden_apple",
+			"has_the_recipe"
+		]
+	]
+}

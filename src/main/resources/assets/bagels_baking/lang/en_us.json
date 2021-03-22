@@ -123,5 +123,12 @@
   "item.bagels_baking.creamer_cup": "Cup of Creamer",
   "item.bagels_baking.ground_tea": "Ground Tea Leaves",
   "item.bagels_baking.tea_cup": "Cup of Tea",
-  "item.bagels_baking.creamy_tea_cup": "Cup of Tea with Creamer"
+  "item.bagels_baking.creamy_tea_cup": "Cup of Tea with Creamer",
+  "item.bagels_baking.pizza": "Uncooked Pizza Slice",
+  "item.bagels_baking.cooked_pizza": "Cooked Pizza Slice",
+  "item.bagels_baking.rice_cup": "Cup of Rice",
+  "item.bagels_baking.wild_rice_cup": "Cup of Wild Rice",
+  "item.bagels_baking.cooked_rice_cup": "Steamed Rice",
+  "item.bagels_baking.cooked_wild_rice_cup": "Steamed Wild Rice",
+  "item.bagels_baking.pepperoni": "Pepperoni"
 }
