@@ -130,5 +130,13 @@
   "item.bagels_baking.wild_rice_cup": "Cup of Wild Rice",
   "item.bagels_baking.cooked_rice_cup": "Steamed Rice",
   "item.bagels_baking.cooked_wild_rice_cup": "Steamed Wild Rice",
-  "item.bagels_baking.pepperoni": "Pepperoni"
+  "item.bagels_baking.pepperoni": "Pepperoni",
+  "item.bagels_baking.sugar_water": "Sugar Water",
+  "item.bagels_baking.club_soda": "Club Soda",
+  "item.bagels_baking.root_beer": "Root Beer",
+  "item.bagels_baking.cola": "Cola",
+  "item.bagels_baking.fruity_soda": "Fruity Soda",
+  "item.bagels_baking.mountain_fountain": "Mountain Fountain",
+  "item.bagels_baking.cactus_chiller": "Cactus Chiller",
+  "item.bagels_baking.grape_soda": "Grape Soda"
 }

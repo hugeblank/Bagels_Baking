@@ -271,6 +271,18 @@ public class Baking implements ModInitializer {
 	public static final Item COOKED_WILD_RICE_CUP = new BasicDrink(CUP, 1, 0.3f);
 	public static final Item COOKED_RICE_CUP = new BasicDrink(CUP, 1, 0.3f);
 
+	// Sodie Pop
+	public static final Item SUGAR_WATER = new BasicDrink(CUP, true);
+	public static final Item CLUB_SODA = new BasicDrink(CUP, 1, 1f, true); // coal
+	public static final Item ROOT_BEER = new BasicDrink(CUP, 2, 1.8f); // beetUwUoot
+	public static final Item COLA = new BasicDrink(CUP, 2, 1.8f); // cocoa beans
+	public static final Item FRUITY_SODA = new BasicDrink(CUP, 2, 1.8f); // wild berries
+	public static final Item MOUNTAIN_FOUNTAIN = new BasicDrink(CUP, 2, 1.8f); // melon
+	public static final Item CACTUS_CHILLER = new BasicDrink(CUP, 2, 1.8f); // cactus
+	public static final Item GRAPE_SODA = new BasicDrink(CUP, 2, 1.8f); // chorus fruit
+
+
+
 	// Crops - Here's to v0.3!
 	public static final Block COFFEE = new CocoaBlock(FabricBlockSettings.copy(Blocks.COCOA));
 	public static final BlockItem COFFEE_BEANS = new BlockItem(COFFEE, new Item.Settings().group(ItemGroup.MATERIALS));
@@ -473,6 +485,16 @@ public class Baking implements ModInitializer {
 		registerItem("rice_cup", RICE_CUP);
 		registerItem("cooked_wild_rice_cup", COOKED_WILD_RICE_CUP);
 		registerItem("cooked_rice_cup", COOKED_RICE_CUP);
+
+		// Sodie Pop
+		registerItem("sugar_water", SUGAR_WATER);
+		registerItem("club_soda", CLUB_SODA);
+		registerItem("root_beer", ROOT_BEER);
+		registerItem("cola", COLA);
+		registerItem("fruity_soda", FRUITY_SODA);
+		registerItem("mountain_fountain", MOUNTAIN_FOUNTAIN);
+		registerItem("cactus_chiller", CACTUS_CHILLER);
+		registerItem("grape_soda", GRAPE_SODA);
 
 		// Crops
 		registerBlock("coffee", COFFEE);

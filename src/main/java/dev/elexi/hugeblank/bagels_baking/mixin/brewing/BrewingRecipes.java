@@ -27,6 +27,14 @@ public class BrewingRecipes {
         recipe(Baking.EGG_WHITES, Items.SUGAR, Baking.MERINGUE);
         recipe(Baking.WATER_CUP, Baking.GROUND_COFFEE, Baking.COFFEE_CUP);
         recipe(Baking.WATER_CUP, Baking.GROUND_TEA, Baking.TEA_CUP);
+        recipe(Baking.WATER_CUP, Items.SUGAR, Baking.SUGAR_WATER);
+        recipe(Baking.SUGAR_WATER, Items.COAL, Baking.CLUB_SODA);
+        recipe(Baking.CLUB_SODA, Items.BEETROOT, Baking.ROOT_BEER);
+        recipe(Baking.CLUB_SODA, Items.COCOA_BEANS, Baking.COLA);
+        recipe(Baking.CLUB_SODA, Items.SWEET_BERRIES, Baking.FRUITY_SODA);
+        recipe(Baking.CLUB_SODA, Items.MELON_SLICE, Baking.MOUNTAIN_FOUNTAIN);
+        recipe(Baking.CLUB_SODA, Items.CACTUS, Baking.CACTUS_CHILLER);
+        recipe(Baking.CLUB_SODA, Items.POPPED_CHORUS_FRUIT, Baking.GRAPE_SODA);
 
         // Items
         item(Baking.EGG_WHITES);
@@ -34,6 +42,14 @@ public class BrewingRecipes {
         item(Baking.WATER_CUP);
         item(Baking.COFFEE_CUP);
         item(Baking.TEA_CUP);
+        item(Baking.SUGAR_WATER);
+        item(Baking.CLUB_SODA);
+        item(Baking.ROOT_BEER);
+        item(Baking.COLA);
+        item(Baking.FRUITY_SODA);
+        item(Baking.MOUNTAIN_FOUNTAIN);
+        item(Baking.CACTUS_CHILLER);
+        item(Baking.GRAPE_SODA);
     }
 
 }

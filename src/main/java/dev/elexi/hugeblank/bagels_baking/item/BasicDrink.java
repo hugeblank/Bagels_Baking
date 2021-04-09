@@ -64,6 +64,18 @@ public class BasicDrink extends PotionItem implements BrewableItem {
         this.brewable = false;
     }
 
+    public BasicDrink(Item type, int hunger, float saturation, boolean brewable) {
+        super(genSettings(type)
+                .food(new FoodComponent.Builder()
+                        .hunger(hunger)
+                        .saturationModifier(saturation)
+                        .build()
+                )
+        );
+        bucketDrink(type);
+        this.brewable = brewable;
+    }
+
     // Coffee-Like drinks
     public BasicDrink(int hunger, float saturation, StatusEffectInstance effect) {
         super(genSettings(Baking.CUP)
