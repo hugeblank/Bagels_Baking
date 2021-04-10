@@ -1,0 +1,11 @@
+{
+    "replace": false,
+    "values": [
+        "bagels_baking:steak_taco",
+        "bagels_baking:pork_taco",
+        "bagels_baking:chicken_taco",
+        "bagels_baking:mutton_taco",
+        "bagels_baking:fish_taco",
+        "bagels_baking:rabbit_taco"
+    ]
+  }

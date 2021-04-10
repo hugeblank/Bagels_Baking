@@ -254,6 +254,17 @@ public class Baking implements ModInitializer {
 	public static final Item CHEESE = new BasicDrink(Items.BUCKET, 2, 3.5f);
 	public static final Item TOMATO_SAUCE = basicIngredient();
 	// hunt was here <3 - redeemed by rrricohu on 3/21/21
+	// Pedrospeeder - redeemed on 3/22/21
+	// <コ:彡 LOOK FELLOW PROGRAMMER I'M CATHULO - redeemed by Pedrospeeder on 3/22/21
+	/*
+	fatmanchummy
+	fatmanchummy
+	fatmanchummy
+	fatmanchummy
+	fatmanchummy
+	fatmanchummy
+	redeemed on 3/22/21
+	*/
 
 	// Cups
 	public static final Item CUP = new CupItem(new Item.Settings().group(ItemGroup.MISC).maxCount(16));
@@ -268,8 +279,8 @@ public class Baking implements ModInitializer {
 	public static final Item CREAMER_CUP = new BasicDrink(CUP, 0, 0.1f);
 	public static final Item WILD_RICE_CUP = new BasicDrink(CUP, 1, 0.3f);
 	public static final Item RICE_CUP = new BasicDrink(CUP, 1, 0.3f);
-	public static final Item COOKED_WILD_RICE_CUP = new BasicDrink(CUP, 1, 0.3f);
-	public static final Item COOKED_RICE_CUP = new BasicDrink(CUP, 1, 0.3f);
+	public static final Item COOKED_WILD_RICE_CUP = new BasicDrink(CUP, 2, 0.7f);
+	public static final Item COOKED_RICE_CUP = new BasicDrink(CUP, 2, 0.7f);
 
 	// Sodie Pop
 	public static final Item SUGAR_WATER = new BasicDrink(CUP, true);
@@ -291,7 +302,7 @@ public class Baking implements ModInitializer {
 	public static final Item TEA_LEAVES = basicIngredient();
 	public static final Item DRIED_TEA_LEAVES = basicIngredient();
 	public static final Block DRIED_TEA_BLOCK = new Block(FabricBlockSettings.copy(Blocks.DRIED_KELP_BLOCK));
-	public static final DamageSource TEA_TREE_DMGSRC = new DamageSource("teaTree");
+	public static final DamageSource TEA_TREE_DMGSRC = new DamageSource("tea_tree");
 	private static final ConfiguredFeature<?, ?> TEA_TREES = Feature.RANDOM_PATCH
 			.configure(new RandomPatchFeatureConfig.Builder(
 					new SimpleBlockStateProvider(TEA.getDefaultState().with(SweetBerryBushBlock.AGE, 3)), SimpleBlockPlacer.INSTANCE)
@@ -315,6 +326,9 @@ public class Baking implements ModInitializer {
 	public static final Block CORN_STALK = new DoubleCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item CORN = basicFood(3, 2.4f);
 	public static final Item CORN_SEEDS = new BlockItem(CORN_STALK, new Item.Settings().group(ItemGroup.MISC));
+	// deathypooh - requested on 3/22/21
+	// solcatowo - requested on 3/22/21
+
 	// Misc
 	public static final Item BAGEL = basicFood(7, 6.5f);
 	public static final Item DONUT = basicFood(7, 7f);
@@ -323,6 +337,8 @@ public class Baking implements ModInitializer {
 	public static final Item COOKED_EGG = basicFood(2, 3.3f);
 	public static final Item MACARONI_N_CHEESE = basicBowlFood(4, 6.5f);
 	public static final Item BACON_MACARONI_N_CHEESE = basicBowlFood(6, 11.2f);
+	public static final Item SALMON_SUSHI = basicFood(4, 6.5f);
+	public static final Item SQUID_SUSHI = basicFood(4, 4.7f);
 	public static final Item LOADED_FRIES = basicFood(3, 3.5f);
 	public static final Item LOADED_POTATO = basicFood(8, 10.2f);
 	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(11, 11.4f);
@@ -336,6 +352,9 @@ public class Baking implements ModInitializer {
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*30), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.POISON, 20*90, 3), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 20*30), 1f).build()));
+
+	// Stats
+	public static final Identifier DAY_OF_WEEK = new Identifier(ID, "day_of_week");
 
 	@Override
 	public void onInitialize() {
@@ -514,11 +533,13 @@ public class Baking implements ModInitializer {
 		BiomeModifications.addFeature(teaTreeSelector, GenerationStep.Feature.VEGETAL_DECORATION, teaTrees);
 		registerBlock("tomato", TOMATO_PLANT, (BlockItem) TOMATO);
 		((BasicCropBlock)TOMATO_PLANT).setSeed(TOMATO);
-		registerBlock("rice", RICE_PLANT, (BlockItem) WILD_RICE);
-		((BasicCropBlock)RICE_PLANT).setSeed(RICE);
+		registerBlock("wild_rice", RICE_PLANT, (BlockItem) WILD_RICE);
+		((BasicCropBlock)RICE_PLANT).setSeed(WILD_RICE);
+		registerItem("rice", RICE);
 		registerBlock("corn", CORN_STALK);
 		registerItem("corn", CORN);
 		registerItem("corn_seeds", CORN_SEEDS);
+		// dreamwastaken my beloved <3 - redeemed by KoritsiAlogo on 3/22/21
 
 		// Misc
 		registerItem("bagel", BAGEL);
@@ -526,6 +547,8 @@ public class Baking implements ModInitializer {
 		registerItem("brownie", BROWNIE);
 		registerItem("cooked_egg", COOKED_EGG);
 		registerItem("pepperoni", PEPPERONI);
+		registerItem("salmon_sushi", SALMON_SUSHI);
+		registerItem("squid_sushi", SQUID_SUSHI);
 		registerItem("macaroni_n_cheese", MACARONI_N_CHEESE);
 		registerItem("bacon_macaroni_n_cheese", BACON_MACARONI_N_CHEESE);
 		registerItem("loaded_fries", LOADED_FRIES);
@@ -536,5 +559,7 @@ public class Baking implements ModInitializer {
 		registerItem("midas_salad", MIDAS_SALAD);
 		registerItem("disgusting_dish", DISGUSTING_DISH);
 
+		// Stats
+		Registry.register(Registry.CUSTOM_STAT, "day_of_week", DAY_OF_WEEK);
 	}
 }

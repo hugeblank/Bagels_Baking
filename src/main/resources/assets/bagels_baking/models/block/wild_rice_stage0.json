@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:block/crop",
     "textures": {
-      "crop": "bagels_baking:block/rice_stage3"
+      "crop": "bagels_baking:block/wild_rice_stage0"
     }
   }

@@ -33,6 +33,7 @@ public class ClientBaking implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.TEA, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.TOMATO_PLANT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.CORN_STALK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.RICE_PLANT, RenderLayer.getCutout());
 
         EntityRendererRegistry.INSTANCE.register(Baking.TOMATO_THROWABLE, (dispatcher, context) ->
                 new FlyingItemEntityRenderer(dispatcher, context.getItemRenderer()));

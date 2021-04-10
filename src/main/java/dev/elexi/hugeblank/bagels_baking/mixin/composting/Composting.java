@@ -23,7 +23,7 @@ public abstract class Composting {
     }
 
     private static float f = 0.3F;
-    //private static float g = 0.5F;
+    private static float g = 0.5F;
     private static float h = 0.65F;
     private static float i = 0.85F;
     private static float j = 1.0F;
@@ -55,11 +55,22 @@ public abstract class Composting {
         registerCompostableItem(h, Baking.LINGUINE);
         registerCompostableItem(h, Baking.MACARONI);
         registerCompostableItem(h, Baking.MASHED_POTATOES);
+        registerCompostableItem(h, Baking.TOMATO_SAUCE);
 
         // Raw/Cooked Goods
 
         registerCompostableItem(f, Baking.FRENCH_FRIES);
         registerCompostableItem(i, Baking.COOKED_FRENCH_FRIES);
+
+        // Crops
+
+        registerCompostableItem(f, Baking.TOMATO);
+        registerCompostableItem(f, Baking.CORN_SEEDS);
+        registerCompostableItem(g, Baking.CORN);
+        registerCompostableItem(f, Baking.WILD_RICE);
+        registerCompostableItem(f, Baking.COFFEE_BEANS);
+        registerCompostableItem(f, Baking.TEA_LEAVES);
+        registerCompostableItem(f, Baking.TEA_SEEDS);
 
         // Misc
 

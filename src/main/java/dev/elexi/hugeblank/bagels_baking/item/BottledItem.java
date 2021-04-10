@@ -5,11 +5,13 @@ import net.fabricmc.api.Environment;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.PotionItem;
+import net.minecraft.potion.PotionUtil;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.stat.Stats;
@@ -18,6 +20,7 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -38,7 +41,20 @@ public class BottledItem extends PotionItem implements BrewableItem {
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        super.finishUsing(stack, world, user);
+        PlayerEntity playerEntity = user instanceof PlayerEntity ? (PlayerEntity)user : null;
+        if (playerEntity instanceof ServerPlayerEntity) {
+            Criteria.CONSUME_ITEM.trigger((ServerPlayerEntity)playerEntity, stack);
+        }
+
+        if (playerEntity == null || !playerEntity.abilities.creativeMode) {
+            if (stack.isEmpty()) {
+                return new ItemStack(Items.GLASS_BOTTLE);
+            }
+
+            if (playerEntity != null) {
+                playerEntity.inventory.insertStack(new ItemStack(Items.GLASS_BOTTLE));
+            }
+        }
         return this.isFood() ? user.eatFood(world, stack) : stack;
     }
 

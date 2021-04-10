@@ -13,10 +13,15 @@
     "crafting.MultiCraft",
     "entity.ChickenSeeds",
     "entity.LivingEntityTeaDamage",
+    "entity.PlayerTick",
+    "entity.villager.FarmerVillagerAITask",
+    "entity.villager.FarmerVillagerAIWorkTask",
+    "entity.villager.VillagerEntityFarming",
     "stew.BasicStewItem",
     "stew.IStewStackIncrease",
     "stew.StewStackIncrease",
-    "world.CoffeeBeansTreeDecorator"
+    "world.CoffeeBeansTreeDecorator",
+    "world.CropProcessorList"
   ],
   "client": [
   ],

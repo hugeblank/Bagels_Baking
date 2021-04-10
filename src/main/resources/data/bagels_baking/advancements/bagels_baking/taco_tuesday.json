@@ -1,0 +1,50 @@
+{
+    "parent": "bagels_baking:bagels_baking/root",
+    "display": {
+        "icon": {
+            "item": "bagels_baking:rabbit_taco"
+        },
+        "title": {
+            "translate": "advancements.bagels_baking.taco_tuesday.title"
+        },
+        "description": {
+            "translate": "advancements.bagels_baking.taco_tuesday.description"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "taco": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "tag": "bagels_baking:tacos"
+                },
+                "player": [
+                    {
+                        "condition": "minecraft:entity_properties",
+                        "entity": "this",
+                        "predicate": {
+                            "player": {
+                                "stats": [
+                                    {
+                                        "type": "minecraft:custom",
+                                        "stat": "day_of_week",
+                                        "value": 3
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "taco"
+        ]
+    ]
+}

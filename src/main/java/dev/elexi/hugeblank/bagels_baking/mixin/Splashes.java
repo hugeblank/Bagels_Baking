@@ -34,7 +34,7 @@ public class Splashes {
         splashTexts.add("0 Rotten Tomatoes!"); // Honoring tomatoes
         splashTexts.add("Bricks and Halite!"); // Honoring Hunter's Nieces
         splashTexts.add("Better than Overwatch?"); // Stating a truth
-        splashTexts.add("i take a bite :)"); // Honoring a meme
+        splashTexts.add("i take a bite :)"); // Honoring doordash drivers
         splashTexts.add("Cups^2!"); // Honoring the cup duplication glitch
         if (field_18934 != null && RANDOM.nextFloat() < 0.25) {
             switch (field_18934.getUsername()) { // Surprises for my friends :)
@@ -43,6 +43,9 @@ public class Splashes {
                     return;
                 case "hugeblank":
                     cir.setReturnValue("Subscribe to twitch.tv/hugeblank");
+                    return;
+                case "roger109z":
+                    cir.setReturnValue("poger! :)");
                     return;
                 case "KoriA":
                     cir.setReturnValue("Korea? No, KoriA.");
@@ -53,18 +56,11 @@ public class Splashes {
                 case "NotEnoughStar":
                     cir.setReturnValue("Obamaphant moment");
                     return;
-                case "FakeHenryF":
-                    cir.setReturnValue("Achievement unlocked: GOD MOMENT.");
-                    return;
-                case "zzaagg":
-                    cir.setReturnValue("Minecraft saying trans rights");
-                    return;
                 case "Bu_dum_chhh":
                     cir.setReturnValue("Literally the best smash player, no cap.");
                     return;
                 case "Pedrospeeder":
                     cir.setReturnValue("Next year is Mazdas year, swear.");
-                    return;
             }
         }
     }
