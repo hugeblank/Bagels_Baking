@@ -2,7 +2,7 @@
 	"parent": "minecraft:recipes/root",
 	"rewards": {
 		"recipes": [
-			"bagels_baking:ingredients/corn_meal",
+			"bagels_baking:milling/corn_meal",
 			"bagels_baking:misc/corn_seeds"
 		]
 	},

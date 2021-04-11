@@ -2,8 +2,8 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "bagels_baking:ingredients/linguine",
-      "bagels_baking:ingredients/macaroni"
+      "bagels_baking:milling/linguine",
+      "bagels_baking:milling/macaroni"
     ]
   },
   "criteria": {

@@ -7,7 +7,8 @@
             "bagels_baking:cheeseburgers/mutton_cheeseburger",
             "bagels_baking:tacos/mutton_taco",
             "bagels_baking:stews/mutton_stew",
-            "bagels_baking:pies/shepherds_pie"
+            "bagels_baking:pies/shepherds_pie",
+			"bagels_baking:meals/mutton_meal"
         ]
     },
     "criteria": {

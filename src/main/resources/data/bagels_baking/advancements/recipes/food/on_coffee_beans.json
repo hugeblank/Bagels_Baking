@@ -2,7 +2,7 @@
 	"parent": "minecraft:recipes/root",
 	"rewards": {
 		"recipes": [
-			"bagels_baking:ingredients/ground_coffee"
+			"bagels_baking:milling/ground_coffee"
 		]
 	},
 	"criteria": {

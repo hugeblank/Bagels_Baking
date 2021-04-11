@@ -5,8 +5,8 @@
 			"bagels_baking:campfire/dried_tea_leaves",
 			"bagels_baking:furnace/dried_tea_leaves",
 			"bagels_baking:smoker/dried_tea_leaves",
-			"bagels_baking:ingredients/dried_tea_leaves",
-			"bagels_baking:ingredients/ground_tea",
+			"bagels_baking:misc/dried_tea_leaves",
+			"bagels_baking:milling/ground_tea",
 			"bagels_baking:misc/dried_tea_block"
 		]
 	},

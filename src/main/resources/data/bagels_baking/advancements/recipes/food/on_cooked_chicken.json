@@ -6,7 +6,8 @@
             "bagels_baking:sandwiches/chicken_sandwich",
             "bagels_baking:cheeseburgers/chicken_cheeseburger",
             "bagels_baking:tacos/chicken_taco",
-            "bagels_baking:stews/chicken_stew"
+            "bagels_baking:stews/chicken_stew",
+			"bagels_baking:meals/chicken_meal"
         ]
     },
     "criteria": {

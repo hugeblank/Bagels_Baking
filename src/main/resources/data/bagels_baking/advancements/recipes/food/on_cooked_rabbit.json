@@ -5,7 +5,8 @@
       "bagels_baking:pockets/rabbit_pocket",
       "bagels_baking:sandwiches/rabbit_sandwich",
       "bagels_baking:cheeseburgers/rabbit_cheeseburger",
-      "bagels_baking:tacos/rabbit_taco"
+      "bagels_baking:tacos/rabbit_taco",
+			"bagels_baking:meals/rabbit_meal"
     ]
   },
   "criteria": {

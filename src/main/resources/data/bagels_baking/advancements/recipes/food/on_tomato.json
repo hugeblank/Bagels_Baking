@@ -2,7 +2,7 @@
 	"parent": "minecraft:recipes/root",
 	"rewards": {
 		"recipes": [
-			"bagels_baking:ingredients/tomato_sauce"
+			"bagels_baking:milling/tomato_sauce"
 		]
 	},
 	"criteria": {

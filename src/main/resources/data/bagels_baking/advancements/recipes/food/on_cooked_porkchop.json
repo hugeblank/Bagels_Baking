@@ -6,7 +6,8 @@
             "bagels_baking:sandwiches/pork_sandwich",
             "bagels_baking:cheeseburgers/pork_cheeseburger",
             "bagels_baking:tacos/pork_taco",
-            "bagels_baking:stews/pork_stew"
+            "bagels_baking:stews/pork_stew",
+			"bagels_baking:meals/pork_meal"
         ]
     },
     "criteria": {

@@ -253,6 +253,9 @@ public class Baking implements ModInitializer {
 	public static final Item MACARONI = basicIngredient();
 	public static final Item CHEESE = new BasicDrink(Items.BUCKET, 2, 3.5f);
 	public static final Item TOMATO_SAUCE = basicIngredient();
+	public static final Item WHEAT_CEREAL = basicIngredient();
+	public static final Item CORN_CEREAL = basicIngredient();
+	public static final Item RICE_CEREAL = basicIngredient();
 	// hunt was here <3 - redeemed by rrricohu on 3/21/21
 	// Pedrospeeder - redeemed on 3/22/21
 	// <コ:彡 LOOK FELLOW PROGRAMMER I'M CATHULO - redeemed by Pedrospeeder on 3/22/21
@@ -360,6 +363,9 @@ public class Baking implements ModInitializer {
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*30), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.POISON, 20*90, 3), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 20*30), 1f).build()));
+	public static final MushroomStewItem WHEAT_CEREAL_BOWL = basicBowlFood(2, 1.5f);
+	public static final MushroomStewItem CORN_CEREAL_BOWL = basicBowlFood(2, 1.7f);
+	public static final MushroomStewItem RICE_CEREAL_BOWL = basicBowlFood(2, 1.3f);
 
 	// Stats
 	public static final Identifier DAY_OF_WEEK = new Identifier(ID, "day_of_week");
@@ -460,6 +466,9 @@ public class Baking implements ModInitializer {
 		registerItem("macaroni", MACARONI);
 		registerItem("cheese", CHEESE);
 		registerItem("tomato_sauce", TOMATO_SAUCE);
+		registerItem("wheat_cereal", WHEAT_CEREAL);
+		registerItem("corn_cereal", CORN_CEREAL);
+		registerItem("rice_cereal", RICE_CEREAL);
 
 		// Raw/Cooked Goods
 		registerItem("calamari", CALAMARI);
@@ -576,6 +585,10 @@ public class Baking implements ModInitializer {
 		registerItem("fruit_salad", FRUIT_SALAD);
 		registerItem("midas_salad", MIDAS_SALAD);
 		registerItem("disgusting_dish", DISGUSTING_DISH);
+		registerItem("wheat_cereal_bowl", WHEAT_CEREAL_BOWL);
+		registerItem("corn_cereal_bowl", CORN_CEREAL_BOWL);
+		registerItem("rice_cereal_bowl", RICE_CEREAL_BOWL);
+
 
 		// Stats
 		Registry.register(Registry.CUSTOM_STAT, "day_of_week", DAY_OF_WEEK);

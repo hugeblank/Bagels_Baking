@@ -2,13 +2,14 @@
 	"parent": "minecraft:recipes/root",
 	"rewards": {
 		"recipes": [
-			"bagels_baking:ingredients/flour",
-			"bagels_baking:ingredients/dough",
+			"bagels_baking:milling/flour",
+			"bagels_baking:misc/dough",
 			"bagels_baking:campfire/bread_from_dough",
 			"bagels_baking:furnace/bread_from_dough",
 			"bagels_baking:smoker/bread_from_dough",
 			"bagels_baking:misc/bagel",
-			"bagels_baking:misc/donut"
+			"bagels_baking:misc/donut",
+			"bagels_baking:milling/wheat_cereal"
 		]
 	},
 	"criteria": {
