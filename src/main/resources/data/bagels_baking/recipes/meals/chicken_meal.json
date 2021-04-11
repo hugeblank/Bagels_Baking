@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:plate"
+        },
+        {
+            "item": "minecraft:bread"
+        },
+        {
+            "item": "bagels_baking:cooked_chicken_nuggets"
+        },
+        {
+            "item": "bagels_baking:cheese_cup"
+        },
+        {
+            "item": "bagels_baking:linguine"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:chicken_meal",
+        "count": 1
+    }
+}

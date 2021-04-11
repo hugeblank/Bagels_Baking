@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "   ",
+        "   ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:clay_ball"
+        }
+    },
+    "result": {
+        "item": "bagels_baking:unfired_plate",
+        "count": 3
+    }
+}

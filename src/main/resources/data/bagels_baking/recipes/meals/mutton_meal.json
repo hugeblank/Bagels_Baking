@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:plate"
+        },
+        {
+            "item": "minecraft:cooked_mutton"
+        },
+        {
+            "item": "bagels_baking:berry_jam"
+        },
+        {
+            "item": "bagels_baking:salt"
+        },
+        {
+            "item": "bagels_baking:mashed_potatoes"
+        },
+        {
+            "item": "bagels_baking:cooked_corn"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:mutton_meal",
+        "count": 1
+    }
+}

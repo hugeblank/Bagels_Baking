@@ -36,6 +36,8 @@ public class Splashes {
         splashTexts.add("Better than Overwatch?"); // Stating a truth
         splashTexts.add("i take a bite :)"); // Honoring doordash drivers
         splashTexts.add("Cups^2!"); // Honoring the cup duplication glitch
+        splashTexts.add("Now Catering!");
+        splashTexts.add("A la minecarte!");
         if (field_18934 != null && RANDOM.nextFloat() < 0.25) {
             switch (field_18934.getUsername()) { // Surprises for my friends :)
                 case "rwr":

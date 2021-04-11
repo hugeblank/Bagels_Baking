@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:plate"
+        },
+        {
+            "item": "minecraft:cooked_beef"
+        },
+        {
+            "item": "bagels_baking:mashed_potatoes"
+        },
+        {
+            "item": "bagels_baking:cooked_corn"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:steak_meal",
+        "count": 1
+    }
+}

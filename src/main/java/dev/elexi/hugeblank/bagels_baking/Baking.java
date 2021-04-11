@@ -282,6 +282,15 @@ public class Baking implements ModInitializer {
 	public static final Item COOKED_WILD_RICE_CUP = new BasicDrink(CUP, 2, 0.7f);
 	public static final Item COOKED_RICE_CUP = new BasicDrink(CUP, 2, 0.7f);
 
+	// Plates & Meals
+	public static final Item UNFIRED_PLATE = basicIngredient();
+	public static final Item PLATE = basicIngredient();
+	public static final Item STEAK_MEAL = new PlatedItem(17, 21.1f);
+	public static final Item PORK_MEAL = new PlatedItem(23, 22.3f);
+	public static final Item CHICKEN_MEAL = new PlatedItem(12, 12.5f);
+	public static final Item MUTTON_MEAL = new PlatedItem(17, 18.3f);
+	public static final Item RABBIT_MEAL = new PlatedItem(22, 28.1f);
+
 	// Sodie Pop
 	public static final Item SUGAR_WATER = new BasicDrink(CUP, true);
 	public static final Item CLUB_SODA = new BasicDrink(CUP, 1, 1f, true); // coal
@@ -291,8 +300,6 @@ public class Baking implements ModInitializer {
 	public static final Item MOUNTAIN_FOUNTAIN = new BasicDrink(CUP, 2, 1.8f); // melon
 	public static final Item CACTUS_CHILLER = new BasicDrink(CUP, 2, 1.8f); // cactus
 	public static final Item GRAPE_SODA = new BasicDrink(CUP, 2, 1.8f); // chorus fruit
-
-
 
 	// Crops - Here's to v0.3!
 	public static final Block COFFEE = new CocoaBlock(FabricBlockSettings.copy(Blocks.COCOA));
@@ -325,6 +332,7 @@ public class Baking implements ModInitializer {
 	public static final Item RICE = basicIngredient();
 	public static final Block CORN_STALK = new DoubleCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item CORN = basicFood(3, 2.4f);
+	public static final Item COOKED_CORN = basicFood(5, 3.8f);
 	public static final Item CORN_SEEDS = new BlockItem(CORN_STALK, new Item.Settings().group(ItemGroup.MISC));
 	// deathypooh - requested on 3/22/21
 	// solcatowo - requested on 3/22/21
@@ -505,6 +513,15 @@ public class Baking implements ModInitializer {
 		registerItem("cooked_wild_rice_cup", COOKED_WILD_RICE_CUP);
 		registerItem("cooked_rice_cup", COOKED_RICE_CUP);
 
+		// Plates & Meals
+		registerItem("unfired_plate", UNFIRED_PLATE);
+		registerItem("plate", PLATE);
+		registerItem("steak_meal", STEAK_MEAL);
+		registerItem("pork_meal", PORK_MEAL);
+		registerItem("chicken_meal", CHICKEN_MEAL);
+		registerItem("mutton_meal", MUTTON_MEAL);
+		registerItem("rabbit_meal", RABBIT_MEAL);
+
 		// Sodie Pop
 		registerItem("sugar_water", SUGAR_WATER);
 		registerItem("club_soda", CLUB_SODA);
@@ -538,6 +555,7 @@ public class Baking implements ModInitializer {
 		registerItem("rice", RICE);
 		registerBlock("corn", CORN_STALK);
 		registerItem("corn", CORN);
+		registerItem("cooked_corn", COOKED_CORN);
 		registerItem("corn_seeds", CORN_SEEDS);
 		// dreamwastaken my beloved <3 - redeemed by KoritsiAlogo on 3/22/21
 
