@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/generated",
     "textures": {
-      "layer0": "bagels_baking:item/wild_rice_cup"
+      "layer0": "bagels_baking:item/cooked_rice_ball"
     }
   }

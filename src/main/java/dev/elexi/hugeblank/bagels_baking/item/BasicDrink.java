@@ -99,6 +99,8 @@ public class BasicDrink extends PotionItem implements BrewableItem {
 
         if (this.isFood()) {
             user.eatFood(world, stack);
+        } else {
+            stack.decrement(1);
         }
 
         if (stack.isEmpty()) {

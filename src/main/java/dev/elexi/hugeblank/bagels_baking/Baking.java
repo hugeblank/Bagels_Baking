@@ -226,6 +226,10 @@ public class Baking implements ModInitializer {
 	public static final Item SMOKED_JERKY = basicFood(8, 13.8f);
 	public static final Item CUT_SALMON = basicFood(2, 0.4f);
 	public static final Item SMOKED_SALMON = basicFood(6, 10.5f);
+	public static final Item WILD_RICE_BALL = basicFood(1, 0.3f);
+	public static final Item RICE_BALL = basicFood(1, 0.3f);
+	public static final Item COOKED_WILD_RICE_BALL = basicFood(2, 0.7f);
+	public static final Item COOKED_RICE_BALL = basicFood(2, 0.7f);
 
 	// Mill
 	public static final Block MILL = new Mill(FabricBlockSettings.copy(Blocks.STONECUTTER));
@@ -275,15 +279,11 @@ public class Baking implements ModInitializer {
 	public static final Item WATER_CUP = new BasicDrink(CUP, true);
 	public static final Item CHEESE_CUP = new BasicDrink(CUP, 0, 0.3f);
 	public static final Item CHOCOLATE_MILK = new BasicDrink(CUP, 1, 1.0f); // frick i would like some choccy milk rn - redeemed by rrricohu on 3/21/21
+	public static final Item CREAMER_CUP = new BasicDrink(CUP, 0, 0.1f);
 	public static final Item COFFEE_CUP = new BasicDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 20*30, 1));
 	public static final Item COFFEE_W_CREAMER = new BasicDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 20*45));
 	public static final Item TEA_CUP = new BasicDrink(2, 1.8f, new StatusEffectInstance(StatusEffects.SPEED, 20*25));
 	public static final Item TEA_W_CREAMER = new BasicDrink(2, 1.8f, new StatusEffectInstance(StatusEffects.SPEED, 20*30));
-	public static final Item CREAMER_CUP = new BasicDrink(CUP, 0, 0.1f);
-	public static final Item WILD_RICE_CUP = new BasicDrink(CUP, 1, 0.3f);
-	public static final Item RICE_CUP = new BasicDrink(CUP, 1, 0.3f);
-	public static final Item COOKED_WILD_RICE_CUP = new BasicDrink(CUP, 2, 0.7f);
-	public static final Item COOKED_RICE_CUP = new BasicDrink(CUP, 2, 0.7f);
 
 	// Plates & Meals
 	public static final Item UNFIRED_PLATE = basicIngredient();
@@ -495,6 +495,10 @@ public class Baking implements ModInitializer {
 		registerItem("mayonnaise", MAYONNAISE);
 		registerItem("egg_whites", EGG_WHITES);
 		registerItem("meringue", MERINGUE);
+		registerItem("wild_rice_ball", WILD_RICE_BALL);
+		registerItem("rice_ball", RICE_BALL);
+		registerItem("cooked_wild_rice_ball", COOKED_WILD_RICE_BALL);
+		registerItem("cooked_rice_ball", COOKED_RICE_BALL);
 
 		// Mill
 		Identifier mill_id = new Identifier(ID, "mill");
@@ -517,10 +521,6 @@ public class Baking implements ModInitializer {
 		registerItem("creamy_coffee_cup", COFFEE_W_CREAMER);
 		registerItem("tea_cup", TEA_CUP);
 		registerItem("creamy_tea_cup", TEA_W_CREAMER);
-		registerItem("wild_rice_cup", WILD_RICE_CUP);
-		registerItem("rice_cup", RICE_CUP);
-		registerItem("cooked_wild_rice_cup", COOKED_WILD_RICE_CUP);
-		registerItem("cooked_rice_cup", COOKED_RICE_CUP);
 
 		// Plates & Meals
 		registerItem("unfired_plate", UNFIRED_PLATE);
