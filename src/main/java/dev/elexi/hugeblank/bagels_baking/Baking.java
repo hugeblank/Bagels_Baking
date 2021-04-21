@@ -255,7 +255,7 @@ public class Baking implements ModInitializer {
 	public static final Item PASTA_DOUGH = basicIngredient();
 	public static final Item LINGUINE = basicIngredient();
 	public static final Item MACARONI = basicIngredient();
-	public static final Item CHEESE = new BasicDrink(Items.BUCKET, 2, 3.5f);
+	public static final Item CHEESE = new BasicDrink(Items.BUCKET, 2, 1.0f);
 	public static final Item TOMATO_SAUCE = basicIngredient();
 	public static final Item WHEAT_CEREAL = basicIngredient();
 	public static final Item CORN_CEREAL = basicIngredient();
@@ -320,7 +320,7 @@ public class Baking implements ModInitializer {
 			.decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP_SPREAD_DOUBLE);
 	public static final Block TOMATO_PLANT = new BasicCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item TOMATO = new TomatoItem(TOMATO_PLANT, new Item.Settings().group(ItemGroup.FOOD).food(
-			new FoodComponent.Builder().hunger(3).saturationModifier(4.2f).build()
+			foodComponent(3, 4.2f).build()
 	));
 	public static final Identifier TOMATO_PACKET = new Identifier(ID, "spawn_packet");
 	public static final EntityType<TomatoEntity> TOMATO_THROWABLE = Registry.register(Registry.ENTITY_TYPE, new Identifier(ID, "tomato"),
@@ -354,11 +354,11 @@ public class Baking implements ModInitializer {
 	public static final Item LOADED_POTATO = basicFood(8, 10.2f);
 	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(11, 11.4f);
 	public static final MushroomStewItem FRUIT_SALAD = basicBowlFood(8, 4f);
-	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(new FoodComponent.Builder().hunger(14).saturationModifier(35f).alwaysEdible() // Give 1 item
+	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(foodComponent(14, 35f).alwaysEdible() // Give 1 item
 			.statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 20*120), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 20*20, 1), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 20*60), 1f).build()));
-	public static final Item DISGUSTING_DISH = new MushroomStewItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(new FoodComponent.Builder().hunger(2).saturationModifier(0.5f).alwaysEdible() // Give 1 item
+	public static final Item DISGUSTING_DISH = new MushroomStewItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(foodComponent(2, 0.5f).alwaysEdible() // Give 1 item
 			.statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 20*30, 2), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*30), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.POISON, 20*90, 3), 1f)
