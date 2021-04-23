@@ -14,6 +14,7 @@
     "entity.ChickenSeeds",
     "entity.LivingEntityTeaDamage",
     "entity.PlayerTick",
+    "entity.TrickyRabbit",
     "entity.villager.FarmerVillagerAITask",
     "entity.villager.FarmerVillagerAIWorkTask",
     "entity.villager.VillagerEntityFarming",

@@ -36,7 +36,10 @@ public class Splashes {
         splashTexts.add("Better than Overwatch?"); // Stating a truth
         splashTexts.add("i take a bite :)"); // Honoring doordash drivers
         splashTexts.add("Cups^2!"); // Honoring the cup duplication glitch
+        splashTexts.add("Based on real pizza!"); // Honoring ChocolateFrog using a real pizza as a texture reference
+        // Miscellaneous
         splashTexts.add("Now Catering!");
+        splashTexts.add("Respect your food delivery drivers!");
         splashTexts.add("A la minecarte!");
         if (field_18934 != null && RANDOM.nextFloat() < 0.25) {
             switch (field_18934.getUsername()) { // Surprises for my friends :)
@@ -51,7 +54,7 @@ public class Splashes {
                     return;
                 case "KoriA":
                     cir.setReturnValue("Korea? No, KoriA.");
-                    cir.cancel();
+                    return;
                 case "He_Is_Man":
                     cir.setReturnValue("balright.");
                     return;
@@ -63,6 +66,10 @@ public class Splashes {
                     return;
                 case "Pedrospeeder":
                     cir.setReturnValue("Next year is Mazdas year, swear.");
+                    return;
+                case "ChocolateFrog18":
+                    cir.setReturnValue("Any British frogs?");
+                    return;
             }
         }
     }
