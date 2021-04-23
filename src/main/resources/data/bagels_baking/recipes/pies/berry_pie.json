@@ -5,10 +5,10 @@
             "item": "minecraft:sweet_berries"
         },
         {
-            "item": "bagels_baking:meringue"
+            "item": "minecraft:sugar"
         },
         {
-            "item": "minecraft:wheat"
+            "item": "minecraft:egg"
         }
     ],
     "result": {

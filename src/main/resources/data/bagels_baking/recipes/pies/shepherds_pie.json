@@ -8,7 +8,7 @@
             "item": "minecraft:cooked_mutton"
         },
         {
-            "item": "minecraft:potato"
+            "item": "bagels_baking:mashed_potato"
         }
     ],
     "result": {
