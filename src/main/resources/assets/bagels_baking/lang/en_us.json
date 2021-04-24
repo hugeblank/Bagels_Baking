@@ -94,7 +94,7 @@
   "block.bagels_baking.tea": "Tea Tree Seeds",
   "item.bagels_baking.tea_leaves": "Tea Leaves",
   "item.bagels_baking.dried_tea_leaves": "Dried Tea Leaves",
-  "block.bagels_baking.dried_tea_block": "Dried Tea Block",
+  "block.bagels_baking.compressed_tea_block": "Compressed Tea Block",
   "death.attack.tea_tree": "%1$s was poked to death by a tea tree",
   "death.attack.tea_tree.player": "%1$s was poked to death by a tea tree whilst trying to escape %2$s",
   "block.bagels_baking.tomato": "Tomato",

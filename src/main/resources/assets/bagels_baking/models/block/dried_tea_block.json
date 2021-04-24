@@ -1,6 +1,0 @@
-{
-    "parent": "minecraft:block/cube_all",
-    "textures": {
-        "all":"bagels_baking:block/dried_tea_block"
-    }
-}

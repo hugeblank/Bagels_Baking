@@ -311,7 +311,7 @@ public class Baking implements ModInitializer {
 	public static final BlockItem TEA_SEEDS = new BlockItem(TEA, new Item.Settings().group(ItemGroup.MATERIALS));
 	public static final Item TEA_LEAVES = basicIngredient();
 	public static final Item DRIED_TEA_LEAVES = basicIngredient();
-	public static final Block DRIED_TEA_BLOCK = new Block(FabricBlockSettings.copy(Blocks.DRIED_KELP_BLOCK));
+	public static final Block COMPRESSED_TEA_BLOCK = new Block(FabricBlockSettings.copy(Blocks.DRIED_KELP_BLOCK));
 	public static final DamageSource TEA_TREE_DMGSRC = new DamageSource("tea_tree");
 	private static final ConfiguredFeature<?, ?> TEA_TREES = Feature.RANDOM_PATCH
 			.configure(new RandomPatchFeatureConfig.Builder(
@@ -547,7 +547,7 @@ public class Baking implements ModInitializer {
 		registerBlock("tea", TEA, TEA_SEEDS);
 		registerItem("tea_leaves", TEA_LEAVES);
 		registerItem("dried_tea_leaves", DRIED_TEA_LEAVES);
-		registerBlock("dried_tea_block", DRIED_TEA_BLOCK, ItemGroup.BUILDING_BLOCKS);
+		registerBlock("compressed_tea_block", COMPRESSED_TEA_BLOCK, ItemGroup.BUILDING_BLOCKS);
 		RegistryKey<ConfiguredFeature<?, ?>> teaTrees = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN,
 				new Identifier(ID, "tea_tree_mountains"));
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, teaTrees.getValue(), TEA_TREES);

@@ -1,0 +1,25 @@
+{
+    "parent": "minecraft:block/block",
+    "textures": {
+        "particle": "bagels_baking:block/compressed_tea_side",
+        "down": "bagels_baking:block/compressed_tea_bottom",
+        "up": "bagels_baking:block/compressed_tea_top",
+        "north": "bagels_baking:block/compressed_tea_side",
+        "east": "bagels_baking:block/compressed_tea_side",
+        "south": "bagels_baking:block/compressed_tea_side",
+        "west": "bagels_baking:block/compressed_tea_side"
+    },
+    "elements": [
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 16, 16, 16 ],
+            "faces": {
+                "down":  { "texture": "#down", "cullface": "down" },
+                "up":    { "texture": "#up", "cullface": "up" },
+                "north": { "texture": "#north", "cullface": "north" },
+                "south": { "uv": [16, 0, 0, 16], "texture": "#south", "cullface": "south" },
+                "west":  { "texture": "#west", "cullface": "west" },
+                "east":  { "uv": [16, 0, 0, 16], "texture": "#east", "cullface": "east" }
+            }
+        }
+    ]
+}
