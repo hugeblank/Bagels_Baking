@@ -4,7 +4,6 @@ import dev.elexi.hugeblank.bagels_baking.Baking;
 import dev.elexi.hugeblank.bagels_baking.block.DoubleCropBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.CropBlock;
 import net.minecraft.block.FarmlandBlock;
 import net.minecraft.entity.ai.brain.task.FarmerVillagerTask;
 import net.minecraft.entity.passive.VillagerEntity;

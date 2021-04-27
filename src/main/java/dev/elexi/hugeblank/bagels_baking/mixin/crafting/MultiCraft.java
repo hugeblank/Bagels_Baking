@@ -2,7 +2,6 @@ package dev.elexi.hugeblank.bagels_baking.mixin.crafting;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
 import dev.elexi.hugeblank.bagels_baking.item.BasicDrink;
-import dev.elexi.hugeblank.bagels_baking.item.CupItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.Item;
@@ -18,8 +17,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 @Mixin(CraftingResultSlot.class)
 public class MultiCraft {

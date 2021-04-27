@@ -9,7 +9,6 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.ProjectileDamageSource;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
@@ -25,6 +24,7 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 
 public class TomatoEntity extends ThrownItemEntity {
+
 
     public TomatoEntity(EntityType<? extends TomatoEntity> entityType, World world) {
         super(entityType, world);

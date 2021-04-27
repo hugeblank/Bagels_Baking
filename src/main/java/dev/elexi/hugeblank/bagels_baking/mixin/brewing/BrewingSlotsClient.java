@@ -1,8 +1,6 @@
 package dev.elexi.hugeblank.bagels_baking.mixin.brewing;
 
-import dev.elexi.hugeblank.bagels_baking.item.BottledItem;
 import dev.elexi.hugeblank.bagels_baking.item.BrewableItem;
-import dev.elexi.hugeblank.bagels_baking.item.CupItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;

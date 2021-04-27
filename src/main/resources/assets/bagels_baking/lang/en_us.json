@@ -156,6 +156,8 @@
   "advancements.bagels_baking.root.description": "Just in case you want more food",
   "advancements.bagels_baking.bricks_and_halite.title": "Bricks & Halite",
   "advancements.bagels_baking.bricks_and_halite.description": "Niece!",
+  "advancements.bagels_baking.tomato_town.title": "Tomato Town",
+  "advancements.bagels_baking.tomato_town.description": "Ten kills on the board right now",
   "advancements.bagels_baking.pocket_man.title": "Pocket Man",
   "advancements.bagels_baking.pocket_man.description": "No running out of hunger up here alone!",
   "advancements.bagels_baking.taco_ding.title": "Taco Ding",
@@ -167,5 +169,6 @@
   "advancements.bagels_baking.taco_tuesday.title": "Taco Tuesday",
   "advancements.bagels_baking.taco_tuesday.description": "Self Explanatory!",
   "stat.bagels_baking.interact_with_mill": "Interactions with Mill",
-  "stat.bagels_baking.day_of_week": "Numerical Day of Week"
+  "stat.bagels_baking.day_of_week": "Numerical Day of Week",
+  "stat.bagels_baking.tomato_kills": "Player Kills using Tomato"
 }

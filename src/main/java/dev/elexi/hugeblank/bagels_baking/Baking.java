@@ -30,7 +30,6 @@ import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.stat.Stat;
 import net.minecraft.stat.StatFormatter;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Identifier;
@@ -369,6 +368,7 @@ public class Baking implements ModInitializer {
 
 	// Stats
 	public static final Identifier DAY_OF_WEEK = new Identifier(ID, "day_of_week");
+	public static final Identifier TOMATO_KILLS = new Identifier(ID, "tomato_kills");
 
 	@Override
 	public void onInitialize() {
@@ -592,5 +592,6 @@ public class Baking implements ModInitializer {
 
 		// Stats
 		Registry.register(Registry.CUSTOM_STAT, "day_of_week", DAY_OF_WEEK);
+		Registry.register(Registry.CUSTOM_STAT, "tomato_kills", TOMATO_KILLS);
 	}
 }

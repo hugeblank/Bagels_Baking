@@ -198,7 +198,7 @@ public class MillScreenHandler extends ScreenHandler implements NamedScreenHandl
                 if (!this.insertItem(itemStack2, 2, 38, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (this.world.getRecipeManager().getFirstMatch(Baking.MILLING, new SimpleInventory(new ItemStack[]{itemStack2}), this.world).isPresent()) {
+            } else if (this.world.getRecipeManager().getFirstMatch(Baking.MILLING, new SimpleInventory(itemStack2), this.world).isPresent()) {
                 if (!this.insertItem(itemStack2, 0, 1, false)) {
                     return ItemStack.EMPTY;
                 }

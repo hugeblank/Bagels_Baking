@@ -22,11 +22,11 @@ public abstract class Composting {
         ITEM_TO_LEVEL_INCREASE_CHANCE.put(item.asItem(), levelIncreaseChance);
     }
 
-    private static float f = 0.3F;
-    private static float g = 0.5F;
-    private static float h = 0.65F;
-    private static float i = 0.85F;
-    private static float j = 1.0F;
+    private static final float f = 0.3F;
+    private static final float g = 0.5F;
+    private static final float h = 0.65F;
+    private static final float i = 0.85F;
+    private static final float j = 1.0F;
 
     @Inject(at = @At(value="TAIL"), method= "registerDefaultCompostableItems()V")
     private static void registerCompostableItems(CallbackInfo ci) {

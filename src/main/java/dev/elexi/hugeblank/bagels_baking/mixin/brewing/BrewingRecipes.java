@@ -1,7 +1,6 @@
 package dev.elexi.hugeblank.bagels_baking.mixin.brewing;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
-import dev.elexi.hugeblank.bagels_baking.item.BrewableItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.BrewingRecipeRegistry;

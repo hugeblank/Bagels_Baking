@@ -28,7 +28,7 @@
                         "predicate": {
                             "position": {
                                 "y": {
-                                    "min": 255
+                                    "min": 256
                                 }
                             }
                         }
@@ -48,7 +48,7 @@
                         "predicate": {
                             "position": {
                                 "y": {
-                                    "min": 255
+                                    "min": 256
                                 }
                             }
                         }
@@ -68,7 +68,7 @@
                         "predicate": {
                             "position": {
                                 "y": {
-                                    "min": 255
+                                    "min": 256
                                 }
                             }
                         }
@@ -88,7 +88,7 @@
                         "predicate": {
                             "position": {
                                 "y": {
-                                    "min": 255
+                                    "min": 256
                                 }
                             }
                         }
@@ -108,7 +108,7 @@
                         "predicate": {
                             "position": {
                                 "y": {
-                                    "min": 255
+                                    "min": 256
                                 }
                             }
                         }
@@ -128,7 +128,7 @@
                         "predicate": {
                             "position": {
                                 "y": {
-                                    "min": 255
+                                    "min": 256
                                 }
                             }
                         }

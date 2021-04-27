@@ -8,7 +8,6 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.registry.Registry;
 
 public class TomatoSpawnPacket {
     public static Packet<?> create(Entity e, Identifier packetID) {

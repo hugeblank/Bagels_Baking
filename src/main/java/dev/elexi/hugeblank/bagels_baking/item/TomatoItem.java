@@ -6,6 +6,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
@@ -21,19 +22,23 @@ public class TomatoItem extends BlockItem {
 
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
-        world.playSound(null, user.getBlockPos(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (RANDOM.nextFloat() * 0.4F + 0.8F));
-        if (!world.isClient) {
-            TomatoEntity tomato = new TomatoEntity(world, user);
-            tomato.setItem(itemStack);
-            tomato.setProperties(user, user.pitch, user.yaw, 0.0F, 1.5F, 1.0F);
-            world.spawnEntity(tomato);
-        }
+        if (user.isSneaking()) {
+            return super.use(world, user, hand);
+        } else {
+            world.playSound(null, user.getBlockPos(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (RANDOM.nextFloat() * 0.4F + 0.8F));
+            if (!world.isClient && user instanceof ServerPlayerEntity) {
 
-        user.incrementStat(Stats.USED.getOrCreateStat(this));
-        if (!user.abilities.creativeMode) {
-            itemStack.decrement(1);
-        }
+                TomatoEntity tomato = new TomatoEntity(world, user);
+                tomato.setItem(itemStack);
+                tomato.setProperties(user, user.pitch, user.yaw, 0.0F, 1.5F, 1.0F);
+                world.spawnEntity(tomato);
+            }
 
-        return TypedActionResult.success(itemStack, world.isClient());
+            user.incrementStat(Stats.USED.getOrCreateStat(this));
+            if (!user.abilities.creativeMode) {
+                itemStack.decrement(1);
+            }
+            return TypedActionResult.success(itemStack, world.isClient());
+        }
     }
 }
