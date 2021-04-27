@@ -6,7 +6,7 @@
         "entries": [
           {
             "type": "minecraft:item",
-            "name": "bagels_baking:dried_tea_block"
+            "name": "bagels_baking:compressed_tea_block"
           }
         ],
         "conditions": [
