@@ -284,15 +284,6 @@ public class Baking implements ModInitializer {
 	public static final Item TEA_CUP = new BasicDrink(2, 1.8f, new StatusEffectInstance(StatusEffects.SPEED, 20*10));
 	public static final Item TEA_W_CREAMER = new BasicDrink(2, 1.8f, new StatusEffectInstance(StatusEffects.SPEED, 20*20));
 
-	// Plates & Meals
-	public static final Item UNFIRED_PLATE = basicIngredient();
-	public static final Item PLATE = basicIngredient();
-	public static final Item STEAK_MEAL = new PlatedItem(17, 21.1f);
-	public static final Item PORK_MEAL = new PlatedItem(23, 22.3f);
-	public static final Item CHICKEN_MEAL = new PlatedItem(12, 12.5f);
-	public static final Item MUTTON_MEAL = new PlatedItem(17, 18.3f);
-	public static final Item RABBIT_MEAL = new PlatedItem(22, 28.1f);
-
 	// Sodie Pop
 	public static final Item SUGAR_WATER = new BasicDrink(CUP, true);
 	public static final Item CLUB_SODA = new BasicDrink(CUP, 1, 1f, true); // coal
@@ -302,6 +293,15 @@ public class Baking implements ModInitializer {
 	public static final Item MOUNTAIN_FOUNTAIN = new BasicDrink(CUP, 2, 1.8f); // melon
 	public static final Item CACTUS_CHILLER = new BasicDrink(CUP, 2, 1.8f); // cactus
 	public static final Item GRAPE_SODA = new BasicDrink(CUP, 2, 1.8f); // chorus fruit
+
+	// Plates & Meals
+	public static final Item UNFIRED_PLATE = basicIngredient();
+	public static final Item PLATE = basicIngredient();
+	public static final Item STEAK_MEAL = new PlatedItem(17, 21.1f);
+	public static final Item PORK_MEAL = new PlatedItem(23, 22.3f);
+	public static final Item CHICKEN_MEAL = new PlatedItem(12, 12.5f);
+	public static final Item MUTTON_MEAL = new PlatedItem(17, 18.3f);
+	public static final Item RABBIT_MEAL = new PlatedItem(22, 28.1f);
 
 	// Crops - Here's to v0.3!
 	public static final Block COFFEE = new CocoaBlock(FabricBlockSettings.copy(Blocks.COCOA));
@@ -522,15 +522,6 @@ public class Baking implements ModInitializer {
 		registerItem("tea_cup", TEA_CUP);
 		registerItem("creamy_tea_cup", TEA_W_CREAMER);
 
-		// Plates & Meals
-		registerItem("unfired_plate", UNFIRED_PLATE);
-		registerItem("plate", PLATE);
-		registerItem("steak_meal", STEAK_MEAL);
-		registerItem("pork_meal", PORK_MEAL);
-		registerItem("chicken_meal", CHICKEN_MEAL);
-		registerItem("mutton_meal", MUTTON_MEAL);
-		registerItem("rabbit_meal", RABBIT_MEAL);
-
 		// Sodie Pop
 		registerItem("sugar_water", SUGAR_WATER);
 		registerItem("club_soda", CLUB_SODA);
@@ -540,6 +531,15 @@ public class Baking implements ModInitializer {
 		registerItem("mountain_fountain", MOUNTAIN_FOUNTAIN);
 		registerItem("cactus_chiller", CACTUS_CHILLER);
 		registerItem("grape_soda", GRAPE_SODA);
+
+		// Plates & Meals
+		registerItem("unfired_plate", UNFIRED_PLATE);
+		registerItem("plate", PLATE);
+		registerItem("steak_meal", STEAK_MEAL);
+		registerItem("pork_meal", PORK_MEAL);
+		registerItem("chicken_meal", CHICKEN_MEAL);
+		registerItem("mutton_meal", MUTTON_MEAL);
+		registerItem("rabbit_meal", RABBIT_MEAL);
 
 		// Crops
 		registerBlock("coffee", COFFEE);
@@ -589,9 +589,10 @@ public class Baking implements ModInitializer {
 		registerItem("corn_cereal_bowl", CORN_CEREAL_BOWL);
 		registerItem("rice_cereal_bowl", RICE_CEREAL_BOWL);
 
-
 		// Stats
 		Registry.register(Registry.CUSTOM_STAT, "day_of_week", DAY_OF_WEEK);
+		Stats.CUSTOM.getOrCreateStat(DAY_OF_WEEK, StatFormatter.DEFAULT);
 		Registry.register(Registry.CUSTOM_STAT, "tomato_kills", TOMATO_KILLS);
+		Stats.CUSTOM.getOrCreateStat(TOMATO_KILLS, StatFormatter.DEFAULT);
 	}
 }
