@@ -3,6 +3,7 @@ package dev.elexi.hugeblank.bagels_baking;
 import com.google.common.collect.ImmutableSet;
 import dev.elexi.hugeblank.bagels_baking.block.*;
 import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
+import dev.elexi.hugeblank.bagels_baking.entity.VillagerTrades;
 import dev.elexi.hugeblank.bagels_baking.item.*;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreen;
@@ -588,6 +589,9 @@ public class Baking implements ModInitializer {
 		registerItem("wheat_cereal_bowl", WHEAT_CEREAL_BOWL);
 		registerItem("corn_cereal_bowl", CORN_CEREAL_BOWL);
 		registerItem("rice_cereal_bowl", RICE_CEREAL_BOWL);
+
+		// Trades
+		VillagerTrades.init();
 
 		// Stats
 		Registry.register(Registry.CUSTOM_STAT, "day_of_week", DAY_OF_WEEK);
