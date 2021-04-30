@@ -2,6 +2,7 @@ package dev.elexi.hugeblank.bagels_baking.screen;
 
 import com.google.common.collect.Lists;
 import dev.elexi.hugeblank.bagels_baking.Baking;
+import dev.elexi.hugeblank.bagels_baking.ClientBaking;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -43,7 +44,7 @@ public class MillScreenHandler extends ScreenHandler implements NamedScreenHandl
     }
 
     public MillScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
-        super(Baking.MILL_SCREEN, syncId);
+        super(ClientBaking.MILL_SCREEN, syncId);
         this.selectedRecipe = Property.create();
         this.availableRecipes = Lists.newArrayList();
         this.inputStack = ItemStack.EMPTY;
@@ -168,7 +169,7 @@ public class MillScreenHandler extends ScreenHandler implements NamedScreenHandl
     }
 
     public ScreenHandlerType<?> getType() {
-        return Baking.MILL_SCREEN;
+        return ClientBaking.MILL_SCREEN;
     }
 
     @Environment(EnvType.CLIENT)

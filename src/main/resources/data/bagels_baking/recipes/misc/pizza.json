@@ -11,6 +11,9 @@
             "item": "bagels_baking:cheese_cup"
         },
         {
+            "item": "bagels_baking:corn_meal"
+        },
+        {
             "item": "bagels_baking:pepperoni"
         }
     ],

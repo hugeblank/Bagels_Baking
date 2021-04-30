@@ -6,16 +6,12 @@ import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
 import dev.elexi.hugeblank.bagels_baking.entity.VillagerTrades;
 import dev.elexi.hugeblank.bagels_baking.item.*;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
-import dev.elexi.hugeblank.bagels_baking.screen.MillScreen;
-import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
-import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
@@ -27,7 +23,6 @@ import net.minecraft.item.*;
 import net.minecraft.recipe.CuttingRecipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
-import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -71,10 +66,8 @@ public class Baking implements ModInitializer {
 		return basicFood(foodComponent(hunger, saturation), 64);
 	}
 
-	private static Item basicIngredient() { return basicIngredient(64); }
-
-	private static Item basicIngredient(int maxStack) {
-		return new Item(new Item.Settings().group(ItemGroup.MATERIALS).maxCount(maxStack));
+	private static Item basicIngredient() {
+			return new Item(new Item.Settings().group(ItemGroup.MATERIALS).maxCount(64));
 	}
 
 	private static MushroomStewItem basicBowlFood(int hunger, float saturation) {
@@ -232,12 +225,12 @@ public class Baking implements ModInitializer {
 	public static final Item COOKED_RICE_BALL = basicFood(2, 0.7f);
 
 	// Mill
+	public static final Identifier MILL_ID = new Identifier(ID, "mill");
 	public static final Block MILL = new Mill(FabricBlockSettings.copy(Blocks.STONECUTTER));
 	public static final BlockItem MILL_ITEM = new BlockItem(MILL, new Item.Settings().group(ItemGroup.DECORATIONS));
 	private static final String mill_stat = "interact_with_mill";
 	private static final String mill_rtype_id = "milling";
 	public static final Identifier INTERACT_WITH_MILL = new Identifier(ID, mill_stat);
-	public static ScreenHandlerType<MillScreenHandler> MILL_SCREEN;
 	public static RecipeType<MillingRecipe> MILLING;
 	public static RecipeSerializer<MillingRecipe> MILLING_SERIALIZER = RecipeSerializer.register(mill_rtype_id, new CuttingRecipe.Serializer(MillingRecipe::new));
 
@@ -248,7 +241,7 @@ public class Baking implements ModInitializer {
 	public static final Item COCOA_POWDER = basicIngredient();
 	public static final Item GROUND_COFFEE = basicIngredient();
 	public static final Item GROUND_TEA = basicIngredient();
-	public static final Item BATTER = basicIngredient(16);
+	public static final Item BATTER = basicBowlFood(1, 0.1f);
 	public static final Item BACON_BITS = basicFood(2, 5.2f);
 	public static final Item MASHED_POTATOES = basicFood(4, 4.5f);
 	public static final Item DOUGH = basicIngredient(); //  Henry - The inspiration behind the code, my rock and my brain - Redeemed
@@ -502,14 +495,11 @@ public class Baking implements ModInitializer {
 		registerItem("cooked_rice_ball", COOKED_RICE_BALL);
 
 		// Mill
-		Identifier mill_id = new Identifier(ID, "mill");
 		MILLING = RecipeType.register(mill_rtype_id);
 		Registry.register(Registry.CUSTOM_STAT, mill_stat, INTERACT_WITH_MILL);
 		Stats.CUSTOM.getOrCreateStat(INTERACT_WITH_MILL, StatFormatter.DEFAULT);
-		MILL_SCREEN = ScreenHandlerRegistry.registerSimple(mill_id, MillScreenHandler::new);
-		ScreenRegistry.register(MILL_SCREEN, MillScreen::new);
-		Registry.register(Registry.BLOCK, mill_id, MILL);
-		Registry.register(Registry.ITEM, mill_id, MILL_ITEM);
+		Registry.register(Registry.BLOCK, MILL_ID, MILL);
+		Registry.register(Registry.ITEM, MILL_ID, MILL_ITEM);
 
 		// Cups
 		registerItem("cup", CUP);
