@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:milling",
+    "ingredient": {
+        "item": "bagels_baking:halite"
+    },
+    "result": "bagels_baking:salt",
+    "count": 6
+}

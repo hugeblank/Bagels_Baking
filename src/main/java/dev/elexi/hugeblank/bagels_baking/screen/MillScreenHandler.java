@@ -151,7 +151,7 @@ public class MillScreenHandler extends ScreenHandler implements NamedScreenHandl
         this.selectedRecipe.set(-1);
         this.outputSlot.setStack(ItemStack.EMPTY);
         if (!stack.isEmpty()) {
-            this.availableRecipes = this.world.getRecipeManager().getAllMatches(Baking.MILLING, input, this.world);
+            this.availableRecipes = this.world.getRecipeManager().getAllMatches(MillingRecipe.Type.INSTANCE, input, this.world);
         }
 
     }
@@ -199,7 +199,7 @@ public class MillScreenHandler extends ScreenHandler implements NamedScreenHandl
                 if (!this.insertItem(itemStack2, 2, 38, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (this.world.getRecipeManager().getFirstMatch(Baking.MILLING, new SimpleInventory(itemStack2), this.world).isPresent()) {
+            } else if (this.world.getRecipeManager().getFirstMatch(MillingRecipe.Type.INSTANCE, new SimpleInventory(itemStack2), this.world).isPresent()) {
                 if (!this.insertItem(itemStack2, 0, 1, false)) {
                     return ItemStack.EMPTY;
                 }
