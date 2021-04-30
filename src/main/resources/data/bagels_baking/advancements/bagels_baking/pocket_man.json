@@ -1,0 +1,160 @@
+{
+    "parent": "bagels_baking:bagels_baking/root",
+    "display": {
+        "icon": {
+            "item": "bagels_baking:rabbit_pocket"
+        },
+        "title": {
+            "translate": "advancements.bagels_baking.pocket_man.title"
+        },
+        "description": {
+            "translate": "advancements.bagels_baking.pocket_man.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "steak_pocket": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "item": "bagels_baking:steak_pocket"
+                },
+                "player": [
+                    {
+                        "condition": "minecraft:location_check",
+                        "predicate": {
+                            "position": {
+                                "y": {
+                                    "min": 256
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "chicken_pocket": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "item": "bagels_baking:chicken_pocket"
+                },
+                "player": [
+                    {
+                        "condition": "minecraft:location_check",
+                        "predicate": {
+                            "position": {
+                                "y": {
+                                    "min": 256
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "pork_pocket": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "item": "bagels_baking:pork_pocket"
+                },
+                "player": [
+                    {
+                        "condition": "minecraft:location_check",
+                        "predicate": {
+                            "position": {
+                                "y": {
+                                    "min": 256
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "fish_pocket": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "item": "bagels_baking:fish_pocket"
+                },
+                "player": [
+                    {
+                        "condition": "minecraft:location_check",
+                        "predicate": {
+                            "position": {
+                                "y": {
+                                    "min": 256
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "mutton_pocket": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "item": "bagels_baking:mutton_pocket"
+                },
+                "player": [
+                    {
+                        "condition": "minecraft:location_check",
+                        "predicate": {
+                            "position": {
+                                "y": {
+                                    "min": 256
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "rabbit_pocket": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "item": "bagels_baking:rabbit_pocket"
+                },
+                "player": [
+                    {
+                        "condition": "minecraft:location_check",
+                        "predicate": {
+                            "position": {
+                                "y": {
+                                    "min": 256
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "steak_pocket"
+        ],
+        [
+            "pork_pocket"
+        ],
+        [
+            "chicken_pocket"
+        ],
+        [
+            "fish_pocket"
+        ],
+        [
+            "mutton_pocket"
+        ],
+        [
+            "rabbit_pocket"
+        ]
+    ]
+}

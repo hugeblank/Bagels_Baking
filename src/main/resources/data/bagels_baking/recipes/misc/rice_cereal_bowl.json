@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:bowl"
+        },
+        {
+            "item": "bagels_baking:milk_cup"
+        },
+        {
+            "item": "minecraft:sugar"
+        },
+        {
+            "item": "bagels_baking:rice_cereal"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:rice_cereal_bowl",
+        "count": 1
+    }
+}

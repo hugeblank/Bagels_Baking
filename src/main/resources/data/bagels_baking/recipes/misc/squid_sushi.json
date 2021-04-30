@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:dried_kelp"
+        },
+        {
+            "item": "bagels_baking:cooked_rice_ball"
+        },
+        {
+            "item": "bagels_baking:cooked_calamari"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:squid_sushi",
+        "count": 2
+    }
+}

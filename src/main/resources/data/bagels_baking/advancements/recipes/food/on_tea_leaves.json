@@ -1,0 +1,37 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:campfire/dried_tea_leaves",
+			"bagels_baking:furnace/dried_tea_leaves",
+			"bagels_baking:smoker/dried_tea_leaves",
+			"bagels_baking:misc/dried_tea_leaves",
+			"bagels_baking:milling/ground_tea",
+			"bagels_baking:misc/dried_tea_block"
+		]
+	},
+	"criteria": {
+		"has_tea_leaves": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "bagels_baking:tea_leaves"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:on_tea_leaves"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_tea_leaves",
+			"has_the_recipe"
+		]
+	]
+}

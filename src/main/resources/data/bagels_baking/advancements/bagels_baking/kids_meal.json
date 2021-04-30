@@ -1,0 +1,74 @@
+{
+  "parent": "bagels_baking:bagels_baking/root",
+  "display": {
+    "icon": {
+      "item": "bagels_baking:cooked_chicken_nuggets"
+    },
+    "title": {
+      "translate": "advancements.bagels_baking.kids_meal.title"
+    },
+    "description": {
+      "translate": "advancements.bagels_baking.kids_meal.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "cooked_chicken_nuggets": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bagels_baking:cooked_chicken_nuggets"
+          }
+        ]
+      }
+    },
+    "cooked_french_fries": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bagels_baking:cooked_french_fries"
+          }
+        ]
+      }
+    },
+    "chocolate_milk": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bagels_baking:chocolate_milk_cup"
+          }
+        ]
+      }
+    },
+    "brownie": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bagels_baking:brownie"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cooked_chicken_nuggets"
+    ],
+    [
+      "cooked_french_fries"
+    ],
+    [
+      "chocolate_milk"
+    ],
+    [
+      "brownie"
+    ]
+  ]
+}

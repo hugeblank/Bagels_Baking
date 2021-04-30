@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:cup"
+        },
+        {
+            "item": "bagels_baking:cup"
+        },
+        {
+            "item": "bagels_baking:cup"
+        },
+        {
+            "item": "bagels_baking:cup"
+        },
+        {
+            "item": "bagels_baking:cup"
+        },
+        {
+            "item": "bagels_baking:cup"
+        },
+        {
+            "item": "bagels_baking:cup"
+        },
+        {
+            "item": "bagels_baking:cup"
+        },
+        {
+            "item": "bagels_baking:cheese"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:cheese_cup",
+        "count": 8
+    }
+}

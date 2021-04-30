@@ -1,0 +1,49 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bagels_baking:halite/halite_stairs",
+      "bagels_baking:halite/halite_stairs_stonecutting",
+      "bagels_baking:halite/halite_slab",
+      "bagels_baking:halite/halite_slab_stonecutting",
+      "bagels_baking:halite/halite_wall",
+      "bagels_baking:halite/halite_wall_stonecutting",
+      "bagels_baking:halite/polished_halite",
+      "bagels_baking:halite/polished_halite_stairs",
+      "bagels_baking:halite/polished_halite_stairs_from_halite_stonecutting",
+      "bagels_baking:halite/polished_halite_stairs_from_polished_halite_stonecutting",
+      "bagels_baking:halite/polished_halite_slab",
+      "bagels_baking:halite/polished_halite_slab_from_halite_stonecutting",
+      "bagels_baking:halite/polished_halite_slab_from_polished_halite_stonecutting",
+      "bagels_baking:halite/polished_halite_wall",
+      "bagels_baking:halite/polished_halite_wall_from_halite_stonecutting",
+      "bagels_baking:halite/polished_halite_wall_from_polished_halite_stonecutting",
+      "bagels_baking:halite/salt_milling",
+      "bagels_baking:halite/salt"
+    ]
+  },
+  "criteria": {
+    "has_halite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "bagels_baking:halite"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bagels_baking:on_halite"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_halite",
+      "has_the_recipe"
+    ]
+  ]
+}

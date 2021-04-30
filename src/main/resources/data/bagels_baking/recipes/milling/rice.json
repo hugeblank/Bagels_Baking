@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:milling",
+    "ingredient": {
+        "item": "bagels_baking:wild_rice"
+    },
+    "result": "bagels_baking:rice",
+    "count": 1
+}

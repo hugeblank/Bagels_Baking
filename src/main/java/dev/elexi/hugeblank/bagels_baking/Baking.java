@@ -1,27 +1,26 @@
 package dev.elexi.hugeblank.bagels_baking;
 
-import dev.elexi.hugeblank.bagels_baking.block.BasicCakeBlock;
-import dev.elexi.hugeblank.bagels_baking.block.Mill;
-import dev.elexi.hugeblank.bagels_baking.block.StairBlock;
+import com.google.common.collect.ImmutableSet;
+import dev.elexi.hugeblank.bagels_baking.block.*;
+import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
+import dev.elexi.hugeblank.bagels_baking.entity.VillagerTrades;
 import dev.elexi.hugeblank.bagels_baking.item.*;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
-import dev.elexi.hugeblank.bagels_baking.screen.MillScreen;
-import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.block.*;
+import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
-import net.minecraft.recipe.CuttingRecipe;
 import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.RecipeType;
-import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -37,9 +36,9 @@ import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.placer.SimpleBlockPlacer;
+import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 
 import java.util.function.Predicate;
 
@@ -48,37 +47,57 @@ public class Baking implements ModInitializer {
 	private static final String ID = "bagels_baking";
 
 	// Beautification Functions
+
+	private static FoodComponent.Builder foodComponent(int hunger, float saturation) {
+		return new FoodComponent.Builder().hunger(hunger).saturationModifier((saturation/hunger)/2.0f);
+	}
+
+	private static Item basicFood(FoodComponent.Builder fc, int maxStack) {
+		return new Item(new Item.Settings().maxCount(maxStack).group(ItemGroup.FOOD).food(fc.build()));
+	}
+
+	private static Item basicFood(FoodComponent.Builder fc) {
+		return basicFood(fc, 64);
+	}
+
 	private static Item basicFood(int hunger, float saturation) {
-		return basicFood(hunger, saturation, 64);
+		return basicFood(foodComponent(hunger, saturation), 64);
 	}
 
-	private static Item basicFood(int hunger, float saturation, int maxStack) {
-		return new Item(new Item.Settings().maxCount(maxStack).group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(hunger).saturationModifier(saturation).build()));
-	}
-
-	private static Item basicIngredient() { return basicIngredient(64); }
-
-	private static Item basicIngredient(int maxStack) {
-		return new Item(new Item.Settings().group(ItemGroup.MATERIALS).maxCount(maxStack));
+	private static Item basicIngredient() {
+			return new Item(new Item.Settings().group(ItemGroup.MATERIALS).maxCount(64));
 	}
 
 	private static MushroomStewItem basicBowlFood(int hunger, float saturation) {
-		return new MushroomStewItem(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(new FoodComponent.Builder().hunger(hunger).saturationModifier(saturation).build()));
+		return new MushroomStewItem(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(foodComponent(hunger, saturation).build()));
 	}
 
 	private static BottledItem basicJam(int hunger, float saturation, SoundEvent drinkSound) {
-		return new BottledItem(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(new FoodComponent.Builder().hunger(hunger).saturationModifier(saturation).build()), drinkSound);
+		return new BottledItem(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(foodComponent(hunger, saturation).build()), drinkSound);
 	}
 
 
-	private static void register(String name, Item item) {
+	private static void registerItem(String name, Item item) {
 		Registry.register(Registry.ITEM, new Identifier(ID, name), item);
 	}
 
 	private static void registerBlock(String name, Block block, ItemGroup group) {
 		Identifier id = new Identifier(ID, name);
 		Registry.register(Registry.BLOCK, id, block);
-		Item item = new BlockItem(block, new Item.Settings().group(group));
+		if (group != null) {
+			Item item = new BlockItem(block, new Item.Settings().group(group));
+			Registry.register(Registry.ITEM, id, item);
+		}
+	}
+
+	private static void registerBlock(String name, Block block) {
+		Identifier id = new Identifier(ID, name);
+		Registry.register(Registry.BLOCK, id, block);
+	}
+
+	private static void registerBlock(String name, Block block, BlockItem item) {
+		Identifier id = new Identifier(ID, name);
+		Registry.register(Registry.BLOCK, id, block);
 		Registry.register(Registry.ITEM, id, item);
 	}
 
@@ -113,10 +132,10 @@ public class Baking implements ModInitializer {
 	public static final Item RABBIT_TACO = basicFood(5, 6f);
 
 	// Cheese Burgers - Gives 2 Items
-	public static final Item STEAK_CHEESEBURGER = basicFood(9, 12.6f);
-	public static final Item CHICKEN_CHEESEBURGER = basicFood(8, 10.2f);
-	public static final Item PORK_CHEESEBURGER = basicFood(9, 12.6f);
-	public static final Item MUTTON_CHEESEBURGER = basicFood(8, 11.6f);
+	public static final Item STEAK_CHEESEBURGER = basicFood(9, 12.9f);
+	public static final Item CHICKEN_CHEESEBURGER = basicFood(8, 10.1f);
+	public static final Item PORK_CHEESEBURGER = basicFood(9, 12.9f);
+	public static final Item MUTTON_CHEESEBURGER = basicFood(8, 11.3f);
 	public static final Item FISH_CHEESEBURGER = basicFood(7, 9.5f);
 	public static final Item RABBIT_CHEESEBURGER = basicFood(7, 9.5f);
 
@@ -145,7 +164,7 @@ public class Baking implements ModInitializer {
 	public static final Item CHOCOLATE_CAKE_ITEM = new BlockItem(CHOCOLATE_CAKE, new Item.Settings().group(ItemGroup.FOOD));
 	public static final Item RED_VELVET_CAKE_ITEM = new BlockItem(RED_VELVET_CAKE, new Item.Settings().group(ItemGroup.FOOD));
 
-	// Halite and Salt
+	// Halite Blocks
 	public static final Block HALITE = new GlassBlock(FabricBlockSettings.of(Material.STONE).requiresTool().strength(1.25F, 4.2F)
 			.sounds(BlockSoundGroup.BASALT).nonOpaque().solidBlock(Baking::never).blockVision(Baking::never));
 	public static final Block HALITE_STAIR = new StairBlock(HALITE.getDefaultState(), FabricBlockSettings.copy(HALITE));
@@ -156,7 +175,6 @@ public class Baking implements ModInitializer {
 	public static final Block POLISHED_HALITE_STAIR = new StairBlock(POLISHED_HALITE.getDefaultState(), FabricBlockSettings.copy(POLISHED_HALITE));
 	public static final Block POLISHED_HALITE_SLAB = new SlabBlock(FabricBlockSettings.copy(POLISHED_HALITE));
 	public static final Block POLISHED_HALITE_WALL = new WallBlock(FabricBlockSettings.copy(POLISHED_HALITE));
-	public static final Item SALT = new Item(new Item.Settings().group(ItemGroup.MATERIALS));
 	private static final ConfiguredFeature<?, ?> HALITE_DESERT = Feature.ORE
 			.configure(new OreFeatureConfig(
 					OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
@@ -170,110 +188,215 @@ public class Baking implements ModInitializer {
 			.repeat(10); // number of veins per chunk
 
 	// Raw/Cooked goods - Give 1 item
-	public static final Item EGG_WHITES = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0.2f)
-			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK, true);
-	public static final Item EGG_YOLK = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0.1f).snack()
-			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK);
-	public static final Item CHICKEN_NUGGETS = new Item( new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(2).saturationModifier(0.6f)
+	public static final Item CALAMARI = basicFood(2, 1.2f);
+	public static final Item COOKED_CALAMARI = basicFood(foodComponent(6, 8.5f).meat());
+	public static final Item BATTERED_CALAMARI = basicFood(3, 1.8f);
+	public static final Item FRIED_CALAMARI = basicFood(8, 10.2f);
+	public static final Item CHICKEN_NUGGETS = new Item( new Item.Settings().group(ItemGroup.FOOD).food(foodComponent(2, 0.6f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 20*10), .3f).build()));
-	public static final Item FRENCH_FRIES = basicFood(1, 0.6f);
-	public static final Item BACON = basicFood(3, 1.8f);
-	public static final Item JERKY = basicFood(3, 1.8f);
-	public static final Item CUT_SALMON = basicFood(2, 0.4f);
 	public static final Item COOKED_CHICKEN_NUGGETS = basicFood(3, 3.2f);
+	public static final Item BATTERED_CHICKEN_NUGGETS = basicFood(foodComponent(3, 0.9f)
+			.statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 20*10), .3f));
+	public static final Item FRIED_CHICKEN_NUGGETS = basicFood(4, 4.8f);
+	public static final Item BATTERED_CHICKEN = basicFood(foodComponent(3, 1.5f)
+			.statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 20*10), .3f));
+	public static final Item FRIED_CHICKEN = basicFood(7, 8.5f);
+	public static final Item FRENCH_FRIES = basicFood(1, 0.6f);
 	public static final Item COOKED_FRENCH_FRIES = basicFood(2, 1.8f);
-	public static final Item COOKED_EGG = basicFood(2, 3.3f, 16);
+	public static final Item EGG_WHITES = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(foodComponent(1, 0.2f)
+			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK, true);
 	public static final Item MERINGUE = basicJam(1, 0.7f, SoundEvents.ENTITY_WANDERING_TRADER_DRINK_MILK);
+	public static final Item EGG_YOLK = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(foodComponent(1, 0.1f).snack()
+			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK, true);
 	public static final Item MAYONNAISE = basicJam(1, 0.5f, SoundEvents.ENTITY_WITCH_DRINK);
-	// Smoker & Campfire Exclusive
+	public static final Item PIZZA = basicFood(2, 2.5f);
+	public static final Item COOKED_PIZZA = basicFood(5, 7.8f);
+	public static final Item BACON = basicFood(3, 1.8f);
 	public static final Item SMOKED_BACON = basicFood(8, 13.8f);
+	public static final Item JERKY = basicFood(3, 1.8f);
 	public static final Item SMOKED_JERKY = basicFood(8, 13.8f);
+	public static final Item CUT_SALMON = basicFood(2, 0.4f);
 	public static final Item SMOKED_SALMON = basicFood(6, 10.5f);
+	public static final Item WILD_RICE_BALL = basicFood(1, 0.3f);
+	public static final Item RICE_BALL = basicFood(1, 0.3f);
+	public static final Item COOKED_WILD_RICE_BALL = basicFood(2, 0.7f);
+	public static final Item COOKED_RICE_BALL = basicFood(2, 0.7f);
 
 	// Mill
+	public static final Identifier MILL_ID = new Identifier(ID, "mill");
 	public static final Block MILL = new Mill(FabricBlockSettings.copy(Blocks.STONECUTTER));
 	public static final BlockItem MILL_ITEM = new BlockItem(MILL, new Item.Settings().group(ItemGroup.DECORATIONS));
-	private static final String mill_stat = "interact_with_mill";
-	private static final String mill_rtype_id = "milling";
-	public static final Identifier INTERACT_WITH_MILL = new Identifier(ID, mill_stat);
-	public static ScreenHandlerType<MillScreenHandler> MILL_SCREEN;
-	public static RecipeType<MillingRecipe> MILLING;
-	public static RecipeSerializer<MillingRecipe> MILLING_SERIALIZER = RecipeSerializer.register(mill_rtype_id, new CuttingRecipe.Serializer(MillingRecipe::new));
+	private static final String MILL_STAT = "interact_with_mill";
+	private static final Identifier MILL_RTYPE_ID = new Identifier("minecraft", "milling"); // FIX THIS
+	public static RecipeSerializer<MillingRecipe> MILLING_SERIALIZER;
+	public static final Identifier INTERACT_WITH_MILL = new Identifier(ID, MILL_STAT);
 
 	// Ingredients
+	public static final Item SALT = basicIngredient();
 	public static final Item FLOUR = basicIngredient();
+	public static final Item CORN_MEAL = basicIngredient();
 	public static final Item COCOA_POWDER = basicIngredient();
+	public static final Item GROUND_COFFEE = basicIngredient();
+	public static final Item GROUND_TEA = basicIngredient();
+	public static final Item BATTER = basicBowlFood(1, 0.1f);
 	public static final Item BACON_BITS = basicFood(2, 5.2f);
+	public static final Item MASHED_POTATOES = basicFood(4, 4.5f);
 	public static final Item DOUGH = basicIngredient(); //  Henry - The inspiration behind the code, my rock and my brain - Redeemed
 	public static final Item PASTA_DOUGH = basicIngredient();
 	public static final Item LINGUINE = basicIngredient();
 	public static final Item MACARONI = basicIngredient();
+	public static final Item CHEESE = new BasicDrink(Items.BUCKET, 2, 1.0f);
+	public static final Item TOMATO_SAUCE = basicIngredient();
+	public static final Item WHEAT_CEREAL = basicIngredient();
+	public static final Item CORN_CEREAL = basicIngredient();
+	public static final Item RICE_CEREAL = basicIngredient();
+	// hunt was here <3 - redeemed by rrricohu on 3/21/21
+	// Pedrospeeder - redeemed on 3/22/21
+	// <コ:彡 LOOK FELLOW PROGRAMMER I'M CATHULO - redeemed by Pedrospeeder on 3/22/21
+	/*
+	fatmanchummy
+	fatmanchummy
+	fatmanchummy
+	fatmanchummy
+	fatmanchummy
+	fatmanchummy
+	redeemed on 3/22/21
+	*/
 
 	// Cups
 	public static final Item CUP = new CupItem(new Item.Settings().group(ItemGroup.MISC).maxCount(16));
 	public static final Item MILK_CUP = new MilkCupItem();
-	public static final Item WATER_CUP = new BasicDrink(CUP);
+	public static final Item WATER_CUP = new BasicDrink(CUP, true);
 	public static final Item CHEESE_CUP = new BasicDrink(CUP, 0, 0.3f);
-	public static final Item CHOCOLATE_MILK = new BasicDrink(CUP, 1, 1.0f);
+	public static final Item CHOCOLATE_MILK = new BasicDrink(CUP, 1, 1.0f); // frick i would like some choccy milk rn - redeemed by rrricohu on 3/21/21
+	public static final Item CREAMER_CUP = new BasicDrink(CUP, 0, 0.1f);
+	public static final Item COFFEE_CUP = new BasicDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 20*15, 1));
+	public static final Item COFFEE_W_CREAMER = new BasicDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 20*30));
+	public static final Item TEA_CUP = new BasicDrink(2, 1.8f, new StatusEffectInstance(StatusEffects.SPEED, 20*10));
+	public static final Item TEA_W_CREAMER = new BasicDrink(2, 1.8f, new StatusEffectInstance(StatusEffects.SPEED, 20*20));
 
-	// Misc - Item amt listed individually
+	// Sodie Pop
+	public static final Item SUGAR_WATER = new BasicDrink(CUP, true);
+	public static final Item CLUB_SODA = new BasicDrink(CUP, 1, 1f, true); // coal
+	public static final Item ROOT_BEER = new BasicDrink(CUP, 2, 1.8f); // beetUwUoot
+	public static final Item COLA = new BasicDrink(CUP, 2, 1.8f); // cocoa beans
+	public static final Item FRUITY_SODA = new BasicDrink(CUP, 2, 1.8f); // wild berries
+	public static final Item MOUNTAIN_FOUNTAIN = new BasicDrink(CUP, 2, 1.8f); // melon
+	public static final Item CACTUS_CHILLER = new BasicDrink(CUP, 2, 1.8f); // cactus
+	public static final Item GRAPE_SODA = new BasicDrink(CUP, 2, 1.8f); // chorus fruit
+
+	// Plates & Meals
+	public static final Item UNFIRED_PLATE = basicIngredient();
+	public static final Item PLATE = basicIngredient();
+	public static final Item STEAK_MEAL = new PlatedItem(17, 21.1f);
+	public static final Item PORK_MEAL = new PlatedItem(23, 22.3f);
+	public static final Item CHICKEN_MEAL = new PlatedItem(12, 12.5f);
+	public static final Item MUTTON_MEAL = new PlatedItem(17, 18.3f);
+	public static final Item RABBIT_MEAL = new PlatedItem(22, 28.1f);
+
+	// Crops - Here's to v0.3!
+	public static final Block COFFEE = new CocoaBlock(FabricBlockSettings.copy(Blocks.COCOA));
+	public static final BlockItem COFFEE_BEANS = new BlockItem(COFFEE, new Item.Settings().group(ItemGroup.MATERIALS));
+	public static final Block TEA = new TeaTreeBlock(FabricBlockSettings.copy(Blocks.SWEET_BERRY_BUSH));
+	public static final BlockItem TEA_SEEDS = new BlockItem(TEA, new Item.Settings().group(ItemGroup.MATERIALS));
+	public static final Item TEA_LEAVES = basicIngredient();
+	public static final Item DRIED_TEA_LEAVES = basicIngredient();
+	public static final Block COMPRESSED_TEA_BLOCK = new Block(FabricBlockSettings.copy(Blocks.DRIED_KELP_BLOCK));
+	public static final DamageSource TEA_TREE_DMGSRC = new DamageSource("tea_tree");
+	private static final ConfiguredFeature<?, ?> TEA_TREES = Feature.RANDOM_PATCH
+			.configure(new RandomPatchFeatureConfig.Builder(
+					new SimpleBlockStateProvider(TEA.getDefaultState().with(SweetBerryBushBlock.AGE, 3)), SimpleBlockPlacer.INSTANCE)
+					.tries(64).whitelist(ImmutableSet.of(Blocks.GRASS_BLOCK)).cannotProject().build())
+			.decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP_SPREAD_DOUBLE);
+	public static final Block TOMATO_PLANT = new BasicCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
+	public static final Item TOMATO = new TomatoItem(TOMATO_PLANT, new Item.Settings().group(ItemGroup.FOOD).food(
+			foodComponent(3, 4.2f).build()
+	));
+	public static final Identifier TOMATO_PACKET = new Identifier(ID, "spawn_packet");
+	public static final EntityType<TomatoEntity> TOMATO_THROWABLE = Registry.register(Registry.ENTITY_TYPE, new Identifier(ID, "tomato"),
+			FabricEntityTypeBuilder.<TomatoEntity>create()
+					.spawnGroup(SpawnGroup.MISC)
+					.dimensions(new EntityDimensions(0.25f, 0.25f, true))
+					.trackedUpdateRate(10)
+					.trackRangeChunks(4)
+					.build());
+	public static final Block RICE_PLANT = new BasicCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
+	public static final Item WILD_RICE = new BlockItem(RICE_PLANT, new Item.Settings().group(ItemGroup.MISC));
+	public static final Item RICE = basicIngredient();
+	public static final Block CORN_STALK = new DoubleCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
+	public static final Item CORN = basicFood(3, 2.4f);
+	public static final Item COOKED_CORN = basicFood(5, 3.8f);
+	public static final Item CORN_SEEDS = new BlockItem(CORN_STALK, new Item.Settings().group(ItemGroup.MISC));
+	// deathypooh - requested on 3/22/21
+	// solcatowo - requested on 3/22/21
+
+	// Misc
 	public static final Item BAGEL = basicFood(7, 6.5f);
 	public static final Item DONUT = basicFood(7, 7f);
 	public static final Item BROWNIE = basicFood(2, 2.6f);
-	public static final Item CHEESE = new BasicDrink(Items.BUCKET, 2, 3.5f);
+	public static final Item PEPPERONI = basicFood(4, 3.1f);
+	public static final Item COOKED_EGG = basicFood(2, 3.3f);
 	public static final Item MACARONI_N_CHEESE = basicBowlFood(4, 6.5f);
 	public static final Item BACON_MACARONI_N_CHEESE = basicBowlFood(6, 11.2f);
+	public static final Item SALMON_SUSHI = basicFood(4, 6.5f);
+	public static final Item SQUID_SUSHI = basicFood(4, 4.7f);
 	public static final Item LOADED_FRIES = basicFood(3, 3.5f);
 	public static final Item LOADED_POTATO = basicFood(8, 10.2f);
-	public static final Item MASHED_POTATOES = basicFood(4, 4.5f);
-	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(9, 7f);
+	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(11, 11.4f);
 	public static final MushroomStewItem FRUIT_SALAD = basicBowlFood(8, 4f);
-	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(new FoodComponent.Builder().hunger(14).saturationModifier(35f).alwaysEdible() // Give 1 item
+	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(foodComponent(14, 35f).alwaysEdible() // Give 1 item
 			.statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 20*120), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 20*20, 1), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 20*60), 1f).build()));
-	public static final Item DISGUSTING_DISH = new MushroomStewItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(new FoodComponent.Builder().hunger(2).saturationModifier(0.5f).alwaysEdible() // Give 1 item
+	public static final Item DISGUSTING_DISH = new MushroomStewItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(foodComponent(2, 0.5f).alwaysEdible() // Give 1 item
 			.statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 20*30, 2), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*30), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.POISON, 20*90, 3), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 20*30), 1f).build()));
+	public static final MushroomStewItem WHEAT_CEREAL_BOWL = basicBowlFood(2, 1.5f);
+	public static final MushroomStewItem CORN_CEREAL_BOWL = basicBowlFood(2, 1.7f);
+	public static final MushroomStewItem RICE_CEREAL_BOWL = basicBowlFood(2, 1.3f);
+
+	// Stats
+	public static final Identifier DAY_OF_WEEK = new Identifier(ID, "day_of_week");
+	public static final Identifier TOMATO_KILLS = new Identifier(ID, "tomato_kills");
 
 	@Override
 	public void onInitialize() {
 
 		// Sandwiches
-		register("steak_sandwich", STEAK_SANDWICH);
-		register("chicken_sandwich", CHICKEN_SANDWICH);
-		register("pork_sandwich", PORK_SANDWICH);
-		register("mutton_sandwich", MUTTON_SANDWICH);
-		register("fish_sandwich", FISH_SANDWICH);
-		register("rabbit_sandwich", RABBIT_SANDWICH);
-		register("berry_jam_sandwich", BERRY_JAM_SANDWICH);
-		register("apple_jam_sandwich", APPLE_JAM_SANDWICH);
+		registerItem("steak_sandwich", STEAK_SANDWICH);
+		registerItem("chicken_sandwich", CHICKEN_SANDWICH);
+		registerItem("pork_sandwich", PORK_SANDWICH);
+		registerItem("mutton_sandwich", MUTTON_SANDWICH);
+		registerItem("fish_sandwich", FISH_SANDWICH);
+		registerItem("rabbit_sandwich", RABBIT_SANDWICH);
+		registerItem("berry_jam_sandwich", BERRY_JAM_SANDWICH);
+		registerItem("apple_jam_sandwich", APPLE_JAM_SANDWICH);
 
 		// Pockets
-		register("steak_pocket", STEAK_POCKET);
-		register("chicken_pocket", CHICKEN_POCKET);
-		register("pork_pocket", PORK_POCKET);
-		register("mutton_pocket", MUTTON_POCKET);
-		register("fish_pocket", FISH_POCKET);
-		register("rabbit_pocket", RABBIT_POCKET);
+		registerItem("steak_pocket", STEAK_POCKET);
+		registerItem("chicken_pocket", CHICKEN_POCKET);
+		registerItem("pork_pocket", PORK_POCKET);
+		registerItem("mutton_pocket", MUTTON_POCKET);
+		registerItem("fish_pocket", FISH_POCKET);
+		registerItem("rabbit_pocket", RABBIT_POCKET);
 
 		// Stews
-		register("steak_stew", STEAK_STEW);
-		register("chicken_stew", CHICKEN_STEW);
-		register("pork_stew", PORK_STEW);
-		register("mutton_stew", MUTTON_STEW);
-		register("fish_stew", FISH_STEW);
+		registerItem("steak_stew", STEAK_STEW);
+		registerItem("chicken_stew", CHICKEN_STEW);
+		registerItem("pork_stew", PORK_STEW);
+		registerItem("mutton_stew", MUTTON_STEW);
+		registerItem("fish_stew", FISH_STEW);
 		// No need to add rabbit stew!
 
 		// Tacos
-		register("steak_taco", STEAK_TACO);
-		register("chicken_taco", CHICKEN_TACO);
-		register("pork_taco", PORK_TACO);
-		register("mutton_taco", MUTTON_TACO);
-		register("fish_taco", FISH_TACO);
-		register("rabbit_taco", RABBIT_TACO);
+		registerItem("steak_taco", STEAK_TACO);
+		registerItem("chicken_taco", CHICKEN_TACO);
+		registerItem("pork_taco", PORK_TACO);
+		registerItem("mutton_taco", MUTTON_TACO);
+		registerItem("fish_taco", FISH_TACO);
+		registerItem("rabbit_taco", RABBIT_TACO);
 
 		// Cakes
 		registerBlock("carrot_cake", CARROT_CAKE, ItemGroup.FOOD);
@@ -289,11 +412,11 @@ public class Baking implements ModInitializer {
 		registerBlock("polished_halite_stairs", POLISHED_HALITE_STAIR, ItemGroup.BUILDING_BLOCKS);
 		registerBlock("polished_halite_slab", POLISHED_HALITE_SLAB, ItemGroup.BUILDING_BLOCKS);
 		registerBlock("polished_halite_wall", POLISHED_HALITE_WALL, ItemGroup.BUILDING_BLOCKS);
-		register("salt", SALT);
+		registerItem("salt", SALT);
 		RegistryKey<ConfiguredFeature<?, ?>> haliteDesert = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN,
 				new Identifier(ID, "halite_desert"));
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, haliteDesert.getValue(), HALITE_DESERT);
-		Predicate<BiomeSelectionContext> selector = BiomeSelectors.includeByKey( // Deserts, Oceans, and Rivers
+		Predicate<BiomeSelectionContext> haliteSelector = BiomeSelectors.includeByKey( // Deserts, Oceans, and Rivers
 				BiomeKeys.DESERT, BiomeKeys.DESERT_HILLS, BiomeKeys.DESERT_LAKES, BiomeKeys.BADLANDS,
 				BiomeKeys.BADLANDS_PLATEAU, BiomeKeys.MODIFIED_BADLANDS_PLATEAU, BiomeKeys.ERODED_BADLANDS,
 				BiomeKeys.MODIFIED_WOODED_BADLANDS_PLATEAU, BiomeKeys.WOODED_BADLANDS_PLATEAU, BiomeKeys.OCEAN,
@@ -301,84 +424,168 @@ public class Baking implements ModInitializer {
 				BiomeKeys.DEEP_LUKEWARM_OCEAN, BiomeKeys.DEEP_OCEAN, BiomeKeys.DEEP_WARM_OCEAN, BiomeKeys.FROZEN_OCEAN,
 				BiomeKeys.LUKEWARM_OCEAN, BiomeKeys.WARM_OCEAN, BiomeKeys.RIVER, BiomeKeys.FROZEN_RIVER
 		);
-		BiomeModifications.addFeature(selector, GenerationStep.Feature.UNDERGROUND_ORES, haliteDesert);
+		BiomeModifications.addFeature(haliteSelector, GenerationStep.Feature.UNDERGROUND_ORES, haliteDesert);
 
 		// Cheese Burgers
-		register("steak_cheeseburger", STEAK_CHEESEBURGER);
-		register("chicken_cheeseburger", CHICKEN_CHEESEBURGER);
-		register("pork_cheeseburger", PORK_CHEESEBURGER);
-		register("mutton_cheeseburger", MUTTON_CHEESEBURGER);
-		register("fish_cheeseburger", FISH_CHEESEBURGER);
-		register("rabbit_cheeseburger", RABBIT_CHEESEBURGER);
+		registerItem("steak_cheeseburger", STEAK_CHEESEBURGER);
+		registerItem("chicken_cheeseburger", CHICKEN_CHEESEBURGER);
+		registerItem("pork_cheeseburger", PORK_CHEESEBURGER);
+		registerItem("mutton_cheeseburger", MUTTON_CHEESEBURGER);
+		registerItem("fish_cheeseburger", FISH_CHEESEBURGER);
+		registerItem("rabbit_cheeseburger", RABBIT_CHEESEBURGER);
 
 		// Jams
-		register("berry_jam", BERRY_JAM);
-		register("apple_jam", APPLE_JAM);
+		registerItem("berry_jam", BERRY_JAM);
+		registerItem("apple_jam", APPLE_JAM);
 
 		// Pies
-		register("shepherds_pie", SHEPHERDS_PIE);
-		register("berry_pie", BERRY_PIE);
-		register("apple_pie", APPLE_PIE);
+		registerItem("shepherds_pie", SHEPHERDS_PIE);
+		registerItem("berry_pie", BERRY_PIE);
+		registerItem("apple_pie", APPLE_PIE);
 
 		// Ingredients
-		register("flour", FLOUR);
-		register("cocoa_powder", COCOA_POWDER);
-		register("bacon_bits", BACON_BITS);
-		register("dough", DOUGH);
-		register("pasta_dough", PASTA_DOUGH);
-		register("linguine", LINGUINE);
-		register("macaroni", MACARONI);
-		register("cheese", CHEESE);
-
-		// Stone cut Goods
-		register("chicken_nuggets", CHICKEN_NUGGETS);
-		register("french_fries", FRENCH_FRIES);
-		register("bacon", BACON);
-		register("jerky", JERKY);
-		register("cut_salmon", CUT_SALMON);
+		registerItem("flour", FLOUR);
+		registerItem("corn_meal", CORN_MEAL);
+		registerItem("ground_coffee", GROUND_COFFEE);
+		registerItem("ground_tea", GROUND_TEA);
+		registerItem("cocoa_powder", COCOA_POWDER);
+		registerItem("batter", BATTER);
+		registerItem("bacon_bits", BACON_BITS);
+		registerItem("dough", DOUGH);
+		registerItem("pasta_dough", PASTA_DOUGH);
+		registerItem("linguine", LINGUINE);
+		registerItem("macaroni", MACARONI);
+		registerItem("cheese", CHEESE);
+		registerItem("tomato_sauce", TOMATO_SAUCE);
+		registerItem("wheat_cereal", WHEAT_CEREAL);
+		registerItem("corn_cereal", CORN_CEREAL);
+		registerItem("rice_cereal", RICE_CEREAL);
 
 		// Raw/Cooked Goods
-		register("egg_whites", EGG_WHITES);
-		register("egg_yolk", EGG_YOLK);
-		register("cooked_chicken_nuggets", COOKED_CHICKEN_NUGGETS);
-		register("cooked_french_fries", COOKED_FRENCH_FRIES);
-		register("cooked_egg", COOKED_EGG);
-		register("smoked_jerky", SMOKED_JERKY);
-		register("smoked_bacon", SMOKED_BACON);
-		register("smoked_salmon", SMOKED_SALMON);
-		register("mayonnaise", MAYONNAISE);
-		register("meringue", MERINGUE);
+		registerItem("calamari", CALAMARI);
+		registerItem("cooked_calamari", COOKED_CALAMARI);
+		registerItem("battered_calamari", BATTERED_CALAMARI);
+		registerItem("fried_calamari", FRIED_CALAMARI);
+		registerItem("chicken_nuggets", CHICKEN_NUGGETS);
+		registerItem("cooked_chicken_nuggets", COOKED_CHICKEN_NUGGETS);
+		registerItem("battered_chicken_nuggets", BATTERED_CHICKEN_NUGGETS);
+		registerItem("fried_chicken_nuggets", FRIED_CHICKEN_NUGGETS);
+		registerItem("battered_chicken", BATTERED_CHICKEN);
+		registerItem("fried_chicken", FRIED_CHICKEN);
+		registerItem("french_fries", FRENCH_FRIES);
+		registerItem("cooked_french_fries", COOKED_FRENCH_FRIES);
+		registerItem("pizza", PIZZA);
+		registerItem("cooked_pizza", COOKED_PIZZA);
+		registerItem("jerky", JERKY);
+		registerItem("smoked_jerky", SMOKED_JERKY);
+		registerItem("bacon", BACON);
+		registerItem("smoked_bacon", SMOKED_BACON);
+		registerItem("cut_salmon", CUT_SALMON);
+		registerItem("smoked_salmon", SMOKED_SALMON);
+		registerItem("egg_yolk", EGG_YOLK);
+		registerItem("mayonnaise", MAYONNAISE);
+		registerItem("egg_whites", EGG_WHITES);
+		registerItem("meringue", MERINGUE);
+		registerItem("wild_rice_ball", WILD_RICE_BALL);
+		registerItem("rice_ball", RICE_BALL);
+		registerItem("cooked_wild_rice_ball", COOKED_WILD_RICE_BALL);
+		registerItem("cooked_rice_ball", COOKED_RICE_BALL);
 
 		// Mill
-		Identifier mill_id = new Identifier(ID, "mill");
-		MILLING = RecipeType.register(mill_rtype_id);
-		Registry.register(Registry.CUSTOM_STAT, mill_stat, INTERACT_WITH_MILL);
+		Registry.register(Registry.RECIPE_SERIALIZER, MILL_RTYPE_ID, new MillingRecipe.Serializer(MillingRecipe::new));
+		Registry.register(Registry.RECIPE_TYPE, MILL_RTYPE_ID, MillingRecipe.Type.INSTANCE);
+
+		Registry.register(Registry.CUSTOM_STAT, MILL_STAT, INTERACT_WITH_MILL);
 		Stats.CUSTOM.getOrCreateStat(INTERACT_WITH_MILL, StatFormatter.DEFAULT);
-		MILL_SCREEN = ScreenHandlerRegistry.registerSimple(mill_id, MillScreenHandler::new);
-		ScreenRegistry.register(MILL_SCREEN, MillScreen::new);
-		Registry.register(Registry.BLOCK, mill_id, MILL);
-		Registry.register(Registry.ITEM, mill_id, MILL_ITEM);
+		Registry.register(Registry.BLOCK, MILL_ID, MILL);
+		Registry.register(Registry.ITEM, MILL_ID, MILL_ITEM);
 
 		// Cups
-		register("cup", CUP);
-		register("cup_of_milk", MILK_CUP);
-		register("cup_of_water", WATER_CUP);
-		register("cup_of_cheese", CHEESE_CUP);
-		register("chocolate_milk", CHOCOLATE_MILK);
+		registerItem("cup", CUP);
+		registerItem("milk_cup", MILK_CUP);
+		registerItem("water_cup", WATER_CUP);
+		registerItem("cheese_cup", CHEESE_CUP);
+		registerItem("chocolate_milk_cup", CHOCOLATE_MILK);
+		registerItem("creamer_cup", CREAMER_CUP);
+		registerItem("coffee_cup", COFFEE_CUP);
+		registerItem("creamy_coffee_cup", COFFEE_W_CREAMER);
+		registerItem("tea_cup", TEA_CUP);
+		registerItem("creamy_tea_cup", TEA_W_CREAMER);
+
+		// Sodie Pop
+		registerItem("sugar_water", SUGAR_WATER);
+		registerItem("club_soda", CLUB_SODA);
+		registerItem("root_beer", ROOT_BEER);
+		registerItem("cola", COLA);
+		registerItem("fruity_soda", FRUITY_SODA);
+		registerItem("mountain_fountain", MOUNTAIN_FOUNTAIN);
+		registerItem("cactus_chiller", CACTUS_CHILLER);
+		registerItem("grape_soda", GRAPE_SODA);
+
+		// Plates & Meals
+		registerItem("unfired_plate", UNFIRED_PLATE);
+		registerItem("plate", PLATE);
+		registerItem("steak_meal", STEAK_MEAL);
+		registerItem("pork_meal", PORK_MEAL);
+		registerItem("chicken_meal", CHICKEN_MEAL);
+		registerItem("mutton_meal", MUTTON_MEAL);
+		registerItem("rabbit_meal", RABBIT_MEAL);
+
+		// Crops
+		registerBlock("coffee", COFFEE);
+		registerItem("coffee_beans", COFFEE_BEANS);
+		registerBlock("tea", TEA, TEA_SEEDS);
+		registerItem("tea_leaves", TEA_LEAVES);
+		registerItem("dried_tea_leaves", DRIED_TEA_LEAVES);
+		registerBlock("compressed_tea_block", COMPRESSED_TEA_BLOCK, ItemGroup.BUILDING_BLOCKS);
+		RegistryKey<ConfiguredFeature<?, ?>> teaTrees = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN,
+				new Identifier(ID, "tea_tree_mountains"));
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, teaTrees.getValue(), TEA_TREES);
+		Predicate<BiomeSelectionContext> teaTreeSelector = BiomeSelectors.includeByKey( // Mountain & Birch biomes
+				BiomeKeys.MOUNTAIN_EDGE, BiomeKeys.MOUNTAINS, BiomeKeys.GRAVELLY_MOUNTAINS,
+				BiomeKeys.MODIFIED_GRAVELLY_MOUNTAINS, BiomeKeys.BIRCH_FOREST, BiomeKeys.BIRCH_FOREST_HILLS,
+				BiomeKeys.TALL_BIRCH_FOREST, BiomeKeys.TALL_BIRCH_HILLS
+		);
+		BiomeModifications.addFeature(teaTreeSelector, GenerationStep.Feature.VEGETAL_DECORATION, teaTrees);
+		registerBlock("tomato", TOMATO_PLANT, (BlockItem) TOMATO);
+		((BasicCropBlock)TOMATO_PLANT).setSeed(TOMATO);
+		registerBlock("wild_rice", RICE_PLANT, (BlockItem) WILD_RICE);
+		((BasicCropBlock)RICE_PLANT).setSeed(WILD_RICE);
+		registerItem("rice", RICE);
+		registerBlock("corn", CORN_STALK);
+		registerItem("corn", CORN);
+		registerItem("cooked_corn", COOKED_CORN);
+		registerItem("corn_seeds", CORN_SEEDS);
+		// dreamwastaken my beloved <3 - redeemed by KoritsiAlogo on 3/22/21
 
 		// Misc
-		register("bagel", BAGEL);
-		register("donut", DONUT);
-		register("brownie", BROWNIE);
-		register("macaroni_n_cheese", MACARONI_N_CHEESE);
-		register("bacon_macaroni_n_cheese", BACON_MACARONI_N_CHEESE);
-		register("loaded_fries", LOADED_FRIES);
-		register("loaded_potato", LOADED_POTATO);
-		register("mashed_potatoes", MASHED_POTATOES);
-		register("veggie_medley", VEGGIE_MEDLEY);
-		register("fruit_salad", FRUIT_SALAD);
-		register("midas_salad", MIDAS_SALAD);
-		register("disgusting_dish", DISGUSTING_DISH);
+		registerItem("bagel", BAGEL);
+		registerItem("donut", DONUT);
+		registerItem("brownie", BROWNIE);
+		registerItem("cooked_egg", COOKED_EGG);
+		registerItem("pepperoni", PEPPERONI);
+		registerItem("salmon_sushi", SALMON_SUSHI);
+		registerItem("squid_sushi", SQUID_SUSHI);
+		registerItem("macaroni_n_cheese", MACARONI_N_CHEESE);
+		registerItem("bacon_macaroni_n_cheese", BACON_MACARONI_N_CHEESE);
+		registerItem("loaded_fries", LOADED_FRIES);
+		registerItem("loaded_potato", LOADED_POTATO);
+		registerItem("mashed_potatoes", MASHED_POTATOES);
+		registerItem("veggie_medley", VEGGIE_MEDLEY);
+		registerItem("fruit_salad", FRUIT_SALAD);
+		registerItem("midas_salad", MIDAS_SALAD);
+		registerItem("disgusting_dish", DISGUSTING_DISH);
+		registerItem("wheat_cereal_bowl", WHEAT_CEREAL_BOWL);
+		registerItem("corn_cereal_bowl", CORN_CEREAL_BOWL);
+		registerItem("rice_cereal_bowl", RICE_CEREAL_BOWL);
 
+		// Trades
+		VillagerTrades.init();
+
+		// Stats
+		Registry.register(Registry.CUSTOM_STAT, "day_of_week", DAY_OF_WEEK);
+		Stats.CUSTOM.getOrCreateStat(DAY_OF_WEEK, StatFormatter.DEFAULT);
+		Registry.register(Registry.CUSTOM_STAT, "tomato_kills", TOMATO_KILLS);
+		Stats.CUSTOM.getOrCreateStat(TOMATO_KILLS, StatFormatter.DEFAULT);
 	}
 }

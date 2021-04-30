@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient": {
+        "item": "bagels_baking:unfired_plate"
+    },
+    "result": "bagels_baking:plate",
+    "experience": 0.1,
+    "cookingtime": 200
+}

@@ -4,15 +4,25 @@
   "package": "dev.elexi.hugeblank.bagels_baking.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "Splashes",
     "brewing.BrewingRecipeRegistryInvoker",
     "brewing.BrewingRecipes",
     "brewing.BrewingSlots",
     "brewing.BrewingSlotsClient",
     "composting.Composting",
     "crafting.MultiCraft",
+    "entity.ChickenSeeds",
+    "entity.LivingEntityTeaDamage",
+    "entity.PlayerTick",
+    "entity.TrickyRabbit",
+    "entity.villager.FarmerVillagerAITask",
+    "entity.villager.FarmerVillagerAIWorkTask",
+    "entity.villager.VillagerEntityFarming",
     "stew.BasicStewItem",
     "stew.IStewStackIncrease",
-    "stew.StewStackIncrease"
+    "stew.StewStackIncrease",
+    "world.CoffeeBeansTreeDecorator",
+    "world.CropProcessorList"
   ],
   "client": [
   ],

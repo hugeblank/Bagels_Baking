@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:sugar"
+        },
+        {
+            "item": "bagels_baking:milk_cup"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:creamer_cup",
+        "count": 1
+    }
+}

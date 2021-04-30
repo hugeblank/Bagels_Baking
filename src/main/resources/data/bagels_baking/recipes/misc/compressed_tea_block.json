@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "bagels_baking:dried_tea_leaves"
+        }
+    },
+    "result": {
+        "item": "bagels_baking:compressed_tea_block",
+        "count": 1
+    }
+}

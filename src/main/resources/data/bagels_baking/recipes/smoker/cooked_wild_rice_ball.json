@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smoking",
+    "ingredient": {
+        "item": "bagels_baking:wild_rice_ball"
+    },
+    "result": "bagels_baking:cooked_wild_rice_ball",
+    "experience": 0.1,
+    "cookingtime": 100
+}

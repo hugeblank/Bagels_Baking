@@ -2,6 +2,7 @@ package dev.elexi.hugeblank.bagels_baking.screen;
 
 import com.google.common.collect.Lists;
 import dev.elexi.hugeblank.bagels_baking.Baking;
+import dev.elexi.hugeblank.bagels_baking.ClientBaking;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -43,7 +44,7 @@ public class MillScreenHandler extends ScreenHandler implements NamedScreenHandl
     }
 
     public MillScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
-        super(Baking.MILL_SCREEN, syncId);
+        super(ClientBaking.MILL_SCREEN, syncId);
         this.selectedRecipe = Property.create();
         this.availableRecipes = Lists.newArrayList();
         this.inputStack = ItemStack.EMPTY;
@@ -150,7 +151,7 @@ public class MillScreenHandler extends ScreenHandler implements NamedScreenHandl
         this.selectedRecipe.set(-1);
         this.outputSlot.setStack(ItemStack.EMPTY);
         if (!stack.isEmpty()) {
-            this.availableRecipes = this.world.getRecipeManager().getAllMatches(Baking.MILLING, input, this.world);
+            this.availableRecipes = this.world.getRecipeManager().getAllMatches(MillingRecipe.Type.INSTANCE, input, this.world);
         }
 
     }
@@ -168,7 +169,7 @@ public class MillScreenHandler extends ScreenHandler implements NamedScreenHandl
     }
 
     public ScreenHandlerType<?> getType() {
-        return Baking.MILL_SCREEN;
+        return ClientBaking.MILL_SCREEN;
     }
 
     @Environment(EnvType.CLIENT)
@@ -198,7 +199,7 @@ public class MillScreenHandler extends ScreenHandler implements NamedScreenHandl
                 if (!this.insertItem(itemStack2, 2, 38, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (this.world.getRecipeManager().getFirstMatch(Baking.MILLING, new SimpleInventory(new ItemStack[]{itemStack2}), this.world).isPresent()) {
+            } else if (this.world.getRecipeManager().getFirstMatch(MillingRecipe.Type.INSTANCE, new SimpleInventory(itemStack2), this.world).isPresent()) {
                 if (!this.insertItem(itemStack2, 0, 1, false)) {
                     return ItemStack.EMPTY;
                 }

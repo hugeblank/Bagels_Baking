@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:corn"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:corn_seeds",
+        "count": 4
+    }
+}

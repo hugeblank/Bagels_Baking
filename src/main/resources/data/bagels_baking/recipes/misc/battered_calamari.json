@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:batter"
+        },
+        {
+            "item": "bagels_baking:calamari"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:battered_calamari",
+        "count": 1
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:tomato_sauce"
+        },
+        {
+            "item": "bagels_baking:dough"
+        },
+        {
+            "item": "bagels_baking:cheese_cup"
+        },
+        {
+            "item": "bagels_baking:corn_meal"
+        },
+        {
+            "item": "bagels_baking:pepperoni"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:pizza",
+        "count": 4
+    }
+}

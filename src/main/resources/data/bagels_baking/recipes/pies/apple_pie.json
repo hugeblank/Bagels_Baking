@@ -5,10 +5,10 @@
             "item": "minecraft:apple"
         },
         {
-            "item": "minecraft:wheat"
+            "item": "minecraft:sugar"
         },
         {
-            "item": "bagels_baking:meringue"
+            "item": "minecraft:egg"
         }
     ],
     "result": {

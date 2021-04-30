@@ -1,0 +1,35 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:milling/pepperoni",
+			"bagels_baking:misc/bacon",
+			"bagels_baking:smoker/smoked_bacon",
+			"bagels_baking:milling/bacon_bits"
+		]
+	},
+	"criteria": {
+		"has_porkchop": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "minecraft:porkchop"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:on_porkchop"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_porkchop",
+			"has_the_recipe"
+		]
+	]
+}

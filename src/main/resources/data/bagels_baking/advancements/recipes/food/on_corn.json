@@ -1,0 +1,33 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:milling/corn_meal",
+			"bagels_baking:misc/corn_seeds"
+		]
+	},
+	"criteria": {
+		"has_corn": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "bagels_baking:corn"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:on_corn"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_corn",
+			"has_the_recipe"
+		]
+	]
+}

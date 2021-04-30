@@ -5,11 +5,11 @@
             "item": "bagels_baking:cocoa_powder"
         },
         {
-            "item": "bagels_baking:cup_of_milk"
+            "item": "bagels_baking:milk_cup"
         }
     ],
     "result": {
-        "item": "bagels_baking:chocolate_milk",
+        "item": "bagels_baking:chocolate_milk_cup",
         "count": 1
     }
 }

@@ -9,8 +9,9 @@
     "hugeblank"
   ],
   "contact": {
-    "homepage": "https://github.com/hugeblank/",
-    "sources": "https://github.com/hugeblank/"
+    "homepage": "https://github.com/hugeblank/Bagels_Baking",
+    "issues": "https://github.com/hugeblank/Bagels_Baking/issues",
+    "sources": "https://github.com/hugeblank/Bagels_Baking"
   },
 
   "license": "MIT",

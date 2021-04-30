@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smoking",
+    "ingredient": {
+        "item": "bagels_baking:tea_leaves"
+    },
+    "result": "bagels_baking:dried_tea_leaves",
+    "experience": 0.1,
+    "cookingtime": 100
+}
