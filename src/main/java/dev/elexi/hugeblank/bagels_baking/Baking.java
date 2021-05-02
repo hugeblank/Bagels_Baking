@@ -6,12 +6,14 @@ import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
 import dev.elexi.hugeblank.bagels_baking.entity.VillagerTrades;
 import dev.elexi.hugeblank.bagels_baking.item.*;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
+import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
@@ -23,6 +25,7 @@ import net.minecraft.item.*;
 import net.minecraft.recipe.CuttingRecipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
+import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -233,6 +236,7 @@ public class Baking implements ModInitializer {
 	public static final Identifier INTERACT_WITH_MILL = new Identifier(ID, mill_stat);
 	public static RecipeType<MillingRecipe> MILLING;
 	public static RecipeSerializer<MillingRecipe> MILLING_SERIALIZER = RecipeSerializer.register(mill_rtype_id, new CuttingRecipe.Serializer(MillingRecipe::new));
+	public static ScreenHandlerType<MillScreenHandler> MILL_SCREEN;
 
 	// Ingredients
 	public static final Item SALT = basicIngredient();
@@ -500,6 +504,7 @@ public class Baking implements ModInitializer {
 		Stats.CUSTOM.getOrCreateStat(INTERACT_WITH_MILL, StatFormatter.DEFAULT);
 		Registry.register(Registry.BLOCK, MILL_ID, MILL);
 		Registry.register(Registry.ITEM, MILL_ID, MILL_ITEM);
+		MILL_SCREEN = ScreenHandlerRegistry.registerSimple(Baking.MILL_ID, MillScreenHandler::new);
 
 		// Cups
 		registerItem("cup", CUP);

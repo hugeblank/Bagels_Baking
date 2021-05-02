@@ -3,25 +3,20 @@ package dev.elexi.hugeblank.bagels_baking;
 import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
 import dev.elexi.hugeblank.bagels_baking.network.TomatoSpawnPacket;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreen;
-import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
-import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.entity.Entity;
-import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.math.Vec3d;
 
 import java.util.UUID;
 
 public class ClientBaking implements ClientModInitializer {
-
-    public static ScreenHandlerType<MillScreenHandler> MILL_SCREEN;
 
     @Override
     public void onInitializeClient() {
@@ -39,8 +34,7 @@ public class ClientBaking implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.CORN_STALK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.RICE_PLANT, RenderLayer.getCutout());
 
-        MILL_SCREEN = ScreenHandlerRegistry.registerSimple(Baking.MILL_ID, MillScreenHandler::new);
-        ScreenRegistry.register(MILL_SCREEN, MillScreen::new);
+        ScreenRegistry.register(Baking.MILL_SCREEN, MillScreen::new);
 
         EntityRendererRegistry.INSTANCE.register(Baking.TOMATO_THROWABLE, (dispatcher, context) ->
                 new FlyingItemEntityRenderer(dispatcher, context.getItemRenderer()));
