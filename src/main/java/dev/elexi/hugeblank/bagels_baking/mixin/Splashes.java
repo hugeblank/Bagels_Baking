@@ -38,6 +38,8 @@ public class Splashes {
         splashTexts.add("Based on real pizza!"); // Honoring ChocolateFrog using a real pizza as a texture reference
         // Miscellaneous
         splashTexts.add("Now Catering!");
+        splashTexts.add("We do not condone the eating of kiwi skin");
+        splashTexts.add("Kroi can't tyep sommtines but that' sokya");
         splashTexts.add("Respect your food delivery drivers!");
         splashTexts.add("A la minecarte!");
         if (field_18934 != null && RANDOM.nextFloat() < 0.25) {
