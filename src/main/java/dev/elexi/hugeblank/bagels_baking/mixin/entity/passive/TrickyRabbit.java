@@ -1,4 +1,4 @@
-package dev.elexi.hugeblank.bagels_baking.mixin.entity;
+package dev.elexi.hugeblank.bagels_baking.mixin.entity.passive;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
 import net.minecraft.entity.EntityType;

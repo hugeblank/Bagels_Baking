@@ -42,7 +42,7 @@ public class Splashes {
         splashTexts.add("Kroi can't tyep sommtines but that' sokya");
         splashTexts.add("Respect your food delivery drivers!");
         splashTexts.add("A la minecarte!");
-        if (field_18934 != null && RANDOM.nextFloat() < 0.25) {
+        if (field_18934 != null && RANDOM.nextFloat() < 0.1) {
             switch (field_18934.getUsername()) { // Surprises for my friends :)
                 case "rwr":
                     cir.setReturnValue("Betreucia killed Broseph!");
@@ -53,7 +53,7 @@ public class Splashes {
                 case "roger109z":
                     cir.setReturnValue("poger! :)");
                     return;
-                case "KoriA":
+                case "Kori_A":
                     cir.setReturnValue("Korea? No, KoriA.");
                     return;
                 case "He_Is_Man":
@@ -70,7 +70,6 @@ public class Splashes {
                     return;
                 case "ChocolateFrog18":
                     cir.setReturnValue("Any British frogs?");
-                    return;
             }
         }
     }
