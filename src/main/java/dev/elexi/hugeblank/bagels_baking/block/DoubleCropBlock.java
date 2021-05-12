@@ -1,13 +1,8 @@
 package dev.elexi.hugeblank.bagels_baking.block;
 
 import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.enums.DoubleBlockHalf;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.mob.RavagerEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
@@ -15,14 +10,15 @@ import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.world.*;
+import net.minecraft.world.BlockView;
+import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public class DoubleCropBlock extends PlantBlock implements Fertilizable {
+public class DoubleCropBlock extends BasicCropBlock implements Fertilizable {
 
     public static final EnumProperty<DoubleBlockHalf> HALF = Properties.DOUBLE_BLOCK_HALF;
     public static final IntProperty AGE = Properties.AGE_7;
@@ -74,46 +70,10 @@ public class DoubleCropBlock extends PlantBlock implements Fertilizable {
     protected static float getAvailableMoisture(Block block, BlockView world, BlockPos pos) {
         if (world.getBlockState(pos).get(HALF) == DoubleBlockHalf.UPPER) {
             BlockState lowerState = world.getBlockState(pos.down());
-            return getAvailableMoisture(lowerState.getBlock(), world, pos.down());
-        }
-        float f = 1.0F;
-        BlockPos blockPos = pos.down();
-
-        for(int i = -1; i <= 1; ++i) {
-            for(int j = -1; j <= 1; ++j) {
-                float g = 0.0F;
-                BlockState blockState = world.getBlockState(blockPos.add(i, 0, j));
-                if (blockState.isOf(Blocks.FARMLAND)) {
-                    g = 1.0F;
-                    if (blockState.get(FarmlandBlock.MOISTURE) > 0) {
-                        g = 3.0F;
-                    }
-                }
-
-                if (i != 0 || j != 0) {
-                    g /= 4.0F;
-                }
-
-                f += g;
-            }
-        }
-
-        BlockPos blockPos2 = pos.north();
-        BlockPos blockPos3 = pos.south();
-        BlockPos blockPos4 = pos.west();
-        BlockPos blockPos5 = pos.east();
-        boolean bl = block == world.getBlockState(blockPos4).getBlock() || block == world.getBlockState(blockPos5).getBlock();
-        boolean bl2 = block == world.getBlockState(blockPos2).getBlock() || block == world.getBlockState(blockPos3).getBlock();
-        if (bl && bl2) {
-            f /= 2.0F;
+            return CropBlock.getAvailableMoisture(lowerState.getBlock(), world, pos.down());
         } else {
-            boolean bl3 = block == world.getBlockState(blockPos4.north()).getBlock() || block == world.getBlockState(blockPos5.north()).getBlock() || block == world.getBlockState(blockPos5.south()).getBlock() || block == world.getBlockState(blockPos4.south()).getBlock();
-            if (bl3) {
-                f /= 2.0F;
-            }
+            return CropBlock.getAvailableMoisture(block, world, pos.down());
         }
-
-        return f;
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -124,38 +84,9 @@ public class DoubleCropBlock extends PlantBlock implements Fertilizable {
         }
     }
 
-    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        if (!world.isClient) {
-            if (player.isCreative()) {
-                onBreakInCreative(world, pos, state, player);
-            } else {
-                dropStacks(state, world, pos, null, player, player.getMainHandStack());
-            }
-        }
-
-        super.onBreak(world, pos, state, player);
-    }
-
-    public void afterBreak(World world, PlayerEntity player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack stack) {
-        super.afterBreak(world, player, pos, Blocks.AIR.getDefaultState(), blockEntity, stack);
-    }
-
-    protected static void onBreakInCreative(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        DoubleBlockHalf doubleBlockHalf = state.get(HALF);
-        if (doubleBlockHalf == DoubleBlockHalf.UPPER) {
-            BlockPos blockPos = pos.down();
-            BlockState blockState = world.getBlockState(blockPos);
-            if (blockState.getBlock() == state.getBlock() && blockState.get(HALF) == DoubleBlockHalf.LOWER) {
-                world.setBlockState(blockPos, Blocks.AIR.getDefaultState(), 35);
-                world.syncWorldEvent(player, 2001, blockPos, Block.getRawIdFromState(blockState));
-            }
-        }
-
-    }
-
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         BlockState lower = world.getBlockState(pos.down());
-        return state.get(HALF) == DoubleBlockHalf.LOWER ? lower.isOf(Blocks.FARMLAND) : (lower.getBlock() == this && state.get(HALF) == DoubleBlockHalf.UPPER);
+        return state.get(HALF) == DoubleBlockHalf.LOWER ? super.canPlaceAt(state, world, pos) : (lower.getBlock() == this && state.get(HALF) == DoubleBlockHalf.UPPER && lower.get(AGE) > 3);
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState newState, WorldAccess world, BlockPos pos, BlockPos posFrom) {
@@ -163,36 +94,9 @@ public class DoubleCropBlock extends PlantBlock implements Fertilizable {
         if (doubleBlockHalf == DoubleBlockHalf.LOWER && direction == Direction.UP && (state.get(AGE) > 3 && world.getBlockState(pos.up()).getBlock() == Blocks.AIR)) {
             return Blocks.AIR.getDefaultState();
         } else {
+
             return direction == Direction.DOWN && !state.canPlaceAt(world, pos) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, newState, world, pos, posFrom);
         }
-    }
-
-    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (entity instanceof RavagerEntity && world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
-            world.breakBlock(pos, true, entity);
-        }
-
-        super.onEntityCollision(state, world, pos, entity);
-    }
-
-    public IntProperty getAgeProperty() {
-        return AGE;
-    }
-
-    public int getMaxAge() {
-        return 7;
-    }
-
-    protected int getAge(BlockState state) {
-        return state.get(this.getAgeProperty());
-    }
-
-    public BlockState withAge(int age) {
-        return this.getDefaultState().with(this.getAgeProperty(), age);
-    }
-
-    public boolean isMature(BlockState state) {
-        return state.get(this.getAgeProperty()) >= this.getMaxAge();
     }
 
     @Override
@@ -207,15 +111,6 @@ public class DoubleCropBlock extends PlantBlock implements Fertilizable {
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(HALF, AGE);
-    }
-
-    @Override
-    public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
-        return true;
-    }
-
-    protected int getGrowthAmount(World world) {
-        return MathHelper.nextInt(world.random, 2, 5);
     }
 
     @Override

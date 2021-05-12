@@ -559,6 +559,7 @@ public class Baking implements ModInitializer {
 		((BasicCropBlock)RICE_PLANT).setSeed(WILD_RICE);
 		registerItem("rice", RICE);
 		registerBlock("corn", CORN_STALK);
+		((BasicCropBlock)CORN_STALK).setSeed(CORN_SEEDS);
 		registerItem("corn", CORN);
 		registerItem("cooked_corn", COOKED_CORN);
 		registerItem("corn_seeds", CORN_SEEDS);
