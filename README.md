@@ -1,4 +1,4 @@
-# Bagel's Baking
+# Bagel's Baking [![](http://cf.way2muchnoise.eu/full_bagels-baking_downloads.svg)![](http://cf.way2muchnoise.eu/versions/bagels-baking.svg)](https://minecraft.curseforge.com/projects/bagels-baking)
 
 ## Description
 Bagel's Baking aims to add an eccentric array of food items to the game while also staying close to vanilla
