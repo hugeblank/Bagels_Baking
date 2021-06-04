@@ -38,5 +38,6 @@ public class Plugin implements REIPluginV0 {
     @Override
     public void registerOthers(RecipeHelper recipeHelper) {
         recipeHelper.registerWorkingStations(MILLING, MILL);
+        recipeHelper.removeAutoCraftButton(MILLING);
     }
 }
