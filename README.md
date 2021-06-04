@@ -29,3 +29,5 @@ Our internal spreadsheet used for asset delegations can also be viewed by the pu
   crushed ingredients
 - Adds Coffee, Tea, Corn, Rice, and Tomato crops
 - And more: Bagels, Jams, Meringue, Chicken Nuggets, Bacon, the list goes on!
+
+Screenshots of the mod can be found on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/bagels-baking/screenshots)!
