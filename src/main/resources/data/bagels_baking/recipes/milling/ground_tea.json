@@ -1,5 +1,5 @@
 {
-    "type": "minecraft:milling",
+    "type": "bagels_baking:milling",
     "ingredient": {
         "item": "bagels_baking:dried_tea_leaves"
     },

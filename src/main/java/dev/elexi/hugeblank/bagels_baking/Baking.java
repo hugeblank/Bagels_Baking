@@ -22,9 +22,6 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
-import net.minecraft.recipe.CuttingRecipe;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.RecipeType;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
@@ -49,7 +46,7 @@ import java.util.function.Predicate;
 
 public class Baking implements ModInitializer {
 
-	private static final String ID = "bagels_baking";
+	public static final String ID = "bagels_baking";
 
 	// Beautification Functions
 
@@ -232,10 +229,7 @@ public class Baking implements ModInitializer {
 	public static final Block MILL = new Mill(FabricBlockSettings.copy(Blocks.STONECUTTER));
 	public static final BlockItem MILL_ITEM = new BlockItem(MILL, new Item.Settings().group(ItemGroup.DECORATIONS));
 	private static final String mill_stat = "interact_with_mill";
-	private static final String mill_rtype_id = "milling";
 	public static final Identifier INTERACT_WITH_MILL = new Identifier(ID, mill_stat);
-	public static RecipeType<MillingRecipe> MILLING;
-	public static RecipeSerializer<MillingRecipe> MILLING_SERIALIZER = RecipeSerializer.register(mill_rtype_id, new CuttingRecipe.Serializer(MillingRecipe::new));
 	public static ScreenHandlerType<MillScreenHandler> MILL_SCREEN;
 
 	// Ingredients
@@ -499,7 +493,7 @@ public class Baking implements ModInitializer {
 		registerItem("cooked_rice_ball", COOKED_RICE_BALL);
 
 		// Mill
-		MILLING = RecipeType.register(mill_rtype_id);
+		Registry.register(Registry.RECIPE_SERIALIZER, MillingRecipe.ID, MillingRecipe.SERIALIZER);
 		Registry.register(Registry.CUSTOM_STAT, mill_stat, INTERACT_WITH_MILL);
 		Stats.CUSTOM.getOrCreateStat(INTERACT_WITH_MILL, StatFormatter.DEFAULT);
 		Registry.register(Registry.BLOCK, MILL_ID, MILL);
