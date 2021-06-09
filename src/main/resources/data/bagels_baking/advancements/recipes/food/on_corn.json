@@ -12,7 +12,9 @@
 			"conditions": {
 				"items": [
 					{
-						"item": "bagels_baking:corn"
+						"items": [
+							"bagels_baking:corn"
+						]
 					}
 				]
 			}

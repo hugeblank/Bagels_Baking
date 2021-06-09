@@ -35,10 +35,10 @@ public class PlatedItem extends Item {
         if (stack.isEmpty()) {
             return new ItemStack(Baking.PLATE);
         } else {
-            if (user instanceof PlayerEntity && !((PlayerEntity)user).abilities.creativeMode) {
+            if (user instanceof PlayerEntity && !((PlayerEntity)user).getAbilities().creativeMode) {
                 ItemStack itemStack = new ItemStack(Baking.PLATE);
                 PlayerEntity playerEntity = (PlayerEntity)user;
-                if (!playerEntity.inventory.insertStack(itemStack)) {
+                if (!playerEntity.getInventory().insertStack(itemStack)) {
                     playerEntity.dropItem(itemStack, false);
                 }
             }

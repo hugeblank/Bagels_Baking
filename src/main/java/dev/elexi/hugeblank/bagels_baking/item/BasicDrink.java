@@ -106,10 +106,10 @@ public class BasicDrink extends PotionItem implements BrewableItem {
         if (stack.isEmpty()) {
             return new ItemStack(isBucket ? Items.BUCKET : Baking.CUP);
         } else {
-            if (user instanceof PlayerEntity && !((PlayerEntity)user).abilities.creativeMode) {
+            if (user instanceof PlayerEntity && !((PlayerEntity)user).getAbilities().creativeMode) {
                 ItemStack itemStack = new ItemStack(isBucket ? Items.BUCKET : Baking.CUP);
                 PlayerEntity playerEntity = (PlayerEntity)user;
-                if (!playerEntity.inventory.insertStack(itemStack)) {
+                if (!playerEntity.getInventory().insertStack(itemStack)) {
                     playerEntity.dropItem(itemStack, false);
                 }
             }

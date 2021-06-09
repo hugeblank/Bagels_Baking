@@ -16,7 +16,9 @@
 			"conditions": {
 				"items": [
 					{
-						"item": "bagels_baking:tea_leaves"
+						"items": [
+							"bagels_baking:tea_leaves"
+						]
 					}
 				]
 			}

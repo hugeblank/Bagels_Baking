@@ -59,7 +59,7 @@ public class MultiCraft {
 
     private void giveItem(Item item) {
         ItemStack stack = new ItemStack(item, 1);
-        if (!player.inventory.insertStack(stack)) {
+        if (!player.getInventory().insertStack(stack)) {
             player.dropItem(stack, false);
         }
     }

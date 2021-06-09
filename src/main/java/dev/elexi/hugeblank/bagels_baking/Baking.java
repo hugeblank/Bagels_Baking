@@ -34,11 +34,18 @@ import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.decorator.HeightmapDecoratorConfig;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.world.gen.feature.RandomPatchFeatureConfig;
+import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
 import net.minecraft.world.gen.placer.SimpleBlockPlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 
@@ -181,11 +188,16 @@ public class Baking implements ModInitializer {
 			.configure(new OreFeatureConfig(
 					OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
 					HALITE.getDefaultState(),
-					33)) // vein size
-			.decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(
-					0, // bottom offset
-					0, // min y level
-					79))) // max y level
+					33)
+			)
+			.decorate(Decorator.RANGE.configure(
+					new RangeDecoratorConfig(
+							UniformHeightProvider.create(
+									YOffset.fixed(0),
+									YOffset.fixed(79)
+							)
+					)
+			))
 			.spreadHorizontally()
 			.repeat(10); // number of veins per chunk
 
@@ -308,7 +320,7 @@ public class Baking implements ModInitializer {
 			.configure(new RandomPatchFeatureConfig.Builder(
 					new SimpleBlockStateProvider(TEA.getDefaultState().with(SweetBerryBushBlock.AGE, 3)), SimpleBlockPlacer.INSTANCE)
 					.tries(64).whitelist(ImmutableSet.of(Blocks.GRASS_BLOCK)).cannotProject().build())
-			.decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP_SPREAD_DOUBLE);
+			.decorate(Decorator.HEIGHTMAP_SPREAD_DOUBLE.configure(new HeightmapDecoratorConfig(Heightmap.Type.MOTION_BLOCKING)).spreadHorizontally());
 	public static final Block TOMATO_PLANT = new BasicCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item TOMATO = new TomatoItem(TOMATO_PLANT, new Item.Settings().group(ItemGroup.FOOD).food(
 			foodComponent(3, 4.2f).build()
@@ -414,7 +426,7 @@ public class Baking implements ModInitializer {
 		registerBlock("polished_halite_slab", POLISHED_HALITE_SLAB, ItemGroup.BUILDING_BLOCKS);
 		registerBlock("polished_halite_wall", POLISHED_HALITE_WALL, ItemGroup.BUILDING_BLOCKS);
 		registerItem("salt", SALT);
-		RegistryKey<ConfiguredFeature<?, ?>> haliteDesert = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN,
+		RegistryKey<ConfiguredFeature<?, ?>> haliteDesert = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY,
 				new Identifier(ID, "halite_desert"));
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, haliteDesert.getValue(), HALITE_DESERT);
 		Predicate<BiomeSelectionContext> haliteSelector = BiomeSelectors.includeByKey( // Deserts, Oceans, and Rivers
@@ -538,7 +550,7 @@ public class Baking implements ModInitializer {
 		registerItem("tea_leaves", TEA_LEAVES);
 		registerItem("dried_tea_leaves", DRIED_TEA_LEAVES);
 		registerBlock("compressed_tea_block", COMPRESSED_TEA_BLOCK, ItemGroup.BUILDING_BLOCKS);
-		RegistryKey<ConfiguredFeature<?, ?>> teaTrees = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN,
+		RegistryKey<ConfiguredFeature<?, ?>> teaTrees = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY,
 				new Identifier(ID, "tea_tree_mountains"));
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, teaTrees.getValue(), TEA_TREES);
 		Predicate<BiomeSelectionContext> teaTreeSelector = BiomeSelectors.includeByKey( // Mountain & Birch biomes

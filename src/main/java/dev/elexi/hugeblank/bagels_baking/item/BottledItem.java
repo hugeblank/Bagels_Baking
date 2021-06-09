@@ -42,13 +42,13 @@ public class BottledItem extends PotionItem implements BrewableItem {
             Criteria.CONSUME_ITEM.trigger((ServerPlayerEntity)playerEntity, stack);
         }
 
-        if (playerEntity == null || !playerEntity.abilities.creativeMode) {
+        if (playerEntity == null || !playerEntity.getAbilities().creativeMode) {
             if (stack.isEmpty()) {
                 return new ItemStack(Items.GLASS_BOTTLE);
             }
 
             if (playerEntity != null) {
-                playerEntity.inventory.insertStack(new ItemStack(Items.GLASS_BOTTLE));
+                playerEntity.getInventory().insertStack(new ItemStack(Items.GLASS_BOTTLE));
             }
         }
         return this.isFood() ? user.eatFood(world, stack) : stack;

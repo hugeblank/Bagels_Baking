@@ -1,0 +1,11 @@
+{
+    "replace": false,
+    "values": [
+        "bagels_baking:steak_pocket",
+        "bagels_baking:pork_pocket",
+        "bagels_baking:chicken_pocket",
+        "bagels_baking:mutton_pocket",
+        "bagels_baking:fish_pocket",
+        "bagels_baking:rabbit_pocket"
+    ]
+  }

@@ -7,7 +7,7 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.RabbitEntity;
 import net.minecraft.item.Item;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
@@ -45,16 +45,16 @@ public class TrickyRabbit extends AnimalEntity {
         }
     }
 
-    @Inject(at = @At("TAIL"), method = "readCustomDataFromTag(Lnet/minecraft/nbt/CompoundTag;)V")
-    public void readCustomDataFromTag(CompoundTag tag, CallbackInfo ci) {
+    @Inject(at = @At("TAIL"), method = "readCustomDataFromNbt(Lnet/minecraft/nbt/NbtCompound;)V")
+    public void readCustomDataFromTag(NbtCompound tag, CallbackInfo ci) {
         if (tag.contains("CerealDropTime")) {
             cerealDropTime = tag.getInt("CerealDropTime");
         }
 
     }
 
-    @Inject(at = @At("TAIL"), method = "writeCustomDataToTag(Lnet/minecraft/nbt/CompoundTag;)V")
-    public void writeCustomDataToTag(CompoundTag tag, CallbackInfo ci) {
+    @Inject(at = @At("TAIL"), method = "writeCustomDataToNbt(Lnet/minecraft/nbt/NbtCompound;)V")
+    public void writeCustomDataToTag(NbtCompound tag, CallbackInfo ci) {
         tag.putInt("CerealDropTime", cerealDropTime);
     }
 

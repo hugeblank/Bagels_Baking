@@ -1,0 +1,11 @@
+{
+    "replace": false,
+    "values": [
+        "bagels_baking:steak_stew",
+        "bagels_baking:pork_stew",
+        "bagels_baking:chicken_stew",
+        "bagels_baking:mutton_stew",
+        "bagels_baking:fish_stew",
+        "minecraft:rabbit_stew"
+    ]
+  }

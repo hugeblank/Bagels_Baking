@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "bagels_baking:steak_sandwich",
+        "bagels_baking:pork_sandwich",
+        "bagels_baking:chicken_sandwich",
+        "bagels_baking:mutton_sandwich",
+        "bagels_baking:fish_sandwich",
+        "bagels_baking:rabbit_sandwich",
+        "bagels_baking:apple_jam_sandwich",
+        "bagels_baking:berry_jam_sandwich"
+    ]
+  }

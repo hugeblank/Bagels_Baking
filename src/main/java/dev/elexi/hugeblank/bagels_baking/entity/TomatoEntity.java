@@ -76,7 +76,7 @@ public class TomatoEntity extends ThrownItemEntity {
         super.onCollision(hitResult);
         if (!this.world.isClient) {
             this.world.sendEntityStatus(this, (byte)3);
-            this.remove();
+            this.remove(RemovalReason.DISCARDED);
         } else {
             ((ClientWorld)this.world).playSound(this.getBlockPos(), SoundEvents.BLOCK_HONEY_BLOCK_BREAK, SoundCategory.NEUTRAL, 1.0f, 1.0f, true);
         }

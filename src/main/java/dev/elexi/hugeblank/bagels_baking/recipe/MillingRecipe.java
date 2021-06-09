@@ -1,8 +1,6 @@
 package dev.elexi.hugeblank.bagels_baking.recipe;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.CuttingRecipe;
@@ -26,8 +24,7 @@ public class MillingRecipe extends CuttingRecipe {
         super(TYPE, SERIALIZER, id, group, input, output);
     }
 
-    @Environment(EnvType.CLIENT)
-    public ItemStack getRecipeKindIcon() {
+    public ItemStack createIcon() {
         return new ItemStack(Baking.MILL_ITEM);
     }
 

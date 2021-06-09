@@ -25,17 +25,17 @@ public class TomatoItem extends BlockItem {
         if (user.isSneaking()) {
             return super.use(world, user, hand);
         } else {
-            world.playSound(null, user.getBlockPos(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (RANDOM.nextFloat() * 0.4F + 0.8F));
+            world.playSound(null, user.getBlockPos(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
             if (!world.isClient && user instanceof ServerPlayerEntity) {
 
                 TomatoEntity tomato = new TomatoEntity(world, user);
                 tomato.setItem(itemStack);
-                tomato.setProperties(user, user.pitch, user.yaw, 0.0F, 1.5F, 1.0F);
+                tomato.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
                 world.spawnEntity(tomato);
             }
 
             user.incrementStat(Stats.USED.getOrCreateStat(this));
-            if (!user.abilities.creativeMode) {
+            if (!user.getAbilities().creativeMode) {
                 itemStack.decrement(1);
             }
             return TypedActionResult.success(itemStack, world.isClient());

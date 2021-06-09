@@ -35,10 +35,10 @@ public class BasicStewItem extends Item {
         if (stack.isEmpty()) {
             cir.setReturnValue(new ItemStack(Items.BOWL));
         } else {
-            if (user instanceof PlayerEntity && !((PlayerEntity)user).abilities.creativeMode) {
+            if (user instanceof PlayerEntity && !((PlayerEntity)user).getAbilities().creativeMode) {
                 ItemStack itemStack = new ItemStack(Items.BOWL);
                 PlayerEntity playerEntity = (PlayerEntity)user;
-                if (!playerEntity.inventory.insertStack(itemStack)) {
+                if (!playerEntity.getInventory().insertStack(itemStack)) {
                     playerEntity.dropItem(itemStack, false);
                 }
             }

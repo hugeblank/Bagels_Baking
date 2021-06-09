@@ -29,21 +29,21 @@ public class FarmerVillagerAITask {
         doTask = true;
     }
 
-    @Inject(at = @At(ordinal = 0, value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;getItem()Lnet/minecraft/item/Item;"), method = "keepRunning(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/passive/VillagerEntity;J)V", locals = LocalCapture.CAPTURE_FAILHARD)
+    @Inject(at = @At(ordinal = 0, value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"), method = "keepRunning(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/passive/VillagerEntity;J)V", locals = LocalCapture.CAPTURE_FAILHARD)
     private void farmTask(ServerWorld serverWorld, VillagerEntity villagerEntity, long l, CallbackInfo ci, BlockState blockState, Block block, Block block2, SimpleInventory simpleInventory, int i, ItemStack itemStack, boolean bl) {
-        if (itemStack.getItem() == Baking.TOMATO) {
+        if (itemStack.isOf(Baking.TOMATO)) {
             serverWorld.setBlockState(currentTarget, Baking.TOMATO_PLANT.getDefaultState(), 3);
             executeTask();
-        } else if (itemStack.getItem() == Baking.CORN_SEEDS) {
+        } else if (itemStack.isOf(Baking.CORN_SEEDS)) {
             serverWorld.setBlockState(currentTarget, Baking.CORN_STALK.getDefaultState(), 3);
             executeTask();
-        } else if (itemStack.getItem() == Baking.WILD_RICE) {
+        } else if (itemStack.isOf(Baking.WILD_RICE)) {
             serverWorld.setBlockState(currentTarget, Baking.RICE_PLANT.getDefaultState(), 3);
             executeTask();
         }
     }
 
-    @ModifyVariable(at = @At(ordinal = 0, value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;getItem()Lnet/minecraft/item/Item;"), method = "keepRunning(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/passive/VillagerEntity;J)V")
+    @ModifyVariable(at = @At(ordinal = 0, value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"), method = "keepRunning(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/passive/VillagerEntity;J)V")
     private boolean overrideTask(boolean original) {
         if (doTask) {
             doTask = false;

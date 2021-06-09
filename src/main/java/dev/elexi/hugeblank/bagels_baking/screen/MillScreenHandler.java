@@ -65,7 +65,7 @@ public class MillScreenHandler extends ScreenHandler implements NamedScreenHandl
                 return false;
             }
 
-            public ItemStack onTakeItem(PlayerEntity player, ItemStack stack) {
+            public void onTakeItem(PlayerEntity player, ItemStack stack) {
                 stack.onCraft(player.world, player, stack.getCount());
                 MillScreenHandler.this.output.unlockLastRecipe(player);
                 ItemStack itemStack = MillScreenHandler.this.inputSlot.takeStack(1);
@@ -81,7 +81,7 @@ public class MillScreenHandler extends ScreenHandler implements NamedScreenHandl
                     }
 
                 });
-                return super.onTakeItem(player, stack);
+                super.onTakeItem(player, stack);
             }
         });
 
@@ -193,7 +193,7 @@ public class MillScreenHandler extends ScreenHandler implements NamedScreenHandl
                     return ItemStack.EMPTY;
                 }
 
-                slot.onStackChanged(itemStack2, itemStack);
+                slot.onQuickTransfer(itemStack2, itemStack);
             } else if (index == 0) {
                 if (!this.insertItem(itemStack2, 2, 38, false)) {
                     return ItemStack.EMPTY;
@@ -230,7 +230,7 @@ public class MillScreenHandler extends ScreenHandler implements NamedScreenHandl
         super.close(player);
         this.output.removeStack(1);
         this.context.run((world, blockPos) -> {
-            this.dropInventory(player, player.world, this.input);
+            this.dropInventory(player, this.input);
         });
     }
 

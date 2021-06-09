@@ -36,8 +36,7 @@ public class ClientBaking implements ClientModInitializer {
 
         ScreenRegistry.register(Baking.MILL_SCREEN, MillScreen::new);
 
-        EntityRendererRegistry.INSTANCE.register(Baking.TOMATO_THROWABLE, (dispatcher, context) ->
-                new FlyingItemEntityRenderer(dispatcher, context.getItemRenderer()));
+        EntityRendererRegistry.INSTANCE.register(Baking.TOMATO_THROWABLE, FlyingItemEntityRenderer::new);
         receiveEntityPacket();
     }
 
@@ -54,9 +53,9 @@ public class ClientBaking implements ClientModInitializer {
                 Entity e = new TomatoEntity(MinecraftClient.getInstance().world, pos.x, pos.y, pos.z);
                 e.updateTrackedPosition(pos);
                 e.setPos(pos.x, pos.y, pos.z);
-                e.pitch = pitch;
-                e.yaw = yaw;
-                e.setEntityId(entityId);
+                e.setPitch(pitch);
+                e.setYaw(yaw);
+                e.setId(entityId);
                 e.setUuid(uuid);
                 MinecraftClient.getInstance().world.addEntity(entityId, e);
             });

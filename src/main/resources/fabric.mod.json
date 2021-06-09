@@ -26,7 +26,7 @@
       "dev.elexi.hugeblank.bagels_baking.ClientBaking"
     ],
     "rei_plugins": [
-      "dev.elexi.hugeblank.bagels_baking.compat.rei.Plugin"
+      "dev.elexi.hugeblank.bagels_baking.compat.rei.ClientPlugin"
     ]
   },
   "mixins": [
@@ -36,7 +36,7 @@
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*",
-    "minecraft": "1.16.x"
+    "minecraft": "1.17.x"
   },
   "suggests": {
     "another-mod": "*"

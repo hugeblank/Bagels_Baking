@@ -15,11 +15,11 @@ public class TomatoSpawnPacket {
             throw new IllegalStateException("SpawnPacketUtil.create called on the logical client!");
         PacketByteBuf byteBuf = new PacketByteBuf(Unpooled.buffer());
         byteBuf.writeUuid(e.getUuid());
-        byteBuf.writeVarInt(e.getEntityId());
+        byteBuf.writeVarInt(e.getId());
 
         PacketBufUtil.writeVec3d(byteBuf, e.getPos());
-        PacketBufUtil.writeAngle(byteBuf, e.pitch);
-        PacketBufUtil.writeAngle(byteBuf, e.yaw);
+        PacketBufUtil.writeAngle(byteBuf, e.getPitch());
+        PacketBufUtil.writeAngle(byteBuf, e.getYaw());
         return ServerSidePacketRegistry.INSTANCE.toPacket(packetID, byteBuf);
     }
     public static final class PacketBufUtil {

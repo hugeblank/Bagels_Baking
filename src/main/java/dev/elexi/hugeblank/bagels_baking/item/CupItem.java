@@ -46,15 +46,15 @@ public class CupItem extends Item  {
 
     protected ItemStack fill(ItemStack itemStack, PlayerEntity playerEntity, ItemStack itemStack2) {
         playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
-        boolean bl2 = playerEntity.abilities.creativeMode;
+        boolean bl2 = playerEntity.getAbilities().creativeMode;
         if (bl2) {
-            if (!playerEntity.inventory.contains(itemStack2)) {
-                playerEntity.inventory.insertStack(itemStack2);
+            if (!playerEntity.getInventory().contains(itemStack2)) {
+                playerEntity.getInventory().insertStack(itemStack2);
             }
         } else {
             itemStack.decrement(1);
 
-            if (!playerEntity.inventory.insertStack(itemStack2)) {
+            if (!playerEntity.getInventory().insertStack(itemStack2)) {
                 playerEntity.dropItem(itemStack2, false);
             }
 

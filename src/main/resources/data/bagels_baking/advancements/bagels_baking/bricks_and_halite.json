@@ -21,7 +21,9 @@
       "conditions": {
         "items": [
           {
-            "item": "minecraft:bricks"
+            "items": [
+							"minecraft:bricks"
+            ]
           }
         ]
       }
@@ -31,7 +33,9 @@
       "conditions": {
         "items": [
           {
-            "item": "bagels_baking:halite"
+            "items": [
+							"bagels_baking:halite"
+            ]
           }
         ]
       }
