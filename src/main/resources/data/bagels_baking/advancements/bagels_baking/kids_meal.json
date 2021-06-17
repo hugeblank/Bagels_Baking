@@ -2,7 +2,7 @@
   "parent": "bagels_baking:bagels_baking/root",
   "display": {
     "icon": {
-      "items": "bagels_baking:cooked_chicken_nuggets"
+      "item": "bagels_baking:cooked_chicken_nuggets"
     },
     "title": {
       "translate": "advancements.bagels_baking.kids_meal.title"
@@ -22,7 +22,7 @@
         "items": [
           {
             "items": [
-							"bagels_baking:cooked_chicken_nuggets"
+              "bagels_baking:cooked_chicken_nuggets"
             ]
           }
         ]
@@ -34,7 +34,7 @@
         "items": [
           {
             "items": [
-							"bagels_baking:cooked_french_fries"
+              "bagels_baking:cooked_french_fries"
             ]
           }
         ]
@@ -46,7 +46,7 @@
         "items": [
           {
             "items": [
-							"bagels_baking:chocolate_milk_cup"
+              "bagels_baking:chocolate_milk_cup"
             ]
           }
         ]
@@ -58,7 +58,7 @@
         "items": [
           {
             "items": [
-							"bagels_baking:brownie"
+              "bagels_baking:brownie"
             ]
           }
         ]
