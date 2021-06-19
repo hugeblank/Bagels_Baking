@@ -171,5 +171,12 @@
   "advancements.bagels_baking.taco_tuesday.description": "Self Explanatory!",
   "stat.bagels_baking.interact_with_mill": "Interactions with Mill",
   "stat.bagels_baking.day_of_week": "Numerical Day of Week",
-  "stat.bagels_baking.tomato_kills": "Player Kills using Tomato"
+  "stat.bagels_baking.tomato_kills": "Player Kills using Tomato",
+  "item.bagels_baking.cherries": "Cherries",
+  "block.bagels_baking.cherry_sapling": "Cherry Sapling",
+  "block.bagels_baking.cherry_log": "Cherry Log",
+  "block.bagels_baking.cherry_wood": "Cherry Wood",
+  "block.bagels_baking.stripped_cherry_log": "Stripped Cherry Log",
+  "block.bagels_baking.stripped_cherry_wood": "Stripped Cherry Wood",
+  "block.bagels_baking.cherry_leaves": "Cherry Leaves"
 }
