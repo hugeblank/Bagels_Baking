@@ -172,11 +172,20 @@
   "stat.bagels_baking.interact_with_mill": "Interactions with Mill",
   "stat.bagels_baking.day_of_week": "Numerical Day of Week",
   "stat.bagels_baking.tomato_kills": "Player Kills using Tomato",
+  "biome.bagels_baking.cherry_orchard": "Cherry Orchard",
+  "biome.bagels_baking.lemon_grove": "Lemon Grove",
   "item.bagels_baking.cherries": "Cherries",
   "block.bagels_baking.cherry_sapling": "Cherry Sapling",
   "block.bagels_baking.cherry_log": "Cherry Log",
   "block.bagels_baking.cherry_wood": "Cherry Wood",
   "block.bagels_baking.stripped_cherry_log": "Stripped Cherry Log",
   "block.bagels_baking.stripped_cherry_wood": "Stripped Cherry Wood",
-  "block.bagels_baking.cherry_leaves": "Cherry Leaves"
+  "block.bagels_baking.cherry_leaves": "Cherry Leaves",
+  "item.bagels_baking.lemon": "Lemon",
+  "block.bagels_baking.lemon_sapling": "Lemon Sapling",
+  "block.bagels_baking.lemon_log": "Lemon Log",
+  "block.bagels_baking.lemon_wood": "Lemon Wood",
+  "block.bagels_baking.stripped_lemon_log": "Stripped Lemon Log",
+  "block.bagels_baking.stripped_lemon_wood": "Stripped Lemon Wood",
+  "block.bagels_baking.lemon_leaves": "Lemon Leaves"
 }

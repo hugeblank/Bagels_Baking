@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:block/cross",
     "textures": {
-      "cross": "bagels_baking:block/cherry_sapling"
+      "cross": "bagels_baking:block/lemon_sapling"
     }
 }

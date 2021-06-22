@@ -1,17 +1,16 @@
 package dev.elexi.hugeblank.bagels_baking;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 import dev.elexi.hugeblank.bagels_baking.block.*;
+import dev.elexi.hugeblank.bagels_baking.entity.BakingVillagerTrades;
 import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
-import dev.elexi.hugeblank.bagels_baking.entity.VillagerTrades;
 import dev.elexi.hugeblank.bagels_baking.item.*;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
+import dev.elexi.hugeblank.bagels_baking.world.BakingConfiguredFeatures;
 import dev.elexi.hugeblank.bagels_baking.world.biome.BakingBiomes;
-import dev.elexi.hugeblank.bagels_baking.world.tree.CherryTreeSaplingGenerator;
+import dev.elexi.hugeblank.bagels_baking.world.tree.CherrySaplingGenerator;
+import dev.elexi.hugeblank.bagels_baking.world.tree.LemonSaplingGenerator;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.biome.v1.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
@@ -31,27 +30,8 @@ import net.minecraft.stat.StatFormatter;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.Heightmap;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeKeys;
-import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.YOffset;
-import net.minecraft.world.gen.decorator.*;
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
-import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
-import net.minecraft.world.gen.placer.SimpleBlockPlacer;
-import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
-import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
-import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
-
-import java.util.function.Predicate;
 
 public class Baking implements ModInitializer {
 
@@ -117,18 +97,6 @@ public class Baking implements ModInitializer {
 		registerBlock(name + "_wood", BasicLogBlock.create(side, side), ItemGroup.BUILDING_BLOCKS);
 		registerBlock("stripped_" + name + "_log", BasicLogBlock.create(top, top), ItemGroup.BUILDING_BLOCKS);
 		registerBlock("stripped_" + name + "_wood", BasicLogBlock.create(top, top), ItemGroup.BUILDING_BLOCKS);
-	}
-
-	private static void registerConfiguredFeature(String name, ConfiguredFeature<?,?> feature) {
-		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(ID, name), feature);
-	}
-
-	private static void registerConfiguredFeature(String name, ConfiguredFeature<?,?> feature, Predicate<BiomeSelectionContext> selector, GenerationStep.Feature category) {
-		RegistryKey<ConfiguredFeature<?, ?>> key = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY,
-				new Identifier(ID, name));
-		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key.getValue(), feature);
-
-		BiomeModifications.addFeature(selector, category, key);
 	}
 
 	public static boolean never(BlockState state, BlockView world, BlockPos pos) {
@@ -205,22 +173,6 @@ public class Baking implements ModInitializer {
 	public static final Block POLISHED_HALITE_STAIR = new StairBlock(POLISHED_HALITE.getDefaultState(), FabricBlockSettings.copy(POLISHED_HALITE));
 	public static final Block POLISHED_HALITE_SLAB = new SlabBlock(FabricBlockSettings.copy(POLISHED_HALITE));
 	public static final Block POLISHED_HALITE_WALL = new WallBlock(FabricBlockSettings.copy(POLISHED_HALITE));
-	private static final ConfiguredFeature<?, ?> HALITE_DESERT = Feature.ORE
-			.configure(new OreFeatureConfig(
-					OreFeatureConfig.Rules.BASE_STONE_OVERWORLD,
-					HALITE.getDefaultState(),
-					33)
-			)
-			.decorate(Decorator.RANGE.configure(
-					new RangeDecoratorConfig(
-							UniformHeightProvider.create(
-									YOffset.fixed(0),
-									YOffset.fixed(79)
-							)
-					)
-			))
-			.spreadHorizontally()
-			.repeat(10); // number of veins per chunk
 
 	// Raw/Cooked goods - Give 1 item
 	public static final Item CALAMARI = basicFood(2, 1.2f);
@@ -337,11 +289,6 @@ public class Baking implements ModInitializer {
 	public static final Item DRIED_TEA_LEAVES = basicIngredient();
 	public static final Block COMPRESSED_TEA_BLOCK = new Block(FabricBlockSettings.copy(Blocks.DRIED_KELP_BLOCK));
 	public static final DamageSource TEA_TREE_DMGSRC = new DamageSource("tea_tree");
-	private static final ConfiguredFeature<?, ?> TEA_TREES = Feature.RANDOM_PATCH
-			.configure(new RandomPatchFeatureConfig.Builder(
-					new SimpleBlockStateProvider(TEA.getDefaultState().with(SweetBerryBushBlock.AGE, 3)), SimpleBlockPlacer.INSTANCE)
-					.tries(64).whitelist(ImmutableSet.of(Blocks.GRASS_BLOCK)).cannotProject().build())
-			.decorate(Decorator.HEIGHTMAP_SPREAD_DOUBLE.configure(new HeightmapDecoratorConfig(Heightmap.Type.MOTION_BLOCKING)).spreadHorizontally());
 	public static final Block TOMATO_PLANT = new BasicCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item TOMATO = new TomatoItem(TOMATO_PLANT, new Item.Settings().group(ItemGroup.FOOD).food(
 			foodComponent(3, 4.2f).build()
@@ -365,17 +312,16 @@ public class Baking implements ModInitializer {
 	// solcatowo - requested on 3/22/21
 
 	// Trees - Here's to v0.4!
-	public static final Block CHERRY_SAPLING = new BasicSaplingBlock(new CherryTreeSaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
+	public static final Block CHERRY_SAPLING = new BasicSaplingBlock(new CherrySaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
 	public static final Item CHERRY_SAPLING_ITEM = new BlockItem(CHERRY_SAPLING, new Item.Settings().group(ItemGroup.DECORATIONS));
 	public static final Block CHERRY_LOG = BasicLogBlock.create(MapColor.OAK_TAN, MapColor.DULL_PINK);
 	public static final Item CHERRIES = basicFood(2, 1.8f);
 	public static final Block CHERRY_LEAVES = new BasicLeavesBlock(CHERRIES);
-	public static final RegistryKey<Biome> CHERRY_ORCHARD_KEY =  RegistryKey.of(Registry.BIOME_KEY, new Identifier(ID, "cherry_orchard"));
-	public static final ConfiguredFeature<TreeFeatureConfig, ?> CHERRY_TREE = Feature.TREE.configure((new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(CHERRY_LOG.getDefaultState()), new StraightTrunkPlacer(4, 2, 0), new SimpleBlockStateProvider(CHERRY_LEAVES.getDefaultState()), new SimpleBlockStateProvider(CHERRY_SAPLING.getDefaultState()), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3), new TwoLayersFeatureSize(1, 0, 1))).ignoreVines().build());
-	public static final ConfiguredFeature<TreeFeatureConfig, ?> CHERRY_TREE_BEES = Feature.TREE.configure(CHERRY_TREE.getConfig().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.05F))));
-	public static final ConfiguredFeature<?, ?> CHERRY_TREES = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(ImmutableList.of(CHERRY_TREE.withChance(0.8F)), ConfiguredFeatures.OAK))
-			.decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(1, 0.1F, 1)))
-			.decorate(Decorator.HEIGHTMAP.configure(new HeightmapDecoratorConfig(Heightmap.Type.MOTION_BLOCKING)).spreadHorizontally());
+	public static final Block LEMON_SAPLING = new BasicSaplingBlock(new LemonSaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
+	public static final Item LEMON_SAPLING_ITEM = new BlockItem(LEMON_SAPLING, new Item.Settings().group(ItemGroup.DECORATIONS));
+	public static final Block LEMON_LOG = BasicLogBlock.create(MapColor.OAK_TAN, MapColor.PALE_YELLOW);
+	public static final Item LEMON = basicFood(1, 0.8f);
+	public static final Block LEMON_LEAVES = new BasicLeavesBlock(LEMON);
 
 	// Misc
 	public static final Item BAGEL = basicFood(7, 6.5f);
@@ -460,14 +406,6 @@ public class Baking implements ModInitializer {
 		registerBlock("polished_halite_slab", POLISHED_HALITE_SLAB, ItemGroup.BUILDING_BLOCKS);
 		registerBlock("polished_halite_wall", POLISHED_HALITE_WALL, ItemGroup.BUILDING_BLOCKS);
 		registerItem("salt", SALT);
-		registerConfiguredFeature("halite_desert", HALITE_DESERT, BiomeSelectors.includeByKey( // Deserts, Oceans, and Rivers
-				BiomeKeys.DESERT, BiomeKeys.DESERT_HILLS, BiomeKeys.DESERT_LAKES, BiomeKeys.BADLANDS,
-				BiomeKeys.BADLANDS_PLATEAU, BiomeKeys.MODIFIED_BADLANDS_PLATEAU, BiomeKeys.ERODED_BADLANDS,
-				BiomeKeys.MODIFIED_WOODED_BADLANDS_PLATEAU, BiomeKeys.WOODED_BADLANDS_PLATEAU, BiomeKeys.OCEAN,
-				BiomeKeys.COLD_OCEAN, BiomeKeys.DEEP_COLD_OCEAN, BiomeKeys.DEEP_FROZEN_OCEAN,
-				BiomeKeys.DEEP_LUKEWARM_OCEAN, BiomeKeys.DEEP_OCEAN, BiomeKeys.DEEP_WARM_OCEAN, BiomeKeys.FROZEN_OCEAN,
-				BiomeKeys.LUKEWARM_OCEAN, BiomeKeys.WARM_OCEAN, BiomeKeys.RIVER, BiomeKeys.FROZEN_RIVER
-		), GenerationStep.Feature.UNDERGROUND_ORES);
 
 		// Cheese Burgers
 		registerItem("steak_cheeseburger", STEAK_CHEESEBURGER);
@@ -580,11 +518,6 @@ public class Baking implements ModInitializer {
 		registerItem("tea_leaves", TEA_LEAVES);
 		registerItem("dried_tea_leaves", DRIED_TEA_LEAVES);
 		registerBlock("compressed_tea_block", COMPRESSED_TEA_BLOCK, ItemGroup.BUILDING_BLOCKS);
-		registerConfiguredFeature("tea_tree_mountains", TEA_TREES, BiomeSelectors.includeByKey( // Mountain & Birch biomes
-				BiomeKeys.MOUNTAIN_EDGE, BiomeKeys.MOUNTAINS, BiomeKeys.GRAVELLY_MOUNTAINS,
-				BiomeKeys.MODIFIED_GRAVELLY_MOUNTAINS, BiomeKeys.BIRCH_FOREST, BiomeKeys.BIRCH_FOREST_HILLS,
-				BiomeKeys.TALL_BIRCH_FOREST, BiomeKeys.TALL_BIRCH_HILLS
-		), GenerationStep.Feature.VEGETAL_DECORATION);
 		registerBlock("tomato", TOMATO_PLANT, (BlockItem) TOMATO);
 		((BasicCropBlock)TOMATO_PLANT).setSeed(TOMATO);
 		registerBlock("wild_rice", RICE_PLANT, (BlockItem) WILD_RICE);
@@ -602,11 +535,10 @@ public class Baking implements ModInitializer {
 		registerLogType("cherry", CHERRY_LOG, MapColor.OAK_TAN, MapColor.DULL_PINK);
 		registerBlock("cherry_leaves", CHERRY_LEAVES, ItemGroup.DECORATIONS);
 		registerItem("cherries", CHERRIES);
-		registerConfiguredFeature("cherry_tree", CHERRY_TREE);
-		registerConfiguredFeature("cherry_tree_bees", CHERRY_TREE_BEES);
-		registerConfiguredFeature("cherry_orchard_trees", CHERRY_TREES);
-		Registry.register(BuiltinRegistries.BIOME, CHERRY_ORCHARD_KEY.getValue(), BakingBiomes.CHERRY_ORCHARD);
-		OverworldBiomes.addContinentalBiome(CHERRY_ORCHARD_KEY, OverworldClimate.TEMPERATE, 1d);
+		registerBlock("lemon_sapling", LEMON_SAPLING, (BlockItem) LEMON_SAPLING_ITEM);
+		registerLogType("lemon", LEMON_LOG, MapColor.OAK_TAN, MapColor.PALE_YELLOW);
+		registerBlock("lemon_leaves", LEMON_LEAVES, ItemGroup.DECORATIONS);
+		registerItem("lemon", LEMON);
 
 		// Misc
 		registerItem("bagel", BAGEL);
@@ -630,7 +562,13 @@ public class Baking implements ModInitializer {
 		registerItem("rice_cereal_bowl", RICE_CEREAL_BOWL);
 
 		// Trades
-		VillagerTrades.init();
+		BakingVillagerTrades.init();
+
+		// Configured Features
+		BakingConfiguredFeatures.init();
+
+		// Biomes
+		BakingBiomes.init();
 
 		// Stats
 		Registry.register(Registry.CUSTOM_STAT, "day_of_week", DAY_OF_WEEK);

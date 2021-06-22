@@ -27,7 +27,7 @@ import java.util.Random;
 
 
 public class BasicLeavesBlock extends LeavesBlock {
-    public static final IntProperty AGE = Properties.AGE_3;
+    public static final IntProperty AGE = Properties.AGE_2;
     private final Item drop;
 
 
