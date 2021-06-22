@@ -1,7 +1,7 @@
 {
-    "variants": {
-      "": {
-        "model": "bagels_baking:block/cherry_sapling"
-      }
+  "variants": {
+    "": {
+      "model": "bagels_baking:block/cherry_sapling"
     }
   }
+}

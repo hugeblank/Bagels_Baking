@@ -29,6 +29,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.StatFormatter;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.SignType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
@@ -92,11 +93,29 @@ public class Baking implements ModInitializer {
 		Registry.register(Registry.ITEM, id, item);
 	}
 
-	private static void registerLogType(String name, Block block, MapColor top, MapColor side) {
-		registerBlock(name + "_log", block, ItemGroup.BUILDING_BLOCKS);
-		registerBlock(name + "_wood", BasicLogBlock.create(side, side), ItemGroup.BUILDING_BLOCKS);
-		registerBlock("stripped_" + name + "_log", BasicLogBlock.create(top, top), ItemGroup.BUILDING_BLOCKS);
-		registerBlock("stripped_" + name + "_wood", BasicLogBlock.create(top, top), ItemGroup.BUILDING_BLOCKS);
+	private static void registerWoodType(String name, Block log) {
+		// Stripping
+		AbstractBlock.Settings settings = FabricBlockSettings.copy(Blocks.OAK_PLANKS);
+		Block strippedLog = new BasicLogBlock(() -> log);
+		Block wood = new BasicLogBlock();
+		Block strippedWood = new BasicLogBlock(() -> wood);
+
+		// Registering of all wood related things - pain.
+		registerBlock(name + "_log", log, ItemGroup.BUILDING_BLOCKS);
+		registerBlock(name + "_wood", wood, ItemGroup.BUILDING_BLOCKS);
+		registerBlock("stripped_" + name + "_log", strippedLog, ItemGroup.BUILDING_BLOCKS);
+		registerBlock("stripped_" + name + "_wood", strippedWood, ItemGroup.BUILDING_BLOCKS);
+		registerBlock(name + "_planks", new Block(settings), ItemGroup.BUILDING_BLOCKS);
+		registerBlock(name + "_pressure_plate", new BasicPressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, settings), ItemGroup.REDSTONE);
+		registerBlock(name + "_button", new BasicWoodenButtonBlock(settings), ItemGroup.REDSTONE);
+		registerBlock(name + "_door", new BasicDoorBlock(settings), ItemGroup.DECORATIONS);
+		registerBlock(name + "_fence_gate", new FenceGateBlock(settings), ItemGroup.DECORATIONS);
+		registerBlock(name + "_fence", new FenceBlock(settings), ItemGroup.DECORATIONS);
+		registerBlock(name + "_sign", new SignBlock(settings, SignType.OAK), ItemGroup.DECORATIONS);
+		registerBlock(name + "_wall_sign", new WallSignBlock(settings, SignType.OAK));
+		registerBlock(name + "_slab", new SlabBlock(settings), ItemGroup.BUILDING_BLOCKS);
+		registerBlock(name + "_stairs", new StairBlock(log.getDefaultState(), settings), ItemGroup.BUILDING_BLOCKS);
+		registerBlock(name + "_trapdoor", new BasicTrapdoorBlock(settings), ItemGroup.DECORATIONS);
 	}
 
 	public static boolean never(BlockState state, BlockView world, BlockPos pos) {
@@ -313,13 +332,13 @@ public class Baking implements ModInitializer {
 
 	// Trees - Here's to v0.4!
 	public static final Block CHERRY_SAPLING = new BasicSaplingBlock(new CherrySaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
-	public static final Item CHERRY_SAPLING_ITEM = new BlockItem(CHERRY_SAPLING, new Item.Settings().group(ItemGroup.DECORATIONS));
-	public static final Block CHERRY_LOG = BasicLogBlock.create(MapColor.OAK_TAN, MapColor.DULL_PINK);
+	public static final Block POTTED_CHERRY_SAPLING = new FlowerPotBlock(CHERRY_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
+	public static final Block CHERRY_LOG = new BasicLogBlock();
 	public static final Item CHERRIES = basicFood(2, 1.8f);
 	public static final Block CHERRY_LEAVES = new BasicLeavesBlock(CHERRIES);
 	public static final Block LEMON_SAPLING = new BasicSaplingBlock(new LemonSaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
-	public static final Item LEMON_SAPLING_ITEM = new BlockItem(LEMON_SAPLING, new Item.Settings().group(ItemGroup.DECORATIONS));
-	public static final Block LEMON_LOG = BasicLogBlock.create(MapColor.OAK_TAN, MapColor.PALE_YELLOW);
+	public static final Block POTTED_LEMON_SAPLING = new FlowerPotBlock(LEMON_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
+	public static final Block LEMON_LOG = new BasicLogBlock();
 	public static final Item LEMON = basicFood(1, 0.8f);
 	public static final Block LEMON_LEAVES = new BasicLeavesBlock(LEMON);
 
@@ -531,12 +550,14 @@ public class Baking implements ModInitializer {
 		// dreamwastaken my beloved <3 - redeemed by KoritsiAlogo on 3/22/21
 
 		// Trees
-		registerBlock("cherry_sapling", CHERRY_SAPLING, (BlockItem) CHERRY_SAPLING_ITEM);
-		registerLogType("cherry", CHERRY_LOG, MapColor.OAK_TAN, MapColor.DULL_PINK);
+		registerBlock("cherry_sapling", CHERRY_SAPLING, ItemGroup.DECORATIONS);
+		registerBlock("potted_cherry_sapling", POTTED_CHERRY_SAPLING);
+		registerWoodType("cherry", CHERRY_LOG);
 		registerBlock("cherry_leaves", CHERRY_LEAVES, ItemGroup.DECORATIONS);
 		registerItem("cherries", CHERRIES);
-		registerBlock("lemon_sapling", LEMON_SAPLING, (BlockItem) LEMON_SAPLING_ITEM);
-		registerLogType("lemon", LEMON_LOG, MapColor.OAK_TAN, MapColor.PALE_YELLOW);
+		registerBlock("lemon_sapling", LEMON_SAPLING, ItemGroup.DECORATIONS);
+		registerBlock("potted_lemon_sapling", POTTED_LEMON_SAPLING);
+		registerWoodType("lemon", LEMON_LOG);
 		registerBlock("lemon_leaves", LEMON_LEAVES, ItemGroup.DECORATIONS);
 		registerItem("lemon", LEMON);
 

@@ -1,7 +1,7 @@
 {
-    "parent": "minecraft:block/cube_column",
-    "textures": {
-      "end": "bagels_baking:block/lemon_log",
-      "side": "bagels_baking:block/lemon_log"
-    }
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "bagels_baking:block/lemon_log",
+    "side": "bagels_baking:block/lemon_log"
   }
+}
