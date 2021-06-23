@@ -3,6 +3,7 @@ package dev.elexi.hugeblank.bagels_baking;
 import dev.elexi.hugeblank.bagels_baking.block.*;
 import dev.elexi.hugeblank.bagels_baking.entity.BakingVillagerTrades;
 import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
+import dev.elexi.hugeblank.bagels_baking.entity.boat.BasicBoatRegistry;
 import dev.elexi.hugeblank.bagels_baking.item.*;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
@@ -99,13 +100,14 @@ public class Baking implements ModInitializer {
 		Block strippedLog = new BasicLogBlock(() -> log);
 		Block wood = new BasicLogBlock();
 		Block strippedWood = new BasicLogBlock(() -> wood);
+		Block planks = new Block(settings);
 
 		// Registering of all wood related things - pain.
 		registerBlock(name + "_log", log, ItemGroup.BUILDING_BLOCKS);
 		registerBlock(name + "_wood", wood, ItemGroup.BUILDING_BLOCKS);
 		registerBlock("stripped_" + name + "_log", strippedLog, ItemGroup.BUILDING_BLOCKS);
 		registerBlock("stripped_" + name + "_wood", strippedWood, ItemGroup.BUILDING_BLOCKS);
-		registerBlock(name + "_planks", new Block(settings), ItemGroup.BUILDING_BLOCKS);
+		registerBlock(name + "_planks", planks, ItemGroup.BUILDING_BLOCKS);
 		registerBlock(name + "_pressure_plate", new BasicPressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, settings), ItemGroup.REDSTONE);
 		registerBlock(name + "_button", new BasicWoodenButtonBlock(settings), ItemGroup.REDSTONE);
 		registerBlock(name + "_door", new BasicDoorBlock(settings), ItemGroup.DECORATIONS);
@@ -116,6 +118,9 @@ public class Baking implements ModInitializer {
 		registerBlock(name + "_slab", new SlabBlock(settings), ItemGroup.BUILDING_BLOCKS);
 		registerBlock(name + "_stairs", new StairBlock(log.getDefaultState(), settings), ItemGroup.BUILDING_BLOCKS);
 		registerBlock(name + "_trapdoor", new BasicTrapdoorBlock(settings), ItemGroup.DECORATIONS);
+
+		// BOAT
+		BasicBoatRegistry.register(name, planks.asItem());
 	}
 
 	public static boolean never(BlockState state, BlockView world, BlockPos pos) {
@@ -312,7 +317,6 @@ public class Baking implements ModInitializer {
 	public static final Item TOMATO = new TomatoItem(TOMATO_PLANT, new Item.Settings().group(ItemGroup.FOOD).food(
 			foodComponent(3, 4.2f).build()
 	));
-	public static final Identifier TOMATO_PACKET = new Identifier(ID, "spawn_packet");
 	public static final EntityType<TomatoEntity> TOMATO_THROWABLE = Registry.register(Registry.ENTITY_TYPE, new Identifier(ID, "tomato"),
 			FabricEntityTypeBuilder.<TomatoEntity>create()
 					.spawnGroup(SpawnGroup.MISC)

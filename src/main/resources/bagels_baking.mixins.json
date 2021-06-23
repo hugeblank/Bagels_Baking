@@ -12,6 +12,7 @@
     "composting.Composting",
     "crafting.ClientRecipeBookMixin",
     "crafting.MultiCraft",
+    "entity.BoatEntityRendererMixin",
     "entity.LivingEntityTeaDamage",
     "entity.PlayerTick",
     "entity.passive.AnimalBreedItems",
