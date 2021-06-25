@@ -1,4 +1,4 @@
-package dev.elexi.hugeblank.bagels_baking.mixin.entity;
+package dev.elexi.hugeblank.bagels_baking.mixin.render;
 
 import dev.elexi.hugeblank.bagels_baking.entity.boat.BasicBoatEntity;
 import net.minecraft.client.render.VertexConsumerProvider;

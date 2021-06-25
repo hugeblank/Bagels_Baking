@@ -14,7 +14,7 @@ public class BasicBoat {
     public BasicBoat(Item boatItem, Item plankItem, String plankType) {
         this.boatItem = boatItem;
         this.plankItem = plankItem;
-        this.texture = new Identifier(Baking.ID, "textures/entity/boat/" + plankType + "_boat.png");
+        this.texture = new Identifier(Baking.ID, "textures/entity/" + plankType + "_boat.png");
     }
 
     public Item asItem() {

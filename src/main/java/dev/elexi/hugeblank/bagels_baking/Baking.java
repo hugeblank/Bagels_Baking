@@ -1,6 +1,7 @@
 package dev.elexi.hugeblank.bagels_baking;
 
 import dev.elexi.hugeblank.bagels_baking.block.*;
+import dev.elexi.hugeblank.bagels_baking.block.sign.SignTypeRegistry;
 import dev.elexi.hugeblank.bagels_baking.entity.BakingVillagerTrades;
 import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
 import dev.elexi.hugeblank.bagels_baking.entity.boat.BasicBoatRegistry;
@@ -12,6 +13,7 @@ import dev.elexi.hugeblank.bagels_baking.world.biome.BakingBiomes;
 import dev.elexi.hugeblank.bagels_baking.world.tree.CherrySaplingGenerator;
 import dev.elexi.hugeblank.bagels_baking.world.tree.LemonSaplingGenerator;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
@@ -113,14 +115,21 @@ public class Baking implements ModInitializer {
 		registerBlock(name + "_door", new BasicDoorBlock(settings), ItemGroup.DECORATIONS);
 		registerBlock(name + "_fence_gate", new FenceGateBlock(settings), ItemGroup.DECORATIONS);
 		registerBlock(name + "_fence", new FenceBlock(settings), ItemGroup.DECORATIONS);
-		registerBlock(name + "_sign", new SignBlock(settings, SignType.OAK), ItemGroup.DECORATIONS);
-		registerBlock(name + "_wall_sign", new WallSignBlock(settings, SignType.OAK));
 		registerBlock(name + "_slab", new SlabBlock(settings), ItemGroup.BUILDING_BLOCKS);
 		registerBlock(name + "_stairs", new StairBlock(log.getDefaultState(), settings), ItemGroup.BUILDING_BLOCKS);
 		registerBlock(name + "_trapdoor", new BasicTrapdoorBlock(settings), ItemGroup.DECORATIONS);
-
 		// BOAT
 		BasicBoatRegistry.register(name, planks.asItem());
+
+		// SIGN
+		SignType type = SignTypeRegistry.register(name);
+		AbstractBlock.Settings signSettings = FabricBlockSettings.copy(Blocks.OAK_SIGN);
+		SignBlock sign = new SignBlock(signSettings, type);
+		WallSignBlock wall_sign = new WallSignBlock(signSettings, type);
+
+		registerBlock(name + "_sign", sign);
+		registerBlock(name + "_wall_sign", wall_sign);
+		registerItem(name + "_sign", new SignItem(new FabricItemSettings().group(ItemGroup.DECORATIONS).maxCount(16), sign, wall_sign));
 	}
 
 	public static boolean never(BlockState state, BlockView world, BlockPos pos) {
