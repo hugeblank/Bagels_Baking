@@ -1,8 +1,7 @@
 {
     "replace": false,
     "values": [
-      "bagels_baking:compressed_tea_block",
       "bagels_baking:cherry_leaves",
       "bagels_baking:lemon_leaves"
     ]
-  }
+}
