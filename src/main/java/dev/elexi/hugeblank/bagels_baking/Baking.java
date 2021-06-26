@@ -31,6 +31,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.StatFormatter;
 import net.minecraft.stat.Stats;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.SignType;
 import net.minecraft.util.math.BlockPos;
@@ -130,6 +131,27 @@ public class Baking implements ModInitializer {
 		registerBlock(name + "_sign", sign);
 		registerBlock(name + "_wall_sign", wall_sign);
 		registerItem(name + "_sign", new SignItem(new FabricItemSettings().group(ItemGroup.DECORATIONS).maxCount(16), sign, wall_sign));
+	}
+
+	private static void registerCakeType(String name, BasicCakeBlock cake) {
+		registerBlock(name, cake, ItemGroup.FOOD);
+		registerBlock("candle_" + name, new BasicCandleCakeBlock(Blocks.CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CAKE).luminance((state) -> (Boolean)state.get(Properties.LIT) ? 3 : 0)));
+		registerBlock("white_candle_" + name, new BasicCandleCakeBlock(Blocks.WHITE_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
+		registerBlock("orange_candle_" + name, new BasicCandleCakeBlock(Blocks.ORANGE_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
+		registerBlock("magenta_candle_" + name, new BasicCandleCakeBlock(Blocks.MAGENTA_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
+		registerBlock("light_blue_candle_" + name, new BasicCandleCakeBlock(Blocks.LIGHT_BLUE_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
+		registerBlock("yellow_candle_" + name, new BasicCandleCakeBlock(Blocks.YELLOW_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
+		registerBlock("lime_candle_" + name, new BasicCandleCakeBlock(Blocks.LIME_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
+		registerBlock("pink_candle_" + name, new BasicCandleCakeBlock(Blocks.PINK_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
+		registerBlock("gray_candle_" + name, new BasicCandleCakeBlock(Blocks.GRAY_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
+		registerBlock("light_gray_candle_" + name, new BasicCandleCakeBlock(Blocks.LIGHT_GRAY_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
+		registerBlock("cyan_candle_" + name, new BasicCandleCakeBlock(Blocks.CYAN_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
+		registerBlock("purple_candle_" + name, new BasicCandleCakeBlock(Blocks.PURPLE_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
+		registerBlock("blue_candle_" + name, new BasicCandleCakeBlock(Blocks.BLUE_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
+		registerBlock("brown_candle_" + name, new BasicCandleCakeBlock(Blocks.BROWN_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
+		registerBlock("green_candle_" + name, new BasicCandleCakeBlock(Blocks.GREEN_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
+		registerBlock("red_candle_" + name, new BasicCandleCakeBlock(Blocks.RED_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
+		registerBlock("black_candle_" + name, new BasicCandleCakeBlock(Blocks.BLACK_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
 	}
 
 	public static boolean never(BlockState state, BlockView world, BlockPos pos) {
@@ -424,9 +446,9 @@ public class Baking implements ModInitializer {
 		registerItem("rabbit_taco", RABBIT_TACO);
 
 		// Cakes
-		registerBlock("carrot_cake", CARROT_CAKE, ItemGroup.FOOD);
-		registerBlock("chocolate_cake", CHOCOLATE_CAKE, ItemGroup.FOOD);
-		registerBlock("red_velvet_cake", RED_VELVET_CAKE, ItemGroup.FOOD);
+		registerCakeType("carrot_cake", (BasicCakeBlock) CARROT_CAKE);
+		registerCakeType("chocolate_cake", (BasicCakeBlock) CHOCOLATE_CAKE);
+		registerCakeType("red_velvet_cake", (BasicCakeBlock) RED_VELVET_CAKE);
 
 		// Halite & Salt
 		registerBlock("halite", HALITE, ItemGroup.BUILDING_BLOCKS);

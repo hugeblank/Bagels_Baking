@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "bagels_baking:block/cyan_candle_carrot_cake"
+    },
+    "lit=true": {
+      "model": "bagels_baking:block/cyan_candle_carrot_cake_lit"
+    }
+  }
+}

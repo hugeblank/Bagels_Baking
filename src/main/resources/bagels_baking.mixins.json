@@ -4,9 +4,10 @@
   "package": "dev.elexi.hugeblank.bagels_baking.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "block.SignTypeAccessor",
     "Splashes",
     "block.BlockEntityTypeMixin",
+    "block.CandleCakeBlockMixin",
+    "block.SignTypeAccessor",
     "brewing.BrewingRecipeRegistryInvoker",
     "brewing.BrewingRecipes",
     "brewing.BrewingSlots",
