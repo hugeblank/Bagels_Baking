@@ -87,7 +87,6 @@
   "item.bagels_baking.cup": "Cup",
   "item.bagels_baking.milk_cup": "Cup of Milk",
   "item.bagels_baking.water_cup": "Cup of Water",
-  "item.bagels_baking.cheese_cup": "Cup of Cheese",
   "item.bagels_baking.chocolate_milk_cup": "Chocolate Milk",
   "item.bagels_baking.loaded_fries": "Loaded Fries",
   "item.bagels_baking.loaded_potato": "Loaded Potato",
@@ -211,5 +210,7 @@
   "block.bagels_baking.lemon_slab": "Lemon Slab",
   "block.bagels_baking.lemon_stairs": "Lemon Stairs",
   "block.bagels_baking.lemon_trapdoor": "Lemon Trapdoor",
-  "block.bagels_baking.lemon_leaves": "Lemon Leaves"
+  "block.bagels_baking.lemon_leaves": "Lemon Leaves",
+  "block.bagels_baking.cheese_slice": "Cheese Slice",
+  "block.bagels_baking.cheese_block": "Cheese Block"
 }

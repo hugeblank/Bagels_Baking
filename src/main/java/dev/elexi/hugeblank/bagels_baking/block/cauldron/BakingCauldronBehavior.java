@@ -1,6 +1,7 @@
 package dev.elexi.hugeblank.bagels_baking.block.cauldron;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.LeveledCauldronBlock;
 import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,6 +19,8 @@ import java.util.Map;
 
 public interface BakingCauldronBehavior extends CauldronBehavior {
     Map<Item, CauldronBehavior> BATTER_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
+    Map<Item, CauldronBehavior> LIQUID_CHEESE_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
+    Map<Item, CauldronBehavior> SOLID_CHEESE_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
     Map<Item, Item> BATTER_ITEMS = new HashMap<>();
     CauldronBehavior APPLY_BATTER_TO_ITEM = (state, world, pos, player, hand, stack) -> {
         Item item = stack.getItem();
@@ -51,6 +54,28 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
                 }
                 return ActionResult.success(world.isClient);
             }
+        });
+
+        EMPTY_CAULDRON_BEHAVIOR.put(Baking.CHEESE, (state, world, pos, player, hand, stack) ->
+                CauldronBehavior.fillCauldron(world, pos, player, hand, stack, Baking.LIQUID_CHEESE_CAULDRON.getDefaultState(), SoundEvents.ITEM_BUCKET_EMPTY_LAVA)
+        );
+
+        LIQUID_CHEESE_CAULDRON_BEHAVIOR.put(Items.BUCKET, (state, world, pos, player, hand, stack) ->
+                CauldronBehavior.emptyCauldron(state, world, pos, player, hand, stack, new ItemStack(Baking.CHEESE), (statex) -> true, SoundEvents.ITEM_BUCKET_FILL_LAVA)
+        );
+
+        SOLID_CHEESE_CAULDRON_BEHAVIOR.put(Items.AIR, (state, world, pos, player, hand, stack) -> {
+            if (!world.isClient) {
+                Item item = stack.getItem();
+                giveItem(Baking.CHEESE_BLOCK.asItem(), player);
+                player.incrementStat(Stats.USE_CAULDRON);
+                player.incrementStat(Stats.USED.getOrCreateStat(item));
+                world.setBlockState(pos, Blocks.CAULDRON.getDefaultState());
+                world.playSound(null, pos, SoundEvents.BLOCK_BEEHIVE_SHEAR, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                world.emitGameEvent(null, GameEvent.FLUID_PICKUP, pos);
+            }
+
+            return ActionResult.success(world.isClient);
         });
 
         BATTER_CAULDRON_BEHAVIOR.put(Baking.BATTER, (state, world, pos, player, hand, stack) -> {

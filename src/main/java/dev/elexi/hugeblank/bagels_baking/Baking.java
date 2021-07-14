@@ -2,6 +2,7 @@ package dev.elexi.hugeblank.bagels_baking;
 
 import dev.elexi.hugeblank.bagels_baking.block.*;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.BakingCauldronBehavior;
+import dev.elexi.hugeblank.bagels_baking.block.cauldron.LiquidCheeseCauldronBlock;
 import dev.elexi.hugeblank.bagels_baking.block.sign.SignTypeRegistry;
 import dev.elexi.hugeblank.bagels_baking.entity.BakingVillagerTrades;
 import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
@@ -19,6 +20,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.*;
+import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -275,6 +277,8 @@ public class Baking implements ModInitializer {
 
 	// Cauldron
 	public static final Block BATTER_CAULDRON = new LeveledCauldronBlock(FabricBlockSettings.copy(Blocks.WATER_CAULDRON), (precipitation) -> false, BakingCauldronBehavior.BATTER_CAULDRON_BEHAVIOR);
+	public static final Block LIQUID_CHEESE_CAULDRON = new LiquidCheeseCauldronBlock(FabricBlockSettings.copy(Blocks.CAULDRON), CauldronBehavior.createMap()); // do nothing
+	public static final Block SOLID_CHEESE_CAULDRON = new LiquidCheeseCauldronBlock(FabricBlockSettings.copy(Blocks.CAULDRON), BakingCauldronBehavior.SOLID_CHEESE_CAULDRON_BEHAVIOR);
 
 	// Ingredients
 	public static final Item SALT = basicIngredient();
@@ -312,7 +316,6 @@ public class Baking implements ModInitializer {
 	public static final Item CUP = new CupItem(new Item.Settings().group(ItemGroup.MISC).maxCount(16));
 	public static final Item MILK_CUP = new MilkCupItem();
 	public static final Item WATER_CUP = new BasicDrink(CUP, true);
-	public static final Item CHEESE_CUP = new BasicDrink(CUP, 0, 0.3f);
 	public static final Item CHOCOLATE_MILK = new BasicDrink(CUP, 1, 1.0f); // frick i would like some choccy milk rn - redeemed by rrricohu on 3/21/21
 	public static final Item CREAMER_CUP = new BasicDrink(CUP, 0, 0.1f);
 	public static final Item COFFEE_CUP = new BasicDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 20*15, 1));
@@ -380,6 +383,11 @@ public class Baking implements ModInitializer {
 	public static final Block LEMON_LOG = new BasicLogBlock();
 	public static final Item LEMON = basicFood(1, 0.8f);
 	public static final Block LEMON_LEAVES = new BasicLeavesBlock(LEMON);
+
+	// Cheese
+	public static final Block CHEESE_BLOCK = new Block(FabricBlockSettings.copy(Blocks.HONEY_BLOCK).sounds(BlockSoundGroup.CANDLE)); // TODO: play with sounds!
+	public static final Block CHEESE_LAYER = new BasicLayerBlock(FabricBlockSettings.copy(Blocks.SNOW));
+	public static final Item CHEESE_SLICE = new BlockItem(CHEESE_LAYER, new FabricItemSettings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(0).saturationModifier(0.3f).build()));
 
 	// Misc
 	public static final Item BAGEL = basicFood(7, 6.5f);
@@ -542,7 +550,6 @@ public class Baking implements ModInitializer {
 		registerItem("cup", CUP);
 		registerItem("milk_cup", MILK_CUP);
 		registerItem("water_cup", WATER_CUP);
-		registerItem("cheese_cup", CHEESE_CUP);
 		registerItem("chocolate_milk_cup", CHOCOLATE_MILK);
 		registerItem("creamer_cup", CREAMER_CUP);
 		registerItem("coffee_cup", COFFEE_CUP);
@@ -600,6 +607,10 @@ public class Baking implements ModInitializer {
 		registerBlock("lemon_leaves", LEMON_LEAVES, ItemGroup.DECORATIONS);
 		registerItem("lemon", LEMON);
 
+		// Cheese
+		registerBlock("cheese_slice", CHEESE_LAYER, (BlockItem) CHEESE_SLICE);
+		registerBlock("cheese_block", CHEESE_BLOCK, ItemGroup.BUILDING_BLOCKS);
+
 		// Misc
 		registerItem("bagel", BAGEL);
 		registerItem("donut", DONUT);
@@ -633,6 +644,8 @@ public class Baking implements ModInitializer {
 		// Cauldrons
 		BakingCauldronBehavior.registerBehaviors();
 		registerBlock("batter_cauldron", BATTER_CAULDRON);
+		registerBlock("liquid_cheese_cauldron", LIQUID_CHEESE_CAULDRON);
+		registerBlock("solid_cheese_cauldron", SOLID_CHEESE_CAULDRON);
 
 		// Stats
 		Registry.register(Registry.CUSTOM_STAT, "day_of_week", DAY_OF_WEEK);
