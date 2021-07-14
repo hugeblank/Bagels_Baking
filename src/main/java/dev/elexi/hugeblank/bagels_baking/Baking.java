@@ -1,6 +1,7 @@
 package dev.elexi.hugeblank.bagels_baking;
 
 import dev.elexi.hugeblank.bagels_baking.block.*;
+import dev.elexi.hugeblank.bagels_baking.block.cauldron.BakingCauldronBehavior;
 import dev.elexi.hugeblank.bagels_baking.block.sign.SignTypeRegistry;
 import dev.elexi.hugeblank.bagels_baking.entity.BakingVillagerTrades;
 import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
@@ -271,6 +272,9 @@ public class Baking implements ModInitializer {
 	private static final String mill_stat = "interact_with_mill";
 	public static final Identifier INTERACT_WITH_MILL = new Identifier(ID, mill_stat);
 	public static ScreenHandlerType<MillScreenHandler> MILL_SCREEN;
+
+	// Cauldron
+	public static final Block BATTER_CAULDRON = new LeveledCauldronBlock(FabricBlockSettings.copy(Blocks.WATER_CAULDRON), (precipitation) -> false, BakingCauldronBehavior.BATTER_CAULDRON_BEHAVIOR);
 
 	// Ingredients
 	public static final Item SALT = basicIngredient();
@@ -625,6 +629,10 @@ public class Baking implements ModInitializer {
 
 		// Biomes
 		BakingBiomes.init();
+
+		// Cauldrons
+		BakingCauldronBehavior.registerBehaviors();
+		registerBlock("batter_cauldron", BATTER_CAULDRON);
 
 		// Stats
 		Registry.register(Registry.CUSTOM_STAT, "day_of_week", DAY_OF_WEEK);

@@ -6,7 +6,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.screen.slot.CraftingResultSlot;
 import net.minecraft.stat.Stats;
 import org.spongepowered.asm.mixin.Final;
@@ -49,9 +48,7 @@ public class MultiCraft {
             }
         }
 
-        if (item.equals(Baking.BATTER)) {
-            this.giveItem(Items.BOWL);
-        } else if (item.equals(Baking.EGG_YOLK)) { // If we're crafting egg yolks
+        if (item.equals(Baking.EGG_YOLK)) { // If we're crafting egg yolks
             player.increaseStat(Stats.CRAFTED.getOrCreateStat(Baking.EGG_WHITES), 1); // Keep track of stats
             this.giveItem(Baking.EGG_WHITES); // Give egg whites too
         }
