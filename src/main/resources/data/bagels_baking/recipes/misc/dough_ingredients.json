@@ -8,14 +8,11 @@
             "item": "bagels_baking:salt"
         },
         {
-            "item": "minecraft:egg"
-        },
-        {
-            "item": "bagels_baking:water_cup"
+            "item": "minecraft:sugar"
         }
     ],
     "result": {
-        "item": "bagels_baking:pasta_dough",
+        "item": "bagels_baking:dough_ingredients",
         "count": 1
     }
 }

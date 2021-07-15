@@ -294,7 +294,9 @@ public class Baking implements ModInitializer {
 	public static final Item BATTER = basicBowlFood(1, 0.1f);
 	public static final Item BACON_BITS = basicFood(2, 5.2f);
 	public static final Item MASHED_POTATOES = basicFood(4, 4.5f);
+	public static final Item DOUGH_INGREDIENTS = basicIngredient();
 	public static final Item DOUGH = basicIngredient(); //  Henry - The inspiration behind the code, my rock and my brain - Redeemed
+	public static final Item PASTA_DOUGH_INGREDIENTS = basicIngredient();
 	public static final Item PASTA_DOUGH = basicIngredient();
 	public static final Item LINGUINE = basicIngredient();
 	public static final Item MACARONI = basicIngredient();
@@ -503,7 +505,9 @@ public class Baking implements ModInitializer {
 		registerItem("batter", BATTER);
 		registerItem("bacon_bits", BACON_BITS);
 		registerItem("dough", DOUGH);
+		registerItem("dough_ingredients", DOUGH_INGREDIENTS);
 		registerItem("pasta_dough", PASTA_DOUGH);
+		registerItem("pasta_dough_ingredients", PASTA_DOUGH_INGREDIENTS);
 		registerItem("linguine", LINGUINE);
 		registerItem("macaroni", MACARONI);
 		registerItem("cheese", CHEESE);

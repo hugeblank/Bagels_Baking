@@ -212,5 +212,7 @@
   "block.bagels_baking.lemon_trapdoor": "Lemon Trapdoor",
   "block.bagels_baking.lemon_leaves": "Lemon Leaves",
   "block.bagels_baking.cheese_slice": "Cheese Slice",
-  "block.bagels_baking.cheese_block": "Cheese Block"
+  "block.bagels_baking.cheese_block": "Cheese Block",
+  "block.bagels_baking.dough_ingredients": "Dough Ingredients",
+  "block.bagels_baking.pasta_dough_ingredients": "Pasta Dough Ingredients"
 }
