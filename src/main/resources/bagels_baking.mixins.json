@@ -14,7 +14,6 @@
     "brewing.BrewingSlotsClient",
     "composting.Composting",
     "crafting.ClientRecipeBookMixin",
-    "crafting.MultiCraft",
     "entity.LivingEntityTeaDamage",
     "entity.PlayerTick",
     "entity.passive.AnimalBreedItems",

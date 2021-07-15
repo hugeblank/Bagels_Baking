@@ -35,6 +35,18 @@
       },
       "age=3,half=upper": {
         "model": "bagels_baking:block/corn_top_stage3"
+      },
+      "age=4,half=upper": {
+        "model": "bagels_baking:block/corn_top_stage3"
+      },
+      "age=5,half=upper": {
+        "model": "bagels_baking:block/corn_top_stage3"
+      },
+      "age=6,half=upper": {
+        "model": "bagels_baking:block/corn_top_stage3"
+      },
+      "age=7,half=upper": {
+        "model": "bagels_baking:block/corn_top_stage3"
       }
     }
   }

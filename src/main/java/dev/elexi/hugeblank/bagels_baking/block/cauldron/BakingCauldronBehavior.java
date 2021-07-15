@@ -35,6 +35,7 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
     Map<Item, CauldronBehavior> CREAMY_TEA_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
     Map<Item, CauldronBehavior> LIQUID_CHEESE_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
     Map<Item, CauldronBehavior> SOLID_CHEESE_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
+    Map<Item, CauldronBehavior> SEPARATOR_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
 
     CauldronBehavior APPLY_BATTER_TO_ITEM = (state, world, pos, player, hand, stack) -> {
         Item item = stack.getItem();
@@ -42,7 +43,7 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
             return ActionResult.PASS;
         } else {
             Item output = BATTER_ITEMS.get(item);
-            giveItem(output, player);
+            ItemUsage.exchangeStack(stack, player, output.getDefaultStack());
             player.incrementStat(Stats.USE_CAULDRON);
             player.incrementStat(Stats.USED.getOrCreateStat(item));
             if (world.getRandom().nextBoolean()) {
@@ -59,7 +60,7 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
             return ActionResult.PASS;
         } else {
             Item output = WATER_ITEMS.get(item);
-            giveItem(output, player);
+            ItemUsage.exchangeStack(stack, player, output.getDefaultStack());
             player.incrementStat(Stats.USE_CAULDRON);
             player.incrementStat(Stats.USED.getOrCreateStat(item));
             if (world.getRandom().nextBoolean()) {
@@ -73,7 +74,7 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
     CauldronBehavior FILL_CAULDRON_CUP = (state, world, pos, player, hand, stack) -> {
         if (!world.isClient) {
             Item item = stack.getItem();
-            player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Baking.CUP)));
+            ItemUsage.exchangeStack(stack, player, Baking.CUP.getDefaultStack());
             player.incrementStat(Stats.FILL_CAULDRON);
             player.incrementStat(Stats.USED.getOrCreateStat(item));
             if (state.get(LeveledCauldronBlock.LEVEL) < 3) {
@@ -91,7 +92,7 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
         if (!world.isClient) {
             Block cauldron = state.getBlock();
             if (CUP_FLUIDS.containsKey(cauldron)) {
-                giveItem(CUP_FLUIDS.get(cauldron), player);
+                ItemUsage.exchangeStack(stack, player, CUP_FLUIDS.get(cauldron).getDefaultStack());
                 player.incrementStat(Stats.USE_CAULDRON);
                 player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
                 LeveledCauldronBlock.decrementFluidLevel(state, world, pos);
@@ -111,8 +112,8 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
                 return ActionResult.PASS;
             } else {
                 if (!world.isClient) {
-                    giveItem(Items.BOWL, player);
-                    player.incrementStat(Stats.USE_CAULDRON);
+                    ItemUsage.exchangeStack(stack, player, Items.BOWL.getDefaultStack());
+                    player.incrementStat(Stats.FILL_CAULDRON);
                     player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
                     world.setBlockState(pos, Baking.BATTER_CAULDRON.getDefaultState());
                     world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 0.75F, 0.75F);
@@ -126,8 +127,8 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
         BATTER_CAULDRON_BEHAVIOR.put(Baking.BATTER, (state, world, pos, player, hand, stack) -> {
             if (state.get(LeveledCauldronBlock.LEVEL) != 3 && stack.getItem() == Baking.BATTER) {
                 if (!world.isClient) {
-                    giveItem(Items.BOWL, player);
-                    player.incrementStat(Stats.USE_CAULDRON);
+                    ItemUsage.exchangeStack(stack, player, Items.BOWL.getDefaultStack());
+                    player.incrementStat(Stats.FILL_CAULDRON);
                     player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
                     world.setBlockState(pos, state.cycle(LeveledCauldronBlock.LEVEL));
                     world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 0.75F, 0.75F);
@@ -152,13 +153,59 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
         // Cheese block to empty
         SOLID_CHEESE_CAULDRON_BEHAVIOR.put(Items.AIR, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
-                giveItem(Baking.CHEESE_BLOCK.asItem(), player);
+                ItemUsage.exchangeStack(stack, player, Baking.CHEESE_BLOCK.asItem().getDefaultStack());
                 player.incrementStat(Stats.USE_CAULDRON);
                 world.setBlockState(pos, Blocks.CAULDRON.getDefaultState());
                 world.playSound(null, pos, SoundEvents.BLOCK_BEEHIVE_SHEAR, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 world.emitGameEvent(null, GameEvent.FLUID_PICKUP, pos);
             }
 
+            return ActionResult.success(world.isClient);
+        });
+
+        // Yolk/White level decrease
+        SEPARATOR_CAULDRON_BEHAVIOR.put(Items.GLASS_BOTTLE, (state, world, pos, player, hand, stack) -> {
+            if (!world.isClient && state.getBlock() instanceof SeparatorCauldron) {
+                player.incrementStat(Stats.USE_CAULDRON);
+                player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
+                if (state.get(SeparatorCauldron.YOLKS) > 0) {
+                    ItemUsage.exchangeStack(stack, player, new ItemStack(Baking.EGG_YOLK));
+                    SeparatorCauldron.decrementYolkLevel(state, world, pos);
+                } else {
+                    ItemUsage.exchangeStack(stack, player, new ItemStack(Baking.EGG_WHITES));
+                    LeveledCauldronBlock.decrementFluidLevel(state, world, pos);
+                }
+                world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                world.emitGameEvent(null, GameEvent.FLUID_PLACE, pos);
+            }
+            return ActionResult.success(world.isClient);
+        });
+
+        // Empty to Separator cauldron
+        EMPTY_CAULDRON_BEHAVIOR.put(Items.EGG, (state, world, pos, player, hand, stack) -> {
+            if (!world.isClient) {
+                player.incrementStat(Stats.USE_CAULDRON);
+                player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
+                stack.decrement(1);
+                world.setBlockState(pos, Baking.SEPARATOR_CAULDRON.getDefaultState());
+                world.playSound(null, pos, SoundEvents.ENTITY_TURTLE_EGG_CRACK, SoundCategory.BLOCKS, 1.0F, 1.5F);
+                world.emitGameEvent(null, GameEvent.FLUID_PLACE, pos);
+            }
+            return ActionResult.success(world.isClient);
+        });
+
+        // Increase yolk/white level
+        SEPARATOR_CAULDRON_BEHAVIOR.put(Items.EGG, (state, world, pos, player, hand, stack) -> {
+            if (!world.isClient) {
+                player.incrementStat(Stats.USE_CAULDRON);
+                player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
+                stack.decrement(1);
+                int yolk = state.get(SeparatorCauldron.YOLKS)+1;
+                int white = state.get(LeveledCauldronBlock.LEVEL)+1;
+                world.setBlockState(pos, state.with(SeparatorCauldron.YOLKS, yolk).with(LeveledCauldronBlock.LEVEL, white));
+                world.playSound(null, pos, SoundEvents.ENTITY_TURTLE_EGG_CRACK, SoundCategory.BLOCKS, 1.0F, 1.5F);
+                world.emitGameEvent(null, GameEvent.FLUID_PLACE, pos);
+            }
             return ActionResult.success(world.isClient);
         });
 
@@ -206,7 +253,7 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
     static ActionResult fillCauldronCup(World world, BlockPos pos, PlayerEntity player, Hand hand, ItemStack stack, BlockState state, SoundEvent soundEvent) {
         if (!world.isClient) {
             Item item = stack.getItem();
-            player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Baking.CUP)));
+            ItemUsage.exchangeStack(stack, player, new ItemStack(Baking.CUP));
             player.incrementStat(Stats.FILL_CAULDRON);
             player.incrementStat(Stats.USED.getOrCreateStat(item));
             world.setBlockState(pos, state);
@@ -215,12 +262,5 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
         }
 
         return ActionResult.success(world.isClient);
-    }
-
-    private static void giveItem(Item item, PlayerEntity player) {
-        ItemStack stack = new ItemStack(item, 1);
-        if (!player.getInventory().insertStack(stack)) {
-            player.dropItem(stack, false);
-        }
     }
 }

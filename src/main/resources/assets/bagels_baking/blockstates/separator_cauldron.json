@@ -1,0 +1,40 @@
+{
+    "variants": {
+        "level=1,yolks=0": {
+            "model": "bagels_baking:block/separator_cauldron_level1yolks0"
+        },
+        "level=1,yolks=1": {
+            "model": "bagels_baking:block/separator_cauldron_level1yolks1"
+        },
+        "level=1,yolks=2": {
+            "model": "bagels_baking:block/separator_cauldron_level1yolks0"
+        },
+        "level=1,yolks=3": {
+            "model": "bagels_baking:block/separator_cauldron_level1yolks0"
+        },
+        "level=2,yolks=0": {
+            "model": "bagels_baking:block/separator_cauldron_level2yolks0"
+        },
+        "level=2,yolks=1": {
+            "model": "bagels_baking:block/separator_cauldron_level2yolks1"
+        },
+        "level=2,yolks=2": {
+            "model": "bagels_baking:block/separator_cauldron_level2yolks2"
+        },
+        "level=2,yolks=3": {
+            "model": "bagels_baking:block/separator_cauldron_level2yolks0"
+        },
+        "level=3,yolks=0": {
+            "model": "bagels_baking:block/separator_cauldron_level3yolks0"
+        },
+        "level=3,yolks=1": {
+            "model": "bagels_baking:block/separator_cauldron_level3yolks1"
+        },
+        "level=3,yolks=2": {
+            "model": "bagels_baking:block/separator_cauldron_level3yolks2"
+        },
+        "level=3,yolks=3": {
+            "model": "bagels_baking:block/separator_cauldron_level3yolks3"
+        }
+    }
+}

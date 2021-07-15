@@ -3,6 +3,7 @@ package dev.elexi.hugeblank.bagels_baking;
 import dev.elexi.hugeblank.bagels_baking.block.*;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.BakingCauldronBehavior;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.LiquidCheeseCauldronBlock;
+import dev.elexi.hugeblank.bagels_baking.block.cauldron.SeparatorCauldron;
 import dev.elexi.hugeblank.bagels_baking.block.sign.SignTypeRegistry;
 import dev.elexi.hugeblank.bagels_baking.entity.BakingVillagerTrades;
 import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
@@ -283,6 +284,7 @@ public class Baking implements ModInitializer {
 	public static final Block TEA_CAULDRON = new LeveledCauldronBlock(FabricBlockSettings.copy(Blocks.WATER_CAULDRON), (precipitation) -> false, BakingCauldronBehavior.TEA_CAULDRON_BEHAVIOR);
 	public static final Block CREAMY_COFFEE_CAULDRON = new LeveledCauldronBlock(FabricBlockSettings.copy(Blocks.WATER_CAULDRON), (precipitation) -> false, BakingCauldronBehavior.CREAMY_COFFEE_CAULDRON_BEHAVIOR);
 	public static final Block CREAMY_TEA_CAULDRON = new LeveledCauldronBlock(FabricBlockSettings.copy(Blocks.WATER_CAULDRON), (precipitation) -> false, BakingCauldronBehavior.CREAMY_TEA_CAULDRON_BEHAVIOR);
+	public static final Block SEPARATOR_CAULDRON = new SeparatorCauldron(FabricBlockSettings.copy(Blocks.WATER_CAULDRON), BakingCauldronBehavior.SEPARATOR_CAULDRON_BEHAVIOR);
 
 	// Ingredients
 	public static final Item SALT = basicIngredient();
@@ -658,6 +660,7 @@ public class Baking implements ModInitializer {
 		registerBlock("tea_cauldron", TEA_CAULDRON);
 		registerBlock("creamy_coffee_cauldron", CREAMY_COFFEE_CAULDRON);
 		registerBlock("creamy_tea_cauldron", CREAMY_TEA_CAULDRON);
+		registerBlock("separator_cauldron", SEPARATOR_CAULDRON);
 
 		// Stats
 		Registry.register(Registry.CUSTOM_STAT, "day_of_week", DAY_OF_WEEK);
