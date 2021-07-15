@@ -15,8 +15,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.ArrayList;
-
 @Mixin(CraftingResultSlot.class)
 public class MultiCraft {
 
@@ -27,18 +25,11 @@ public class MultiCraft {
     @Final
     @Shadow
     private CraftingInventory input;
-
-    // Items that are exceptions to the "if both the items are in cups, don't give back a cup" rule
-    private static final ArrayList<Item> cupWhitelist = new ArrayList<>();
-    static {
-        cupWhitelist.add(Baking.COFFEE_W_CREAMER);
-        cupWhitelist.add(Baking.TEA_W_CREAMER);
-    }
-
+    
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;onCraft(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/PlayerEntity;I)V"), method = "onCrafted(Lnet/minecraft/item/ItemStack;)V")
     private void doubleResult(ItemStack output, CallbackInfo ci) {
         Item item = output.getItem();
-        if (cupWhitelist.contains(item) || !(item instanceof BasicDrink)) {
+        if (!(item instanceof BasicDrink)) {
             for (int i = 0; i < input.size(); i++) { // Drop bucket outputs
                 Item inputItem = input.getStack(i).getItem();
                 if (inputItem instanceof BasicDrink && !((BasicDrink) inputItem).isBucket()) {

@@ -279,6 +279,10 @@ public class Baking implements ModInitializer {
 	public static final Block BATTER_CAULDRON = new LeveledCauldronBlock(FabricBlockSettings.copy(Blocks.WATER_CAULDRON), (precipitation) -> false, BakingCauldronBehavior.BATTER_CAULDRON_BEHAVIOR);
 	public static final Block LIQUID_CHEESE_CAULDRON = new LiquidCheeseCauldronBlock(FabricBlockSettings.copy(Blocks.CAULDRON), CauldronBehavior.createMap()); // do nothing
 	public static final Block SOLID_CHEESE_CAULDRON = new LiquidCheeseCauldronBlock(FabricBlockSettings.copy(Blocks.CAULDRON), BakingCauldronBehavior.SOLID_CHEESE_CAULDRON_BEHAVIOR);
+	public static final Block COFFEE_CAULDRON = new LeveledCauldronBlock(FabricBlockSettings.copy(Blocks.WATER_CAULDRON), (precipitation) -> false, BakingCauldronBehavior.COFFEE_CAULDRON_BEHAVIOR);
+	public static final Block TEA_CAULDRON = new LeveledCauldronBlock(FabricBlockSettings.copy(Blocks.WATER_CAULDRON), (precipitation) -> false, BakingCauldronBehavior.TEA_CAULDRON_BEHAVIOR);
+	public static final Block CREAMY_COFFEE_CAULDRON = new LeveledCauldronBlock(FabricBlockSettings.copy(Blocks.WATER_CAULDRON), (precipitation) -> false, BakingCauldronBehavior.CREAMY_COFFEE_CAULDRON_BEHAVIOR);
+	public static final Block CREAMY_TEA_CAULDRON = new LeveledCauldronBlock(FabricBlockSettings.copy(Blocks.WATER_CAULDRON), (precipitation) -> false, BakingCauldronBehavior.CREAMY_TEA_CAULDRON_BEHAVIOR);
 
 	// Ingredients
 	public static final Item SALT = basicIngredient();
@@ -646,6 +650,10 @@ public class Baking implements ModInitializer {
 		registerBlock("batter_cauldron", BATTER_CAULDRON);
 		registerBlock("liquid_cheese_cauldron", LIQUID_CHEESE_CAULDRON);
 		registerBlock("solid_cheese_cauldron", SOLID_CHEESE_CAULDRON);
+		registerBlock("coffee_cauldron", COFFEE_CAULDRON);
+		registerBlock("tea_cauldron", TEA_CAULDRON);
+		registerBlock("creamy_coffee_cauldron", CREAMY_COFFEE_CAULDRON);
+		registerBlock("creamy_tea_cauldron", CREAMY_TEA_CAULDRON);
 
 		// Stats
 		Registry.register(Registry.CUSTOM_STAT, "day_of_week", DAY_OF_WEEK);
