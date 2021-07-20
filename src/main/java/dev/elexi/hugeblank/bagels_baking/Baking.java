@@ -169,6 +169,8 @@ public class Baking implements ModInitializer {
 	public static final Item MUTTON_SANDWICH = basicFood(8, 10.8f);
 	public static final Item FISH_SANDWICH = basicFood(7, 9f);
 	public static final Item RABBIT_SANDWICH = basicFood(7, 9f);
+	public static final Item CHEESE_SANDWICH = basicFood(3, 2.5f);
+	public static final Item GRILLED_CHEESE_SANDWICH = basicFood(6, 5.5f);
 	public static final Item BERRY_JAM_SANDWICH = basicFood(4, 4.3f);
 	public static final Item APPLE_JAM_SANDWICH = basicFood(6, 5.1f);
 
@@ -361,7 +363,7 @@ public class Baking implements ModInitializer {
 	public static final DamageSource TEA_TREE_DMGSRC = new DamageSource("tea_tree");
 	public static final Block TOMATO_PLANT = new BasicCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item TOMATO = new TomatoItem(TOMATO_PLANT, new Item.Settings().group(ItemGroup.FOOD).food(
-			foodComponent(3, 4.2f).build()
+			foodComponent(3, 3.2f).build()
 	));
 	public static final EntityType<TomatoEntity> TOMATO_THROWABLE = Registry.register(Registry.ENTITY_TYPE, new Identifier(ID, "tomato"),
 			FabricEntityTypeBuilder.<TomatoEntity>create()
@@ -405,6 +407,7 @@ public class Baking implements ModInitializer {
 	public static final Item COOKED_EGG = basicFood(2, 3.3f);
 	public static final Item MACARONI_N_CHEESE = basicBowlFood(4, 6.5f);
 	public static final Item BACON_MACARONI_N_CHEESE = basicBowlFood(6, 11.2f);
+	public static final Item TOMATO_SOUP = basicBowlFood(12, 14.0f);
 	public static final Item SALMON_SUSHI = basicFood(4, 6.5f);
 	public static final Item SQUID_SUSHI = basicFood(4, 4.7f);
 	public static final Item LOADED_FRIES = basicFood(3, 3.5f);
@@ -440,6 +443,8 @@ public class Baking implements ModInitializer {
 		registerItem("rabbit_sandwich", RABBIT_SANDWICH);
 		registerItem("berry_jam_sandwich", BERRY_JAM_SANDWICH);
 		registerItem("apple_jam_sandwich", APPLE_JAM_SANDWICH);
+		registerItem("cheese_sandwich", CHEESE_SANDWICH);
+		registerItem("grilled_cheese_sandwich", GRILLED_CHEESE_SANDWICH);
 
 		// Pockets
 		registerItem("steak_pocket", STEAK_POCKET);
@@ -631,6 +636,7 @@ public class Baking implements ModInitializer {
 		registerItem("squid_sushi", SQUID_SUSHI);
 		registerItem("macaroni_n_cheese", MACARONI_N_CHEESE);
 		registerItem("bacon_macaroni_n_cheese", BACON_MACARONI_N_CHEESE);
+		registerItem("tomato_soup", TOMATO_SOUP);
 		registerItem("loaded_fries", LOADED_FRIES);
 		registerItem("loaded_potato", LOADED_POTATO);
 		registerItem("mashed_potatoes", MASHED_POTATOES);
