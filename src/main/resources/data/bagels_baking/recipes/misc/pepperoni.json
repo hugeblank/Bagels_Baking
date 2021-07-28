@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:porkchop"
+        },
+        {
+            "item": "minecraft:beef"
+        },
+        {
+            "item": "bagels_baking:salt"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:pepperoni",
+        "count": 4
+    }
+}
