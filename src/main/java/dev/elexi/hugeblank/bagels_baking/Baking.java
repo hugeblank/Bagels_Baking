@@ -115,7 +115,7 @@ public class Baking implements ModInitializer {
 		registerBlock("stripped_" + name + "_log", strippedLog, ItemGroup.BUILDING_BLOCKS);
 		registerBlock("stripped_" + name + "_wood", strippedWood, ItemGroup.BUILDING_BLOCKS);
 		registerBlock(name + "_planks", planks, ItemGroup.BUILDING_BLOCKS);
-		registerBlock(name + "_pressure_plate", new BasicPressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, settings), ItemGroup.REDSTONE);
+		registerBlock(name + "_pressure_plate", new BasicPressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copy(Blocks.OAK_PRESSURE_PLATE)), ItemGroup.REDSTONE);
 		registerBlock(name + "_button", new BasicWoodenButtonBlock(settings), ItemGroup.REDSTONE);
 		registerBlock(name + "_door", new BasicDoorBlock(settings), ItemGroup.DECORATIONS);
 		registerBlock(name + "_fence_gate", new FenceGateBlock(settings), ItemGroup.DECORATIONS);

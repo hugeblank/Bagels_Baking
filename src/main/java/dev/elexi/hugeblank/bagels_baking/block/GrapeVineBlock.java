@@ -18,8 +18,9 @@ import java.util.Random;
 
 public class GrapeVineBlock extends BasicVineComponentBlock {
     public static final int MAX_DISTANCE = 5;
-    public static final IntProperty DISTANCE;
-    public static final BooleanProperty PERSISTENT;
+    public static final IntProperty DISTANCE = IntProperty.of("distance", 0, MAX_DISTANCE);
+    public static final BooleanProperty PERSISTENT = Properties.PERSISTENT;
+    public static final IntProperty AGE = Properties.AGE_2;
 
     public GrapeVineBlock(Settings settings) {
         super(settings);
@@ -41,7 +42,6 @@ public class GrapeVineBlock extends BasicVineComponentBlock {
         world.setBlockState(pos, updateDistanceFromStem(state, world, pos), 3);
     }
 
-
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!state.get(PERSISTENT)) {
             if (state.get(DISTANCE) == MAX_DISTANCE) {
@@ -50,28 +50,46 @@ public class GrapeVineBlock extends BasicVineComponentBlock {
             } else if (state.get(DISTANCE) < MAX_DISTANCE-1){
                 Direction[] directions = Direction.values();
                 ArrayList<Direction> facingDirections = getDirectionsFromState(state);
-                for (Direction direction : directions) { // Grow Left/Right if block is air (propagation)
-                    BlockPos growPos = pos.offset(direction);
-                    BlockState growState = world.getBlockState(growPos);
-                    for (Direction facing : facingDirections) {
-                        if (direction.getAxis().isHorizontal() && growState.isOf(Blocks.AIR) && shouldConnectTo(world, growPos.offset(facing), facing)) {
-                            world.setBlockState(growPos, this.getDefaultState().with(DISTANCE, state.get(DISTANCE) + 1).with(FACING_PROPERTIES.get(facing), true));
-                            return;
+                if ((MAX_DISTANCE-state.get(DISTANCE))*world.random.nextFloat() < 0.5f) {
+                    if (world.random.nextFloat() < 0.8f) {
+                        for (Direction direction : directions) { // Grow Left/Right if block is air (propagation)
+                            BlockPos growPos = pos.offset(direction);
+                            BlockState growState = world.getBlockState(growPos);
+                            for (Direction facing : facingDirections) {
+                                if (direction.getAxis().isHorizontal() && growState.isOf(Blocks.AIR) && shouldConnectTo(world, growPos.offset(facing), facing) && random.nextFloat() < 0.5f) {
+                                    world.setBlockState(growPos, this.getDefaultState().with(DISTANCE, state.get(DISTANCE) + 1).with(FACING_PROPERTIES.get(facing), true));
+                                    return;
+                                }
+                            }
+                        }
+                    } else {
+                        for (Direction facing : facingDirections) { // Attach onto new face (rotation)
+                            Direction newFacing = world.random.nextInt(2) == 0 ? facing.rotateCounterclockwise(Direction.Axis.Y) : facing.rotateClockwise(Direction.Axis.Y);
+                            BooleanProperty newFacingProperty = FACING_PROPERTIES.get(newFacing);
+                            if (!state.get(newFacingProperty) && shouldConnectTo(world, pos.offset(newFacing), newFacing)) {
+                                world.setBlockState(pos, state.with(newFacingProperty, true));
+                                return;
+                            }
                         }
                     }
                 }
-                for (Direction facing : facingDirections) { // Attach onto new face (rotation)
-                    Direction newFacing = world.random.nextInt(2) == 0 ? facing.rotateCounterclockwise(facing.getAxis()) : facing.rotateClockwise(facing.getAxis());
-                    BooleanProperty newFacingProperty = FACING_PROPERTIES.get(newFacing);
-                    if (!state.get(newFacingProperty) && shouldConnectTo(world, pos.offset(facing), newFacing)) {
-                        world.setBlockState(pos, state.with(newFacingProperty, true));
-                        return;
+                BlockState below = world.getBlockState(pos.down());
+                if (below.isOf(Baking.GRAPE_STEM)) {
+                    Direction facing = getDirectionsFromState(below).get(0);
+                    Direction left = facing.rotateClockwise(Direction.Axis.Y);
+                    Direction right = facing.rotateCounterclockwise(Direction.Axis.Y);
+                    if (world.getBlockState(pos.offset(left)).isOf(this) && world.getBlockState(pos.offset(right)).isOf(this) && random.nextFloat() < 0.5f) {
+                        world.setBlockState(pos, below);
                     }
                 }
                 // TODO: Rare up/down offshoots
-                // TODO: Increase Growth Property (fruiting)
+            }
+            int age = state.get(AGE);
+            if (world.random.nextInt(10) == 0 && age < 2 && state.get(DISTANCE) != 5) {
+                world.setBlockState(pos, state.with(AGE, age+1));
             }
         }
+        super.randomTick(state, world, pos, random);
     }
 
     private static BlockState updateDistanceFromStem(BlockState state, WorldAccess world, BlockPos pos) {
@@ -100,11 +118,6 @@ public class GrapeVineBlock extends BasicVineComponentBlock {
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(DISTANCE, PERSISTENT);
-    }
-
-    static {
-        DISTANCE = IntProperty.of("distance", 0, MAX_DISTANCE);
-        PERSISTENT = Properties.PERSISTENT;
+        builder.add(DISTANCE, PERSISTENT, AGE);
     }
 }
