@@ -6,6 +6,7 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Util;
@@ -16,8 +17,10 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
+import net.minecraft.state.property.Properties;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
@@ -62,6 +65,23 @@ public class BasicVineComponentBlock extends Block {
         }
 
         return voxelShape.isEmpty() ? VoxelShapes.fullCube() : voxelShape;
+    }
+
+    public ArrayList<Direction> getDirectionsFromState(BlockState state) {
+        ArrayList<Direction> directions = new ArrayList<>();
+        if (state.get(NORTH)) {
+            directions.add(Direction.NORTH);
+        }
+        if (state.get(SOUTH)) {
+            directions.add(Direction.SOUTH);
+        }
+        if (state.get(EAST)) {
+            directions.add(Direction.EAST);
+        }
+        if (state.get(WEST)) {
+            directions.add(Direction.WEST);
+        }
+        return directions;
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -194,14 +214,6 @@ public class BasicVineComponentBlock extends Block {
             case COUNTERCLOCKWISE_90 -> state.with(NORTH, state.get(EAST)).with(EAST, state.get(SOUTH)).with(SOUTH, state.get(WEST)).with(WEST, state.get(NORTH));
             case CLOCKWISE_90 -> state.with(NORTH, state.get(WEST)).with(EAST, state.get(NORTH)).with(SOUTH, state.get(EAST)).with(WEST, state.get(SOUTH));
             default -> state;
-        };
-    }
-
-    public BlockState mirror(BlockState state, BlockMirror mirror) {
-        return switch (mirror) {
-            case LEFT_RIGHT -> state.with(NORTH, state.get(SOUTH)).with(SOUTH, state.get(NORTH));
-            case FRONT_BACK -> state.with(EAST, state.get(WEST)).with(WEST, state.get(EAST));
-            default -> super.mirror(state, mirror);
         };
     }
 

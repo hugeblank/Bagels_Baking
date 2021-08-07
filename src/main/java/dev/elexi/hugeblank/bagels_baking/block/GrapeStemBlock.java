@@ -7,6 +7,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.WorldAccess;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class GrapeStemBlock extends BasicVineComponentBlock {
@@ -25,13 +26,17 @@ public class GrapeStemBlock extends BasicVineComponentBlock {
 
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         Block above = world.getBlockState(pos.up()).getBlock();
-        if (above instanceof GrapeVineBlock) {
-            if (random.nextFloat() < 0.1f) {
-                world.setBlockState(pos.up(), state);
-            }
-        } else {
-            if (random.nextFloat() < 0.25f) {
-                world.setBlockState(pos.up(), Baking.GRAPE_VINE.getDefaultState().with(NORTH, state.get(NORTH)));
+        Direction direction = getDirectionsFromState(state).get(0);
+        if (shouldConnectTo(world, pos.offset(direction).up(), direction)) {
+            if (above instanceof GrapeVineBlock) {
+                if (random.nextFloat() < 0.5f) {
+                    world.setBlockState(pos.up(), state);
+                }
+            } else if (above instanceof AirBlock) {
+                //if (random.nextFloat() < 0.25f) {
+                BlockState vine = Baking.GRAPE_VINE.getDefaultState().with(FACING_PROPERTIES.get(direction), true).with(GrapeVineBlock.DISTANCE, 0);
+                world.setBlockState(pos.up(), vine);
+                //}
             }
         }
     }
