@@ -20,7 +20,7 @@
         "trigger": "minecraft:consume_item",
         "conditions": {
           "item": {
-            "item": "bagels_baking:steak_stew"
+            "items": ["bagels_baking:steak_stew"]
           }
         }
       },
@@ -28,7 +28,7 @@
         "trigger": "minecraft:consume_item",
         "conditions": {
           "item": {
-            "item": "bagels_baking:chicken_stew"
+            "items": ["bagels_baking:chicken_stew"]
           }
         }
       },
@@ -36,7 +36,7 @@
         "trigger": "minecraft:consume_item",
         "conditions": {
           "item": {
-            "item": "bagels_baking:pork_stew"
+            "items": ["bagels_baking:pork_stew"]
           }
         }
       },
@@ -44,7 +44,7 @@
         "trigger": "minecraft:consume_item",
         "conditions": {
           "item": {
-            "item": "bagels_baking:fish_stew"
+            "items": ["bagels_baking:fish_stew"]
           }
         }
       },
@@ -52,7 +52,7 @@
         "trigger": "minecraft:consume_item",
         "conditions": {
           "item": {
-            "item": "bagels_baking:mutton_stew"
+            "items": ["bagels_baking:mutton_stew"]
           }
         }
       },
@@ -60,7 +60,7 @@
         "trigger": "minecraft:consume_item",
         "conditions": {
           "item": {
-            "item": "minecraft:rabbit_stew"
+            "items": ["minecraft:rabbit_stew"]
           }
         }
       }
