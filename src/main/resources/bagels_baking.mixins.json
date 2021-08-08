@@ -25,6 +25,7 @@
     "entity.villager.FarmerVillagerAITask",
     "entity.villager.FarmerVillagerAIWorkTask",
     "entity.villager.VillagerEntityFarming",
+    "item.ShearsItemMixin",
     "render.BoatEntityRendererMixin",
     "render.TexturedRenderLayersMixin",
     "stew.BasicStewItem",

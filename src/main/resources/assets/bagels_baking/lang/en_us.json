@@ -213,8 +213,11 @@
   "block.bagels_baking.lemon_leaves": "Lemon Leaves",
   "block.bagels_baking.cheese_slice": "Cheese Slice",
   "block.bagels_baking.cheese_block": "Cheese Block",
-  "block.bagels_baking.dough_ingredients": "Dough Ingredients",
-  "block.bagels_baking.tomato_soup": "Tomato Soup",
-  "block.bagels_baking.cheese_sandwich": "Cheese Sandwich",
-  "block.bagels_baking.grilled_cheese_sandwich": "Grilled Cheese Sandwich"
+  "item.bagels_baking.dough_ingredients": "Dough Ingredients",
+  "item.bagels_baking.tomato_soup": "Tomato Soup",
+  "item.bagels_baking.cheese_sandwich": "Cheese Sandwich",
+  "item.bagels_baking.grilled_cheese_sandwich": "Grilled Cheese Sandwich",
+  "block.bagels_baking.grape_stem": "Grape Vine Cutting",
+  "block.bagels_baking.grape_vine": "Grape Vine",
+  "item.bagels_baking.grapes": "Grapes"
 }

@@ -115,7 +115,7 @@ public class Baking implements ModInitializer {
 		registerBlock("stripped_" + name + "_log", strippedLog, ItemGroup.BUILDING_BLOCKS);
 		registerBlock("stripped_" + name + "_wood", strippedWood, ItemGroup.BUILDING_BLOCKS);
 		registerBlock(name + "_planks", planks, ItemGroup.BUILDING_BLOCKS);
-		registerBlock(name + "_pressure_plate", new BasicPressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, settings), ItemGroup.REDSTONE);
+		registerBlock(name + "_pressure_plate", new BasicPressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copy(Blocks.OAK_PRESSURE_PLATE)), ItemGroup.REDSTONE);
 		registerBlock(name + "_button", new BasicWoodenButtonBlock(settings), ItemGroup.REDSTONE);
 		registerBlock(name + "_door", new BasicDoorBlock(settings), ItemGroup.DECORATIONS);
 		registerBlock(name + "_fence_gate", new FenceGateBlock(settings), ItemGroup.DECORATIONS);
@@ -393,6 +393,9 @@ public class Baking implements ModInitializer {
 	public static final Block LEMON_LOG = new BasicLogBlock();
 	public static final Item LEMON = basicFood(1, 0.8f);
 	public static final Block LEMON_LEAVES = new BasicLeavesBlock(LEMON);
+	public static final Block GRAPE_STEM = new GrapeStemBlock(FabricBlockSettings.copy(Blocks.VINE));
+	public static final Block GRAPE_VINE = new GrapeVineBlock(FabricBlockSettings.copy(Blocks.VINE));
+	public static final Item GRAPES = basicFood(2, 1.5f);
 
 	// Cheese
 	public static final Block CHEESE_BLOCK = new Block(FabricBlockSettings.copy(Blocks.HONEY_BLOCK).sounds(BlockSoundGroup.CANDLE)); // TODO: play with sounds!
@@ -621,6 +624,9 @@ public class Baking implements ModInitializer {
 		registerWoodType("lemon", LEMON_LOG);
 		registerBlock("lemon_leaves", LEMON_LEAVES, ItemGroup.DECORATIONS);
 		registerItem("lemon", LEMON);
+		registerBlock("grape_stem", GRAPE_STEM, ItemGroup.DECORATIONS);
+		registerBlock("grape_vine", GRAPE_VINE, ItemGroup.DECORATIONS);
+		registerItem("grapes", GRAPES);
 
 		// Cheese
 		registerBlock("cheese_slice", CHEESE_LAYER, (BlockItem) CHEESE_SLICE);
