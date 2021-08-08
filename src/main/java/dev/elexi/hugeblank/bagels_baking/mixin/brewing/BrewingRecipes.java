@@ -33,7 +33,7 @@ public class BrewingRecipes {
         recipe(Baking.CLUB_SODA, Items.SWEET_BERRIES, Baking.FRUITY_SODA);
         recipe(Baking.CLUB_SODA, Items.MELON_SLICE, Baking.MOUNTAIN_FOUNTAIN);
         recipe(Baking.CLUB_SODA, Items.CACTUS, Baking.CACTUS_CHILLER);
-        recipe(Baking.CLUB_SODA, Items.POPPED_CHORUS_FRUIT, Baking.GRAPE_SODA);
+        recipe(Baking.CLUB_SODA, Baking.GRAPES, Baking.GRAPE_SODA);
 
         // Items
         item(Baking.EGG_WHITES);

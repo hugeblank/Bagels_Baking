@@ -6,8 +6,6 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.IntProperty;
-import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
@@ -17,7 +15,6 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-import net.minecraft.state.property.Properties;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -124,7 +121,7 @@ public class BasicVineComponentBlock extends Block {
             } else {
                 BooleanProperty booleanProperty = FACING_PROPERTIES.get(side);
                 BlockState blockState = world.getBlockState(pos.up());
-                return blockState.isOf(this) && blockState.get(booleanProperty);
+                return blockState.getBlock() instanceof BasicVineComponentBlock && blockState.get(booleanProperty);
             }
         }
     }
@@ -158,7 +155,7 @@ public class BasicVineComponentBlock extends Block {
                     blockState = world.getBlockState(blockPos);
                 }
 
-                bl = blockState.isOf(this) && blockState.get(booleanProperty);
+                bl = blockState.getBlock() instanceof BasicVineComponentBlock && blockState.get(booleanProperty);
             }
 
             state = state.with(booleanProperty, bl);
@@ -176,7 +173,7 @@ public class BasicVineComponentBlock extends Block {
 
     public boolean canReplace(BlockState state, ItemPlacementContext context) {
         BlockState blockState = context.getWorld().getBlockState(context.getBlockPos());
-        if (blockState.isOf(this)) {
+        if (blockState.getBlock() instanceof BasicVineComponentBlock) {
             return this.getAdjacentBlockCount(blockState) < FACING_PROPERTIES.size();
         } else {
             return super.canReplace(state, context);
@@ -186,7 +183,7 @@ public class BasicVineComponentBlock extends Block {
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockState blockState = ctx.getWorld().getBlockState(ctx.getBlockPos());
-        boolean isVine = blockState.isOf(this);
+        boolean isVine = blockState.getBlock() instanceof BasicVineComponentBlock;
         BlockState blockState2 = isVine ? blockState : this.getDefaultState();
         Direction[] var5 = ctx.getPlacementDirections();
 

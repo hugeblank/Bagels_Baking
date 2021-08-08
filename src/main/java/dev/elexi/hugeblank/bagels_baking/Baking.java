@@ -395,6 +395,7 @@ public class Baking implements ModInitializer {
 	public static final Block LEMON_LEAVES = new BasicLeavesBlock(LEMON);
 	public static final Block GRAPE_STEM = new GrapeStemBlock(FabricBlockSettings.copy(Blocks.VINE));
 	public static final Block GRAPE_VINE = new GrapeVineBlock(FabricBlockSettings.copy(Blocks.VINE));
+	public static final Item GRAPES = basicFood(2, 1.5f);
 
 	// Cheese
 	public static final Block CHEESE_BLOCK = new Block(FabricBlockSettings.copy(Blocks.HONEY_BLOCK).sounds(BlockSoundGroup.CANDLE)); // TODO: play with sounds!
@@ -623,8 +624,9 @@ public class Baking implements ModInitializer {
 		registerWoodType("lemon", LEMON_LOG);
 		registerBlock("lemon_leaves", LEMON_LEAVES, ItemGroup.DECORATIONS);
 		registerItem("lemon", LEMON);
-		registerBlock("grape_stem", GRAPE_STEM);
-		registerBlock("grape_vine", GRAPE_VINE);
+		registerBlock("grape_stem", GRAPE_STEM, ItemGroup.DECORATIONS);
+		registerBlock("grape_vine", GRAPE_VINE, ItemGroup.DECORATIONS);
+		registerItem("grapes", GRAPES);
 
 		// Cheese
 		registerBlock("cheese_slice", CHEESE_LAYER, (BlockItem) CHEESE_SLICE);

@@ -1,0 +1,130 @@
+{
+    "multipart": [
+      {
+        "when": {
+          "north": "true",
+          "age": 0
+        },
+        "apply": {
+          "model": "bagels_baking:block/grape_vine_age0"
+        }
+      },
+      {
+        "when": {
+          "west": "true",
+          "age": 0
+        },
+        "apply": {
+          "model": "bagels_baking:block/grape_vine_age0",
+          "y": 270,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "south": "true",
+          "age": 0
+        },
+        "apply": {
+          "model": "bagels_baking:block/grape_vine_age0",
+          "y": 180,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "east": "true",
+          "age": 0
+        },
+        "apply": {
+          "model": "bagels_baking:block/grape_vine_age0",
+          "y": 90,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "north": "true",
+          "age": 1
+        },
+        "apply": {
+          "model": "bagels_baking:block/grape_vine_age1"
+        }
+      },
+      {
+        "when": {
+          "west": "true",
+          "age": 1
+        },
+        "apply": {
+          "model": "bagels_baking:block/grape_vine_age1",
+          "y": 270,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "south": "true",
+          "age": 1
+        },
+        "apply": {
+          "model": "bagels_baking:block/grape_vine_age1",
+          "y": 180,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "east": "true",
+          "age": 1
+        },
+        "apply": {
+          "model": "bagels_baking:block/grape_vine_age1",
+          "y": 90,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "north": "true",
+          "age": 2
+        },
+        "apply": {
+          "model": "bagels_baking:block/grape_vine_age2"
+        }
+      },
+      {
+        "when": {
+          "west": "true",
+          "age": 2
+        },
+        "apply": {
+          "model": "bagels_baking:block/grape_vine_age2",
+          "y": 270,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "south": "true",
+          "age": 2
+        },
+        "apply": {
+          "model": "bagels_baking:block/grape_vine_age2",
+          "y": 180,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "east": "true",
+          "age": 2
+        },
+        "apply": {
+          "model": "bagels_baking:block/grape_vine_age2",
+          "y": 90,
+          "uvlock": true
+        }
+      }
+    ]
+  }

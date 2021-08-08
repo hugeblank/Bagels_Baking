@@ -1,0 +1,42 @@
+{
+    "multipart": [
+      {
+        "when": {
+          "north": "true"
+        },
+        "apply": {
+          "model": "bagels_baking:block/grape_stem"
+        }
+      },
+      {
+        "when": {
+          "west": "true"
+        },
+        "apply": {
+          "model": "bagels_baking:block/grape_stem",
+          "y": 270,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "south": "true"
+        },
+        "apply": {
+          "model": "bagels_baking:block/grape_stem",
+          "y": 180,
+          "uvlock": true
+        }
+      },
+      {
+        "when": {
+          "east": "true"
+        },
+        "apply": {
+          "model": "bagels_baking:block/grape_stem",
+          "y": 90,
+          "uvlock": true
+        }
+      }
+    ]
+  }
