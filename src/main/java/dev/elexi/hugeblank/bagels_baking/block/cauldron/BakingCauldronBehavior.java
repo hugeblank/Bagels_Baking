@@ -26,7 +26,6 @@ import java.util.Map;
 
 public interface BakingCauldronBehavior extends CauldronBehavior {
     Map<Item, Item> BATTER_ITEMS = new HashMap<>();
-    Map<Item, Item> WATER_ITEMS = new HashMap<>();
     Map<Block, Item> CUP_FLUIDS = new HashMap<>();
     Map<Item, CauldronBehavior> BATTER_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
     Map<Item, CauldronBehavior> COFFEE_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
@@ -49,24 +48,7 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
             if (world.getRandom().nextBoolean()) {
                 LeveledCauldronBlock.decrementFluidLevel(state, world, pos);
             }
-            world.playSound(null, pos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 0.75F, 0.75F);
-            return ActionResult.success(world.isClient);
-        }
-    };
-
-    CauldronBehavior APPLY_WATER_TO_ITEM = (state, world, pos, player, hand, stack) -> {
-        Item item = stack.getItem();
-        if (!WATER_ITEMS.containsKey(item)) {
-            return ActionResult.PASS;
-        } else {
-            Item output = WATER_ITEMS.get(item);
-            ItemUsage.exchangeStack(stack, player, output.getDefaultStack());
-            player.incrementStat(Stats.USE_CAULDRON);
-            player.incrementStat(Stats.USED.getOrCreateStat(item));
-            if (world.getRandom().nextBoolean()) {
-                LeveledCauldronBlock.decrementFluidLevel(state, world, pos);
-            }
-            world.playSound(null, pos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 0.75F, 1.0F);
+            world.playSound(null, pos, SoundEvents.BLOCK_SHROOMLIGHT_STEP, SoundCategory.BLOCKS, 1.0F, 1.0F);
             return ActionResult.success(world.isClient);
         }
     };
@@ -116,7 +98,7 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
                     player.incrementStat(Stats.FILL_CAULDRON);
                     player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
                     world.setBlockState(pos, Baking.BATTER_CAULDRON.getDefaultState());
-                    world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 0.75F, 0.75F);
+                    world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                     world.emitGameEvent(null, GameEvent.FLUID_PLACE, pos);
                 }
                 return ActionResult.success(world.isClient);
@@ -131,7 +113,7 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
                     player.incrementStat(Stats.FILL_CAULDRON);
                     player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
                     world.setBlockState(pos, state.cycle(LeveledCauldronBlock.LEVEL));
-                    world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 0.75F, 0.75F);
+                    world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                     world.emitGameEvent(null, GameEvent.FLUID_PLACE, pos);
                 }
                 return ActionResult.success(world.isClient);
@@ -223,12 +205,6 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
         registerBatterItem(Items.CHICKEN, Baking.BATTERED_CHICKEN);
         registerBatterItem(Baking.CALAMARI, Baking.BATTERED_CALAMARI);
         registerBatterItem(Baking.CHICKEN_NUGGETS, Baking.BATTERED_CHICKEN_NUGGETS);
-
-        // Map water cauldron recipes
-        registerWaterItem(Baking.DOUGH_INGREDIENTS, Baking.DOUGH);
-        registerWaterItem(Baking.PASTA_DOUGH_INGREDIENTS, Baking.PASTA_DOUGH);
-        registerWaterItem(Baking.WILD_RICE, Baking.WILD_RICE_BALL);
-        registerWaterItem(Baking.RICE, Baking.RICE_BALL);
     }
 
     static void registerBatterItem(Item input, Item output) {
@@ -236,18 +212,13 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
         BATTER_ITEMS.put(input, output);
     }
 
-    static void registerWaterItem(Item input, Item output) {
-        WATER_CAULDRON_BEHAVIOR.put(input, APPLY_WATER_TO_ITEM);
-        WATER_ITEMS.put(input, output);
-    }
-
-    static void registerCauldronCupFluid(Map<Item, CauldronBehavior> cauldronBehaviorMap, Block cauldron, Item output) {
+    static void registerCauldronCupFluid(Map<Item, CauldronBehavior> behavior, Block cauldron, Item output) {
         EMPTY_CAULDRON_BEHAVIOR.put(output, (state, world, pos, player, hand, stack) ->
                 fillCauldronCup(world, pos, player, hand, stack, cauldron.getDefaultState(), SoundEvents.ITEM_BUCKET_EMPTY)
         );
-        cauldronBehaviorMap.put(output, FILL_CAULDRON_CUP);
+        behavior.put(output, FILL_CAULDRON_CUP);
         CUP_FLUIDS.put(cauldron, output);
-        cauldronBehaviorMap.put(Baking.CUP, DRAIN_CAULDRON_CUP);
+        behavior.put(Baking.CUP, DRAIN_CAULDRON_CUP);
     }
 
     static ActionResult fillCauldronCup(World world, BlockPos pos, PlayerEntity player, Hand hand, ItemStack stack, BlockState state, SoundEvent soundEvent) {

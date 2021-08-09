@@ -76,6 +76,21 @@ public class Baking implements ModInitializer {
 		return new BottledItem(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(foodComponent(hunger, saturation).build()), drinkSound);
 	}
 
+	private static BasicDrink basicBucketDrink(int hunger, float saturation) {
+		return new BasicDrink(new Item.Settings().group(ItemGroup.FOOD).maxCount(1), foodComponent(hunger, saturation).build(), Items.BUCKET);
+	}
+
+	private static BasicDrink basicCupDrink() {
+		return new BasicDrink(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).recipeRemainder(Baking.CUP), Baking.CUP);
+	}
+
+	private static BasicDrink basicCupDrink(int hunger, float saturation) {
+		return new BasicDrink(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).recipeRemainder(Baking.CUP), foodComponent(hunger, saturation).build(), Baking.CUP);
+	}
+
+	private static BasicDrink basicSuperCupDrink(int hunger, float saturation, StatusEffectInstance effect) {
+		return new BasicDrink(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).recipeRemainder(Baking.CUP), foodComponent(hunger, saturation).statusEffect(effect, 1.0f).build(), Baking.CUP);
+	}
 
 	private static void registerItem(String name, Item item) {
 		Registry.register(Registry.ITEM, new Identifier(ID, name), item);
@@ -298,13 +313,11 @@ public class Baking implements ModInitializer {
 	public static final Item BATTER = basicBowlFood(1, 0.1f);
 	public static final Item BACON_BITS = basicFood(2, 5.2f);
 	public static final Item MASHED_POTATOES = basicFood(4, 4.5f);
-	public static final Item DOUGH_INGREDIENTS = basicIngredient();
 	public static final Item DOUGH = basicIngredient(); //  Henry - The inspiration behind the code, my rock and my brain - Redeemed
-	public static final Item PASTA_DOUGH_INGREDIENTS = basicIngredient();
 	public static final Item PASTA_DOUGH = basicIngredient();
 	public static final Item LINGUINE = basicIngredient();
 	public static final Item MACARONI = basicIngredient();
-	public static final Item CHEESE = new BasicDrink(Items.BUCKET, 2, 1.0f);
+	public static final Item CHEESE = basicBucketDrink(2, 1.0f);
 	public static final Item TOMATO_SAUCE = basicIngredient();
 	public static final Item WHEAT_CEREAL = basicIngredient();
 	public static final Item CORN_CEREAL = basicIngredient();
@@ -325,23 +338,23 @@ public class Baking implements ModInitializer {
 	// Cups
 	public static final Item CUP = new CupItem(new Item.Settings().group(ItemGroup.MISC).maxCount(16));
 	public static final Item MILK_CUP = new MilkCupItem();
-	public static final Item WATER_CUP = new BasicDrink(CUP, true);
-	public static final Item CHOCOLATE_MILK = new BasicDrink(CUP, 1, 1.0f); // frick i would like some choccy milk rn - redeemed by rrricohu on 3/21/21
-	public static final Item CREAMER_CUP = new BasicDrink(CUP, 0, 0.1f);
-	public static final Item COFFEE_CUP = new BasicDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 20*15, 1));
-	public static final Item COFFEE_W_CREAMER = new BasicDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 20*30));
-	public static final Item TEA_CUP = new BasicDrink(2, 1.8f, new StatusEffectInstance(StatusEffects.SPEED, 20*10));
-	public static final Item TEA_W_CREAMER = new BasicDrink(2, 1.8f, new StatusEffectInstance(StatusEffects.SPEED, 20*20));
+	public static final Item WATER_CUP = basicCupDrink();
+	public static final Item CHOCOLATE_MILK = basicCupDrink(1, 1.0f); // frick i would like some choccy milk rn - redeemed by rrricohu on 3/21/21
+	public static final Item CREAMER_CUP = basicCupDrink(0, 0.1f);
+	public static final Item COFFEE_CUP = basicSuperCupDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 20*15, 1));
+	public static final Item COFFEE_W_CREAMER = basicSuperCupDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 20*30));
+	public static final Item TEA_CUP = basicSuperCupDrink(2, 1.8f, new StatusEffectInstance(StatusEffects.SPEED, 20*10));
+	public static final Item TEA_W_CREAMER = basicSuperCupDrink(2, 1.8f, new StatusEffectInstance(StatusEffects.SPEED, 20*20));
 
 	// Sodie Pop
-	public static final Item SUGAR_WATER = new BasicDrink(CUP, true);
-	public static final Item CLUB_SODA = new BasicDrink(CUP, 1, 1f, true); // coal
-	public static final Item ROOT_BEER = new BasicDrink(CUP, 2, 1.8f); // beetUwUoot
-	public static final Item COLA = new BasicDrink(CUP, 2, 1.8f); // cocoa beans
-	public static final Item FRUITY_SODA = new BasicDrink(CUP, 2, 1.8f); // wild berries
-	public static final Item MOUNTAIN_FOUNTAIN = new BasicDrink(CUP, 2, 1.8f); // melon
-	public static final Item CACTUS_CHILLER = new BasicDrink(CUP, 2, 1.8f); // cactus
-	public static final Item GRAPE_SODA = new BasicDrink(CUP, 2, 1.8f); // chorus fruit
+	public static final Item SUGAR_WATER = basicCupDrink();
+	public static final Item CLUB_SODA = basicCupDrink(1, 1f); // coal
+	public static final Item ROOT_BEER = basicCupDrink(2, 1.8f); // beetUwUoot
+	public static final Item COLA = basicCupDrink(2, 1.8f); // cocoa beans
+	public static final Item FRUITY_SODA = basicCupDrink(2, 1.8f); // wild berries
+	public static final Item MOUNTAIN_FOUNTAIN = basicCupDrink(2, 1.8f); // melon
+	public static final Item CACTUS_CHILLER = basicCupDrink(2, 1.8f); // cactus
+	public static final Item GRAPE_SODA = basicCupDrink(2, 1.8f); // grape
 
 	// Plates & Meals
 	public static final Item UNFIRED_PLATE = basicIngredient();
@@ -515,9 +528,7 @@ public class Baking implements ModInitializer {
 		registerItem("batter", BATTER);
 		registerItem("bacon_bits", BACON_BITS);
 		registerItem("dough", DOUGH);
-		registerItem("dough_ingredients", DOUGH_INGREDIENTS);
 		registerItem("pasta_dough", PASTA_DOUGH);
-		registerItem("pasta_dough_ingredients", PASTA_DOUGH_INGREDIENTS);
 		registerItem("linguine", LINGUINE);
 		registerItem("macaroni", MACARONI);
 		registerItem("cheese", CHEESE);
