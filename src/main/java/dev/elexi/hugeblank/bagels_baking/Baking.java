@@ -1,5 +1,6 @@
 package dev.elexi.hugeblank.bagels_baking;
 
+import com.sun.jna.platform.unix.solaris.LibKstat;
 import dev.elexi.hugeblank.bagels_baking.block.*;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.BakingCauldronBehavior;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.LiquidCheeseCauldronBlock;
@@ -116,12 +117,9 @@ public class Baking implements ModInitializer {
 		Registry.register(Registry.ITEM, id, item);
 	}
 
-	private static void registerWoodType(String name, Block log) {
+	private static void registerWoodType(String name, Block log, Block strippedLog, Block wood, Block strippedWood) {
 		// Stripping
 		AbstractBlock.Settings settings = FabricBlockSettings.copy(Blocks.OAK_PLANKS);
-		Block strippedLog = new BasicLogBlock(() -> log);
-		Block wood = new BasicLogBlock();
-		Block strippedWood = new BasicLogBlock(() -> wood);
 		Block planks = new Block(settings);
 
 		// Registering of all wood related things - pain.
@@ -398,12 +396,18 @@ public class Baking implements ModInitializer {
 	// Trees - Here's to v0.4!
 	public static final Block CHERRY_SAPLING = new BasicSaplingBlock(new CherrySaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
 	public static final Block POTTED_CHERRY_SAPLING = new FlowerPotBlock(CHERRY_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
-	public static final Block CHERRY_LOG = new BasicLogBlock();
+	public static final Block STRIPPED_CHERRY_LOG = new BasicLogBlock();
+	public static final Block CHERRY_LOG = new BasicLogBlock(() -> STRIPPED_CHERRY_LOG);
+	public static final Block STRIPPED_CHERRY_WOOD = new BasicLogBlock();
+	public static final Block CHERRY_WOOD = new BasicLogBlock(() -> STRIPPED_CHERRY_WOOD);
 	public static final Item CHERRIES = basicFood(2, 1.8f);
 	public static final Block CHERRY_LEAVES = new BasicLeavesBlock(CHERRIES);
 	public static final Block LEMON_SAPLING = new BasicSaplingBlock(new LemonSaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
 	public static final Block POTTED_LEMON_SAPLING = new FlowerPotBlock(LEMON_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
-	public static final Block LEMON_LOG = new BasicLogBlock();
+	public static final Block STRIPPED_LEMON_LOG = new BasicLogBlock();
+	public static final Block LEMON_LOG = new BasicLogBlock(() -> STRIPPED_LEMON_LOG);
+	public static final Block STRIPPED_LEMON_WOOD = new BasicLogBlock();
+	public static final Block LEMON_WOOD = new BasicLogBlock(() -> STRIPPED_LEMON_WOOD);
 	public static final Item LEMON = basicFood(1, 0.8f);
 	public static final Block LEMON_LEAVES = new BasicLeavesBlock(LEMON);
 	public static final Block GRAPE_STEM = new GrapeStemBlock(FabricBlockSettings.copy(Blocks.VINE));
@@ -627,12 +631,12 @@ public class Baking implements ModInitializer {
 		// Trees
 		registerBlock("cherry_sapling", CHERRY_SAPLING, ItemGroup.DECORATIONS);
 		registerBlock("potted_cherry_sapling", POTTED_CHERRY_SAPLING);
-		registerWoodType("cherry", CHERRY_LOG);
+		registerWoodType("cherry", CHERRY_LOG, STRIPPED_CHERRY_LOG, CHERRY_WOOD, STRIPPED_CHERRY_WOOD);
 		registerBlock("cherry_leaves", CHERRY_LEAVES, ItemGroup.DECORATIONS);
 		registerItem("cherries", CHERRIES);
 		registerBlock("lemon_sapling", LEMON_SAPLING, ItemGroup.DECORATIONS);
 		registerBlock("potted_lemon_sapling", POTTED_LEMON_SAPLING);
-		registerWoodType("lemon", LEMON_LOG);
+		registerWoodType("lemon", LEMON_LOG, STRIPPED_LEMON_LOG, LEMON_WOOD, STRIPPED_LEMON_WOOD);
 		registerBlock("lemon_leaves", LEMON_LEAVES, ItemGroup.DECORATIONS);
 		registerItem("lemon", LEMON);
 		registerBlock("grape_stem", GRAPE_STEM, ItemGroup.DECORATIONS);
