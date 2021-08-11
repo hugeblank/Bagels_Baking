@@ -36,7 +36,7 @@ public class GrapeVineBlock extends BasicVineComponentBlock {
 
     public GrapeVineBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.getDefaultState().with(PERSISTENT, false).with(DISTANCE, 4));
+        this.setDefaultState(this.stateManager.getDefaultState().with(PERSISTENT, false).with(DISTANCE, 4));
     }
 
     @Override
@@ -90,6 +90,7 @@ public class GrapeVineBlock extends BasicVineComponentBlock {
 
     private void doPropagation(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         ArrayList<Direction> facings = getDirectionsFromState(state);
+        if (facings.size() == 0) return;
         if (state.get(DISTANCE) < MAX_DISTANCE-1){
             Direction[] directions = Direction.values();
             if ((MAX_DISTANCE-state.get(DISTANCE))/world.random.nextFloat() > 1.2f) {

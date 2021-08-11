@@ -18,22 +18,19 @@ public class GrapeStemBlock extends BasicVineComponentBlock {
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        if (neighborPos.equals(pos.down())) {
-            return canPlaceAt(state, world, pos) ? state : Blocks.AIR.getDefaultState();
-        } else {
-            return state;
-        }
+        return canPlaceAt(state, world, pos) ? state : Blocks.AIR.getDefaultState();
     }
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         Block below = world.getBlockState(pos.down()).getBlock();
-        return super.canPlaceAt(state, world, pos) && (below instanceof GrassBlock || below instanceof FarmlandBlock || below instanceof GrapeStemBlock);
+        return below instanceof GrassBlock || below instanceof FarmlandBlock || below instanceof GrapeStemBlock;
     }
 
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         BlockState above = world.getBlockState(pos.up());
         ArrayList<Direction> directions = getDirectionsFromState(state);
+        if (directions.size() == 0) return;
         Direction direction = directions.get(random.nextInt(directions.size()));
         if (shouldConnectTo(world, pos.offset(direction).up(), direction) && above.getBlock() instanceof AirBlock && random.nextFloat() < 0.5f) {
                 world.setBlockState(pos.up(), Baking.GRAPE_VINE.getDefaultState().with(FACING_PROPERTIES.get(direction), true).with(GrapeVineBlock.DISTANCE, 1));
