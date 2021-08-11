@@ -1,6 +1,5 @@
 package dev.elexi.hugeblank.bagels_baking;
 
-import com.sun.jna.platform.unix.solaris.LibKstat;
 import dev.elexi.hugeblank.bagels_baking.block.*;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.BakingCauldronBehavior;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.LiquidCheeseCauldronBlock;
@@ -148,6 +147,8 @@ public class Baking implements ModInitializer {
 		registerBlock(name + "_sign", sign);
 		registerBlock(name + "_wall_sign", wall_sign);
 		registerItem(name + "_sign", new SignItem(new FabricItemSettings().group(ItemGroup.DECORATIONS).maxCount(16), sign, wall_sign));
+
+		registerBlock(name + "_trellis", new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE)), ItemGroup.DECORATIONS);
 	}
 
 	private static void registerCakeType(String name, BasicCakeBlock cake) {
@@ -285,7 +286,7 @@ public class Baking implements ModInitializer {
 
 	// Mill
 	public static final Identifier MILL_ID = new Identifier(ID, "mill");
-	public static final Block MILL = new Mill(FabricBlockSettings.copy(Blocks.STONECUTTER));
+	public static final Block MILL = new MillBlock(FabricBlockSettings.copy(Blocks.STONECUTTER));
 	public static final BlockItem MILL_ITEM = new BlockItem(MILL, new Item.Settings().group(ItemGroup.DECORATIONS));
 	private static final String mill_stat = "interact_with_mill";
 	public static final Identifier INTERACT_WITH_MILL = new Identifier(ID, mill_stat);
@@ -413,6 +414,14 @@ public class Baking implements ModInitializer {
 	public static final Block GRAPE_STEM = new GrapeStemBlock(FabricBlockSettings.copy(Blocks.VINE));
 	public static final Block GRAPE_VINE = new GrapeVineBlock(FabricBlockSettings.copy(Blocks.VINE));
 	public static final Item GRAPES = basicFood(2, 1.5f);
+	public static final Block OAK_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
+	public static final Block SPRUCE_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
+	public static final Block BIRCH_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
+	public static final Block JUNGLE_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
+	public static final Block ACACIA_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
+	public static final Block DARK_OAK_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
+	public static final Block CRIMSON_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
+	public static final Block WARPED_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
 
 	// Cheese
 	public static final Block CHEESE_BLOCK = new Block(FabricBlockSettings.copy(Blocks.HONEY_BLOCK).sounds(BlockSoundGroup.CANDLE)); // TODO: play with sounds!
@@ -642,6 +651,16 @@ public class Baking implements ModInitializer {
 		registerBlock("grape_stem", GRAPE_STEM, ItemGroup.DECORATIONS);
 		registerBlock("grape_vine", GRAPE_VINE, ItemGroup.DECORATIONS);
 		registerItem("grapes", GRAPES);
+
+		// Vanilla Trellises
+		registerBlock("oak_trellis", OAK_TRELLIS, ItemGroup.DECORATIONS);
+		registerBlock("spruce_trellis", SPRUCE_TRELLIS, ItemGroup.DECORATIONS);
+		registerBlock("birch_trellis", BIRCH_TRELLIS, ItemGroup.DECORATIONS);
+		registerBlock("jungle_trellis", JUNGLE_TRELLIS, ItemGroup.DECORATIONS);
+		registerBlock("acacia_trellis", ACACIA_TRELLIS, ItemGroup.DECORATIONS);
+		registerBlock("dark_oak_trellis", DARK_OAK_TRELLIS, ItemGroup.DECORATIONS);
+		registerBlock("crimson_trellis", CRIMSON_TRELLIS, ItemGroup.DECORATIONS);
+		registerBlock("warped_trellis", WARPED_TRELLIS, ItemGroup.DECORATIONS);
 
 		// Cheese
 		registerBlock("cheese_slice", CHEESE_LAYER, (BlockItem) CHEESE_SLICE);

@@ -20,7 +20,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class Mill extends StonecutterBlock {
+public class MillBlock extends StonecutterBlock {
     private static final Text TITLE = new TranslatableText("container.mill");
     private static final VoxelShape TOP_SHAPE;
     private static final VoxelShape MIDDLE_SHAPE;
@@ -39,27 +39,17 @@ public class Mill extends StonecutterBlock {
     public static final VoxelShape EAST_SHAPE;
     public static final VoxelShape WEST_SHAPE;
 
-    public Mill(Settings settings) {
+    public MillBlock(Settings settings) {
         super(settings);
-
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        switch(state.get(FACING)) {
-            case SOUTH:
-                return SOUTH_SHAPE;
-            case WEST:
-                return WEST_SHAPE;
-            case EAST:
-                return EAST_SHAPE;
-            default:
-                return NORTH_SHAPE;
-        }
-    }
-
-    @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
+        return switch (state.get(FACING)) {
+            case SOUTH -> SOUTH_SHAPE;
+            case WEST -> WEST_SHAPE;
+            case EAST -> EAST_SHAPE;
+            default -> NORTH_SHAPE;
+        };
     }
 
     @Override

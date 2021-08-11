@@ -219,5 +219,16 @@
   "item.bagels_baking.grilled_cheese_sandwich": "Grilled Cheese Sandwich",
   "block.bagels_baking.grape_stem": "Grape Vine Cutting",
   "block.bagels_baking.grape_vine": "Grape Vine",
-  "item.bagels_baking.grapes": "Grapes"
+  "item.bagels_baking.grapes": "Grapes",
+  "block.bagels_baking.acacia_trellis": "Acacia Trellis",
+  "block.bagels_baking.birch_trellis": "Birch Trellis",
+  "block.bagels_baking.cherry_trellis": "Cherry Trellis",
+  "block.bagels_baking.crimson_trellis": "Crimson Trellis",
+  "block.bagels_baking.dark_oak_trellis": "Dark Oak Trellis",
+  "block.bagels_baking.jungle_trellis": "Jungle Trellis",
+  "block.bagels_baking.lemon_trellis": "Lemon Trellis",
+  "block.bagels_baking.oak_trellis": "Oak Trellis",
+  "block.bagels_baking.spruce_trellis": "Spruce Trellis",
+  "block.bagels_baking.warped_trellis": "Warped Trellis"
+
 }

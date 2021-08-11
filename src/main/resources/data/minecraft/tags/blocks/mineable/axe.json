@@ -2,6 +2,7 @@
     "replace": false,
     "values": [
       "bagels_baking:grape_stem",
-      "bagels_baking:grape_vine"
+      "bagels_baking:grape_vine",
+      "#bagels_baking:trellises"
     ]
   }
