@@ -43,7 +43,7 @@ public class BasicLeavesBlock extends LeavesBlock {
 
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         int age = state.get(AGE);
-        if (world.random.nextInt(10) == 0 && age < 2) {
+        if (world.random.nextFloat() < 0.02f && age < 2) {
             world.setBlockState(pos, state.with(AGE, age+1));
         }
         super.randomTick(state, world, pos, random);
