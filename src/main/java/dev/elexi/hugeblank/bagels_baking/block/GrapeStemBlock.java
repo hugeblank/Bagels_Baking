@@ -1,9 +1,9 @@
 package dev.elexi.hugeblank.bagels_baking.block;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
+import dev.elexi.hugeblank.bagels_baking.state.AdjacentPosition;
 import net.minecraft.block.*;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.WorldAccess;
@@ -18,7 +18,7 @@ public class GrapeStemBlock extends BasicVineComponentBlock {
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        return canPlaceAt(state, world, pos) ? state : Blocks.AIR.getDefaultState();
+        return canPlaceAt(state, world, pos) ? super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos) : Blocks.AIR.getDefaultState();
     }
 
     @Override
@@ -35,28 +35,16 @@ public class GrapeStemBlock extends BasicVineComponentBlock {
         if (shouldConnectTo(world, pos.offset(direction).up(), direction) && above.getBlock() instanceof AirBlock && random.nextFloat() < 0.5f) {
                 world.setBlockState(pos.up(), Baking.GRAPE_VINE.getDefaultState().with(FACING_PROPERTIES.get(direction), true).with(GrapeVineBlock.DISTANCE, 1));
         } else if (above.getBlock() instanceof GrapeVineBlock && random.nextFloat() < 0.5f) { // Become stem if viable (conversion)
-            BlockState stem = getDefaultState();
-            pos = pos.up(); // Shift focus to vine block above
-            ArrayList<Direction> facings = getDirectionsFromState(world.getBlockState(pos));
-            int adjacentVines = 0;
-            for (Direction facing : facings) {
-                BooleanProperty facingProperty = FACING_PROPERTIES.get(facing);
-                stem = stem.with(facingProperty, true);
-                BlockState left = world.getBlockState(pos.offset(facing.rotateClockwise(Direction.Axis.Y)));
-                BlockState right = world.getBlockState(pos.offset(facing.rotateCounterclockwise(Direction.Axis.Y)));
-                // Make sure either the left or right block matches, isn't persistent, and is on the same wall that we are
-                if (left.getBlock() instanceof GrapeVineBlock && !left.get(GrapeVineBlock.PERSISTENT) && left.get(facingProperty)) {
-                    adjacentVines++;
-                }
-                if (right.getBlock() instanceof GrapeVineBlock && !right.get(GrapeVineBlock.PERSISTENT) && right.get(facingProperty)) {
-                    adjacentVines++;
-                }
-            }
-            if (adjacentVines > 1) {
+            BlockState stem = this.getDefaultState();
+            if (above.get(ADJACENT) == AdjacentPosition.BOTH) {
                 if (above.get(GrapeVineBlock.AGE) == 2) {
-                    GrapeVineBlock.dropItems(world, pos);
+                    GrapeVineBlock.dropItems(world, pos.up());
                 }
-                world.setBlockState(pos, stem);
+                ArrayList<Direction> aboveDirs = getDirectionsFromState(above);
+                for (Direction facing : aboveDirs) {
+                    stem = stem.with(FACING_PROPERTIES.get(facing), true);
+                }
+                world.setBlockState(pos.up(), stem.with(ADJACENT, above.get(ADJACENT)));
             }
         }
     }

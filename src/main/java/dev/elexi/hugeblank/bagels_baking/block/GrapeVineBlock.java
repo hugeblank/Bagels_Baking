@@ -36,7 +36,7 @@ public class GrapeVineBlock extends BasicVineComponentBlock {
 
     public GrapeVineBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(PERSISTENT, false).with(DISTANCE, 4));
+        this.setDefaultState(this.getDefaultState().with(PERSISTENT, false).with(DISTANCE, 5));
     }
 
     @Override
@@ -57,14 +57,14 @@ public class GrapeVineBlock extends BasicVineComponentBlock {
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
-        int i = getDistanceFromStem(neighborState) + 1;
-        if (i != 1 || state.get(DISTANCE) != i) {
-            world.getBlockTickScheduler().schedule(pos, this, 1);
+        if (!state.get(PERSISTENT)) {
+            int i = getDistanceFromStem(neighborState) + 1;
+            if (i != 1 || state.get(DISTANCE) != i) {
+                world.getBlockTickScheduler().schedule(pos, this, 1);
+            }
         }
 
-        BlockState blockState = this.getPlacementShape(state, world, pos);
-        return !this.hasAdjacentBlocks(blockState) ? Blocks.AIR.getDefaultState() : blockState;
+        return !this.hasAdjacentBlocks(state) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {

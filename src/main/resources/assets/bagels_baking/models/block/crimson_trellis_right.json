@@ -1,5 +1,5 @@
 {
-    "parent": "bagels_baking:block/trellis_upper_template",
+    "parent": "bagels_baking:block/trellis_right_template",
     "textures": {
         "wood": "minecraft:block/crimson_stem",
         "particle": "minecraft:block/crimson_stem"

@@ -1,5 +1,7 @@
 package dev.elexi.hugeblank.bagels_baking.block;
 
+import dev.elexi.hugeblank.bagels_baking.state.AdjacentPosition;
+import dev.elexi.hugeblank.bagels_baking.state.BakingProperties;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.fluid.FluidState;
@@ -27,16 +29,17 @@ public class TrellisBlock extends Block implements Waterloggable {
     public static final DirectionProperty FACING;
     public static final EnumProperty<DoubleBlockHalf> HALF;
     public static final IntProperty DISTANCE;
+    public static final EnumProperty<AdjacentPosition> ADJACENT;
     public static final int MAX_DISTANCE = 6;
 
     public TrellisBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(
-                this.stateManager.getDefaultState()
+        this.setDefaultState(this.stateManager.getDefaultState()
                 .with(FACING, Direction.NORTH)
                 .with(DISTANCE, 0)
                 .with(HALF, DoubleBlockHalf.LOWER)
                 .with(WATERLOGGED, false)
+                .with(ADJACENT, AdjacentPosition.NONE)
         );
     }
 
@@ -63,43 +66,56 @@ public class TrellisBlock extends Block implements Waterloggable {
                 trellisState = trellisState.with(FACING, hitState.get(FACING));
             }
 
-            int i = calculateDistance(world, pos, trellisState);
-            if (i < MAX_DISTANCE) {
-                trellisState = trellisState.with(DISTANCE, i);
-            } else {
-                return null;
-            }
+            trellisState = calculateDistance(world, pos, trellisState);
+
+            if (trellisState.get(DISTANCE) == MAX_DISTANCE) return null;
         }
         return trellisState;
     }
 
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        int i = calculateDistance(world, pos, state);
-        if (i == MAX_DISTANCE) {
+        state = calculateDistance(world, pos, state);
+        if (state.get(DISTANCE) == MAX_DISTANCE) {
             world.breakBlock(pos, true);
-        } else if (state.get(DISTANCE) != i) {
-            world.setBlockState(pos, state.with(DISTANCE, i), 3);
+        } else {
+            world.setBlockState(pos, state, 3);
         }
     }
 
-    public int calculateDistance(BlockView world, BlockPos pos, BlockState state) {
-        BlockPos below = pos.down();
-        if ((state.getBlock() instanceof TrellisBlock && state.get(HALF) == DoubleBlockHalf.LOWER) || world.getBlockState(below).getBlock() instanceof TrellisBlock && world.getBlockState(below).get(HALF) == DoubleBlockHalf.LOWER) {
-            // If the block we're calculating the distance for is the lower trellis, or a lower trellis is below us
-            return 0;
-        }
-
+    public BlockState calculateDistance(BlockView world, BlockPos pos, BlockState state) {
         Direction facing = state.get(FACING);
+        BlockState below = world.getBlockState(pos.down());
         BlockState left = world.getBlockState(pos.offset(facing.rotateClockwise(Direction.Axis.Y)));
         BlockState right = world.getBlockState(pos.offset(facing.rotateCounterclockwise(Direction.Axis.Y)));
+        // Tests for necessary adjacent blocks
+        boolean isBelow = below.getBlock() instanceof TrellisBlock && below.get(HALF) == DoubleBlockHalf.LOWER && below.get(FACING) == facing;
+        boolean isLeft = left.getBlock() instanceof TrellisBlock && left.get(FACING) == facing;
+        boolean isRight = right.getBlock() instanceof TrellisBlock && right.get(FACING) == facing;
+
+        if ((state.getBlock() instanceof TrellisBlock && state.get(HALF) == DoubleBlockHalf.LOWER) || isBelow) {
+            // If the block we're calculating the distance for is the lower trellis, or a lower trellis is below us
+
+            // Handle adjacent trellis state for model
+            if (isLeft) {
+                if (isRight) {
+                    state = state.with(ADJACENT, AdjacentPosition.BOTH);
+                } else {
+                    state = state.with(ADJACENT, AdjacentPosition.LEFT);
+                }
+            } else if (isRight) {
+                state = state.with(ADJACENT, AdjacentPosition.RIGHT);
+            }
+
+            return state.with(DISTANCE, 0);
+        }
         int i = MAX_DISTANCE;
-        if (left.getBlock() instanceof TrellisBlock && left.get(FACING) == facing) {
+        if (isLeft) {
             i = Math.min(i, left.get(DISTANCE)+1);
         }
-        if (right.getBlock() instanceof TrellisBlock && right.get(FACING) == facing) {
+        if (isRight) {
             i = Math.min(i, right.get(DISTANCE)+1);
         }
-        return i;
+        return state.with(DISTANCE, i);
     }
 
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
@@ -130,7 +146,7 @@ public class TrellisBlock extends Block implements Waterloggable {
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(FACING, HALF, DISTANCE, WATERLOGGED);
+        builder.add(FACING, HALF, DISTANCE, ADJACENT, WATERLOGGED);
     }
 
     static {
@@ -138,9 +154,11 @@ public class TrellisBlock extends Block implements Waterloggable {
         WEST_SHAPE = Block.createCuboidShape(14.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
         SOUTH_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 2.0D);
         NORTH_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 14.0D, 16.0D, 16.0D, 16.0D);
+
         HALF = Properties.DOUBLE_BLOCK_HALF;
         DISTANCE = IntProperty.of("distance", 0, 6);
         FACING = Properties.HORIZONTAL_FACING;
         WATERLOGGED = Properties.WATERLOGGED;
+        ADJACENT = BakingProperties.ADJACENT;
     }
 }

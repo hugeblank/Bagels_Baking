@@ -1,5 +1,5 @@
 {
-    "parent": "bagels_baking:block/trellis_lower_template",
+    "parent": "bagels_baking:block/trellis_both_template",
     "textures": {
         "wood": "minecraft:block/birch_log",
         "particle": "minecraft:block/birch_log"
