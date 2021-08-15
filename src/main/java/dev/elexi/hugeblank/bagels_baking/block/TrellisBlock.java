@@ -156,9 +156,9 @@ public class TrellisBlock extends Block implements Waterloggable {
         NORTH_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 14.0D, 16.0D, 16.0D, 16.0D);
 
         HALF = Properties.DOUBLE_BLOCK_HALF;
-        DISTANCE = IntProperty.of("distance", 0, 6);
         FACING = Properties.HORIZONTAL_FACING;
         WATERLOGGED = Properties.WATERLOGGED;
+        DISTANCE = BakingProperties.DISTANCE_0_6;
         ADJACENT = BakingProperties.ADJACENT;
     }
 }

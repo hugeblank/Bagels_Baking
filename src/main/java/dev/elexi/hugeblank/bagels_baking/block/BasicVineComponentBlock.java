@@ -99,7 +99,7 @@ public class BasicVineComponentBlock extends Block {
         }
 
         if (state.get(NORTH) && state.get(WEST)) {
-            voxelShape = VoxelShapes.union(voxelShape, SOUTH_RIGHT_SHAPE, EAST_LEFT_SHAPE);
+            voxelShape = VoxelShapes.union(voxelShape, SOUTH_LEFT_SHAPE, EAST_RIGHT_SHAPE);
             switch (state.get(ADJACENT)) {
                 case BOTH -> voxelShape = VoxelShapes.union(voxelShape, SOUTH_LEFT_SHAPE, EAST_RIGHT_SHAPE);
                 case LEFT -> voxelShape = VoxelShapes.union(voxelShape, SOUTH_LEFT_SHAPE);
@@ -167,7 +167,7 @@ public class BasicVineComponentBlock extends Block {
         }
     }
 
-    public BlockState getAdjacencyState(WorldAccess world, BlockPos pos, BlockState state) {
+    public BlockState getAdjacencyState(BlockView world, BlockPos pos, BlockState state) {
         BlockState left = world.getBlockState(pos.offset(getLeftmostFromState(state)));
         BlockState right = world.getBlockState(pos.offset(getRightmostFromState(state)));
 
@@ -221,12 +221,11 @@ public class BasicVineComponentBlock extends Block {
         return i;
     }
 
-    private boolean shouldHaveSide(BlockView world, BlockPos pos, Direction side) {
+    private boolean shouldHaveSide(BlockView world, BlockPos pos, BlockState state, Direction side) {
         if (side == Direction.DOWN || side == Direction.UP) {
             return false;
         } else {
-            BlockPos blockPos = pos.offset(side);
-            if (shouldConnectTo(world, blockPos, side)) {
+            if (shouldConnectTo(world, pos, state, side)) {
                 return true;
             } else if (side.getAxis() == Direction.Axis.Y) {
                 return false;
@@ -238,10 +237,16 @@ public class BasicVineComponentBlock extends Block {
         }
     }
 
-    public static boolean shouldConnectTo(BlockView world, BlockPos pos, Direction direction) {
-        // TODO rewrite THIS
-        BlockState blockState = world.getBlockState(pos);
-        return Block.isFaceFullSquare(blockState.getCollisionShape(world, pos), direction.getOpposite());
+    public static boolean shouldConnectTo(BlockView world, BlockPos vinePos, BlockState vineState, Direction direction) {
+        if (!(vineState.getBlock() instanceof BasicVineComponentBlock)) {return false;}
+        // Convert vine state to hypothetical
+        vineState = ((BasicVineComponentBlock) vineState.getBlock()).getAdjacencyState(world, vinePos, vineState).with(FACING_PROPERTIES.get(direction), true);
+        BlockPos neighborPos = vinePos.offset(direction);
+        BlockState neighborState = world.getBlockState(neighborPos);
+        VoxelShape shape = getShapeForState(vineState).getFace(direction);
+        VoxelShape neighbor = neighborState.getCollisionShape(world, neighborPos).getFace(direction.getOpposite());
+
+        return VoxelShapes.union(shape, neighbor).equals(neighbor);
     }
 
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
@@ -268,7 +273,7 @@ public class BasicVineComponentBlock extends Block {
             if (direction != Direction.DOWN && direction != Direction.UP) {
                 BooleanProperty booleanProperty = getFacingProperty(direction);
                 boolean sameFacing = isVine && blockState.get(booleanProperty);
-                if (!sameFacing && this.shouldHaveSide(ctx.getWorld(), ctx.getBlockPos(), direction)) {
+                if (!sameFacing && this.shouldHaveSide(ctx.getWorld(), ctx.getBlockPos(), blockState2, direction)) {
                     return blockState2.with(booleanProperty, true);
                 }
             }

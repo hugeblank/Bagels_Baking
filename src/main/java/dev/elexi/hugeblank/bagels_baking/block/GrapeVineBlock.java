@@ -1,6 +1,7 @@
 package dev.elexi.hugeblank.bagels_baking.block;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
+import dev.elexi.hugeblank.bagels_baking.state.BakingProperties;
 import net.minecraft.block.AirBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -28,9 +29,10 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.Random;
 
+// Literally the most complicated block I've ever made.
 public class GrapeVineBlock extends BasicVineComponentBlock {
     public static final int MAX_DISTANCE = 5;
-    public static final IntProperty DISTANCE = IntProperty.of("distance", 0, MAX_DISTANCE);
+    public static final IntProperty DISTANCE = BakingProperties.DISTANCE_0_5;
     public static final BooleanProperty PERSISTENT = Properties.PERSISTENT;
     public static final IntProperty AGE = Properties.AGE_2;
 
@@ -99,7 +101,7 @@ public class GrapeVineBlock extends BasicVineComponentBlock {
                         BlockPos growPos = pos.offset(direction);
                         BlockState growState = world.getBlockState(growPos);
                         for (Direction facing : facings) {
-                            if (direction.getAxis().isHorizontal() && shouldConnectTo(world, growPos.offset(facing), facing) && random.nextFloat() < 0.5f) {
+                            if (direction.getAxis().isHorizontal() && shouldConnectTo(world, pos, this.getDefaultState(), facing) && random.nextFloat() < 0.5f) {
                                 BooleanProperty facingProperty = FACING_PROPERTIES.get(facing);
                                 if (growState.getBlock() instanceof AirBlock) {
                                     world.setBlockState(growPos, updateDistanceFromStem(
@@ -129,7 +131,7 @@ public class GrapeVineBlock extends BasicVineComponentBlock {
                         pos = pos.up();
                         int doPlacement = facings.size();
                         for (Direction facing : facings) {
-                            if (!shouldConnectTo(world, pos.offset(facing), facing)) {
+                            if (!shouldConnectTo(world, pos, growState, facing)) {
                                 growState.with(FACING_PROPERTIES.get(facing), false);
                                 doPlacement--;
                             }
@@ -151,7 +153,7 @@ public class GrapeVineBlock extends BasicVineComponentBlock {
             for (Direction facing : facings) { // Attach onto new face (rotation)
                 Direction newFacing = world.random.nextBoolean() ? facing.rotateCounterclockwise(Direction.Axis.Y) : facing.rotateClockwise(Direction.Axis.Y);
                 BooleanProperty newFacingProperty = FACING_PROPERTIES.get(newFacing);
-                if (!state.get(newFacingProperty) && shouldConnectTo(world, pos.offset(newFacing), newFacing)) {
+                if (!state.get(newFacingProperty) && shouldConnectTo(world, pos, state, newFacing)) {
                     world.setBlockState(pos, state.with(newFacingProperty, true));
                     return;
                 }
