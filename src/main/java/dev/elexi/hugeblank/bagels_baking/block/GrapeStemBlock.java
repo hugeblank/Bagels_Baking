@@ -1,7 +1,7 @@
 package dev.elexi.hugeblank.bagels_baking.block;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
-import dev.elexi.hugeblank.bagels_baking.state.AdjacentPosition;
+import dev.elexi.hugeblank.bagels_baking.util.AdjacentPosition;
 import net.minecraft.block.*;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;

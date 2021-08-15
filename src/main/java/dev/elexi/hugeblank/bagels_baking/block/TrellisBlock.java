@@ -1,7 +1,7 @@
 package dev.elexi.hugeblank.bagels_baking.block;
 
-import dev.elexi.hugeblank.bagels_baking.state.AdjacentPosition;
-import dev.elexi.hugeblank.bagels_baking.state.BakingProperties;
+import dev.elexi.hugeblank.bagels_baking.util.AdjacentPosition;
+import dev.elexi.hugeblank.bagels_baking.util.BakingProperties;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.fluid.FluidState;
@@ -13,6 +13,7 @@ import net.minecraft.state.property.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
@@ -25,6 +26,14 @@ public class TrellisBlock extends Block implements Waterloggable {
     private static final VoxelShape WEST_SHAPE;
     private static final VoxelShape SOUTH_SHAPE;
     private static final VoxelShape NORTH_SHAPE;
+    private static final VoxelShape EAST_RIGHT_SHAPE;
+    private static final VoxelShape EAST_LEFT_SHAPE;
+    private static final VoxelShape WEST_RIGHT_SHAPE;
+    private static final VoxelShape WEST_LEFT_SHAPE;
+    private static final VoxelShape SOUTH_LEFT_SHAPE;
+    private static final VoxelShape SOUTH_RIGHT_SHAPE;
+    private static final VoxelShape NORTH_LEFT_SHAPE;
+    private static final VoxelShape NORTH_RIGHT_SHAPE;
     public static final BooleanProperty WATERLOGGED;
     public static final DirectionProperty FACING;
     public static final EnumProperty<DoubleBlockHalf> HALF;
@@ -44,11 +53,33 @@ public class TrellisBlock extends Block implements Waterloggable {
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return switch (state.get(FACING)) {
-            case SOUTH -> SOUTH_SHAPE;
-            case WEST -> WEST_SHAPE;
-            case EAST -> EAST_SHAPE;
-            default -> NORTH_SHAPE;
+        Direction facing = state.get(FACING);
+        AdjacentPosition adjacency = state.get(ADJACENT);
+        if (state.get(HALF) == DoubleBlockHalf.LOWER || adjacency == AdjacentPosition.NONE) {
+            return switch (facing) {
+                case SOUTH -> SOUTH_SHAPE;
+                case WEST -> WEST_SHAPE;
+                case EAST -> EAST_SHAPE;
+                default -> NORTH_SHAPE;
+            };
+        } else {
+            VoxelShape shape = VoxelShapes.empty();
+            if (adjacency == AdjacentPosition.LEFT || adjacency == AdjacentPosition.BOTH) {
+                shape = getVoxelShape(facing, SOUTH_LEFT_SHAPE, WEST_LEFT_SHAPE, EAST_LEFT_SHAPE, NORTH_LEFT_SHAPE);
+            }
+            if (adjacency == AdjacentPosition.RIGHT || adjacency == AdjacentPosition.BOTH) {
+                shape = VoxelShapes.union(shape, getVoxelShape(facing, SOUTH_RIGHT_SHAPE, WEST_RIGHT_SHAPE, EAST_RIGHT_SHAPE, NORTH_RIGHT_SHAPE));
+            }
+            return shape;
+        }
+    }
+
+    private VoxelShape getVoxelShape(Direction facing, VoxelShape southShape, VoxelShape westShape, VoxelShape eastShape, VoxelShape northShape) {
+        return switch (facing) {
+            case SOUTH -> VoxelShapes.union(SOUTH_SHAPE, southShape);
+            case WEST -> VoxelShapes.union(WEST_SHAPE, westShape);
+            case EAST -> VoxelShapes.union(EAST_SHAPE, eastShape);
+            default -> VoxelShapes.union(NORTH_SHAPE, northShape);
         };
     }
 
@@ -82,6 +113,27 @@ public class TrellisBlock extends Block implements Waterloggable {
         }
     }
 
+    public BlockState getAdjacency(BlockView world, BlockPos pos, BlockState state) {
+        Direction facing = state.get(FACING);
+        BlockState left = world.getBlockState(pos.offset(facing.rotateClockwise(Direction.Axis.Y)));
+        BlockState right = world.getBlockState(pos.offset(facing.rotateCounterclockwise(Direction.Axis.Y)));
+        boolean isLeft = left.getBlock() instanceof TrellisBlock && left.get(FACING) == facing;
+        boolean isRight = right.getBlock() instanceof TrellisBlock && right.get(FACING) == facing;
+
+        // Handle adjacent trellis state for model
+        if (isLeft) {
+            if (isRight) {
+                state = state.with(ADJACENT, AdjacentPosition.BOTH);
+            } else {
+                state = state.with(ADJACENT, AdjacentPosition.LEFT);
+            }
+        } else if (isRight) {
+            state = state.with(ADJACENT, AdjacentPosition.RIGHT);
+        }
+
+        return state;
+    }
+
     public BlockState calculateDistance(BlockView world, BlockPos pos, BlockState state) {
         Direction facing = state.get(FACING);
         BlockState below = world.getBlockState(pos.down());
@@ -92,19 +144,10 @@ public class TrellisBlock extends Block implements Waterloggable {
         boolean isLeft = left.getBlock() instanceof TrellisBlock && left.get(FACING) == facing;
         boolean isRight = right.getBlock() instanceof TrellisBlock && right.get(FACING) == facing;
 
+        state = getAdjacency(world, pos, state);
+
         if ((state.getBlock() instanceof TrellisBlock && state.get(HALF) == DoubleBlockHalf.LOWER) || isBelow) {
             // If the block we're calculating the distance for is the lower trellis, or a lower trellis is below us
-
-            // Handle adjacent trellis state for model
-            if (isLeft) {
-                if (isRight) {
-                    state = state.with(ADJACENT, AdjacentPosition.BOTH);
-                } else {
-                    state = state.with(ADJACENT, AdjacentPosition.LEFT);
-                }
-            } else if (isRight) {
-                state = state.with(ADJACENT, AdjacentPosition.RIGHT);
-            }
 
             return state.with(DISTANCE, 0);
         }
@@ -137,7 +180,7 @@ public class TrellisBlock extends Block implements Waterloggable {
             return Blocks.AIR.getDefaultState();
         }
 
-        return state;
+        return getAdjacency(world, pos, state);
     }
 
     public FluidState getFluidState(BlockState state) {
@@ -150,10 +193,18 @@ public class TrellisBlock extends Block implements Waterloggable {
     }
 
     static {
-        EAST_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 2.0D, 16.0D, 16.0D);
-        WEST_SHAPE = Block.createCuboidShape(14.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-        SOUTH_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 2.0D);
-        NORTH_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 14.0D, 16.0D, 16.0D, 16.0D);
+        EAST_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 6.0D, 2.0D, 16.0D, 10.0D);
+        EAST_RIGHT_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 2.0D, 16.0D, 10.0D);
+        EAST_LEFT_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 6.0D, 2.0D, 16.0D, 16.0D);
+        WEST_SHAPE = Block.createCuboidShape(14.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
+        WEST_RIGHT_SHAPE = Block.createCuboidShape(14.0D, 0.0D, 6.0D, 16.0D, 16.0D, 16.0D);
+        WEST_LEFT_SHAPE = Block.createCuboidShape(14.0D, 0.0D, 0.0D, 16.0D, 16.0D, 10.0D);
+        SOUTH_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 2.0D);
+        SOUTH_LEFT_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 10.0D, 16.0D, 2.0D);
+        SOUTH_RIGHT_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 0.0D, 16.0D, 16.0D, 2.0D);
+        NORTH_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 14.0D, 10.0D, 16.0D, 16.0D);
+        NORTH_LEFT_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 14.0D, 16.0D, 16.0D, 16.0D);
+        NORTH_RIGHT_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 14.0D, 10.0D, 16.0D, 16.0D);
 
         HALF = Properties.DOUBLE_BLOCK_HALF;
         FACING = Properties.HORIZONTAL_FACING;

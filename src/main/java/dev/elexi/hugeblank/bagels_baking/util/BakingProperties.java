@@ -1,4 +1,4 @@
-package dev.elexi.hugeblank.bagels_baking.state;
+package dev.elexi.hugeblank.bagels_baking.util;
 
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.IntProperty;
