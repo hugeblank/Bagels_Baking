@@ -20,7 +20,7 @@
             "y": 270,
             "model": "bagels_baking:block/oak_trellis_left"
         },
-        "facing=east,half=upper,distance=0,adjacent=none": {
+        "facing=east,half=upper,adjacent=none": {
             "uvlock": true,
             "y": 270,
             "model": "bagels_baking:block/oak_trellis_none"
@@ -45,7 +45,7 @@
             "y": 180,
             "model": "bagels_baking:block/oak_trellis_left"
         },
-        "facing=north,half=upper,distance=0,adjacent=none": {
+        "facing=north,half=upper,adjacent=none": {
             "uvlock": true,
             "y": 180,
             "model": "bagels_baking:block/oak_trellis_none"
@@ -66,7 +66,7 @@
             "uvlock": true,
             "model": "bagels_baking:block/oak_trellis_left"
         },
-        "facing=south,half=upper,distance=0,adjacent=none": {
+        "facing=south,half=upper,adjacent=none": {
             "uvlock": true,
             "model": "bagels_baking:block/oak_trellis_none"
         },
@@ -90,7 +90,7 @@
             "y": 90,
             "model": "bagels_baking:block/oak_trellis_left"
         },
-        "facing=west,half=upper,distance=0,adjacent=none": {
+        "facing=west,half=upper,adjacent=none": {
             "uvlock": true,
             "y": 90,
             "model": "bagels_baking:block/oak_trellis_none"

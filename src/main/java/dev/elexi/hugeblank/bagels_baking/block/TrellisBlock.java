@@ -195,18 +195,18 @@ public class TrellisBlock extends Block implements Waterloggable {
     }
 
     static {
-        EAST_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 6.0D, 2.0D, 16.0D, 10.0D);
-        EAST_RIGHT_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 2.0D, 16.0D, 10.0D);
-        EAST_LEFT_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 6.0D, 2.0D, 16.0D, 16.0D);
-        WEST_SHAPE = Block.createCuboidShape(14.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
-        WEST_RIGHT_SHAPE = Block.createCuboidShape(14.0D, 0.0D, 6.0D, 16.0D, 16.0D, 16.0D);
-        WEST_LEFT_SHAPE = Block.createCuboidShape(14.0D, 0.0D, 0.0D, 16.0D, 16.0D, 10.0D);
-        SOUTH_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 2.0D);
-        SOUTH_LEFT_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 10.0D, 16.0D, 2.0D);
-        SOUTH_RIGHT_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 0.0D, 16.0D, 16.0D, 2.0D);
-        NORTH_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 14.0D, 10.0D, 16.0D, 16.0D);
-        NORTH_LEFT_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 14.0D, 16.0D, 16.0D, 16.0D);
-        NORTH_RIGHT_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 14.0D, 10.0D, 16.0D, 16.0D);
+        EAST_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 6.0D, 4.0D, 16.0D, 10.0D);
+        EAST_RIGHT_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 4.0D, 16.0D, 10.0D);
+        EAST_LEFT_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 6.0D, 4.0D, 16.0D, 16.0D);
+        WEST_SHAPE = Block.createCuboidShape(12.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
+        WEST_RIGHT_SHAPE = Block.createCuboidShape(12.0D, 0.0D, 6.0D, 16.0D, 16.0D, 16.0D);
+        WEST_LEFT_SHAPE = Block.createCuboidShape(12.0D, 0.0D, 0.0D, 16.0D, 16.0D, 10.0D);
+        SOUTH_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 4.0D);
+        SOUTH_LEFT_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 10.0D, 16.0D, 4.0D);
+        SOUTH_RIGHT_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 0.0D, 16.0D, 16.0D, 4.0D);
+        NORTH_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 12.0D, 10.0D, 16.0D, 16.0D);
+        NORTH_LEFT_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 12.0D, 16.0D, 16.0D, 16.0D);
+        NORTH_RIGHT_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 12.0D, 10.0D, 16.0D, 16.0D);
 
         HALF = Properties.DOUBLE_BLOCK_HALF;
         FACING = Properties.HORIZONTAL_FACING;
