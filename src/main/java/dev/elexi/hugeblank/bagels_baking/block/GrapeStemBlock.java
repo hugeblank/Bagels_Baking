@@ -32,7 +32,7 @@ public class GrapeStemBlock extends BasicVineComponentBlock {
         ArrayList<Direction> directions = getDirectionsFromState(state);
         if (directions.size() == 0) return;
         Direction direction = directions.get(random.nextInt(directions.size()));
-        if (shouldConnectTo(world, pos.up(), state, direction) && above.getBlock() instanceof AirBlock && random.nextFloat() < 0.5f) {
+        if (shouldHaveSide(world, pos.up(), direction) && above.getBlock() instanceof AirBlock && random.nextFloat() < 0.5f) {
                 world.setBlockState(pos.up(), Baking.GRAPE_VINE.getDefaultState().with(FACING_PROPERTIES.get(direction), true).with(GrapeVineBlock.DISTANCE, 1));
         } else if (above.getBlock() instanceof GrapeVineBlock && random.nextFloat() < 0.5f) { // Become stem if viable (conversion)
             BlockState stem = this.getDefaultState();

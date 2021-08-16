@@ -14,6 +14,15 @@ public enum AdjacentPosition implements StringIdentifiable {
         this.name = name;
     }
 
+    public AdjacentPosition flip() {
+        if (this == LEFT) {
+            return RIGHT;
+        } else if (this == RIGHT) {
+            return LEFT;
+        }
+        return this;
+    }
+
     public String toString() {
         return this.name;
     }

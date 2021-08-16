@@ -39,7 +39,7 @@ public class TrellisBlock extends Block implements Waterloggable {
     public static final EnumProperty<DoubleBlockHalf> HALF;
     public static final IntProperty DISTANCE;
     public static final EnumProperty<AdjacentPosition> ADJACENT;
-    public static final int MAX_DISTANCE = 6;
+    public static final int MAX_DISTANCE = 5;
 
     public TrellisBlock(Settings settings) {
         super(settings);
@@ -129,6 +129,8 @@ public class TrellisBlock extends Block implements Waterloggable {
             }
         } else if (isRight) {
             state = state.with(ADJACENT, AdjacentPosition.RIGHT);
+        } else {
+            state = state.with(ADJACENT, AdjacentPosition.NONE);
         }
 
         return state;
@@ -209,7 +211,7 @@ public class TrellisBlock extends Block implements Waterloggable {
         HALF = Properties.DOUBLE_BLOCK_HALF;
         FACING = Properties.HORIZONTAL_FACING;
         WATERLOGGED = Properties.WATERLOGGED;
-        DISTANCE = BakingProperties.DISTANCE_0_6;
+        DISTANCE = BakingProperties.DISTANCE_0_5;
         ADJACENT = BakingProperties.ADJACENT;
     }
 }

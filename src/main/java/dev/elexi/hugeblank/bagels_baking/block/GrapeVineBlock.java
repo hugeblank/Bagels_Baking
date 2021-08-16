@@ -1,11 +1,10 @@
 package dev.elexi.hugeblank.bagels_baking.block;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
-import dev.elexi.hugeblank.bagels_baking.state.BakingProperties;
+import dev.elexi.hugeblank.bagels_baking.util.BakingProperties;
 import net.minecraft.block.AirBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
@@ -44,7 +43,7 @@ public class GrapeVineBlock extends BasicVineComponentBlock {
     @Override
     public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockState state = super.getPlacementState(ctx);
-        return state != null ? state.with(PERSISTENT, true) : null;
+        return state != null && state.getBlock() instanceof GrapeVineBlock ? state.with(PERSISTENT, true) : null;
     }
 
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
@@ -66,7 +65,7 @@ public class GrapeVineBlock extends BasicVineComponentBlock {
             }
         }
 
-        return !this.hasAdjacentBlocks(state) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
@@ -101,7 +100,7 @@ public class GrapeVineBlock extends BasicVineComponentBlock {
                         BlockPos growPos = pos.offset(direction);
                         BlockState growState = world.getBlockState(growPos);
                         for (Direction facing : facings) {
-                            if (direction.getAxis().isHorizontal() && shouldConnectTo(world, pos, this.getDefaultState(), facing) && random.nextFloat() < 0.5f) {
+                            if (direction.getAxis().isHorizontal() && shouldHaveSide(world, growPos, facing) && random.nextFloat() < 0.5f) {
                                 BooleanProperty facingProperty = FACING_PROPERTIES.get(facing);
                                 if (growState.getBlock() instanceof AirBlock) {
                                     world.setBlockState(growPos, updateDistanceFromStem(
@@ -126,12 +125,12 @@ public class GrapeVineBlock extends BasicVineComponentBlock {
                         }
                     }
                 } else if (random.nextFloat() < 0.05f) { // Grow up/down (suckers)
-                    BlockState growState = state.with(AGE, 0).with(DISTANCE, MAX_DISTANCE);;
+                    BlockState growState = state.with(AGE, 0).with(DISTANCE, MAX_DISTANCE);
                     if(random.nextBoolean() && world.getBlockState(pos.up()).getBlock() instanceof AirBlock) {
                         pos = pos.up();
                         int doPlacement = facings.size();
                         for (Direction facing : facings) {
-                            if (!shouldConnectTo(world, pos, growState, facing)) {
+                            if (!shouldHaveSide(world, pos, facing)) {
                                 growState.with(FACING_PROPERTIES.get(facing), false);
                                 doPlacement--;
                             }
@@ -153,7 +152,7 @@ public class GrapeVineBlock extends BasicVineComponentBlock {
             for (Direction facing : facings) { // Attach onto new face (rotation)
                 Direction newFacing = world.random.nextBoolean() ? facing.rotateCounterclockwise(Direction.Axis.Y) : facing.rotateClockwise(Direction.Axis.Y);
                 BooleanProperty newFacingProperty = FACING_PROPERTIES.get(newFacing);
-                if (!state.get(newFacingProperty) && shouldConnectTo(world, pos, state, newFacing)) {
+                if (!state.get(newFacingProperty) && shouldHaveSide(world, pos, newFacing)) {
                     world.setBlockState(pos, state.with(newFacingProperty, true));
                     return;
                 }
