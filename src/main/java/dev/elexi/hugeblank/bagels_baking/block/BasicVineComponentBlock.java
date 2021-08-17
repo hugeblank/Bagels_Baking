@@ -258,7 +258,7 @@ public class BasicVineComponentBlock extends Block {
 
     public boolean canReplace(BlockState state, ItemPlacementContext context) {
         BlockState blockState = context.getWorld().getBlockState(context.getBlockPos());
-        if (blockState.getBlock() instanceof BasicVineComponentBlock) {
+        if (blockState.getBlock().equals(state.getBlock())) {
             return this.getAdjacentBlockCount(blockState, context.getWorld(), context.getBlockPos()) < FACING_PROPERTIES.size();
         } else {
             return super.canReplace(state, context);
