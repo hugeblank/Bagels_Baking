@@ -1,0 +1,29 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
+"ambientocclusion": false,
+    "textures": {
+        "vine_shoot": "bagels_baking:block/grape_stem_shoot"
+    },
+        "elements": [
+        {
+            "name": "Vine",
+            "from": [ 6, 0, 15.2 ], 
+            "to": [ 10, 16, 15.2 ], 
+            "shade": false,
+            "faces": {
+                "north": { "texture": "#vine_shoot", "uv": [ 6, 0, 10, 16 ], "tintindex": 0 },
+                "south": { "texture": "#vine_shoot", "uv": [ 6, 0, 10, 16 ], "tintindex": 0 }
+            }
+        },
+        {
+            "name": "Vine",
+            "from": [ 6, 0, 0.8 ], 
+            "to": [ 10, 16, 0.8 ], 
+            "shade": false,
+            "faces": {
+                "north": { "texture": "#vine_shoot", "uv": [ 6, 0, 10, 16 ], "tintindex": 0 },
+                "south": { "texture": "#vine_shoot", "uv": [ 6, 0, 10, 16 ], "tintindex": 0 }
+            }
+        }
+    ]
+}

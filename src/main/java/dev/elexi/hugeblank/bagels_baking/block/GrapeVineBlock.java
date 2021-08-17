@@ -110,7 +110,6 @@ public class GrapeVineBlock extends BasicVineComponentBlock {
                                             world,
                                             growPos
                                     ));
-                                    return;
                                 } else if (growState.getBlock() instanceof GrapeVineBlock && !growState.get(PERSISTENT) && !growState.get(facingProperty)) {
                                     world.setBlockState(growPos, updateDistanceFromStem(
                                             growState
@@ -119,32 +118,36 @@ public class GrapeVineBlock extends BasicVineComponentBlock {
                                             world,
                                             growPos
                                     ));
-                                    return;
                                 }
+                                world.updateNeighbors(growPos, this);
+                                return;
                             }
                         }
                     }
                 } else if (random.nextFloat() < 0.05f) { // Grow up/down (suckers)
                     BlockState growState = state.with(AGE, 0).with(DISTANCE, MAX_DISTANCE);
+                    BlockPos newPos;
                     if(random.nextBoolean() && world.getBlockState(pos.up()).getBlock() instanceof AirBlock) {
-                        pos = pos.up();
+                        newPos = pos.up();
                         int doPlacement = facings.size();
                         for (Direction facing : facings) {
-                            if (!shouldHaveSide(world, pos, facing)) {
+                            if (!shouldHaveSide(world, newPos, facing)) {
                                 growState.with(FACING_PROPERTIES.get(facing), false);
                                 doPlacement--;
                             }
                         }
 
                         if (doPlacement > 0) {
-                            world.setBlockState(pos, updateDistanceFromStem(growState, world, pos));
+                            world.setBlockState(newPos, updateDistanceFromStem(growState, world, newPos));
+                            world.updateNeighbors(newPos, this);
                             return;
                         }
                     } else if (world.getBlockState(pos.down()).getBlock() instanceof AirBlock){
-                        pos = pos.down();
-                        world.setBlockState(pos, updateDistanceFromStem(growState, world, pos));
-                        return;
+                        newPos = pos.down();
+                        world.setBlockState(newPos, updateDistanceFromStem(growState, world, newPos));
                     }
+                    world.updateNeighbors(pos, this);
+                    return;
                 }
             }
         }
@@ -154,6 +157,7 @@ public class GrapeVineBlock extends BasicVineComponentBlock {
                 BooleanProperty newFacingProperty = FACING_PROPERTIES.get(newFacing);
                 if (!state.get(newFacingProperty) && shouldHaveSide(world, pos, newFacing)) {
                     world.setBlockState(pos, state.with(newFacingProperty, true));
+                    world.updateNeighbors(pos, this);
                     return;
                 }
             }

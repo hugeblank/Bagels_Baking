@@ -1,42 +1,276 @@
 {
-    "multipart": [
-      {
-        "when": {
-          "north": "true"
-        },
-        "apply": {
-          "model": "bagels_baking:block/grape_stem"
-        }
-      },
-      {
-        "when": {
-          "west": "true"
-        },
-        "apply": {
-          "model": "bagels_baking:block/grape_stem",
-          "y": 270,
-          "uvlock": true
-        }
-      },
-      {
-        "when": {
-          "south": "true"
-        },
-        "apply": {
-          "model": "bagels_baking:block/grape_stem",
-          "y": 180,
-          "uvlock": true
-        }
-      },
-      {
-        "when": {
-          "east": "true"
-        },
-        "apply": {
-          "model": "bagels_baking:block/grape_stem",
-          "y": 90,
-          "uvlock": true
-        }
-      }
-    ]
+  "variants": {
+    "adjacent=none,north=true,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_stem_o"
+    },
+    "adjacent=none,north=true,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_stem_none_u",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=none,north=true,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_stem_none_u"
+    },
+    "adjacent=none,north=true,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_stem_none_l"
+    },
+    "adjacent=none,north=true,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_stem_none_u",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=none,north=true,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_stem_none_h"
+    },
+    "adjacent=none,north=true,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_stem_none_l",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=none,north=true,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_stem_none"
+    },
+    "adjacent=none,north=false,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_stem_none_u",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=none,north=false,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_stem_none_l",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=none,north=false,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_stem_none_h",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=none,north=false,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_stem_none",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=none,north=false,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_stem_none_l",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=none,north=false,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_stem_none",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=none,north=false,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_stem_none",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=none,north=false,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_stem_o"
+    },
+    "adjacent=left,north=true,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_stem_o"
+    },
+    "adjacent=left,north=true,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_stem_left_u",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=left,north=true,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_stem_left_u"
+    },
+    "adjacent=left,north=true,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_stem_left_l"
+    },
+    "adjacent=left,north=true,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_stem_left_u",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=left,north=true,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_stem_both_h"
+    },
+    "adjacent=left,north=true,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_stem_left_l",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=left,north=true,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_stem_left"
+    },
+    "adjacent=left,north=false,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_stem_left_u",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=left,north=false,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_stem_left_l",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=left,north=false,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_stem_both_h",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=left,north=false,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_stem_left",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=left,north=false,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_stem_left_l",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=left,north=false,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_stem_left",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=left,north=false,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_stem_left",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=left,north=false,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_stem_o"
+    },
+    "adjacent=right,north=true,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_stem_o"
+    },
+    "adjacent=right,north=true,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_stem_right_u",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=right,north=true,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_stem_right_u"
+    },
+    "adjacent=right,north=true,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_stem_right_l"
+    },
+    "adjacent=right,north=true,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_stem_right_u",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=right,north=true,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_stem_both_h"
+    },
+    "adjacent=right,north=true,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_stem_right_l",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=right,north=true,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_stem_right"
+    },
+    "adjacent=right,north=false,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_stem_right_u",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=right,north=false,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_stem_right_l",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=right,north=false,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_stem_both_h",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=right,north=false,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_stem_right",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=right,north=false,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_stem_right_l",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=right,north=false,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_stem_right",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=right,north=false,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_stem_right",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=right,north=false,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_stem_o"
+    },
+    "adjacent=both,north=true,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_stem_o"
+    },
+    "adjacent=both,north=true,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_stem_both_u",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=both,north=true,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_stem_both_u"
+    },
+    "adjacent=both,north=true,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_stem_both_l"
+    },
+    "adjacent=both,north=true,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_stem_both_u",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=both,north=true,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_stem_both_h"
+    },
+    "adjacent=both,north=true,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_stem_both_l",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=both,north=true,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_stem_both"
+    },
+    "adjacent=both,north=false,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_stem_both_u",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=both,north=false,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_stem_both_l",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=both,north=false,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_stem_both_h",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=both,north=false,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_stem_both",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=both,north=false,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_stem_both_l",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=both,north=false,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_stem_both",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=both,north=false,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_stem_both",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=both,north=false,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_stem_o"
+    }
   }
+}

@@ -1,130 +1,820 @@
 {
-    "multipart": [
-      {
-        "when": {
-          "north": "true",
-          "age": 0
-        },
-        "apply": {
-          "model": "bagels_baking:block/grape_vine_age0"
-        }
-      },
-      {
-        "when": {
-          "west": "true",
-          "age": 0
-        },
-        "apply": {
-          "model": "bagels_baking:block/grape_vine_age0",
-          "y": 270,
-          "uvlock": true
-        }
-      },
-      {
-        "when": {
-          "south": "true",
-          "age": 0
-        },
-        "apply": {
-          "model": "bagels_baking:block/grape_vine_age0",
-          "y": 180,
-          "uvlock": true
-        }
-      },
-      {
-        "when": {
-          "east": "true",
-          "age": 0
-        },
-        "apply": {
-          "model": "bagels_baking:block/grape_vine_age0",
-          "y": 90,
-          "uvlock": true
-        }
-      },
-      {
-        "when": {
-          "north": "true",
-          "age": 1
-        },
-        "apply": {
-          "model": "bagels_baking:block/grape_vine_age1"
-        }
-      },
-      {
-        "when": {
-          "west": "true",
-          "age": 1
-        },
-        "apply": {
-          "model": "bagels_baking:block/grape_vine_age1",
-          "y": 270,
-          "uvlock": true
-        }
-      },
-      {
-        "when": {
-          "south": "true",
-          "age": 1
-        },
-        "apply": {
-          "model": "bagels_baking:block/grape_vine_age1",
-          "y": 180,
-          "uvlock": true
-        }
-      },
-      {
-        "when": {
-          "east": "true",
-          "age": 1
-        },
-        "apply": {
-          "model": "bagels_baking:block/grape_vine_age1",
-          "y": 90,
-          "uvlock": true
-        }
-      },
-      {
-        "when": {
-          "north": "true",
-          "age": 2
-        },
-        "apply": {
-          "model": "bagels_baking:block/grape_vine_age2"
-        }
-      },
-      {
-        "when": {
-          "west": "true",
-          "age": 2
-        },
-        "apply": {
-          "model": "bagels_baking:block/grape_vine_age2",
-          "y": 270,
-          "uvlock": true
-        }
-      },
-      {
-        "when": {
-          "south": "true",
-          "age": 2
-        },
-        "apply": {
-          "model": "bagels_baking:block/grape_vine_age2",
-          "y": 180,
-          "uvlock": true
-        }
-      },
-      {
-        "when": {
-          "east": "true",
-          "age": 2
-        },
-        "apply": {
-          "model": "bagels_baking:block/grape_vine_age2",
-          "y": 90,
-          "uvlock": true
-        }
-      }
-    ]
+  "variants": {
+    "adjacent=none,age=0,north=true,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_o"
+    },
+    "adjacent=none,age=0,north=true,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_none_u",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=none,age=0,north=true,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_none_u"
+    },
+    "adjacent=none,age=0,north=true,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_none_l"
+    },
+    "adjacent=none,age=0,north=true,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_none_u",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=none,age=0,north=true,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_none_h"
+    },
+    "adjacent=none,age=0,north=true,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_none_l",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=none,age=0,north=true,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_none"
+    },
+    "adjacent=none,age=0,north=false,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_none_u",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=none,age=0,north=false,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_none_l",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=none,age=0,north=false,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_none_h",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=none,age=0,north=false,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_none",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=none,age=0,north=false,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_none_l",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=none,age=0,north=false,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_none",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=none,age=0,north=false,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_none",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=none,age=0,north=false,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_o"
+    },
+    "adjacent=none,age=1,north=true,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_o"
+    },
+    "adjacent=none,age=1,north=true,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_none_u",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=none,age=1,north=true,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_none_u"
+    },
+    "adjacent=none,age=1,north=true,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_none_l"
+    },
+    "adjacent=none,age=1,north=true,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_none_u",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=none,age=1,north=true,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_none_h"
+    },
+    "adjacent=none,age=1,north=true,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_none_l",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=none,age=1,north=true,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_none"
+    },
+    "adjacent=none,age=1,north=false,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_none_u",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=none,age=1,north=false,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_none_l",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=none,age=1,north=false,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_none_h",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=none,age=1,north=false,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_none",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=none,age=1,north=false,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_none_l",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=none,age=1,north=false,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_none",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=none,age=1,north=false,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_none",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=none,age=1,north=false,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_o"
+    },
+    "adjacent=none,age=2,north=true,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_o"
+    },
+    "adjacent=none,age=2,north=true,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_none_u",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=none,age=2,north=true,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_none_u"
+    },
+    "adjacent=none,age=2,north=true,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_none_l"
+    },
+    "adjacent=none,age=2,north=true,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_none_u",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=none,age=2,north=true,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_none_h"
+    },
+    "adjacent=none,age=2,north=true,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_none_l",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=none,age=2,north=true,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_none"
+    },
+    "adjacent=none,age=2,north=false,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_none_u",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=none,age=2,north=false,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_none_l",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=none,age=2,north=false,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_none_h",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=none,age=2,north=false,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_none",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=none,age=2,north=false,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_none_l",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=none,age=2,north=false,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_none",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=none,age=2,north=false,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_none",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=none,age=2,north=false,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_o"
+    },
+    "adjacent=left,age=0,north=true,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_o"
+    },
+    "adjacent=left,age=0,north=true,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_left_u",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=left,age=0,north=true,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_left_u"
+    },
+    "adjacent=left,age=0,north=true,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_left_l"
+    },
+    "adjacent=left,age=0,north=true,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_left_u",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=left,age=0,north=true,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_both_h"
+    },
+    "adjacent=left,age=0,north=true,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_left_l",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=left,age=0,north=true,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_left"
+    },
+    "adjacent=left,age=0,north=false,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_left_u",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=left,age=0,north=false,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_left_l",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=left,age=0,north=false,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_both_h",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=left,age=0,north=false,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_left",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=left,age=0,north=false,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_left_l",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=left,age=0,north=false,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_left",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=left,age=0,north=false,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_left",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=left,age=0,north=false,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_o"
+    },
+    "adjacent=left,age=1,north=true,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_o"
+    },
+    "adjacent=left,age=1,north=true,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_left_u",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=left,age=1,north=true,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_left_u"
+    },
+    "adjacent=left,age=1,north=true,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_left_l"
+    },
+    "adjacent=left,age=1,north=true,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_left_u",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=left,age=1,north=true,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_both_h"
+    },
+    "adjacent=left,age=1,north=true,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_left_l",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=left,age=1,north=true,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_left"
+    },
+    "adjacent=left,age=1,north=false,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_left_u",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=left,age=1,north=false,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_left_l",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=left,age=1,north=false,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_both_h",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=left,age=1,north=false,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_left",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=left,age=1,north=false,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_left_l",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=left,age=1,north=false,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_left",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=left,age=1,north=false,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_left",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=left,age=1,north=false,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_o"
+    },
+    "adjacent=left,age=2,north=true,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_o"
+    },
+    "adjacent=left,age=2,north=true,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_left_u",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=left,age=2,north=true,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_left_u"
+    },
+    "adjacent=left,age=2,north=true,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_left_l"
+    },
+    "adjacent=left,age=2,north=true,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_left_u",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=left,age=2,north=true,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_both_h"
+    },
+    "adjacent=left,age=2,north=true,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_left_l",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=left,age=2,north=true,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_left"
+    },
+    "adjacent=left,age=2,north=false,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_left_u",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=left,age=2,north=false,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_left_l",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=left,age=2,north=false,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_both_h",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=left,age=2,north=false,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_left",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=left,age=2,north=false,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_left_l",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=left,age=2,north=false,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_left",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=left,age=2,north=false,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_left",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=left,age=2,north=false,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_o"
+    },
+    "adjacent=right,age=0,north=true,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_o"
+    },
+    "adjacent=right,age=0,north=true,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_right_u",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=right,age=0,north=true,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_right_u"
+    },
+    "adjacent=right,age=0,north=true,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_right_l"
+    },
+    "adjacent=right,age=0,north=true,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_right_u",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=right,age=0,north=true,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_both_h"
+    },
+    "adjacent=right,age=0,north=true,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_right_l",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=right,age=0,north=true,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_right"
+    },
+    "adjacent=right,age=0,north=false,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_right_u",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=right,age=0,north=false,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_right_l",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=right,age=0,north=false,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_both_h",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=right,age=0,north=false,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_right",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=right,age=0,north=false,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_right_l",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=right,age=0,north=false,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_right",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=right,age=0,north=false,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_right",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=right,age=0,north=false,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_o"
+    },
+    "adjacent=right,age=1,north=true,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_o"
+    },
+    "adjacent=right,age=1,north=true,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_right_u",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=right,age=1,north=true,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_right_u"
+    },
+    "adjacent=right,age=1,north=true,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_right_l"
+    },
+    "adjacent=right,age=1,north=true,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_right_u",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=right,age=1,north=true,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_both_h"
+    },
+    "adjacent=right,age=1,north=true,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_right_l",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=right,age=1,north=true,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_right"
+    },
+    "adjacent=right,age=1,north=false,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_right_u",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=right,age=1,north=false,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_right_l",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=right,age=1,north=false,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_both_h",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=right,age=1,north=false,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_right",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=right,age=1,north=false,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_right_l",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=right,age=1,north=false,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_right",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=right,age=1,north=false,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_right",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=right,age=1,north=false,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_o"
+    },
+    "adjacent=right,age=2,north=true,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_o"
+    },
+    "adjacent=right,age=2,north=true,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_right_u",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=right,age=2,north=true,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_right_u"
+    },
+    "adjacent=right,age=2,north=true,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_right_l"
+    },
+    "adjacent=right,age=2,north=true,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_right_u",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=right,age=2,north=true,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_both_h"
+    },
+    "adjacent=right,age=2,north=true,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_right_l",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=right,age=2,north=true,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_right"
+    },
+    "adjacent=right,age=2,north=false,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_right_u",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=right,age=2,north=false,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_right_l",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=right,age=2,north=false,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_both_h",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=right,age=2,north=false,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_right",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=right,age=2,north=false,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_right_l",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=right,age=2,north=false,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_right",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=right,age=2,north=false,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_right",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=right,age=2,north=false,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_o"
+    },
+    "adjacent=both,age=0,north=true,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_o"
+    },
+    "adjacent=both,age=0,north=true,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_both_u",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=both,age=0,north=true,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_both_u"
+    },
+    "adjacent=both,age=0,north=true,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_both_l"
+    },
+    "adjacent=both,age=0,north=true,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_both_u",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=both,age=0,north=true,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_both_h"
+    },
+    "adjacent=both,age=0,north=true,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_both_l",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=both,age=0,north=true,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_both"
+    },
+    "adjacent=both,age=0,north=false,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_both_u",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=both,age=0,north=false,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_both_l",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=both,age=0,north=false,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_both_h",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=both,age=0,north=false,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_both",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=both,age=0,north=false,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_both_l",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=both,age=0,north=false,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_both",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=both,age=0,north=false,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age0_both",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=both,age=0,north=false,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age0_o"
+    },
+    "adjacent=both,age=1,north=true,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_o"
+    },
+    "adjacent=both,age=1,north=true,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_both_u",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=both,age=1,north=true,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_both_u"
+    },
+    "adjacent=both,age=1,north=true,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_both_l"
+    },
+    "adjacent=both,age=1,north=true,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_both_u",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=both,age=1,north=true,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_both_h"
+    },
+    "adjacent=both,age=1,north=true,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_both_l",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=both,age=1,north=true,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_both"
+    },
+    "adjacent=both,age=1,north=false,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_both_u",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=both,age=1,north=false,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_both_l",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=both,age=1,north=false,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_both_h",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=both,age=1,north=false,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_both",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=both,age=1,north=false,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_both_l",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=both,age=1,north=false,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_both",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=both,age=1,north=false,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age1_both",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=both,age=1,north=false,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age1_o"
+    },
+    "adjacent=both,age=2,north=true,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_o"
+    },
+    "adjacent=both,age=2,north=true,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_both_u",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=both,age=2,north=true,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_both_u"
+    },
+    "adjacent=both,age=2,north=true,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_both_l"
+    },
+    "adjacent=both,age=2,north=true,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_both_u",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=both,age=2,north=true,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_both_h"
+    },
+    "adjacent=both,age=2,north=true,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_both_l",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=both,age=2,north=true,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_both"
+    },
+    "adjacent=both,age=2,north=false,east=true,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_both_u",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=both,age=2,north=false,east=true,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_both_l",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=both,age=2,north=false,east=true,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_both_h",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=both,age=2,north=false,east=true,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_both",
+      "y": 90,
+      "uvlock": true
+    },
+    "adjacent=both,age=2,north=false,east=false,south=true,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_both_l",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=both,age=2,north=false,east=false,south=true,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_both",
+      "y": 180,
+      "uvlock": true
+    },
+    "adjacent=both,age=2,north=false,east=false,south=false,west=true": {
+      "model": "bagels_baking:block/grape_vine_age2_both",
+      "y": 270,
+      "uvlock": true
+    },
+    "adjacent=both,age=2,north=false,east=false,south=false,west=false": {
+      "model": "bagels_baking:block/grape_vine_age2_o"
+    }
   }
+}
