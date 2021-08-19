@@ -72,27 +72,27 @@ public class Baking implements ModInitializer {
 	}
 
 	private static MushroomStewItem basicBowlFood(int hunger, float saturation) {
-		return new MushroomStewItem(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(foodComponent(hunger, saturation).build()));
+		return new MushroomStewItem(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Items.BOWL).maxCount(16).food(foodComponent(hunger, saturation).build()));
 	}
 
 	private static BottledItem basicJam(int hunger, float saturation, SoundEvent drinkSound) {
-		return new BottledItem(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(foodComponent(hunger, saturation).build()), drinkSound);
+		return new BottledItem(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Items.GLASS_BOTTLE).maxCount(16).food(foodComponent(hunger, saturation).build()), drinkSound);
 	}
 
 	private static BasicDrink basicBucketDrink(int hunger, float saturation) {
-		return new BasicDrink(new Item.Settings().group(ItemGroup.FOOD).maxCount(1), foodComponent(hunger, saturation).build(), Items.BUCKET);
+		return new BasicDrink(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Items.BUCKET).maxCount(1), foodComponent(hunger, saturation).build(), Items.BUCKET);
 	}
 
 	private static BasicDrink basicCupDrink() {
-		return new BasicDrink(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).recipeRemainder(Baking.CUP), Baking.CUP);
+		return new BasicDrink(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Baking.CUP).maxCount(16), Baking.CUP);
 	}
 
 	private static BasicDrink basicCupDrink(int hunger, float saturation) {
-		return new BasicDrink(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).recipeRemainder(Baking.CUP), foodComponent(hunger, saturation).build(), Baking.CUP);
+		return new BasicDrink(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Baking.CUP).maxCount(16), foodComponent(hunger, saturation).build(), Baking.CUP);
 	}
 
 	private static BasicDrink basicSuperCupDrink(int hunger, float saturation, StatusEffectInstance effect) {
-		return new BasicDrink(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).recipeRemainder(Baking.CUP), foodComponent(hunger, saturation).statusEffect(effect, 1.0f).build(), Baking.CUP);
+		return new BasicDrink(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Baking.CUP).maxCount(16), foodComponent(hunger, saturation).statusEffect(effect, 1.0f).build(), Baking.CUP);
 	}
 
 	private static void registerItem(String name, Item item) {
@@ -296,7 +296,6 @@ public class Baking implements ModInitializer {
 	public static ScreenHandlerType<MillScreenHandler> MILL_SCREEN;
 
 	// Cauldron
-	public static final Block BATTER_CAULDRON = new LeveledCauldronBlock(FabricBlockSettings.copy(Blocks.WATER_CAULDRON), (precipitation) -> false, BakingCauldronBehavior.BATTER_CAULDRON_BEHAVIOR);
 	public static final Block LIQUID_CHEESE_CAULDRON = new LiquidCheeseCauldronBlock(FabricBlockSettings.copy(Blocks.CAULDRON), CauldronBehavior.createMap()); // do nothing
 	public static final Block SOLID_CHEESE_CAULDRON = new LiquidCheeseCauldronBlock(FabricBlockSettings.copy(Blocks.CAULDRON), BakingCauldronBehavior.SOLID_CHEESE_CAULDRON_BEHAVIOR);
 	public static final Block COFFEE_CAULDRON = new LeveledCauldronBlock(FabricBlockSettings.copy(Blocks.WATER_CAULDRON), (precipitation) -> false, BakingCauldronBehavior.COFFEE_CAULDRON_BEHAVIOR);
@@ -709,7 +708,6 @@ public class Baking implements ModInitializer {
 
 		// Cauldrons
 		BakingCauldronBehavior.registerBehaviors();
-		registerBlock("batter_cauldron", BATTER_CAULDRON);
 		registerBlock("liquid_cheese_cauldron", LIQUID_CHEESE_CAULDRON);
 		registerBlock("solid_cheese_cauldron", SOLID_CHEESE_CAULDRON);
 		registerBlock("coffee_cauldron", COFFEE_CAULDRON);

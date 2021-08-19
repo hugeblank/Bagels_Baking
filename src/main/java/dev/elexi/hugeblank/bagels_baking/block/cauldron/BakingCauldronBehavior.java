@@ -27,7 +27,6 @@ import java.util.Map;
 public interface BakingCauldronBehavior extends CauldronBehavior {
     Map<Item, Item> BATTER_ITEMS = new HashMap<>();
     Map<Block, Item> CUP_FLUIDS = new HashMap<>();
-    Map<Item, CauldronBehavior> BATTER_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
     Map<Item, CauldronBehavior> COFFEE_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
     Map<Item, CauldronBehavior> TEA_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
     Map<Item, CauldronBehavior> CREAMY_COFFEE_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
@@ -35,23 +34,6 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
     Map<Item, CauldronBehavior> LIQUID_CHEESE_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
     Map<Item, CauldronBehavior> SOLID_CHEESE_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
     Map<Item, CauldronBehavior> SEPARATOR_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
-
-    CauldronBehavior APPLY_BATTER_TO_ITEM = (state, world, pos, player, hand, stack) -> {
-        Item item = stack.getItem();
-        if (!BATTER_ITEMS.containsKey(item)) {
-            return ActionResult.PASS;
-        } else {
-            Item output = BATTER_ITEMS.get(item);
-            ItemUsage.exchangeStack(stack, player, output.getDefaultStack());
-            player.incrementStat(Stats.USE_CAULDRON);
-            player.incrementStat(Stats.USED.getOrCreateStat(item));
-            if (world.getRandom().nextBoolean()) {
-                LeveledCauldronBlock.decrementFluidLevel(state, world, pos);
-            }
-            world.playSound(null, pos, SoundEvents.BLOCK_SHROOMLIGHT_STEP, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            return ActionResult.success(world.isClient);
-        }
-    };
 
     CauldronBehavior FILL_CAULDRON_CUP = (state, world, pos, player, hand, stack) -> {
         if (!world.isClient) {
@@ -88,39 +70,6 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
     };
 
     static void registerBehaviors() {
-        // Empty to 1 batter layer
-        EMPTY_CAULDRON_BEHAVIOR.put(Baking.BATTER, (state, world, pos, player, hand, stack) -> {
-            if (stack.getItem() != Baking.BATTER) {
-                return ActionResult.PASS;
-            } else {
-                if (!world.isClient) {
-                    ItemUsage.exchangeStack(stack, player, Items.BOWL.getDefaultStack());
-                    player.incrementStat(Stats.FILL_CAULDRON);
-                    player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
-                    world.setBlockState(pos, Baking.BATTER_CAULDRON.getDefaultState());
-                    world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                    world.emitGameEvent(null, GameEvent.FLUID_PLACE, pos);
-                }
-                return ActionResult.success(world.isClient);
-            }
-        });
-
-        // Batter level increase
-        BATTER_CAULDRON_BEHAVIOR.put(Baking.BATTER, (state, world, pos, player, hand, stack) -> {
-            if (state.get(LeveledCauldronBlock.LEVEL) != 3 && stack.getItem() == Baking.BATTER) {
-                if (!world.isClient) {
-                    ItemUsage.exchangeStack(stack, player, Items.BOWL.getDefaultStack());
-                    player.incrementStat(Stats.FILL_CAULDRON);
-                    player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
-                    world.setBlockState(pos, state.cycle(LeveledCauldronBlock.LEVEL));
-                    world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                    world.emitGameEvent(null, GameEvent.FLUID_PLACE, pos);
-                }
-                return ActionResult.success(world.isClient);
-            } else {
-                return ActionResult.PASS;
-            }
-        });
 
         // Empty to liquid cheese
         EMPTY_CAULDRON_BEHAVIOR.put(Baking.CHEESE, (state, world, pos, player, hand, stack) ->
@@ -200,16 +149,6 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
         // X to Creamy X conversion
         COFFEE_CAULDRON_BEHAVIOR.put(Baking.CREAMER_CUP, (state, world, pos, player, hand, stack) -> fillCauldronCup(world, pos, player, hand, stack, Baking.CREAMY_COFFEE_CAULDRON.getDefaultState().with(LeveledCauldronBlock.LEVEL, state.get(LeveledCauldronBlock.LEVEL)), SoundEvents.ITEM_BUCKET_EMPTY));
         TEA_CAULDRON_BEHAVIOR.put(Baking.CREAMER_CUP, (state, world, pos, player, hand, stack) -> fillCauldronCup(world, pos, player, hand, stack, Baking.CREAMY_TEA_CAULDRON.getDefaultState().with(LeveledCauldronBlock.LEVEL, state.get(LeveledCauldronBlock.LEVEL)), SoundEvents.ITEM_BUCKET_EMPTY));
-
-        // Map batter cauldron recipes
-        registerBatterItem(Items.CHICKEN, Baking.BATTERED_CHICKEN);
-        registerBatterItem(Baking.CALAMARI, Baking.BATTERED_CALAMARI);
-        registerBatterItem(Baking.CHICKEN_NUGGETS, Baking.BATTERED_CHICKEN_NUGGETS);
-    }
-
-    static void registerBatterItem(Item input, Item output) {
-        BATTER_CAULDRON_BEHAVIOR.put(input, APPLY_BATTER_TO_ITEM);
-        BATTER_ITEMS.put(input, output);
     }
 
     static void registerCauldronCupFluid(Map<Item, CauldronBehavior> behavior, Block cauldron, Item output) {
