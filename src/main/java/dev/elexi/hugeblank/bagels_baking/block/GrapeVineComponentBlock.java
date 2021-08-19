@@ -27,7 +27,7 @@ import java.util.Random;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class BasicVineComponentBlock extends Block {
+public class GrapeVineComponentBlock extends Block {
     public static final BooleanProperty NORTH;
     public static final BooleanProperty EAST;
     public static final BooleanProperty SOUTH;
@@ -48,10 +48,10 @@ public class BasicVineComponentBlock extends Block {
     private static final VoxelShape NORTH_RIGHT_SHAPE;
     private final ImmutableMap<BlockState, VoxelShape> shapesByState;
 
-    public BasicVineComponentBlock(Settings settings) {
+    public GrapeVineComponentBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(NORTH, false).with(EAST, false).with(SOUTH, false).with(WEST, false).with(ADJACENT, AdjacentPosition.NONE));
-        this.shapesByState = ImmutableMap.copyOf(this.stateManager.getStates().stream().collect(Collectors.toMap(Function.identity(), BasicVineComponentBlock::getShapeForState)));
+        this.shapesByState = ImmutableMap.copyOf(this.stateManager.getStates().stream().collect(Collectors.toMap(Function.identity(), GrapeVineComponentBlock::getShapeForState)));
     }
 
     private static VoxelShape getShapeForState(BlockState state) {
@@ -172,8 +172,8 @@ public class BasicVineComponentBlock extends Block {
         BlockState left = world.getBlockState(pos.offset(getLeftmostFromState(state)));
         BlockState right = world.getBlockState(pos.offset(getRightmostFromState(state)));
 
-        boolean isLeft = left.getBlock() instanceof BasicVineComponentBlock;
-        boolean isRight = right.getBlock() instanceof BasicVineComponentBlock;
+        boolean isLeft = left.getBlock() instanceof GrapeVineComponentBlock;
+        boolean isRight = right.getBlock() instanceof GrapeVineComponentBlock;
         if (isLeft && isRight) {
             state = state.with(ADJACENT, AdjacentPosition.BOTH);
         } else if (isLeft) {
@@ -233,7 +233,7 @@ public class BasicVineComponentBlock extends Block {
             } else {
                 BooleanProperty booleanProperty = FACING_PROPERTIES.get(side);
                 BlockState blockState = world.getBlockState(pos.up());
-                return blockState.getBlock() instanceof BasicVineComponentBlock && blockState.get(booleanProperty);
+                return blockState.getBlock() instanceof GrapeVineComponentBlock && blockState.get(booleanProperty);
             }
         }
     }
@@ -268,7 +268,7 @@ public class BasicVineComponentBlock extends Block {
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockState blockState = ctx.getWorld().getBlockState(ctx.getBlockPos());
-        boolean isVine = blockState.getBlock() instanceof BasicVineComponentBlock;
+        boolean isVine = blockState.getBlock() instanceof GrapeVineComponentBlock;
         BlockState blockState2 = isVine ? blockState : this.getDefaultState();
         Direction[] var5 = Direction.values();
 

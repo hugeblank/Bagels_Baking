@@ -1,7 +1,7 @@
 package dev.elexi.hugeblank.bagels_baking.world.biome;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
-import dev.elexi.hugeblank.bagels_baking.world.BakingConfiguredFeatures;
+import dev.elexi.hugeblank.bagels_baking.world.gen.BakingConfiguredFeatures;
 import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
 import net.fabricmc.fabric.api.biome.v1.OverworldClimate;
 import net.minecraft.sound.BiomeMoodSound;

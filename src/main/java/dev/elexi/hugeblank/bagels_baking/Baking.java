@@ -9,12 +9,13 @@ import dev.elexi.hugeblank.bagels_baking.entity.BakingVillagerTrades;
 import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
 import dev.elexi.hugeblank.bagels_baking.entity.boat.BasicBoatRegistry;
 import dev.elexi.hugeblank.bagels_baking.item.*;
+import dev.elexi.hugeblank.bagels_baking.mixin.entity.DamageSourceAccessor;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
-import dev.elexi.hugeblank.bagels_baking.world.BakingConfiguredFeatures;
 import dev.elexi.hugeblank.bagels_baking.world.biome.BakingBiomes;
-import dev.elexi.hugeblank.bagels_baking.world.tree.CherrySaplingGenerator;
-import dev.elexi.hugeblank.bagels_baking.world.tree.LemonSaplingGenerator;
+import dev.elexi.hugeblank.bagels_baking.world.gen.BakingConfiguredFeatures;
+import dev.elexi.hugeblank.bagels_baking.world.gen.tree.CherrySaplingGenerator;
+import dev.elexi.hugeblank.bagels_baking.world.gen.tree.LemonSaplingGenerator;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -41,6 +42,8 @@ import net.minecraft.util.SignType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
+
+import java.util.Random;
 
 public class Baking implements ModInitializer {
 
@@ -372,7 +375,7 @@ public class Baking implements ModInitializer {
 	public static final Item TEA_LEAVES = basicIngredient();
 	public static final Item DRIED_TEA_LEAVES = basicIngredient();
 	public static final Block COMPRESSED_TEA_BLOCK = new Block(FabricBlockSettings.copy(Blocks.DRIED_KELP_BLOCK));
-	public static final DamageSource TEA_TREE_DMGSRC = new DamageSource("tea_tree");
+	public static final DamageSource TEA_TREE_DMGSRC = DamageSourceAccessor.newDamageSource("tea_tree");
 	public static final Block TOMATO_PLANT = new BasicCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item TOMATO = new TomatoItem(TOMATO_PLANT, new Item.Settings().group(ItemGroup.FOOD).food(
 			foodComponent(3, 3.2f).build()
@@ -387,7 +390,7 @@ public class Baking implements ModInitializer {
 	public static final Block RICE_PLANT = new BasicCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item WILD_RICE = new BlockItem(RICE_PLANT, new Item.Settings().group(ItemGroup.MISC));
 	public static final Item RICE = basicIngredient();
-	public static final Block CORN_STALK = new DoubleCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
+	public static final Block CORN_STALK = new TallCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item CORN = basicFood(3, 2.4f);
 	public static final Item COOKED_CORN = basicFood(5, 3.8f);
 	public static final Item CORN_SEEDS = new BlockItem(CORN_STALK, new Item.Settings().group(ItemGroup.MISC));
@@ -422,6 +425,9 @@ public class Baking implements ModInitializer {
 	public static final Block DARK_OAK_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
 	public static final Block CRIMSON_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
 	public static final Block WARPED_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
+	public static final Block SMALL_CINNAMON_TREE = new TallPlantBlock(FabricBlockSettings.copy(Blocks.TALL_GRASS));
+	public static final Block CINNAMON_TREE = new TriplePlantBlock(FabricBlockSettings.copy(Blocks.TALL_GRASS));
+	public static final Block CINNAMON_SAPLING = new FancyFernBlock(FabricBlockSettings.copy(Blocks.OAK_SAPLING), (random) -> (PlantBlock) (((Random) random).nextFloat() < 0.4 ? CINNAMON_TREE : SMALL_CINNAMON_TREE) );
 
 	// Cheese
 	public static final Block CHEESE_BLOCK = new Block(FabricBlockSettings.copy(Blocks.HONEY_BLOCK).sounds(BlockSoundGroup.CANDLE)); // TODO: play with sounds!
@@ -651,6 +657,9 @@ public class Baking implements ModInitializer {
 		registerBlock("grape_stem", GRAPE_STEM, ItemGroup.DECORATIONS);
 		registerBlock("grape_vine", GRAPE_VINE, ItemGroup.DECORATIONS);
 		registerItem("grapes", GRAPES);
+		registerBlock("small_cinnamon_tree", SMALL_CINNAMON_TREE, ItemGroup.DECORATIONS);
+		registerBlock("cinnamon_tree", CINNAMON_TREE, ItemGroup.DECORATIONS);
+		registerBlock("cinnamon_sapling", CINNAMON_SAPLING, ItemGroup.DECORATIONS);
 
 		// Vanilla Trellises
 		registerBlock("oak_trellis", OAK_TRELLIS, ItemGroup.DECORATIONS);
@@ -693,6 +702,7 @@ public class Baking implements ModInitializer {
 
 		// Configured Features
 		BakingConfiguredFeatures.init();
+
 
 		// Biomes
 		BakingBiomes.init();

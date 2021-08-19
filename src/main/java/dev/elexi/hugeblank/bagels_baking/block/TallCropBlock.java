@@ -18,13 +18,13 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public class DoubleCropBlock extends BasicCropBlock implements Fertilizable {
+public class TallCropBlock extends BasicCropBlock implements Fertilizable {
 
     public static final EnumProperty<DoubleBlockHalf> HALF = Properties.DOUBLE_BLOCK_HALF;
     public static final IntProperty AGE = Properties.AGE_7;
     private static final VoxelShape[] AGE_TO_SHAPE = new VoxelShape[]{Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D), Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D), Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D), Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
 
-    public DoubleCropBlock(Settings settings) {
+    public TallCropBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(HALF, DoubleBlockHalf.LOWER).with(this.getAgeProperty(), 0));
     }
@@ -37,7 +37,7 @@ public class DoubleCropBlock extends BasicCropBlock implements Fertilizable {
 
     private void applyGrowth(ServerWorld world, BlockPos pos, int growth) {
         BlockState upper = world.getBlockState(pos.up());
-        if ((upper.getBlock() instanceof DoubleCropBlock || upper.getBlock() == Blocks.AIR)) {
+        if ((upper.getBlock() instanceof TallCropBlock || upper.getBlock() == Blocks.AIR)) {
             world.setBlockState(pos, this.withAge(growth), 2);
             addTop( world, pos, growth);
         } else if (growth < 4) {
@@ -50,7 +50,7 @@ public class DoubleCropBlock extends BasicCropBlock implements Fertilizable {
         BlockState aboveState = world.getBlockState(pos.up());
         if (growth >= 4 && aboveState.getBlock().equals(Blocks.AIR)) {
             world.setBlockState(pos.up(), this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).with(AGE, growth - 4));
-        } else if (aboveState.getBlock() instanceof DoubleCropBlock) {
+        } else if (aboveState.getBlock() instanceof TallCropBlock) {
             world.setBlockState(pos.up(), aboveState.with(AGE, growth - 4));
         }
     }
@@ -124,7 +124,7 @@ public class DoubleCropBlock extends BasicCropBlock implements Fertilizable {
             applyGrowth(world, pos, i);
         } else {
             BlockState base = world.getBlockState(pos.down());
-            ((DoubleCropBlock)base.getBlock()).grow(world, random, pos.down(), base);
+            ((TallCropBlock)base.getBlock()).grow(world, random, pos.down(), base);
         }
     }
 }

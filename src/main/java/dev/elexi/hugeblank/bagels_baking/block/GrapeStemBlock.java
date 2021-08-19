@@ -12,7 +12,7 @@ import net.minecraft.world.WorldView;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class GrapeStemBlock extends BasicVineComponentBlock {
+public class GrapeStemBlock extends GrapeVineComponentBlock {
     public GrapeStemBlock(Settings settings) {
         super(settings);
     }

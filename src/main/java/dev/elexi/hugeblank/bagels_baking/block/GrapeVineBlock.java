@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 // Literally the most complicated block I've ever made.
-public class GrapeVineBlock extends BasicVineComponentBlock {
+public class GrapeVineBlock extends GrapeVineComponentBlock {
     public static final int MAX_DISTANCE = 5;
     public static final IntProperty DISTANCE = BakingProperties.DISTANCE_0_5;
     public static final BooleanProperty PERSISTENT = Properties.PERSISTENT;

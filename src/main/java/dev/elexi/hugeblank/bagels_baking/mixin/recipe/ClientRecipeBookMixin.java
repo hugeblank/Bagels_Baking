@@ -1,4 +1,4 @@
-package dev.elexi.hugeblank.bagels_baking.mixin.crafting;
+package dev.elexi.hugeblank.bagels_baking.mixin.recipe;
 
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
 import net.minecraft.client.recipebook.ClientRecipeBook;
