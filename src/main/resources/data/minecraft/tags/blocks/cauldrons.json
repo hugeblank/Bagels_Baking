@@ -1,7 +1,6 @@
 {
     "replace": false,
     "values": [
-      "bagels_baking:batter_cauldron",
       "bagels_baking:liquid_cheese_cauldron",
       "bagels_baking:solid_cheese_cauldron",
       "bagels_baking:coffee_cauldron",
