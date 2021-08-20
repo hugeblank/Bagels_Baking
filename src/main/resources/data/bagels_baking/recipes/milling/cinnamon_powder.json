@@ -1,0 +1,8 @@
+{
+    "type": "bagels_baking:milling",
+    "ingredient": {
+        "item": "bagels_baking:cinnamon_bark"
+    },
+    "result": "bagels_baking:cinnamon_powder",
+    "count": 2
+}

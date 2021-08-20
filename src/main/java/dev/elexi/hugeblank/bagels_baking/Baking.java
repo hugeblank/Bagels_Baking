@@ -323,6 +323,8 @@ public class Baking implements ModInitializer {
 	public static final Item WHEAT_CEREAL = basicIngredient();
 	public static final Item CORN_CEREAL = basicIngredient();
 	public static final Item RICE_CEREAL = basicIngredient();
+	public static final Item CINNAMON_BARK = basicIngredient();
+	public static final Item CINNAMON_POWDER = basicIngredient();
 	// hunt was here <3 - redeemed by rrricohu on 3/21/21
 	// Pedrospeeder - redeemed on 3/22/21
 	// <コ:彡 LOOK FELLOW PROGRAMMER I'M CATHULO - redeemed by Pedrospeeder on 3/22/21
@@ -554,6 +556,8 @@ public class Baking implements ModInitializer {
 		registerItem("wheat_cereal", WHEAT_CEREAL);
 		registerItem("corn_cereal", CORN_CEREAL);
 		registerItem("rice_cereal", RICE_CEREAL);
+		registerItem("cinnamon_bark", CINNAMON_BARK);
+		registerItem("cinnamon_powder", CINNAMON_POWDER);
 
 		// Raw/Cooked Goods
 		registerItem("calamari", CALAMARI);
