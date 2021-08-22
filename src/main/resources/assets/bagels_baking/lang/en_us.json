@@ -231,6 +231,8 @@
   "item.bagels_baking.wheat_cereal_bowl": "Shredded Wheat Cereal",
   "item.bagels_baking.wheat_cereal": "Shredded Wheat",
   "item.bagels_baking.wild_rice_ball": "Raw Wild Rice Ball",
+  "item.bagels_baking.sugar_cookie": "Sugar Cookie",
+  "item.bagels_baking.snickerdoodle_cookie": "Snickerdoodle Cookie",
   "stat.bagels_baking.day_of_week": "Numerical Day of Week",
   "stat.bagels_baking.interact_with_mill": "Interactions with Mill",
   "stat.bagels_baking.tomato_kills": "Player Kills using Tomato"

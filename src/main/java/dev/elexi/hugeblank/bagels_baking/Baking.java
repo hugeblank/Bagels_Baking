@@ -435,6 +435,8 @@ public class Baking implements ModInitializer {
 	public static final Item BAGEL = basicFood(8, 0.6f);
 	public static final Item DONUT = basicFood(8, 0.7f);
 	public static final Item BROWNIE = basicFood(4, 0.5f);
+	public static final Item SUGAR_COOKIE = basicFood(2, 0.1f);
+	public static final Item SNICKERDOODLE_COOKIE = basicFood(2, 0.1f);
 	public static final Item PEPPERONI = basicFood(2, 0.4f);
 	public static final Item COOKED_EGG = basicFood(2, 0.4f);
 	public static final Item MACARONI_N_CHEESE = basicBowlFood(3, 0.4f);
@@ -678,6 +680,8 @@ public class Baking implements ModInitializer {
 		registerItem("bagel", BAGEL);
 		registerItem("donut", DONUT);
 		registerItem("brownie", BROWNIE);
+		registerItem("sugar_cookie", SUGAR_COOKIE);
+		registerItem("snickerdoodle_cookie", SNICKERDOODLE_COOKIE);
 		registerItem("cooked_egg", COOKED_EGG);
 		registerItem("pepperoni", PEPPERONI);
 		registerItem("salmon_sushi", SALMON_SUSHI);

@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "   ",
+        "   ",
+        "#C#"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:wheat"
+        },
+        "C": {
+            "item": "bagels_baking:cinnamon_powder"
+        }
+    },
+    "result": {
+        "item": "bagels_baking:snickerdoodle_cookie",
+        "count": 8
+    }
+}
