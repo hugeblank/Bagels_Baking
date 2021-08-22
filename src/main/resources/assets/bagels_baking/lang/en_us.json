@@ -241,6 +241,8 @@
   "item.bagels_baking.tonkatsu_sauce": "Tonkatsu Sauce",
   "item.bagels_baking.katsu_sandwich": "Katsu Sandwich",
   "item.bagels_baking.popcorn": "Popcorn",
+  "item.bagels_baking.lemon_meringue_pie": "Lemon Meringue Pie",
+  "item.bagels_baking.cherry_meringue_pie": "Chocolate Cherry Meringue Pie",
   "stat.bagels_baking.day_of_week": "Numerical Day of Week",
   "stat.bagels_baking.interact_with_mill": "Interactions with Mill",
   "stat.bagels_baking.tomato_kills": "Player Kills using Tomato"

@@ -236,6 +236,8 @@ public class Baking implements ModInitializer {
 	public static final Item SHEPHERDS_PIE = basicFood(15, 0.7f);
 	public static final Item BERRY_PIE = basicFood(8, 0.3f);
 	public static final Item APPLE_PIE = basicFood(9, 0.3f);
+	public static final Item LEMON_MERINGUE_PIE = basicFood(9, 0.2f);
+	public static final Item CHERRY_MERINGUE_PIE = basicFood(9, 0.3f);
 
 	// Cakes - Give 1 item
 	public static final Block CARROT_CAKE = new BasicCakeBlock();
@@ -556,6 +558,8 @@ public class Baking implements ModInitializer {
 		registerItem("shepherds_pie", SHEPHERDS_PIE);
 		registerItem("berry_pie", BERRY_PIE);
 		registerItem("apple_pie", APPLE_PIE);
+		registerItem("lemon_meringue_pie", LEMON_MERINGUE_PIE);
+		registerItem("cherry_meringue_pie", CHERRY_MERINGUE_PIE);
 
 		// Ingredients
 		registerItem("flour", FLOUR);
