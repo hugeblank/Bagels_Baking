@@ -2,7 +2,7 @@ package dev.elexi.hugeblank.bagels_baking;
 
 import dev.elexi.hugeblank.bagels_baking.block.*;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.BakingCauldronBehavior;
-import dev.elexi.hugeblank.bagels_baking.block.cauldron.LiquidCheeseCauldronBlock;
+import dev.elexi.hugeblank.bagels_baking.block.cauldron.CheeseCauldronBlock;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.SeparatorCauldron;
 import dev.elexi.hugeblank.bagels_baking.block.sign.SignTypeRegistry;
 import dev.elexi.hugeblank.bagels_baking.entity.BakingVillagerTrades;
@@ -292,8 +292,8 @@ public class Baking implements ModInitializer {
 	public static ScreenHandlerType<MillScreenHandler> MILL_SCREEN;
 
 	// Cauldron
-	public static final Block LIQUID_CHEESE_CAULDRON = new LiquidCheeseCauldronBlock(FabricBlockSettings.copy(Blocks.CAULDRON), CauldronBehavior.createMap()); // do nothing
-	public static final Block SOLID_CHEESE_CAULDRON = new LiquidCheeseCauldronBlock(FabricBlockSettings.copy(Blocks.CAULDRON), BakingCauldronBehavior.SOLID_CHEESE_CAULDRON_BEHAVIOR);
+	public static final Block LIQUID_CHEESE_CAULDRON = new CheeseCauldronBlock(FabricBlockSettings.copy(Blocks.CAULDRON), CauldronBehavior.createMap()); // do nothing
+	public static final Block SOLID_CHEESE_CAULDRON = new CheeseCauldronBlock(FabricBlockSettings.copy(Blocks.CAULDRON), BakingCauldronBehavior.SOLID_CHEESE_CAULDRON_BEHAVIOR);
 	public static final Block COFFEE_CAULDRON = new LeveledCauldronBlock(FabricBlockSettings.copy(Blocks.WATER_CAULDRON), (precipitation) -> false, BakingCauldronBehavior.COFFEE_CAULDRON_BEHAVIOR);
 	public static final Block TEA_CAULDRON = new LeveledCauldronBlock(FabricBlockSettings.copy(Blocks.WATER_CAULDRON), (precipitation) -> false, BakingCauldronBehavior.TEA_CAULDRON_BEHAVIOR);
 	public static final Block CREAMY_COFFEE_CAULDRON = new LeveledCauldronBlock(FabricBlockSettings.copy(Blocks.WATER_CAULDRON), (precipitation) -> false, BakingCauldronBehavior.CREAMY_COFFEE_CAULDRON_BEHAVIOR);

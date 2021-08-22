@@ -12,13 +12,15 @@ import net.minecraft.util.math.BlockPos;
 import java.util.Map;
 import java.util.Random;
 
-public class LiquidCheeseCauldronBlock extends BasicCauldronBlock{
+public class CheeseCauldronBlock extends BasicCauldronBlock{
 
-    public LiquidCheeseCauldronBlock(Settings settings, Map<Item, CauldronBehavior> behaviorMap) {
+    public CheeseCauldronBlock(Settings settings, Map<Item, CauldronBehavior> behaviorMap) {
         super(settings.ticksRandomly(), behaviorMap);
     }
 
-
+    public boolean hasRandomTicks(BlockState state) {
+        return state.getBlock() == Baking.LIQUID_CHEESE_CAULDRON;
+    }
 
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (random.nextFloat() < 0.3f) {
