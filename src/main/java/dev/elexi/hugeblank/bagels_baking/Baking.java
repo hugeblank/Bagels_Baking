@@ -51,20 +51,16 @@ public class Baking implements ModInitializer {
 
 	// Beautification Functions
 
-	private static FoodComponent.Builder foodComponent(int hunger, float saturation) {
-		return new FoodComponent.Builder().hunger(hunger).saturationModifier((saturation/hunger)/2.0f);
-	}
-
-	private static Item basicFood(FoodComponent.Builder fc, int maxStack) {
-		return new Item(new Item.Settings().maxCount(maxStack).group(ItemGroup.FOOD).food(fc.build()));
+	private static FoodComponent.Builder foodComponent(int hunger, float saturationModifier) {
+		return new FoodComponent.Builder().hunger(hunger).saturationModifier(saturationModifier);
 	}
 
 	private static Item basicFood(FoodComponent.Builder fc) {
-		return basicFood(fc, 64);
+		return new Item(new Item.Settings().maxCount(64).group(ItemGroup.FOOD).food(fc.build()));
 	}
 
 	private static Item basicFood(int hunger, float saturation) {
-		return basicFood(foodComponent(hunger, saturation), 64);
+		return basicFood(foodComponent(hunger, saturation));
 	}
 
 	private static Item basicIngredient() {
@@ -180,57 +176,57 @@ public class Baking implements ModInitializer {
 	}
 
 	// Sandwiches - Gives 2 items
-	public static final Item STEAK_SANDWICH = basicFood(9, 12.4f);
-	public static final Item CHICKEN_SANDWICH = basicFood(8, 9.6f);
-	public static final Item PORK_SANDWICH = basicFood(9, 12.4f);
-	public static final Item MUTTON_SANDWICH = basicFood(8, 10.8f);
-	public static final Item FISH_SANDWICH = basicFood(7, 9f);
-	public static final Item RABBIT_SANDWICH = basicFood(7, 9f);
-	public static final Item CHEESE_SANDWICH = basicFood(3, 2.5f);
-	public static final Item GRILLED_CHEESE_SANDWICH = basicFood(6, 5.5f);
-	public static final Item BERRY_JAM_SANDWICH = basicFood(4, 4.3f);
-	public static final Item APPLE_JAM_SANDWICH = basicFood(6, 5.1f);
+	public static final Item STEAK_SANDWICH = basicFood(9, 0.7f);
+	public static final Item CHICKEN_SANDWICH = basicFood(8, 0.6f);
+	public static final Item PORK_SANDWICH = basicFood(9, 0.7f);
+	public static final Item MUTTON_SANDWICH = basicFood(8, 0.7f);
+	public static final Item FISH_SANDWICH = basicFood(8, 0.7f);
+	public static final Item RABBIT_SANDWICH = basicFood(8, 0.6f);
+	public static final Item CHEESE_SANDWICH = basicFood(3, 0.1f);
+	public static final Item GRILLED_CHEESE_SANDWICH = basicFood(5, 0.6f);
+	public static final Item BERRY_JAM_SANDWICH = basicFood(7, 0.4f);
+	public static final Item APPLE_JAM_SANDWICH = basicFood(8, 0.5f);
 
 	// Pocket - Gives 2 items
-	public static final Item STEAK_POCKET = basicFood(11, 10.9f);
-	public static final Item CHICKEN_POCKET = basicFood(10, 10f);
-	public static final Item PORK_POCKET = basicFood(11, 10.9f);
-	public static final Item MUTTON_POCKET = basicFood(10, 9.8f);
-	public static final Item FISH_POCKET = basicFood(9, 8.5f);
-	public static final Item RABBIT_POCKET = basicFood(9, 9.5f);
+	public static final Item STEAK_POCKET = basicFood(12, 0.3f);
+	public static final Item CHICKEN_POCKET = basicFood(11, 0.2f);
+	public static final Item PORK_POCKET = basicFood(12, 0.3f);
+	public static final Item MUTTON_POCKET = basicFood(11, 0.3f);
+	public static final Item FISH_POCKET = basicFood(11, 0.3f);
+	public static final Item RABBIT_POCKET = basicFood(11, 0.2f);
 
 	// Tacos - Gives 2 Items
-	public static final Item STEAK_TACO = basicFood(7, 9.4f);
-	public static final Item CHICKEN_TACO = basicFood(6, 6.6f);
-	public static final Item PORK_TACO = basicFood(7, 9.4f);
-	public static final Item MUTTON_TACO = basicFood(6, 7.8f);
-	public static final Item FISH_TACO = basicFood(5, 6f);
-	public static final Item RABBIT_TACO = basicFood(5, 6f);
+	public static final Item STEAK_TACO = basicFood(7, 0.4f);
+	public static final Item CHICKEN_TACO = basicFood(6, 0.3f);
+	public static final Item PORK_TACO = basicFood(7, 0.4f);
+	public static final Item MUTTON_TACO = basicFood(6, 0.4f);
+	public static final Item FISH_TACO = basicFood(6, 0.3f);
+	public static final Item RABBIT_TACO = basicFood(6, 0.3f);
 
 	// Cheese Burgers - Gives 2 Items
-	public static final Item STEAK_CHEESEBURGER = basicFood(9, 12.9f);
-	public static final Item CHICKEN_CHEESEBURGER = basicFood(8, 10.1f);
-	public static final Item PORK_CHEESEBURGER = basicFood(9, 12.9f);
-	public static final Item MUTTON_CHEESEBURGER = basicFood(8, 11.3f);
-	public static final Item FISH_CHEESEBURGER = basicFood(7, 9.5f);
-	public static final Item RABBIT_CHEESEBURGER = basicFood(7, 9.5f);
+	public static final Item STEAK_CHEESEBURGER = basicFood(9, 0.6f);
+	public static final Item CHICKEN_CHEESEBURGER = basicFood(8, 0.5f);
+	public static final Item PORK_CHEESEBURGER = basicFood(9, 0.6f);
+	public static final Item MUTTON_CHEESEBURGER = basicFood(8, 0.6f);
+	public static final Item FISH_CHEESEBURGER = basicFood(8, 0.6f);
+	public static final Item RABBIT_CHEESEBURGER = basicFood(8, 0.5f);
 
 	// The rest of the stews - Gives 1 item
-	public static final MushroomStewItem STEAK_STEW = basicBowlFood(14, 15.8f);
-	public static final MushroomStewItem CHICKEN_STEW = basicBowlFood(11, 11.7f);
-	public static final MushroomStewItem PORK_STEW = basicBowlFood(14, 15.8f);
-	public static final MushroomStewItem MUTTON_STEW = basicBowlFood(11, 15.6f);
-	public static final MushroomStewItem FISH_STEW = basicBowlFood(10, 10.2f);
+	public static final MushroomStewItem STEAK_STEW = basicBowlFood(12, 0.6f);
+	public static final MushroomStewItem CHICKEN_STEW = basicBowlFood(11, 0.6f);
+	public static final MushroomStewItem PORK_STEW = basicBowlFood(12, 0.6f);
+	public static final MushroomStewItem MUTTON_STEW = basicBowlFood(10, 0.6f);
+	public static final MushroomStewItem FISH_STEW = basicBowlFood(10, 0.6f);
 	// No need to add Rabbit Stew!
 
 	// Jams - Gives 1 Item
-	public static final Item BERRY_JAM = basicJam(2, 1.5f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
-	public static final Item APPLE_JAM = basicJam(5, 4.6f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
+	public static final Item BERRY_JAM = basicJam(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
+	public static final Item APPLE_JAM = basicJam(5, 0.3f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
 
 	// Pies - Gives 1 Item
-	public static final Item SHEPHERDS_PIE = basicFood(9, 10.6f);
-	public static final Item BERRY_PIE = basicFood(6, 4.5f);
-	public static final Item APPLE_PIE = basicFood(4, 3.4f);
+	public static final Item SHEPHERDS_PIE = basicFood(15, 0.7f);
+	public static final Item BERRY_PIE = basicFood(8, 0.3f);
+	public static final Item APPLE_PIE = basicFood(9, 0.3f);
 
 	// Cakes - Give 1 item
 	public static final Block CARROT_CAKE = new BasicCakeBlock();
@@ -253,39 +249,39 @@ public class Baking implements ModInitializer {
 	public static final Block POLISHED_HALITE_WALL = new WallBlock(FabricBlockSettings.copy(POLISHED_HALITE));
 
 	// Raw/Cooked goods - Give 1 item
-	public static final Item CALAMARI = basicFood(2, 1.2f);
-	public static final Item COOKED_CALAMARI = basicFood(foodComponent(6, 8.5f).meat());
-	public static final Item BATTERED_CALAMARI = basicFood(3, 1.8f);
-	public static final Item FRIED_CALAMARI = basicFood(8, 10.2f);
-	public static final Item CHICKEN_NUGGETS = new Item( new Item.Settings().group(ItemGroup.FOOD).food(foodComponent(2, 0.6f)
+	public static final Item CALAMARI = basicFood(2, 0.1f);
+	public static final Item COOKED_CALAMARI = basicFood(foodComponent(6, 0.6f).meat());
+	public static final Item BATTERED_CALAMARI = basicFood(3, 0.1f);
+	public static final Item FRIED_CALAMARI = basicFood(8, 0.6f);
+	public static final Item CHICKEN_NUGGETS = new Item( new Item.Settings().group(ItemGroup.FOOD).food(foodComponent(1, 0.1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 20*10), .3f).build()));
-	public static final Item COOKED_CHICKEN_NUGGETS = basicFood(3, 3.2f);
-	public static final Item BATTERED_CHICKEN_NUGGETS = basicFood(foodComponent(3, 0.9f)
+	public static final Item COOKED_CHICKEN_NUGGETS = basicFood(2, 0.4f);
+	public static final Item BATTERED_CHICKEN_NUGGETS = basicFood(foodComponent(1, 0.1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 20*10), .3f));
-	public static final Item FRIED_CHICKEN_NUGGETS = basicFood(4, 4.8f);
-	public static final Item BATTERED_CHICKEN = basicFood(foodComponent(3, 1.5f)
+	public static final Item FRIED_CHICKEN_NUGGETS = basicFood(4, 0.4f);
+	public static final Item BATTERED_CHICKEN = basicFood(foodComponent(3, 0.2f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 20*10), .3f));
-	public static final Item FRIED_CHICKEN = basicFood(7, 8.5f);
-	public static final Item FRENCH_FRIES = basicFood(1, 0.6f);
-	public static final Item COOKED_FRENCH_FRIES = basicFood(2, 1.8f);
-	public static final Item EGG_WHITES = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(foodComponent(1, 0.2f)
+	public static final Item FRIED_CHICKEN = basicFood(8, 0.7f);
+	public static final Item FRENCH_FRIES = basicFood(1, 0.1f);
+	public static final Item COOKED_FRENCH_FRIES = basicFood(2, 0.6f);
+	public static final Item EGG_WHITES = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(foodComponent(0, 0f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK, true);
-	public static final Item MERINGUE = basicJam(1, 0.7f, SoundEvents.ENTITY_WANDERING_TRADER_DRINK_MILK);
-	public static final Item EGG_YOLK = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(foodComponent(1, 0.1f).snack()
+	public static final Item MERINGUE = basicJam(1, 0.2f, SoundEvents.ENTITY_WANDERING_TRADER_DRINK_MILK);
+	public static final Item EGG_YOLK = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(foodComponent(0, 0f).snack()
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK, true);
-	public static final Item MAYONNAISE = basicJam(1, 0.5f, SoundEvents.ENTITY_WITCH_DRINK);
-	public static final Item PIZZA = basicFood(2, 2.5f);
-	public static final Item COOKED_PIZZA = basicFood(5, 7.8f);
-	public static final Item BACON = basicFood(3, 1.8f);
-	public static final Item SMOKED_BACON = basicFood(8, 13.8f);
-	public static final Item JERKY = basicFood(3, 1.8f);
-	public static final Item SMOKED_JERKY = basicFood(8, 13.8f);
-	public static final Item CUT_SALMON = basicFood(2, 0.4f);
-	public static final Item SMOKED_SALMON = basicFood(6, 10.5f);
+	public static final Item MAYONNAISE = basicJam(1, 0.2f, SoundEvents.ENTITY_WITCH_DRINK);
+	public static final Item PIZZA = basicFood(1, 0.4f);
+	public static final Item COOKED_PIZZA = basicFood(5, 0.8f);
+	public static final Item BACON = basicFood(3, 0.4f);
+	public static final Item SMOKED_BACON = basicFood(10, 0.9f);
+	public static final Item JERKY = basicFood(3, 0.4f);
+	public static final Item SMOKED_JERKY = basicFood(10, 0.9f);
+	public static final Item CUT_SALMON = basicFood(2, 0.2f);
+	public static final Item SMOKED_SALMON = basicFood(6, 0.9f);
 	public static final Item WILD_RICE_BALL = basicFood(1, 0.3f);
-	public static final Item RICE_BALL = basicFood(1, 0.3f);
-	public static final Item COOKED_WILD_RICE_BALL = basicFood(2, 0.7f);
-	public static final Item COOKED_RICE_BALL = basicFood(2, 0.7f);
+	public static final Item RICE_BALL = basicFood(1, 0.2f);
+	public static final Item COOKED_WILD_RICE_BALL = basicFood(4, 0.5f);
+	public static final Item COOKED_RICE_BALL = basicFood(4, 0.4f);
 
 	// Mill
 	public static final Identifier MILL_ID = new Identifier(ID, "mill");
@@ -312,13 +308,13 @@ public class Baking implements ModInitializer {
 	public static final Item GROUND_COFFEE = basicIngredient();
 	public static final Item GROUND_TEA = basicIngredient();
 	public static final Item BATTER = basicBowlFood(1, 0.1f);
-	public static final Item BACON_BITS = basicFood(2, 5.2f);
-	public static final Item MASHED_POTATOES = basicFood(4, 4.5f);
+	public static final Item BACON_BITS = basicFood(3, 0.9f);
+	public static final Item MASHED_POTATOES = basicFood(6, 0.6f);
 	public static final Item DOUGH = basicIngredient(); //  Henry - The inspiration behind the code, my rock and my brain - Redeemed
 	public static final Item PASTA_DOUGH = basicIngredient();
 	public static final Item LINGUINE = basicIngredient();
 	public static final Item MACARONI = basicIngredient();
-	public static final Item CHEESE = basicBucketDrink(2, 1.0f);
+	public static final Item CHEESE = basicBucketDrink(2, 0.1f);
 	public static final Item TOMATO_SAUCE = basicIngredient();
 	public static final Item WHEAT_CEREAL = basicIngredient();
 	public static final Item CORN_CEREAL = basicIngredient();
@@ -342,31 +338,31 @@ public class Baking implements ModInitializer {
 	public static final Item CUP = new CupItem(new Item.Settings().group(ItemGroup.MISC).maxCount(16));
 	public static final Item MILK_CUP = new MilkCupItem();
 	public static final Item WATER_CUP = basicCupDrink();
-	public static final Item CHOCOLATE_MILK = basicCupDrink(1, 1.0f); // frick i would like some choccy milk rn - redeemed by rrricohu on 3/21/21
-	public static final Item CREAMER_CUP = basicCupDrink(0, 0.1f);
-	public static final Item COFFEE_CUP = basicSuperCupDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 20*15, 1));
-	public static final Item COFFEE_W_CREAMER = basicSuperCupDrink(2, 1.5f, new StatusEffectInstance(StatusEffects.SPEED, 20*30));
-	public static final Item TEA_CUP = basicSuperCupDrink(2, 1.8f, new StatusEffectInstance(StatusEffects.SPEED, 20*10));
-	public static final Item TEA_W_CREAMER = basicSuperCupDrink(2, 1.8f, new StatusEffectInstance(StatusEffects.SPEED, 20*20));
+	public static final Item CHOCOLATE_MILK = basicCupDrink(2, 0.1f); // frick i would like some choccy milk rn - redeemed by rrricohu on 3/21/21
+	public static final Item CREAMER_CUP = basicCupDrink(0, 0f);
+	public static final Item COFFEE_CUP = basicSuperCupDrink(2, 0.3f, new StatusEffectInstance(StatusEffects.SPEED, 20*15, 1));
+	public static final Item COFFEE_W_CREAMER = basicSuperCupDrink(2, 0.2f, new StatusEffectInstance(StatusEffects.SPEED, 20*30));
+	public static final Item TEA_CUP = basicSuperCupDrink(2, 0.2f, new StatusEffectInstance(StatusEffects.SPEED, 20*10));
+	public static final Item TEA_W_CREAMER = basicSuperCupDrink(2, 0.1f, new StatusEffectInstance(StatusEffects.SPEED, 20*20));
 
 	// Sodie Pop
 	public static final Item SUGAR_WATER = basicCupDrink();
-	public static final Item CLUB_SODA = basicCupDrink(1, 1f); // coal
-	public static final Item ROOT_BEER = basicCupDrink(2, 1.8f); // beetUwUoot
-	public static final Item COLA = basicCupDrink(2, 1.8f); // cocoa beans
-	public static final Item FRUITY_SODA = basicCupDrink(2, 1.8f); // wild berries
-	public static final Item MOUNTAIN_FOUNTAIN = basicCupDrink(2, 1.8f); // melon
-	public static final Item CACTUS_CHILLER = basicCupDrink(2, 1.8f); // cactus
-	public static final Item GRAPE_SODA = basicCupDrink(2, 1.8f); // grape
+	public static final Item CLUB_SODA = basicCupDrink(1, 0.1f); // coal
+	public static final Item ROOT_BEER = basicCupDrink(2, 0.2f); // beetUwUoot
+	public static final Item COLA = basicCupDrink(2, 0.2f); // cocoa beans
+	public static final Item FRUITY_SODA = basicCupDrink(2, 0.2f); // wild berries
+	public static final Item MOUNTAIN_FOUNTAIN = basicCupDrink(2, 0.2f); // melon
+	public static final Item CACTUS_CHILLER = basicCupDrink(2, 0.2f); // cactus
+	public static final Item GRAPE_SODA = basicCupDrink(2, 0.2f); // grape
 
 	// Plates & Meals
 	public static final Item UNFIRED_PLATE = basicIngredient();
 	public static final Item PLATE = basicIngredient();
-	public static final Item STEAK_MEAL = new PlatedItem(17, 21.1f);
-	public static final Item PORK_MEAL = new PlatedItem(23, 22.3f);
-	public static final Item CHICKEN_MEAL = new PlatedItem(12, 12.5f);
-	public static final Item MUTTON_MEAL = new PlatedItem(17, 18.3f);
-	public static final Item RABBIT_MEAL = new PlatedItem(22, 28.1f);
+	public static final Item STEAK_MEAL = new PlatedItem(19, 0.7f);
+	public static final Item PORK_MEAL = new PlatedItem(25, 0.5f);
+	public static final Item CHICKEN_MEAL = new PlatedItem(8, 0.5f);
+	public static final Item MUTTON_MEAL = new PlatedItem(20, 0.6f);
+	public static final Item RABBIT_MEAL = new PlatedItem(26, 0.7f);
 
 	// Crops - Here's to v0.3!
 	public static final Block COFFEE = new CocoaBlock(FabricBlockSettings.copy(Blocks.COCOA));
@@ -379,7 +375,7 @@ public class Baking implements ModInitializer {
 	public static final DamageSource TEA_TREE_DMGSRC = DamageSourceAccessor.newDamageSource("tea_tree");
 	public static final Block TOMATO_PLANT = new BasicCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item TOMATO = new TomatoItem(TOMATO_PLANT, new Item.Settings().group(ItemGroup.FOOD).food(
-			foodComponent(3, 3.2f).build()
+			foodComponent(3, 0.6f).build()
 	));
 	public static final EntityType<TomatoEntity> TOMATO_THROWABLE = Registry.register(Registry.ENTITY_TYPE, new Identifier(ID, "tomato"),
 			FabricEntityTypeBuilder.<TomatoEntity>create()
@@ -392,8 +388,8 @@ public class Baking implements ModInitializer {
 	public static final Item WILD_RICE = new BlockItem(RICE_PLANT, new Item.Settings().group(ItemGroup.MISC));
 	public static final Item RICE = basicIngredient();
 	public static final Block CORN_STALK = new TallCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
-	public static final Item CORN = basicFood(3, 2.4f);
-	public static final Item COOKED_CORN = basicFood(5, 3.8f);
+	public static final Item CORN = basicFood(3, 0.3f);
+	public static final Item COOKED_CORN = basicFood(5, 0.6f);
 	public static final Item CORN_SEEDS = new BlockItem(CORN_STALK, new Item.Settings().group(ItemGroup.MISC));
 	// deathypooh - requested on 3/22/21
 	// solcatowo - requested on 3/22/21
@@ -405,7 +401,7 @@ public class Baking implements ModInitializer {
 	public static final Block CHERRY_LOG = new BasicLogBlock(() -> STRIPPED_CHERRY_LOG);
 	public static final Block STRIPPED_CHERRY_WOOD = new BasicLogBlock();
 	public static final Block CHERRY_WOOD = new BasicLogBlock(() -> STRIPPED_CHERRY_WOOD);
-	public static final Item CHERRIES = basicFood(2, 1.8f);
+	public static final Item CHERRIES = basicFood(2, 0.1f);
 	public static final Block CHERRY_LEAVES = new BasicLeavesBlock(CHERRIES);
 	public static final Block LEMON_SAPLING = new BasicSaplingBlock(new LemonSaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
 	public static final Block POTTED_LEMON_SAPLING = new FlowerPotBlock(LEMON_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
@@ -413,11 +409,11 @@ public class Baking implements ModInitializer {
 	public static final Block LEMON_LOG = new BasicLogBlock(() -> STRIPPED_LEMON_LOG);
 	public static final Block STRIPPED_LEMON_WOOD = new BasicLogBlock();
 	public static final Block LEMON_WOOD = new BasicLogBlock(() -> STRIPPED_LEMON_WOOD);
-	public static final Item LEMON = basicFood(1, 0.8f);
+	public static final Item LEMON = basicFood(1, 0.1f);
 	public static final Block LEMON_LEAVES = new BasicLeavesBlock(LEMON);
 	public static final Block GRAPE_STEM = new GrapeStemBlock(FabricBlockSettings.copy(Blocks.VINE));
 	public static final Block GRAPE_VINE = new GrapeVineBlock(FabricBlockSettings.copy(Blocks.VINE));
-	public static final Item GRAPES = basicFood(2, 1.5f);
+	public static final Item GRAPES = basicFood(1, 0.1f);
 	public static final Block OAK_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
 	public static final Block SPRUCE_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
 	public static final Block BIRCH_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
@@ -433,35 +429,35 @@ public class Baking implements ModInitializer {
 	// Cheese
 	public static final Block CHEESE_BLOCK = new Block(FabricBlockSettings.copy(Blocks.HONEY_BLOCK).sounds(BlockSoundGroup.CANDLE)); // TODO: play with sounds!
 	public static final Block CHEESE_LAYER = new BasicLayerBlock(FabricBlockSettings.copy(Blocks.SNOW));
-	public static final Item CHEESE_SLICE = new BlockItem(CHEESE_LAYER, new FabricItemSettings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(0).saturationModifier(0.3f).build()));
+	public static final Item CHEESE_SLICE = new BlockItem(CHEESE_LAYER, new FabricItemSettings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0f).build()));
 
 	// Misc
-	public static final Item BAGEL = basicFood(7, 6.5f);
-	public static final Item DONUT = basicFood(7, 7f);
-	public static final Item BROWNIE = basicFood(2, 2.6f);
-	public static final Item PEPPERONI = basicFood(4, 3.1f);
-	public static final Item COOKED_EGG = basicFood(2, 3.3f);
-	public static final Item MACARONI_N_CHEESE = basicBowlFood(4, 6.5f);
-	public static final Item BACON_MACARONI_N_CHEESE = basicBowlFood(6, 11.2f);
-	public static final Item TOMATO_SOUP = basicBowlFood(12, 14.0f);
-	public static final Item SALMON_SUSHI = basicFood(4, 6.5f);
-	public static final Item SQUID_SUSHI = basicFood(4, 4.7f);
-	public static final Item LOADED_FRIES = basicFood(3, 3.5f);
-	public static final Item LOADED_POTATO = basicFood(8, 10.2f);
-	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(11, 11.4f);
-	public static final MushroomStewItem FRUIT_SALAD = basicBowlFood(8, 4f);
-	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(foodComponent(14, 35f).alwaysEdible() // Give 1 item
+	public static final Item BAGEL = basicFood(8, 0.6f);
+	public static final Item DONUT = basicFood(8, 0.7f);
+	public static final Item BROWNIE = basicFood(4, 0.5f);
+	public static final Item PEPPERONI = basicFood(2, 0.4f);
+	public static final Item COOKED_EGG = basicFood(2, 0.4f);
+	public static final Item MACARONI_N_CHEESE = basicBowlFood(3, 0.4f);
+	public static final Item BACON_MACARONI_N_CHEESE = basicBowlFood(5, 0.7f);
+	public static final Item TOMATO_SOUP = basicBowlFood(12, 0.6f);
+	public static final Item SALMON_SUSHI = basicFood(4, 0.2f);
+	public static final Item SQUID_SUSHI = basicFood(4, 0.2f);
+	public static final Item LOADED_FRIES = basicFood(6, 0.7f);
+	public static final Item LOADED_POTATO = basicFood(16, 0.8f);
+	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(11, 0.5f);
+	public static final MushroomStewItem FRUIT_SALAD = basicBowlFood(13, 0.2f);
+	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(foodComponent(20, 1.2f).alwaysEdible() // Give 1 item
 			.statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 20*120), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 20*20, 1), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 20*60), 1f).build()));
-	public static final Item DISGUSTING_DISH = new MushroomStewItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(foodComponent(2, 0.5f).alwaysEdible() // Give 1 item
+	public static final Item DISGUSTING_DISH = new MushroomStewItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(foodComponent(4, 0.3f).alwaysEdible() // Give 1 item
 			.statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 20*30, 2), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*30), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.POISON, 20*90, 3), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 20*30), 1f).build()));
-	public static final MushroomStewItem WHEAT_CEREAL_BOWL = basicBowlFood(2, 1.5f);
-	public static final MushroomStewItem CORN_CEREAL_BOWL = basicBowlFood(2, 1.7f);
-	public static final MushroomStewItem RICE_CEREAL_BOWL = basicBowlFood(2, 1.3f);
+	public static final MushroomStewItem WHEAT_CEREAL_BOWL = basicBowlFood(3, 0.3f);
+	public static final MushroomStewItem CORN_CEREAL_BOWL = basicBowlFood(4, 0.3f);
+	public static final MushroomStewItem RICE_CEREAL_BOWL = basicBowlFood(3, 0.3f);
 
 	// Stats
 	public static final Identifier DAY_OF_WEEK = new Identifier(ID, "day_of_week");
