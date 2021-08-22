@@ -293,6 +293,8 @@ public class Baking implements ModInitializer {
 	public static final Item RICE_BALL = basicFood(1, 0.2f);
 	public static final Item COOKED_WILD_RICE_BALL = basicFood(4, 0.5f);
 	public static final Item COOKED_RICE_BALL = basicFood(4, 0.4f);
+	public static final Item COOKED_CORN = basicFood(5, 0.6f);
+	public static final Item POPCORN = basicFood(1, 0.3f);
 
 	// Mill
 	public static final Identifier MILL_ID = new Identifier(ID, "mill");
@@ -400,7 +402,6 @@ public class Baking implements ModInitializer {
 	public static final Item RICE = basicIngredient();
 	public static final Block CORN_STALK = new TallCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item CORN = basicFood(3, 0.3f);
-	public static final Item COOKED_CORN = basicFood(5, 0.6f);
 	public static final Item CORN_SEEDS = new BlockItem(CORN_STALK, new Item.Settings().group(ItemGroup.MISC));
 	// deathypooh - requested on 3/22/21
 	// solcatowo - requested on 3/22/21
@@ -607,6 +608,8 @@ public class Baking implements ModInitializer {
 		registerItem("rice_ball", RICE_BALL);
 		registerItem("cooked_wild_rice_ball", COOKED_WILD_RICE_BALL);
 		registerItem("cooked_rice_ball", COOKED_RICE_BALL);
+		registerItem("cooked_corn", COOKED_CORN);
+		registerItem("popcorn", POPCORN);
 
 		// Mill
 		Registry.register(Registry.RECIPE_SERIALIZER, MillingRecipe.ID, MillingRecipe.SERIALIZER);
@@ -661,7 +664,6 @@ public class Baking implements ModInitializer {
 		registerBlock("corn", CORN_STALK);
 		((BasicCropBlock)CORN_STALK).setSeed(CORN_SEEDS);
 		registerItem("corn", CORN);
-		registerItem("cooked_corn", COOKED_CORN);
 		registerItem("corn_seeds", CORN_SEEDS);
 		// dreamwastaken my beloved <3 - redeemed by KoritsiAlogo on 3/22/21
 
