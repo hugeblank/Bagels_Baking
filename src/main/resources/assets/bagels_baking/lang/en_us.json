@@ -233,6 +233,9 @@
   "item.bagels_baking.wild_rice_ball": "Raw Wild Rice Ball",
   "item.bagels_baking.sugar_cookie": "Sugar Cookie",
   "item.bagels_baking.snickerdoodle_cookie": "Snickerdoodle Cookie",
+  "item.bagels_baking.glowberry_jam": "Glowberry Jam",
+  "item.bagels_baking.grape_jam": "Grape Jam",
+  "item.bagels_baking.cherry_jam": "Cherry Jam",
   "stat.bagels_baking.day_of_week": "Numerical Day of Week",
   "stat.bagels_baking.interact_with_mill": "Interactions with Mill",
   "stat.bagels_baking.tomato_kills": "Player Kills using Tomato"

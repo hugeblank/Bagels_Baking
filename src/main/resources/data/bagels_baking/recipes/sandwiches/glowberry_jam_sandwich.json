@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " C ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:bread"
+        },
+        "C": {
+            "item": "bagels_baking:glowberry_jam"
+        }
+    },
+    "result": {
+        "item": "bagels_baking:glowberry_jam_sandwich",
+        "count": 2
+    }
+}

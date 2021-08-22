@@ -186,6 +186,9 @@ public class Baking implements ModInitializer {
 	public static final Item GRILLED_CHEESE_SANDWICH = basicFood(5, 0.6f);
 	public static final Item BERRY_JAM_SANDWICH = basicFood(7, 0.4f);
 	public static final Item APPLE_JAM_SANDWICH = basicFood(8, 0.5f);
+	public static final Item GLOWBERRY_JAM_SANDWICH = basicFood(7, 0.4f);
+	public static final Item GRAPE_JAM_SANDWICH = basicFood(6, 0.4f);
+	public static final Item CHERRY_JAM_SANDWICH = basicFood(7, 0.4f);
 
 	// Pocket - Gives 2 items
 	public static final Item STEAK_POCKET = basicFood(12, 0.3f);
@@ -222,6 +225,10 @@ public class Baking implements ModInitializer {
 	// Jams - Gives 1 Item
 	public static final Item BERRY_JAM = basicJam(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
 	public static final Item APPLE_JAM = basicJam(5, 0.3f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
+	public static final Item GLOWBERRY_JAM = basicJam(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
+	public static final Item GRAPE_JAM = basicJam(2, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
+	public static final Item CHERRY_JAM = basicJam(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
+
 
 	// Pies - Gives 1 Item
 	public static final Item SHEPHERDS_PIE = basicFood(15, 0.7f);
@@ -477,6 +484,9 @@ public class Baking implements ModInitializer {
 		registerItem("rabbit_sandwich", RABBIT_SANDWICH);
 		registerItem("berry_jam_sandwich", BERRY_JAM_SANDWICH);
 		registerItem("apple_jam_sandwich", APPLE_JAM_SANDWICH);
+		registerItem("glowberry_jam_sandwich", GLOWBERRY_JAM_SANDWICH);
+		registerItem("grape_jam_sandwich", GRAPE_JAM_SANDWICH);
+		registerItem("cherry_jam_sandwich", CHERRY_JAM_SANDWICH);
 		registerItem("cheese_sandwich", CHEESE_SANDWICH);
 		registerItem("grilled_cheese_sandwich", GRILLED_CHEESE_SANDWICH);
 
@@ -531,6 +541,9 @@ public class Baking implements ModInitializer {
 		// Jams
 		registerItem("berry_jam", BERRY_JAM);
 		registerItem("apple_jam", APPLE_JAM);
+		registerItem("glowberry_jam", GLOWBERRY_JAM);
+		registerItem("grape_jam", GRAPE_JAM);
+		registerItem("cherry_jam", CHERRY_JAM);
 
 		// Pies
 		registerItem("shepherds_pie", SHEPHERDS_PIE);
