@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:lemon"
+        },
+        {
+            "item": "bagels_baking:tomato"
+        },
+        {
+            "item": "minecraft:apple"
+        },
+        {
+            "item": "minecraft:carrot"
+        },
+        {
+            "item": "bagels_baking:malt_vinegar"
+        },
+        {
+            "item": "minecraft:glass_bottle"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:tonkatsu_sauce",
+        "count": 1
+    }
+}

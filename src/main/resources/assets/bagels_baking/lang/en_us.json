@@ -236,6 +236,10 @@
   "item.bagels_baking.glowberry_jam": "Glowberry Jam",
   "item.bagels_baking.grape_jam": "Grape Jam",
   "item.bagels_baking.cherry_jam": "Cherry Jam",
+  "item.bagels_baking.battered_porkchop": "Battered Pork",
+  "item.bagels_baking.fried_porkchop": "Fried Pork",
+  "item.bagels_baking.tonkatsu_sauce": "Tonkatsu Sauce",
+  "item.bagels_baking.katsu_sandwich": "Katsu Sandwich",
   "stat.bagels_baking.day_of_week": "Numerical Day of Week",
   "stat.bagels_baking.interact_with_mill": "Interactions with Mill",
   "stat.bagels_baking.tomato_kills": "Player Kills using Tomato"

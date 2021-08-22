@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " CS",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:bread"
+        },
+        "C": {
+            "item": "bagels_baking:fried_porkchop"
+        },
+        "S": {
+            "item": "bagels_baking:tonkatsu_sauce"
+        }
+    },
+    "result": {
+        "item": "bagels_baking:katsu_sandwich",
+        "count": 2
+    }
+}

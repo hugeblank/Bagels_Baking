@@ -189,6 +189,7 @@ public class Baking implements ModInitializer {
 	public static final Item GLOWBERRY_JAM_SANDWICH = basicFood(7, 0.4f);
 	public static final Item GRAPE_JAM_SANDWICH = basicFood(6, 0.4f);
 	public static final Item CHERRY_JAM_SANDWICH = basicFood(7, 0.4f);
+	public static final Item KATSU_SANDWICH = basicFood(13, 0.7f);
 
 	// Pocket - Gives 2 items
 	public static final Item STEAK_POCKET = basicFood(12, 0.3f);
@@ -228,6 +229,7 @@ public class Baking implements ModInitializer {
 	public static final Item GLOWBERRY_JAM = basicJam(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
 	public static final Item GRAPE_JAM = basicJam(2, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
 	public static final Item CHERRY_JAM = basicJam(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
+	public static final Item TONKATSU_SAUCE = basicJam(6, 0.6f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
 
 
 	// Pies - Gives 1 Item
@@ -268,7 +270,9 @@ public class Baking implements ModInitializer {
 	public static final Item FRIED_CHICKEN_NUGGETS = basicFood(4, 0.4f);
 	public static final Item BATTERED_CHICKEN = basicFood(foodComponent(3, 0.2f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 20*10), .3f));
-	public static final Item FRIED_CHICKEN = basicFood(8, 0.7f);
+	public static final Item FRIED_CHICKEN = basicFood(8, 0.6f);
+	public static final Item BATTERED_PORKCHOP = basicFood(4, 0.2f);
+	public static final Item FRIED_PORKCHOP = basicFood(10, 0.8f);
 	public static final Item FRENCH_FRIES = basicFood(1, 0.1f);
 	public static final Item COOKED_FRENCH_FRIES = basicFood(2, 0.6f);
 	public static final Item EGG_WHITES = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(foodComponent(0, 0f)
@@ -489,6 +493,7 @@ public class Baking implements ModInitializer {
 		registerItem("cherry_jam_sandwich", CHERRY_JAM_SANDWICH);
 		registerItem("cheese_sandwich", CHEESE_SANDWICH);
 		registerItem("grilled_cheese_sandwich", GRILLED_CHEESE_SANDWICH);
+		registerItem("katsu_sandwich", KATSU_SANDWICH);
 
 		// Pockets
 		registerItem("steak_pocket", STEAK_POCKET);
@@ -544,6 +549,7 @@ public class Baking implements ModInitializer {
 		registerItem("glowberry_jam", GLOWBERRY_JAM);
 		registerItem("grape_jam", GRAPE_JAM);
 		registerItem("cherry_jam", CHERRY_JAM);
+		registerItem("tonkatsu_sauce", TONKATSU_SAUCE);
 
 		// Pies
 		registerItem("shepherds_pie", SHEPHERDS_PIE);
@@ -581,6 +587,8 @@ public class Baking implements ModInitializer {
 		registerItem("fried_chicken_nuggets", FRIED_CHICKEN_NUGGETS);
 		registerItem("battered_chicken", BATTERED_CHICKEN);
 		registerItem("fried_chicken", FRIED_CHICKEN);
+		registerItem("battered_porkchop", BATTERED_PORKCHOP);
+		registerItem("fried_porkchop", FRIED_PORKCHOP);
 		registerItem("french_fries", FRENCH_FRIES);
 		registerItem("cooked_french_fries", COOKED_FRENCH_FRIES);
 		registerItem("pizza", PIZZA);

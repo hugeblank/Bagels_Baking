@@ -1,9 +1,9 @@
 {
     "type": "minecraft:smoking",
     "ingredient": {
-        "item": "bagels_baking:cheese_sandwich"
+        "item": "bagels_baking:battered_porkchop"
     },
-    "result": "bagels_baking:grilled_cheese_sandwich",
+    "result": "bagels_baking:fried_porkchop",
     "experience": 0.1,
     "cookingtime": 100
 }
