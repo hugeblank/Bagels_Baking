@@ -82,11 +82,11 @@ public class BakingConfiguredFeatures {
                     .ignoreVines()
                     .build())
     );
-    public static final ConfiguredFeature<TreeFeatureConfig, ?> CHERRY_TREE_BEES = register("cherry_tree_bees", Feature.TREE
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> CHERRY_TREE_BEES_005 = register("cherry_tree_bees", Feature.TREE
             .configure(CHERRY_TREE.getConfig().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.05F))))
     );
     public static final ConfiguredFeature<?, ?> CHERRY_TREES = register("cherry_trees", Feature.RANDOM_SELECTOR
-            .configure(new RandomFeatureConfig(ImmutableList.of(CHERRY_TREE_BEES.withChance(0.8F), ConfiguredFeatures.OAK_BEES_005.withChance(0.05F)), BakingConfiguredFeatures.CHERRY_TREE))
+            .configure(new RandomFeatureConfig(ImmutableList.of(CHERRY_TREE_BEES_005.withChance(0.8F), ConfiguredFeatures.OAK_BEES_005.withChance(0.05F)), BakingConfiguredFeatures.CHERRY_TREE))
             .decorate(Decorator.HEIGHTMAP
                     .configure(new HeightmapDecoratorConfig(Heightmap.Type.MOTION_BLOCKING))
                     .spreadHorizontally())
@@ -99,11 +99,11 @@ public class BakingConfiguredFeatures {
                     .ignoreVines()
                     .build())
     );
-    public static final ConfiguredFeature<TreeFeatureConfig, ?> LEMON_TREE_BEES = register("lemon_tree_bees", Feature.TREE
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> LEMON_TREE_BEES_005 = register("lemon_tree_bees", Feature.TREE
             .configure(LEMON_TREE.getConfig().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.05F))))
     );
     public static final ConfiguredFeature<?, ?> LEMON_TREES = register("lemon_trees", Feature.RANDOM_SELECTOR
-            .configure(new RandomFeatureConfig(ImmutableList.of(LEMON_TREE_BEES.withChance(0.8F), ConfiguredFeatures.OAK_BEES_005.withChance(0.05F)), LEMON_TREE))
+            .configure(new RandomFeatureConfig(ImmutableList.of(LEMON_TREE_BEES_005.withChance(0.8F), ConfiguredFeatures.OAK_BEES_005.withChance(0.05F)), LEMON_TREE))
             .decorate(Decorator.HEIGHTMAP
                     .configure(new HeightmapDecoratorConfig(Heightmap.Type.MOTION_BLOCKING))
                     .spreadHorizontally())

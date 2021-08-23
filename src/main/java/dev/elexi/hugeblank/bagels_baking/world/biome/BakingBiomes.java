@@ -38,16 +38,18 @@ public class BakingBiomes {
         DefaultBiomeFeatures.addDefaultLakes(builder);
         DefaultBiomeFeatures.addAmethystGeodes(builder);
         DefaultBiomeFeatures.addDungeons(builder);
-        DefaultBiomeFeatures.addPlainsTallGrass(builder);
+
+        DefaultBiomeFeatures.addForestFlowers(builder);
 
         DefaultBiomeFeatures.addMineables(builder);
         DefaultBiomeFeatures.addDefaultOres(builder);
         DefaultBiomeFeatures.addDefaultDisks(builder);
-        DefaultBiomeFeatures.addPlainsFeatures(builder);
+
+        DefaultBiomeFeatures.addForestTrees(builder);
+        DefaultBiomeFeatures.addForestGrass(builder);
 
         DefaultBiomeFeatures.addDefaultMushrooms(builder);
         DefaultBiomeFeatures.addDefaultVegetation(builder);
-
         DefaultBiomeFeatures.addSprings(builder);
         DefaultBiomeFeatures.addFrozenTopLayer(builder);
     }
@@ -66,25 +68,7 @@ public class BakingBiomes {
         createDefaultFeatures(builder2);
         builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, BakingConfiguredFeatures.CHERRY_TREES);
 
-
-            return (new Biome.Builder())
-                    .precipitation(Biome.Precipitation.RAIN)
-                    .category(Biome.Category.FOREST)
-                    .depth(0.125F)
-                    .scale(0.05F)
-                    .temperature(0.8F)
-                    .downfall(0.4F)
-                    .effects((new net.minecraft.world.biome.BiomeEffects.Builder())
-                            .waterColor(4159204)
-                            .waterFogColor(329011)
-                            .fogColor(12638463)
-                            .skyColor(getSkyColor(0.8F))
-                            .grassColor(0xfeb5c3)
-                            .moodSound(BiomeMoodSound.CAVE)
-                            .build())
-                    .spawnSettings(builder.build())
-                    .generationSettings(builder2.build())
-                    .build();
+        return createBiome(builder, builder2);
     }
 
     public static Biome createLemonGrove() {
@@ -93,22 +77,25 @@ public class BakingBiomes {
 
         GenerationSettings.Builder builder2 = (new GenerationSettings.Builder()).surfaceBuilder(ConfiguredSurfaceBuilders.GRASS);
         createDefaultFeatures(builder2);
+        DefaultBiomeFeatures.addForestTrees(builder2);
+        DefaultBiomeFeatures.addDefaultFlowers(builder2);
         builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, BakingConfiguredFeatures.LEMON_TREES);
+        return createBiome(builder, builder2);
+    }
 
-
+    private static Biome createBiome(SpawnSettings.Builder builder, GenerationSettings.Builder builder2) {
         return (new Biome.Builder())
                 .precipitation(Biome.Precipitation.RAIN)
                 .category(Biome.Category.FOREST)
-                .depth(0.125F)
-                .scale(0.05F)
-                .temperature(0.8F)
-                .downfall(0.4F)
+                .depth(0.1F)
+                .scale(0.2F)
+                .temperature(0.7F)
+                .downfall(0.8F)
                 .effects((new net.minecraft.world.biome.BiomeEffects.Builder())
                         .waterColor(4159204)
                         .waterFogColor(329011)
                         .fogColor(12638463)
-                        .skyColor(getSkyColor(0.8F))
-                        .grassColor(0x92c969)
+                        .skyColor(getSkyColor(0.7F))
                         .moodSound(BiomeMoodSound.CAVE)
                         .build())
                 .spawnSettings(builder.build())

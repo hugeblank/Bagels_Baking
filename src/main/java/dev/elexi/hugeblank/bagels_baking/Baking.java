@@ -733,7 +733,6 @@ public class Baking implements ModInitializer {
 		// Configured Features
 		BakingConfiguredFeatures.init();
 
-
 		// Biomes
 		BakingBiomes.init();
 

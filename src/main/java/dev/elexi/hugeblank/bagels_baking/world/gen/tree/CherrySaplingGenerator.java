@@ -11,6 +11,6 @@ public class CherrySaplingGenerator extends SaplingGenerator {
     public CherrySaplingGenerator() {}
 
     protected ConfiguredFeature<TreeFeatureConfig, ?> getTreeFeature(Random random, boolean bees) {
-        return bees ? BakingConfiguredFeatures.CHERRY_TREE_BEES : BakingConfiguredFeatures.CHERRY_TREE;
+        return bees ? BakingConfiguredFeatures.CHERRY_TREE_BEES_005 : BakingConfiguredFeatures.CHERRY_TREE;
     }
 }
