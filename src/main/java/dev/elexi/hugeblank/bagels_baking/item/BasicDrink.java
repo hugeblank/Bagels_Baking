@@ -1,12 +1,10 @@
 package dev.elexi.hugeblank.bagels_baking.item;
 
-import dev.elexi.hugeblank.bagels_baking.Baking;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -14,9 +12,6 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.UseAction;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -25,16 +20,8 @@ import java.util.List;
 
 public class BasicDrink extends PotionItem implements BrewableItem {
 
-
-    private static Item.Settings genSettings(Item type) {
-        return new Item.Settings().group(ItemGroup.FOOD)
-                .maxCount(type.equals(Items.BUCKET) ? 1 : 16)
-                .recipeRemainder(type.equals(Items.BUCKET) ? Items.BUCKET : (null));
-    }
-
     private final Item type;
     private final boolean brewable;
-
 
     public BasicDrink(Settings settings, FoodComponent foodComponent, Item type) {
         super(settings.food(foodComponent));
@@ -73,6 +60,7 @@ public class BasicDrink extends PotionItem implements BrewableItem {
         return stack.getItem() instanceof CupItem ? 16 : super.getMaxUseTime(stack);
     }
 
+    // All of the below are for overwriting fancy potion stuffs.
     @Override
     @Environment(EnvType.CLIENT)
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
@@ -86,6 +74,13 @@ public class BasicDrink extends PotionItem implements BrewableItem {
     @Override
     public ItemStack getDefaultStack() {
         return new ItemStack(this);
+    }
+
+    @Override
+    public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+        if (this.isIn(group)) {
+            stacks.add(new ItemStack(this));
+        }
     }
 
     public SoundEvent getEatSound() {
