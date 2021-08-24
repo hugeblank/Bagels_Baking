@@ -229,7 +229,7 @@ public class Baking implements ModInitializer {
 	public static final Item GLOWBERRY_JAM = basicJam(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
 	public static final Item GRAPE_JAM = basicJam(2, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
 	public static final Item CHERRY_JAM = basicJam(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
-	public static final Item TONKATSU_SAUCE = basicJam(6, 0.6f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
+	public static final Item TONKATSU_SAUCE = basicBowlFood(6, 0.6f);
 
 
 	// Pies - Gives 1 Item
@@ -474,6 +474,9 @@ public class Baking implements ModInitializer {
 	public static final MushroomStewItem WHEAT_CEREAL_BOWL = basicBowlFood(3, 0.3f);
 	public static final MushroomStewItem CORN_CEREAL_BOWL = basicBowlFood(4, 0.3f);
 	public static final MushroomStewItem RICE_CEREAL_BOWL = basicBowlFood(3, 0.3f);
+
+	// Fermented Items
+	public static final BottledItem MALT_VINEGAR = basicJam(0, 0f, SoundEvents.ENTITY_GENERIC_DRINK);
 
 	// Stats
 	public static final Identifier DAY_OF_WEEK = new Identifier(ID, "day_of_week");
@@ -727,14 +730,8 @@ public class Baking implements ModInitializer {
 		registerItem("corn_cereal_bowl", CORN_CEREAL_BOWL);
 		registerItem("rice_cereal_bowl", RICE_CEREAL_BOWL);
 
-		// Trades
-		BakingVillagerTrades.init();
-
-		// Configured Features
-		BakingConfiguredFeatures.init();
-
-		// Biomes
-		BakingBiomes.init();
+		// Fermented Items
+		registerItem("malt_vinegar", MALT_VINEGAR);
 
 		// Cauldrons
 		BakingCauldronBehavior.registerBehaviors();
@@ -745,6 +742,15 @@ public class Baking implements ModInitializer {
 		registerBlock("creamy_coffee_cauldron", CREAMY_COFFEE_CAULDRON);
 		registerBlock("creamy_tea_cauldron", CREAMY_TEA_CAULDRON);
 		registerBlock("separator_cauldron", SEPARATOR_CAULDRON);
+
+		// Trades
+		BakingVillagerTrades.init();
+
+		// Configured Features
+		BakingConfiguredFeatures.init();
+
+		// Biomes
+		BakingBiomes.init();
 
 		// Stats
 		Registry.register(Registry.CUSTOM_STAT, "day_of_week", DAY_OF_WEEK);
