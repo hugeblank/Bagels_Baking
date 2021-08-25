@@ -1,0 +1,7 @@
+{
+    "type": "bagels_baking:freezing",
+    "ingredient": {
+        "item": "minecraft:grass_block"
+    },
+    "result": "minecraft:dirt"
+}

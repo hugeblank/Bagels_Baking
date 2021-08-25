@@ -4,12 +4,14 @@ import dev.elexi.hugeblank.bagels_baking.block.*;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.BakingCauldronBehavior;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.CheeseCauldronBlock;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.SeparatorCauldron;
+import dev.elexi.hugeblank.bagels_baking.block.entity.IceBoxBlockEntity;
 import dev.elexi.hugeblank.bagels_baking.block.sign.SignTypeRegistry;
 import dev.elexi.hugeblank.bagels_baking.entity.BakingVillagerTrades;
 import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
 import dev.elexi.hugeblank.bagels_baking.entity.boat.BasicBoatRegistry;
 import dev.elexi.hugeblank.bagels_baking.item.*;
 import dev.elexi.hugeblank.bagels_baking.mixin.entity.DamageSourceAccessor;
+import dev.elexi.hugeblank.bagels_baking.recipe.FreezingRecipe;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
 import dev.elexi.hugeblank.bagels_baking.world.biome.BakingBiomes;
@@ -19,10 +21,12 @@ import dev.elexi.hugeblank.bagels_baking.world.gen.tree.LemonSaplingGenerator;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.cauldron.CauldronBehavior;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -30,6 +34,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
+import net.minecraft.screen.GenericContainerScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
@@ -305,6 +310,17 @@ public class Baking implements ModInitializer {
 	private static final String mill_stat = "interact_with_mill";
 	public static final Identifier INTERACT_WITH_MILL = new Identifier(ID, mill_stat);
 	public static ScreenHandlerType<MillScreenHandler> MILL_SCREEN;
+
+	// Ice Box
+	public static final Identifier ICE_BOX_ID = new Identifier(ID, "ice_box");
+	public static BlockEntityType<IceBoxBlockEntity> ICE_BOX_ENTITY_TYPE;
+	public static final Block ICE_BOX = new GenericIceBoxBlock(FabricBlockSettings.copy(Blocks.CHEST), () -> ICE_BOX_ENTITY_TYPE);
+	public static final BlockItem ICE_BOX_ITEM = new BlockItem(ICE_BOX, new Item.Settings().group(ItemGroup.DECORATIONS));
+	private static final String ice_box_stat = "open_ice_box";
+	public static final Identifier OPEN_ICE_BOX = new Identifier(ID, ice_box_stat);
+	public static ScreenHandlerType<GenericContainerScreenHandler> ICE_BOX_9X3;
+	public static ScreenHandlerType<GenericContainerScreenHandler> ICE_BOX_9X6;
+
 
 	// Cauldron
 	public static final Block LIQUID_CHEESE_CAULDRON = new CheeseCauldronBlock(FabricBlockSettings.copy(Blocks.CAULDRON), CauldronBehavior.createMap()); // do nothing
@@ -625,6 +641,17 @@ public class Baking implements ModInitializer {
 		Registry.register(Registry.BLOCK, MILL_ID, MILL);
 		Registry.register(Registry.ITEM, MILL_ID, MILL_ITEM);
 		MILL_SCREEN = ScreenHandlerRegistry.registerSimple(Baking.MILL_ID, MillScreenHandler::new);
+
+		// Ice Box
+		Registry.register(Registry.RECIPE_SERIALIZER, FreezingRecipe.ID, FreezingRecipe.SERIALIZER);
+		Registry.register(Registry.CUSTOM_STAT, ice_box_stat, OPEN_ICE_BOX);
+		Stats.CUSTOM.getOrCreateStat(OPEN_ICE_BOX, StatFormatter.DEFAULT);
+		Registry.register(Registry.BLOCK, ICE_BOX_ID, ICE_BOX);
+		Registry.register(Registry.ITEM, ICE_BOX_ID, ICE_BOX_ITEM);
+		ICE_BOX_ENTITY_TYPE = Registry.register(Registry.BLOCK_ENTITY_TYPE, ICE_BOX_ID, FabricBlockEntityTypeBuilder.create(IceBoxBlockEntity::new, ICE_BOX).build());
+		ICE_BOX_9X3 = ScreenHandlerRegistry.registerSimple(new Identifier(ID, "ice_box_9x3"), GenericContainerScreenHandler::createGeneric9x3);
+		ICE_BOX_9X6 = ScreenHandlerRegistry.registerSimple(new Identifier(ID, "ice_box_9x6"), GenericContainerScreenHandler::createGeneric9x6);
+
 
 		// Cups
 		registerItem("cup", CUP);

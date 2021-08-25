@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#B#",
+        "BCB",
+        "#B#"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:iron_ingot"
+        },
+        "C": {
+            "item": "minecraft:chest"
+        },
+        "B": {
+            "item": "minecraft:blue_ice"
+        }
+    },
+    "result": {
+        "item": "bagels_baking:ice_box",
+        "count": 1
+    }
+}

@@ -1,7 +1,8 @@
-package dev.elexi.hugeblank.bagels_baking.screen;
+package dev.elexi.hugeblank.bagels_baking.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
+import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
