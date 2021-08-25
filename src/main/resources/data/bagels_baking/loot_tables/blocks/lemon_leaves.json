@@ -1,202 +1,213 @@
 {
-    "type": "minecraft:block",
-    "pools": [
-      {
-        "rolls": 1.0,
-        "bonus_rolls": 0.0,
-        "entries": [
-          {
-            "type": "minecraft:alternatives",
-            "children": [
-              {
-                "type": "minecraft:item",
-                "conditions": [
-                  {
-                    "condition": "minecraft:alternative",
-                    "terms": [
-                      {
-                        "condition": "minecraft:match_tool",
-                        "predicate": {
-                          "items": [
-                            "minecraft:shears"
-                          ]
-                        }
-                      },
-                      {
-                        "condition": "minecraft:match_tool",
-                        "predicate": {
-                          "enchantments": [
-                            {
-                              "enchantment": "minecraft:silk_touch",
-                              "levels": {
-                                "min": 1
-                              }
-                            }
-                          ]
-                        }
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:alternative",
+                  "terms": [
+                    {
+                      "condition": "minecraft:match_tool",
+                      "predicate": {
+                        "items": [
+                          "minecraft:shears"
+                        ]
                       }
-                    ]
-                  }
-                ],
-                "name": "bagels_baking:lemon_leaves"
+                    },
+                    {
+                      "condition": "minecraft:match_tool",
+                      "predicate": {
+                        "enchantments": [
+                          {
+                            "enchantment": "minecraft:silk_touch",
+                            "levels": {
+                              "min": 1
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ],
+              "name": "bagels_baking:lemon_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:survives_explosion"
+                },
+                {
+                  "condition": "minecraft:table_bonus",
+                  "enchantment": "minecraft:fortune",
+                  "chances": [
+                    0.05,
+                    0.0625,
+                    0.083333336,
+                    0.1
+                  ]
+                }
+              ],
+              "name": "bagels_baking:lemon_sapling"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:table_bonus",
+              "enchantment": "minecraft:fortune",
+              "chances": [
+                0.02,
+                0.022222223,
+                0.025,
+                0.033333335,
+                0.1
+              ]
+            }
+          ],
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1.0,
+                "max": 2.0
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ],
+          "name": "minecraft:stick"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:alternative",
+            "terms": [
+              {
+                "condition": "minecraft:match_tool",
+                "predicate": {
+                  "items": [
+                    "minecraft:shears"
+                  ]
+                }
               },
               {
-                "type": "minecraft:item",
-                "conditions": [
-                  {
-                    "condition": "minecraft:survives_explosion"
-                  },
-                  {
-                    "condition": "minecraft:table_bonus",
-                    "enchantment": "minecraft:fortune",
-                    "chances": [
-                      0.05,
-                      0.0625,
-                      0.083333336,
-                      0.1
-                    ]
-                  }
-                ],
-                "name": "bagels_baking:lemon_sapling"
+                "condition": "minecraft:match_tool",
+                "predicate": {
+                  "enchantments": [
+                    {
+                      "enchantment": "minecraft:silk_touch",
+                      "levels": {
+                        "min": 1
+                      }
+                    }
+                  ]
+                }
               }
             ]
           }
-        ]
-      },
-      {
-        "rolls": 1.0,
-        "bonus_rolls": 0.0,
-        "entries": [
-          {
-            "type": "minecraft:item",
-            "conditions": [
+        }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "bagels_baking:lemon"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "bagels_baking:lemon_leaves",
+          "properties": {
+            "age": "2"
+          }
+        },
+        {
+          "condition": "minecraft:table_bonus",
+          "enchantment": "minecraft:fortune",
+          "chances": [
+            0.2,
+            0.22222223,
+            0.25,
+            0.33333335,
+            1.0
+          ]
+        },
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:alternative",
+            "terms": [
               {
-                "condition": "minecraft:table_bonus",
-                "enchantment": "minecraft:fortune",
-                "chances": [
-                  0.02,
-                  0.022222223,
-                  0.025,
-                  0.033333335,
-                  0.1
-                ]
-              }
-            ],
-            "functions": [
-              {
-                "function": "minecraft:set_count",
-                "count": {
-                  "type": "minecraft:uniform",
-                  "min": 1.0,
-                  "max": 2.0
-                },
-                "add": false
+                "condition": "minecraft:match_tool",
+                "predicate": {
+                  "items": [
+                    "minecraft:shears"
+                  ]
+                }
               },
               {
-                "function": "minecraft:explosion_decay"
+                "condition": "minecraft:match_tool",
+                "predicate": {
+                  "enchantments": [
+                    {
+                      "enchantment": "minecraft:silk_touch",
+                      "levels": {
+                        "min": 1
+                      }
+                    }
+                  ]
+                }
               }
-            ],
-            "name": "minecraft:stick"
+            ]
           }
-        ],
-        "conditions": [
-          {
-            "condition": "minecraft:inverted",
-            "term": {
-              "condition": "minecraft:alternative",
-              "terms": [
-                {
-                  "condition": "minecraft:match_tool",
-                  "predicate": {
-                    "items": [
-                      "minecraft:shears"
-                    ]
-                  }
-                },
-                {
-                  "condition": "minecraft:match_tool",
-                  "predicate": {
-                    "enchantments": [
-                      {
-                        "enchantment": "minecraft:silk_touch",
-                        "levels": {
-                          "min": 1
-                        }
-                      }
-                    ]
-                  }
-                }
-              ]
-            }
-          }
-        ]
-      },
-      {
-        "rolls": 1.0,
-        "bonus_rolls": 0.0,
-        "entries": [
-          {
-            "type": "minecraft:item",
-            "name": "bagels_baking:lemon"
-          }
-        ],
-        "conditions": [
-          {
-            "condition": "minecraft:block_state_property",
-            "block": "bagels_baking:lemon_leaves",
-            "properties": {
-              "age": "2"
-            }
+        }
+      ],
+      "functions": [
+        {
+          "function": "minecraft:set_count",
+          "count": {
+            "type": "minecraft:binomial",
+            "n": 3.0,
+            "p": 0.5
           },
-          {
-            "condition": "minecraft:inverted",
-            "term": {
-              "condition": "minecraft:alternative",
-              "terms": [
-                {
-                  "condition": "minecraft:match_tool",
-                  "predicate": {
-                    "items": [
-                      "minecraft:shears"
-                    ]
-                  }
-                },
-                {
-                  "condition": "minecraft:match_tool",
-                  "predicate": {
-                    "enchantments": [
-                      {
-                        "enchantment": "minecraft:silk_touch",
-                        "levels": {
-                          "min": 1
-                        }
-                      }
-                    ]
-                  }
-                }
-              ]
-            }
+          "add": false
+        },
+        {
+          "function": "minecraft:apply_bonus",
+          "enchantment": "minecraft:fortune",
+          "formula": "minecraft:uniform_bonus_count",
+          "parameters": {
+            "bonusMultiplier": 1
           }
-        ],
-        "functions": [
-          {
-            "function": "minecraft:set_count",
-            "count": {
-              "type": "minecraft:uniform",
-              "min": 1.0,
-              "max": 2.0
-            },
-            "add": false
-          },
-          {
-            "function": "minecraft:apply_bonus",
-            "enchantment": "minecraft:fortune",
-            "formula": "minecraft:uniform_bonus_count",
-            "parameters": {
-              "bonusMultiplier": 1
-            }
-          }
-        ]
-      }
-    ]
-  }
+        }
+      ]
+    }
+  ]
+}

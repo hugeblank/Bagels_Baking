@@ -51,7 +51,12 @@ public class BasicLeavesBlock extends LeavesBlock {
 
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (state.get(AGE) == 2) {
-            dropStack(world, pos, new ItemStack(drop, 1 + world.random.nextInt(2)));
+            float num = world.random.nextFloat();
+            int extra = 0;
+            if (num < 0.20f) extra = 2;
+            else if (num < 0.45f) extra = 1;
+
+            dropStack(world, pos, new ItemStack(drop, 1 + extra));
             world.playSound(null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
             world.setBlockState(pos, state.with(AGE, 0), 2);
             return ActionResult.success(world.isClient);
