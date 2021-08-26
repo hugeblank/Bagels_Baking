@@ -59,6 +59,19 @@ public class FermentingRecipe implements Recipe<FermenterBlockEntity> {
         return TYPE;
     }
 
+    @Override
+    public ItemStack getOutput() {
+        return this.output;
+    }
+
+    public ItemStack getCollector() {
+        return collector;
+    }
+
+    public Ingredient getInput() {
+        return input;
+    }
+
     public ItemStack craft(FermenterBlockEntity entity) {
         return this.output.copy();
     }
@@ -69,17 +82,8 @@ public class FermentingRecipe implements Recipe<FermenterBlockEntity> {
     }
 
     @Override
-    public ItemStack getOutput() {
-        return this.output;
-    }
-
-    public ItemStack getCollector() {
-        return collector;
-    }
-
-    @Override
     public boolean matches(FermenterBlockEntity entity, World world) {
-        return entity.getContent() == this.output.getItem();
+        return input.test(entity.getStack(0));
     }
 
     protected record Serializer<T extends FermentingRecipe>(

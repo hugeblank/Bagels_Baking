@@ -1,21 +1,25 @@
 package dev.elexi.hugeblank.bagels_baking.block.entity;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
+import dev.elexi.hugeblank.bagels_baking.block.FermenterBlock;
+import dev.elexi.hugeblank.bagels_baking.item.BottledItem;
 import dev.elexi.hugeblank.bagels_baking.recipe.FermentingRecipe;
+import dev.elexi.hugeblank.bagels_baking.util.BakingProperties;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.recipe.Ingredient;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
+
+import java.util.List;
 
 public class FermenterBlockEntity extends BlockEntity implements Inventory {
     private Item content;
@@ -28,7 +32,7 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory {
     }
 
     public FermenterBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(Baking.FERMENTER_ENTITY_TYPE, blockPos, blockState);
+        this(Baking.FERMENTER_ENTITY_TYPE, blockPos, blockState);
     }
 
     public Item getContent() {
@@ -36,35 +40,44 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory {
     }
 
     public boolean canFill(ItemStack stack) {
-        return stack.getItem() == content || content == Items.AIR && amount < 16;
+        return (stack.getItem() == content || content == Items.AIR) && amount < 16 && !this.getCachedState().get(BakingProperties.FERMENTED);
     }
 
-    public ItemStack fillFermenter(ServerWorld world, ItemStack stack) {
-        FermentingRecipe recipe = world.getRecipeManager().getFirstMatch(FermentingRecipe.TYPE, this, world).orElse(null);
-        if (recipe != null ) {
-            boolean isInput = false;
-            for (Ingredient input : recipe.getIngredients()) {
-                if (input.test(stack)) {
-                    isInput = true;
-                };
-            }
-            if (isInput && !canFill(stack)) {
-                if (stack.getItem() != content) content = stack.getItem();
-                amount++;
-                stack.decrement(1);
+    public ItemStack fillFermenter(ServerWorld world, BlockPos pos, ItemStack stack) {
+        if (canFill(stack)) {
+            List<FermentingRecipe> recipes = world.getRecipeManager().listAllOfType(FermentingRecipe.TYPE);
+            for (FermentingRecipe r : recipes) {
+                if (r.getInput().test(stack)) {
+                    Item stackItem = stack.getItem();
+                    if (stackItem != content) content = stackItem;
+                    if (stackItem instanceof HoneyBottleItem || stackItem instanceof BottledItem) {
+                        world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                    } else {
+                        world.playSound(null, pos, SoundEvents.BLOCK_AZALEA_HIT, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                    }
+                    stack.decrement(1);
+                    amount++;
+                    return new ItemStack(stackItem.getRecipeRemainder());
+                }
             }
         }
-        return new ItemStack(stack.getItem().getRecipeRemainder());
+        return stack;
     }
 
-    public ItemStack drainFermenter(ServerWorld world, ItemStack stack) {
+    public ItemStack drainFermenter(ServerWorld world, BlockPos pos, ItemStack stack) {
         FermentingRecipe recipe = world.getRecipeManager().getFirstMatch(FermentingRecipe.TYPE, this, world).orElse(null);
-        if(recipe != null && recipe.getCollector().getItem() == content) {
-            // play sound!
+        if(recipe != null && this.getCachedState().get(FermenterBlock.FERMENTED) && stack.getItem() == recipe.getCollector().getItem()) {
+            Item soundItem = recipe.getOutput().getItem();
+            if (soundItem instanceof HoneyBottleItem || soundItem instanceof BottledItem) {
+                world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            } else {
+                world.playSound(null, pos, SoundEvents.BLOCK_AZALEA_HIT, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            }
             stack.decrement(1);
             amount--;
             if (amount == 0) {
                 content = Items.AIR;
+                world.setBlockState(this.getPos(), this.getCachedState().with(FermenterBlock.FERMENTED, false));
             }
             return recipe.craft(this);
         }
