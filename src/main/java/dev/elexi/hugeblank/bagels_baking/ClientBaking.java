@@ -30,9 +30,10 @@ public class ClientBaking implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.TOMATO_PLANT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.CORN_STALK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.RICE_PLANT, RenderLayer.getCutout());
+
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.SEPARATOR_CAULDRON, RenderLayer.getTranslucent());
+
         BlockEntityRendererRegistry.INSTANCE.register(Baking.ICE_BOX_ENTITY_TYPE, ChestBlockEntityRenderer::new);
-
-
 
         ScreenRegistry.register(Baking.MILL_SCREEN, MillScreen::new);
         ScreenRegistry.register(Baking.ICE_BOX_9X3, IceBoxScreen::new);

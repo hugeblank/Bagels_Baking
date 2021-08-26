@@ -27,10 +27,7 @@
     "entity.villager.FarmerVillagerAIWorkTask",
     "entity.villager.VillagerEntityFarming",
     "item.ShearsItemMixin",
-    "recipe.ClientRecipeBookMixin",
     "recipe.CuttingRecipeSerializerAccessor",
-    "render.BoatEntityRendererMixin",
-    "render.TexturedRenderLayersMixin",
     "stew.BasicStewItem",
     "stew.IStewStackIncrease",
     "stew.StewStackIncrease",
@@ -39,6 +36,9 @@
     "world.CropProcessorList"
   ],
   "client": [
+    "recipe.ClientRecipeBookMixin",
+    "render.BoatEntityRendererMixin",
+    "render.TexturedRenderLayersMixin"
   ],
   "injectors": {
     "defaultRequire": 1
