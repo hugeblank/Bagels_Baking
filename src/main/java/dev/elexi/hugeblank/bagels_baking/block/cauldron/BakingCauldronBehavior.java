@@ -25,7 +25,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public interface BakingCauldronBehavior extends CauldronBehavior {
-    Map<Item, Item> BATTER_ITEMS = new HashMap<>();
     Map<Block, Item> CUP_FLUIDS = new HashMap<>();
     Map<Item, CauldronBehavior> COFFEE_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
     Map<Item, CauldronBehavior> TEA_CAULDRON_BEHAVIOR = CauldronBehavior.createMap();
@@ -127,7 +126,7 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
 
         // Increase yolk/white level
         SEPARATOR_CAULDRON_BEHAVIOR.put(Items.EGG, (state, world, pos, player, hand, stack) -> {
-            if (!world.isClient) {
+            if (!world.isClient && state.get(SeparatorCauldron.LEVEL) < 3) {
                 player.incrementStat(Stats.USE_CAULDRON);
                 player.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
                 stack.decrement(1);
