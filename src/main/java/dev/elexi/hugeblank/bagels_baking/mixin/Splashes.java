@@ -41,6 +41,7 @@ public class Splashes {
         splashTexts.add("We do not condone the eating of kiwi skin"); // Honoring Sammi's bad habits
         splashTexts.add("Kroi can't tyep sommtines but that' sokya"); // Honoring Kori's typing prowess
         splashTexts.add("My width is   "); // https://cdn.discordapp.com/attachments/676495817967665192/878052107222126662/alice0135a03.png
+        splashTexts.add("Yea that thing"); // Kori not knowing what splashes are
         // Miscellaneous
         splashTexts.add("Now Catering!");
         splashTexts.add("Respect your food delivery drivers!");

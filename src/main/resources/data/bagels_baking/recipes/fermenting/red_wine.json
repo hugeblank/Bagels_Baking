@@ -1,0 +1,7 @@
+{
+    "type": "bagels_baking:fermenting",
+    "ingredient": {
+        "item": "bagels_baking:grapes"
+    },
+    "result": "bagels_baking:red_wine"
+}

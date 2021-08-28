@@ -1,0 +1,7 @@
+{
+    "type": "bagels_baking:fermenting",
+    "ingredient": {
+        "item": "minecraft:spider_eye"
+    },
+    "result": "minecraft:fermented_spider_eye"
+}

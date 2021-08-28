@@ -380,11 +380,12 @@ public class Baking implements ModInitializer {
 	public static final Item MILK_CUP = new MilkCupItem();
 	public static final Item WATER_CUP = basicCupDrink();
 	public static final Item CHOCOLATE_MILK = basicCupDrink(2, 0.1f); // frick i would like some choccy milk rn - redeemed by rrricohu on 3/21/21
-	public static final Item CREAMER_CUP = basicCupDrink(0, 0f);
+	public static final Item CREAMER_CUP = basicCupDrink();
 	public static final Item COFFEE_CUP = basicSuperCupDrink(2, 0.3f, new StatusEffectInstance(StatusEffects.SPEED, 20*15, 1));
 	public static final Item COFFEE_W_CREAMER = basicSuperCupDrink(2, 0.2f, new StatusEffectInstance(StatusEffects.SPEED, 20*30));
 	public static final Item TEA_CUP = basicSuperCupDrink(2, 0.2f, new StatusEffectInstance(StatusEffects.SPEED, 20*10));
 	public static final Item TEA_W_CREAMER = basicSuperCupDrink(2, 0.1f, new StatusEffectInstance(StatusEffects.SPEED, 20*20));
+	public static final Item MOLASSES = basicCupDrink();
 
 	// Sodie Pop
 	public static final Item SUGAR_WATER = basicCupDrink();
@@ -503,6 +504,13 @@ public class Baking implements ModInitializer {
 
 	// Fermented Items
 	public static final BottledItem MALT_VINEGAR = basicJam(0, 0f, SoundEvents.ENTITY_GENERIC_DRINK);
+	public static final BottledItem RED_WINE = basicJam(1, 0.1f, SoundEvents.ENTITY_GENERIC_DRINK);
+	public static final BottledItem WHISKEY = basicJam(3, 0.1f, SoundEvents.ENTITY_GENERIC_DRINK);
+	public static final BottledItem BEER = basicJam(1, 0.1f, SoundEvents.ENTITY_GENERIC_DRINK);
+	public static final BottledItem MEAD = basicJam(2, 0.1f, SoundEvents.ENTITY_GENERIC_DRINK);
+	public static final BottledItem RUM = basicJam(1, 0.1f, SoundEvents.ENTITY_GENERIC_DRINK);
+	//public static final BottledItem GIN = basicJam(0, 0f, SoundEvents.ENTITY_GENERIC_DRINK);
+
 
 	// Stats
 	public static final Identifier DAY_OF_WEEK = new Identifier(ID, "day_of_week");
@@ -680,6 +688,7 @@ public class Baking implements ModInitializer {
 		registerItem("creamy_coffee_cup", COFFEE_W_CREAMER);
 		registerItem("tea_cup", TEA_CUP);
 		registerItem("creamy_tea_cup", TEA_W_CREAMER);
+		registerItem("molasses", MOLASSES);
 
 		// Sodie Pop
 		registerItem("sugar_water", SUGAR_WATER);
@@ -776,6 +785,12 @@ public class Baking implements ModInitializer {
 
 		// Fermented Items
 		registerItem("malt_vinegar", MALT_VINEGAR);
+		registerItem("red_wine", RED_WINE);
+		registerItem("whiskey", WHISKEY);
+		registerItem("beer", BEER);
+		registerItem("mead", MEAD);
+		registerItem("rum", RUM);
+		//registerItem("gin", GIN);
 
 		// Cauldrons
 		BakingCauldronBehavior.registerBehaviors();
