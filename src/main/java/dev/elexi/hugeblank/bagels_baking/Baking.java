@@ -4,6 +4,7 @@ import dev.elexi.hugeblank.bagels_baking.block.*;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.BakingCauldronBehavior;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.CheeseCauldronBlock;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.SeparatorCauldron;
+import dev.elexi.hugeblank.bagels_baking.block.entity.FermenterBlockEntity;
 import dev.elexi.hugeblank.bagels_baking.block.entity.IceBoxBlockEntity;
 import dev.elexi.hugeblank.bagels_baking.block.sign.SignTypeRegistry;
 import dev.elexi.hugeblank.bagels_baking.entity.BakingVillagerTrades;
@@ -11,6 +12,7 @@ import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
 import dev.elexi.hugeblank.bagels_baking.entity.boat.BasicBoatRegistry;
 import dev.elexi.hugeblank.bagels_baking.item.*;
 import dev.elexi.hugeblank.bagels_baking.mixin.entity.DamageSourceAccessor;
+import dev.elexi.hugeblank.bagels_baking.recipe.FermentingRecipe;
 import dev.elexi.hugeblank.bagels_baking.recipe.FreezingRecipe;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
@@ -320,6 +322,14 @@ public class Baking implements ModInitializer {
 	public static final Identifier OPEN_ICE_BOX = new Identifier(ID, ice_box_stat);
 	public static ScreenHandlerType<GenericContainerScreenHandler> ICE_BOX_9X3;
 	public static ScreenHandlerType<GenericContainerScreenHandler> ICE_BOX_9X6;
+
+	// Fermenter
+	public static final Identifier FERMENTER_ID = new Identifier(ID, "fermenter");
+	public static BlockEntityType<FermenterBlockEntity> FERMENTER_ENTITY_TYPE;
+	public static final Block FERMENTER = new FermenterBlock(FabricBlockSettings.copy(Blocks.STONECUTTER));
+	public static final BlockItem FERMENTER_ITEM = new BlockItem(FERMENTER, new Item.Settings().group(ItemGroup.DECORATIONS));
+	private static final String fermenter_stat = "interact_with_fermenter";
+	public static final Identifier INTERACT_WITH_FERMENTER = new Identifier(ID, fermenter_stat);
 
 
 	// Cauldron
@@ -652,6 +662,13 @@ public class Baking implements ModInitializer {
 		ICE_BOX_9X3 = ScreenHandlerRegistry.registerSimple(new Identifier(ID, "ice_box_9x3"), GenericContainerScreenHandler::createGeneric9x3);
 		ICE_BOX_9X6 = ScreenHandlerRegistry.registerSimple(new Identifier(ID, "ice_box_9x6"), GenericContainerScreenHandler::createGeneric9x6);
 
+		// Fermenter
+		Registry.register(Registry.RECIPE_SERIALIZER, FermentingRecipe.ID, FermentingRecipe.SERIALIZER);
+		Registry.register(Registry.CUSTOM_STAT, fermenter_stat, INTERACT_WITH_FERMENTER);
+		Stats.CUSTOM.getOrCreateStat(INTERACT_WITH_FERMENTER, StatFormatter.DEFAULT);
+		Registry.register(Registry.BLOCK, FERMENTER_ID, FERMENTER);
+		Registry.register(Registry.ITEM, FERMENTER_ID, FERMENTER_ITEM);
+		FERMENTER_ENTITY_TYPE = Registry.register(Registry.BLOCK_ENTITY_TYPE, FERMENTER_ID, FabricBlockEntityTypeBuilder.create(FermenterBlockEntity::new, FERMENTER).build());
 
 		// Cups
 		registerItem("cup", CUP);

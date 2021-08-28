@@ -18,7 +18,7 @@ public class IceBoxBlockEntity extends ChestBlockEntity {
     }
 
     public IceBoxBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(Baking.ICE_BOX_ENTITY_TYPE, blockPos, blockState);
+        this(Baking.ICE_BOX_ENTITY_TYPE, blockPos, blockState);
     }
 
     protected Text getContainerName() {
