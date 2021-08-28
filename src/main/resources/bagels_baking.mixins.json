@@ -16,6 +16,7 @@
     "composting.Composting",
     "entity.DamageSourceAccessor",
     "entity.LivingEntityTeaDamage",
+    "entity.ServerPlayerInteractionManagerMixin",
     "entity.PlayerTick",
     "entity.passive.AnimalBreedItems",
     "entity.passive.ChickenSeeds",

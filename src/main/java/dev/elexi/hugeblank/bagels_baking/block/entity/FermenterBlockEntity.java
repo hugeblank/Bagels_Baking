@@ -46,8 +46,9 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory {
         return (stack.getItem() == content || content == Items.AIR) && ((amount < 16 && this.getCachedState().get(BakingProperties.ACTIVE)) || (amount == 0 && !this.getCachedState().get(BakingProperties.ACTIVE)));
     }
 
-    public ItemStack fillFermenter(ServerWorld world, BlockPos pos, ItemStack stack) {
+    public ItemStack fillFermenter(ServerWorld world, BlockPos pos, ItemStack stack, boolean dump) {
         if (canFill(stack)) {
+            int count = dump ? Math.min(16-amount, stack.getCount()) : 1;
             List<FermentingRecipe> recipes = world.getRecipeManager().listAllOfType(FermentingRecipe.TYPE);
             for (FermentingRecipe r : recipes) {
                 if (r.getInput().test(stack)) {
@@ -58,30 +59,34 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory {
                     } else {
                         world.playSound(null, pos, SoundEvents.BLOCK_AZALEA_HIT, SoundCategory.BLOCKS, 1.0f, 1.0f);
                     }
-                    stack.decrement(1);
-                    amount++;
+                    stack.decrement(count);
+                    amount += count;
                     if (amount > 0) world.setBlockState(this.getPos(), this.getCachedState().with(BakingProperties.ACTIVE, true));
 
-                    return new ItemStack(stackItem.getRecipeRemainder());
+                    return new ItemStack(stackItem.getRecipeRemainder(), count);
                 }
             }
         }
         return stack;
     }
 
-    public ItemStack drainFermenter(ServerWorld world, BlockPos pos, ItemStack stack) {
+    public ItemStack drainFermenter(ServerWorld world, BlockPos pos, ItemStack stack, boolean dump) {
         FermentingRecipe recipe = world.getRecipeManager().getFirstMatch(FermentingRecipe.TYPE, this, world).orElse(null);
         if(recipe != null && !this.getCachedState().get(BakingProperties.ACTIVE) && stack.getItem() == recipe.getCollector().getItem()) {
+            int count; // Ternary hell.
+            count = stack.isEmpty() ? amount : dump ? Math.min(amount, stack.getCount()) : 1;
             Item soundItem = recipe.getOutput().getItem();
             if (soundItem instanceof HoneyBottleItem || soundItem instanceof BottledItem) {
                 world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
             } else {
                 world.playSound(null, pos, SoundEvents.BLOCK_AZALEA_HIT, SoundCategory.BLOCKS, 1.0f, 1.0f);
             }
-            stack.decrement(1);
-            amount--;
+            stack.decrement(count);
+            amount -= count;
             if (amount == 0) content = Items.AIR;
-            return recipe.craft(this);
+            ItemStack result = recipe.craft(this);
+            result.setCount(count);
+            return result;
         }
         return stack;
     }

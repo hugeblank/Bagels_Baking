@@ -44,11 +44,12 @@ public class FermenterBlock extends BlockWithEntity {
             FermenterBlockEntity entity = (FermenterBlockEntity) world.getBlockEntity(pos);
             if (!world.isClient && entity != null) {
                 ItemStack held = player.getStackInHand(Hand.MAIN_HAND);
+                boolean useAll = player.isSneaking();
                 ItemStack drop;
                 if (entity.canFill(held)) {
-                    drop = entity.fillFermenter((ServerWorld) world, pos, held);
+                    drop = entity.fillFermenter((ServerWorld) world, pos, held, useAll);
                 } else {
-                    drop = entity.drainFermenter((ServerWorld) world, pos, held);
+                    drop = entity.drainFermenter((ServerWorld) world, pos, held, useAll);
                 }
                 if (!drop.isOf(held.getItem())) {
                     player.getInventory().insertStack(drop);
