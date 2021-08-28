@@ -1,7 +1,6 @@
 package dev.elexi.hugeblank.bagels_baking.block.entity;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
-import dev.elexi.hugeblank.bagels_baking.block.FermenterBlock;
 import dev.elexi.hugeblank.bagels_baking.item.BottledItem;
 import dev.elexi.hugeblank.bagels_baking.recipe.FermentingRecipe;
 import dev.elexi.hugeblank.bagels_baking.util.BakingProperties;
@@ -10,7 +9,10 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.item.*;
+import net.minecraft.item.HoneyBottleItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -40,7 +42,8 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory {
     }
 
     public boolean canFill(ItemStack stack) {
-        return (stack.getItem() == content || content == Items.AIR) && amount < 16 && !this.getCachedState().get(BakingProperties.FERMENTED);
+        // if content matches or the content is air (empty) AND the fermenter isn't full and is active OR the fermenter is empty and inactive
+        return (stack.getItem() == content || content == Items.AIR) && ((amount < 16 && this.getCachedState().get(BakingProperties.ACTIVE)) || (amount == 0 && !this.getCachedState().get(BakingProperties.ACTIVE)));
     }
 
     public ItemStack fillFermenter(ServerWorld world, BlockPos pos, ItemStack stack) {
@@ -57,6 +60,8 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory {
                     }
                     stack.decrement(1);
                     amount++;
+                    if (amount > 0) world.setBlockState(this.getPos(), this.getCachedState().with(BakingProperties.ACTIVE, true));
+
                     return new ItemStack(stackItem.getRecipeRemainder());
                 }
             }
@@ -66,7 +71,7 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory {
 
     public ItemStack drainFermenter(ServerWorld world, BlockPos pos, ItemStack stack) {
         FermentingRecipe recipe = world.getRecipeManager().getFirstMatch(FermentingRecipe.TYPE, this, world).orElse(null);
-        if(recipe != null && this.getCachedState().get(FermenterBlock.FERMENTED) && stack.getItem() == recipe.getCollector().getItem()) {
+        if(recipe != null && !this.getCachedState().get(BakingProperties.ACTIVE) && stack.getItem() == recipe.getCollector().getItem()) {
             Item soundItem = recipe.getOutput().getItem();
             if (soundItem instanceof HoneyBottleItem || soundItem instanceof BottledItem) {
                 world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
@@ -75,10 +80,7 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory {
             }
             stack.decrement(1);
             amount--;
-            if (amount == 0) {
-                content = Items.AIR;
-                world.setBlockState(this.getPos(), this.getCachedState().with(FermenterBlock.FERMENTED, false));
-            }
+            if (amount == 0) content = Items.AIR;
             return recipe.craft(this);
         }
         return stack;
@@ -118,9 +120,13 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory {
     @Override
     public ItemStack removeStack(int slot, int amount) {
         if (slot != 0) return null;
-        this.amount = 0;
-        this.content = Items.AIR;
-        return null;
+        this.amount -= amount;
+        Item content = this.content;
+        if (this.amount <= 0) {
+            this.content = Items.AIR;
+            this.amount = 0;
+        }
+        return new ItemStack(content, amount);
     }
 
     @Override
@@ -130,9 +136,9 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory {
 
     @Override
     public void setStack(int slot, ItemStack stack) {
-        if (slot == 0) {
+        if (slot == 0 && canFill(stack)) {
             content = stack.getItem();
-            amount = stack.getCount();
+            amount += stack.getCount();
         }
     }
 

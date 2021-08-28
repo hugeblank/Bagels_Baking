@@ -29,13 +29,13 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Random;
 
 public class FermenterBlock extends BlockWithEntity {
-    public static final BooleanProperty FERMENTED = BakingProperties.FERMENTED;
     public static final EnumProperty<Direction> FACING = Properties.FACING;
+    public static final BooleanProperty ACTIVE = BakingProperties.ACTIVE;
     private static final VoxelShape SHAPE = VoxelShapes.union(Block.createCuboidShape(3.0d, 0.0d, 3.0d, 13.0d, 12.0d, 13.0d), Block.createCuboidShape(7.0d, 12.0d, 7.0d, 9.0d, 16.0d, 9.0d));
 
     public FermenterBlock(Settings settings) {
         super(settings);
-        setDefaultState(getStateManager().getDefaultState().with(FERMENTED, false).with(FACING, Direction.NORTH));
+        setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.NORTH).with(ACTIVE, false));
     }
 
     @Override
@@ -69,16 +69,15 @@ public class FermenterBlock extends BlockWithEntity {
         super.randomTick(state, world, pos, random);
         FermenterBlockEntity entity = (FermenterBlockEntity) world.getBlockEntity(pos);
         if (entity != null) {
-            if (!state.get(FERMENTED) && random.nextFloat() < 0.05f && !entity.isEmpty()) {
-                world.setBlockState(pos, state.with(FERMENTED, true));
+            if (state.get(ACTIVE) && random.nextFloat() < 0.05f && !entity.isEmpty()) {
+                world.setBlockState(pos, state.with(ACTIVE, false));
             }
         }
     }
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        FermenterBlockEntity entity = (FermenterBlockEntity) world.getBlockEntity(pos);
-        if (!state.get(FERMENTED) && random.nextFloat() < 0.05f && entity != null && entity.getStack(0).getCount() > 0) {
+        if (state.get(ACTIVE) && random.nextFloat() < 0.05f) {
             double x = pos.getX() + 0.5D;
             double y = pos.getY() + 1.0D;
             double z = pos.getZ() + 0.5D;
@@ -110,6 +109,6 @@ public class FermenterBlock extends BlockWithEntity {
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(FERMENTED, FACING);
+        builder.add(FACING, ACTIVE);
     }
 }
