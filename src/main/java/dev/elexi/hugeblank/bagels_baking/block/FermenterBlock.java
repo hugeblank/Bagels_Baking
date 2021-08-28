@@ -7,7 +7,10 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
@@ -66,9 +69,21 @@ public class FermenterBlock extends BlockWithEntity {
         super.randomTick(state, world, pos, random);
         FermenterBlockEntity entity = (FermenterBlockEntity) world.getBlockEntity(pos);
         if (entity != null) {
-            if (!state.get(FERMENTED) && random.nextFloat() < 0.2f && !entity.isEmpty()) {
+            if (!state.get(FERMENTED) && random.nextFloat() < 0.05f && !entity.isEmpty()) {
                 world.setBlockState(pos, state.with(FERMENTED, true));
             }
+        }
+    }
+
+    @Override
+    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        FermenterBlockEntity entity = (FermenterBlockEntity) world.getBlockEntity(pos);
+        if (!state.get(FERMENTED) && random.nextFloat() < 0.05f && entity != null && entity.getStack(0).getCount() > 0) {
+            double x = pos.getX() + 0.5D;
+            double y = pos.getY() + 1.0D;
+            double z = pos.getZ() + 0.5D;
+            world.addParticle(ParticleTypes.BUBBLE_POP, true, x, y, z, 0.0d, 0.05d, 0.0d);
+            world.playSound(x, y, z, SoundEvents.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, SoundCategory.BLOCKS, 1.0f, 1.0f, true);
         }
     }
 
