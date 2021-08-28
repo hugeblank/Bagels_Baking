@@ -22,7 +22,7 @@ public class FermentingDisplay implements Display {
     protected EntryIngredient output;
 
     public FermentingDisplay(FermentingRecipe recipe) {
-        this(EntryIngredients.ofIngredients(Collections.singletonList(recipe.getInput())), EntryIngredients.of(recipe.getCollector()), EntryIngredients.of(recipe.getOutput()));
+        this(EntryIngredients.ofIngredients(recipe.getIngredients()), EntryIngredients.of(recipe.getCollector()), EntryIngredients.of(recipe.getOutput()));
     }
 
     public FermentingDisplay(List<EntryIngredient> inputs, EntryIngredient collector, EntryIngredient output) {
@@ -56,7 +56,7 @@ public class FermentingDisplay implements Display {
             @Override
             public NbtCompound save(NbtCompound tag, FermentingDisplay display) {
                 tag.put("input", EntryIngredients.save(display.inputs));
-                tag.put("reactant", display.collector.save());
+                tag.put("collector", display.collector.save());
                 tag.put("output", display.output.save());
                 return tag;
             }
@@ -64,7 +64,7 @@ public class FermentingDisplay implements Display {
             @Override
             public FermentingDisplay read(NbtCompound tag) {
                 List<EntryIngredient> input = EntryIngredients.read(tag.getList("input", NbtType.COMPOUND));
-                EntryIngredient reactant = EntryIngredient.read(tag.getList("reactant", NbtType.COMPOUND));
+                EntryIngredient reactant = EntryIngredient.read(tag.getList("collector", NbtType.COMPOUND));
                 EntryIngredient output = EntryIngredient.read(tag.getList("output", NbtType.COMPOUND));
                 return new FermentingDisplay(input, reactant, output);
             }

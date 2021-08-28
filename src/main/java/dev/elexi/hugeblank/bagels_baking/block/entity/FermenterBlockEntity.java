@@ -51,7 +51,7 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory {
             int count = dump ? Math.min(16-amount, stack.getCount()) : 1;
             List<FermentingRecipe> recipes = world.getRecipeManager().listAllOfType(FermentingRecipe.TYPE);
             for (FermentingRecipe r : recipes) {
-                if (r.getInput().test(stack)) {
+                if (r.getIngredients().get(0).test(stack)) {
                     Item stackItem = stack.getItem();
                     if (stackItem != content) content = stackItem;
                     if (stackItem instanceof HoneyBottleItem || stackItem instanceof BottledItem) {
