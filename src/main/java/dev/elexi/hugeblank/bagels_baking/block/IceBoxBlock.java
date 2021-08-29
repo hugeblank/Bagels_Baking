@@ -31,7 +31,7 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.function.Supplier;
 
-public class GenericIceBoxBlock extends ChestBlock {
+public class IceBoxBlock extends ChestBlock {
 
     private static final DoubleBlockProperties.PropertyRetriever<ChestBlockEntity, Optional<NamedScreenHandlerFactory>> NAME_RETRIEVER = new DoubleBlockProperties.PropertyRetriever<ChestBlockEntity, Optional<NamedScreenHandlerFactory>>() {
         public Optional<NamedScreenHandlerFactory> getFromBoth(final ChestBlockEntity leftIceBox, final ChestBlockEntity rightIceBox) {
@@ -67,7 +67,7 @@ public class GenericIceBoxBlock extends ChestBlock {
         }
     };
 
-    public GenericIceBoxBlock(Settings settings, Supplier<BlockEntityType<? extends ChestBlockEntity>> supplier) {
+    public IceBoxBlock(Settings settings, Supplier<BlockEntityType<? extends ChestBlockEntity>> supplier) {
         super(settings, supplier);
     }
 
@@ -84,10 +84,8 @@ public class GenericIceBoxBlock extends ChestBlock {
         if (invo != null) {
             List<FreezingRecipe> recipes = world.getRecipeManager().getAllMatches(FreezingRecipe.TYPE, invo, world);
             int recipePos = -1;
-            if (recipes.size() > 1) {
-                recipePos += random.nextInt(recipes.size()-1);
-            } else if (recipes.size() > 0) {
-                recipePos = 0;
+            if (recipes.size() > 0) {
+                recipePos = random.nextInt(recipes.size());
             }
 
             if (recipePos >= 0) {

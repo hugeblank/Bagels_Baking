@@ -1,0 +1,7 @@
+{
+    "type": "bagels_baking:freezing",
+    "ingredient": {
+        "item": "bagels_baking:cola"
+    },
+    "result": "bagels_baking:cola_slushee"
+}

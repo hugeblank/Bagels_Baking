@@ -1,0 +1,7 @@
+{
+    "type": "bagels_baking:freezing",
+    "ingredient": {
+        "item": "bagels_baking:chocolate_milk"
+    },
+    "result": "bagels_baking:chocolate_ice_cream"
+}

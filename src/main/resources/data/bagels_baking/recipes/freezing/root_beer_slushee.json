@@ -1,0 +1,7 @@
+{
+    "type": "bagels_baking:freezing",
+    "ingredient": {
+        "item": "bagels_baking:root_beer"
+    },
+    "result": "bagels_baking:root_beer_slushee"
+}

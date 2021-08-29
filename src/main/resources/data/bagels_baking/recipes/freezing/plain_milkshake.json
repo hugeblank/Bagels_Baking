@@ -1,0 +1,7 @@
+{
+    "type": "bagels_baking:freezing",
+    "ingredient": {
+        "item": "bagels_baking:milk_cup"
+    },
+    "result": "bagels_baking:plain_milkshake"
+}

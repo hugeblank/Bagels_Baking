@@ -317,7 +317,7 @@ public class Baking implements ModInitializer {
 	// Ice Box
 	public static final Identifier ICE_BOX_ID = new Identifier(ID, "ice_box");
 	public static BlockEntityType<IceBoxBlockEntity> ICE_BOX_ENTITY_TYPE;
-	public static final Block ICE_BOX = new GenericIceBoxBlock(FabricBlockSettings.copy(Blocks.CHEST), () -> ICE_BOX_ENTITY_TYPE);
+	public static final Block ICE_BOX = new IceBoxBlock(FabricBlockSettings.copy(Blocks.CHEST), () -> ICE_BOX_ENTITY_TYPE);
 	public static final BlockItem ICE_BOX_ITEM = new BlockItem(ICE_BOX, new Item.Settings().group(ItemGroup.DECORATIONS));
 	private static final String ice_box_stat = "open_ice_box";
 	public static final Identifier OPEN_ICE_BOX = new Identifier(ID, ice_box_stat);
@@ -387,6 +387,10 @@ public class Baking implements ModInitializer {
 	public static final Item TEA_CUP = basicSuperCupDrink(2, 0.2f, new StatusEffectInstance(StatusEffects.SPEED, 20*10));
 	public static final Item TEA_W_CREAMER = basicSuperCupDrink(2, 0.1f, new StatusEffectInstance(StatusEffects.SPEED, 20*20));
 	public static final Item MOLASSES = basicCupDrink();
+	public static final Item CHOCOLATE_ICE_CREAM = basicCupDrink(2, 0.2f);
+	public static final Item CHOCOLATE_MILKSHAKE = basicCupDrink(2, 0.2f);
+	public static final Item PLAIN_ICE_CREAM = basicCupDrink(1, 0.1f);
+	public static final Item PLAIN_MILKSHAKE = basicCupDrink(1, 0.1f);
 
 	// Sodie Pop
 	public static final Item SUGAR_WATER = basicCupDrink();
@@ -479,7 +483,7 @@ public class Baking implements ModInitializer {
 
 	// Cheese
 	public static final Block CHEESE_BLOCK = new Block(FabricBlockSettings.copy(Blocks.HONEY_BLOCK).sounds(BlockSoundGroup.CANDLE));
-	public static final Block CHEESE_LAYER = new BasicLayerBlock(FabricBlockSettings.copy(Blocks.SNOW));
+	public static final Block CHEESE_LAYER = new BasicLayerBlock(FabricBlockSettings.of(Material.SNOW_LAYER).sounds(BlockSoundGroup.CANDLE));
 	public static final Item CHEESE_SLICE = new BlockItem(CHEESE_LAYER, new FabricItemSettings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0f).build()));
 
 	// Misc
@@ -511,6 +515,16 @@ public class Baking implements ModInitializer {
 	public static final MushroomStewItem WHEAT_CEREAL_BOWL = basicBowlFood(3, 0.3f);
 	public static final MushroomStewItem CORN_CEREAL_BOWL = basicBowlFood(4, 0.3f);
 	public static final MushroomStewItem RICE_CEREAL_BOWL = basicBowlFood(3, 0.3f);
+	public static final BottledItem LEMONADE = basicJam(2, 0.2f, SoundEvents.ENTITY_GENERIC_DRINK);
+	public static final BottledItem FROZEN_LEMONADE = basicJam(2, 0.3f, SoundEvents.ENTITY_GENERIC_DRINK);
+
+	// Slushees
+	public static final Item ROOT_BEER_SLUSHEE = basicCupDrink(2, 0.3f );
+	public static final Item COLA_SLUSHEE = basicCupDrink(2, 0.3f );
+	public static final Item FRUITY_SODA_SLUSHEE = basicCupDrink(2, 0.3f );
+	public static final Item MOUNTAIN_FOUNTAIN_SLUSHEE = basicCupDrink(2, 0.3f );
+	public static final Item CACTUS_CHILLER_SLUSHEE = basicCupDrink(2, 0.3f );
+	public static final Item GRAPE_SODA_SLUSHEE = basicCupDrink(2, 0.3f );
 
 	// Fermented Items
 	public static final BottledItem MALT_VINEGAR = basicJam(0, 0f, SoundEvents.ENTITY_GENERIC_DRINK);
@@ -699,6 +713,10 @@ public class Baking implements ModInitializer {
 		registerItem("tea_cup", TEA_CUP);
 		registerItem("creamy_tea_cup", TEA_W_CREAMER);
 		registerItem("molasses", MOLASSES);
+		registerItem("plain_ice_cream", PLAIN_ICE_CREAM);
+		registerItem("plain_milkshake", PLAIN_MILKSHAKE);
+		registerItem("chocolate_ice_cream", CHOCOLATE_ICE_CREAM);
+		registerItem("chocolate_milkshake", CHOCOLATE_MILKSHAKE);
 
 		// Sodie Pop
 		registerItem("sugar_water", SUGAR_WATER);
@@ -797,6 +815,16 @@ public class Baking implements ModInitializer {
 		registerItem("wheat_cereal_bowl", WHEAT_CEREAL_BOWL);
 		registerItem("corn_cereal_bowl", CORN_CEREAL_BOWL);
 		registerItem("rice_cereal_bowl", RICE_CEREAL_BOWL);
+		registerItem("lemonade", LEMONADE);
+		registerItem("frozen_lemonade", FROZEN_LEMONADE);
+
+		// Slushee
+		registerItem("root_beer_slushee", ROOT_BEER_SLUSHEE);
+		registerItem("cola_slushee", COLA_SLUSHEE);
+		registerItem("fruity_soda_slushee", FRUITY_SODA_SLUSHEE);
+		registerItem("mountain_fountain_slushee", MOUNTAIN_FOUNTAIN_SLUSHEE);
+		registerItem("cactus_chiller_slushee", CACTUS_CHILLER_SLUSHEE);
+		registerItem("grape_soda_slushee", GRAPE_SODA_SLUSHEE);
 
 		// Fermented Items
 		registerItem("malt_vinegar", MALT_VINEGAR);

@@ -1,0 +1,7 @@
+{
+    "type": "bagels_baking:freezing",
+    "ingredient": {
+        "item": "bagels_baking:cactus_chiller"
+    },
+    "result": "bagels_baking:cactus_chiller_slushee"
+}
