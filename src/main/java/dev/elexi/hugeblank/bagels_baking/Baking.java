@@ -19,6 +19,7 @@ import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
 import dev.elexi.hugeblank.bagels_baking.world.biome.BakingBiomes;
 import dev.elexi.hugeblank.bagels_baking.world.gen.BakingConfiguredFeatures;
 import dev.elexi.hugeblank.bagels_baking.world.gen.tree.CherrySaplingGenerator;
+import dev.elexi.hugeblank.bagels_baking.world.gen.tree.JuniperSaplingGenerator;
 import dev.elexi.hugeblank.bagels_baking.world.gen.tree.LemonSaplingGenerator;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -466,6 +467,15 @@ public class Baking implements ModInitializer {
 	public static final Block SMALL_CINNAMON_TREE = new TallPlantBlock(FabricBlockSettings.copy(Blocks.TALL_GRASS));
 	public static final Block CINNAMON_TREE = new TriplePlantBlock(FabricBlockSettings.copy(Blocks.TALL_GRASS));
 	public static final Block CINNAMON_SAPLING = new FancyFernBlock(FabricBlockSettings.copy(Blocks.OAK_SAPLING), (random) -> (PlantBlock) (((Random) random).nextFloat() < 0.4 ? CINNAMON_TREE : SMALL_CINNAMON_TREE) );
+	public static final Block STRIPPED_JUNIPER_WOOD = new BasicLogBlock();
+	public static final Block JUNIPER_WOOD = new BasicLogBlock(() -> STRIPPED_JUNIPER_WOOD);
+	public static final Block STRIPPED_JUNIPER_LOG = new BasicLogBlock();
+	public static final Block JUNIPER_LOG = new BasicLogBlock(() -> STRIPPED_JUNIPER_LOG);
+	public static final Block JUNIPER_SAPLING = new BasicSaplingBlock(new JuniperSaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
+	public static final Block POTTED_JUNIPER_SAPLING = new FlowerPotBlock(JUNIPER_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
+	public static final Item JUNIPER_BERRIES = basicFood(1, 0.1f);
+	public static final Block JUNIPER_LEAVES = new BasicLeavesBlock(JUNIPER_BERRIES);
+
 
 	// Cheese
 	public static final Block CHEESE_BLOCK = new Block(FabricBlockSettings.copy(Blocks.HONEY_BLOCK).sounds(BlockSoundGroup.CANDLE));
@@ -744,6 +754,11 @@ public class Baking implements ModInitializer {
 		registerBlock("small_cinnamon_tree", SMALL_CINNAMON_TREE, ItemGroup.DECORATIONS);
 		registerBlock("cinnamon_tree", CINNAMON_TREE, ItemGroup.DECORATIONS);
 		registerBlock("cinnamon_sapling", CINNAMON_SAPLING, ItemGroup.DECORATIONS);
+		registerWoodType("juniper", JUNIPER_LOG, STRIPPED_JUNIPER_LOG, JUNIPER_WOOD, STRIPPED_JUNIPER_WOOD);
+		registerBlock("juniper_sapling", JUNIPER_SAPLING, ItemGroup.DECORATIONS);
+		registerBlock("juniper_leaves", JUNIPER_LEAVES, ItemGroup.DECORATIONS);
+		registerBlock("potted_juniper_sapling", POTTED_JUNIPER_SAPLING);
+		registerItem("juniper_berries", JUNIPER_BERRIES);
 
 		// Vanilla Trellises
 		registerBlock("oak_trellis", OAK_TRELLIS, ItemGroup.DECORATIONS);

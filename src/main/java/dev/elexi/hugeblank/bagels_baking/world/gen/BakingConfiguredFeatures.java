@@ -139,6 +139,12 @@ public class BakingConfiguredFeatures {
             GenerationStep.Feature.VEGETAL_DECORATION
     );
 
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> JUNIPER_TREE = register("juniper_tree", Feature.TREE
+            .configure((new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Baking.JUNIPER_LOG.getDefaultState()), new StraightTrunkPlacer(10, 3, 0), new SimpleBlockStateProvider(Baking.JUNIPER_LEAVES.getDefaultState()), new SimpleBlockStateProvider(Baking.CHERRY_SAPLING.getDefaultState()), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3), new TwoLayersFeatureSize(1, 0, 1)))
+                    .ignoreVines()
+                    .build())
+    );
+
     public static void init() {}
 
     private static <FC extends FeatureConfig, F extends Feature<FC>> ConfiguredFeature<FC, F> register(String name, ConfiguredFeature<FC, F> configuredFeature) {

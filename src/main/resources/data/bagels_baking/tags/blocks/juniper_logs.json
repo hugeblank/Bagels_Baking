@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "bagels_baking:juniper_log",
+    "bagels_baking:juniper_wood",
+    "bagels_baking:stripped_juniper_log",
+    "bagels_baking:stripped_juniper_wood"
+  ]
+}
