@@ -13,10 +13,10 @@ import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldEvents;
-import net.minecraft.world.WorldView;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 
 public class TriplePlantBlock extends PlantBlock {
@@ -116,7 +116,11 @@ public class TriplePlantBlock extends PlantBlock {
     public AbstractBlock.OffsetType getOffsetType() {
         return AbstractBlock.OffsetType.XZ;
     }
-    // TODO: Apply offset to collision box
+
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        Vec3d vec3d = state.getModelOffset(world, pos);
+        return VoxelShapes.fullCube().offset(vec3d.x, vec3d.y, vec3d.z);
+    }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(THIRD);

@@ -131,5 +131,7 @@ public class BakingVillagerTrades {
             sellItem(factories, Baking.BEER.asItem(), 1, 1, 10);
             sellItem(factories, Baking.WHISKEY.asItem(), 1, 1, 10);
         }));
+
+        // TODO: Level 4 & 5 Vintner Trades!
     }
 }
