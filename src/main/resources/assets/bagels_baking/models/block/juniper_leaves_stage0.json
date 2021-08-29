@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/cube_all",
+    "textures": {
+      "all": "bagels_baking:block/juniper_leaves_stage0"
+    }
+  }

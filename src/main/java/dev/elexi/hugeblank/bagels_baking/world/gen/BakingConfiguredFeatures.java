@@ -3,6 +3,7 @@ package dev.elexi.hugeblank.bagels_baking.world.gen;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import dev.elexi.hugeblank.bagels_baking.Baking;
+import dev.elexi.hugeblank.bagels_baking.world.gen.placer.JuniperFoliagePlacer;
 import dev.elexi.hugeblank.bagels_baking.world.gen.placer.TriplePlantPlacer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
@@ -140,7 +141,7 @@ public class BakingConfiguredFeatures {
     );
 
     public static final ConfiguredFeature<TreeFeatureConfig, ?> JUNIPER_TREE = register("juniper_tree", Feature.TREE
-            .configure((new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Baking.JUNIPER_LOG.getDefaultState()), new StraightTrunkPlacer(10, 3, 0), new SimpleBlockStateProvider(Baking.JUNIPER_LEAVES.getDefaultState()), new SimpleBlockStateProvider(Baking.CHERRY_SAPLING.getDefaultState()), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3), new TwoLayersFeatureSize(1, 0, 1)))
+            .configure((new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Baking.JUNIPER_LOG.getDefaultState()), new StraightTrunkPlacer(10, 3, 0), new SimpleBlockStateProvider(Baking.JUNIPER_LEAVES.getDefaultState()), new SimpleBlockStateProvider(Baking.JUNIPER_SAPLING.getDefaultState()), new JuniperFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 11), new TwoLayersFeatureSize(1, 0, 1)))
                     .ignoreVines()
                     .build())
     );
