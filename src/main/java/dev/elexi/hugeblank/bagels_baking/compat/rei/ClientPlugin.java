@@ -29,17 +29,26 @@ public class ClientPlugin implements REIClientPlugin {
 
     @Override
     public void registerCategories(CategoryRegistry registry) {
-        registry.add(new MillingCategory(), new FermentingCategory(), new FreezingCategory(), new CreamingCategory(), new SeparatorCategory());
+        registry.add(
+                new MillingCategory(),
+                new FermentingCategory(),
+                new FreezingCategory(),
+                new CreamingCategory(),
+                new SeparatorCategory(),
+                new CoolingCategory()
+        );
         registry.addWorkstations(Plugin.MILLING, EntryStacks.of(Baking.MILL_ITEM));
         registry.addWorkstations(Plugin.FERMENTING, EntryStacks.of(Baking.FERMENTER_ITEM));
         registry.addWorkstations(Plugin.FREEZING, EntryStacks.of(Baking.ICE_BOX_ITEM));
         registry.addWorkstations(Plugin.CREAMING, EntryStacks.of(Items.CAULDRON));
         registry.addWorkstations(Plugin.SEPARATING, EntryStacks.of(Items.CAULDRON));
+        registry.addWorkstations(Plugin.COOLING, EntryStacks.of(Items.CAULDRON));
         registry.removePlusButton(Plugin.MILLING);
         registry.removePlusButton(Plugin.FERMENTING);
         registry.removePlusButton(Plugin.FREEZING);
         registry.removePlusButton(Plugin.CREAMING);
         registry.removePlusButton(Plugin.SEPARATING);
+        registry.removePlusButton(Plugin.COOLING);
     }
 
     @Override
@@ -49,6 +58,7 @@ public class ClientPlugin implements REIClientPlugin {
         registry.registerFiller(FreezingRecipe.class, FreezingDisplay::new);
         registry.registerFiller(CreamingRecipe.class, CreamingDisplay::new);
         registry.registerFiller(SeparatorRecipe.class, SeparatorDisplay::new);
+        registry.registerFiller(CoolingRecipe.class, CoolingDisplay::new);
 
         DisplayRegistry.getInstance().add(new CreamingRecipe(
                 Ingredient.ofStacks(new ItemStack(Baking.COFFEE_CUP), new ItemStack(Baking.COFFEE_CUP, 2), new ItemStack(Baking.COFFEE_CUP, 3)),
@@ -77,6 +87,11 @@ public class ClientPlugin implements REIClientPlugin {
                                 .add(EntryStacks.of(Baking.EGG_WHITES, 3))
                                 .build()
                 )
+        ));
+
+        DisplayRegistry.getInstance().add(new CoolingRecipe(
+                EntryIngredient.of(EntryStacks.of(Baking.CHEESE)),
+                EntryIngredient.of(EntryStacks.of(Baking.CHEESE_BLOCK))
         ));
     }
 }
