@@ -20,11 +20,11 @@ public class JuniperFoliagePlacer extends BlobFoliagePlacer {
     //layer type, layer radius, layer minimum, layer maximum
     private static final int[][] layers = {
             //{0, 0, 1, 2},
-            {1, 1, 2, 2},
-            {0, 1, 2, 2},
-            {2, 2, 3, 3},
-            {1, 2, 2, 2},
-            {2, 2, 1, 1}
+            {1, 1, 1, 3},
+            {0, 1, 1, 3},
+            {2, 2, 2, 4},
+            {1, 2, 2, 4},
+            {2, 2, 1, 2}
     };
 
     public static final Codec<JuniperFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) -> {
@@ -100,28 +100,36 @@ public class JuniperFoliagePlacer extends BlobFoliagePlacer {
 
         }
         */
-        int hatHeight = random.nextInt(2);
+        int hatHeight = random.nextInt(3);
 
         for (int i = offset; i >= offset-1-hatHeight; --i) { // just the tip
             this.generateSquare(world, replacer, random, config, blockPos, 0, offset-i, treeNode.isGiantTrunk(), true);
         }
 
+        int minHeight = 0;
+        for (int[] layer : layers) {
+            minHeight += layer[2];
+        }
+
+        int spareHeight = foliageHeight-minHeight;
+
         int current = 0;
         for (int[] layer : layers) {
-            for (int j = 0; j <= layer[2]; j++) {
+
+            int variance = random.nextInt((layer[3]-layer[2])+1);
+            variance = Math.min(variance, spareHeight);
+            spareHeight -= variance;
+
+            int thisHeight = layer[2] + variance;
+
+            for (int j = 0; j <= thisHeight; j++) {
                 switch (layer[0]) {
-                    case 0:
-                        this.generateSquare(world, replacer, random, config, blockPos, layer[1], current-j, treeNode.isGiantTrunk(), true);
-                        break;
-                    case 1:
-                        this.generateSquare(world, replacer, random, config, blockPos, layer[1], current-j, treeNode.isGiantTrunk(), false);
-                        break;
-                    case 2:
-                        this.generateDiamond(world, replacer, random, config, blockPos, layer[1], current-j, treeNode.isGiantTrunk());
-                        break;
+                    case 0 -> this.generateSquare(world, replacer, random, config, blockPos, layer[1], current - j, treeNode.isGiantTrunk(), true);
+                    case 1 -> this.generateSquare(world, replacer, random, config, blockPos, layer[1], current - j, treeNode.isGiantTrunk(), false);
+                    case 2 -> this.generateDiamond(world, replacer, random, config, blockPos, layer[1], current - j, treeNode.isGiantTrunk());
                 }
             }
-            current -= layer[2];
+            current -= thisHeight;
         }
     }
 }

@@ -141,7 +141,7 @@ public class BakingConfiguredFeatures {
     );
 
     public static final ConfiguredFeature<TreeFeatureConfig, ?> JUNIPER_TREE = register("juniper_tree", Feature.TREE
-            .configure((new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Baking.JUNIPER_LOG.getDefaultState()), new StraightTrunkPlacer(10, 3, 0), new SimpleBlockStateProvider(Baking.JUNIPER_LEAVES.getDefaultState()), new SimpleBlockStateProvider(Baking.JUNIPER_SAPLING.getDefaultState()), new JuniperFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 11), new TwoLayersFeatureSize(1, 0, 1)))
+            .configure((new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Baking.JUNIPER_LOG.getDefaultState()), new StraightTrunkPlacer(10, 3, 0), new SimpleBlockStateProvider(Baking.JUNIPER_LEAVES.getDefaultState()), new SimpleBlockStateProvider(Baking.JUNIPER_SAPLING.getDefaultState()), new JuniperFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 10), new TwoLayersFeatureSize(1, 0, 1)))
                     .ignoreVines()
                     .build())
     );
