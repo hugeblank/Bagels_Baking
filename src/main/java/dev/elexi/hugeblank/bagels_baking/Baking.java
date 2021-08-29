@@ -7,6 +7,7 @@ import dev.elexi.hugeblank.bagels_baking.block.cauldron.SeparatorCauldron;
 import dev.elexi.hugeblank.bagels_baking.block.entity.FermenterBlockEntity;
 import dev.elexi.hugeblank.bagels_baking.block.entity.IceBoxBlockEntity;
 import dev.elexi.hugeblank.bagels_baking.block.sign.SignTypeRegistry;
+import dev.elexi.hugeblank.bagels_baking.entity.BakingVillagerProfessions;
 import dev.elexi.hugeblank.bagels_baking.entity.BakingVillagerTrades;
 import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
 import dev.elexi.hugeblank.bagels_baking.entity.boat.BasicBoatRegistry;
@@ -853,6 +854,9 @@ public class Baking implements ModInitializer {
 
 		// Biomes
 		BakingBiomes.init();
+
+		// Villager Professions
+		BakingVillagerProfessions.init();
 
 		// Stats
 		Registry.register(Registry.CUSTOM_STAT, "day_of_week", DAY_OF_WEEK);

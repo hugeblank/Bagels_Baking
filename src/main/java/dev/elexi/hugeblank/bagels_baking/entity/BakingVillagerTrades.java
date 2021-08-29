@@ -5,6 +5,8 @@ import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers;
 import net.minecraft.village.VillagerProfession;
@@ -74,7 +76,7 @@ public class BakingVillagerTrades {
         // Cleric Trades
 
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.CLERIC, 3, (factories -> {
-            buyItem(factories, Baking.COMPRESSED_TEA_BLOCK.asItem(), 10, 20);
+            buyItem(factories, Baking.COMPRESSED_TEA_BLOCK.asItem(), 10, 10);
         }));
 
         // Butcher Trades
@@ -98,6 +100,36 @@ public class BakingVillagerTrades {
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.MASON, 3, (factories -> {
             buyItem(factories, Baking.HALITE.asItem(), 12, 20);
             sellItem(factories, Baking.POLISHED_HALITE.asItem(), 1, 4, 20);
+        }));
+
+        // Vintner Trades
+
+        TradeOfferHelper.registerVillagerOffers(BakingVillagerProfessions.VINTNER_PROFESSION, 1, (factories -> {
+            buyItem(factories, Baking.GRAPES.asItem(), 26, 2);
+            sellItem(factories, Baking.GRAPE_JAM.asItem(), 1, 1, 2);
+            sellItem(factories, Baking.GRAPE_JAM_SANDWICH.asItem(), 1, 2, 1);
+        }));
+
+        TradeOfferHelper.registerVillagerOffers(BakingVillagerProfessions.VINTNER_PROFESSION, 2, (factories -> {
+            sellItem(factories, Baking.OAK_TRELLIS.asItem(), 1, 2, 5);
+            sellItem(factories, Baking.BIRCH_TRELLIS.asItem(), 1, 2, 5);
+            sellItem(factories, Baking.SPRUCE_TRELLIS.asItem(), 1, 2, 5);
+            sellItem(factories, Baking.JUNGLE_TRELLIS.asItem(), 1, 2, 5);
+            sellItem(factories, Baking.ACACIA_TRELLIS.asItem(), 1, 2, 5);
+            sellItem(factories, Baking.DARK_OAK_TRELLIS.asItem(), 1, 2, 5);
+            sellItem(factories, Baking.CRIMSON_TRELLIS.asItem(), 1, 2, 5);
+            sellItem(factories, Baking.WARPED_TRELLIS.asItem(), 1, 2, 5);
+            sellItem(factories, Registry.ITEM.get(new Identifier(Baking.ID, "lemon_trellis")), 1, 2, 5);
+            sellItem(factories, Registry.ITEM.get(new Identifier(Baking.ID, "cherry_trellis")), 1, 2, 5);
+            sellItem(factories, Registry.ITEM.get(new Identifier(Baking.ID, "juniper_trellis")), 1, 2, 5);
+        }));
+
+        TradeOfferHelper.registerVillagerOffers(BakingVillagerProfessions.VINTNER_PROFESSION, 3, (factories -> {
+            buyItem(factories, Items.HONEY_BOTTLE, 4, 10);
+            buyItem(factories, Baking.MALT_VINEGAR, 4, 10);
+            sellItem(factories, Baking.RED_WINE.asItem(), 1, 1, 10);
+            sellItem(factories, Baking.BEER.asItem(), 1, 1, 10);
+            sellItem(factories, Baking.WHISKEY.asItem(), 1, 1, 10);
         }));
     }
 }
