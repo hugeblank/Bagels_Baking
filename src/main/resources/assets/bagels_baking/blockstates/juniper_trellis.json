@@ -1,0 +1,194 @@
+{
+    "variants": {
+        "facing=east,half=lower": {
+            
+            "y": 270,
+            "model": "bagels_baking:block/juniper_trellis_none"
+        },
+        "facing=east,half=upper,distance=0,adjacent=both": {
+            
+            "y": 270,
+            "model": "bagels_baking:block/juniper_trellis_both"
+        },
+        "facing=east,half=upper,adjacent=right": {
+            
+            "y": 270,
+            "model": "bagels_baking:block/juniper_trellis_right"
+        },
+        "facing=east,half=upper,adjacent=left": {
+            
+            "y": 270,
+            "model": "bagels_baking:block/juniper_trellis_left"
+        },
+        "facing=east,half=upper,adjacent=none": {
+            
+            "y": 270,
+            "model": "bagels_baking:block/juniper_trellis_none"
+        },
+        "facing=north,half=lower": {
+            
+            "y": 180,
+            "model": "bagels_baking:block/juniper_trellis_none"
+        },
+        "facing=north,half=upper,distance=0,adjacent=both": {
+            
+            "y": 180,
+            "model": "bagels_baking:block/juniper_trellis_both"
+        },
+        "facing=north,half=upper,adjacent=right": {
+            
+            "y": 180,
+            "model": "bagels_baking:block/juniper_trellis_right"
+        },
+        "facing=north,half=upper,adjacent=left": {
+            
+            "y": 180,
+            "model": "bagels_baking:block/juniper_trellis_left"
+        },
+        "facing=north,half=upper,adjacent=none": {
+            
+            "y": 180,
+            "model": "bagels_baking:block/juniper_trellis_none"
+        },
+        "facing=south,half=lower": {
+            
+            "model": "bagels_baking:block/juniper_trellis_none"
+        },
+        "facing=south,half=upper,distance=0,adjacent=both": {
+            
+            "model": "bagels_baking:block/juniper_trellis_both"
+        },
+        "facing=south,half=upper,adjacent=right": {
+            
+            "model": "bagels_baking:block/juniper_trellis_right"
+        },
+        "facing=south,half=upper,adjacent=left": {
+            
+            "model": "bagels_baking:block/juniper_trellis_left"
+        },
+        "facing=south,half=upper,adjacent=none": {
+            
+            "model": "bagels_baking:block/juniper_trellis_none"
+        },
+        "facing=west,half=lower": {
+            
+            "y": 90,
+            "model": "bagels_baking:block/juniper_trellis_none"
+        },
+        "facing=west,half=upper,distance=0,adjacent=both": {
+            
+            "y": 90,
+            "model": "bagels_baking:block/juniper_trellis_both"
+        },
+        "facing=west,half=upper,adjacent=right": {
+            
+            "y": 90,
+            "model": "bagels_baking:block/juniper_trellis_right"
+        },
+        "facing=west,half=upper,adjacent=left": {
+            
+            "y": 90,
+            "model": "bagels_baking:block/juniper_trellis_left"
+        },
+        "facing=west,half=upper,adjacent=none": {
+            
+            "y": 90,
+            "model": "bagels_baking:block/juniper_trellis_none"
+        },
+        "facing=east,half=upper,distance=1,adjacent=both": {
+            
+            "y": 270,
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=north,half=upper,distance=1,adjacent=both": {
+            
+            "y": 180,
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=south,half=upper,distance=1,adjacent=both": {
+            
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=west,half=upper,distance=1,adjacent=both": {
+            
+            "y": 90,
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=east,half=upper,distance=2,adjacent=both": {
+            
+            "y": 270,
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=north,half=upper,distance=2,adjacent=both": {
+            
+            "y": 180,
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=south,half=upper,distance=2,adjacent=both": {
+            
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=west,half=upper,distance=2,adjacent=both": {
+            
+            "y": 90,
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=east,half=upper,distance=3,adjacent=both": {
+            
+            "y": 270,
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=north,half=upper,distance=3,adjacent=both": {
+            
+            "y": 180,
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=south,half=upper,distance=3,adjacent=both": {
+            
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=west,half=upper,distance=3,adjacent=both": {
+            
+            "y": 90,
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=east,half=upper,distance=4,adjacent=both": {
+            
+            "y": 270,
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=north,half=upper,distance=4,adjacent=both": {
+            
+            "y": 180,
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=south,half=upper,distance=4,adjacent=both": {
+            
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=west,half=upper,distance=4,adjacent=both": {
+            
+            "y": 90,
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=east,half=upper,distance=5,adjacent=both": {
+            
+            "y": 270,
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=north,half=upper,distance=5,adjacent=both": {
+            
+            "y": 180,
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=south,half=upper,distance=5,adjacent=both": {
+            
+            "model": "bagels_baking:block/trellis_wire"
+        },
+        "facing=west,half=upper,distance=5,adjacent=both": {
+            
+            "y": 90,
+            "model": "bagels_baking:block/trellis_wire"
+        }
+    }
+}

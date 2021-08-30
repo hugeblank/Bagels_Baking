@@ -29,7 +29,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Random;
 
 public class FermenterBlock extends BlockWithEntity {
-    public static final EnumProperty<Direction> FACING = Properties.FACING;
+    public static final EnumProperty<Direction> FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty ACTIVE = BakingProperties.ACTIVE;
     private static final VoxelShape SHAPE = VoxelShapes.union(Block.createCuboidShape(3.0d, 0.0d, 3.0d, 13.0d, 12.0d, 13.0d), Block.createCuboidShape(7.0d, 12.0d, 7.0d, 9.0d, 16.0d, 9.0d));
 

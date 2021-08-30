@@ -836,6 +836,7 @@ public class Baking implements ModInitializer {
 		registerItem("mead", MEAD);
 		registerItem("rum", RUM);
 		registerItem("gin", GIN);
+		registerItem("spiced_rum", SPICED_RUM);
 
 		// Cauldrons
 		BakingCauldronBehavior.registerBehaviors();

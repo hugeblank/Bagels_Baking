@@ -2,6 +2,7 @@
     "replace": false,
     "values": [
       "bagels_baking:cherry_door",
-      "bagels_baking:lemon_door"
+      "bagels_baking:lemon_door",
+      "bagels_baking:juniper_door"
     ]
   }
