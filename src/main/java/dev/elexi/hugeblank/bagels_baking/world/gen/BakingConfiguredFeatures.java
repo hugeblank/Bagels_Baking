@@ -156,26 +156,15 @@ public class BakingConfiguredFeatures {
                     .build())
     );
 
-    /*
-    public static final ConfiguredFeature<?, ?> JUNIPER_TREES = register("juniper_trees", Feature.RANDOM_SELECTOR
-            .configure(new RandomFeatureConfig(ImmutableList.of(JUNIPER_TREE.withChance(0.8f)), JUNIPER_TREE))
-            .decorate(Decorator.HEIGHTMAP
-                    .configure(new HeightmapDecoratorConfig(Heightmap.Type.MOTION_BLOCKING))
-                    .spreadHorizontally())
-            .decorate(Decorator.COUNT_EXTRA
-                    .configure(new CountExtraDecoratorConfig(10, 0.1F, 1)))
-    );
-
-     */
-
     public static final ConfiguredFeature<?, ?> JUNIPER_TREES = register("juniper_trees",
             Feature.RANDOM_SELECTOR
-                    .configure(new RandomFeatureConfig(ImmutableList.of(JUNIPER_TREE.withChance(0.8F)), JUNIPER_TREE))
+                    .configure(new RandomFeatureConfig(ImmutableList.of(JUNIPER_TREE.withChance(0.1F), ConfiguredFeatures.PINE.withChance(.5f)), JUNIPER_TREE))
                     .decorate(Decorator.HEIGHTMAP
                             .configure(new HeightmapDecoratorConfig(Heightmap.Type.MOTION_BLOCKING))
                             .spreadHorizontally())
                     .decorate(Decorator.COUNT_EXTRA
-                            .configure(new CountExtraDecoratorConfig(10, 0.1F, 1))));
+                            .configure(new CountExtraDecoratorConfig(5, 0.1F, 1))));
+
 
     public static void init() {}
 

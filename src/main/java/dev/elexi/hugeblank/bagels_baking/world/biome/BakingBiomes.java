@@ -97,7 +97,7 @@ public class BakingBiomes {
         DefaultBiomeFeatures.addMineables(builder2);
         DefaultBiomeFeatures.addDefaultOres(builder2);
         DefaultBiomeFeatures.addDefaultDisks(builder2);
-        DefaultBiomeFeatures.addTaigaTrees(builder2);
+        //DefaultBiomeFeatures.addTaigaTrees(builder2);
         DefaultBiomeFeatures.addDefaultFlowers(builder2);
         DefaultBiomeFeatures.addTaigaGrass(builder2);
         DefaultBiomeFeatures.addDefaultMushrooms(builder2);

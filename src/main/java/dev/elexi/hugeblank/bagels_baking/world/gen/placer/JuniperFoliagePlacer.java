@@ -4,8 +4,10 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.elexi.hugeblank.bagels_baking.Baking;
 import dev.elexi.hugeblank.bagels_baking.mixin.world.FoliagePlacerTypeInvoker;
+import io.netty.util.Constant;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
@@ -26,8 +28,6 @@ public class JuniperFoliagePlacer extends FoliagePlacer {
             {1, 2, 2, 4},
             {2, 2, 1, 2}
     };
-
-
 
     protected final IntProvider height;
 
