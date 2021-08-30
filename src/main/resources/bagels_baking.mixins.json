@@ -34,7 +34,8 @@
     "stew.StewStackIncrease",
     "world.BlockPlacerTypeAccessor",
     "world.CoffeeBeansTreeDecorator",
-    "world.CropProcessorList"
+    "world.CropProcessorList",
+    "world.FoliagePlacerTypeInvoker"
   ],
   "client": [
     "recipe.ClientRecipeBookMixin",

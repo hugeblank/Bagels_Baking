@@ -3,6 +3,7 @@ package dev.elexi.hugeblank.bagels_baking.world.gen;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import dev.elexi.hugeblank.bagels_baking.Baking;
+import dev.elexi.hugeblank.bagels_baking.mixin.world.FoliagePlacerTypeInvoker;
 import dev.elexi.hugeblank.bagels_baking.world.gen.placer.JuniperFoliagePlacer;
 import dev.elexi.hugeblank.bagels_baking.world.gen.placer.TriplePlantPlacer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -17,6 +18,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.BiomeKeys;
+import net.minecraft.world.biome.DefaultBiomeCreator;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.decorator.CountExtraDecoratorConfig;
@@ -26,6 +28,7 @@ import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
+import net.minecraft.world.gen.foliage.FoliagePlacerType;
 import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
 import net.minecraft.world.gen.placer.DoublePlantPlacer;
 import net.minecraft.world.gen.placer.SimpleBlockPlacer;
@@ -36,6 +39,8 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import java.util.function.Predicate;
 
 public class BakingConfiguredFeatures {
+
+
 
     private static final ConfiguredFeature<?, ?> HALITE = registerInBiomes("halite", Feature.ORE
             .configure(new OreFeatureConfig(
@@ -141,10 +146,36 @@ public class BakingConfiguredFeatures {
     );
 
     public static final ConfiguredFeature<TreeFeatureConfig, ?> JUNIPER_TREE = register("juniper_tree", Feature.TREE
-            .configure((new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Baking.JUNIPER_LOG.getDefaultState()), new StraightTrunkPlacer(10, 3, 0), new SimpleBlockStateProvider(Baking.JUNIPER_LEAVES.getDefaultState()), new SimpleBlockStateProvider(Baking.JUNIPER_SAPLING.getDefaultState()), new JuniperFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 10), new TwoLayersFeatureSize(1, 0, 1)))
+            .configure((new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Baking.JUNIPER_LOG.getDefaultState())
+                    , new StraightTrunkPlacer(10, 3, 0)
+                    , new SimpleBlockStateProvider(Baking.JUNIPER_LEAVES.getDefaultState())
+                    , new SimpleBlockStateProvider(Baking.JUNIPER_SAPLING.getDefaultState())
+                    , new JuniperFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), ConstantIntProvider.create(10))
+                    , new TwoLayersFeatureSize(1, 0, 1)))
                     .ignoreVines()
                     .build())
     );
+
+    /*
+    public static final ConfiguredFeature<?, ?> JUNIPER_TREES = register("juniper_trees", Feature.RANDOM_SELECTOR
+            .configure(new RandomFeatureConfig(ImmutableList.of(JUNIPER_TREE.withChance(0.8f)), JUNIPER_TREE))
+            .decorate(Decorator.HEIGHTMAP
+                    .configure(new HeightmapDecoratorConfig(Heightmap.Type.MOTION_BLOCKING))
+                    .spreadHorizontally())
+            .decorate(Decorator.COUNT_EXTRA
+                    .configure(new CountExtraDecoratorConfig(10, 0.1F, 1)))
+    );
+
+     */
+
+    public static final ConfiguredFeature<?, ?> JUNIPER_TREES = register("juniper_trees",
+            Feature.RANDOM_SELECTOR
+                    .configure(new RandomFeatureConfig(ImmutableList.of(JUNIPER_TREE.withChance(0.8F)), JUNIPER_TREE))
+                    .decorate(Decorator.HEIGHTMAP
+                            .configure(new HeightmapDecoratorConfig(Heightmap.Type.MOTION_BLOCKING))
+                            .spreadHorizontally())
+                    .decorate(Decorator.COUNT_EXTRA
+                            .configure(new CountExtraDecoratorConfig(10, 0.1F, 1))));
 
     public static void init() {}
 

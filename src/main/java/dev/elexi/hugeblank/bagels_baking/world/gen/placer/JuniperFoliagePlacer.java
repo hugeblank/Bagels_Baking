@@ -1,21 +1,21 @@
 package dev.elexi.hugeblank.bagels_baking.world.gen.placer;
 
-import com.mojang.datafixers.Products;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.elexi.hugeblank.bagels_baking.Baking;
+import dev.elexi.hugeblank.bagels_baking.mixin.world.FoliagePlacerTypeInvoker;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
-import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
 
 import java.util.Random;
 import java.util.function.BiConsumer;
 
-public class JuniperFoliagePlacer extends BlobFoliagePlacer {
+public class JuniperFoliagePlacer extends FoliagePlacer {
     //type 0 = square, type 1 = rounded square, type 2 = diamond
     //layer type, layer radius, layer minimum, layer maximum
     private static final int[][] layers = {
@@ -27,14 +27,28 @@ public class JuniperFoliagePlacer extends BlobFoliagePlacer {
             {2, 2, 1, 2}
     };
 
-    public static final Codec<JuniperFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) -> {
-        return createCodec(instance).apply(instance, JuniperFoliagePlacer::new);
-    });
-    protected final int height;
 
-    public JuniperFoliagePlacer(IntProvider radius, IntProvider offset, int height) {
-        super(radius, offset, height);
+
+    protected final IntProvider height;
+
+    public static final Codec<JuniperFoliagePlacer> CODEC = RecordCodecBuilder.create(instance ->
+            fillFoliagePlacerFields(instance)
+            .and(IntProvider.createValidatingCodec(1, 512).fieldOf("foliage_height").forGetter(JuniperFoliagePlacer::getFoliageHeight))
+            .apply(instance, JuniperFoliagePlacer::new));
+
+
+
+    protected FoliagePlacerType<?> getType() {
+        return Baking.JUNIPER_FOLIAGE_PLACER;
+    }
+
+    public JuniperFoliagePlacer(IntProvider radius, IntProvider offset, IntProvider height) {
+        super(radius, offset);
         this.height = height;
+    }
+
+    private IntProvider getFoliageHeight() {
+        return this.height;
     }
 
     @Override
@@ -91,15 +105,6 @@ public class JuniperFoliagePlacer extends BlobFoliagePlacer {
     @Override
     protected void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {
         BlockPos blockPos = treeNode.getCenter();
-        /*
-        int rad = 2;
-
-        for(int l = offset; l >= -foliageHeight; --l) {
-            //this.generateSquare(world, replacer, random, config, blockPos, rad, l, treeNode.isGiantTrunk(), true);
-            this.generateDiamond(world, replacer, random, config, blockPos, rad, l, treeNode.isGiantTrunk());
-
-        }
-        */
         int hatHeight = random.nextInt(3);
 
         for (int i = offset; i >= offset-1-hatHeight; --i) { // just the tip
@@ -131,5 +136,10 @@ public class JuniperFoliagePlacer extends BlobFoliagePlacer {
             }
             current -= thisHeight;
         }
+    }
+
+    @Override
+    public int getRandomHeight(Random random, int trunkHeight, TreeFeatureConfig config) {
+        return getFoliageHeight().get(random);
     }
 }
