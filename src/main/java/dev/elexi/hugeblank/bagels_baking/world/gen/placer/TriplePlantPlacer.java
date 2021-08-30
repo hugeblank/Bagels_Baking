@@ -15,7 +15,7 @@ public class TriplePlantPlacer extends BlockPlacer {
     public static final Codec<TriplePlantPlacer> CODEC = (Codec.unit(() -> INSTANCE));
 
     protected BlockPlacerType<?> getType() {
-        return BakingBlockPlacers.TRIPLE_BLOCK_PLACER_TYPE;
+        return BakingPlacers.TRIPLE_BLOCK_PLACER_TYPE;
     }
 
     public void generate(WorldAccess world, BlockPos pos, BlockState state, Random random) {

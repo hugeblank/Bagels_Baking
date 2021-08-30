@@ -7,9 +7,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin(FoliagePlacerType.class)
-public interface FoliagePlacerTypeInvoker {
-    @Invoker
-    static <P extends FoliagePlacer> FoliagePlacerType<P> callRegister(String id, Codec<P> codec) {
-        throw new IllegalStateException();
+public interface FoliagePlacerTypeAccessor {
+
+    @Invoker("<init>")
+    static <P extends FoliagePlacer> FoliagePlacerType<P> newFoliagePlacerType(Codec<P> codec) {
+        throw new AssertionError();
     }
 }

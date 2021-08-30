@@ -2,12 +2,8 @@ package dev.elexi.hugeblank.bagels_baking.world.gen.placer;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import dev.elexi.hugeblank.bagels_baking.Baking;
-import dev.elexi.hugeblank.bagels_baking.mixin.world.FoliagePlacerTypeInvoker;
-import io.netty.util.Constant;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
@@ -39,7 +35,7 @@ public class JuniperFoliagePlacer extends FoliagePlacer {
 
 
     protected FoliagePlacerType<?> getType() {
-        return Baking.JUNIPER_FOLIAGE_PLACER;
+        return BakingPlacers.JUNIPER_FOLIAGE_PLACER;
     }
 
     public JuniperFoliagePlacer(IntProvider radius, IntProvider offset, IntProvider height) {

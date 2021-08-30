@@ -35,7 +35,7 @@
     "world.BlockPlacerTypeAccessor",
     "world.CoffeeBeansTreeDecorator",
     "world.CropProcessorList",
-    "world.FoliagePlacerTypeInvoker"
+    "world.FoliagePlacerTypeAccessor"
   ],
   "client": [
     "recipe.ClientRecipeBookMixin",

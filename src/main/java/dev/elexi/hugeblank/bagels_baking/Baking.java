@@ -13,14 +13,12 @@ import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
 import dev.elexi.hugeblank.bagels_baking.entity.boat.BasicBoatRegistry;
 import dev.elexi.hugeblank.bagels_baking.item.*;
 import dev.elexi.hugeblank.bagels_baking.mixin.entity.DamageSourceAccessor;
-import dev.elexi.hugeblank.bagels_baking.mixin.world.FoliagePlacerTypeInvoker;
 import dev.elexi.hugeblank.bagels_baking.recipe.FermentingRecipe;
 import dev.elexi.hugeblank.bagels_baking.recipe.FreezingRecipe;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
 import dev.elexi.hugeblank.bagels_baking.world.biome.BakingBiomes;
 import dev.elexi.hugeblank.bagels_baking.world.gen.BakingConfiguredFeatures;
-import dev.elexi.hugeblank.bagels_baking.world.gen.placer.JuniperFoliagePlacer;
 import dev.elexi.hugeblank.bagels_baking.world.gen.tree.CherrySaplingGenerator;
 import dev.elexi.hugeblank.bagels_baking.world.gen.tree.JuniperSaplingGenerator;
 import dev.elexi.hugeblank.bagels_baking.world.gen.tree.LemonSaplingGenerator;
@@ -53,7 +51,6 @@ import net.minecraft.util.SignType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.gen.foliage.FoliagePlacerType;
 
 import java.util.Random;
 
@@ -540,13 +537,9 @@ public class Baking implements ModInitializer {
 	public static final BottledItem SPICED_RUM = basicJam(1, 0.2f, SoundEvents.ENTITY_GENERIC_DRINK);
 	public static final BottledItem GIN = basicJam(1, 0.1f, SoundEvents.ENTITY_GENERIC_DRINK);
 
-
 	// Stats
 	public static final Identifier DAY_OF_WEEK = new Identifier(ID, "day_of_week");
 	public static final Identifier TOMATO_KILLS = new Identifier(ID, "tomato_kills");
-
-	// Register Foliage Placer Type
-	public static final FoliagePlacerType<JuniperFoliagePlacer> JUNIPER_FOLIAGE_PLACER = FoliagePlacerTypeInvoker.callRegister("juniper_foliage_placer", JuniperFoliagePlacer.CODEC);
 
 	@Override
 	public void onInitialize() {
