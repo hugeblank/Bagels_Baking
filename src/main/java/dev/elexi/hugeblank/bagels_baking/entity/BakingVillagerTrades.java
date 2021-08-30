@@ -105,33 +105,44 @@ public class BakingVillagerTrades {
         // Vintner Trades
 
         TradeOfferHelper.registerVillagerOffers(BakingVillagerProfessions.VINTNER_PROFESSION, 1, (factories -> {
-            buyItem(factories, Baking.GRAPES.asItem(), 26, 2);
-            sellItem(factories, Baking.GRAPE_JAM.asItem(), 1, 1, 2);
-            sellItem(factories, Baking.GRAPE_JAM_SANDWICH.asItem(), 1, 2, 1);
+            buyItem(factories, Baking.GRAPES, 26, 2);
+            sellItem(factories, Baking.GRAPE_JAM, 1, 1, 2);
+            sellItem(factories, Baking.GRAPE_JAM_SANDWICH, 1, 2, 1);
         }));
 
         TradeOfferHelper.registerVillagerOffers(BakingVillagerProfessions.VINTNER_PROFESSION, 2, (factories -> {
-            sellItem(factories, Baking.OAK_TRELLIS.asItem(), 1, 2, 5);
-            sellItem(factories, Baking.BIRCH_TRELLIS.asItem(), 1, 2, 5);
-            sellItem(factories, Baking.SPRUCE_TRELLIS.asItem(), 1, 2, 5);
-            sellItem(factories, Baking.JUNGLE_TRELLIS.asItem(), 1, 2, 5);
-            sellItem(factories, Baking.ACACIA_TRELLIS.asItem(), 1, 2, 5);
-            sellItem(factories, Baking.DARK_OAK_TRELLIS.asItem(), 1, 2, 5);
-            sellItem(factories, Baking.CRIMSON_TRELLIS.asItem(), 1, 2, 5);
-            sellItem(factories, Baking.WARPED_TRELLIS.asItem(), 1, 2, 5);
-            sellItem(factories, Registry.ITEM.get(new Identifier(Baking.ID, "lemon_trellis")), 1, 2, 5);
-            sellItem(factories, Registry.ITEM.get(new Identifier(Baking.ID, "cherry_trellis")), 1, 2, 5);
-            sellItem(factories, Registry.ITEM.get(new Identifier(Baking.ID, "juniper_trellis")), 1, 2, 5);
+            buyItem(factories, Items.GLASS_BOTTLE, 12, 5);
+            sellItem(factories, Baking.CINNAMON_BARK, 4, 2, 5);
+            sellItem(factories, Baking.GRAPE_STEM.asItem(), 10, 4, 5);
         }));
 
         TradeOfferHelper.registerVillagerOffers(BakingVillagerProfessions.VINTNER_PROFESSION, 3, (factories -> {
+            buyItem(factories, Baking.MOLASSES, 4, 10);
             buyItem(factories, Items.HONEY_BOTTLE, 4, 10);
             buyItem(factories, Baking.MALT_VINEGAR, 4, 10);
-            sellItem(factories, Baking.RED_WINE.asItem(), 1, 1, 10);
-            sellItem(factories, Baking.BEER.asItem(), 1, 1, 10);
-            sellItem(factories, Baking.WHISKEY.asItem(), 1, 1, 10);
+            sellItem(factories, Baking.RED_WINE, 4, 1, 20);
+            sellItem(factories, Baking.BEER, 2, 1, 20);
+            sellItem(factories, Baking.WHISKEY, 3, 1, 20);
         }));
 
-        // TODO: Level 4 & 5 Vintner Trades!
+        TradeOfferHelper.registerVillagerOffers(BakingVillagerProfessions.VINTNER_PROFESSION, 4, (factories -> {
+            sellItem(factories, Baking.OAK_TRELLIS.asItem(), 5, 2, 30);
+            sellItem(factories, Baking.BIRCH_TRELLIS.asItem(), 5, 2, 30);
+            sellItem(factories, Baking.SPRUCE_TRELLIS.asItem(), 5, 2, 30);
+            sellItem(factories, Baking.JUNGLE_TRELLIS.asItem(), 5, 2, 30);
+            sellItem(factories, Baking.ACACIA_TRELLIS.asItem(), 5, 2, 30);
+            sellItem(factories, Baking.DARK_OAK_TRELLIS.asItem(), 5, 2, 30);
+            sellItem(factories, Baking.CRIMSON_TRELLIS.asItem(), 5, 2, 30);
+            sellItem(factories, Baking.WARPED_TRELLIS.asItem(), 5, 2, 30);
+            sellItem(factories, Registry.ITEM.get(new Identifier(Baking.ID, "lemon_trellis")), 5, 2, 30);
+            sellItem(factories, Registry.ITEM.get(new Identifier(Baking.ID, "cherry_trellis")), 5, 2, 30);
+            sellItem(factories, Registry.ITEM.get(new Identifier(Baking.ID, "juniper_trellis")), 5, 2, 30);
+        }));
+
+        TradeOfferHelper.registerVillagerOffers(BakingVillagerProfessions.VINTNER_PROFESSION, 5, (factories -> {
+            buyItem(factories, Baking.JUNIPER_BERRIES, 24, 30);
+            sellItem(factories, Baking.GIN, 6, 1, 30);
+            sellItem(factories, Baking.SPICED_RUM, 8, 1, 30);
+        }));
     }
 }

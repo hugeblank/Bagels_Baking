@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:cinnamon_powder"
+        },
+        {
+            "item": "minecraft:sugar"
+        },
+        {
+            "item": "bagels_baking:rum"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:spiced_rum",
+        "count": 1
+    }
+}

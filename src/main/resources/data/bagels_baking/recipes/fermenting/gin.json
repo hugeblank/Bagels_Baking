@@ -1,0 +1,7 @@
+{
+    "type": "bagels_baking:fermenting",
+    "ingredient": {
+        "item": "bagels_baking:juniper_berries"
+    },
+    "result": "bagels_baking:gin"
+}

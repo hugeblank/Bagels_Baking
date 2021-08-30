@@ -534,7 +534,8 @@ public class Baking implements ModInitializer {
 	public static final BottledItem BEER = basicJam(1, 0.1f, SoundEvents.ENTITY_GENERIC_DRINK);
 	public static final BottledItem MEAD = basicJam(2, 0.1f, SoundEvents.ENTITY_GENERIC_DRINK);
 	public static final BottledItem RUM = basicJam(1, 0.1f, SoundEvents.ENTITY_GENERIC_DRINK);
-	//public static final BottledItem GIN = basicJam(0, 0f, SoundEvents.ENTITY_GENERIC_DRINK);
+	public static final BottledItem SPICED_RUM = basicJam(1, 0.2f, SoundEvents.ENTITY_GENERIC_DRINK);
+	public static final BottledItem GIN = basicJam(1, 0.1f, SoundEvents.ENTITY_GENERIC_DRINK);
 
 
 	// Stats
@@ -834,7 +835,7 @@ public class Baking implements ModInitializer {
 		registerItem("beer", BEER);
 		registerItem("mead", MEAD);
 		registerItem("rum", RUM);
-		//registerItem("gin", GIN);
+		registerItem("gin", GIN);
 
 		// Cauldrons
 		BakingCauldronBehavior.registerBehaviors();
