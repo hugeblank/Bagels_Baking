@@ -102,7 +102,14 @@ public class IceBoxBlock extends ChestBlock {
             }
 
             if (random.nextFloat() < 0.05f) {
-                invo.setStack(random.nextInt(invo.size()), new ItemStack(Items.ICE));
+                int slot = random.nextInt(invo.size());
+                ItemStack stack = invo.getStack(slot);
+                if (stack.isEmpty()) {
+                    invo.setStack(random.nextInt(invo.size()), new ItemStack(Items.ICE));
+                } else if (stack.isOf(Items.ICE) && stack.getCount() < stack.getMaxCount() && stack.getCount() < invo.getMaxCountPerStack()) {
+                    stack.increment(1);
+                    invo.setStack(slot, stack);
+                }
             }
         }
     }
