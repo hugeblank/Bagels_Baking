@@ -313,6 +313,8 @@
   "item.bagels_baking.whiskey": "Whiskey",
   "item.bagels_baking.wild_rice_ball": "Raw Wild Rice Ball",
   "stat.bagels_baking.day_of_week": "Numerical Day of Week",
+  "stat.bagels_baking.interact_with_fermenter": "Interactions with Fermenter",
   "stat.bagels_baking.interact_with_mill": "Interactions with Mill",
+  "stat.bagels_baking.open_ice_box": "Ice Boxes Opened",
   "stat.bagels_baking.tomato_kills": "Player Kills using Tomato"
 }
