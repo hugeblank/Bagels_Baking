@@ -388,10 +388,22 @@ public class Baking implements ModInitializer {
 	public static final Item TEA_CUP = basicSuperCupDrink(2, 0.2f, new StatusEffectInstance(StatusEffects.SPEED, 20*10));
 	public static final Item TEA_W_CREAMER = basicSuperCupDrink(2, 0.1f, new StatusEffectInstance(StatusEffects.SPEED, 20*20));
 	public static final Item MOLASSES = basicCupDrink();
-	public static final Item CHOCOLATE_ICE_CREAM = basicCupDrink(2, 0.2f);
+	public static final Item PLAIN_MILKSHAKE = basicCupDrink(1, 0.1f);
 	public static final Item CHOCOLATE_MILKSHAKE = basicCupDrink(2, 0.2f);
 	public static final Item PLAIN_ICE_CREAM = basicCupDrink(1, 0.1f);
-	public static final Item PLAIN_MILKSHAKE = basicCupDrink(1, 0.1f);
+	public static final Item CHOCOLATE_ICE_CREAM = basicCupDrink(2, 0.2f);
+	public static final Item SWEET_BERRY_SWIRL_CREAM = basicCupDrink(1, 0.1f);
+	public static final Item GLOW_BERRY_SWIRL_CREAM = basicCupDrink(1, 0.1f);
+	public static final Item GRAPE_SWIRL_CREAM = basicCupDrink(1, 0.1f);
+	public static final Item APPLE_CINNAMON_CREAM = basicCupDrink(3, 0.3f);
+	public static final Item SWEET_BERRY_SWIRL_ICE_CREAM = basicCupDrink(2, 0.2f);
+	public static final Item GLOW_BERRY_SWIRL_ICE_CREAM = basicCupDrink(2, 0.2f);
+	public static final Item GRAPE_SWIRL_ICE_CREAM = basicCupDrink(2, 0.2f);
+	public static final Item APPLE_CINNAMON_ICE_CREAM = basicCupDrink(4, 0.4f);
+	public static final Item SWEET_BERRY_SWIRL_MILKSHAKE = basicCupDrink(2, 0.2f);
+	public static final Item GLOW_BERRY_SWIRL_MILKSHAKE = basicCupDrink(2, 0.2f);
+	public static final Item GRAPE_SWIRL_MILKSHAKE = basicCupDrink(2, 0.2f);
+	public static final Item APPLE_CINNAMON_MILKSHAKE = basicCupDrink(4, 0.4f);
 
 	// Sodie Pop
 	public static final Item SUGAR_WATER = basicCupDrink();
@@ -481,12 +493,6 @@ public class Baking implements ModInitializer {
 	public static final Item JUNIPER_BERRIES = basicFood(1, 0.1f);
 	public static final Block JUNIPER_LEAVES = new BasicLeavesBlock(JUNIPER_BERRIES);
 
-
-	// Cheese
-	public static final Block CHEESE_BLOCK = new Block(FabricBlockSettings.copy(Blocks.HONEY_BLOCK).sounds(BlockSoundGroup.CANDLE));
-	public static final Block CHEESE_LAYER = new BasicLayerBlock(FabricBlockSettings.of(Material.SNOW_LAYER).sounds(BlockSoundGroup.CANDLE));
-	public static final Item CHEESE_SLICE = new BlockItem(CHEESE_LAYER, new FabricItemSettings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0f).build()));
-
 	// Misc
 	public static final Item BAGEL = basicFood(8, 0.6f);
 	public static final Item DONUT = basicFood(8, 0.7f);
@@ -516,6 +522,9 @@ public class Baking implements ModInitializer {
 	public static final MushroomStewItem WHEAT_CEREAL_BOWL = basicBowlFood(3, 0.3f);
 	public static final MushroomStewItem CORN_CEREAL_BOWL = basicBowlFood(4, 0.3f);
 	public static final MushroomStewItem RICE_CEREAL_BOWL = basicBowlFood(3, 0.3f);
+	public static final Block CHEESE_BLOCK = new Block(FabricBlockSettings.copy(Blocks.HONEY_BLOCK).sounds(BlockSoundGroup.CANDLE));
+	public static final Block CHEESE_LAYER = new BasicLayerBlock(FabricBlockSettings.of(Material.SNOW_LAYER).sounds(BlockSoundGroup.CANDLE));
+	public static final Item CHEESE_SLICE = new BlockItem(CHEESE_LAYER, new FabricItemSettings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0f).build()));
 	public static final BottledItem LEMONADE = basicJam(2, 0.2f, SoundEvents.ENTITY_GENERIC_DRINK);
 	public static final BottledItem FROZEN_LEMONADE = basicJam(2, 0.3f, SoundEvents.ENTITY_GENERIC_DRINK);
 
@@ -714,10 +723,22 @@ public class Baking implements ModInitializer {
 		registerItem("tea_cup", TEA_CUP);
 		registerItem("creamy_tea_cup", TEA_W_CREAMER);
 		registerItem("molasses", MOLASSES);
+		registerItem("sweet_berry_swirl_cream", SWEET_BERRY_SWIRL_CREAM);
+		registerItem("glow_berry_swirl_cream", GLOW_BERRY_SWIRL_CREAM);
+		registerItem("grape_swirl_cream", GRAPE_SWIRL_CREAM);
+		registerItem("apple_cinnamon_cream", APPLE_CINNAMON_CREAM);
 		registerItem("plain_ice_cream", PLAIN_ICE_CREAM);
-		registerItem("plain_milkshake", PLAIN_MILKSHAKE);
 		registerItem("chocolate_ice_cream", CHOCOLATE_ICE_CREAM);
+		registerItem("sweet_berry_swirl_ice_cream", SWEET_BERRY_SWIRL_ICE_CREAM);
+		registerItem("glow_berry_swirl_ice_cream", GLOW_BERRY_SWIRL_ICE_CREAM);
+		registerItem("grape_swirl_ice_cream", GRAPE_SWIRL_ICE_CREAM);
+		registerItem("apple_cinnamon_ice_cream", APPLE_CINNAMON_ICE_CREAM);
+		registerItem("plain_milkshake", PLAIN_MILKSHAKE);
 		registerItem("chocolate_milkshake", CHOCOLATE_MILKSHAKE);
+		registerItem("sweet_berry_swirl_milkshake", SWEET_BERRY_SWIRL_MILKSHAKE);
+		registerItem("glow_berry_swirl_milkshake", GLOW_BERRY_SWIRL_MILKSHAKE);
+		registerItem("grape_swirl_milkshake", GRAPE_SWIRL_MILKSHAKE);
+		registerItem("apple_cinnamon_milkshake", APPLE_CINNAMON_MILKSHAKE);
 
 		// Sodie Pop
 		registerItem("sugar_water", SUGAR_WATER);
