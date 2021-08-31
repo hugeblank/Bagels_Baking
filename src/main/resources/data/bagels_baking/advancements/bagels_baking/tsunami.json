@@ -1,0 +1,88 @@
+{
+    "parent": "bagels_baking:bagels_baking/root",
+    "display": {
+      "icon": {
+        "item": "bagels_baking:cola"
+      },
+      "title": {
+        "translate": "advancements.bagels_baking.tsunami.title"
+      },
+      "description": {
+        "translate": "advancements.bagels_baking.tsunami.description"
+      },
+      "frame": "goal",
+      "show_toast": true,
+      "announce_to_chat": true,
+      "hidden": false
+    },
+    "criteria": {
+      "cola": {
+        "trigger": "minecraft:consume_item",
+        "conditions": {
+          "item": {
+            "items": ["bagels_baking:cola"]
+          }
+        }
+      },
+      "root_beer": {
+        "trigger": "minecraft:consume_item",
+        "conditions": {
+          "item": {
+            "items": ["bagels_baking:root_beer"]
+          }
+        }
+      },
+      "fruity_soda": {
+        "trigger": "minecraft:consume_item",
+        "conditions": {
+          "item": {
+            "items": ["bagels_baking:fruity_soda"]
+          }
+        }
+      },
+      "mountain_fountain": {
+        "trigger": "minecraft:consume_item",
+        "conditions": {
+          "item": {
+            "items": ["bagels_baking:mountain_fountain"]
+          }
+        }
+      },
+      "cactus_chiller": {
+        "trigger": "minecraft:consume_item",
+        "conditions": {
+          "item": {
+            "items": ["bagels_baking:cactus_chiller"]
+          }
+        }
+      },
+      "grape_soda": {
+        "trigger": "minecraft:consume_item",
+        "conditions": {
+          "item": {
+            "items": ["bagels_baking:grape_soda"]
+          }
+        }
+      }
+    },
+    "requirements": [
+      [
+        "cola"
+      ],
+      [
+        "root_beer"
+      ],
+      [
+        "fruity_soda"
+      ],
+      [
+        "mountain_fountain"
+      ],
+      [
+        "cactus_chiller"
+      ],
+      [
+        "grape_soda"
+      ]
+    ]
+  }

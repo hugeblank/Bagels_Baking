@@ -1,0 +1,74 @@
+{
+    "parent": "bagels_baking:bagels_baking/fridge_light",
+    "display": {
+        "icon": {
+            "item": "bagels_baking:plain_ice_cream"
+        },
+        "title": {
+            "translate": "advancements.bagels_baking.brain_freeze.title"
+        },
+        "description": {
+            "translate": "advancements.bagels_baking.brain_freeze.description"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "plain_milkshake": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:plain_milkshake"
+                    ]
+                }
+            }
+        },
+        "plain_ice_cream": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:plain_ice_cream"
+                    ]
+                }
+            }
+        },
+        "chocolate_milkshake": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:chocolate_milkshake"
+                    ]
+                }
+            }
+        },
+        "chocolate_ice_cream": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:chocolate_ice_cream"
+                    ]
+                }
+            }
+        }
+    },
+    "requirements": [
+        [
+            "plain_ice_cream"
+        ],
+        [
+            "plain_milkshake"
+        ],
+        [
+            "chocolate_ice_cream"
+        ],
+        [
+            "chocolate_milkshake"
+        ]
+    ]
+}

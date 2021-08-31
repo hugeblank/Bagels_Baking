@@ -789,10 +789,6 @@ public class Baking implements ModInitializer {
 		registerBlock("crimson_trellis", CRIMSON_TRELLIS, ItemGroup.DECORATIONS);
 		registerBlock("warped_trellis", WARPED_TRELLIS, ItemGroup.DECORATIONS);
 
-		// Cheese
-		registerBlock("cheese_slice", CHEESE_LAYER, (BlockItem) CHEESE_SLICE);
-		registerBlock("cheese_block", CHEESE_BLOCK, ItemGroup.BUILDING_BLOCKS);
-
 		// Misc
 		registerItem("bagel", BAGEL);
 		registerItem("donut", DONUT);
@@ -818,6 +814,8 @@ public class Baking implements ModInitializer {
 		registerItem("rice_cereal_bowl", RICE_CEREAL_BOWL);
 		registerItem("lemonade", LEMONADE);
 		registerItem("frozen_lemonade", FROZEN_LEMONADE);
+		registerBlock("cheese_slice", CHEESE_LAYER, (BlockItem) CHEESE_SLICE);
+		registerBlock("cheese_block", CHEESE_BLOCK, ItemGroup.BUILDING_BLOCKS);
 
 		// Slushee
 		registerItem("root_beer_slushee", ROOT_BEER_SLUSHEE);

@@ -17,15 +17,16 @@
     },
     "criteria": {
       "ice_box": {
-        "trigger": "minecraft:placed_block",
+        "trigger": "minecraft:item_used_on_block",
         "conditions": {
-          "block": "bagels_baking:ice_box"
+          "location": {
+            "block": {
+              "blocks": [ 
+                "bagels_baking:ice_box"
+              ]
+            }
+          }
         }
       }
-    },
-    "requirements": [
-      [
-        "ice_box"
-      ]
-    ]
+    }
   }
