@@ -4,9 +4,11 @@ import dev.elexi.hugeblank.bagels_baking.Baking;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.ChestBlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.GenericContainerScreenHandler;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.math.BlockPos;
@@ -27,5 +29,17 @@ public class IceBoxBlockEntity extends ChestBlockEntity {
 
     protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
         return new GenericContainerScreenHandler(Baking.ICE_BOX_9X3, syncId, playerInventory, this, 3);
+    }
+
+    @Override
+    public void onOpen(PlayerEntity player) {
+        super.onOpen(player);
+        if (this.hasWorld()) world.setBlockState(this.getPos(), this.getCachedState().with(Properties.LIT, true));
+    }
+
+    @Override
+    public void onClose(PlayerEntity player) {
+        super.onClose(player);
+        if (this.hasWorld()) world.setBlockState(this.getPos(), this.getCachedState().with(Properties.LIT, false));
     }
 }

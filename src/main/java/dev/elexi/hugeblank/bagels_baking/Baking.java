@@ -318,7 +318,7 @@ public class Baking implements ModInitializer {
 	// Ice Box
 	public static final Identifier ICE_BOX_ID = new Identifier(ID, "ice_box");
 	public static BlockEntityType<IceBoxBlockEntity> ICE_BOX_ENTITY_TYPE;
-	public static final Block ICE_BOX = new IceBoxBlock(FabricBlockSettings.copy(Blocks.CHEST), () -> ICE_BOX_ENTITY_TYPE);
+	public static final Block ICE_BOX = new IceBoxBlock(FabricBlockSettings.copy(Blocks.CHEST).luminance((state) -> state.get(IceBoxBlock.LIT) ? 15 : 0), () -> ICE_BOX_ENTITY_TYPE);
 	public static final BlockItem ICE_BOX_ITEM = new BlockItem(ICE_BOX, new Item.Settings().group(ItemGroup.DECORATIONS));
 	private static final String ice_box_stat = "open_ice_box";
 	public static final Identifier OPEN_ICE_BOX = new Identifier(ID, ice_box_stat);
