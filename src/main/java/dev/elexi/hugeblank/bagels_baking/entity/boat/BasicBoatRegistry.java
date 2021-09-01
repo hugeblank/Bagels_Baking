@@ -29,7 +29,6 @@ public class BasicBoatRegistry {
                         .build());
         Registry.register(Registry.ITEM, new Identifier(Baking.ID, name + "_boat"), boat_item);
 
-        // THIS IS BAD - I SHOULD NOT BE ALLOWED TO PROGRAM.
         if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
             EntityRendererRegistry.INSTANCE.register(BOAT, BoatEntityRenderer::new);
         }
