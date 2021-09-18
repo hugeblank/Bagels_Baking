@@ -3,6 +3,7 @@ package dev.elexi.hugeblank.bagels_baking.world.gen;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import dev.elexi.hugeblank.bagels_baking.Baking;
+import dev.elexi.hugeblank.bagels_baking.util.WoodBlock;
 import dev.elexi.hugeblank.bagels_baking.world.gen.placer.JuniperFoliagePlacer;
 import dev.elexi.hugeblank.bagels_baking.world.gen.placer.TriplePlantPlacer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -81,7 +82,7 @@ public class BakingConfiguredFeatures {
             GenerationStep.Feature.VEGETAL_DECORATION
     );
     public static final ConfiguredFeature<TreeFeatureConfig, ?> CHERRY_TREE = register("cherry_tree", Feature.TREE
-            .configure((new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Baking.CHERRY_LOG.getDefaultState()), new StraightTrunkPlacer(4, 2, 0), new SimpleBlockStateProvider(Baking.CHERRY_LEAVES.getDefaultState()), new SimpleBlockStateProvider(Baking.CHERRY_SAPLING.getDefaultState()), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3), new TwoLayersFeatureSize(1, 0, 1)))
+            .configure((new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Baking.CHERRY_WOOD_TYPE.getBlock(WoodBlock.LOG).getDefaultState()), new StraightTrunkPlacer(4, 2, 0), new SimpleBlockStateProvider(Baking.CHERRY_WOOD_TYPE.getBlock(WoodBlock.LEAVES).getDefaultState()), new SimpleBlockStateProvider(Baking.CHERRY_SAPLING.getDefaultState()), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3), new TwoLayersFeatureSize(1, 0, 1)))
                     .ignoreVines()
                     .build())
     );
@@ -98,7 +99,7 @@ public class BakingConfiguredFeatures {
     );
 
     public static final ConfiguredFeature<TreeFeatureConfig, ?> LEMON_TREE = register("lemon_tree", Feature.TREE
-            .configure((new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Baking.LEMON_LOG.getDefaultState()), new StraightTrunkPlacer(4, 2, 0), new SimpleBlockStateProvider(Baking.LEMON_LEAVES.getDefaultState()), new SimpleBlockStateProvider(Baking.LEMON_SAPLING.getDefaultState()), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3), new TwoLayersFeatureSize(1, 0, 1)))
+            .configure((new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Baking.LEMON_WOOD_TYPE.getBlock(WoodBlock.LOG).getDefaultState()), new StraightTrunkPlacer(4, 2, 0), new SimpleBlockStateProvider(Baking.LEMON_WOOD_TYPE.getBlock(WoodBlock.LEAVES).getDefaultState()), new SimpleBlockStateProvider(Baking.LEMON_SAPLING.getDefaultState()), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3), new TwoLayersFeatureSize(1, 0, 1)))
                     .ignoreVines()
                     .build())
     );
@@ -143,9 +144,9 @@ public class BakingConfiguredFeatures {
     );
 
     public static final ConfiguredFeature<TreeFeatureConfig, ?> JUNIPER_TREE = register("juniper_tree", Feature.TREE
-            .configure((new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Baking.JUNIPER_LOG.getDefaultState())
+            .configure((new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Baking.JUNIPER_WOOD_TYPE.getBlock(WoodBlock.LOG).getDefaultState())
                     , new StraightTrunkPlacer(10, 3, 0)
-                    , new SimpleBlockStateProvider(Baking.JUNIPER_LEAVES.getDefaultState())
+                    , new SimpleBlockStateProvider(Baking.JUNIPER_WOOD_TYPE.getBlock(WoodBlock.LEAVES).getDefaultState())
                     , new SimpleBlockStateProvider(Baking.JUNIPER_SAPLING.getDefaultState())
                     , new JuniperFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), ConstantIntProvider.create(10))
                     , new TwoLayersFeatureSize(1, 0, 1)))
