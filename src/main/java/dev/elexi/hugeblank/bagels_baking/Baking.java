@@ -484,7 +484,7 @@ public class Baking implements ModInitializer {
 	public static final Block SMALL_CINNAMON_TREE = new TallPlantBlock(FabricBlockSettings.copy(Blocks.TALL_GRASS));
 	public static final Block CINNAMON_TREE = new TriplePlantBlock(FabricBlockSettings.copy(Blocks.TALL_GRASS));
 	public static final Block CINNAMON_SAPLING = new FancyFernBlock(FabricBlockSettings.copy(Blocks.OAK_SAPLING), (random) -> (PlantBlock) (((Random) random).nextFloat() < 0.4 ? CINNAMON_TREE : SMALL_CINNAMON_TREE) );
-	public static final Block STRIPPED_JUNIPER_WOOD = new BasicLogBlock();
+	public static final Block POTTED_CINNAMON_SAPLING = new FlowerPotBlock(CINNAMON_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
 	public static final Block JUNIPER_WOOD = new BasicLogBlock(() -> STRIPPED_JUNIPER_WOOD);
 	public static final Block STRIPPED_JUNIPER_LOG = new BasicLogBlock();
 	public static final Block JUNIPER_LOG = new BasicLogBlock(() -> STRIPPED_JUNIPER_LOG);
@@ -794,7 +794,7 @@ public class Baking implements ModInitializer {
 		registerBlock("small_cinnamon_tree", SMALL_CINNAMON_TREE, ItemGroup.DECORATIONS);
 		registerBlock("cinnamon_tree", CINNAMON_TREE, ItemGroup.DECORATIONS);
 		registerBlock("cinnamon_sapling", CINNAMON_SAPLING, ItemGroup.DECORATIONS);
-		registerWoodType("juniper", JUNIPER_LOG, STRIPPED_JUNIPER_LOG, JUNIPER_WOOD, STRIPPED_JUNIPER_WOOD);
+		registerBlock("potted_cinnamon_sapling", POTTED_CINNAMON_SAPLING);
 		registerBlock("juniper_sapling", JUNIPER_SAPLING, ItemGroup.DECORATIONS);
 		registerBlock("juniper_leaves", JUNIPER_LEAVES, ItemGroup.DECORATIONS);
 		registerBlock("potted_juniper_sapling", POTTED_JUNIPER_SAPLING);
