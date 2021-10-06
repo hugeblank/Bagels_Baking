@@ -1,0 +1,19 @@
+{
+  "ice_box_open": {
+    "subtitle": "subtitles.bagels_baking.ice_box_open",
+    "sounds": [
+      "bagels_baking:fridge_open1",
+      "bagels_baking:fridge_open2"
+    ]
+  },
+  "ice_box_close": {
+    "subtitle": "subtitles.bagels_baking.ice_box_close",
+    "sounds": [
+      "bagels_baking:fridge_close1",
+      "bagels_baking:fridge_close2",
+      "bagels_baking:fridge_close3",
+      "bagels_baking:fridge_close4"
+    ]
+  }
+}
+

@@ -15,7 +15,7 @@ import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class IceBoxScreen extends HandledScreen<GenericContainerScreenHandler> implements ScreenHandlerProvider<GenericContainerScreenHandler> {
-    private static final Identifier TEXTURE = new Identifier(Baking.ID, "textures/entity/ice_box_container.png");
+    private static final Identifier TEXTURE = new Identifier(Baking.ID, "textures/entity/ice_box.png");
     private final int rows;
 
     public IceBoxScreen(GenericContainerScreenHandler handler, PlayerInventory inventory, Text title) {

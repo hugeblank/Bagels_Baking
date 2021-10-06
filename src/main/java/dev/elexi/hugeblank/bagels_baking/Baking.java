@@ -502,6 +502,12 @@ public class Baking implements ModInitializer {
 	public static final Identifier DAY_OF_WEEK = new Identifier(ID, "day_of_week");
 	public static final Identifier TOMATO_KILLS = new Identifier(ID, "tomato_kills");
 
+	// Sounds (How did I get here?)
+	public static final Identifier ICE_BOX_OPEN_ID = new Identifier(ID, "ice_box_open");
+	public static final SoundEvent ICE_BOX_OPEN = new SoundEvent(ICE_BOX_OPEN_ID);
+	public static final Identifier ICE_BOX_CLOSE_ID = new Identifier(ID, "ice_box_close");
+	public static final SoundEvent ICE_BOX_CLOSE = new SoundEvent(ICE_BOX_CLOSE_ID);
+
 	@Override
 	public void onInitialize() {
 
@@ -833,5 +839,8 @@ public class Baking implements ModInitializer {
 		Stats.CUSTOM.getOrCreateStat(DAY_OF_WEEK, StatFormatter.DEFAULT);
 		Registry.register(Registry.CUSTOM_STAT, "tomato_kills", TOMATO_KILLS);
 		Stats.CUSTOM.getOrCreateStat(TOMATO_KILLS, StatFormatter.DEFAULT);
+
+		Registry.register(Registry.SOUND_EVENT, ICE_BOX_OPEN_ID, ICE_BOX_OPEN);
+		Registry.register(Registry.SOUND_EVENT, ICE_BOX_CLOSE_ID, ICE_BOX_CLOSE);
 	}
 }
