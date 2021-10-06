@@ -76,7 +76,7 @@ public class IceBoxBlock extends ChestBlock {
 
     public IceBoxBlock(Settings settings, Supplier<BlockEntityType<? extends ChestBlockEntity>> supplier) {
         super(settings, supplier);
-        this.setDefaultState(this.stateManager.getDefaultState().with(LIT, false));
+        this.setDefaultState(super.getDefaultState().with(LIT, false));
     }
 
     public NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {

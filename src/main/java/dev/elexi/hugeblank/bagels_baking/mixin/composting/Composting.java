@@ -33,12 +33,14 @@ public abstract class Composting {
 
         // Sandwiches
 
-        registerCompostableItem(h, Baking.BERRY_JAM_SANDWICH);
+        registerCompostableItem(h, Baking.SWEET_BERRY_JAM_SANDWICH);
         registerCompostableItem(h, Baking.APPLE_JAM_SANDWICH);
+        registerCompostableItem(h, Baking.GLOW_BERRY_JAM_SANDWICH);
+        registerCompostableItem(h, Baking.GRAPE_JAM_SANDWICH);
 
         // Pies
 
-        registerCompostableItem(i, Baking.BERRY_PIE);
+        registerCompostableItem(i, Baking.SWEET_BERRY_PIE);
         registerCompostableItem(i, Baking.APPLE_PIE);
 
         // Cakes
@@ -71,6 +73,9 @@ public abstract class Composting {
         registerCompostableItem(f, Baking.COFFEE_BEANS);
         registerCompostableItem(f, Baking.TEA_LEAVES);
         registerCompostableItem(f, Baking.TEA_SEEDS);
+        registerCompostableItem(f, Baking.GRAPES);
+        registerCompostableItem(f, Baking.LEMON);
+        registerCompostableItem(f, Baking.CHERRIES);
 
         // Misc
 

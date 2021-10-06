@@ -10,11 +10,11 @@
             "item": "minecraft:bread"
         },
         "C": {
-            "item": "bagels_baking:berry_jam"
+            "item": "bagels_baking:glow_berry_jam"
         }
     },
     "result": {
-        "item": "bagels_baking:berry_jam_sandwich",
+        "item": "bagels_baking:glow_berry_jam_sandwich",
         "count": 2
     }
 }

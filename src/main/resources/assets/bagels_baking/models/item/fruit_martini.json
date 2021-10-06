@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "bagels_baking:item/fruit_cocktail"
+        "layer0": "bagels_baking:item/fruit_martini"
     }
 }

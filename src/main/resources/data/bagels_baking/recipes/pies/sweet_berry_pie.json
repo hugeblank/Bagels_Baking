@@ -8,11 +8,11 @@
             "item": "minecraft:sugar"
         },
         {
-            "item": "minecraft:glass_bottle"
+            "item": "minecraft:egg"
         }
     ],
     "result": {
-        "item": "bagels_baking:berry_jam",
+        "item": "bagels_baking:sweet_berry_pie",
         "count": 1
     }
 }

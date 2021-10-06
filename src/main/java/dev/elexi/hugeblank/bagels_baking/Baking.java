@@ -160,9 +160,9 @@ public class Baking implements ModInitializer {
 	public static final Item RABBIT_SANDWICH = basicFood(8, 0.6f);
 	public static final Item CHEESE_SANDWICH = basicFood(3, 0.1f);
 	public static final Item GRILLED_CHEESE_SANDWICH = basicFood(5, 0.6f);
-	public static final Item BERRY_JAM_SANDWICH = basicFood(7, 0.4f);
+	public static final Item SWEET_BERRY_JAM_SANDWICH = basicFood(7, 0.4f);
 	public static final Item APPLE_JAM_SANDWICH = basicFood(8, 0.5f);
-	public static final Item GLOWBERRY_JAM_SANDWICH = basicFood(7, 0.4f);
+	public static final Item GLOW_BERRY_JAM_SANDWICH = basicFood(7, 0.4f);
 	public static final Item GRAPE_JAM_SANDWICH = basicFood(6, 0.4f);
 	public static final Item CHERRY_JAM_SANDWICH = basicFood(7, 0.4f);
 	public static final Item KATSU_SANDWICH = basicFood(13, 0.7f);
@@ -200,9 +200,9 @@ public class Baking implements ModInitializer {
 	// No need to add Rabbit Stew!
 
 	// Jams - Gives 1 Item
-	public static final Item BERRY_JAM = basicBottleDrink(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
+	public static final Item SWEET_BERRY_JAM = basicBottleDrink(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
 	public static final Item APPLE_JAM = basicBottleDrink(5, 0.3f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
-	public static final Item GLOWBERRY_JAM = basicBottleDrink(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
+	public static final Item GLOW_BERRY_JAM = basicBottleDrink(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
 	public static final Item GRAPE_JAM = basicBottleDrink(2, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
 	public static final Item CHERRY_JAM = basicBottleDrink(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
 	public static final Item TONKATSU_SAUCE = basicBowlFood(6, 0.6f);
@@ -210,7 +210,7 @@ public class Baking implements ModInitializer {
 
 	// Pies - Gives 1 Item
 	public static final Item SHEPHERDS_PIE = basicFood(15, 0.7f);
-	public static final Item BERRY_PIE = basicFood(8, 0.3f);
+	public static final Item SWEET_BERRY_PIE = basicFood(8, 0.3f);
 	public static final Item APPLE_PIE = basicFood(9, 0.3f);
 	public static final Item LEMON_MERINGUE_PIE = basicFood(9, 0.2f);
 	public static final Item CHERRY_MERINGUE_PIE = basicFood(9, 0.3f);
@@ -525,9 +525,9 @@ public class Baking implements ModInitializer {
 		registerItem("mutton_sandwich", MUTTON_SANDWICH);
 		registerItem("fish_sandwich", FISH_SANDWICH);
 		registerItem("rabbit_sandwich", RABBIT_SANDWICH);
-		registerItem("berry_jam_sandwich", BERRY_JAM_SANDWICH);
+		registerItem("sweet_berry_jam_sandwich", SWEET_BERRY_JAM_SANDWICH);
 		registerItem("apple_jam_sandwich", APPLE_JAM_SANDWICH);
-		registerItem("glowberry_jam_sandwich", GLOWBERRY_JAM_SANDWICH);
+		registerItem("glow_berry_jam_sandwich", GLOW_BERRY_JAM_SANDWICH);
 		registerItem("grape_jam_sandwich", GRAPE_JAM_SANDWICH);
 		registerItem("cherry_jam_sandwich", CHERRY_JAM_SANDWICH);
 		registerItem("cheese_sandwich", CHEESE_SANDWICH);
@@ -583,16 +583,16 @@ public class Baking implements ModInitializer {
 		registerItem("rabbit_cheeseburger", RABBIT_CHEESEBURGER);
 
 		// Jams
-		registerItem("berry_jam", BERRY_JAM);
+		registerItem("sweet_berry_jam", SWEET_BERRY_JAM);
 		registerItem("apple_jam", APPLE_JAM);
-		registerItem("glowberry_jam", GLOWBERRY_JAM);
+		registerItem("glow_berry_jam", GLOW_BERRY_JAM);
 		registerItem("grape_jam", GRAPE_JAM);
 		registerItem("cherry_jam", CHERRY_JAM);
 		registerItem("tonkatsu_sauce", TONKATSU_SAUCE);
 
 		// Pies
 		registerItem("shepherds_pie", SHEPHERDS_PIE);
-		registerItem("berry_pie", BERRY_PIE);
+		registerItem("sweet_berry_pie", SWEET_BERRY_PIE);
 		registerItem("apple_pie", APPLE_PIE);
 		registerItem("lemon_meringue_pie", LEMON_MERINGUE_PIE);
 		registerItem("cherry_meringue_pie", CHERRY_MERINGUE_PIE);

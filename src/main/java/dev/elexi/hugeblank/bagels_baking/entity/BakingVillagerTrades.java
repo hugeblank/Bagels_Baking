@@ -41,7 +41,7 @@ public class BakingVillagerTrades {
 
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.FARMER, 2, (factories -> {
             sellItem(factories, Baking.APPLE_PIE, 1, 4, 5);
-            sellItem(factories, Baking.BERRY_PIE, 1, 4, 5);
+            sellItem(factories, Baking.SWEET_BERRY_PIE, 1, 4, 5);
             sellItem(factories, Baking.APPLE_JAM, 1, 1, 5);
         }));
 
@@ -92,7 +92,7 @@ public class BakingVillagerTrades {
         }));
 
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.BUTCHER, 5, (factories -> {
-            sellItem(factories, Baking.BERRY_JAM, 1, 1, 30);
+            sellItem(factories, Baking.SWEET_BERRY_JAM, 1, 1, 30);
         }));
 
         // Stone Mason Trades

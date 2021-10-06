@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
         {
-            "item": "minecraft:glow_berries"
+            "item": "minecraft:sweet_berries"
         },
         {
             "item": "minecraft:sugar"
@@ -12,7 +12,7 @@
         }
     ],
     "result": {
-        "item": "bagels_baking:glowberry_jam",
+        "item": "bagels_baking:sweet_berry_jam",
         "count": 1
     }
 }

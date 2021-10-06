@@ -2,9 +2,9 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "bagels_baking:jams/berry_jam",
-      "bagels_baking:pies/berry_pie",
-      "bagels_baking:sandwiches/berry_jam_sandwich"
+      "bagels_baking:jams/sweet_berry_jam",
+      "bagels_baking:pies/sweet_berry_pie",
+      "bagels_baking:sandwiches/sweet_berry_jam_sandwich"
     ]
   },
   "criteria": {

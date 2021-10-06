@@ -5,14 +5,14 @@
             "item": "bagels_baking:cup"
         },
         {
-            "item": "bagels_baking:sweet_berry_jam"
+            "item": "bagels_baking:sweet_sweet_berry_jam"
         },
         {
             "item": "bagels_baking:milk_cup"
         }
     ],
     "result": {
-        "item": "bagels_baking:sweet_berry_swirl_cream",
+        "item": "bagels_baking:sweet_sweet_berry_swirl_cream",
         "count": 1
     }
 }

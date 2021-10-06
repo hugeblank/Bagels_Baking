@@ -8,6 +8,8 @@
         "bagels_baking:fish_sandwich",
         "bagels_baking:rabbit_sandwich",
         "bagels_baking:apple_jam_sandwich",
-        "bagels_baking:berry_jam_sandwich"
+        "bagels_baking:sweet_berry_jam_sandwich",
+        "bagels_baking:glow_berry_jam_sandwich",
+        "bagels_baking:katsu_sandwich"
     ]
   }
