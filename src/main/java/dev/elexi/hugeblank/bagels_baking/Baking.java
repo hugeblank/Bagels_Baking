@@ -386,6 +386,7 @@ public class Baking implements ModInitializer {
 	public static final Item CHICKEN_MEAL = new PlatedItem(8, 0.5f);
 	public static final Item MUTTON_MEAL = new PlatedItem(20, 0.6f);
 	public static final Item RABBIT_MEAL = new PlatedItem(26, 0.7f);
+	public static final Item SALMON_MEAL = new PlatedItem(18, 0.5f);
 
 	// Crops - Here's to v0.3!
 	public static final Block COFFEE = new CocoaBlock(FabricBlockSettings.copy(Blocks.COCOA));
@@ -716,6 +717,7 @@ public class Baking implements ModInitializer {
 		registerItem("chicken_meal", CHICKEN_MEAL);
 		registerItem("mutton_meal", MUTTON_MEAL);
 		registerItem("rabbit_meal", RABBIT_MEAL);
+		registerItem("salmon_meal", SALMON_MEAL);
 
 		// Crops
 		registerBlock("coffee", COFFEE);
