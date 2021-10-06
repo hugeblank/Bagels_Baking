@@ -14,6 +14,7 @@ import dev.elexi.hugeblank.bagels_baking.mixin.entity.DamageSourceAccessor;
 import dev.elexi.hugeblank.bagels_baking.recipe.FermentingRecipe;
 import dev.elexi.hugeblank.bagels_baking.recipe.FreezingRecipe;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
+import dev.elexi.hugeblank.bagels_baking.recipe.ShapelessRemainderlessRecipe;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
 import dev.elexi.hugeblank.bagels_baking.util.WoodType;
 import dev.elexi.hugeblank.bagels_baking.world.biome.BakingBiomes;
@@ -278,8 +279,6 @@ public class Baking implements ModInitializer {
 	public static final Identifier MILL_ID = new Identifier(ID, "mill");
 	public static final Block MILL = new MillBlock(FabricBlockSettings.copy(Blocks.STONECUTTER));
 	public static final BlockItem MILL_ITEM = new BlockItem(MILL, new Item.Settings().group(ItemGroup.DECORATIONS));
-	private static final String mill_stat = "interact_with_mill";
-	public static final Identifier INTERACT_WITH_MILL = new Identifier(ID, mill_stat);
 	public static ScreenHandlerType<MillScreenHandler> MILL_SCREEN;
 
 	// Ice Box
@@ -287,8 +286,6 @@ public class Baking implements ModInitializer {
 	public static BlockEntityType<IceBoxBlockEntity> ICE_BOX_ENTITY_TYPE;
 	public static final Block ICE_BOX = new IceBoxBlock(FabricBlockSettings.copy(Blocks.CHEST).luminance((state) -> state.get(IceBoxBlock.LIT) ? 15 : 0), () -> ICE_BOX_ENTITY_TYPE);
 	public static final BlockItem ICE_BOX_ITEM = new BlockItem(ICE_BOX, new Item.Settings().group(ItemGroup.DECORATIONS));
-	private static final String ice_box_stat = "open_ice_box";
-	public static final Identifier OPEN_ICE_BOX = new Identifier(ID, ice_box_stat);
 	public static ScreenHandlerType<GenericContainerScreenHandler> ICE_BOX_9X3;
 	public static ScreenHandlerType<GenericContainerScreenHandler> ICE_BOX_9X6;
 
@@ -297,8 +294,6 @@ public class Baking implements ModInitializer {
 	public static BlockEntityType<FermenterBlockEntity> FERMENTER_ENTITY_TYPE;
 	public static final Block FERMENTER = new FermenterBlock(FabricBlockSettings.copy(Blocks.STONECUTTER));
 	public static final BlockItem FERMENTER_ITEM = new BlockItem(FERMENTER, new Item.Settings().group(ItemGroup.DECORATIONS));
-	private static final String fermenter_stat = "interact_with_fermenter";
-	public static final Identifier INTERACT_WITH_FERMENTER = new Identifier(ID, fermenter_stat);
 
 
 	// Cauldron
@@ -506,8 +501,17 @@ public class Baking implements ModInitializer {
 	public static final BottledItem VODKA = basicBottleDrink(2, 0.3f);
 
 	// Stats
-	public static final Identifier DAY_OF_WEEK = new Identifier(ID, "day_of_week");
-	public static final Identifier TOMATO_KILLS = new Identifier(ID, "tomato_kills");
+	private static final String day_stat = "day_of_week";
+	public static final Identifier DAY_OF_WEEK = new Identifier(ID, day_stat);
+	private static final String tomato_stat = "tomato_kills";
+	public static final Identifier TOMATO_KILLS = new Identifier(ID, tomato_stat);
+	private static final String mill_stat = "interact_with_mill";
+	public static final Identifier INTERACT_WITH_MILL = new Identifier(ID, mill_stat);
+	private static final String fermenter_stat = "interact_with_fermenter";
+	public static final Identifier INTERACT_WITH_FERMENTER = new Identifier(ID, fermenter_stat);
+	private static final String ice_box_stat = "open_ice_box";
+	public static final Identifier OPEN_ICE_BOX = new Identifier(ID, ice_box_stat);
+
 
 	// Sounds (How did I get here?)
 	public static final Identifier ICE_BOX_OPEN_ID = new Identifier(ID, "ice_box_open");
@@ -652,17 +656,11 @@ public class Baking implements ModInitializer {
 		registerItem("popcorn", POPCORN);
 
 		// Mill
-		Registry.register(Registry.RECIPE_SERIALIZER, MillingRecipe.ID, MillingRecipe.SERIALIZER);
-		Registry.register(Registry.CUSTOM_STAT, mill_stat, INTERACT_WITH_MILL);
-		Stats.CUSTOM.getOrCreateStat(INTERACT_WITH_MILL, StatFormatter.DEFAULT);
 		Registry.register(Registry.BLOCK, MILL_ID, MILL);
 		Registry.register(Registry.ITEM, MILL_ID, MILL_ITEM);
 		MILL_SCREEN = ScreenHandlerRegistry.registerSimple(Baking.MILL_ID, MillScreenHandler::new);
 
 		// Ice Box
-		Registry.register(Registry.RECIPE_SERIALIZER, FreezingRecipe.ID, FreezingRecipe.SERIALIZER);
-		Registry.register(Registry.CUSTOM_STAT, ice_box_stat, OPEN_ICE_BOX);
-		Stats.CUSTOM.getOrCreateStat(OPEN_ICE_BOX, StatFormatter.DEFAULT);
 		Registry.register(Registry.BLOCK, ICE_BOX_ID, ICE_BOX);
 		Registry.register(Registry.ITEM, ICE_BOX_ID, ICE_BOX_ITEM);
 		ICE_BOX_ENTITY_TYPE = Registry.register(Registry.BLOCK_ENTITY_TYPE, ICE_BOX_ID, FabricBlockEntityTypeBuilder.create(IceBoxBlockEntity::new, ICE_BOX).build());
@@ -670,12 +668,16 @@ public class Baking implements ModInitializer {
 		ICE_BOX_9X6 = ScreenHandlerRegistry.registerSimple(new Identifier(ID, "ice_box_9x6"), GenericContainerScreenHandler::createGeneric9x6);
 
 		// Fermenter
-		Registry.register(Registry.RECIPE_SERIALIZER, FermentingRecipe.ID, FermentingRecipe.SERIALIZER);
-		Registry.register(Registry.CUSTOM_STAT, fermenter_stat, INTERACT_WITH_FERMENTER);
-		Stats.CUSTOM.getOrCreateStat(INTERACT_WITH_FERMENTER, StatFormatter.DEFAULT);
+
 		Registry.register(Registry.BLOCK, FERMENTER_ID, FERMENTER);
 		Registry.register(Registry.ITEM, FERMENTER_ID, FERMENTER_ITEM);
 		FERMENTER_ENTITY_TYPE = Registry.register(Registry.BLOCK_ENTITY_TYPE, FERMENTER_ID, FabricBlockEntityTypeBuilder.create(FermenterBlockEntity::new, FERMENTER).build());
+
+		// Recipe Serializers
+		Registry.register(Registry.RECIPE_SERIALIZER, MillingRecipe.ID, MillingRecipe.SERIALIZER);
+		Registry.register(Registry.RECIPE_SERIALIZER, FermentingRecipe.ID, FermentingRecipe.SERIALIZER);
+		Registry.register(Registry.RECIPE_SERIALIZER, FreezingRecipe.ID, FreezingRecipe.SERIALIZER);
+		Registry.register(Registry.RECIPE_SERIALIZER, ShapelessRemainderlessRecipe.ID, ShapelessRemainderlessRecipe.SERIALIZER);
 
 		// Cups
 		registerItem("cup", CUP);
@@ -845,11 +847,18 @@ public class Baking implements ModInitializer {
 		BakingVillagerProfessions.init();
 
 		// Stats
-		Registry.register(Registry.CUSTOM_STAT, "day_of_week", DAY_OF_WEEK);
+		Registry.register(Registry.CUSTOM_STAT, day_stat, DAY_OF_WEEK); // Day of week - for Taco Tuesday advancement
 		Stats.CUSTOM.getOrCreateStat(DAY_OF_WEEK, StatFormatter.DEFAULT);
-		Registry.register(Registry.CUSTOM_STAT, "tomato_kills", TOMATO_KILLS);
+		Registry.register(Registry.CUSTOM_STAT, tomato_stat, TOMATO_KILLS); // User kills with tomatoes - for Tomato Town advancement
 		Stats.CUSTOM.getOrCreateStat(TOMATO_KILLS, StatFormatter.DEFAULT);
+		Registry.register(Registry.CUSTOM_STAT, mill_stat, INTERACT_WITH_MILL); // Right clicks on mill
+		Stats.CUSTOM.getOrCreateStat(INTERACT_WITH_MILL, StatFormatter.DEFAULT);
+		Registry.register(Registry.CUSTOM_STAT, fermenter_stat, INTERACT_WITH_FERMENTER); // Right clicks on fermenter
+		Stats.CUSTOM.getOrCreateStat(INTERACT_WITH_FERMENTER, StatFormatter.DEFAULT);
+		Registry.register(Registry.CUSTOM_STAT, ice_box_stat, OPEN_ICE_BOX); // Right clicks on ice box
+		Stats.CUSTOM.getOrCreateStat(OPEN_ICE_BOX, StatFormatter.DEFAULT);
 
+		// Sounds
 		Registry.register(Registry.SOUND_EVENT, ICE_BOX_OPEN_ID, ICE_BOX_OPEN);
 		Registry.register(Registry.SOUND_EVENT, ICE_BOX_CLOSE_ID, ICE_BOX_CLOSE);
 	}

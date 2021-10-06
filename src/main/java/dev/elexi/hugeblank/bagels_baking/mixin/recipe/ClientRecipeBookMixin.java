@@ -3,6 +3,7 @@ package dev.elexi.hugeblank.bagels_baking.mixin.recipe;
 import dev.elexi.hugeblank.bagels_baking.recipe.FermentingRecipe;
 import dev.elexi.hugeblank.bagels_baking.recipe.FreezingRecipe;
 import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
+import dev.elexi.hugeblank.bagels_baking.recipe.ShapelessRemainderlessRecipe;
 import net.minecraft.client.recipebook.ClientRecipeBook;
 import net.minecraft.client.recipebook.RecipeBookGroup;
 import net.minecraft.recipe.Recipe;
@@ -24,6 +25,9 @@ public class ClientRecipeBookMixin {
         }
         if (recipe.getType() == FermentingRecipe.TYPE) {
             cir.setReturnValue(RecipeBookGroup.STONECUTTER);
+        }
+        if (recipe.getType() == ShapelessRemainderlessRecipe.TYPE) {
+            cir.setReturnValue(RecipeBookGroup.CRAFTING_MISC);
         }
     }
 }

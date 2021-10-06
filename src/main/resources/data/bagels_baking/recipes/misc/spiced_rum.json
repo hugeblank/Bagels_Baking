@@ -1,5 +1,5 @@
 {
-    "type": "minecraft:crafting_shapeless",
+    "type": "bagels_baking:crafting_shapeless_remainderless",
     "ingredients": [
         {
             "item": "bagels_baking:cinnamon_powder"
