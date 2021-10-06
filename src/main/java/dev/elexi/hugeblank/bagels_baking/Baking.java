@@ -78,8 +78,12 @@ public class Baking implements ModInitializer {
 		return new MushroomStewItem(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Items.BOWL).maxCount(16).food(foodComponent(hunger, saturation).build()));
 	}
 
-	private static BottledItem basicJam(int hunger, float saturation, SoundEvent drinkSound) {
+	private static BottledItem basicBottleDrink(int hunger, float saturation, SoundEvent drinkSound) {
 		return new BottledItem(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Items.GLASS_BOTTLE).maxCount(16).food(foodComponent(hunger, saturation).build()), drinkSound);
+	}
+
+	private static BottledItem basicBottleDrink(int hunger, float saturation) {
+		return new BottledItem(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Items.GLASS_BOTTLE).maxCount(16).food(foodComponent(hunger, saturation).build()));
 	}
 
 	private static BasicDrink basicBucketDrink(int hunger, float saturation) {
@@ -196,11 +200,11 @@ public class Baking implements ModInitializer {
 	// No need to add Rabbit Stew!
 
 	// Jams - Gives 1 Item
-	public static final Item BERRY_JAM = basicJam(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
-	public static final Item APPLE_JAM = basicJam(5, 0.3f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
-	public static final Item GLOWBERRY_JAM = basicJam(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
-	public static final Item GRAPE_JAM = basicJam(2, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
-	public static final Item CHERRY_JAM = basicJam(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
+	public static final Item BERRY_JAM = basicBottleDrink(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
+	public static final Item APPLE_JAM = basicBottleDrink(5, 0.3f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
+	public static final Item GLOWBERRY_JAM = basicBottleDrink(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
+	public static final Item GRAPE_JAM = basicBottleDrink(2, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
+	public static final Item CHERRY_JAM = basicBottleDrink(3, 0.1f, SoundEvents.ITEM_HONEY_BOTTLE_DRINK);
 	public static final Item TONKATSU_SAUCE = basicBowlFood(6, 0.6f);
 
 
@@ -251,10 +255,10 @@ public class Baking implements ModInitializer {
 	public static final Item COOKED_FRENCH_FRIES = basicFood(2, 0.6f);
 	public static final Item EGG_WHITES = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(foodComponent(0, 0f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK, true);
-	public static final Item MERINGUE = basicJam(1, 0.2f, SoundEvents.ENTITY_WANDERING_TRADER_DRINK_MILK);
+	public static final Item MERINGUE = basicBottleDrink(1, 0.2f, SoundEvents.ENTITY_WANDERING_TRADER_DRINK_MILK);
 	public static final Item EGG_YOLK = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(foodComponent(0, 0f).snack()
 			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK, true);
-	public static final Item MAYONNAISE = basicJam(1, 0.2f, SoundEvents.ENTITY_WITCH_DRINK);
+	public static final Item MAYONNAISE = basicBottleDrink(1, 0.2f, SoundEvents.ENTITY_WITCH_DRINK);
 	public static final Item PIZZA = basicFood(1, 0.4f);
 	public static final Item COOKED_PIZZA = basicFood(5, 0.8f);
 	public static final Item BACON = basicFood(3, 0.4f);
@@ -478,8 +482,10 @@ public class Baking implements ModInitializer {
 	public static final Block CHEESE_BLOCK = new Block(FabricBlockSettings.copy(Blocks.HONEY_BLOCK).sounds(BlockSoundGroup.CANDLE));
 	public static final Block CHEESE_LAYER = new BasicLayerBlock(FabricBlockSettings.of(Material.SNOW_LAYER).sounds(BlockSoundGroup.CANDLE));
 	public static final Item CHEESE_SLICE = new BlockItem(CHEESE_LAYER, new FabricItemSettings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0f).build()));
-	public static final BottledItem LEMONADE = basicJam(2, 0.2f, SoundEvents.ENTITY_GENERIC_DRINK);
-	public static final BottledItem FROZEN_LEMONADE = basicJam(2, 0.3f, SoundEvents.ENTITY_GENERIC_DRINK);
+	public static final BottledItem LEMONADE = basicBottleDrink(2, 0.2f);
+	public static final BottledItem FROZEN_LEMONADE = basicBottleDrink(2, 0.3f);
+	public static final BottledItem SPICED_RUM = basicBottleDrink(1, 0.2f);
+	public static final BottledItem FRUIT_MARTINI = basicBottleDrink(9, 0.2f);
 
 	// Slushees
 	public static final Item ROOT_BEER_SLUSHEE = basicCupDrink(2, 0.3f );
@@ -490,14 +496,14 @@ public class Baking implements ModInitializer {
 	public static final Item GRAPE_SODA_SLUSHEE = basicCupDrink(2, 0.3f );
 
 	// Fermented Items
-	public static final BottledItem MALT_VINEGAR = basicJam(0, 0f, SoundEvents.ENTITY_GENERIC_DRINK);
-	public static final BottledItem RED_WINE = basicJam(1, 0.1f, SoundEvents.ENTITY_GENERIC_DRINK);
-	public static final BottledItem WHISKEY = basicJam(3, 0.1f, SoundEvents.ENTITY_GENERIC_DRINK);
-	public static final BottledItem BEER = basicJam(1, 0.1f, SoundEvents.ENTITY_GENERIC_DRINK);
-	public static final BottledItem MEAD = basicJam(2, 0.1f, SoundEvents.ENTITY_GENERIC_DRINK);
-	public static final BottledItem RUM = basicJam(1, 0.1f, SoundEvents.ENTITY_GENERIC_DRINK);
-	public static final BottledItem SPICED_RUM = basicJam(1, 0.2f, SoundEvents.ENTITY_GENERIC_DRINK);
-	public static final BottledItem GIN = basicJam(1, 0.1f, SoundEvents.ENTITY_GENERIC_DRINK);
+	public static final BottledItem MALT_VINEGAR = basicBottleDrink(0, 0f);
+	public static final BottledItem RED_WINE = basicBottleDrink(1, 0.1f);
+	public static final BottledItem WHISKEY = basicBottleDrink(3, 0.1f);
+	public static final BottledItem BEER = basicBottleDrink(1, 0.1f);
+	public static final BottledItem MEAD = basicBottleDrink(2, 0.1f);
+	public static final BottledItem RUM = basicBottleDrink(1, 0.1f);
+	public static final BottledItem GIN = basicBottleDrink(1, 0.1f);
+	public static final BottledItem VODKA = basicBottleDrink(2, 0.3f);
 
 	// Stats
 	public static final Identifier DAY_OF_WEEK = new Identifier(ID, "day_of_week");
@@ -795,6 +801,7 @@ public class Baking implements ModInitializer {
 		registerItem("frozen_lemonade", FROZEN_LEMONADE);
 		registerBlock("cheese_slice", CHEESE_LAYER, (BlockItem) CHEESE_SLICE);
 		registerBlock("cheese_block", CHEESE_BLOCK, ItemGroup.BUILDING_BLOCKS);
+		registerItem("fruit_martini", FRUIT_MARTINI);
 
 		// Slushee
 		registerItem("root_beer_slushee", ROOT_BEER_SLUSHEE);
@@ -813,6 +820,7 @@ public class Baking implements ModInitializer {
 		registerItem("rum", RUM);
 		registerItem("gin", GIN);
 		registerItem("spiced_rum", SPICED_RUM);
+		registerItem("vodka", VODKA);
 
 		// Cauldrons
 		BakingCauldronBehavior.registerBehaviors();

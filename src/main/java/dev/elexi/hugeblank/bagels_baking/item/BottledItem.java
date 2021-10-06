@@ -12,6 +12,7 @@ import net.minecraft.item.Items;
 import net.minecraft.item.PotionItem;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
@@ -24,6 +25,10 @@ public class BottledItem extends PotionItem implements BrewableItem {
 
     private final SoundEvent soundEffect;
     private final boolean brewable;
+
+    public BottledItem(Settings settings) {
+        this(settings, SoundEvents.ENTITY_GENERIC_DRINK);
+    }
 
     public BottledItem(Settings settings, SoundEvent drinkSound) {
         this(settings, drinkSound, false);
