@@ -19,7 +19,6 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.ConfiguredStructureFeatures;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilders;
-import org.lwjgl.system.CallbackI;
 
 public class BakingBiomes {
 
@@ -69,14 +68,17 @@ public class BakingBiomes {
     public static Biome createJuniperTaiga(float depth, float scale, boolean snowy, boolean mountains, boolean villages, boolean igloos) {
         SpawnSettings.Builder builder = new SpawnSettings.Builder();
         DefaultBiomeFeatures.addFarmAnimals(builder);
-        builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.WOLF, 8, 4, 4)).spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.RABBIT, 4, 2, 3)).spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.FOX, 8, 2, 4));
+        builder
+                .spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.WOLF, 8, 4, 4))
+                .spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.RABBIT, 4, 2, 3))
+                .spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.FOX, 8, 2, 4));
         if (!snowy && !mountains) {
             builder.playerSpawnFriendly();
         }
 
         DefaultBiomeFeatures.addBatsAndMonsters(builder);
         float f = snowy ? -0.5F : 0.25F;
-        net.minecraft.world.biome.GenerationSettings.Builder builder2 = (new net.minecraft.world.biome.GenerationSettings.Builder()).surfaceBuilder(ConfiguredSurfaceBuilders.GRASS);
+        GenerationSettings.Builder builder2 = (new GenerationSettings.Builder()).surfaceBuilder(ConfiguredSurfaceBuilders.GRASS);
         if (villages) {
             builder2.structureFeature(ConfiguredStructureFeatures.VILLAGE_TAIGA);
             builder2.structureFeature(ConfiguredStructureFeatures.PILLAGER_OUTPOST);
@@ -110,7 +112,23 @@ public class BakingBiomes {
         }
 
         DefaultBiomeFeatures.addFrozenTopLayer(builder2);
-        return (new net.minecraft.world.biome.Biome.Builder()).precipitation(snowy ? Biome.Precipitation.SNOW : Biome.Precipitation.RAIN).category(Biome.Category.TAIGA).depth(depth).scale(scale).temperature(f).downfall(snowy ? 0.4F : 0.8F).effects((new net.minecraft.world.biome.BiomeEffects.Builder()).waterColor(snowy ? 4020182 : 4159204).waterFogColor(329011).fogColor(12638463).skyColor(getSkyColor(f)).moodSound(BiomeMoodSound.CAVE).build()).spawnSettings(builder.build()).generationSettings(builder2.build()).build();
+        return (new Biome.Builder())
+                .precipitation(snowy ? Biome.Precipitation.SNOW : Biome.Precipitation.RAIN)
+                .category(Biome.Category.TAIGA)
+                .depth(depth)
+                .scale(scale)
+                .temperature(f)
+                .downfall(snowy ? 0.4F : 0.8F)
+                .effects((new net.minecraft.world.biome.BiomeEffects.Builder())
+                        .waterColor(snowy ? 4020182 : 4159204)
+                        .waterFogColor(329011)
+                        .fogColor(12638463)
+                        .skyColor(getSkyColor(f))
+                        .moodSound(BiomeMoodSound.CAVE)
+                        .build())
+                .spawnSettings(builder.build())
+                .generationSettings(builder2.build())
+                .build();
     }
 
     public static Biome createCherryOrchard() {

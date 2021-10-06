@@ -85,23 +85,30 @@ public class TrellisBlock extends Block implements Waterloggable {
 
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
+        // I'm proud of this one
         World world = ctx.getWorld();
         BlockPos pos = ctx.getBlockPos();
         BlockState trellisState = this.getDefaultState().with(FACING, ctx.getPlayerFacing());
         BlockState below = world.getBlockState(pos.down());
-        if (!below.isSideSolidFullSquare(world, pos, Direction.UP)) {
-            trellisState = trellisState.with(HALF, DoubleBlockHalf.UPPER);
-
-            BlockState hitState = world.getBlockState(pos.offset(ctx.getSide().getOpposite()));
-            if (hitState.getBlock() instanceof TrellisBlock) {
-                trellisState = trellisState.with(FACING, hitState.get(FACING));
-            }
-
-            trellisState = calculateDistance(world, pos, trellisState);
-
+        if (!below.isSideSolidFullSquare(world, pos, Direction.UP)) { // Determine if this trellis can be a supporting lower half
+            trellisState = trellisState.with(HALF, DoubleBlockHalf.UPPER); // Set this as an upper half
+            trellisState = determineFacing(ctx, world, pos, trellisState); // Determine which direction we're facing, using an adjacent hit trellis
+            trellisState = calculateDistance(world, pos, trellisState); // Calculate the distance from the base trellis
             if (trellisState.get(DISTANCE) == MAX_DISTANCE) return null;
+        } else {
+            trellisState = determineFacing(ctx, world, pos, trellisState); // For placing a lower trellis below an upper one <3
         }
+
         return trellisState;
+    }
+
+    private BlockState determineFacing(ItemPlacementContext ctx, World world, BlockPos pos, BlockState state) {
+        // Match direction with the trellis this one is being placed on, if present. A feature made with love by hugeblank
+        BlockState hitState = world.getBlockState(pos.offset(ctx.getSide().getOpposite()));
+        if (hitState.getBlock() instanceof TrellisBlock) {
+            state = state.with(FACING, hitState.get(FACING));
+        }
+        return state;
     }
 
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
