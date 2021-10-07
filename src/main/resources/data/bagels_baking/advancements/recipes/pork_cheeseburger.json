@@ -1,34 +1,60 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:cheeseburgers/pork_cheeseburger"
+        ]
+    },
     "criteria": {
+        "has_cheese_slice": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:cheese_slice"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_bread": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:bread"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_cooked_porkchop": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:cooked_porkchop"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:cheeseburgers/pork_cheeseburger.json"
+                "recipe": "bagels_baking:cheeseburgers/pork_cheeseburger"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_bread",
+            "has_cooked_porkchop",
+            "has_cheese_slice"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:cheeseburgers/pork_cheeseburger.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "minecraft:bread",
-                    "minecraft:cooked_porkchop",
-                    "bagels_baking:cheese_slice"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

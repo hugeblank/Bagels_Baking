@@ -1,33 +1,47 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:sandwiches/chicken_sandwich"
+        ]
+    },
     "criteria": {
+        "has_bread": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:bread"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_cooked_chicken": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:cooked_chicken"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:sandwiches/chicken_sandwich.json"
+                "recipe": "bagels_baking:sandwiches/chicken_sandwich"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_bread",
+            "has_cooked_chicken"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:sandwiches/chicken_sandwich.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "minecraft:bread",
-                    "minecraft:cooked_chicken"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

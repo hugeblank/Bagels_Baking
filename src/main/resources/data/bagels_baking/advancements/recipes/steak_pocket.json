@@ -1,33 +1,47 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:pockets/steak_pocket"
+        ]
+    },
     "criteria": {
+        "has_wheat": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:wheat"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_cooked_beef": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:cooked_beef"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:pockets/steak_pocket.json"
+                "recipe": "bagels_baking:pockets/steak_pocket"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_wheat",
+            "has_cooked_beef"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:pockets/steak_pocket.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "minecraft:wheat",
-                    "minecraft:cooked_beef"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

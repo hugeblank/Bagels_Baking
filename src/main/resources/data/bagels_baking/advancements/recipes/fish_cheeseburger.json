@@ -1,33 +1,73 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:cheeseburgers/fish_cheeseburger"
+        ]
+    },
     "criteria": {
+        "has_cheese_slice": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:cheese_slice"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_cooked_cod": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:cooked_cod"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_bread": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:bread"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_cooked_salmon": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:cooked_salmon"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:cheeseburgers/fish_cheeseburger.json"
+                "recipe": "bagels_baking:cheeseburgers/fish_cheeseburger"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_bread",
+            "has_cooked_salmon",
+            "has_cooked_cod",
+            "has_cheese_slice"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:cheeseburgers/fish_cheeseburger.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "minecraft:bread",
-                    "bagels_baking:cheese_slice"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

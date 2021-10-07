@@ -1,34 +1,60 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:misc/spiced_rum"
+        ]
+    },
     "criteria": {
+        "has_cinnamon_powder": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:cinnamon_powder"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_sugar": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:sugar"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_rum": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:rum"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:misc/spiced_rum.json"
+                "recipe": "bagels_baking:misc/spiced_rum"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_cinnamon_powder",
+            "has_sugar",
+            "has_rum"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/spiced_rum.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "bagels_baking:cinnamon_powder",
-                    "minecraft:sugar",
-                    "bagels_baking:rum"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

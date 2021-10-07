@@ -1,34 +1,60 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:misc/salmon_sushi"
+        ]
+    },
     "criteria": {
+        "has_smoked_salmon": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:smoked_salmon"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_dried_kelp": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:dried_kelp"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_cooked_rice_ball": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:cooked_rice_ball"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:misc/salmon_sushi.json"
+                "recipe": "bagels_baking:misc/salmon_sushi"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_dried_kelp",
+            "has_cooked_rice_ball",
+            "has_smoked_salmon"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/salmon_sushi.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "minecraft:dried_kelp",
-                    "bagels_baking:cooked_rice_ball",
-                    "bagels_baking:smoked_salmon"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

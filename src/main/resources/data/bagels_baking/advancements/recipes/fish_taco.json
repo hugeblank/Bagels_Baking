@@ -1,32 +1,60 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:tacos/fish_taco"
+        ]
+    },
     "criteria": {
+        "has_wheat": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:wheat"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_cooked_cod": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:cooked_cod"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_cooked_salmon": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:cooked_salmon"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:tacos/fish_taco.json"
+                "recipe": "bagels_baking:tacos/fish_taco"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_wheat",
+            "has_cooked_salmon",
+            "has_cooked_cod"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:tacos/fish_taco.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "minecraft:wheat"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

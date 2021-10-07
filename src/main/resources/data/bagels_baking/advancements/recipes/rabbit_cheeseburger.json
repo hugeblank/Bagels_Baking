@@ -1,34 +1,60 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:cheeseburgers/rabbit_cheeseburger"
+        ]
+    },
     "criteria": {
+        "has_cooked_rabbit": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:cooked_rabbit"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_bread": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:bread"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_cheese_slice": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:cheese_slice"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:cheeseburgers/rabbit_cheeseburger.json"
+                "recipe": "bagels_baking:cheeseburgers/rabbit_cheeseburger"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_bread",
+            "has_cooked_rabbit",
+            "has_cheese_slice"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:cheeseburgers/rabbit_cheeseburger.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "minecraft:bread",
-                    "minecraft:cooked_rabbit",
-                    "bagels_baking:cheese_slice"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

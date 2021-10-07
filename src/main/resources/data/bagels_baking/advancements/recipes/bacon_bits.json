@@ -1,32 +1,34 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:milling/bacon_bits"
+        ]
+    },
     "criteria": {
+        "has_smoked_bacon": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:smoked_bacon"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:milling/bacon_bits.json"
+                "recipe": "bagels_baking:milling/bacon_bits"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_smoked_bacon"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:milling/bacon_bits.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "bagels_baking:smoked_bacon"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

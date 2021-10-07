@@ -1,35 +1,73 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:misc/fruit_martini"
+        ]
+    },
     "criteria": {
+        "has_sweet_berries": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:sweet_berries"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_apple": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:apple"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_vodka": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:vodka"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_lemon": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:lemon"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:misc/fruit_martini.json"
+                "recipe": "bagels_baking:misc/fruit_martini"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_vodka",
+            "has_apple",
+            "has_sweet_berries",
+            "has_lemon"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/fruit_martini.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "bagels_baking:vodka",
-                    "minecraft:apple",
-                    "minecraft:sweet_berries",
-                    "bagels_baking:lemon"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

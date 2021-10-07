@@ -1,35 +1,73 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:pies/lemon_meringue_pie"
+        ]
+    },
     "criteria": {
+        "has_sugar": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:sugar"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_wheat": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:wheat"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_meringue": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:meringue"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_lemon": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:lemon"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:pies/lemon_meringue_pie.json"
+                "recipe": "bagels_baking:pies/lemon_meringue_pie"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_lemon",
+            "has_meringue",
+            "has_wheat",
+            "has_sugar"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:pies/lemon_meringue_pie.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "bagels_baking:lemon",
-                    "bagels_baking:meringue",
-                    "minecraft:wheat",
-                    "minecraft:sugar"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

@@ -1,33 +1,47 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:sandwiches/glow_berry_jam_sandwich"
+        ]
+    },
     "criteria": {
+        "has_bread": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:bread"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_glow_berry_jam": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:glow_berry_jam"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:sandwiches/glow_berry_jam_sandwich.json"
+                "recipe": "bagels_baking:sandwiches/glow_berry_jam_sandwich"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_bread",
+            "has_glow_berry_jam"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:sandwiches/glow_berry_jam_sandwich.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "minecraft:bread",
-                    "bagels_baking:glow_berry_jam"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

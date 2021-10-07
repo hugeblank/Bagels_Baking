@@ -1,32 +1,34 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:wood/cherry_pressure_plate"
+        ]
+    },
     "criteria": {
+        "has_cherry_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:cherry_planks"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:wood/cherry_pressure_plate.json"
+                "recipe": "bagels_baking:wood/cherry_pressure_plate"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_cherry_planks"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:wood/cherry_pressure_plate.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "bagels_baking:cherry_planks"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

@@ -1,33 +1,47 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:misc/battered_chicken"
+        ]
+    },
     "criteria": {
+        "has_chicken": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:chicken"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_batter": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:batter"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:misc/battered_chicken.json"
+                "recipe": "bagels_baking:misc/battered_chicken"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_batter",
+            "has_chicken"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/battered_chicken.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "bagels_baking:batter",
-                    "minecraft:chicken"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

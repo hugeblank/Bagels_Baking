@@ -1,33 +1,47 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:wood/juniper_fence"
+        ]
+    },
     "criteria": {
+        "has_stick": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:stick"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_juniper_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:juniper_planks"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:wood/juniper_fence.json"
+                "recipe": "bagels_baking:wood/juniper_fence"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_juniper_planks",
+            "has_stick"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:wood/juniper_fence.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "bagels_baking:juniper_planks",
-                    "minecraft:stick"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

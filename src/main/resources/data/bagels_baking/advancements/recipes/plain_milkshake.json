@@ -1,32 +1,34 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:freezing/plain_milkshake"
+        ]
+    },
     "criteria": {
+        "has_milk_cup": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:milk_cup"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:freezing/plain_milkshake.json"
+                "recipe": "bagels_baking:freezing/plain_milkshake"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_milk_cup"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:freezing/plain_milkshake.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "bagels_baking:milk_cup"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

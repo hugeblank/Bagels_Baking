@@ -1,34 +1,60 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:pies/shepherds_pie"
+        ]
+    },
     "criteria": {
+        "has_cooked_mutton": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:cooked_mutton"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_mashed_potatoes": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:mashed_potatoes"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_carrot": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:carrot"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:pies/shepherds_pie.json"
+                "recipe": "bagels_baking:pies/shepherds_pie"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_carrot",
+            "has_cooked_mutton",
+            "has_mashed_potatoes"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:pies/shepherds_pie.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "minecraft:carrot",
-                    "minecraft:cooked_mutton",
-                    "bagels_baking:mashed_potatoes"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

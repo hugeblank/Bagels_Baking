@@ -1,32 +1,34 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:halite/polished_halite_stairs"
+        ]
+    },
     "criteria": {
+        "has_polished_halite": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:polished_halite"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:halite/polished_halite_stairs.json"
+                "recipe": "bagels_baking:halite/polished_halite_stairs"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_polished_halite"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:halite/polished_halite_stairs.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "bagels_baking:polished_halite"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

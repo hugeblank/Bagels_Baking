@@ -1,32 +1,138 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:misc/mill"
+        ]
+    },
     "criteria": {
+        "has_jungle_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:jungle_planks"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_acacia_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:acacia_planks"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_warped_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:warped_planks"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_oak_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:oak_planks"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:misc/mill.json"
+                "recipe": "bagels_baking:misc/mill"
+            }
+        },
+        "has_spruce_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:spruce_planks"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_iron_ingot": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:iron_ingot"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_birch_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:birch_planks"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_dark_oak_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:dark_oak_planks"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_crimson_planks": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:crimson_planks"
+                        ]
+                    }
+                ]
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_iron_ingot",
+            "has_oak_planks",
+            "has_spruce_planks",
+            "has_birch_planks",
+            "has_jungle_planks",
+            "has_acacia_planks",
+            "has_dark_oak_planks",
+            "has_crimson_planks",
+            "has_warped_planks"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/mill.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "minecraft:iron_ingot"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

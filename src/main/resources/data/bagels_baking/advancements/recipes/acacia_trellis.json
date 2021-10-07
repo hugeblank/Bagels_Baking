@@ -1,33 +1,47 @@
 {
-  "criteria": {
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "bagels_baking:trellises/acacia_trellis.json"
-      }
-    }
-  },
-  "requirements": [
-    [
-      "has_the_recipe",
-      "has_items"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "bagels_baking:trellises/acacia_trellis.json"
-    ]
-  },
-  "has_items": {
-    "trigger": "minecraft:inventory_changed",
-    "conditions": {
-      "items": {
-        "items": [
-          "minecraft:string",
-          "minecraft:acacia_log"
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:trellises/acacia_trellis"
         ]
-      }
-    }
-  },
-  "parent": "minecraft:recipes/root"
+    },
+    "criteria": {
+        "has_string": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:string"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_acacia_log": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:acacia_log"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:trellises/acacia_trellis"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_string",
+            "has_acacia_log"
+        ]
+    ]
 }

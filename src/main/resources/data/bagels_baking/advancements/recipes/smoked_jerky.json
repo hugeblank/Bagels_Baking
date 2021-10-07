@@ -1,28 +1,21 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:smoker/smoked_jerky"
+        ]
+    },
     "criteria": {
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:smoker/smoked_jerky.json"
+                "recipe": "bagels_baking:smoker/smoked_jerky"
             }
         }
     },
     "requirements": [
         [
-            "has_the_recipe",
-            "has_items"
+            "has_the_recipe"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:smoker/smoked_jerky.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {}
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

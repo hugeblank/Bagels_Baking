@@ -1,32 +1,34 @@
 {
-  "criteria": {
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "bagels_baking:fermenting/whiskey.json"
-      }
-    }
-  },
-  "requirements": [
-    [
-      "has_the_recipe",
-      "has_items"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "bagels_baking:fermenting/whiskey.json"
-    ]
-  },
-  "has_items": {
-    "trigger": "minecraft:inventory_changed",
-    "conditions": {
-      "items": {
-        "items": [
-          "bagels_baking:corn"
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:fermenting/whiskey"
         ]
-      }
-    }
-  },
-  "parent": "minecraft:recipes/root"
+    },
+    "criteria": {
+        "has_corn": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:corn"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:fermenting/whiskey"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_corn"
+        ]
+    ]
 }

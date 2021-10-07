@@ -1,34 +1,21 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:campfire/cooked_pizza"
+        ]
+    },
     "criteria": {
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:furnace/cooked_pizza.json"
+                "recipe": "bagels_baking:campfire/cooked_pizza"
             }
         }
     },
     "requirements": [
         [
-            "has_the_recipe",
-            "has_items"
+            "has_the_recipe"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:furnace/cooked_pizza.json",
-            "bagels_baking:campfire/cooked_pizza.json",
-            "bagels_baking:smoker/cooked_pizza.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "bagels_baking:pizza"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

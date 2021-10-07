@@ -1,34 +1,60 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:misc/grape_swirl_cream"
+        ]
+    },
     "criteria": {
+        "has_grape_jam": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:grape_jam"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_milk_cup": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:milk_cup"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_cup": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:cup"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:misc/grape_swirl_cream.json"
+                "recipe": "bagels_baking:misc/grape_swirl_cream"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_cup",
+            "has_grape_jam",
+            "has_milk_cup"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/grape_swirl_cream.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "bagels_baking:cup",
-                    "bagels_baking:grape_jam",
-                    "bagels_baking:milk_cup"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

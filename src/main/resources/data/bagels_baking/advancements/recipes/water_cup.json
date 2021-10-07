@@ -1,40 +1,47 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:cups/water_cup"
+        ]
+    },
     "criteria": {
+        "has_water_bucket": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:water_bucket"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_cup": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:cup"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:cups/water_cup.json"
+                "recipe": "bagels_baking:cups/water_cup"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_cup",
+            "has_water_bucket"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:cups/water_cup.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "bagels_baking:cup",
-                    "bagels_baking:cup",
-                    "bagels_baking:cup",
-                    "bagels_baking:cup",
-                    "bagels_baking:cup",
-                    "bagels_baking:cup",
-                    "bagels_baking:cup",
-                    "bagels_baking:cup",
-                    "minecraft:water_bucket"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

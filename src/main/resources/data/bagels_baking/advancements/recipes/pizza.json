@@ -1,36 +1,86 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:misc/pizza"
+        ]
+    },
     "criteria": {
+        "has_pepperoni": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:pepperoni"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_tomato_sauce": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:tomato_sauce"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_cheese_slice": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:cheese_slice"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_corn_meal": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:corn_meal"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_dough": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:dough"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:misc/pizza.json"
+                "recipe": "bagels_baking:misc/pizza"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_tomato_sauce",
+            "has_dough",
+            "has_cheese_slice",
+            "has_corn_meal",
+            "has_pepperoni"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/pizza.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "bagels_baking:tomato_sauce",
-                    "bagels_baking:dough",
-                    "bagels_baking:cheese_slice",
-                    "bagels_baking:corn_meal",
-                    "bagels_baking:pepperoni"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

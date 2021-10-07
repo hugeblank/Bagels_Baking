@@ -1,35 +1,73 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:misc/pasta_dough"
+        ]
+    },
     "criteria": {
+        "has_egg": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:egg"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_water_cup": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:water_cup"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_salt": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:salt"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_flour": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:flour"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:misc/pasta_dough.json"
+                "recipe": "bagels_baking:misc/pasta_dough"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_flour",
+            "has_salt",
+            "has_egg",
+            "has_water_cup"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/pasta_dough.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "bagels_baking:flour",
-                    "bagels_baking:salt",
-                    "minecraft:egg",
-                    "bagels_baking:water_cup"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

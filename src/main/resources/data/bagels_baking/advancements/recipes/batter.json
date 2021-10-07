@@ -1,35 +1,73 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:misc/batter"
+        ]
+    },
     "criteria": {
+        "has_egg": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:egg"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_corn_meal": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:corn_meal"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_bowl": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:bowl"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_flour": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:flour"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:misc/batter.json"
+                "recipe": "bagels_baking:misc/batter"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_flour",
+            "has_corn_meal",
+            "has_egg",
+            "has_bowl"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/batter.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "bagels_baking:flour",
-                    "bagels_baking:corn_meal",
-                    "minecraft:egg",
-                    "minecraft:bowl"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

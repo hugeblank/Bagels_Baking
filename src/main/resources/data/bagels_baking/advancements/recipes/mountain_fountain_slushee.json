@@ -1,32 +1,34 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:freezing/mountain_fountain_slushee"
+        ]
+    },
     "criteria": {
+        "has_mountain_fountain": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:mountain_fountain"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:freezing/mountain_fountain_slushee.json"
+                "recipe": "bagels_baking:freezing/mountain_fountain_slushee"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_mountain_fountain"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:freezing/mountain_fountain_slushee.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "bagels_baking:mountain_fountain"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

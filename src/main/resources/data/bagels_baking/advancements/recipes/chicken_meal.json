@@ -1,36 +1,86 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:meals/chicken_meal"
+        ]
+    },
     "criteria": {
+        "has_linguine": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:linguine"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_cheese_slice": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:cheese_slice"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_plate": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:plate"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_bread": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:bread"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_cooked_chicken_nuggets": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:cooked_chicken_nuggets"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:meals/chicken_meal.json"
+                "recipe": "bagels_baking:meals/chicken_meal"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_plate",
+            "has_bread",
+            "has_cooked_chicken_nuggets",
+            "has_cheese_slice",
+            "has_linguine"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:meals/chicken_meal.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "bagels_baking:plate",
-                    "minecraft:bread",
-                    "bagels_baking:cooked_chicken_nuggets",
-                    "bagels_baking:cheese_slice",
-                    "bagels_baking:linguine"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

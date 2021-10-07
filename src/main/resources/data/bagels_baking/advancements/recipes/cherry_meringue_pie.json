@@ -1,35 +1,73 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:pies/cherry_meringue_pie"
+        ]
+    },
     "criteria": {
+        "has_cherries": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:cherries"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_wheat": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:wheat"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_meringue": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:meringue"
+                        ]
+                    }
+                ]
+            }
+        },
+        "has_cocoa_powder": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:cocoa_powder"
+                        ]
+                    }
+                ]
+            }
+        },
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:pies/cherry_meringue_pie.json"
+                "recipe": "bagels_baking:pies/cherry_meringue_pie"
             }
         }
     },
     "requirements": [
         [
             "has_the_recipe",
-            "has_items"
+            "has_cherries",
+            "has_meringue",
+            "has_wheat",
+            "has_cocoa_powder"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:pies/cherry_meringue_pie.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {
-                "items": [
-                    "bagels_baking:cherries",
-                    "bagels_baking:meringue",
-                    "minecraft:wheat",
-                    "bagels_baking:cocoa_powder"
-                ]
-            }
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }

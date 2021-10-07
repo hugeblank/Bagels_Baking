@@ -1,28 +1,21 @@
 {
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "bagels_baking:furnace/iron_nugget_from_cup_blast"
+        ]
+    },
     "criteria": {
         "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-                "recipe": "bagels_baking:furnace/iron_nugget_from_cup_blast.json"
+                "recipe": "bagels_baking:furnace/iron_nugget_from_cup_blast"
             }
         }
     },
     "requirements": [
         [
-            "has_the_recipe",
-            "has_items"
+            "has_the_recipe"
         ]
-    ],
-    "rewards": {
-        "recipes": [
-            "bagels_baking:furnace/iron_nugget_from_cup_blast.json"
-        ]
-    },
-    "has_items": {
-        "trigger": "minecraft:inventory_changed",
-        "conditions": {
-            "items": {}
-        }
-    },
-    "parent": "minecraft:recipes/root"
+    ]
 }
