@@ -1,7 +1,7 @@
 {
     "parent": "builtin/entity",
     "textures": {
-        "particle": "block/snow_block"
+        "particle": "block/snow"
     },
     "display": {
         "gui": {
