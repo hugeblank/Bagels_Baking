@@ -1,6 +1,6 @@
 {
-    "parent": "minecraft:item/generated",
-    "textures": {
-      "layer0": "bagels_baking:item/cooked_wild_rice_ball"
-    }
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bagels_baking:item/cooked_wild_rice_ball"
   }
+}

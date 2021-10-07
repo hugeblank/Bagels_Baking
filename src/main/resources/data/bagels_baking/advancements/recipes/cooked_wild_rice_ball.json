@@ -1,0 +1,34 @@
+{
+    "criteria": {
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:furnace/cooked_wild_rice_ball.json"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_items"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "bagels_baking:furnace/cooked_wild_rice_ball.json",
+            "bagels_baking:campfire/cooked_wild_rice_ball.json",
+            "bagels_baking:smoker/cooked_wild_rice_ball.json"
+        ]
+    },
+    "has_items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": {
+                "items": [
+                    "bagels_baking:wild_rice_ball"
+                ]
+            }
+        }
+    },
+    "parent": "minecraft:recipes/root"
+}

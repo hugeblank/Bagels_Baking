@@ -1,7 +1,6 @@
 {
-    "parent": "minecraft:block/flower_pot_cross",
-    "textures": {
-      "plant": "bagels_baking:block/cinnamon_sapling"
-    }
+  "parent": "minecraft:block/flower_pot_cross",
+  "textures": {
+    "plant": "bagels_baking:block/cinnamon_sapling"
   }
-  
+}

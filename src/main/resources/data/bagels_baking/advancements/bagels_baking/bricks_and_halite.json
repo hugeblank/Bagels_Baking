@@ -21,10 +21,14 @@
       "conditions": {
         "items": [
           {
-            "items": [ "minecraft:bricks" ]
+            "items": [
+              "minecraft:bricks"
+            ]
           },
           {
-            "items": [ "bagels_baking:halite" ]
+            "items": [
+              "bagels_baking:halite"
+            ]
           }
         ]
       }

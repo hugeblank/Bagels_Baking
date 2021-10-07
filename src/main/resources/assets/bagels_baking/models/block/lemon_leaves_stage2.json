@@ -1,6 +1,6 @@
 {
-    "parent": "minecraft:block/cube_all",
-    "textures": {
-      "all": "bagels_baking:block/lemon_leaves_stage2"
-    }
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "bagels_baking:block/lemon_leaves_stage2"
   }
+}

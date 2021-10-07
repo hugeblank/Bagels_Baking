@@ -1,38 +1,112 @@
 {
     "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
-"ambientocclusion": false,
+    "ambientocclusion": false,
     "textures": {
         "vine": "bagels_baking:block/grape_stem"
     },
-        "elements": [
+    "elements": [
         {
             "name": "Vine",
-            "from": [ 0, 0, 0.8 ], 
-            "to": [ 16, 16, 0.8 ], 
+            "from": [
+                0,
+                0,
+                0.8
+            ],
+            "to": [
+                16,
+                16,
+                0.8
+            ],
             "shade": false,
             "faces": {
-                "north": { "texture": "#vine", "uv": [ 16, 0, 0, 16 ], "tintindex": 0 },
-                "south": { "texture": "#vine", "uv": [ 0, 0, 16, 16 ], "tintindex": 0 }
+                "north": {
+                    "texture": "#vine",
+                    "uv": [
+                        16,
+                        0,
+                        0,
+                        16
+                    ],
+                    "tintindex": 0
+                },
+                "south": {
+                    "texture": "#vine",
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ],
+                    "tintindex": 0
+                }
             }
         },
         {
             "name": "Vine",
-            "from": [ 0.8, 0, 0 ], 
-            "to": [ 0.8, 16, 16 ], 
+            "from": [
+                0.8,
+                0,
+                0
+            ],
+            "to": [
+                0.8,
+                16,
+                16
+            ],
             "shade": false,
             "faces": {
-                "east": { "texture": "#vine", "uv": [ 0, 0, 16, 16 ] },
-                "west": { "texture": "#vine", "uv": [ 0, 0, 16, 16 ] }
+                "east": {
+                    "texture": "#vine",
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ]
+                },
+                "west": {
+                    "texture": "#vine",
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ]
+                }
             }
         },
         {
             "name": "Vine",
-            "from": [ 15.2, 0, 0 ], 
-            "to": [ 15.2, 16, 16 ], 
+            "from": [
+                15.2,
+                0,
+                0
+            ],
+            "to": [
+                15.2,
+                16,
+                16
+            ],
             "shade": false,
             "faces": {
-                "east": { "texture": "#vine", "uv": [ 0, 0, 16, 16 ] },
-                "west": { "texture": "#vine", "uv": [ 0, 0, 16, 16 ] }
+                "east": {
+                    "texture": "#vine",
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ]
+                },
+                "west": {
+                    "texture": "#vine",
+                    "uv": [
+                        0,
+                        0,
+                        16,
+                        16
+                    ]
+                }
             }
         }
     ]

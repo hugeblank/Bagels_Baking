@@ -1,0 +1,33 @@
+{
+    "criteria": {
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:wood/cherry_fence_gate.json"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_items"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "bagels_baking:wood/cherry_fence_gate.json"
+        ]
+    },
+    "has_items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": {
+                "items": [
+                    "minecraft:stick",
+                    "bagels_baking:cherry_planks"
+                ]
+            }
+        }
+    },
+    "parent": "minecraft:recipes/root"
+}

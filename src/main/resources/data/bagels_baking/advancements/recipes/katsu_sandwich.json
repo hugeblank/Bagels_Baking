@@ -1,0 +1,34 @@
+{
+    "criteria": {
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:sandwiches/katsu_sandwich.json"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_items"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "bagels_baking:sandwiches/katsu_sandwich.json"
+        ]
+    },
+    "has_items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": {
+                "items": [
+                    "bagels_baking:tonkatsu_sauce",
+                    "bagels_baking:fried_porkchop",
+                    "minecraft:bread"
+                ]
+            }
+        }
+    },
+    "parent": "minecraft:recipes/root"
+}

@@ -1,0 +1,34 @@
+{
+    "criteria": {
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:jams/glow_berry_jam.json"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_items"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "bagels_baking:jams/glow_berry_jam.json"
+        ]
+    },
+    "has_items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": {
+                "items": [
+                    "minecraft:glow_berries",
+                    "minecraft:sugar",
+                    "minecraft:glass_bottle"
+                ]
+            }
+        }
+    },
+    "parent": "minecraft:recipes/root"
+}

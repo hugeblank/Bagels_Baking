@@ -1,0 +1,34 @@
+{
+    "criteria": {
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:jams/cherry_jam.json"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_items"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "bagels_baking:jams/cherry_jam.json"
+        ]
+    },
+    "has_items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": {
+                "items": [
+                    "bagels_baking:cherries",
+                    "minecraft:sugar",
+                    "minecraft:glass_bottle"
+                ]
+            }
+        }
+    },
+    "parent": "minecraft:recipes/root"
+}

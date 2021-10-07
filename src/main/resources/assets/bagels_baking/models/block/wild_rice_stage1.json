@@ -1,6 +1,6 @@
 {
-    "parent": "minecraft:block/crop",
-    "textures": {
-      "crop": "bagels_baking:block/wild_rice_stage1"
-    }
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "bagels_baking:block/wild_rice_stage1"
   }
+}

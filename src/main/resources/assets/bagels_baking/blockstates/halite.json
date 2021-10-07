@@ -1,7 +1,7 @@
 {
-    "variants": {
-      "": {
-        "model": "bagels_baking:block/halite"
-      }
+  "variants": {
+    "": {
+      "model": "bagels_baking:block/halite"
     }
   }
+}

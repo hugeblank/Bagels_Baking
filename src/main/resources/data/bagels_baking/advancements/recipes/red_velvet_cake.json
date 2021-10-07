@@ -1,0 +1,34 @@
+{
+    "criteria": {
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:cakes/red_velvet_cake.json"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_items"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "bagels_baking:cakes/red_velvet_cake.json"
+        ]
+    },
+    "has_items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": {
+                "items": [
+                    "minecraft:milk_bucket",
+                    "bagels_baking:chocolate_cake",
+                    "minecraft:red_dye"
+                ]
+            }
+        }
+    },
+    "parent": "minecraft:recipes/root"
+}

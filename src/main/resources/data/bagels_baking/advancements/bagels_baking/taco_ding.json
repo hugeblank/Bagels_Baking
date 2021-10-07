@@ -20,7 +20,9 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "items": ["bagels_baking:steak_taco"]
+          "items": [
+            "bagels_baking:steak_taco"
+          ]
         }
       }
     },
@@ -28,7 +30,9 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "items": ["bagels_baking:chicken_taco"]
+          "items": [
+            "bagels_baking:chicken_taco"
+          ]
         }
       }
     },
@@ -36,7 +40,9 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "items": ["bagels_baking:pork_taco"]
+          "items": [
+            "bagels_baking:pork_taco"
+          ]
         }
       }
     },
@@ -44,7 +50,9 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "items": ["bagels_baking:fish_taco"]
+          "items": [
+            "bagels_baking:fish_taco"
+          ]
         }
       }
     },
@@ -52,7 +60,9 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "items": ["bagels_baking:mutton_taco"]
+          "items": [
+            "bagels_baking:mutton_taco"
+          ]
         }
       }
     },
@@ -60,7 +70,9 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "items": ["bagels_baking:rabbit_taco"]
+          "items": [
+            "bagels_baking:rabbit_taco"
+          ]
         }
       }
     }

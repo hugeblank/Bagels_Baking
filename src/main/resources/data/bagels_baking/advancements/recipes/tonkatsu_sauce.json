@@ -1,0 +1,37 @@
+{
+    "criteria": {
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:jams/tonkatsu_sauce.json"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_items"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "bagels_baking:jams/tonkatsu_sauce.json"
+        ]
+    },
+    "has_items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": {
+                "items": [
+                    "bagels_baking:lemon",
+                    "bagels_baking:tomato",
+                    "minecraft:apple",
+                    "minecraft:carrot",
+                    "bagels_baking:malt_vinegar",
+                    "minecraft:bowl"
+                ]
+            }
+        }
+    },
+    "parent": "minecraft:recipes/root"
+}

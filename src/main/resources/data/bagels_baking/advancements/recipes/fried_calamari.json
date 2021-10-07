@@ -1,0 +1,34 @@
+{
+    "criteria": {
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:furnace/fried_calamari.json"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_items"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "bagels_baking:furnace/fried_calamari.json",
+            "bagels_baking:campfire/fried_calamari.json",
+            "bagels_baking:smoker/fried_calamari.json"
+        ]
+    },
+    "has_items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": {
+                "items": [
+                    "bagels_baking:battered_calamari"
+                ]
+            }
+        }
+    },
+    "parent": "minecraft:recipes/root"
+}

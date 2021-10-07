@@ -1,0 +1,36 @@
+{
+    "criteria": {
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:meals/salmon_meal.json"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_items"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "bagels_baking:meals/salmon_meal.json"
+        ]
+    },
+    "has_items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": {
+                "items": [
+                    "bagels_baking:plate",
+                    "minecraft:cooked_salmon",
+                    "bagels_baking:lemon",
+                    "bagels_baking:cooked_corn",
+                    "bagels_baking:mashed_potatoes"
+                ]
+            }
+        }
+    },
+    "parent": "minecraft:recipes/root"
+}

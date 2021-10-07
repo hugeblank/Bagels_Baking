@@ -1,8 +1,8 @@
 {
-    "replace": false,
-    "values": [
-      "bagels_baking:cherry_button",
-      "bagels_baking:lemon_button",
-      "bagels_baking:juniper_button"
-    ]
-  }
+  "replace": false,
+  "values": [
+    "bagels_baking:cherry_button",
+    "bagels_baking:lemon_button",
+    "bagels_baking:juniper_button"
+  ]
+}

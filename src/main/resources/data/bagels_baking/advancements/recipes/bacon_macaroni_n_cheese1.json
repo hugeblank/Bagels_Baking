@@ -1,0 +1,35 @@
+{
+    "criteria": {
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:misc/bacon_macaroni_n_cheese1.json"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_items"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "bagels_baking:misc/bacon_macaroni_n_cheese1.json"
+        ]
+    },
+    "has_items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": {
+                "items": [
+                    "minecraft:bowl",
+                    "bagels_baking:macaroni",
+                    "bagels_baking:cheese_slice",
+                    "bagels_baking:bacon_bits"
+                ]
+            }
+        }
+    },
+    "parent": "minecraft:recipes/root"
+}

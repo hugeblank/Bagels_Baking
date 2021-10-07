@@ -1,0 +1,35 @@
+{
+    "criteria": {
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:stews/mutton_stew.json"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_items"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "bagels_baking:stews/mutton_stew.json"
+        ]
+    },
+    "has_items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": {
+                "items": [
+                    "minecraft:baked_potato",
+                    "minecraft:cooked_mutton",
+                    "minecraft:bowl",
+                    "minecraft:carrot"
+                ]
+            }
+        }
+    },
+    "parent": "minecraft:recipes/root"
+}

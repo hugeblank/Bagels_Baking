@@ -1,0 +1,35 @@
+{
+    "criteria": {
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:meals/steak_meal.json"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_items"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "bagels_baking:meals/steak_meal.json"
+        ]
+    },
+    "has_items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": {
+                "items": [
+                    "bagels_baking:plate",
+                    "minecraft:cooked_beef",
+                    "bagels_baking:mashed_potatoes",
+                    "bagels_baking:cooked_corn"
+                ]
+            }
+        }
+    },
+    "parent": "minecraft:recipes/root"
+}

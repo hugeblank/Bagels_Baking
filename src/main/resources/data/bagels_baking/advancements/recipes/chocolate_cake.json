@@ -1,0 +1,36 @@
+{
+    "criteria": {
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:cakes/chocolate_cake.json"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_items"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "bagels_baking:cakes/chocolate_cake.json"
+        ]
+    },
+    "has_items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": {
+                "items": [
+                    "minecraft:milk_bucket",
+                    "minecraft:egg",
+                    "minecraft:cocoa_beans",
+                    "minecraft:wheat",
+                    "minecraft:sugar"
+                ]
+            }
+        }
+    },
+    "parent": "minecraft:recipes/root"
+}

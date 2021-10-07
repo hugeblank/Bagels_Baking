@@ -7,15 +7,72 @@
     "elements": [
         {
             "name": "Post",
-            "from": [ 6, 0, 0 ], 
-            "to": [ 10, 16, 4 ], 
+            "from": [
+                6,
+                0,
+                0
+            ],
+            "to": [
+                10,
+                16,
+                4
+            ],
             "faces": {
-                "north": { "texture": "#wood", "uv": [ 0, 0, 4, 16 ] },
-                "east": { "texture": "#wood", "uv": [ 2, 0, 6, 16 ] },
-                "south": { "texture": "#wood", "uv": [ 4, 0, 8, 16 ] },
-                "west": { "texture": "#wood", "uv": [ 6, 0, 10, 16 ] },
-                "up": { "texture": "#wood", "uv": [ 2, 0, 6, 4 ] },
-                "down": { "texture": "#wood", "uv": [ 4, 4, 8, 8 ], "cullface": "down" }
+                "north": {
+                    "texture": "#wood",
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        16
+                    ]
+                },
+                "east": {
+                    "texture": "#wood",
+                    "uv": [
+                        2,
+                        0,
+                        6,
+                        16
+                    ]
+                },
+                "south": {
+                    "texture": "#wood",
+                    "uv": [
+                        4,
+                        0,
+                        8,
+                        16
+                    ]
+                },
+                "west": {
+                    "texture": "#wood",
+                    "uv": [
+                        6,
+                        0,
+                        10,
+                        16
+                    ]
+                },
+                "up": {
+                    "texture": "#wood",
+                    "uv": [
+                        2,
+                        0,
+                        6,
+                        4
+                    ]
+                },
+                "down": {
+                    "texture": "#wood",
+                    "uv": [
+                        4,
+                        4,
+                        8,
+                        8
+                    ],
+                    "cullface": "down"
+                }
             }
         }
     ]

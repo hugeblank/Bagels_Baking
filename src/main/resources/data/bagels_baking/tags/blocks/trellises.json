@@ -1,17 +1,16 @@
 {
-    "replace": false,
-    "values": [
-      "bagels_baking:acacia_trellis",
-      "bagels_baking:birch_trellis",
-      "bagels_baking:cherry_trellis",
-      "bagels_baking:crimson_trellis",
-      "bagels_baking:dark_oak_trellis",
-      "bagels_baking:jungle_trellis",
-      "bagels_baking:juniper_trellis",
-      "bagels_baking:lemon_trellis",
-      "bagels_baking:oak_trellis",
-      "bagels_baking:spruce_trellis",
-      "bagels_baking:warped_trellis"
-    ]
-  }
-  
+  "replace": false,
+  "values": [
+    "bagels_baking:acacia_trellis",
+    "bagels_baking:birch_trellis",
+    "bagels_baking:cherry_trellis",
+    "bagels_baking:crimson_trellis",
+    "bagels_baking:dark_oak_trellis",
+    "bagels_baking:jungle_trellis",
+    "bagels_baking:juniper_trellis",
+    "bagels_baking:lemon_trellis",
+    "bagels_baking:oak_trellis",
+    "bagels_baking:spruce_trellis",
+    "bagels_baking:warped_trellis"
+  ]
+}

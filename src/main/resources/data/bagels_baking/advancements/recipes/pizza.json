@@ -1,0 +1,36 @@
+{
+    "criteria": {
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:misc/pizza.json"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_items"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "bagels_baking:misc/pizza.json"
+        ]
+    },
+    "has_items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": {
+                "items": [
+                    "bagels_baking:tomato_sauce",
+                    "bagels_baking:dough",
+                    "bagels_baking:cheese_slice",
+                    "bagels_baking:corn_meal",
+                    "bagels_baking:pepperoni"
+                ]
+            }
+        }
+    },
+    "parent": "minecraft:recipes/root"
+}

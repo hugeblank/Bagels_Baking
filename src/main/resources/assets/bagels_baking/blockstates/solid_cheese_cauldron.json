@@ -1,7 +1,7 @@
 {
-    "variants": {
-      "": {
-        "model": "bagels_baking:block/solid_cheese_cauldron"
-      }
+  "variants": {
+    "": {
+      "model": "bagels_baking:block/solid_cheese_cauldron"
     }
   }
+}

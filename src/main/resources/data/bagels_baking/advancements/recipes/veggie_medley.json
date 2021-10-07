@@ -1,0 +1,38 @@
+{
+    "criteria": {
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:misc/veggie_medley.json"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_items"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "bagels_baking:misc/veggie_medley.json"
+        ]
+    },
+    "has_items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": {
+                "items": [
+                    "minecraft:carrot",
+                    "minecraft:potato",
+                    "minecraft:beetroot",
+                    "bagels_baking:tomato",
+                    "bagels_baking:corn",
+                    "minecraft:bowl",
+                    "minecraft:brown_mushroom"
+                ]
+            }
+        }
+    },
+    "parent": "minecraft:recipes/root"
+}

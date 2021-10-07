@@ -1,19 +1,45 @@
 {
     "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
-"ambientocclusion": false,
+    "ambientocclusion": false,
     "textures": {
         "vine_right": "bagels_baking:block/grape_stem_right",
         "vine_left": "bagels_baking:block/grape_stem_left"
     },
-        "elements": [
+    "elements": [
         {
             "name": "Vine",
-            "from": [ 0, 0, 0.8 ], 
-            "to": [ 10, 16, 0.8 ], 
+            "from": [
+                0,
+                0,
+                0.8
+            ],
+            "to": [
+                10,
+                16,
+                0.8
+            ],
             "shade": false,
             "faces": {
-                "north": { "texture": "#vine_left", "uv": [ 6, 0, 16, 16 ], "tintindex": 0 },
-                "south": { "texture": "#vine_right", "uv": [ 0, 0, 10, 16 ], "tintindex": 0 }
+                "north": {
+                    "texture": "#vine_left",
+                    "uv": [
+                        6,
+                        0,
+                        16,
+                        16
+                    ],
+                    "tintindex": 0
+                },
+                "south": {
+                    "texture": "#vine_right",
+                    "uv": [
+                        0,
+                        0,
+                        10,
+                        16
+                    ],
+                    "tintindex": 0
+                }
             }
         }
     ]

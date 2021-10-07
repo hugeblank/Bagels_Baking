@@ -1,0 +1,35 @@
+{
+    "criteria": {
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:misc/apple_cinnamon_cream.json"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_items"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "bagels_baking:misc/apple_cinnamon_cream.json"
+        ]
+    },
+    "has_items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": {
+                "items": [
+                    "bagels_baking:cup",
+                    "bagels_baking:apple_jam",
+                    "bagels_baking:cinnamon_powder",
+                    "bagels_baking:milk_cup"
+                ]
+            }
+        }
+    },
+    "parent": "minecraft:recipes/root"
+}

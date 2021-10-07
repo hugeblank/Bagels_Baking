@@ -1,8 +1,8 @@
 {
-    "replace": false,
-    "values": [
-      "bagels_baking:cherry_fence",
-      "bagels_baking:lemon_fence",
-      "bagels_baking:juniper_fence"
-    ]
-  }
+  "replace": false,
+  "values": [
+    "bagels_baking:cherry_fence",
+    "bagels_baking:lemon_fence",
+    "bagels_baking:juniper_fence"
+  ]
+}

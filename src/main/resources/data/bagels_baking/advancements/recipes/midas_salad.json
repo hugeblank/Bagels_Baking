@@ -1,0 +1,36 @@
+{
+    "criteria": {
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "bagels_baking:misc/midas_salad.json"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_items"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "bagels_baking:misc/midas_salad.json"
+        ]
+    },
+    "has_items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": {
+                "items": [
+                    "minecraft:glistering_melon_slice",
+                    "minecraft:golden_apple",
+                    "minecraft:golden_carrot",
+                    "minecraft:bowl",
+                    "minecraft:honey_bottle"
+                ]
+            }
+        }
+    },
+    "parent": "minecraft:recipes/root"
+}

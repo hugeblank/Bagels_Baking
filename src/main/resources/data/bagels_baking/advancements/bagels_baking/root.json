@@ -1,29 +1,29 @@
 {
-    "display": {
-      "icon": {
-        "item": "bagels_baking:bagel"
-      },
-      "title": {
-        "translate": "advancements.bagels_baking.root.title"
-      },
-      "description": {
-        "translate": "advancements.bagels_baking.root.description"
-      },
-      "frame": "task",
-      "show_toast": false,
-      "announce_to_chat": false,
-      "hidden": false,
-      "background": "bagels_baking:textures/block/polished_halite.png"
+  "display": {
+    "icon": {
+      "item": "bagels_baking:bagel"
     },
-    "criteria": {
-      "consumed_item": {
-        "trigger": "minecraft:consume_item",
-        "conditions": {}
-      }
+    "title": {
+      "translate": "advancements.bagels_baking.root.title"
     },
-    "requirements": [
-      [
-        "consumed_item"
-      ]
+    "description": {
+      "translate": "advancements.bagels_baking.root.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "bagels_baking:textures/block/polished_halite.png"
+  },
+  "criteria": {
+    "consumed_item": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {}
+    }
+  },
+  "requirements": [
+    [
+      "consumed_item"
     ]
-  }
+  ]
+}
