@@ -40,7 +40,8 @@
   "client": [
     "recipe.ClientRecipeBookMixin",
     "render.BoatEntityRendererMixin",
-    "render.TexturedRenderLayersMixin"
+    "render.TexturedRenderLayersMixin",
+    "render.BuiltinModelItemRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

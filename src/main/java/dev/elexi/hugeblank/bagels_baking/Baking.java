@@ -668,7 +668,6 @@ public class Baking implements ModInitializer {
 		ICE_BOX_9X6 = ScreenHandlerRegistry.registerSimple(new Identifier(ID, "ice_box_9x6"), GenericContainerScreenHandler::createGeneric9x6);
 
 		// Fermenter
-
 		Registry.register(Registry.BLOCK, FERMENTER_ID, FERMENTER);
 		Registry.register(Registry.ITEM, FERMENTER_ID, FERMENTER_ITEM);
 		FERMENTER_ENTITY_TYPE = Registry.register(Registry.BLOCK_ENTITY_TYPE, FERMENTER_ID, FabricBlockEntityTypeBuilder.create(FermenterBlockEntity::new, FERMENTER).build());
