@@ -259,6 +259,8 @@
   "item.bagels_baking.molasses": "Molasses",
   "item.bagels_baking.mountain_fountain_slushee": "Mountain Fountain Slushee",
   "item.bagels_baking.mountain_fountain": "Mountain Fountain",
+  "item.bagels_baking.music_disc_cafe.desc": "SolCat - Cafe",
+  "item.bagels_baking.music_disc_cafe": "Music Disc",
   "item.bagels_baking.mutton_cheeseburger": "Mutton Cheeseburger",
   "item.bagels_baking.mutton_meal": "Mutton Chop with Sweet Berry Sauce Meal",
   "item.bagels_baking.mutton_pocket": "Mutton Pocket",
@@ -335,5 +337,6 @@
   "stat.bagels_baking.open_ice_box": "Ice Boxes Opened",
   "stat.bagels_baking.tomato_kills": "Player Kills using Tomato",
   "subtitles.bagels_baking.ice_box_close": "Ice Box Closes",
-  "subtitles.bagels_baking.ice_box_open": "Ice Box Opens"
+  "subtitles.bagels_baking.ice_box_open": "Ice Box Opens",
+  "subtitles.bagels_baking.music_cafe_play": "Cafe plays"
 }

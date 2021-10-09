@@ -1,4 +1,10 @@
 {
+  "music_cafe": {
+    "subtitle": "subtitles.bagels_baking.music_cafe_play",
+    "sounds": [
+      "bagels_baking:cafe"
+    ]
+  },
   "ice_box_open": {
     "subtitle": "subtitles.bagels_baking.ice_box_open",
     "sounds": [

@@ -514,12 +514,16 @@ public class Baking implements ModInitializer {
 	private static final String ice_box_stat = "open_ice_box";
 	public static final Identifier OPEN_ICE_BOX = new Identifier(ID, ice_box_stat);
 
-
 	// Sounds (How did I get here?)
 	public static final Identifier ICE_BOX_OPEN_ID = new Identifier(ID, "ice_box_open");
 	public static final SoundEvent ICE_BOX_OPEN = new SoundEvent(ICE_BOX_OPEN_ID);
 	public static final Identifier ICE_BOX_CLOSE_ID = new Identifier(ID, "ice_box_close");
 	public static final SoundEvent ICE_BOX_CLOSE = new SoundEvent(ICE_BOX_CLOSE_ID);
+	public static final Identifier CAFE_ID = new Identifier(ID, "music_cafe");
+	public static final SoundEvent CAFE = new SoundEvent(CAFE_ID);
+
+	// Music discs
+	public static final Item CAFE_DISC = new BasicMusicDiscItem(4, CAFE, new FabricItemSettings().group(ItemGroup.MISC).maxCount(1));
 
 	@Override
 	public void onInitialize() {
@@ -864,5 +868,9 @@ public class Baking implements ModInitializer {
 		// Sounds
 		Registry.register(Registry.SOUND_EVENT, ICE_BOX_OPEN_ID, ICE_BOX_OPEN);
 		Registry.register(Registry.SOUND_EVENT, ICE_BOX_CLOSE_ID, ICE_BOX_CLOSE);
+		Registry.register(Registry.SOUND_EVENT, CAFE_ID, CAFE);
+
+		// Music Discs
+		registerItem("music_disc_cafe", CAFE_DISC);
 	}
 }
