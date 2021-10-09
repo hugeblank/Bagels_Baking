@@ -1,47 +1,47 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:cups/milk_cup"
-        ]
-    },
-    "criteria": {
-        "has_milk_bucket": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "minecraft:milk_bucket"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_cup": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:cup"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:cups/milk_cup"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_cup",
-            "has_milk_bucket"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:cups/milk_cup"
+		]
+	},
+	"criteria": {
+		"has_milk_bucket": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:milk_bucket"
+						]
+					}
+				]
+			}
+		},
+		"has_cup": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cup"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:cups/milk_cup"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_cup",
+			"has_milk_bucket"
+		]
+	]
 }

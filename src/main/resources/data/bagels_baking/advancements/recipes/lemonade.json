@@ -1,73 +1,73 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/lemonade"
-        ]
-    },
-    "criteria": {
-        "has_sugar": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "minecraft:sugar"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_water_cup": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:water_cup"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_glass_bottle": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "minecraft:glass_bottle"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_lemon": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:lemon"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:misc/lemonade"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_lemon",
-            "has_sugar",
-            "has_glass_bottle",
-            "has_water_cup"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/lemonade"
+		]
+	},
+	"criteria": {
+		"has_sugar": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:sugar"
+						]
+					}
+				]
+			}
+		},
+		"has_water_cup": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:water_cup"
+						]
+					}
+				]
+			}
+		},
+		"has_glass_bottle": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:glass_bottle"
+						]
+					}
+				]
+			}
+		},
+		"has_lemon": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:lemon"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/lemonade"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_lemon",
+			"has_sugar",
+			"has_glass_bottle",
+			"has_water_cup"
+		]
+	]
 }

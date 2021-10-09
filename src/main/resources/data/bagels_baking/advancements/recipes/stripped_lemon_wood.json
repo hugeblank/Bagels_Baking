@@ -1,34 +1,34 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:wood/stripped_lemon_wood"
-        ]
-    },
-    "criteria": {
-        "has_stripped_lemon_log": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:stripped_lemon_log"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:wood/stripped_lemon_wood"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_stripped_lemon_log"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:wood/stripped_lemon_wood"
+		]
+	},
+	"criteria": {
+		"has_stripped_lemon_log": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:stripped_lemon_log"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:wood/stripped_lemon_wood"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_stripped_lemon_log"
+		]
+	]
 }

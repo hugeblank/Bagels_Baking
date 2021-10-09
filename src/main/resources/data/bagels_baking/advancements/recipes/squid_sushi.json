@@ -1,60 +1,60 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/squid_sushi"
-        ]
-    },
-    "criteria": {
-        "has_cooked_calamari": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:cooked_calamari"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_dried_kelp": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "minecraft:dried_kelp"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_cooked_rice_ball": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:cooked_rice_ball"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:misc/squid_sushi"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_dried_kelp",
-            "has_cooked_rice_ball",
-            "has_cooked_calamari"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/squid_sushi"
+		]
+	},
+	"criteria": {
+		"has_cooked_calamari": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cooked_calamari"
+						]
+					}
+				]
+			}
+		},
+		"has_dried_kelp": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:dried_kelp"
+						]
+					}
+				]
+			}
+		},
+		"has_cooked_rice_ball": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cooked_rice_ball"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/squid_sushi"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_dried_kelp",
+			"has_cooked_rice_ball",
+			"has_cooked_calamari"
+		]
+	]
 }

@@ -1,60 +1,60 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/pepperoni"
-        ]
-    },
-    "criteria": {
-        "has_porkchop": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "minecraft:porkchop"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_salt": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:salt"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_beef": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "minecraft:beef"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:misc/pepperoni"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_porkchop",
-            "has_beef",
-            "has_salt"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/pepperoni"
+		]
+	},
+	"criteria": {
+		"has_porkchop": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:porkchop"
+						]
+					}
+				]
+			}
+		},
+		"has_salt": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:salt"
+						]
+					}
+				]
+			}
+		},
+		"has_beef": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:beef"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/pepperoni"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_porkchop",
+			"has_beef",
+			"has_salt"
+		]
+	]
 }

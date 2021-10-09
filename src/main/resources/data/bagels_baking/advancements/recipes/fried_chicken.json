@@ -1,36 +1,36 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:furnace/fried_chicken",
-            "bagels_baking:campfire/fried_chicken",
-            "bagels_baking:smoker/fried_chicken"
-        ]
-    },
-    "criteria": {
-        "has_battered_chicken": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:battered_chicken"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:furnace/fried_chicken"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_battered_chicken"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:furnace/fried_chicken",
+			"bagels_baking:campfire/fried_chicken",
+			"bagels_baking:smoker/fried_chicken"
+		]
+	},
+	"criteria": {
+		"has_battered_chicken": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:battered_chicken"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:furnace/fried_chicken"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_battered_chicken"
+		]
+	]
 }

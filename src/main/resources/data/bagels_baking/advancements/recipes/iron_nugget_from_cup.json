@@ -1,36 +1,36 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:furnace/iron_nugget_from_cup",
-            "bagels_baking:campfire/iron_nugget_from_cup",
-            "bagels_baking:smoker/iron_nugget_from_cup"
-        ]
-    },
-    "criteria": {
-        "has_cup": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:cup"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:furnace/iron_nugget_from_cup"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_cup"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:furnace/iron_nugget_from_cup",
+			"bagels_baking:campfire/iron_nugget_from_cup",
+			"bagels_baking:smoker/iron_nugget_from_cup"
+		]
+	},
+	"criteria": {
+		"has_cup": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cup"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:furnace/iron_nugget_from_cup"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_cup"
+		]
+	]
 }

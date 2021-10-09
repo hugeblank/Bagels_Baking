@@ -1,47 +1,47 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:trellises/jungle_trellis"
-        ]
-    },
-    "criteria": {
-        "has_string": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "minecraft:string"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_jungle_log": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "minecraft:jungle_log"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:trellises/jungle_trellis"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_string",
-            "has_jungle_log"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:trellises/jungle_trellis"
+		]
+	},
+	"criteria": {
+		"has_string": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:string"
+						]
+					}
+				]
+			}
+		},
+		"has_jungle_log": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:jungle_log"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:trellises/jungle_trellis"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_string",
+			"has_jungle_log"
+		]
+	]
 }

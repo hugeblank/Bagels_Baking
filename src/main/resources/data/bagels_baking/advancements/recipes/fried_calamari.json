@@ -1,21 +1,36 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:campfire/fried_calamari"
-        ]
-    },
-    "criteria": {
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:campfire/fried_calamari"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:furnace/fried_calamari",
+			"bagels_baking:campfire/fried_calamari",
+			"bagels_baking:smoker/fried_calamari"
+		]
+	},
+	"criteria": {
+		"has_battered_calamari": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:battered_calamari"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:furnace/fried_calamari"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_battered_calamari"
+		]
+	]
 }

@@ -1,34 +1,34 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:fermenting/red_wine"
-        ]
-    },
-    "criteria": {
-        "has_grapes": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:grapes"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:fermenting/red_wine"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_grapes"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:fermenting/red_wine"
+		]
+	},
+	"criteria": {
+		"has_grapes": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:grapes"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:fermenting/red_wine"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_grapes"
+		]
+	]
 }

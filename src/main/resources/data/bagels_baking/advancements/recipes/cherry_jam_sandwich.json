@@ -1,47 +1,47 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:sandwiches/cherry_jam_sandwich"
-        ]
-    },
-    "criteria": {
-        "has_bread": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "minecraft:bread"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_cherry_jam": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:cherry_jam"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:sandwiches/cherry_jam_sandwich"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_bread",
-            "has_cherry_jam"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:sandwiches/cherry_jam_sandwich"
+		]
+	},
+	"criteria": {
+		"has_bread": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:bread"
+						]
+					}
+				]
+			}
+		},
+		"has_cherry_jam": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cherry_jam"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:sandwiches/cherry_jam_sandwich"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_bread",
+			"has_cherry_jam"
+		]
+	]
 }

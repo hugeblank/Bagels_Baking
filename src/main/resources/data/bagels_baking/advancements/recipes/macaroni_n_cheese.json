@@ -1,60 +1,60 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/macaroni_n_cheese"
-        ]
-    },
-    "criteria": {
-        "has_macaroni": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:macaroni"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_bowl": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "minecraft:bowl"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_cheese_slice": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:cheese_slice"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:misc/macaroni_n_cheese"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_bowl",
-            "has_macaroni",
-            "has_cheese_slice"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/macaroni_n_cheese"
+		]
+	},
+	"criteria": {
+		"has_macaroni": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:macaroni"
+						]
+					}
+				]
+			}
+		},
+		"has_bowl": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:bowl"
+						]
+					}
+				]
+			}
+		},
+		"has_cheese_slice": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cheese_slice"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/macaroni_n_cheese"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_bowl",
+			"has_macaroni",
+			"has_cheese_slice"
+		]
+	]
 }

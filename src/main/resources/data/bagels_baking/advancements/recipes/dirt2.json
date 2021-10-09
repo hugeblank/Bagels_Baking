@@ -1,34 +1,34 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:freezing/dirt2"
-        ]
-    },
-    "criteria": {
-        "has_mycelium": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "minecraft:mycelium"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:freezing/dirt2"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_mycelium"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:freezing/dirt2"
+		]
+	},
+	"criteria": {
+		"has_mycelium": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:mycelium"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:freezing/dirt2"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_mycelium"
+		]
+	]
 }

@@ -1,34 +1,34 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:freezing/apple_cinnamon_ice_cream"
-        ]
-    },
-    "criteria": {
-        "has_apple_cinnamon_cream": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:apple_cinnamon_cream"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:freezing/apple_cinnamon_ice_cream"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_apple_cinnamon_cream"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:freezing/apple_cinnamon_ice_cream"
+		]
+	},
+	"criteria": {
+		"has_apple_cinnamon_cream": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:apple_cinnamon_cream"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:freezing/apple_cinnamon_ice_cream"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_apple_cinnamon_cream"
+		]
+	]
 }

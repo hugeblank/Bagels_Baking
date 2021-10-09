@@ -1,60 +1,60 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/loaded_fries"
-        ]
-    },
-    "criteria": {
-        "has_cooked_french_fries": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:cooked_french_fries"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_cheese_slice": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:cheese_slice"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_smoked_bacon": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:smoked_bacon"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:misc/loaded_fries"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_cooked_french_fries",
-            "has_smoked_bacon",
-            "has_cheese_slice"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/loaded_fries"
+		]
+	},
+	"criteria": {
+		"has_cooked_french_fries": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cooked_french_fries"
+						]
+					}
+				]
+			}
+		},
+		"has_cheese_slice": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cheese_slice"
+						]
+					}
+				]
+			}
+		},
+		"has_smoked_bacon": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:smoked_bacon"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/loaded_fries"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_cooked_french_fries",
+			"has_smoked_bacon",
+			"has_cheese_slice"
+		]
+	]
 }

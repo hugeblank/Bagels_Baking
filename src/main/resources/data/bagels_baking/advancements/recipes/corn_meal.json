@@ -1,34 +1,34 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:milling/corn_meal"
-        ]
-    },
-    "criteria": {
-        "has_corn": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:corn"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:milling/corn_meal"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_corn"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:milling/corn_meal"
+		]
+	},
+	"criteria": {
+		"has_corn": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:corn"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:milling/corn_meal"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_corn"
+		]
+	]
 }

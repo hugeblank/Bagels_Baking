@@ -1,47 +1,47 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:sandwiches/cheese_sandiwch"
-        ]
-    },
-    "criteria": {
-        "has_cheese_slice": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:cheese_slice"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_bread": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "minecraft:bread"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:sandwiches/cheese_sandiwch"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_bread",
-            "has_cheese_slice"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:sandwiches/cheese_sandiwch"
+		]
+	},
+	"criteria": {
+		"has_cheese_slice": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cheese_slice"
+						]
+					}
+				]
+			}
+		},
+		"has_bread": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:bread"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:sandwiches/cheese_sandiwch"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_bread",
+			"has_cheese_slice"
+		]
+	]
 }

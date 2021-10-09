@@ -1,73 +1,73 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/fruit_salad"
-        ]
-    },
-    "criteria": {
-        "has_sweet_berries": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "minecraft:sweet_berries"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_apple": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "minecraft:apple"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_melon_slice": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "minecraft:melon_slice"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_bowl": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "minecraft:bowl"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:misc/fruit_salad"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_melon_slice",
-            "has_apple",
-            "has_sweet_berries",
-            "has_bowl"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/fruit_salad"
+		]
+	},
+	"criteria": {
+		"has_sweet_berries": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:sweet_berries"
+						]
+					}
+				]
+			}
+		},
+		"has_apple": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:apple"
+						]
+					}
+				]
+			}
+		},
+		"has_melon_slice": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:melon_slice"
+						]
+					}
+				]
+			}
+		},
+		"has_bowl": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:bowl"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/fruit_salad"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_melon_slice",
+			"has_apple",
+			"has_sweet_berries",
+			"has_bowl"
+		]
+	]
 }

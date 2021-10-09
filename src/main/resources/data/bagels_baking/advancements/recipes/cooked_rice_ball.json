@@ -1,36 +1,36 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:furnace/cooked_rice_ball",
-            "bagels_baking:campfire/cooked_rice_ball",
-            "bagels_baking:smoker/cooked_rice_ball"
-        ]
-    },
-    "criteria": {
-        "has_rice_ball": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:rice_ball"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:furnace/cooked_rice_ball"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_rice_ball"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:furnace/cooked_rice_ball",
+			"bagels_baking:campfire/cooked_rice_ball",
+			"bagels_baking:smoker/cooked_rice_ball"
+		]
+	},
+	"criteria": {
+		"has_rice_ball": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:rice_ball"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:furnace/cooked_rice_ball"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_rice_ball"
+		]
+	]
 }

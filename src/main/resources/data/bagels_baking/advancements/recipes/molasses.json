@@ -1,36 +1,36 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:furnace/molasses",
-            "bagels_baking:campfire/molasses",
-            "bagels_baking:smoker/molasses"
-        ]
-    },
-    "criteria": {
-        "has_sugar_water": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:sugar_water"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:furnace/molasses"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_sugar_water"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:furnace/molasses",
+			"bagels_baking:campfire/molasses",
+			"bagels_baking:smoker/molasses"
+		]
+	},
+	"criteria": {
+		"has_sugar_water": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:sugar_water"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:furnace/molasses"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_sugar_water"
+		]
+	]
 }

@@ -1,47 +1,47 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/wild_rice_ball"
-        ]
-    },
-    "criteria": {
-        "has_water_cup": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:water_cup"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_wild_rice": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:wild_rice"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:misc/wild_rice_ball"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_water_cup",
-            "has_wild_rice"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/wild_rice_ball"
+		]
+	},
+	"criteria": {
+		"has_water_cup": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:water_cup"
+						]
+					}
+				]
+			}
+		},
+		"has_wild_rice": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:wild_rice"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/wild_rice_ball"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_water_cup",
+			"has_wild_rice"
+		]
+	]
 }

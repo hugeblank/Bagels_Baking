@@ -1,34 +1,34 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:freezing/cactus_chiller_slushee"
-        ]
-    },
-    "criteria": {
-        "has_cactus_chiller": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:cactus_chiller"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:freezing/cactus_chiller_slushee"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_cactus_chiller"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:freezing/cactus_chiller_slushee"
+		]
+	},
+	"criteria": {
+		"has_cactus_chiller": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cactus_chiller"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:freezing/cactus_chiller_slushee"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_cactus_chiller"
+		]
+	]
 }

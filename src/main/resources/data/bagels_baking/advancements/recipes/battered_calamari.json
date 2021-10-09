@@ -1,47 +1,47 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/battered_calamari"
-        ]
-    },
-    "criteria": {
-        "has_calamari": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:calamari"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_batter": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:batter"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:misc/battered_calamari"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_batter",
-            "has_calamari"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/battered_calamari"
+		]
+	},
+	"criteria": {
+		"has_calamari": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:calamari"
+						]
+					}
+				]
+			}
+		},
+		"has_batter": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:batter"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/battered_calamari"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_batter",
+			"has_calamari"
+		]
+	]
 }

@@ -1,34 +1,34 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:freezing/root_beer_slushee"
-        ]
-    },
-    "criteria": {
-        "has_root_beer": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:root_beer"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:freezing/root_beer_slushee"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_root_beer"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:freezing/root_beer_slushee"
+		]
+	},
+	"criteria": {
+		"has_root_beer": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:root_beer"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:freezing/root_beer_slushee"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_root_beer"
+		]
+	]
 }

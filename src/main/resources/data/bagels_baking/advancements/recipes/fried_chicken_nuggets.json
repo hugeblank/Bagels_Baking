@@ -1,21 +1,36 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:campfire/fried_chicken_nuggets"
-        ]
-    },
-    "criteria": {
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:campfire/fried_chicken_nuggets"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:furnace/fried_chicken_nuggets",
+			"bagels_baking:campfire/fried_chicken_nuggets",
+			"bagels_baking:smoker/fried_chicken_nuggets"
+		]
+	},
+	"criteria": {
+		"has_battered_chicken_nuggets": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:battered_chicken_nuggets"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:furnace/fried_chicken_nuggets"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_battered_chicken_nuggets"
+		]
+	]
 }

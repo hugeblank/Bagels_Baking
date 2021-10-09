@@ -1,86 +1,86 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:meals/rabbit_meal"
-        ]
-    },
-    "criteria": {
-        "has_cooked_corn": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:cooked_corn"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_mashed_potatoes": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:mashed_potatoes"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_cooked_rabbit": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "minecraft:cooked_rabbit"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_plate": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:plate"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_smoked_bacon": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:smoked_bacon"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:meals/rabbit_meal"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_plate",
-            "has_cooked_rabbit",
-            "has_smoked_bacon",
-            "has_mashed_potatoes",
-            "has_cooked_corn"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:meals/rabbit_meal"
+		]
+	},
+	"criteria": {
+		"has_cooked_corn": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cooked_corn"
+						]
+					}
+				]
+			}
+		},
+		"has_mashed_potatoes": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:mashed_potatoes"
+						]
+					}
+				]
+			}
+		},
+		"has_cooked_rabbit": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:cooked_rabbit"
+						]
+					}
+				]
+			}
+		},
+		"has_plate": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:plate"
+						]
+					}
+				]
+			}
+		},
+		"has_smoked_bacon": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:smoked_bacon"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:meals/rabbit_meal"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_plate",
+			"has_cooked_rabbit",
+			"has_smoked_bacon",
+			"has_mashed_potatoes",
+			"has_cooked_corn"
+		]
+	]
 }

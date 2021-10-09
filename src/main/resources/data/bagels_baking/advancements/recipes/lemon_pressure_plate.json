@@ -1,34 +1,34 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:wood/lemon_pressure_plate"
-        ]
-    },
-    "criteria": {
-        "has_lemon_planks": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:lemon_planks"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:wood/lemon_pressure_plate"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_lemon_planks"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:wood/lemon_pressure_plate"
+		]
+	},
+	"criteria": {
+		"has_lemon_planks": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:lemon_planks"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:wood/lemon_pressure_plate"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_lemon_planks"
+		]
+	]
 }

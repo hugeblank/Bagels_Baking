@@ -1,47 +1,47 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/bacon_macaroni_n_cheese2"
-        ]
-    },
-    "criteria": {
-        "has_bacon_bits": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:bacon_bits"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_macaroni_n_cheese": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:macaroni_n_cheese"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:misc/bacon_macaroni_n_cheese2"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_macaroni_n_cheese",
-            "has_bacon_bits"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/bacon_macaroni_n_cheese2"
+		]
+	},
+	"criteria": {
+		"has_bacon_bits": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:bacon_bits"
+						]
+					}
+				]
+			}
+		},
+		"has_macaroni_n_cheese": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:macaroni_n_cheese"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/bacon_macaroni_n_cheese2"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_macaroni_n_cheese",
+			"has_bacon_bits"
+		]
+	]
 }

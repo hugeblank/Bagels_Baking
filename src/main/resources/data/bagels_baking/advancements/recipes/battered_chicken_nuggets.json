@@ -1,47 +1,47 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:misc/battered_chicken_nuggets"
-        ]
-    },
-    "criteria": {
-        "has_batter": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:batter"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_chicken_nuggets": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:chicken_nuggets"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:misc/battered_chicken_nuggets"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_batter",
-            "has_chicken_nuggets"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/battered_chicken_nuggets"
+		]
+	},
+	"criteria": {
+		"has_batter": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:batter"
+						]
+					}
+				]
+			}
+		},
+		"has_chicken_nuggets": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:chicken_nuggets"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/battered_chicken_nuggets"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_batter",
+			"has_chicken_nuggets"
+		]
+	]
 }

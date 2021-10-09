@@ -1,99 +1,99 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:meals/mutton_meal"
-        ]
-    },
-    "criteria": {
-        "has_sweet_berry_jam": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:sweet_berry_jam"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_cooked_corn": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:cooked_corn"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_mashed_potatoes": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:mashed_potatoes"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_cooked_mutton": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "minecraft:cooked_mutton"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_salt": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:salt"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_plate": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:plate"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:meals/mutton_meal"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_plate",
-            "has_cooked_mutton",
-            "has_sweet_berry_jam",
-            "has_salt",
-            "has_mashed_potatoes",
-            "has_cooked_corn"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:meals/mutton_meal"
+		]
+	},
+	"criteria": {
+		"has_sweet_berry_jam": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:sweet_berry_jam"
+						]
+					}
+				]
+			}
+		},
+		"has_cooked_corn": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cooked_corn"
+						]
+					}
+				]
+			}
+		},
+		"has_mashed_potatoes": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:mashed_potatoes"
+						]
+					}
+				]
+			}
+		},
+		"has_cooked_mutton": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:cooked_mutton"
+						]
+					}
+				]
+			}
+		},
+		"has_salt": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:salt"
+						]
+					}
+				]
+			}
+		},
+		"has_plate": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:plate"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:meals/mutton_meal"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_plate",
+			"has_cooked_mutton",
+			"has_sweet_berry_jam",
+			"has_salt",
+			"has_mashed_potatoes",
+			"has_cooked_corn"
+		]
+	]
 }

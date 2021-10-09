@@ -1,36 +1,36 @@
 {
-    "parent": "minecraft:recipes/root",
-    "rewards": {
-        "recipes": [
-            "bagels_baking:furnace/popcorn",
-            "bagels_baking:campfire/popcorn",
-            "bagels_baking:smoker/popcorn"
-        ]
-    },
-    "criteria": {
-        "has_corn_seeds": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-                "items": [
-                    {
-                        "items": [
-                            "bagels_baking:corn_seeds"
-                        ]
-                    }
-                ]
-            }
-        },
-        "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
-            "conditions": {
-                "recipe": "bagels_baking:furnace/popcorn"
-            }
-        }
-    },
-    "requirements": [
-        [
-            "has_the_recipe",
-            "has_corn_seeds"
-        ]
-    ]
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:furnace/popcorn",
+			"bagels_baking:campfire/popcorn",
+			"bagels_baking:smoker/popcorn"
+		]
+	},
+	"criteria": {
+		"has_corn_seeds": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:corn_seeds"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:furnace/popcorn"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_corn_seeds"
+		]
+	]
 }
