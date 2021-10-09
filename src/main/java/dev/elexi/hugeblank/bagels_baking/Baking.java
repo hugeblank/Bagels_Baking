@@ -474,8 +474,8 @@ public class Baking implements ModInitializer {
 	public static final MushroomStewItem WHEAT_CEREAL_BOWL = basicBowlFood(3, 0.3f);
 	public static final MushroomStewItem CORN_CEREAL_BOWL = basicBowlFood(4, 0.3f);
 	public static final MushroomStewItem RICE_CEREAL_BOWL = basicBowlFood(3, 0.3f);
-	public static final Block CHEESE_BLOCK = new Block(FabricBlockSettings.copy(Blocks.HONEY_BLOCK).sounds(BlockSoundGroup.CANDLE));
-	public static final Block CHEESE_LAYER = new BasicLayerBlock(FabricBlockSettings.of(Material.SNOW_LAYER).sounds(BlockSoundGroup.CANDLE));
+	public static final Block CHEESE_BLOCK = new Block(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).sounds(BlockSoundGroup.CANDLE));
+	public static final Block CHEESE_LAYER = new BasicLayerBlock(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).sounds(BlockSoundGroup.CANDLE));
 	public static final Item CHEESE_SLICE = new BlockItem(CHEESE_LAYER, new FabricItemSettings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0f).build()));
 	public static final BottledItem LEMONADE = basicBottleDrink(2, 0.2f);
 	public static final BottledItem FROZEN_LEMONADE = basicBottleDrink(2, 0.3f);
