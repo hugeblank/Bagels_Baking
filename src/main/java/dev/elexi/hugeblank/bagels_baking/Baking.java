@@ -481,6 +481,8 @@ public class Baking implements ModInitializer {
 	public static final BottledItem FROZEN_LEMONADE = basicBottleDrink(2, 0.3f);
 	public static final BottledItem SPICED_RUM = basicBottleDrink(1, 0.2f);
 	public static final BottledItem FRUIT_MARTINI = basicBottleDrink(9, 0.2f);
+	public static final Item CARAMEL = basicFood(1, 0.2f);
+	public static final Item CARAMEL_APPLE = basicFood(5, 0.3f);
 
 	// Slushees
 	public static final Item ROOT_BEER_SLUSHEE = basicCupDrink(2, 0.3f );
@@ -803,6 +805,8 @@ public class Baking implements ModInitializer {
 		registerBlock("cheese_slice", CHEESE_LAYER, (BlockItem) CHEESE_SLICE);
 		registerBlock("cheese_block", CHEESE_BLOCK, ItemGroup.BUILDING_BLOCKS);
 		registerItem("fruit_martini", FRUIT_MARTINI);
+		registerItem("caramel", CARAMEL);
+		registerItem("caramel_apple", CARAMEL_APPLE);
 
 		// Slushee
 		registerItem("root_beer_slushee", ROOT_BEER_SLUSHEE);
