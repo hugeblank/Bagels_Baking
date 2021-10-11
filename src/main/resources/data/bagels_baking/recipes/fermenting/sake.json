@@ -1,0 +1,7 @@
+{
+    "type": "bagels_baking:fermenting",
+    "ingredient": {
+        "item": "bagels_baking:wild_rice"
+    },
+    "result": "bagels_baking:sake"
+}

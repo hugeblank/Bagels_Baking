@@ -496,11 +496,12 @@ public class Baking implements ModInitializer {
 	public static final BottledItem MALT_VINEGAR = basicBottleDrink(0, 0f);
 	public static final BottledItem RED_WINE = basicBottleDrink(1, 0.1f);
 	public static final BottledItem WHISKEY = basicBottleDrink(3, 0.1f);
-	public static final BottledItem BEER = basicBottleDrink(1, 0.1f);
+	public static final BottledItem BEER = basicBottleDrink(1, 0.2f);
 	public static final BottledItem MEAD = basicBottleDrink(2, 0.1f);
 	public static final BottledItem RUM = basicBottleDrink(1, 0.1f);
 	public static final BottledItem GIN = basicBottleDrink(1, 0.1f);
 	public static final BottledItem VODKA = basicBottleDrink(2, 0.3f);
+	public static final BottledItem SAKE = basicBottleDrink(1, 0.1f);
 
 	// Stats
 	private static final String day_stat = "day_of_week";
@@ -830,6 +831,7 @@ public class Baking implements ModInitializer {
 		registerItem("gin", GIN);
 		registerItem("spiced_rum", SPICED_RUM);
 		registerItem("vodka", VODKA);
+		registerItem("sake", SAKE);
 
 		// Cauldrons
 		BakingCauldronBehavior.registerBehaviors();
