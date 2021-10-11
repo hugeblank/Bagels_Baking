@@ -35,13 +35,14 @@
     "world.BlockPlacerTypeAccessor",
     "world.CoffeeBeansTreeDecorator",
     "world.CropProcessorList",
-    "world.FoliagePlacerTypeAccessor"
+    "world.FoliagePlacerTypeAccessor",
+    "world.StructurePoolMixin"
   ],
   "client": [
     "recipe.ClientRecipeBookMixin",
     "render.BoatEntityRendererMixin",
-    "render.TexturedRenderLayersMixin",
-    "render.BuiltinModelItemRendererMixin"
+    "render.BuiltinModelItemRendererMixin",
+    "render.TexturedRenderLayersMixin"
   ],
   "injectors": {
     "defaultRequire": 1

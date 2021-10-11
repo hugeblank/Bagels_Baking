@@ -1,0 +1,19 @@
+{
+    "name": "cellar_entry",
+    "fallback": "minecraft:village/savanna/terminators",
+    "elements": [
+        {
+            "weight": 1,
+            "element": {
+                "element_type": "minecraft:single_pool_element",
+                "location": "bagels_baking:village/savanna/cellar_entry",
+                "projection": "rigid",
+                "processors": [
+                    {
+                        "processor_type": "nop"
+                    }
+                ]
+            }
+        }
+    ]
+}
