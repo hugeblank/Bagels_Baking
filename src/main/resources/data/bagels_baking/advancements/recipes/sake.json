@@ -2,17 +2,17 @@
 	"parent": "minecraft:recipes/root",
 	"rewards": {
 		"recipes": [
-			"bagels_baking:fermenting/beer"
+			"bagels_baking:fermenting/sake"
 		]
 	},
 	"criteria": {
-		"has_wheat": {
+		"has_wild_rice": {
 			"trigger": "minecraft:inventory_changed",
 			"conditions": {
 				"items": [
 					{
 						"items": [
-							"minecraft:wheat"
+							"bagels_baking:wild_rice"
 						]
 					}
 				]
@@ -21,14 +21,14 @@
 		"has_the_recipe": {
 			"trigger": "minecraft:recipe_unlocked",
 			"conditions": {
-				"recipe": "bagels_baking:fermenting/beer"
+				"recipe": "bagels_baking:fermenting/sake"
 			}
 		}
 	},
 	"requirements": [
 		[
 			"has_the_recipe",
-			"has_wheat"
+			"has_wild_rice"
 		]
 	]
 }

@@ -1,5 +1,6 @@
 package dev.elexi.hugeblank.bagels_baking.item;
 
+import dev.elexi.hugeblank.bagels_baking.Baking;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.advancement.criterion.Criteria;
@@ -102,6 +103,11 @@ public class BottledItem extends PotionItem implements BrewableItem {
 
     public boolean isBrewable() {
         return this.brewable;
+    }
+
+    @Override
+    public boolean hasGlint(ItemStack stack) {
+        return super.hasGlint(stack) || stack.isOf(Baking.AMBROSIA);
     }
 
 }

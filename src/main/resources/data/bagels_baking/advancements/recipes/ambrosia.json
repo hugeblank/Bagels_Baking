@@ -2,17 +2,17 @@
 	"parent": "minecraft:recipes/root",
 	"rewards": {
 		"recipes": [
-			"bagels_baking:fermenting/beer"
+			"bagels_baking:fermenting/ambrosia"
 		]
 	},
 	"criteria": {
-		"has_wheat": {
+		"has_enchanted_golden_apple": {
 			"trigger": "minecraft:inventory_changed",
 			"conditions": {
 				"items": [
 					{
 						"items": [
-							"minecraft:wheat"
+							"minecraft:enchanted_golden_apple"
 						]
 					}
 				]
@@ -21,14 +21,14 @@
 		"has_the_recipe": {
 			"trigger": "minecraft:recipe_unlocked",
 			"conditions": {
-				"recipe": "bagels_baking:fermenting/beer"
+				"recipe": "bagels_baking:fermenting/ambrosia"
 			}
 		}
 	},
 	"requirements": [
 		[
 			"has_the_recipe",
-			"has_wheat"
+			"has_enchanted_golden_apple"
 		]
 	]
 }

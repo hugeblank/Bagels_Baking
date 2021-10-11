@@ -47,6 +47,7 @@ import net.minecraft.stat.StatFormatter;
 import net.minecraft.stat.Stats;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
@@ -462,7 +463,7 @@ public class Baking implements ModInitializer {
 	public static final Item LOADED_POTATO = basicFood(16, 0.8f);
 	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(11, 0.5f);
 	public static final MushroomStewItem FRUIT_SALAD = basicBowlFood(13, 0.2f);
-	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(foodComponent(20, 1.2f).alwaysEdible() // Give 1 item
+	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem( new Item.Settings().group(ItemGroup.FOOD).rarity(Rarity.EPIC).maxCount(16).food(foodComponent(20, 1.2f).alwaysEdible() // Give 1 item
 			.statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 20*120), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 20*20, 1), 1f)
 			.statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 20*60), 1f).build()));
@@ -481,6 +482,7 @@ public class Baking implements ModInitializer {
 	public static final BottledItem FROZEN_LEMONADE = basicBottleDrink(2, 0.3f);
 	public static final BottledItem SPICED_RUM = basicBottleDrink(1, 0.2f);
 	public static final BottledItem FRUIT_MARTINI = basicBottleDrink(9, 0.2f);
+	public static final BottledItem AMBROSIA = new BottledItem(new FabricItemSettings().group(ItemGroup.FOOD).rarity(Rarity.EPIC).maxCount(1).food(new FoodComponent.Builder().hunger(6).saturationModifier(1.2f).alwaysEdible().build()));
 	public static final Item CARAMEL = basicFood(1, 0.2f);
 	public static final Item CARAMEL_APPLE = basicFood(5, 0.3f);
 
@@ -809,6 +811,7 @@ public class Baking implements ModInitializer {
 		registerItem("frozen_lemonade", FROZEN_LEMONADE);
 		registerBlock("cheese_slice", CHEESE_LAYER, (BlockItem) CHEESE_SLICE);
 		registerBlock("cheese_block", CHEESE_BLOCK, ItemGroup.BUILDING_BLOCKS);
+		registerItem("spiced_rum", SPICED_RUM);
 		registerItem("fruit_martini", FRUIT_MARTINI);
 		registerItem("caramel", CARAMEL);
 		registerItem("caramel_apple", CARAMEL_APPLE);
@@ -829,9 +832,9 @@ public class Baking implements ModInitializer {
 		registerItem("mead", MEAD);
 		registerItem("rum", RUM);
 		registerItem("gin", GIN);
-		registerItem("spiced_rum", SPICED_RUM);
 		registerItem("vodka", VODKA);
 		registerItem("sake", SAKE);
+		registerItem("ambrosia", AMBROSIA);
 
 		// Cauldrons
 		BakingCauldronBehavior.registerBehaviors();

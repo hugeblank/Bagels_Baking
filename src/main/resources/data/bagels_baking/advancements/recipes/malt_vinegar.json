@@ -6,13 +6,13 @@
 		]
 	},
 	"criteria": {
-		"has_wheat": {
+		"has_beer": {
 			"trigger": "minecraft:inventory_changed",
 			"conditions": {
 				"items": [
 					{
 						"items": [
-							"minecraft:wheat"
+							"bagels_baking:beer"
 						]
 					}
 				]
@@ -28,7 +28,7 @@
 	"requirements": [
 		[
 			"has_the_recipe",
-			"has_wheat"
+			"has_beer"
 		]
 	]
 }
