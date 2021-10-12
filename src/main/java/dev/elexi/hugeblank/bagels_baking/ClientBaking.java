@@ -5,6 +5,7 @@ import dev.elexi.hugeblank.bagels_baking.client.MillScreen;
 import dev.elexi.hugeblank.bagels_baking.network.BakingPackets;
 import dev.elexi.hugeblank.bagels_baking.network.ClientPacketHandler;
 import dev.elexi.hugeblank.bagels_baking.sprite.SpriteRegistry;
+import dev.elexi.hugeblank.bagels_baking.util.WoodBlock;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
@@ -38,6 +39,12 @@ public class ClientBaking implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.TOMATO_PLANT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.CORN_STALK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.RICE_PLANT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.LEMON_WOOD_TYPE.getBlock(WoodBlock.TRAPDOOR), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.CHERRY_WOOD_TYPE.getBlock(WoodBlock.TRAPDOOR), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.JUNIPER_WOOD_TYPE.getBlock(WoodBlock.TRAPDOOR), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.LEMON_WOOD_TYPE.getBlock(WoodBlock.DOOR), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.CHERRY_WOOD_TYPE.getBlock(WoodBlock.DOOR), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.JUNIPER_WOOD_TYPE.getBlock(WoodBlock.DOOR), RenderLayer.getCutout());
 
         SpriteRegistry.register(ICE_BOX_NORMAL);
         SpriteRegistry.register(ICE_BOX_LEFT);
