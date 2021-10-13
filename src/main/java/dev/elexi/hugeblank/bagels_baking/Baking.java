@@ -22,7 +22,6 @@ import dev.elexi.hugeblank.bagels_baking.world.gen.BakingConfiguredFeatures;
 import dev.elexi.hugeblank.bagels_baking.world.gen.tree.CherrySaplingGenerator;
 import dev.elexi.hugeblank.bagels_baking.world.gen.tree.JuniperSaplingGenerator;
 import dev.elexi.hugeblank.bagels_baking.world.gen.tree.LemonSaplingGenerator;
-import dev.elexi.hugeblank.bagels_baking.world.structure.BakingStructureProcessors;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -888,9 +887,6 @@ public class Baking implements ModInitializer {
 
 		// Configured Features
 		BakingConfiguredFeatures.init();
-
-		// Structure Processors
-		BakingStructureProcessors.init();
 
 		// Biomes
 		BakingBiomes.init();
