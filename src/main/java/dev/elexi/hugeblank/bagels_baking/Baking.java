@@ -219,9 +219,9 @@ public class Baking implements ModInitializer {
 	public static final Item CHERRY_MERINGUE_PIE = basicFood(9, 0.3f);
 
 	// Cakes - Give 1 item
-	public static final Block CARROT_CAKE = new BasicCakeBlock();
-	public static final Block CHOCOLATE_CAKE = new BasicCakeBlock();
-	public static final Block RED_VELVET_CAKE = new BasicCakeBlock();
+	public static final BasicCakeBlock CARROT_CAKE = new BasicCakeBlock();
+	public static final BasicCakeBlock CHOCOLATE_CAKE = new BasicCakeBlock();
+	public static final BasicCakeBlock RED_VELVET_CAKE = new BasicCakeBlock();
 	public static final Item CARROT_CAKE_ITEM = new BlockItem(CARROT_CAKE, new Item.Settings().group(ItemGroup.FOOD));
 	public static final Item CHOCOLATE_CAKE_ITEM = new BlockItem(CHOCOLATE_CAKE, new Item.Settings().group(ItemGroup.FOOD));
 	public static final Item RED_VELVET_CAKE_ITEM = new BlockItem(RED_VELVET_CAKE, new Item.Settings().group(ItemGroup.FOOD));
@@ -419,6 +419,14 @@ public class Baking implements ModInitializer {
 	// solcatowo - requested on 3/22/21
 
 	// Trees - Here's to v0.4!
+	public static final Block OAK_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
+	public static final Block SPRUCE_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
+	public static final Block BIRCH_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
+	public static final Block JUNGLE_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
+	public static final Block ACACIA_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
+	public static final Block DARK_OAK_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
+	public static final Block CRIMSON_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
+	public static final Block WARPED_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
 	public static final Block CHERRY_SAPLING = new BasicSaplingBlock(new CherrySaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
 	public static final Block POTTED_CHERRY_SAPLING = new FlowerPotBlock(CHERRY_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
 	public static final Item CHERRIES = basicFood(2, 0.1f);
@@ -430,14 +438,6 @@ public class Baking implements ModInitializer {
 	public static final Block GRAPE_STEM = new GrapeStemBlock(FabricBlockSettings.copy(Blocks.VINE));
 	public static final Block GRAPE_VINE = new GrapeVineBlock(FabricBlockSettings.copy(Blocks.VINE));
 	public static final Item GRAPES = basicFood(1, 0.1f);
-	public static final Block OAK_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
-	public static final Block SPRUCE_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
-	public static final Block BIRCH_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
-	public static final Block JUNGLE_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
-	public static final Block ACACIA_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
-	public static final Block DARK_OAK_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
-	public static final Block CRIMSON_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
-	public static final Block WARPED_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
 	public static final Block SMALL_CINNAMON_TREE = new TallPlantBlock(FabricBlockSettings.copy(Blocks.TALL_GRASS));
 	public static final Block CINNAMON_TREE = new TriplePlantBlock(FabricBlockSettings.copy(Blocks.TALL_GRASS));
 	public static final Block CINNAMON_SAPLING = new FancyFernBlock(FabricBlockSettings.copy(Blocks.OAK_SAPLING), (random) -> (PlantBlock) (((Random) random).nextFloat() < 0.4 ? CINNAMON_TREE : SMALL_CINNAMON_TREE) );
@@ -464,26 +464,42 @@ public class Baking implements ModInitializer {
 	public static final Item LOADED_POTATO = basicFood(16, 0.8f);
 	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(11, 0.5f);
 	public static final MushroomStewItem FRUIT_SALAD = basicBowlFood(13, 0.2f);
-	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem( new Item.Settings().group(ItemGroup.FOOD).rarity(Rarity.EPIC).maxCount(16).food(foodComponent(20, 1.2f).alwaysEdible() // Give 1 item
-			.statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 20*120), 1f)
-			.statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 20*20, 1), 1f)
-			.statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 20*60), 1f).build()));
-	public static final Item DISGUSTING_DISH = new MushroomStewItem( new Item.Settings().group(ItemGroup.FOOD).maxCount(16).food(foodComponent(4, 0.3f).alwaysEdible() // Give 1 item
-			.statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 20*30, 2), 1f)
-			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*30), 1f)
-			.statusEffect(new StatusEffectInstance(StatusEffects.POISON, 20*90, 3), 1f)
-			.statusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 20*30), 1f).build()));
+	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem(
+			new Item.Settings()
+					.group(ItemGroup.FOOD)
+					.rarity(Rarity.EPIC)
+					.maxCount(16)
+					.food(foodComponent(20, 1.2f)
+							.alwaysEdible()
+							.statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 20*120), 1f)
+							.statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 20*20, 1), 1f)
+							.statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 20*60), 1f)
+							.build()
+					)
+	);
+	public static final Item DISGUSTING_DISH = new MushroomStewItem(
+			new Item.Settings()
+					.group(ItemGroup.FOOD)
+					.maxCount(16)
+					.food(foodComponent(4, 0.3f)
+							.alwaysEdible()
+							.statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 20*30, 2), 1f)
+							.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*30), 1f)
+							.statusEffect(new StatusEffectInstance(StatusEffects.POISON, 20*90, 3), 1f)
+							.statusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 20*30), 1f)
+							.build()
+					)
+	);
 	public static final MushroomStewItem WHEAT_CEREAL_BOWL = basicBowlFood(3, 0.3f);
 	public static final MushroomStewItem CORN_CEREAL_BOWL = basicBowlFood(4, 0.3f);
 	public static final MushroomStewItem RICE_CEREAL_BOWL = basicBowlFood(3, 0.3f);
 	public static final Block CHEESE_BLOCK = new Block(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).sounds(BlockSoundGroup.CANDLE));
 	public static final Block CHEESE_LAYER = new BasicLayerBlock(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).sounds(BlockSoundGroup.CANDLE));
-	public static final Item CHEESE_SLICE = new BlockItem(CHEESE_LAYER, new FabricItemSettings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(1).saturationModifier(0f).build()));
+	public static final Item CHEESE_SLICE = new BlockItem(CHEESE_LAYER, new FabricItemSettings().group(ItemGroup.FOOD).food(foodComponent(1, 0.0f).build()));
 	public static final BottledItem LEMONADE = basicBottleDrink(2, 0.2f);
 	public static final BottledItem FROZEN_LEMONADE = basicBottleDrink(2, 0.3f);
 	public static final BottledItem SPICED_RUM = basicBottleDrink(1, 0.2f);
 	public static final BottledItem FRUIT_MARTINI = basicBottleDrink(9, 0.2f);
-	public static final BottledItem AMBROSIA = new BottledItem(new FabricItemSettings().group(ItemGroup.FOOD).rarity(Rarity.EPIC).maxCount(1).food(new FoodComponent.Builder().hunger(6).saturationModifier(1.2f).alwaysEdible().build()));
 	public static final Item CARAMEL = basicFood(1, 0.2f);
 	public static final Item CARAMEL_APPLE = basicFood(5, 0.3f);
 
@@ -505,6 +521,26 @@ public class Baking implements ModInitializer {
 	public static final BottledItem GIN = basicBottleDrink(1, 0.1f);
 	public static final BottledItem VODKA = basicBottleDrink(2, 0.3f);
 	public static final BottledItem SAKE = basicBottleDrink(1, 0.1f);
+	public static final BottledItem AMBROSIA = new BottledItem(
+			new FabricItemSettings()
+					.group(ItemGroup.FOOD)
+					.rarity(Rarity.EPIC)
+					.maxCount(1)
+					.food(
+							new FoodComponent.Builder()
+									.hunger(6)
+									.saturationModifier(1.2f)
+									.alwaysEdible()
+									.statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 400, 1), 1.0F)
+									.statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 6000, 0), 1.0F)
+									.statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 6000, 0), 1.0F)
+									.statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 2400, 3), 1.0F)
+									.statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 1200, 1), 1.0F)
+									.statusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 1200, 1), 1.0F)
+									.statusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 1200, 1), 1.0F)
+									.build()
+					)
+	);
 
 	// Stats
 	private static final String day_stat = "day_of_week";
@@ -573,9 +609,9 @@ public class Baking implements ModInitializer {
 		registerItem("rabbit_taco", RABBIT_TACO);
 
 		// Cakes
-		registerCakeType("carrot_cake", (BasicCakeBlock) CARROT_CAKE);
-		registerCakeType("chocolate_cake", (BasicCakeBlock) CHOCOLATE_CAKE);
-		registerCakeType("red_velvet_cake", (BasicCakeBlock) RED_VELVET_CAKE);
+		registerCakeType("carrot_cake",  CARROT_CAKE);
+		registerCakeType("chocolate_cake",  CHOCOLATE_CAKE);
+		registerCakeType("red_velvet_cake",  RED_VELVET_CAKE);
 
 		// Halite & Salt
 		registerBlock("halite", HALITE, ItemGroup.BUILDING_BLOCKS);

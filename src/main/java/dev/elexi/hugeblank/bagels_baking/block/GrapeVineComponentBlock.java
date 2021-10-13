@@ -22,6 +22,7 @@ import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.function.Function;
@@ -190,8 +191,19 @@ public class GrapeVineComponentBlock extends Block {
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
 
         state = getAdjacencyState(world, pos, state);
-
-        return !hasAdjacentBlocks(state, world, pos) ? Blocks.AIR.getDefaultState() : state;
+        List<Direction> directions = getDirectionsFromState(state);
+        if (hasAdjacentBlocks(state, world, pos)) {
+            if (getAdjacentBlockCount(state, world, pos) < directions.size() && directions.size() > 1) { // Remove hanging sides
+                for (Direction d : directions) {
+                    if (!(world.getBlockState(pos.up()).getBlock() instanceof GrapeVineComponentBlock && shouldConnectTo(world, pos.up(), d)) || shouldConnectTo(world, pos, d)) {
+                        state = state.with(getFacingProperty(d), shouldConnectTo(world, pos, d));
+                    }
+                }
+            }
+            return state;
+        } else {
+            return Blocks.AIR.getDefaultState();
+        }
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -223,13 +235,11 @@ public class GrapeVineComponentBlock extends Block {
     }
 
     public boolean shouldHaveSide(BlockView world, BlockPos pos, Direction side) {
-        if (side == Direction.DOWN || side == Direction.UP) {
+        if (side.getAxis() == Direction.Axis.Y) {
             return false;
         } else {
             if (shouldConnectTo(world, pos, side)) {
                 return true;
-            } else if (side.getAxis() == Direction.Axis.Y) {
-                return false;
             } else {
                 BooleanProperty booleanProperty = FACING_PROPERTIES.get(side);
                 BlockState blockState = world.getBlockState(pos.up());
@@ -242,14 +252,14 @@ public class GrapeVineComponentBlock extends Block {
         // Create hypothetical vine state with the opposite direction & adjacency
         // This makes sure shape/neighbor mesh is correct for matchesAnywhere
         BlockState vineState = this.getDefaultState().with(FACING_PROPERTIES.get(direction.getOpposite()), true);
-        // Use a true state for finding the adjacency
+        // Use a state with the right direction for finding the adjacency
         vineState = vineState.with(ADJACENT, getAdjacencyState(world, vinePos, this.getDefaultState().with(FACING_PROPERTIES.get(direction), true)).get(ADJACENT).flip());
 
         BlockPos neighborPos = vinePos.offset(direction);
         BlockState neighborState = world.getBlockState(neighborPos);
-        VoxelShape shape = getShapeForState(vineState).getFace(direction.getOpposite());
-        VoxelShape neighbor = neighborState.getCollisionShape(world, neighborPos).getFace(direction.getOpposite());
-        return !VoxelShapes.matchesAnywhere(shape, neighbor, BooleanBiFunction.ONLY_FIRST);
+        VoxelShape neighborShape = neighborState.getCollisionShape(world, neighborPos).getFace(direction.getOpposite());
+        VoxelShape vineShape = getShapeForState(vineState).getFace(direction.getOpposite());
+        return !VoxelShapes.matchesAnywhere(vineShape, neighborShape, BooleanBiFunction.ONLY_FIRST);
     }
 
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {

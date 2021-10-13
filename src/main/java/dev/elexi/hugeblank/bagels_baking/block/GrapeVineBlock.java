@@ -84,6 +84,7 @@ public class GrapeVineBlock extends GrapeVineComponentBlock {
             return;
         }
         doPropagation(state, world, pos, random);
+        state = world.getBlockState(pos);
         int age = state.get(AGE);
         if (world.random.nextFloat() < getGrowthModifier(world, pos)/2 && age < 2 && state.get(DISTANCE) != 5) {
             state = state.with(AGE, age+1);
