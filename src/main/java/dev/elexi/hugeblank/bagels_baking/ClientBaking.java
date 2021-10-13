@@ -47,6 +47,9 @@ public class ClientBaking implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.LEMON_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.CHERRY_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.JUNIPER_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.POTTED_LEMON_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.POTTED_CHERRY_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.POTTED_JUNIPER_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.LEMON_WOOD_TYPE.getBlock(WoodBlock.TRAPDOOR), RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.CHERRY_WOOD_TYPE.getBlock(WoodBlock.TRAPDOOR), RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.JUNIPER_WOOD_TYPE.getBlock(WoodBlock.TRAPDOOR), RenderLayer.getCutout());
