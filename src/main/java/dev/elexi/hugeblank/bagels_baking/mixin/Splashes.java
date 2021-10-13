@@ -43,6 +43,15 @@ public class Splashes {
         splashTexts.add("My width is   "); // https://cdn.discordapp.com/attachments/676495817967665192/878052107222126662/alice0135a03.png
         splashTexts.add("Yea that thing"); // Kori not knowing what splashes are
         splashTexts.add("When Life gives you Lemons, cry."); // Don't fukcing ask
+        splashTexts.add("Cellar? I barely know her!"); // hahaaa i'm hilarious
+        splashTexts.add("I get paid to type these, you know."); // A lie
+        splashTexts.add("OwO"); // you can't stop me
+        splashTexts.add("Pray for Malcolm. He's not hurt or anything, he just worries me sometimes."); // Shoutout to Connor's brother
+        splashTexts.add("That's not an entity, that's my wife!"); // I despise myself- Kori
+        splashTexts.add("Cameo"); // ;)
+        splashTexts.add("Personally, I think we need more pickle recipes."); // pikcle
+        splashTexts.add("I bet lemon trees taste like splinters."); // Prove me wrong
+        splashTexts.add("Hot Single Pockets in your area"); // i'm so lonely bro
         // Miscellaneous
         splashTexts.add("Now Catering!");
         splashTexts.add("Respect your food delivery drivers!");
