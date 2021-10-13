@@ -1,0 +1,32 @@
+{
+  "parent": "bagels_baking:bagels_baking/vintner",
+  "display": {
+    "icon": {
+      "item": "bagels_baking:sake"
+    },
+    "title": {
+      "translate": "advancements.bagels_baking.kimi_no_na_wa.title"
+    },
+    "description": {
+      "translate": "advancements.bagels_baking.kimi_no_na_wa.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "items": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bagels_baking:sake"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
