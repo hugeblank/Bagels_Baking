@@ -42,6 +42,7 @@ public class Splashes {
         splashTexts.add("Kroi can't tyep sommtines but that' sokya"); // Honoring Kori's typing prowess
         splashTexts.add("My width is   "); // https://cdn.discordapp.com/attachments/676495817967665192/878052107222126662/alice0135a03.png
         splashTexts.add("Yea that thing"); // Kori not knowing what splashes are
+        splashTexts.add("When Life gives you Lemons, cry."); // Don't fukcing ask
         // Miscellaneous
         splashTexts.add("Now Catering!");
         splashTexts.add("Respect your food delivery drivers!");
@@ -51,7 +52,7 @@ public class Splashes {
                 case "rwr" -> cir.setReturnValue("Betreucia killed Broseph!");
                 case "hugeblank" -> cir.setReturnValue("Subscribe to twitch.tv/hugeblank");
                 case "roger109z" -> cir.setReturnValue("poger! :)");
-                case "Kori_A" -> cir.setReturnValue("Korea? No, KoriA.");
+                case "Kori_A" -> cir.setReturnValue("Korea? No, Kori_A.");
                 case "He_Is_Man" -> cir.setReturnValue("balright.");
                 case "NotEnoughStar" -> cir.setReturnValue("Obamaphant moment");
                 case "Bu_dum_chhh" -> cir.setReturnValue("Literally the best smash player, no cap.");
