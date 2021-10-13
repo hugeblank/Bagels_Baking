@@ -39,6 +39,14 @@ public class ClientBaking implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.TOMATO_PLANT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.CORN_STALK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.RICE_PLANT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.CINNAMON_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.CINNAMON_TREE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.SMALL_CINNAMON_TREE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.GRAPE_STEM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.GRAPE_VINE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.LEMON_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.CHERRY_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.JUNIPER_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.LEMON_WOOD_TYPE.getBlock(WoodBlock.TRAPDOOR), RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.CHERRY_WOOD_TYPE.getBlock(WoodBlock.TRAPDOOR), RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.JUNIPER_WOOD_TYPE.getBlock(WoodBlock.TRAPDOOR), RenderLayer.getCutout());
