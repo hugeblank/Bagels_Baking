@@ -37,7 +37,7 @@ public class StructurePoolMixin {
     @Inject(at = @At(value = "INVOKE", target = "Ljava/util/List;iterator()Ljava/util/Iterator;", ordinal = 0), method = "<init>(Lnet/minecraft/util/Identifier;Lnet/minecraft/util/Identifier;Ljava/util/List;Lnet/minecraft/structure/pool/StructurePool$Projection;)V")
     private void addWineries(Identifier id, Identifier terminatorsId, List elementCounts, StructurePool.Projection projection, CallbackInfo ci) {
         if (Objects.equals(id.getPath(), "village/savanna/houses")) {
-            addElement("village/savanna/houses/savanna_winery", 3, projection);
+            addElement("village/savanna/houses/savanna_winery", 9, projection); // BOOSTED weight.
         } else if (Objects.equals(id.getPath(), "village/plains/houses")) {
             addElement("village/plains/houses/plains_winery", 3, projection);
         }
