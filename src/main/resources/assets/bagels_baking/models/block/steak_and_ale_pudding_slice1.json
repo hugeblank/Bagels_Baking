@@ -1,0 +1,25 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
+    "textures": {
+        "steak_and_ale_pudding_bottom": "bagels_baking:block/steak_and_ale_pudding_bottom",
+        "steak_and_ale_pudding_inner": "bagels_baking:block/steak_and_ale_pudding_inner",
+        "steak_and_ale_pudding_side": "bagels_baking:block/steak_and_ale_pudding_side",
+        "steak_and_ale_pudding_top": "bagels_baking:block/steak_and_ale_pudding_top",
+        "particle": "bagels_baking:block/steak_and_ale_pudding_inner"
+    },
+    "elements": [
+        {
+            "name": "Cube",
+            "from": [ 8, 0, 4 ], 
+            "to": [ 12, 8, 8 ], 
+            "faces": {
+                "north": { "texture": "#steak_and_ale_pudding_side", "uv": [ 0, 0, 4, 8 ] },
+                "east": { "texture": "#steak_and_ale_pudding_side", "uv": [ 4, 0, 8, 8 ] },
+                "south": { "texture": "#steak_and_ale_pudding_inner", "uv": [ 4, 0, 8, 8 ] },
+                "west": { "texture": "#steak_and_ale_pudding_inner", "uv": [ 0, 0, 4, 8 ] },
+                "up": { "texture": "#steak_and_ale_pudding_top", "uv": [ 4, 0, 8, 4 ] },
+                "down": { "texture": "#steak_and_ale_pudding_bottom", "uv": [ 4, 0, 8, 4 ] }
+            }
+        }
+    ]
+}

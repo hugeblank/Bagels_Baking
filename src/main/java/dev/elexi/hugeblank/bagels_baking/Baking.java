@@ -501,6 +501,7 @@ public class Baking implements ModInitializer {
 	public static final BottledItem FRUIT_MARTINI = basicBottleDrink(9, 0.2f);
 	public static final Item CARAMEL = basicFood(1, 0.2f);
 	public static final Item CARAMEL_APPLE = basicFood(5, 0.3f);
+	public static final Block STEAK_AND_ALE_PUDDING = new EdibleCubeBlock(FabricBlockSettings.of(Material.CAKE).sounds(BlockSoundGroup.WOOL));
 
 	// Slushees
 	public static final Item ROOT_BEER_SLUSHEE = basicCupDrink(2, 0.3f );
@@ -851,6 +852,7 @@ public class Baking implements ModInitializer {
 		registerItem("fruit_martini", FRUIT_MARTINI);
 		registerItem("caramel", CARAMEL);
 		registerItem("caramel_apple", CARAMEL_APPLE);
+		registerBlock("steak_and_ale_pudding", STEAK_AND_ALE_PUDDING, ItemGroup.FOOD);
 
 		// Slushee
 		registerItem("root_beer_slushee", ROOT_BEER_SLUSHEE);
