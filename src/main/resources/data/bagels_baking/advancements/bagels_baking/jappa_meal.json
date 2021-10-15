@@ -1,0 +1,36 @@
+{
+    "parent": "bagels_baking:bagels_baking/root",
+    "display": {
+        "icon": {
+            "item": "minecraft:player_head",
+            "nbt": "SkullOwner:Jappaa"
+        },
+        "title": {
+            "translate": "advancements.bagels_baking.jappa_meal.title"
+        },
+        "description": {
+            "translate": "advancements.bagels_baking.jappa_meal.description"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": [
+                {
+                    "items": [
+                        "bagels_baking:tea_cup"
+                    ]
+                },
+                {
+                    "items": [
+                        "bagels_baking:katsu_sandwich"
+                    ]
+                }
+            ]
+        }
+    }
+}
