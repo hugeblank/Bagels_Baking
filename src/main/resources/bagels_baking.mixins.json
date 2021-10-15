@@ -13,7 +13,6 @@
     "brewing.BrewingRecipes",
     "brewing.BrewingSlots",
     "brewing.BrewingSlotsClient",
-    "composting.Composting",
     "entity.DamageSourceAccessor",
     "entity.LivingEntityTeaDamage",
     "entity.PlayerTick",

@@ -130,6 +130,7 @@ public class Baking implements ModInitializer {
 
 	private static void registerCakeType(String name, BasicCakeBlock cake) {
 		registerBlock(name, cake, new BlockItem(cake, new Item.Settings().group(ItemGroup.FOOD).maxCount(1)));
+		BakingCompostableItems.registerCompostableItem(1.0f, cake);
 		registerBlock("candle_" + name, new BasicCandleCakeBlock(Blocks.CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CAKE).luminance((state) -> (Boolean)state.get(Properties.LIT) ? 3 : 0)));
 		registerBlock("white_candle_" + name, new BasicCandleCakeBlock(Blocks.WHITE_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
 		registerBlock("orange_candle_" + name, new BasicCandleCakeBlock(Blocks.ORANGE_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));

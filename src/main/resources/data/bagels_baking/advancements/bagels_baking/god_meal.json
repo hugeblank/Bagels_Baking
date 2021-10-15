@@ -1,0 +1,35 @@
+{
+    "parent": "bagels_baking:bagels_baking/root",
+    "display": {
+        "icon": {
+            "item": "bagels_baking:midas_salad"
+        },
+        "title": {
+            "translate": "advancements.bagels_baking.god_meal.title"
+        },
+        "description": {
+            "translate": "advancements.bagels_baking.god_meal.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "items": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+            "items": [
+                {
+                    "items": [
+                        "bagels_baking:midas_salad"
+                    ]
+                },
+                {
+                    "items": [
+                        "bagels_baking:ambrosia"
+                    ]
+                }
+            ]
+        }
+    }
+}

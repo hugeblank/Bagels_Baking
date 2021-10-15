@@ -3,6 +3,7 @@ package dev.elexi.hugeblank.bagels_baking.util;
 import dev.elexi.hugeblank.bagels_baking.block.*;
 import dev.elexi.hugeblank.bagels_baking.block.type.SignTypeRegistry;
 import dev.elexi.hugeblank.bagels_baking.entity.boat.BasicBoatRegistry;
+import dev.elexi.hugeblank.bagels_baking.item.BakingCompostableItems;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
@@ -50,6 +51,9 @@ public class WoodType {
         blocks.put(WoodBlock.SIGN, new SignBlock(FabricBlockSettings.copy(Blocks.OAK_SIGN), type));
         blocks.put(WoodBlock.WALL_SIGN, new WallSignBlock(FabricBlockSettings.copy(Blocks.OAK_SIGN), type));
         blocks.put(WoodBlock.TRELLIS, new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE)));
+
+        BakingCompostableItems.registerCompostableItem(0.3f, getBlock(WoodBlock.LEAVES));
+        BakingCompostableItems.registerCompostableItem(0.65f, fruit);
     }
 
     public Block getBlock(WoodBlock type) {
