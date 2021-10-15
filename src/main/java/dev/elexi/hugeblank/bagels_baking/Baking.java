@@ -129,7 +129,7 @@ public class Baking implements ModInitializer {
 	}
 
 	private static void registerCakeType(String name, BasicCakeBlock cake) {
-		registerBlock(name, cake, ItemGroup.FOOD);
+		registerBlock(name, cake, new BlockItem(cake, new Item.Settings().group(ItemGroup.FOOD).maxCount(1)));
 		registerBlock("candle_" + name, new BasicCandleCakeBlock(Blocks.CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CAKE).luminance((state) -> (Boolean)state.get(Properties.LIT) ? 3 : 0)));
 		registerBlock("white_candle_" + name, new BasicCandleCakeBlock(Blocks.WHITE_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
 		registerBlock("orange_candle_" + name, new BasicCandleCakeBlock(Blocks.ORANGE_CANDLE, cake, AbstractBlock.Settings.copy(Blocks.CANDLE_CAKE)));
@@ -218,12 +218,10 @@ public class Baking implements ModInitializer {
 	public static final Item CHERRY_MERINGUE_PIE = basicFood(9, 0.3f);
 
 	// Cakes - Give 1 item
-	public static final BasicCakeBlock CARROT_CAKE = new BasicCakeBlock();
-	public static final BasicCakeBlock CHOCOLATE_CAKE = new BasicCakeBlock();
-	public static final BasicCakeBlock RED_VELVET_CAKE = new BasicCakeBlock();
-	public static final Item CARROT_CAKE_ITEM = new BlockItem(CARROT_CAKE, new Item.Settings().group(ItemGroup.FOOD));
-	public static final Item CHOCOLATE_CAKE_ITEM = new BlockItem(CHOCOLATE_CAKE, new Item.Settings().group(ItemGroup.FOOD));
-	public static final Item RED_VELVET_CAKE_ITEM = new BlockItem(RED_VELVET_CAKE, new Item.Settings().group(ItemGroup.FOOD));
+	public static final BasicCakeBlock CARROT_CAKE = new BasicCakeBlock(FabricBlockSettings.copy(Blocks.CAKE));
+	public static final BasicCakeBlock CHOCOLATE_CAKE = new BasicCakeBlock(FabricBlockSettings.copy(Blocks.CAKE));
+	public static final BasicCakeBlock RED_VELVET_CAKE = new BasicCakeBlock(FabricBlockSettings.copy(Blocks.CAKE));
+	public static final BasicCakeBlock LEMON_CAKE = new BasicCakeBlock(FabricBlockSettings.copy(Blocks.CAKE));
 
 	// Halite Blocks
 	public static final Block HALITE = new GlassBlock(FabricBlockSettings.of(Material.STONE).requiresTool().strength(1.25F, 4.2F)
@@ -609,9 +607,10 @@ public class Baking implements ModInitializer {
 		registerItem("rabbit_taco", RABBIT_TACO);
 
 		// Cakes
-		registerCakeType("carrot_cake",  CARROT_CAKE);
-		registerCakeType("chocolate_cake",  CHOCOLATE_CAKE);
-		registerCakeType("red_velvet_cake",  RED_VELVET_CAKE);
+		registerCakeType("carrot_cake", CARROT_CAKE);
+		registerCakeType("chocolate_cake", CHOCOLATE_CAKE);
+		registerCakeType("red_velvet_cake", RED_VELVET_CAKE);
+		registerCakeType("lemon_cake", LEMON_CAKE);
 
 		// Halite & Salt
 		registerBlock("halite", HALITE, ItemGroup.BUILDING_BLOCKS);

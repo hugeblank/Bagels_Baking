@@ -1,7 +1,9 @@
 package dev.elexi.hugeblank.bagels_baking.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.CakeBlock;
+import net.minecraft.block.CandleBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -18,8 +20,8 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 
 public class BasicCakeBlock extends CakeBlock {
-    public BasicCakeBlock() {
-        super(FabricBlockSettings.copy(Blocks.CAKE));
+    public BasicCakeBlock(Settings settings) {
+        super(settings);
     }
 
     // Mojang bad, hugeblank good.

@@ -45,9 +45,10 @@ public abstract class Composting {
 
         // Cakes
 
-        registerCompostableItem(j, Baking.CARROT_CAKE_ITEM);
-        registerCompostableItem(j, Baking.CHOCOLATE_CAKE_ITEM);
-        registerCompostableItem(j, Baking.RED_VELVET_CAKE_ITEM);
+        //registerCompostableItem(j, Baking.CARROT_CAKE.asItem());
+        //registerCompostableItem(j, Baking.CHOCOLATE_CAKE.asItem());
+        //registerCompostableItem(j, Baking.RED_VELVET_CAKE.asItem());
+        //registerCompostableItem(j, Baking.LEMON_CAKE.asItem());
 
         // Ingredients
 
