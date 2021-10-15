@@ -1,5 +1,5 @@
 {
-  "parent": "bagels_baking:bagels_baking/root",
+  "parent": "bagels_baking:bagels_baking/fridge_light",
   "display": {
     "icon": {
       "item": "bagels_baking:cola"

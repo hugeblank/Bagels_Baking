@@ -1,5 +1,5 @@
 {
-  "parent": "bagels_baking:bagels_baking/root",
+  "parent": "bagels_baking:bagels_baking/taco_ding",
   "display": {
     "icon": {
       "item": "minecraft:rabbit_stew"

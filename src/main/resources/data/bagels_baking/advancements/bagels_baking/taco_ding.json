@@ -1,100 +1,100 @@
 {
-  "parent": "bagels_baking:bagels_baking/root",
-  "display": {
-    "icon": {
-      "item": "minecraft:bell"
-    },
-    "title": {
-      "translate": "advancements.bagels_baking.taco_ding.title"
-    },
-    "description": {
-      "translate": "advancements.bagels_baking.taco_ding.description"
-    },
-    "frame": "task",
-    "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": false
-  },
-  "criteria": {
-    "steak_taco": {
-      "trigger": "minecraft:consume_item",
-      "conditions": {
-        "item": {
-          "items": [
-            "bagels_baking:steak_taco"
-          ]
-        }
-      }
-    },
-    "chicken_taco": {
-      "trigger": "minecraft:consume_item",
-      "conditions": {
-        "item": {
-          "items": [
-            "bagels_baking:chicken_taco"
-          ]
-        }
-      }
-    },
-    "pork_taco": {
-      "trigger": "minecraft:consume_item",
-      "conditions": {
-        "item": {
-          "items": [
-            "bagels_baking:pork_taco"
-          ]
-        }
-      }
-    },
-    "fish_taco": {
-      "trigger": "minecraft:consume_item",
-      "conditions": {
-        "item": {
-          "items": [
-            "bagels_baking:fish_taco"
-          ]
-        }
-      }
-    },
-    "mutton_taco": {
-      "trigger": "minecraft:consume_item",
-      "conditions": {
-        "item": {
-          "items": [
-            "bagels_baking:mutton_taco"
-          ]
-        }
-      }
-    },
-    "rabbit_taco": {
-      "trigger": "minecraft:consume_item",
-      "conditions": {
-        "item": {
-          "items": [
-            "bagels_baking:rabbit_taco"
-          ]
-        }
-      }
-    }
-  },
-  "requirements": [
-    [
-      "steak_taco"
-    ],
-    [
-      "pork_taco"
-    ],
-    [
-      "chicken_taco"
-    ],
-    [
-      "fish_taco"
-    ],
-    [
-      "mutton_taco"
-    ],
-    [
-      "rabbit_taco"
-    ]
-  ]
+	"parent": "bagels_baking:bagels_baking/root",
+	"display": {
+		"icon": {
+			"item": "minecraft:bell"
+		},
+		"title": {
+			"translate": "advancements.bagels_baking.taco_ding.title"
+		},
+		"description": {
+			"translate": "advancements.bagels_baking.taco_ding.description"
+		},
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"steak_taco": {
+			"trigger": "minecraft:consume_item",
+			"conditions": {
+				"item": {
+					"items": [
+						"bagels_baking:steak_taco"
+					]
+				}
+			}
+		},
+		"chicken_taco": {
+			"trigger": "minecraft:consume_item",
+			"conditions": {
+				"item": {
+					"items": [
+						"bagels_baking:chicken_taco"
+					]
+				}
+			}
+		},
+		"pork_taco": {
+			"trigger": "minecraft:consume_item",
+			"conditions": {
+				"item": {
+					"items": [
+						"bagels_baking:pork_taco"
+					]
+				}
+			}
+		},
+		"fish_taco": {
+			"trigger": "minecraft:consume_item",
+			"conditions": {
+				"item": {
+					"items": [
+						"bagels_baking:fish_taco"
+					]
+				}
+			}
+		},
+		"mutton_taco": {
+			"trigger": "minecraft:consume_item",
+			"conditions": {
+				"item": {
+					"items": [
+						"bagels_baking:mutton_taco"
+					]
+				}
+			}
+		},
+		"rabbit_taco": {
+			"trigger": "minecraft:consume_item",
+			"conditions": {
+				"item": {
+					"items": [
+						"bagels_baking:rabbit_taco"
+					]
+				}
+			}
+		}
+	},
+	"requirements": [
+		[
+			"steak_taco"
+		],
+		[
+			"pork_taco"
+		],
+		[
+			"chicken_taco"
+		],
+		[
+			"fish_taco"
+		],
+		[
+			"mutton_taco"
+		],
+		[
+			"rabbit_taco"
+		]
+	]
 }

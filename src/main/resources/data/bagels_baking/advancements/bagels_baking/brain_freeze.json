@@ -1,5 +1,5 @@
 {
-    "parent": "bagels_baking:bagels_baking/fridge_light",
+    "parent": "bagels_baking:bagels_baking/arctic_tsunami",
     "display": {
         "icon": {
             "item": "bagels_baking:plain_ice_cream"
@@ -10,7 +10,7 @@
         "description": {
             "translate": "advancements.bagels_baking.brain_freeze.description"
         },
-        "frame": "goal",
+        "frame": "challenge",
         "show_toast": true,
         "announce_to_chat": true,
         "hidden": false

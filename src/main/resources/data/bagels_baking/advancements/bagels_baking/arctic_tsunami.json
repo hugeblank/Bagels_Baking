@@ -10,7 +10,7 @@
     "description": {
       "translate": "advancements.bagels_baking.arctic_tsunami.description"
     },
-    "frame": "challenge",
+    "frame": "goal",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
