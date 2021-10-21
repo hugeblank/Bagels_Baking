@@ -35,7 +35,6 @@ public class BakingBiomes {
     }
 
     public static void createDefaultFeatures(GenerationSettings.Builder builder) {
-        builder.structureFeature(ConfiguredStructureFeatures.VILLAGE_PLAINS).structureFeature(ConfiguredStructureFeatures.PILLAGER_OUTPOST);
 
         DefaultBiomeFeatures.addDefaultUndergroundStructures(builder);
         builder.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL);
