@@ -44,7 +44,6 @@ public class BakingCompostableItems {
         registerCompostableItem(g, Baking.MACARONI);
         registerCompostableItem(g, Baking.MASHED_POTATOES);
         registerCompostableItem(g, Baking.TOMATO_SAUCE);
-        registerCompostableItem(g, Baking.CINNAMON_BARK);
         registerCompostableItem(g, Baking.CINNAMON_POWDER);
         registerCompostableItem(g, Baking.GROUND_COFFEE);
         registerCompostableItem(g, Baking.GROUND_TEA);
@@ -80,6 +79,10 @@ public class BakingCompostableItems {
         registerCompostableItem(f, Baking.CINNAMON_SAPLING);
         registerCompostableItem(f, Baking.JUNIPER_SAPLING);
         registerCompostableItem(f, Baking.LEMON_SAPLING);
+        registerCompostableItem(f, Baking.CHERRIES);
+        registerCompostableItem(f, Baking.CINNAMON_BARK);
+        registerCompostableItem(f, Baking.JUNIPER_BERRIES);
+        registerCompostableItem(f, Baking.LEMON);
         registerCompostableItem(f, Baking.GRAPES);
         registerCompostableItem(g, Baking.GRAPE_VINE);
         registerCompostableItem(g, Baking.GRAPE_STEM);

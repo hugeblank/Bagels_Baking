@@ -21,12 +21,13 @@ import java.util.Set;
 
 // A single type of wood (ex: lemon vs. cherry). Not to be confused with the WoodBlock enum.
 public class WoodType {
-    private static final AbstractBlock.Settings settings = FabricBlockSettings.copy(Blocks.OAK_PLANKS);
     private final Map<WoodBlock, Block> blocks = new HashMap<>();
+    private final Item fruit;
     private final String variant;
 
     public WoodType(String variant, Item fruit) {
         this.variant = variant;
+        this.fruit = fruit;
         Block strippedLog = new BasicLogBlock();
         Block log = new BasicLogBlock(() -> strippedLog);
         Block strippedWood = new BasicLogBlock();
@@ -39,21 +40,18 @@ public class WoodType {
         blocks.put(WoodBlock.STRIPPED_LOG, strippedLog);
         blocks.put(WoodBlock.STRIPPED_WOOD, strippedWood);
         blocks.put(WoodBlock.LEAVES, new BasicLeavesBlock(fruit));
-        blocks.put(WoodBlock.PLANKS, new Block(settings));
+        blocks.put(WoodBlock.PLANKS, new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS)));
         blocks.put(WoodBlock.PRESSURE_PLATE, new BasicPressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copy(Blocks.OAK_PRESSURE_PLATE)));
-        blocks.put(WoodBlock.BUTTON, new BasicWoodenButtonBlock(settings));
-        blocks.put(WoodBlock.DOOR, new BasicDoorBlock(settings));
-        blocks.put(WoodBlock.FENCE_GATE, new FenceGateBlock(settings));
-        blocks.put(WoodBlock.FENCE, new FenceBlock(settings));
-        blocks.put(WoodBlock.SLAB, new SlabBlock(settings));
-        blocks.put(WoodBlock.STAIRS, new StairBlock(log.getDefaultState(), settings));
-        blocks.put(WoodBlock.TRAPDOOR, new BasicTrapdoorBlock(settings));
+        blocks.put(WoodBlock.BUTTON, new BasicWoodenButtonBlock(FabricBlockSettings.copy(Blocks.OAK_BUTTON)));
+        blocks.put(WoodBlock.DOOR, new BasicDoorBlock(FabricBlockSettings.copy(Blocks.OAK_DOOR)));
+        blocks.put(WoodBlock.FENCE_GATE, new FenceGateBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE_GATE)));
+        blocks.put(WoodBlock.FENCE, new FenceBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE)));
+        blocks.put(WoodBlock.SLAB, new SlabBlock(FabricBlockSettings.copy(Blocks.OAK_SLAB)));
+        blocks.put(WoodBlock.STAIRS, new StairBlock(log.getDefaultState(), FabricBlockSettings.copy(Blocks.OAK_STAIRS)));
+        blocks.put(WoodBlock.TRAPDOOR, new BasicTrapdoorBlock(FabricBlockSettings.copy(Blocks.OAK_TRAPDOOR)));
         blocks.put(WoodBlock.SIGN, new SignBlock(FabricBlockSettings.copy(Blocks.OAK_SIGN), type));
         blocks.put(WoodBlock.WALL_SIGN, new WallSignBlock(FabricBlockSettings.copy(Blocks.OAK_SIGN), type));
         blocks.put(WoodBlock.TRELLIS, new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE)));
-
-        BakingCompostableItems.registerCompostableItem(0.3f, getBlock(WoodBlock.LEAVES));
-        BakingCompostableItems.registerCompostableItem(0.65f, fruit);
     }
 
     public Block getBlock(WoodBlock type) {
@@ -90,5 +88,7 @@ public class WoodType {
         // Boat stuff. It's cray.
         BasicBoatRegistry.register(variant, blocks.get(WoodBlock.PLANKS).asItem());
 
+        // Make leaves compostable
+        BakingCompostableItems.registerCompostableItem(0.3f, getBlock(WoodBlock.LEAVES));
     }
 }
