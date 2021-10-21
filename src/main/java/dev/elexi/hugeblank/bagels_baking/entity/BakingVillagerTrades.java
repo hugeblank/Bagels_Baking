@@ -18,15 +18,15 @@ public class BakingVillagerTrades {
     public BakingVillagerTrades() {}
 
     private static void buyItem(List<TradeOffers.Factory> factories, Item a, int count, int rewardedExp) {
-        factories.add((entity, random) -> new TradeOffer(new ItemStack(a, count), new ItemStack(Items.EMERALD), 16, rewardedExp, 0.5f));
+        factories.add((entity, random) -> new TradeOffer(new ItemStack(a, count), new ItemStack(Items.EMERALD), 16, rewardedExp, 0.05f));
     }
 
     private static void sellItem(List<TradeOffers.Factory> factories, Item a, int price, int count, int rewardedExp) {
-        factories.add((entity, random) -> new TradeOffer(new ItemStack(Items.EMERALD, price), new ItemStack(a, count), 12, rewardedExp, 0.5f));
+        factories.add((entity, random) -> new TradeOffer(new ItemStack(Items.EMERALD, price), new ItemStack(a, count), 12, rewardedExp, 0.05f));
     }
 
     private static void processItem(List<TradeOffers.Factory> factories, Item a, Item b, int count, int rewardedExp) {
-        factories.add((entity, random) -> new TradeOffer(new ItemStack(a, count), new ItemStack(Items.EMERALD, 1), new ItemStack(b, count), 16, rewardedExp, 0.5f));
+        factories.add((entity, random) -> new TradeOffer(new ItemStack(a, count), new ItemStack(Items.EMERALD, 1), new ItemStack(b, count), 16, rewardedExp, 0.05f));
     }
 
     public static void init() {
