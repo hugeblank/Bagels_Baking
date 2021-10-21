@@ -1,7 +1,7 @@
 {
     "parent": "bagels_baking:block/trellis_both_template",
     "textures": {
-        "wood": "minecraft:block/juniper_log",
-        "particle": "minecraft:block/juniper_log"
+        "wood": "bagels_baking:block/juniper_log",
+        "particle": "bagels_baking:block/juniper_log"
     }
 }
