@@ -51,7 +51,20 @@ public class Splashes {
         splashTexts.add("Cameo"); // ;)
         splashTexts.add("Personally, I think we need more pickle recipes."); // pikcle
         splashTexts.add("I bet lemon trees taste like splinters."); // Prove me wrong
-        splashTexts.add("Hot Single Pockets in your area"); // i'm so lonely bro
+        splashTexts.add("Hot Single Pockets in your area!"); // i'm so lonely bro
+        splashTexts.add("This one's for you, Left Shark!"); // Left Shark I love you
+        splashTexts.add("Kori doesn't know STEM. Why is Kori making stems??"); // Kori is sad and confused and also afraid
+        splashTexts.add("Can't have schist in 1.17 :("); // well we don't, do we?
+        splashTexts.add("Never put Minecraft on a resume"); // I put Bagel's Baking on my resume KEKW
+        splashTexts.add("Semi-ethically sourced!"); // idk lol
+        splashTexts.add("MORTY I TURNED MYSELF INTO A SPLASHTEXT"); // funniest shit i ever seen
+        splashTexts.add("Too much bees"); // Turn down the bees. Too much.
+        splashTexts.add("roger roger"); // roger roger
+        splashTexts.add("pspsppspspspspspspsp @hugeblank"); // The now-infamous summoning call
+        splashTexts.add("JAPPA my beloved"); // o7
+        splashTexts.add("Icebox is actually just one word, usually."); // trivia!
+        splashTexts.add("Phantoms just need a hug"); // propaganda
+        splashTexts.add("WE HAVE STICKERS"); // he has stickers
         // Miscellaneous
         splashTexts.add("Now Catering!");
         splashTexts.add("Respect your food delivery drivers!");
