@@ -9,11 +9,14 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.block.Block;
-import net.minecraft.structure.PoolStructurePiece;
+import net.minecraft.block.JigsawBlock;
 import net.minecraft.structure.Structure;
 import net.minecraft.structure.StructureManager;
 import net.minecraft.structure.StructurePlacementData;
-import net.minecraft.structure.pool.*;
+import net.minecraft.structure.pool.SinglePoolElement;
+import net.minecraft.structure.pool.StructurePool;
+import net.minecraft.structure.pool.StructurePoolElement;
+import net.minecraft.structure.pool.StructurePoolElementType;
 import net.minecraft.structure.processor.StructureProcessorList;
 import net.minecraft.structure.processor.StructureProcessorLists;
 import net.minecraft.structure.processor.StructureProcessorType;
@@ -76,14 +79,12 @@ public class SingleAggressivePoolElement extends SinglePoolElement {
         Structure structure = this.createStructure(structureManager);
         StructurePlacementData structurePlacementData = this.createPlacementData(rotation, box, keepJigsaws);
         if (structure.place(world, pos, blockPos, structurePlacementData, random, Block.NOTIFY_LISTENERS | Block.FORCE_STATE)) {
-            List<Structure.StructureBlockInfo> jigsaws = super.getStructureBlockInfos(structureManager, pos, rotation, random);
-            List<PoolStructurePiece> poolStructurePieces = Lists.newArrayList();
-            Map<PoolStructurePiece, BlockPos> pieceBlockPosMap = Maps.newHashMap();
-            for (Structure.StructureBlockInfo jigsaw : jigsaws) {
-                subGenerate(new Identifier(jigsaw.nbt.getString("pool")), structureManager, world, jigsaw.pos, rotation, random, poolStructurePieces, pieceBlockPosMap);
-            }
-            for (PoolStructurePiece piece : poolStructurePieces) {
-                piece.generate(world, structureAccessor, chunkGenerator, random, BlockBox.infinite(), pieceBlockPosMap.get(piece), false);
+            List<Structure.StructureBlockInfo> combinedJigsaws = Lists.newArrayList();
+            Map<Structure.StructureBlockInfo, BlockPos> jigsawBlockPosMap = Maps.newHashMap();
+
+            processJigsaws(structureManager, world, blockPos, rotation, random, combinedJigsaws, jigsawBlockPosMap, super.getStructureBlockInfos(structureManager, pos, rotation, random));
+            for (Structure.StructureBlockInfo jigsaw : combinedJigsaws) {
+                this.method_16756(world, jigsaw, jigsawBlockPosMap.get(jigsaw), rotation, random, box);
             }
             return true;
         }
@@ -91,19 +92,22 @@ public class SingleAggressivePoolElement extends SinglePoolElement {
         return false;
     }
 
-    private void subGenerate(Identifier poolID, StructureManager structureManager, StructureWorldAccess world, BlockPos blockPos, BlockRotation rotation, Random random, List<PoolStructurePiece> elements, Map<PoolStructurePiece, BlockPos> positionMap) {
+    private void subGenerate(Identifier poolID, StructureManager structureManager, StructureWorldAccess world, BlockPos blockPos, BlockRotation rotation, Random random, List<Structure.StructureBlockInfo> combinedJigsaws, Map<Structure.StructureBlockInfo, BlockPos> jigsawBlockPosMap) {
         // Aggressive, evil, brutish, hostile, and dare I say despicable. If you want to make this not ugly by all means contribute...
         StructurePool pool = world.getRegistryManager().get(Registry.STRUCTURE_POOL_KEY).get(poolID);
         if (pool != null && pool.getElementCount() > 0) {
             StructurePoolElement structurePoolElement = pool.getRandomElement(random);
-            PoolStructurePiece piece = new PoolStructurePiece(structureManager, structurePoolElement, blockPos, 1, BlockRotation.NONE, new BlockBox(blockPos));
-            elements.add(piece);
-            positionMap.put(piece, blockPos);
-
             List<Structure.StructureBlockInfo> jigsaws = structurePoolElement.getStructureBlockInfos(structureManager, blockPos, rotation, random);
-            for (Structure.StructureBlockInfo jigsaw : jigsaws) {
-                subGenerate(new Identifier(jigsaw.nbt.getString("pool")), structureManager, world, jigsaw.pos, rotation, random, elements, positionMap);
-            }
+            processJigsaws(structureManager, world, blockPos, rotation, random, combinedJigsaws, jigsawBlockPosMap, jigsaws);
+        }
+    }
+
+    private void processJigsaws(StructureManager structureManager, StructureWorldAccess world, BlockPos blockPos, BlockRotation rotation, Random random, List<Structure.StructureBlockInfo> combinedJigsaws, Map<Structure.StructureBlockInfo, BlockPos> jigsawBlockPosMap, List<Structure.StructureBlockInfo> jigsaws) {
+        combinedJigsaws.addAll(jigsaws);
+        for (Structure.StructureBlockInfo jigsaw : jigsaws) {
+            BlockPos position = blockPos.offset(JigsawBlock.getFacing(jigsaw.state)).subtract(jigsaw.pos);
+            jigsawBlockPosMap.put(jigsaw, position);
+            subGenerate(new Identifier(jigsaw.nbt.getString("pool")), structureManager, world, position, rotation, random, combinedJigsaws, jigsawBlockPosMap);
         }
     }
 
