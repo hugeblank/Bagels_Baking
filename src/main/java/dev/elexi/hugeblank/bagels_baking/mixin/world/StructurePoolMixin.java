@@ -1,7 +1,7 @@
 package dev.elexi.hugeblank.bagels_baking.mixin.world;
 
 import com.mojang.datafixers.util.Pair;
-import dev.elexi.hugeblank.bagels_baking.world.structure.SingleAggressivePoolElement;
+import net.minecraft.structure.pool.SinglePoolElement;
 import net.minecraft.structure.pool.StructurePool;
 import net.minecraft.structure.pool.StructurePoolElement;
 import net.minecraft.util.Identifier;
@@ -27,7 +27,7 @@ public class StructurePoolMixin {
     private List<StructurePoolElement> elements;
 
     private void addElement(String element, int weight, StructurePool.Projection projection) {
-        StructurePoolElement e = SingleAggressivePoolElement.ofAggressiveSingle(element).apply(projection);
+        StructurePoolElement e = SinglePoolElement.ofSingle(element).apply(projection);
         elementCounts.add(Pair.of(e, weight));
         for (int i = 0; i < weight; i++) {
             elements.add(e);
