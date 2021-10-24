@@ -417,14 +417,14 @@ public class Baking implements ModInitializer {
 	// solcatowo - requested on 3/22/21
 
 	// Trees - Here's to v0.4!
-	public static final Block OAK_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
-	public static final Block SPRUCE_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
-	public static final Block BIRCH_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
-	public static final Block JUNGLE_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
-	public static final Block ACACIA_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
-	public static final Block DARK_OAK_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
-	public static final Block CRIMSON_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
-	public static final Block WARPED_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE));
+	public static final Block OAK_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE).nonOpaque());
+	public static final Block SPRUCE_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE).nonOpaque());
+	public static final Block BIRCH_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE).nonOpaque());
+	public static final Block JUNGLE_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE).nonOpaque());
+	public static final Block ACACIA_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE).nonOpaque());
+	public static final Block DARK_OAK_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE).nonOpaque());
+	public static final Block CRIMSON_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE).nonOpaque());
+	public static final Block WARPED_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE).nonOpaque());
 	public static final Block CHERRY_SAPLING = new BasicSaplingBlock(new CherrySaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
 	public static final Block POTTED_CHERRY_SAPLING = new FlowerPotBlock(CHERRY_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
 	public static final Item CHERRIES = basicFood(2, 0.1f);

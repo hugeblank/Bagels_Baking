@@ -49,7 +49,7 @@ public class WoodType {
         blocks.put(WoodBlock.TRAPDOOR, new BasicTrapdoorBlock(FabricBlockSettings.copy(Blocks.OAK_TRAPDOOR)));
         blocks.put(WoodBlock.SIGN, new SignBlock(FabricBlockSettings.copy(Blocks.OAK_SIGN), type));
         blocks.put(WoodBlock.WALL_SIGN, new WallSignBlock(FabricBlockSettings.copy(Blocks.OAK_SIGN), type));
-        blocks.put(WoodBlock.TRELLIS, new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE)));
+        blocks.put(WoodBlock.TRELLIS, new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE).nonOpaque()));
     }
 
     public Block getBlock(WoodBlock type) {
