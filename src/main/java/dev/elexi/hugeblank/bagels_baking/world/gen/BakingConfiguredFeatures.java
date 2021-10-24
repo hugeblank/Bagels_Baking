@@ -20,10 +20,7 @@ import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.YOffset;
-import net.minecraft.world.gen.decorator.CountExtraDecoratorConfig;
-import net.minecraft.world.gen.decorator.Decorator;
-import net.minecraft.world.gen.decorator.HeightmapDecoratorConfig;
-import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
+import net.minecraft.world.gen.decorator.*;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
@@ -66,6 +63,7 @@ public class BakingConfiguredFeatures {
             ),
             GenerationStep.Feature.UNDERGROUND_ORES
     ); // number of veins per chunk
+
     public static final ConfiguredFeature<?, ?> TEA_TREES = registerInBiomes("tea", Feature.RANDOM_PATCH
             .configure(new RandomPatchFeatureConfig.Builder(
                     new SimpleBlockStateProvider(Baking.TEA.getDefaultState().with(SweetBerryBushBlock.AGE, 3)), SimpleBlockPlacer.INSTANCE)
@@ -81,21 +79,22 @@ public class BakingConfiguredFeatures {
             ),
             GenerationStep.Feature.VEGETAL_DECORATION
     );
+
     public static final ConfiguredFeature<TreeFeatureConfig, ?> CHERRY_TREE = register("cherry_tree", Feature.TREE
             .configure((new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Baking.CHERRY_WOOD_TYPE.getBlock(WoodBlock.LOG).getDefaultState()), new StraightTrunkPlacer(4, 2, 0), new SimpleBlockStateProvider(Baking.CHERRY_WOOD_TYPE.getBlock(WoodBlock.LEAVES).getDefaultState()), new SimpleBlockStateProvider(Baking.CHERRY_SAPLING.getDefaultState()), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3), new TwoLayersFeatureSize(1, 0, 1)))
                     .ignoreVines()
                     .build())
     );
-    public static final ConfiguredFeature<TreeFeatureConfig, ?> CHERRY_TREE_BEES_005 = register("cherry_tree_bees", Feature.TREE
-            .configure(CHERRY_TREE.getConfig().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.05F))))
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> CHERRY_TREE_BEES_002 = register("cherry_tree_bees", Feature.TREE
+            .configure(CHERRY_TREE.getConfig().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.02F))))
     );
     public static final ConfiguredFeature<?, ?> CHERRY_TREES = register("cherry_trees", Feature.RANDOM_SELECTOR
-            .configure(new RandomFeatureConfig(ImmutableList.of(CHERRY_TREE_BEES_005.withChance(0.8F), ConfiguredFeatures.OAK_BEES_005.withChance(0.05F)), BakingConfiguredFeatures.CHERRY_TREE))
+            .configure(new RandomFeatureConfig(ImmutableList.of(CHERRY_TREE_BEES_002.withChance(0.8F), ConfiguredFeatures.OAK_BEES_0002.withChance(0.05F)), BakingConfiguredFeatures.CHERRY_TREE))
             .decorate(Decorator.HEIGHTMAP
                     .configure(new HeightmapDecoratorConfig(Heightmap.Type.MOTION_BLOCKING))
                     .spreadHorizontally())
             .decorate(Decorator.COUNT_EXTRA
-                    .configure(new CountExtraDecoratorConfig(10, 0.1F, 1)))
+                    .configure(new CountExtraDecoratorConfig(5, 0.1F, 1)))
     );
 
     public static final ConfiguredFeature<TreeFeatureConfig, ?> LEMON_TREE = register("lemon_tree", Feature.TREE
@@ -103,16 +102,33 @@ public class BakingConfiguredFeatures {
                     .ignoreVines()
                     .build())
     );
-    public static final ConfiguredFeature<TreeFeatureConfig, ?> LEMON_TREE_BEES_005 = register("lemon_tree_bees", Feature.TREE
-            .configure(LEMON_TREE.getConfig().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.05F))))
+    public static final ConfiguredFeature<TreeFeatureConfig, ?> LEMON_TREE_BEES_002 = register("lemon_tree_bees", Feature.TREE
+            .configure(LEMON_TREE.getConfig().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.02F))))
     );
     public static final ConfiguredFeature<?, ?> LEMON_TREES = register("lemon_trees", Feature.RANDOM_SELECTOR
-            .configure(new RandomFeatureConfig(ImmutableList.of(LEMON_TREE_BEES_005.withChance(0.8F), ConfiguredFeatures.OAK_BEES_005.withChance(0.05F)), LEMON_TREE))
+            .configure(new RandomFeatureConfig(ImmutableList.of(LEMON_TREE_BEES_002.withChance(0.8F), ConfiguredFeatures.OAK_BEES_0002.withChance(0.05F)), LEMON_TREE))
             .decorate(Decorator.HEIGHTMAP
                     .configure(new HeightmapDecoratorConfig(Heightmap.Type.MOTION_BLOCKING))
                     .spreadHorizontally())
             .decorate(Decorator.COUNT_EXTRA
-                    .configure(new CountExtraDecoratorConfig(10, 0.1F, 1)))
+                    .configure(new CountExtraDecoratorConfig(5, 0.1F, 1)))
+    );
+
+    public static final ConfiguredFeature<?, ?> BASIC_TREES = register("basic_trees", Feature.RANDOM_SELECTOR
+            .configure(
+                    new RandomFeatureConfig(
+                            ImmutableList.of(
+                                    ConfiguredFeatures.BIRCH_BEES_0002.withChance(0.2F),
+                                    ConfiguredFeatures.FANCY_OAK_BEES_0002.withChance(0.1F)
+                            ),
+                            ConfiguredFeatures.OAK_BEES_0002
+                    ))
+            .decorate(Decorator.HEIGHTMAP
+                    .configure(new HeightmapDecoratorConfig(Heightmap.Type.MOTION_BLOCKING))
+                    .decorate(Decorator.WATER_DEPTH_THRESHOLD
+                            .configure(new WaterDepthThresholdDecoratorConfig(0)))
+                    .spreadHorizontally())
+            .decorate(Decorator.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(5, 0.1F, 1)))
     );
 
     public static final ConfiguredFeature<?, ?> CINNAMON_TREE = register("cinnamon_tree", Feature.RANDOM_PATCH
@@ -121,14 +137,12 @@ public class BakingConfiguredFeatures {
                     .tries(16).whitelist(ImmutableSet.of(Blocks.GRASS_BLOCK)).cannotProject().build()
             )
     );
-
     public static final ConfiguredFeature<?, ?> SMALL_CINNAMON_TREE = register("small_cinnamon_tree", Feature.RANDOM_PATCH
             .configure(new RandomPatchFeatureConfig.Builder(
                     new SimpleBlockStateProvider(Baking.SMALL_CINNAMON_TREE.getDefaultState()), DoublePlantPlacer.INSTANCE)
                     .tries(16).whitelist(ImmutableSet.of(Blocks.GRASS_BLOCK)).cannotProject().build()
             )
     );
-
     public static final ConfiguredFeature<?, ?> CINNAMON_TREES = registerInBiomes("cinnamon_trees", Feature.RANDOM_SELECTOR
             .configure(new RandomFeatureConfig(ImmutableList.of(CINNAMON_TREE.withChance(0.4f)), SMALL_CINNAMON_TREE))
             .decorate(Decorator.HEIGHTMAP
@@ -153,15 +167,15 @@ public class BakingConfiguredFeatures {
                     .ignoreVines()
                     .build())
     );
-
     public static final ConfiguredFeature<?, ?> JUNIPER_TREES = register("juniper_trees",
             Feature.RANDOM_SELECTOR
-                    .configure(new RandomFeatureConfig(ImmutableList.of(JUNIPER_TREE.withChance(0.1F), ConfiguredFeatures.PINE.withChance(.5f)), JUNIPER_TREE))
+                    .configure(new RandomFeatureConfig(ImmutableList.of(JUNIPER_TREE.withChance(0.1F), ConfiguredFeatures.PINE.withChance(.25f), ConfiguredFeatures.SPRUCE.withChance(.25f)), JUNIPER_TREE))
                     .decorate(Decorator.HEIGHTMAP
                             .configure(new HeightmapDecoratorConfig(Heightmap.Type.MOTION_BLOCKING))
                             .spreadHorizontally())
                     .decorate(Decorator.COUNT_EXTRA
-                            .configure(new CountExtraDecoratorConfig(5, 0.1F, 1))));
+                            .configure(new CountExtraDecoratorConfig(5, 0.1F, 1)))
+    );
 
 
     public static void init() {}

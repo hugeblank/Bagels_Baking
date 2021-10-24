@@ -12,6 +12,6 @@ public class LemonSaplingGenerator extends SaplingGenerator {
     public LemonSaplingGenerator() {}
 
     protected ConfiguredFeature<TreeFeatureConfig, ?> getTreeFeature(Random random, boolean bees) {
-        return bees ? BakingConfiguredFeatures.LEMON_TREE_BEES_005 : BakingConfiguredFeatures.LEMON_TREE;
+        return bees ? BakingConfiguredFeatures.LEMON_TREE_BEES_002 : BakingConfiguredFeatures.LEMON_TREE;
     }
 }

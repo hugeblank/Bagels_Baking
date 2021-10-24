@@ -49,7 +49,7 @@ public class BakingBiomes {
         DefaultBiomeFeatures.addDefaultOres(builder);
         DefaultBiomeFeatures.addDefaultDisks(builder);
 
-        DefaultBiomeFeatures.addForestTrees(builder);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, BakingConfiguredFeatures.BASIC_TREES);
         DefaultBiomeFeatures.addForestGrass(builder);
 
         DefaultBiomeFeatures.addDefaultMushrooms(builder);
