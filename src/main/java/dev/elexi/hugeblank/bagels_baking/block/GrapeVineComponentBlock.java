@@ -9,6 +9,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
+import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Util;
 import net.minecraft.util.function.BooleanBiFunction;
@@ -307,6 +308,10 @@ public class GrapeVineComponentBlock extends Block {
             case CLOCKWISE_90 -> state.with(NORTH, state.get(WEST)).with(EAST, state.get(NORTH)).with(SOUTH, state.get(EAST)).with(WEST, state.get(SOUTH));
             default -> state;
         };
+    }
+
+    public BlockState mirror(BlockState state, BlockMirror mirror) {
+        return mirror == BlockMirror.NONE ? state : state.with(ADJACENT, state.get(ADJACENT).flip());
     }
 
     public static BooleanProperty getFacingProperty(Direction direction) {

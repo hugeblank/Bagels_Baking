@@ -58,7 +58,7 @@ public class GrapeVineBlock extends GrapeVineComponentBlock {
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        if (!state.get(PERSISTENT)) {
+        if (!state.get(PERSISTENT) && neighborState.getBlock() instanceof GrapeVineComponentBlock) {
             int i = getDistanceFromStem(neighborState) + 1;
             if (i != 1 || state.get(DISTANCE) != i) {
                 world.getBlockTickScheduler().schedule(pos, this, 1);
@@ -85,11 +85,13 @@ public class GrapeVineBlock extends GrapeVineComponentBlock {
         }
         doPropagation(state, world, pos, random);
         state = world.getBlockState(pos);
-        int age = state.get(AGE);
-        if (world.random.nextFloat() < getGrowthModifier(world, pos)/2 && age < 2 && state.get(DISTANCE) != 5) {
-            state = state.with(AGE, age+1);
+        if (state.contains(AGE)) {
+            int age = state.get(AGE);
+            if (world.random.nextFloat() < getGrowthModifier(world, pos) / 2 && age < 2 && state.get(DISTANCE) != 5) {
+                state = state.with(AGE, age + 1);
+            }
+            world.setBlockState(pos, getAdjacencyState(world, pos, state));
         }
-        world.setBlockState(pos, getAdjacencyState(world, pos, state));
     }
 
     private void doPropagation(BlockState state, ServerWorld world, BlockPos pos, Random random) {
