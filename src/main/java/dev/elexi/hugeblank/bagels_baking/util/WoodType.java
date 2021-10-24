@@ -22,12 +22,10 @@ import java.util.Set;
 // A single type of wood (ex: lemon vs. cherry). Not to be confused with the WoodBlock enum.
 public class WoodType {
     private final Map<WoodBlock, Block> blocks = new HashMap<>();
-    private final Item fruit;
     private final String variant;
 
     public WoodType(String variant, Item fruit) {
         this.variant = variant;
-        this.fruit = fruit;
         Block strippedLog = new BasicLogBlock();
         Block log = new BasicLogBlock(() -> strippedLog);
         Block strippedWood = new BasicLogBlock();

@@ -36,14 +36,10 @@ public class TexturedRenderLayersMixin {
     @Inject(at = @At("HEAD"), method = "getChestTexture(Lnet/minecraft/block/entity/BlockEntity;Lnet/minecraft/block/enums/ChestType;Z)Lnet/minecraft/client/util/SpriteIdentifier;", cancellable = true)
     private static void addIceBoxTexture(BlockEntity blockEntity, ChestType type, boolean christmas, CallbackInfoReturnable<SpriteIdentifier> cir) {
         if (blockEntity instanceof IceBoxBlockEntity) {
-            switch(type) {
-                case LEFT:
-                    cir.setReturnValue(ClientBaking.ICE_BOX_LEFT);
-                case RIGHT:
-                    cir.setReturnValue(ClientBaking.ICE_BOX_RIGHT);
-                case SINGLE:
-                default:
-                    cir.setReturnValue(ClientBaking.ICE_BOX_NORMAL);
+            switch (type) {
+                case LEFT -> cir.setReturnValue(ClientBaking.ICE_BOX_LEFT);
+                case RIGHT -> cir.setReturnValue(ClientBaking.ICE_BOX_RIGHT);
+                case SINGLE -> cir.setReturnValue(ClientBaking.ICE_BOX_NORMAL);
             }
         }
     }

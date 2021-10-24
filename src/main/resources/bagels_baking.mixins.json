@@ -28,6 +28,7 @@
     "entity.villager.VillagerEntityFarming",
     "item.ShearsItemMixin",
     "recipe.CuttingRecipeSerializerAccessor",
+    "render.SpriteAtlasTextureMixin",
     "stew.BasicStewItem",
     "stew.IStewStackIncrease",
     "stew.StewStackIncrease",
@@ -39,8 +40,8 @@
   "client": [
     "recipe.ClientRecipeBookMixin",
     "render.BoatEntityRendererMixin",
-    "render.TexturedRenderLayersMixin",
-    "render.BuiltinModelItemRendererMixin"
+    "render.BuiltinModelItemRendererMixin",
+    "render.TexturedRenderLayersMixin"
   ],
   "injectors": {
     "defaultRequire": 1
