@@ -19,6 +19,7 @@ import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
 import dev.elexi.hugeblank.bagels_baking.util.WoodType;
 import dev.elexi.hugeblank.bagels_baking.world.biome.BakingBiomes;
 import dev.elexi.hugeblank.bagels_baking.world.gen.BakingConfiguredFeatures;
+import dev.elexi.hugeblank.bagels_baking.world.gen.structure.BakingConfiguredStructures;
 import dev.elexi.hugeblank.bagels_baking.world.gen.tree.CherrySaplingGenerator;
 import dev.elexi.hugeblank.bagels_baking.world.gen.tree.JuniperSaplingGenerator;
 import dev.elexi.hugeblank.bagels_baking.world.gen.tree.LemonSaplingGenerator;
@@ -892,6 +893,9 @@ public class Baking implements ModInitializer {
 
 		// Biomes
 		BakingBiomes.init();
+
+		// Configured Structures
+		BakingConfiguredStructures.init();
 
 		// Villager Professions
 		BakingVillagerProfessions.init();
