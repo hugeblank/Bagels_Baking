@@ -1,9 +1,6 @@
 package dev.elexi.hugeblank.bagels_baking.world.gen.structure;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnReason;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.structure.SimpleStructurePiece;
@@ -56,16 +53,13 @@ public class WineryGenerator {
             nbt.putString("Rot", this.placementData.getRotation().name());
         }
 
-        private static StructurePlacementData createPlacementData(BlockRotation rotation) {
-            return (new StructurePlacementData()).setRotation(rotation).setMirror(BlockMirror.NONE).addProcessor(BlockIgnoreStructureProcessor.IGNORE_STRUCTURE_BLOCKS);
-        }
-
         @Override
         protected void handleMetadata(String metadata, BlockPos pos, ServerWorldAccess world, Random random, BlockBox boundingBox) {
-            if (metadata.equals("villager")) {
-                world.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
-                world.spawnEntity(EntityType.VILLAGER.spawn(world.toServerWorld(), null, null, null, pos, SpawnReason.NATURAL, true, false));
-            }
+            // hugeblank spent 3 hours trying to figure out how to summon entities through this method.
+        }
+
+        private static StructurePlacementData createPlacementData(BlockRotation rotation) {
+            return (new StructurePlacementData()).setRotation(rotation).setMirror(BlockMirror.NONE).addProcessor(BlockIgnoreStructureProcessor.IGNORE_STRUCTURE_BLOCKS);
         }
     }
 }

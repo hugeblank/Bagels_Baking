@@ -35,7 +35,7 @@ public class WineryFeature extends StructureFeature<DefaultFeatureConfig> {
         }
 
         public void init(DynamicRegistryManager dynamicRegistryManager, ChunkGenerator chunkGenerator, StructureManager structureManager, ChunkPos chunkPos, Biome biome, DefaultFeatureConfig defaultFeatureConfig, HeightLimitView heightLimitView) {
-            BlockPos blockPos = new BlockPos(chunkPos.getStartX(), chunkGenerator.getHeightOnGround(chunkPos.getStartX(), chunkPos.getStartZ(), Heightmap.Type.WORLD_SURFACE_WG, heightLimitView)-1, chunkPos.getStartZ());
+            BlockPos blockPos = new BlockPos(chunkPos.getStartX(), chunkGenerator.getHeightOnGround(chunkPos.getCenterX(), chunkPos.getCenterZ(), Heightmap.Type.WORLD_SURFACE_WG, heightLimitView)-1, chunkPos.getStartZ());
             BlockRotation blockRotation = BlockRotation.random(this.random);
             WineryGenerator.generate(structureManager, blockPos, blockRotation, this, this.random, type);
         }
