@@ -566,13 +566,13 @@ public class Baking implements ModInitializer {
 	public static final SoundEvent ICE_BOX_OPEN = new SoundEvent(ICE_BOX_OPEN_ID);
 	public static final Identifier ICE_BOX_CLOSE_ID = new Identifier(ID, "ice_box_close");
 	public static final SoundEvent ICE_BOX_CLOSE = new SoundEvent(ICE_BOX_CLOSE_ID);
-	public static final Identifier CAFE_ID = new Identifier(ID, "music_cafe");
-	public static final SoundEvent CAFE = new SoundEvent(CAFE_ID);
+	public static final Identifier COLL_ID = new Identifier(ID, "music_coll");
+	public static final SoundEvent COLL = new SoundEvent(COLL_ID);
 	public static final Identifier GOLDEN_BAGEL_ADVANCEMENT_ID = new Identifier(ID, "golden_bagel_advancement");
 	public static final SoundEvent GOLDEN_BAGEL_ADVANCEMENT = new SoundEvent(GOLDEN_BAGEL_ADVANCEMENT_ID);
 
 	// Music discs
-	public static final Item CAFE_DISC = new BasicMusicDiscItem(4, CAFE, new FabricItemSettings().group(ItemGroup.MISC).maxCount(1));
+	public static final Item COLL_DISC = new BasicMusicDiscItem(4, COLL, new FabricItemSettings().group(ItemGroup.MISC).maxCount(1));
 
 	@Override
 	public void onInitialize() {
@@ -925,10 +925,10 @@ public class Baking implements ModInitializer {
 		// Sounds
 		Registry.register(Registry.SOUND_EVENT, ICE_BOX_OPEN_ID, ICE_BOX_OPEN);
 		Registry.register(Registry.SOUND_EVENT, ICE_BOX_CLOSE_ID, ICE_BOX_CLOSE);
-		Registry.register(Registry.SOUND_EVENT, CAFE_ID, CAFE);
+		Registry.register(Registry.SOUND_EVENT, COLL_ID, COLL);
 		Registry.register(Registry.SOUND_EVENT, GOLDEN_BAGEL_ADVANCEMENT_ID, GOLDEN_BAGEL_ADVANCEMENT);
 
 		// Music Discs
-		registerItem("music_disc_cafe", CAFE_DISC);
+		registerItem("music_disc_coll", COLL_DISC);
 	}
 }
