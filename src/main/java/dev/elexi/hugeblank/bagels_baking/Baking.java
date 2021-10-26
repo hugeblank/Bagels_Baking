@@ -502,6 +502,13 @@ public class Baking implements ModInitializer {
 	public static final Item CARAMEL = basicFood(1, 0.2f);
 	public static final Item CARAMEL_APPLE = basicFood(5, 0.3f);
 	public static final Block STEAK_AND_ALE_PUDDING = new EdibleCubeBlock(FabricBlockSettings.of(Material.CAKE).sounds(BlockSoundGroup.WOOL));
+	public static final Item GOLDEN_BAGEL = basicFood(new FoodComponent.Builder()
+			.hunger(8)
+			.saturationModifier(1.2f)
+			.statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 60, 1), 1.0F)
+			.statusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 60, 0), 1.0F)
+			.alwaysEdible()
+	);
 
 	// Slushees
 	public static final Item ROOT_BEER_SLUSHEE = basicCupDrink(2, 0.3f );
@@ -561,6 +568,8 @@ public class Baking implements ModInitializer {
 	public static final SoundEvent ICE_BOX_CLOSE = new SoundEvent(ICE_BOX_CLOSE_ID);
 	public static final Identifier CAFE_ID = new Identifier(ID, "music_cafe");
 	public static final SoundEvent CAFE = new SoundEvent(CAFE_ID);
+	public static final Identifier GOLDEN_BAGEL_ADVANCEMENT_ID = new Identifier(ID, "golden_bagel_advancement");
+	public static final SoundEvent GOLDEN_BAGEL_ADVANCEMENT = new SoundEvent(GOLDEN_BAGEL_ADVANCEMENT_ID);
 
 	// Music discs
 	public static final Item CAFE_DISC = new BasicMusicDiscItem(4, CAFE, new FabricItemSettings().group(ItemGroup.MISC).maxCount(1));
@@ -854,6 +863,7 @@ public class Baking implements ModInitializer {
 		registerItem("caramel", CARAMEL);
 		registerItem("caramel_apple", CARAMEL_APPLE);
 		registerBlock("steak_and_ale_pudding", STEAK_AND_ALE_PUDDING, ItemGroup.FOOD);
+		registerItem("golden_bagel", GOLDEN_BAGEL);
 
 		// Slushee
 		registerItem("root_beer_slushee", ROOT_BEER_SLUSHEE);
@@ -916,6 +926,7 @@ public class Baking implements ModInitializer {
 		Registry.register(Registry.SOUND_EVENT, ICE_BOX_OPEN_ID, ICE_BOX_OPEN);
 		Registry.register(Registry.SOUND_EVENT, ICE_BOX_CLOSE_ID, ICE_BOX_CLOSE);
 		Registry.register(Registry.SOUND_EVENT, CAFE_ID, CAFE);
+		Registry.register(Registry.SOUND_EVENT, GOLDEN_BAGEL_ADVANCEMENT_ID, GOLDEN_BAGEL_ADVANCEMENT);
 
 		// Music Discs
 		registerItem("music_disc_cafe", CAFE_DISC);

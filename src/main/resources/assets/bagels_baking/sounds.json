@@ -20,5 +20,15 @@
       "bagels_baking:fridge_close3",
       "bagels_baking:fridge_close4"
     ]
+  },
+  "golden_bagel_advancement": {
+    "subtitle": "subtitle.bagels_baking.golden_bagel_advancement",
+    "sounds": [
+      "bagels_baking:joshemve_chime1",
+      "bagels_baking:joshemve_chime2",
+      "bagels_baking:joshemve_chime3",
+      "bagels_baking:joshemve_chime4",
+      "bagels_baking:joshemve_chime5"
+    ]
   }
 }

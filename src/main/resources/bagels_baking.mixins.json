@@ -39,6 +39,8 @@
     "world.StructurePoolMixin"
   ],
   "client": [
+    "client.VisibilityAccessor",
+    "client.AdvancementToastMixin",
     "recipe.ClientRecipeBookMixin",
     "render.BoatEntityRendererMixin",
     "render.BuiltinModelItemRendererMixin",

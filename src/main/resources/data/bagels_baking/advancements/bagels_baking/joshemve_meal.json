@@ -1,15 +1,15 @@
 {
-    "parent": "bagels_baking:bagels_baking/joshemve_meal",
+    "parent": "bagels_baking:bagels_baking/god_meal",
     "display": {
         "icon": {
             "item": "minecraft:player_head",
-            "nbt": "{SkullOwner:Jappaa}"
+            "nbt": "{SkullOwner:Joshemve}"
         },
         "title": {
-            "translate": "advancements.bagels_baking.jappa_meal.title"
+            "translate": "advancements.bagels_baking.joshemve_meal.title"
         },
         "description": {
-            "translate": "advancements.bagels_baking.jappa_meal.description"
+            "translate": "advancements.bagels_baking.joshemve_meal.description"
         },
         "frame": "goal",
         "show_toast": true,
@@ -23,12 +23,7 @@
                 "items": [
                     {
                         "items": [
-                            "bagels_baking:tea_cup"
-                        ]
-                    },
-                    {
-                        "items": [
-                            "bagels_baking:katsu_sandwich"
+                            "bagels_baking:golden_bagel"
                         ]
                     }
                 ]
