@@ -3,7 +3,8 @@
     "ambientocclusion": false,
     "textures": {
         "vine_right": "bagels_baking:block/grape_stem_right",
-        "vine_left": "bagels_baking:block/grape_stem_left"
+        "vine_left": "bagels_baking:block/grape_stem_left",
+        "particle": "bagels_baking:block/grape_stem"
     },
     "elements": [
         {

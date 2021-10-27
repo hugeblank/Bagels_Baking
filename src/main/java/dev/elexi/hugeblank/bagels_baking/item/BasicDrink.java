@@ -57,7 +57,7 @@ public class BasicDrink extends PotionItem implements BrewableItem {
     }
 
     public int getMaxUseTime(ItemStack stack) {
-        return stack.getItem() instanceof CupItem ? 16 : super.getMaxUseTime(stack);
+        return type instanceof CupItem ? 16 : super.getMaxUseTime(stack);
     }
 
     // All of the below are for overwriting fancy potion stuffs.

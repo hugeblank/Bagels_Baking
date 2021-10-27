@@ -42,9 +42,11 @@ public class BasicLeavesBlock extends LeavesBlock {
     }
 
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        int age = state.get(AGE);
-        if (world.random.nextFloat() < 0.02f && age < 2) {
-            world.setBlockState(pos, state.with(AGE, age+1));
+        if (world.random.nextFloat() < 0.02f) {
+            int age = state.get(AGE);
+            // Grow regular and budding leaves, and reset fully grown ones
+            state = (age < 2) ? state.with(AGE, age + 1) : state.with(AGE, 0);
+            world.setBlockState(pos, state);
         }
         super.randomTick(state, world, pos, random);
     }

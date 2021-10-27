@@ -136,7 +136,8 @@ public interface BakingCauldronBehavior extends CauldronBehavior {
             return ActionResult.success(world.isClient);
         });
 
-        // Coffee/Tea level increase/decrease
+        // Coffee/Tea/Water level increase/decrease
+        registerCauldronCupFluid(CauldronBehavior.WATER_CAULDRON_BEHAVIOR, Blocks.WATER_CAULDRON, Baking.WATER_CUP);
         registerCauldronCupFluid(COFFEE_CAULDRON_BEHAVIOR, Baking.COFFEE_CAULDRON, Baking.COFFEE_CUP);
         registerCauldronCupFluid(TEA_CAULDRON_BEHAVIOR, Baking.TEA_CAULDRON, Baking.TEA_CUP);
         registerCauldronCupFluid(CREAMY_COFFEE_CAULDRON_BEHAVIOR, Baking.CREAMY_COFFEE_CAULDRON, Baking.COFFEE_W_CREAMER);

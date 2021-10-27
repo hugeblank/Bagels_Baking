@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "#B#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:gold_ingot"
+        },
+        "B": {
+            "item": "bagels_baking:bagel"
+        }
+    },
+    "result": {
+        "item": "bagels_baking:golden_bagel",
+        "count": 1
+    }
+}

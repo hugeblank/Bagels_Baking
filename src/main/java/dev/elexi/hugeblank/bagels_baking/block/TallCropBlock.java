@@ -35,14 +35,15 @@ public class TallCropBlock extends BasicCropBlock implements Fertilizable {
         return blockPos.getY() < 255 ? super.getPlacementState(ctx) : null;
     }
 
-    private void applyGrowth(ServerWorld world, BlockPos pos, int growth) {
-        BlockState upper = world.getBlockState(pos.up());
-        if ((upper.getBlock() instanceof TallCropBlock || upper.getBlock() == Blocks.AIR)) {
+    private void applyGrowth(ServerWorld world, BlockPos pos, BlockState state) {
+        if (state.get(HALF) == DoubleBlockHalf.LOWER) {
+            int growth = this.getAge(state) + this.getGrowthAmount(world);
+            int maxAge = this.getMaxAge();
+            if (growth > maxAge) {
+                growth = maxAge;
+            }
             world.setBlockState(pos, this.withAge(growth), 2);
-            addTop( world, pos, growth);
-        } else if (growth < 4) {
-            world.setBlockState(pos, this.withAge(growth), 2);
-            addTop( world, pos, growth);
+            addTop(world, pos, growth);
         }
     }
 
@@ -61,7 +62,7 @@ public class TallCropBlock extends BasicCropBlock implements Fertilizable {
             if (i < this.getMaxAge()) {
                 float f = getAvailableMoisture(this, world, pos);
                 if (random.nextInt((int)(25.0F / f) + 1) == 0) {
-                    applyGrowth(world, pos, i+1);
+                    applyGrowth(world, pos, state);
                 }
             }
         }
@@ -70,7 +71,7 @@ public class TallCropBlock extends BasicCropBlock implements Fertilizable {
     protected static float getAvailableMoisture(Block block, BlockView world, BlockPos pos) {
         if (world.getBlockState(pos).get(HALF) == DoubleBlockHalf.UPPER) {
             BlockState lowerState = world.getBlockState(pos.down());
-            return CropBlock.getAvailableMoisture(lowerState.getBlock(), world, pos.down());
+            return CropBlock.getAvailableMoisture(lowerState.getBlock(), world, pos.down().down());
         } else {
             return CropBlock.getAvailableMoisture(block, world, pos.down());
         }
@@ -116,12 +117,7 @@ public class TallCropBlock extends BasicCropBlock implements Fertilizable {
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
         if (state.get(HALF) == DoubleBlockHalf.LOWER) {
-            int i = this.getAge(state) + this.getGrowthAmount(world);
-            int j = this.getMaxAge();
-            if (i > j) {
-                i = j;
-            }
-            applyGrowth(world, pos, i);
+            applyGrowth(world, pos, state);
         } else {
             BlockState base = world.getBlockState(pos.down());
             ((TallCropBlock)base.getBlock()).grow(world, random, pos.down(), base);

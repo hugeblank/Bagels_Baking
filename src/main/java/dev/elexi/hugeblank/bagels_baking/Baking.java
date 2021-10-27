@@ -895,6 +895,9 @@ public class Baking implements ModInitializer {
 		registerBlock("creamy_tea_cauldron", CREAMY_TEA_CAULDRON);
 		registerBlock("separator_cauldron", SEPARATOR_CAULDRON);
 
+		// Compostable Items
+		BakingCompostableItems.init();
+
 		// Trades
 		BakingVillagerTrades.init();
 
