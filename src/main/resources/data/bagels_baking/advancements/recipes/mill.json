@@ -42,6 +42,18 @@
 				]
 			}
 		},
+		"has_lemon_planks": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:lemon_planks"
+						]
+					}
+				]
+			}
+		},
 		"has_oak_planks": {
 			"trigger": "minecraft:inventory_changed",
 			"conditions": {
@@ -58,6 +70,30 @@
 			"trigger": "minecraft:recipe_unlocked",
 			"conditions": {
 				"recipe": "bagels_baking:misc/mill"
+			}
+		},
+		"has_cherry_planks": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cherry_planks"
+						]
+					}
+				]
+			}
+		},
+		"has_juniper_planks": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:juniper_planks"
+						]
+					}
+				]
 			}
 		},
 		"has_spruce_planks": {
@@ -132,7 +168,10 @@
 			"has_acacia_planks",
 			"has_dark_oak_planks",
 			"has_crimson_planks",
-			"has_warped_planks"
+			"has_warped_planks",
+			"has_cherry_planks",
+			"has_lemon_planks",
+			"has_juniper_planks"
 		]
 	]
 }

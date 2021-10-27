@@ -1,0 +1,47 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/golden_bagel"
+		]
+	},
+	"criteria": {
+		"has_gold_ingot": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:gold_ingot"
+						]
+					}
+				]
+			}
+		},
+		"has_bagel": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:bagel"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/golden_bagel"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_gold_ingot",
+			"has_bagel"
+		]
+	]
+}
