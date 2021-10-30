@@ -401,13 +401,11 @@ public class Baking implements ModInitializer {
 	public static final Item TOMATO = new TomatoItem(TOMATO_PLANT, new Item.Settings().group(ItemGroup.FOOD).food(
 			foodComponent(3, 0.6f).build()
 	));
-	public static final EntityType<TomatoEntity> TOMATO_THROWABLE = Registry.register(Registry.ENTITY_TYPE, new Identifier(ID, "tomato"),
-			FabricEntityTypeBuilder.<TomatoEntity>create()
-					.spawnGroup(SpawnGroup.MISC)
-					.dimensions(new EntityDimensions(0.25f, 0.25f, true))
-					.trackedUpdateRate(10)
-					.trackRangeChunks(4)
-					.build());
+	public static final EntityType<TomatoEntity> TOMATO_THROWABLE = FabricEntityTypeBuilder.<TomatoEntity>create(SpawnGroup.MISC, (entity, world) -> new TomatoEntity(world))
+			.dimensions(new EntityDimensions(0.25f, 0.25f, true))
+			.trackedUpdateRate(10)
+			.trackRangeChunks(4)
+			.build();
 	public static final Block RICE_PLANT = new BasicCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item WILD_RICE = new BlockItem(RICE_PLANT, new Item.Settings().group(ItemGroup.MISC));
 	public static final Item RICE = basicIngredient();
@@ -789,6 +787,7 @@ public class Baking implements ModInitializer {
 		registerItem("tea_leaves", TEA_LEAVES);
 		registerItem("dried_tea_leaves", DRIED_TEA_LEAVES);
 		registerBlock("compressed_tea_block", COMPRESSED_TEA_BLOCK, ItemGroup.BUILDING_BLOCKS);
+		Registry.register(Registry.ENTITY_TYPE, new Identifier(ID, "tomato"), TOMATO_THROWABLE);
 		registerBlock("tomato", TOMATO_PLANT, (BlockItem) TOMATO);
 		((BasicCropBlock)TOMATO_PLANT).setSeed(TOMATO);
 		registerBlock("wild_rice", RICE_PLANT, (BlockItem) WILD_RICE);

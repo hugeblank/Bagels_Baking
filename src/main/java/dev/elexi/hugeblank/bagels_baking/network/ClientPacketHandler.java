@@ -24,7 +24,7 @@ public class ClientPacketHandler {
     public static void accept(MinecraftClient client, ClientPlayNetworkHandler networkHandler, PacketByteBuf buffer, PacketSender sender) {
         int id = buffer.readVarInt();
         UUID uuid = buffer.readUuid();
-        EntityType type = Registry.ENTITY_TYPE.get(buffer.readVarInt());
+        EntityType<?> type = Registry.ENTITY_TYPE.get(buffer.readVarInt());
         double x = buffer.readDouble();
         double y = buffer.readDouble();
         double z = buffer.readDouble();
@@ -38,17 +38,17 @@ public class ClientPacketHandler {
         }
     }
 
-    public static void spawn(MinecraftClient client, int id, UUID uuid, EntityType type, double x, double y, double z, byte pitch, byte yaw) {
+    public static void spawn(MinecraftClient client, int id, UUID uuid, EntityType<?> type, double x, double y, double z, byte pitch, byte yaw) {
         ClientWorld world = client.world;
 
         if (world == null) {
-            return;
+            throw new IllegalStateException("Tried to spawn entity in a null world!");
         }
 
         Entity entity = type.create(world);
 
         if (entity == null) {
-            return;
+            throw new IllegalStateException("Failed to create instance of entity \"" + Registry.ENTITY_TYPE.getId(type) + "\"!");
         }
 
         entity.setId(id);
