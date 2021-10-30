@@ -1,10 +1,7 @@
 package dev.elexi.hugeblank.bagels_baking.block;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.LeavesBlock;
-import net.minecraft.block.Material;
+import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -20,6 +17,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
@@ -57,11 +55,17 @@ public class BasicLeavesBlock extends LeavesBlock {
             int extra = 0;
             if (num < 0.20f) extra = 2;
             else if (num < 0.45f) extra = 1;
-
-            dropStack(world, pos, new ItemStack(drop, 1 + extra));
-            world.playSound(null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
-            world.setBlockState(pos, state.with(AGE, 0), 2);
-            return ActionResult.success(world.isClient);
+            Direction[] directions = {Direction.DOWN, Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST, Direction.UP};
+            for (Direction direction : directions) {
+                BlockPos dropPos = pos.offset(direction).add(0.5f, 0, 0.5f);
+                if (world.getBlockState(dropPos).getBlock() instanceof AirBlock) {
+                    dropStack(world, dropPos, new ItemStack(drop, 1 + extra));
+                    world.playSound(null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
+                    world.setBlockState(pos, state.with(AGE, 0), 2);
+                    return ActionResult.success(world.isClient);
+                }
+            }
+            return ActionResult.FAIL;
         } else {
             return super.onUse(state, world, pos, player, hand, hit);
         }
