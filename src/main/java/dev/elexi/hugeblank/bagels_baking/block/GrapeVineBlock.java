@@ -58,9 +58,9 @@ public class GrapeVineBlock extends GrapeVineComponentBlock {
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        if (!state.get(PERSISTENT) && neighborState.getBlock() instanceof GrapeVineComponentBlock) {
+        if (!state.get(PERSISTENT)) {
             int i = getDistanceFromStem(neighborState) + 1;
-            if (i != 1 || state.get(DISTANCE) != i) {
+            if (state.get(DISTANCE) != i) {
                 world.getBlockTickScheduler().schedule(pos, this, 1);
             }
         }
@@ -98,33 +98,35 @@ public class GrapeVineBlock extends GrapeVineComponentBlock {
         ArrayList<Direction> facings = getDirectionsFromState(state);
         if (facings.size() == 0) return;
         if (state.get(DISTANCE) < MAX_DISTANCE-1){
-            Direction[] directions = Direction.values();
             if ((MAX_DISTANCE-state.get(DISTANCE))/world.random.nextFloat() > 1.2f) {
                 if (world.random.nextBoolean()) {
+                    Direction[] directions = Direction.values();
                     for (Direction direction : directions) { // Grow Left/Right if block is air (propagation)
-                        BlockPos growPos = pos.offset(direction);
-                        BlockState growState = world.getBlockState(growPos);
-                        for (Direction facing : facings) {
-                            if (direction.getAxis().isHorizontal() && shouldHaveSide(world, growPos, facing) && random.nextFloat() < 0.5f) {
-                                BooleanProperty facingProperty = FACING_PROPERTIES.get(facing);
-                                if (growState.getBlock() instanceof AirBlock) {
-                                    world.setBlockState(growPos, updateDistanceFromStem(
-                                            this.getDefaultState()
-                                                    .with(DISTANCE, MAX_DISTANCE)
-                                                    .with(facingProperty, true),
-                                            world,
-                                            growPos
-                                    ));
-                                } else if (growState.getBlock() instanceof GrapeVineBlock && !growState.get(PERSISTENT) && !growState.get(facingProperty)) {
-                                    world.setBlockState(growPos, updateDistanceFromStem(
-                                            growState
-                                                    .with(DISTANCE, MAX_DISTANCE)
-                                                    .with(facingProperty, true),
-                                            world,
-                                            growPos
-                                    ));
+                        if (direction.getAxis().isHorizontal() && !state.get(getFacingProperty(direction))) { // Make sure we're not placing behind us because that would be weird.
+                            BlockPos growPos = pos.offset(direction);
+                            BlockState growState = world.getBlockState(growPos);
+                            for (Direction facing : facings) {
+                                if (shouldHaveSide(world, growPos, facing) && random.nextFloat() < 0.5f) {
+                                    BooleanProperty facingProperty = FACING_PROPERTIES.get(facing);
+                                    if (growState.getBlock() instanceof AirBlock) {
+                                        world.setBlockState(growPos, updateDistanceFromStem(
+                                                this.getDefaultState()
+                                                        .with(DISTANCE, MAX_DISTANCE)
+                                                        .with(facingProperty, true),
+                                                world,
+                                                growPos
+                                        ));
+                                    } else if (growState.getBlock() instanceof GrapeVineBlock && !growState.get(PERSISTENT) && !growState.get(facingProperty)) {
+                                        world.setBlockState(growPos, updateDistanceFromStem(
+                                                growState
+                                                        .with(DISTANCE, MAX_DISTANCE)
+                                                        .with(facingProperty, true),
+                                                world,
+                                                growPos
+                                        ));
+                                    }
+                                    return;
                                 }
-                                return;
                             }
                         }
                     }
