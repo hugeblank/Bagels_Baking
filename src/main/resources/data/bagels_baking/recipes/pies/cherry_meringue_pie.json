@@ -9,13 +9,10 @@
         },
         {
             "item": "minecraft:wheat"
-        },
-        {
-            "item": "bagels_baking:cocoa_powder"
         }
     ],
     "result": {
-        "item": "bagels_baking:lemon_meringue_pie",
+        "item": "bagels_baking:cherry_meringue_pie",
         "count": 1
     }
 }
