@@ -65,6 +65,7 @@ public class Splashes {
         splashTexts.add("Icebox is actually just one word, usually."); // trivia!
         splashTexts.add("Phantoms just need a hug"); // propaganda
         splashTexts.add("WE HAVE STICKERS"); // he has stickers
+        splashTexts.add("https://ibb.co/DMqwf0y if you dare"); // Togg said no Word Documents
         // Miscellaneous
         splashTexts.add("Now Catering!");
         splashTexts.add("Respect your food delivery drivers!");
