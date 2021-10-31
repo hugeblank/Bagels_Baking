@@ -18,10 +18,11 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 import java.util.List;
 
-public class FermenterBlockEntity extends BlockEntity implements Inventory {
+public class FermenterBlockEntity extends BlockEntity implements Inventory{
     private ItemStack stack;
 
     public FermenterBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
@@ -41,21 +42,15 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory {
     public ItemStack fillFermenter(ServerWorld world, BlockPos pos, ItemStack stack, boolean dump) {
         if (canFill(stack)) {
             int count = dump ? Math.min(this.getMaxCountPerStack()-this.stack.getCount(), stack.getCount()) : 1;
-            List<FermentingRecipe> recipes = world.getRecipeManager().listAllOfType(FermentingRecipe.TYPE);
-            for (FermentingRecipe r : recipes) {
-                if (r.getIngredients().get(0).test(stack)) {
-                    Item stackItem = stack.getItem();
-                    if (stackItem != this.stack.getItem()) this.stack = new ItemStack(stackItem, count);
-                    if (stackItem instanceof HoneyBottleItem || stackItem instanceof BottledItem) {
-                        world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                    } else {
-                        world.playSound(null, pos, SoundEvents.BLOCK_AZALEA_HIT, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                    }
-                    stack.decrement(count);
-                    if (this.stack.getCount() > 0) world.setBlockState(this.getPos(), this.getCachedState().with(BakingProperties.ACTIVE, true));
-
-                    return new ItemStack(stackItem.getRecipeRemainder(), count);
+            if (isValid(0, stack)) {
+                this.setStack(0, stack.split(count));
+                Item stackItem = stack.getItem();
+                if (stackItem instanceof HoneyBottleItem || stackItem instanceof BottledItem) {
+                    world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                } else {
+                    world.playSound(null, pos, SoundEvents.BLOCK_AZALEA_HIT, SoundCategory.BLOCKS, 1.0f, 1.0f);
                 }
+                return new ItemStack(stackItem.getRecipeRemainder(), count);
             }
         }
         return stack;
@@ -105,14 +100,14 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory {
 
     @Override
     public ItemStack getStack(int slot) {
-        if (slot != 0) return null;
+        if (slot != 0) return ItemStack.EMPTY;
         return this.stack;
     }
 
     @Override
     public ItemStack removeStack(int slot, int amount) {
-        if (slot != 0) return null;
-        return this.stack.split(amount);
+        // Can't remove anything without glass bottle from player :(
+        return ItemStack.EMPTY;
     }
 
     @Override
@@ -122,8 +117,20 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory {
 
     @Override
     public void setStack(int slot, ItemStack stack) {
-        if (slot == 0 && canFill(stack)) {
-            this.stack.increment(stack.getCount());
+        int count = Math.min(this.getMaxCountPerStack()-this.stack.getCount(), stack.getCount());
+        if (isValid(slot, stack)) {
+            Item stackItem = stack.getItem();
+            if (this.stack.isEmpty()) {
+                this.stack = new ItemStack(stackItem, count);
+            } else {
+                this.stack.increment(count);
+            }
+            World world = this.getWorld();
+            if(world != null && !world.isClient()) {
+                BlockPos pos = this.getPos();
+                BlockState state = this.getCachedState();
+                world.setBlockState(pos, state.with(BakingProperties.ACTIVE, true));
+            }
         }
     }
 
@@ -133,12 +140,19 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory {
     }
 
     @Override
-    public boolean isValid(int slot, ItemStack stack) {
-        return slot == 0 && canFill(stack);
+    public boolean canPlayerUse(PlayerEntity player) {
+        return false;
     }
 
     @Override
-    public boolean canPlayerUse(PlayerEntity player) {
+    public boolean isValid(int slot, ItemStack stack) {
+        World world = this.getWorld();
+        if (world != null && !world.isClient() && slot == 0 && canFill(stack)) {
+            List<FermentingRecipe> recipes = world.getRecipeManager().listAllOfType(FermentingRecipe.TYPE);
+            for (FermentingRecipe r : recipes) {
+                if (r.getIngredients().get(0).test(stack)) return true;
+            }
+        }
         return false;
     }
 

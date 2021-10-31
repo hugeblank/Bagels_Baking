@@ -42,24 +42,22 @@ public class FermenterBlock extends BlockWithEntity {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (hand.equals(Hand.MAIN_HAND)) {
-            FermenterBlockEntity entity = (FermenterBlockEntity) world.getBlockEntity(pos);
-            if (!world.isClient && entity != null) {
-                ItemStack held = player.getStackInHand(Hand.MAIN_HAND);
-                boolean useAll = player.isSneaking();
-                ItemStack drop;
-                if (entity.canFill(held)) {
-                    drop = entity.fillFermenter((ServerWorld) world, pos, held, useAll);
-                } else {
-                    drop = entity.drainFermenter((ServerWorld) world, pos, held, useAll);
-                }
-                if (!drop.isOf(held.getItem())) {
-                    player.getInventory().insertStack(drop);
-                    return ActionResult.SUCCESS;
-                }
+        FermenterBlockEntity entity = (FermenterBlockEntity) world.getBlockEntity(pos);
+        if (!world.isClient && entity != null && hand.equals(Hand.MAIN_HAND)) {
+            ItemStack held = player.getStackInHand(Hand.MAIN_HAND);
+            boolean useAll = player.isSneaking();
+            ItemStack drop;
+            if (entity.canFill(held)) {
+                drop = entity.fillFermenter((ServerWorld) world, pos, held, useAll);
+            } else {
+                drop = entity.drainFermenter((ServerWorld) world, pos, held, useAll);
+            }
+            if (!drop.isOf(held.getItem())) {
+                player.getInventory().insertStack(drop);
+                return ActionResult.SUCCESS;
             }
         }
-        return ActionResult.FAIL;
+        return ActionResult.PASS;
     }
 
     @Override
