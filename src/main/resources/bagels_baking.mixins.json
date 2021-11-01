@@ -19,7 +19,7 @@
     "entity.ServerPlayerInteractionManagerMixin",
     "entity.passive.AnimalBreedItems",
     "entity.passive.ChickenSeeds",
-    "entity.passive.CowFeed",
+    "entity.passive.CowEntityMixin",
     "entity.passive.PigFeed",
     "entity.passive.SheepFeed",
     "entity.passive.TrickyRabbit",
@@ -39,8 +39,8 @@
     "world.StructurePoolMixin"
   ],
   "client": [
-    "client.VisibilityAccessor",
     "client.AdvancementToastMixin",
+    "client.VisibilityAccessor",
     "recipe.ClientRecipeBookMixin",
     "render.BoatEntityRendererMixin",
     "render.BuiltinModelItemRendererMixin",

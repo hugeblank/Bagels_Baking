@@ -97,6 +97,14 @@ public class Baking implements ModInitializer {
 		return new BasicDrink(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Baking.CUP).maxCount(16), Baking.CUP);
 	}
 
+	private static BasicDrink basicCupDrink(SoundEvent sound) {
+		return new BasicDrink(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Baking.CUP).maxCount(16), Baking.CUP, sound);
+	}
+
+	private static BasicDrink basicCupDrink(int hunger, float saturation, SoundEvent sound) {
+		return new BasicDrink(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Baking.CUP).maxCount(16), foodComponent(hunger, saturation).build(), Baking.CUP, sound);
+	}
+
 	private static BasicDrink basicCupDrink(int hunger, float saturation) {
 		return new BasicDrink(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Baking.CUP).maxCount(16), foodComponent(hunger, saturation).build(), Baking.CUP);
 	}
@@ -256,10 +264,10 @@ public class Baking implements ModInitializer {
 	public static final Item FRENCH_FRIES = basicFood(1, 0.1f);
 	public static final Item COOKED_FRENCH_FRIES = basicFood(2, 0.6f);
 	public static final Item EGG_WHITES = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(foodComponent(0, 0f)
-			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK, true);
+			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK);
 	public static final Item MERINGUE = basicBottleDrink(1, 0.2f, SoundEvents.ENTITY_WANDERING_TRADER_DRINK_MILK);
 	public static final Item EGG_YOLK = new BottledItem( new Item.Settings().group(ItemGroup.FOOD).food(foodComponent(0, 0f).snack()
-			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK, true);
+			.statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 20*10), .1f).build()), SoundEvents.ENTITY_WITCH_DRINK);
 	public static final Item MAYONNAISE = basicBottleDrink(1, 0.2f, SoundEvents.ENTITY_WITCH_DRINK);
 	public static final Item PIZZA = basicFood(1, 0.4f);
 	public static final Item COOKED_PIZZA = basicFood(5, 0.8f);
@@ -350,23 +358,23 @@ public class Baking implements ModInitializer {
 	public static final Item COFFEE_W_CREAMER = basicSuperCupDrink(2, 0.2f, new StatusEffectInstance(StatusEffects.SPEED, 20*30));
 	public static final Item TEA_CUP = basicSuperCupDrink(2, 0.2f, new StatusEffectInstance(StatusEffects.SPEED, 20*10));
 	public static final Item TEA_W_CREAMER = basicSuperCupDrink(2, 0.1f, new StatusEffectInstance(StatusEffects.SPEED, 20*20));
-	public static final Item MOLASSES = basicCupDrink();
-	public static final Item PLAIN_MILKSHAKE = basicCupDrink(1, 0.1f);
-	public static final Item CHOCOLATE_MILKSHAKE = basicCupDrink(2, 0.2f);
-	public static final Item PLAIN_ICE_CREAM = basicCupDrink(1, 0.1f);
-	public static final Item CHOCOLATE_ICE_CREAM = basicCupDrink(2, 0.2f);
+	public static final Item MOLASSES = basicCupDrink(SoundEvents.ENTITY_WITCH_DRINK);
+	public static final Item PLAIN_MILKSHAKE = basicCupDrink(1, 0.1f, SoundEvents.ENTITY_WANDERING_TRADER_DRINK_MILK);
+	public static final Item CHOCOLATE_MILKSHAKE = basicCupDrink(2, 0.2f, SoundEvents.ENTITY_WANDERING_TRADER_DRINK_MILK);
+	public static final Item PLAIN_ICE_CREAM = basicCupDrink(1, 0.1f, SoundEvents.ENTITY_GENERIC_EAT);
+	public static final Item CHOCOLATE_ICE_CREAM = basicCupDrink(2, 0.2f, SoundEvents.ENTITY_GENERIC_EAT);
 	public static final Item SWEET_BERRY_SWIRL_CREAM = basicCupDrink(1, 0.1f);
 	public static final Item GLOW_BERRY_SWIRL_CREAM = basicCupDrink(1, 0.1f);
 	public static final Item GRAPE_SWIRL_CREAM = basicCupDrink(1, 0.1f);
 	public static final Item APPLE_CINNAMON_CREAM = basicCupDrink(3, 0.3f);
-	public static final Item SWEET_BERRY_SWIRL_ICE_CREAM = basicCupDrink(2, 0.2f);
-	public static final Item GLOW_BERRY_SWIRL_ICE_CREAM = basicCupDrink(2, 0.2f);
-	public static final Item GRAPE_SWIRL_ICE_CREAM = basicCupDrink(2, 0.2f);
-	public static final Item APPLE_CINNAMON_ICE_CREAM = basicCupDrink(4, 0.4f);
-	public static final Item SWEET_BERRY_SWIRL_MILKSHAKE = basicCupDrink(2, 0.2f);
-	public static final Item GLOW_BERRY_SWIRL_MILKSHAKE = basicCupDrink(2, 0.2f);
-	public static final Item GRAPE_SWIRL_MILKSHAKE = basicCupDrink(2, 0.2f);
-	public static final Item APPLE_CINNAMON_MILKSHAKE = basicCupDrink(4, 0.4f);
+	public static final Item SWEET_BERRY_SWIRL_ICE_CREAM = basicCupDrink(2, 0.2f, SoundEvents.ENTITY_GENERIC_EAT);
+	public static final Item GLOW_BERRY_SWIRL_ICE_CREAM = basicCupDrink(2, 0.2f, SoundEvents.ENTITY_GENERIC_EAT);
+	public static final Item GRAPE_SWIRL_ICE_CREAM = basicCupDrink(2, 0.2f, SoundEvents.ENTITY_GENERIC_EAT);
+	public static final Item APPLE_CINNAMON_ICE_CREAM = basicCupDrink(4, 0.4f, SoundEvents.ENTITY_GENERIC_EAT);
+	public static final Item SWEET_BERRY_SWIRL_MILKSHAKE = basicCupDrink(2, 0.2f, SoundEvents.ENTITY_WANDERING_TRADER_DRINK_MILK);
+	public static final Item GLOW_BERRY_SWIRL_MILKSHAKE = basicCupDrink(2, 0.2f, SoundEvents.ENTITY_WANDERING_TRADER_DRINK_MILK);
+	public static final Item GRAPE_SWIRL_MILKSHAKE = basicCupDrink(2, 0.2f, SoundEvents.ENTITY_WANDERING_TRADER_DRINK_MILK);
+	public static final Item APPLE_CINNAMON_MILKSHAKE = basicCupDrink(4, 0.4f, SoundEvents.ENTITY_WANDERING_TRADER_DRINK_MILK);
 
 	// Sodie Pop
 	public static final Item SUGAR_WATER = basicCupDrink();
@@ -377,6 +385,14 @@ public class Baking implements ModInitializer {
 	public static final Item MOUNTAIN_FOUNTAIN = basicCupDrink(2, 0.2f); // melon
 	public static final Item CACTUS_CHILLER = basicCupDrink(2, 0.2f); // cactus
 	public static final Item GRAPE_SODA = basicCupDrink(2, 0.2f); // grape
+
+	// Slushees
+	public static final Item ROOT_BEER_SLUSHEE = basicCupDrink(2, 0.3f );
+	public static final Item COLA_SLUSHEE = basicCupDrink(2, 0.3f );
+	public static final Item FRUITY_SODA_SLUSHEE = basicCupDrink(2, 0.3f );
+	public static final Item MOUNTAIN_FOUNTAIN_SLUSHEE = basicCupDrink(2, 0.3f );
+	public static final Item CACTUS_CHILLER_SLUSHEE = basicCupDrink(2, 0.3f );
+	public static final Item GRAPE_SODA_SLUSHEE = basicCupDrink(2, 0.3f );
 
 	// Plates & Meals
 	public static final Item UNFIRED_PLATE = basicIngredient();
@@ -507,14 +523,6 @@ public class Baking implements ModInitializer {
 			.statusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 60, 0), 1.0F)
 			.alwaysEdible()
 	);
-
-	// Slushees
-	public static final Item ROOT_BEER_SLUSHEE = basicCupDrink(2, 0.3f );
-	public static final Item COLA_SLUSHEE = basicCupDrink(2, 0.3f );
-	public static final Item FRUITY_SODA_SLUSHEE = basicCupDrink(2, 0.3f );
-	public static final Item MOUNTAIN_FOUNTAIN_SLUSHEE = basicCupDrink(2, 0.3f );
-	public static final Item CACTUS_CHILLER_SLUSHEE = basicCupDrink(2, 0.3f );
-	public static final Item GRAPE_SODA_SLUSHEE = basicCupDrink(2, 0.3f );
 
 	// Fermented Items
 	public static final BottledItem MALT_VINEGAR = basicBottleDrink(0, 0f);
@@ -770,6 +778,14 @@ public class Baking implements ModInitializer {
 		registerItem("cactus_chiller", CACTUS_CHILLER);
 		registerItem("grape_soda", GRAPE_SODA);
 
+		// Slushee
+		registerItem("root_beer_slushee", ROOT_BEER_SLUSHEE);
+		registerItem("cola_slushee", COLA_SLUSHEE);
+		registerItem("fruity_soda_slushee", FRUITY_SODA_SLUSHEE);
+		registerItem("mountain_fountain_slushee", MOUNTAIN_FOUNTAIN_SLUSHEE);
+		registerItem("cactus_chiller_slushee", CACTUS_CHILLER_SLUSHEE);
+		registerItem("grape_soda_slushee", GRAPE_SODA_SLUSHEE);
+
 		// Plates & Meals
 		registerItem("unfired_plate", UNFIRED_PLATE);
 		registerItem("plate", PLATE);
@@ -863,14 +879,6 @@ public class Baking implements ModInitializer {
 		registerItem("caramel_apple", CARAMEL_APPLE);
 		registerBlock("steak_and_ale_pudding", STEAK_AND_ALE_PUDDING, ItemGroup.FOOD);
 		registerItem("golden_bagel", GOLDEN_BAGEL);
-
-		// Slushee
-		registerItem("root_beer_slushee", ROOT_BEER_SLUSHEE);
-		registerItem("cola_slushee", COLA_SLUSHEE);
-		registerItem("fruity_soda_slushee", FRUITY_SODA_SLUSHEE);
-		registerItem("mountain_fountain_slushee", MOUNTAIN_FOUNTAIN_SLUSHEE);
-		registerItem("cactus_chiller_slushee", CACTUS_CHILLER_SLUSHEE);
-		registerItem("grape_soda_slushee", GRAPE_SODA_SLUSHEE);
 
 		// Fermented Items
 		registerItem("malt_vinegar", MALT_VINEGAR);

@@ -18,22 +18,35 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class BasicDrink extends PotionItem implements BrewableItem {
+public class BasicDrink extends PotionItem {
 
     private final Item type;
-    private final boolean brewable;
+    private final SoundEvent drinkSound;
+
+    public BasicDrink(Settings settings, FoodComponent foodComponent, Item type, SoundEvent drinkSound) {
+        super(settings.food(foodComponent));
+        this.type = type;
+        this.drinkSound = drinkSound;
+    }
 
     public BasicDrink(Settings settings, FoodComponent foodComponent, Item type) {
         super(settings.food(foodComponent));
-        this.brewable = !foodComponent.getStatusEffects().isEmpty();
         this.type = type;
+        this.drinkSound = SoundEvents.ENTITY_GENERIC_DRINK;
     }
 
     public BasicDrink(Settings settings, Item type) {
         super(settings);
-        this.brewable = false;
         this.type = type;
+        this.drinkSound = SoundEvents.ENTITY_GENERIC_DRINK;
     }
+
+    public BasicDrink(Settings settings, Item type, SoundEvent sound) {
+        super(settings);
+        this.type = type;
+        this.drinkSound = sound;
+    }
+
 
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (user instanceof ServerPlayerEntity serverPlayerEntity) {
@@ -84,11 +97,10 @@ public class BasicDrink extends PotionItem implements BrewableItem {
     }
 
     public SoundEvent getEatSound() {
-        return SoundEvents.ENTITY_GENERIC_DRINK;
+        return drinkSound;
     }
 
-    @Override
-    public boolean isBrewable() {
-        return brewable;
+    public SoundEvent getDrinkSound() {
+        return drinkSound;
     }
 }

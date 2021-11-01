@@ -22,23 +22,16 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Objects;
 
-public class BottledItem extends PotionItem implements BrewableItem {
+public class BottledItem extends PotionItem {
 
     private final SoundEvent soundEffect;
-    private final boolean brewable;
 
     public BottledItem(Settings settings) {
         this(settings, SoundEvents.ENTITY_GENERIC_DRINK);
     }
-
     public BottledItem(Settings settings, SoundEvent drinkSound) {
-        this(settings, drinkSound, false);
-    }
-
-    public BottledItem(Settings settings, SoundEvent drinkSound, boolean brewable) {
         super(settings.recipeRemainder(Items.GLASS_BOTTLE));
         soundEffect = drinkSound;
-        this.brewable = brewable;
     }
 
     @Override
@@ -99,10 +92,6 @@ public class BottledItem extends PotionItem implements BrewableItem {
     @Override
     public SoundEvent getDrinkSound() {
         return soundEffect;
-    }
-
-    public boolean isBrewable() {
-        return this.brewable;
     }
 
     @Override
