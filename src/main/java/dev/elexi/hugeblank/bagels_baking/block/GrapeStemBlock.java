@@ -37,9 +37,6 @@ public class GrapeStemBlock extends GrapeVineComponentBlock {
         } else if (above.getBlock() instanceof GrapeVineBlock && random.nextFloat() < 0.5f) { // Become stem if viable (conversion)
             BlockState stem = this.getDefaultState();
             if (above.get(ADJACENT) == AdjacentPosition.BOTH) {
-                if (above.get(GrapeVineBlock.AGE) == 2) {
-                    GrapeVineBlock.dropItems(world, pos.up());
-                }
                 ArrayList<Direction> aboveDirs = getDirectionsFromState(above);
                 for (Direction facing : aboveDirs) {
                     stem = stem.with(FACING_PROPERTIES.get(facing), true);

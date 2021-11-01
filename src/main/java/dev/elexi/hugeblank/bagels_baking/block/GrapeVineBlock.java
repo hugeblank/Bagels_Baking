@@ -79,7 +79,7 @@ public class GrapeVineBlock extends GrapeVineComponentBlock {
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         super.randomTick(state, world, pos, random);
         if (state.get(DISTANCE) == MAX_DISTANCE) {
-            if (state.get(AGE) == 2) dropItems(world, pos);
+            dropStacks(state, world, pos);
             world.removeBlock(pos, false);
             return;
         }
@@ -210,10 +210,6 @@ public class GrapeVineBlock extends GrapeVineComponentBlock {
         } else {
             return state.getBlock() instanceof GrapeVineBlock ? state.get(DISTANCE) : MAX_DISTANCE;
         }
-    }
-
-    public static void dropItems(World world, BlockPos pos) {
-        dropStack(world, pos, new ItemStack(Baking.GRAPES, 1 + world.random.nextInt(2)));
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
