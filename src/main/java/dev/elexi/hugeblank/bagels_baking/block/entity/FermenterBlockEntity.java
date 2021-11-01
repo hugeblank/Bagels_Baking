@@ -78,13 +78,15 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory{
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        this.stack = ItemStack.fromNbt(nbt);
+        this.stack = nbt.contains("Item") ? ItemStack.fromNbt((NbtCompound) nbt.get("Item")) : ItemStack.EMPTY;
     }
 
     @Override
     public NbtCompound writeNbt(NbtCompound nbt) {
         nbt = super.writeNbt(nbt);
-        this.stack.writeNbt(nbt);
+        NbtCompound snbt = new NbtCompound();
+        this.stack.writeNbt(snbt);
+        nbt.put("Item", snbt);
         return nbt;
     }
 
