@@ -1,0 +1,99 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:stews/pork_stew"
+		]
+	},
+	"criteria": {
+		"has_red_mushroom": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:red_mushroom"
+						]
+					}
+				]
+			}
+		},
+		"has_cooked_porkchop": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:cooked_porkchop"
+						]
+					}
+				]
+			}
+		},
+		"has_brown_mushroom": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:brown_mushroom"
+						]
+					}
+				]
+			}
+		},
+		"has_baked_potato": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:baked_potato"
+						]
+					}
+				]
+			}
+		},
+		"has_bowl": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:bowl"
+						]
+					}
+				]
+			}
+		},
+		"has_carrot": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:carrot"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:stews/pork_stew"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_baked_potato",
+			"has_cooked_porkchop",
+			"has_bowl",
+			"has_carrot",
+			"has_brown_mushroom",
+			"has_red_mushroom"
+		]
+	]
+}

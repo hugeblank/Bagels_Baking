@@ -1,0 +1,28 @@
+{
+    "variants": {
+        "layers=1": {
+            "model": "bagels_baking:block/cheese_slice_height2"
+        },
+        "layers=2": {
+            "model": "bagels_baking:block/cheese_slice_height4"
+        },
+        "layers=3": {
+            "model": "bagels_baking:block/cheese_slice_height6"
+        },
+        "layers=4": {
+            "model": "bagels_baking:block/cheese_slice_height8"
+        },
+        "layers=5": {
+            "model": "bagels_baking:block/cheese_slice_height10"
+        },
+        "layers=6": {
+            "model": "bagels_baking:block/cheese_slice_height12"
+        },
+        "layers=7": {
+            "model": "bagels_baking:block/cheese_slice_height14"
+        },
+        "layers=8": {
+            "model": "bagels_baking:block/cheese_slice_block"
+        }
+    }
+}

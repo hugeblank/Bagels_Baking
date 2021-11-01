@@ -1,0 +1,36 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:furnace/grilled_cheese_sandwich",
+			"bagels_baking:campfire/grilled_cheese_sandwich",
+			"bagels_baking:smoker/grilled_cheese_sandwich"
+		]
+	},
+	"criteria": {
+		"has_cheese_sandwich": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cheese_sandwich"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:furnace/grilled_cheese_sandwich"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_cheese_sandwich"
+		]
+	]
+}

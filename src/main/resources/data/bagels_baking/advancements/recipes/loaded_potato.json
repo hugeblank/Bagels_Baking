@@ -1,0 +1,60 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/loaded_potato"
+		]
+	},
+	"criteria": {
+		"has_baked_potato": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:baked_potato"
+						]
+					}
+				]
+			}
+		},
+		"has_cheese_slice": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cheese_slice"
+						]
+					}
+				]
+			}
+		},
+		"has_smoked_bacon": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:smoked_bacon"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/loaded_potato"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_baked_potato",
+			"has_smoked_bacon",
+			"has_cheese_slice"
+		]
+	]
+}

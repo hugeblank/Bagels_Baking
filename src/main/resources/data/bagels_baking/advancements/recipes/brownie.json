@@ -1,0 +1,73 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/brownie"
+		]
+	},
+	"criteria": {
+		"has_sugar": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:sugar"
+						]
+					}
+				]
+			}
+		},
+		"has_egg": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:egg"
+						]
+					}
+				]
+			}
+		},
+		"has_cocoa_powder": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cocoa_powder"
+						]
+					}
+				]
+			}
+		},
+		"has_flour": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:flour"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/brownie"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_flour",
+			"has_cocoa_powder",
+			"has_egg",
+			"has_sugar"
+		]
+	]
+}

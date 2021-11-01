@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smoking",
+    "ingredient": {
+        "item": "bagels_baking:corn_seeds"
+    },
+    "result": "bagels_baking:popcorn",
+    "experience": 0.2,
+    "cookingtime": 100
+}

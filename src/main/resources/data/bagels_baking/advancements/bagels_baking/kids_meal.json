@@ -16,46 +16,27 @@
     "hidden": false
   },
   "criteria": {
-    "cooked_chicken_nuggets": {
+    "items": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "bagels_baking:cooked_chicken_nuggets"
+              "bagels_baking:cooked_chicken_nuggets",
+              "bagels_baking:fried_chicken_nuggets"
             ]
-          }
-        ]
-      }
-    },
-    "cooked_french_fries": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "bagels_baking:cooked_french_fries"
-            ]
-          }
-        ]
-      }
-    },
-    "chocolate_milk": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
+          },
           {
             "items": [
               "bagels_baking:chocolate_milk_cup"
             ]
-          }
-        ]
-      }
-    },
-    "brownie": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
+          },
+          {
+            "items": [
+              "bagels_baking:cooked_french_fries",
+              "bagels_baking:loaded_fries"
+            ]
+          },
           {
             "items": [
               "bagels_baking:brownie"
@@ -64,19 +45,5 @@
         ]
       }
     }
-  },
-  "requirements": [
-    [
-      "cooked_chicken_nuggets"
-    ],
-    [
-      "cooked_french_fries"
-    ],
-    [
-      "chocolate_milk"
-    ],
-    [
-      "brownie"
-    ]
-  ]
+  }
 }

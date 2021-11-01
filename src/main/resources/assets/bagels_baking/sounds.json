@@ -1,0 +1,34 @@
+{
+  "music_coll": {
+    "subtitle": "subtitles.bagels_baking.music_coll_play",
+    "sounds": [
+      "bagels_baking:coll"
+    ]
+  },
+  "ice_box_open": {
+    "subtitle": "subtitles.bagels_baking.ice_box_open",
+    "sounds": [
+      "bagels_baking:fridge_open1",
+      "bagels_baking:fridge_open2"
+    ]
+  },
+  "ice_box_close": {
+    "subtitle": "subtitles.bagels_baking.ice_box_close",
+    "sounds": [
+      "bagels_baking:fridge_close1",
+      "bagels_baking:fridge_close2",
+      "bagels_baking:fridge_close3",
+      "bagels_baking:fridge_close4"
+    ]
+  },
+  "golden_bagel_advancement": {
+    "subtitle": "subtitle.bagels_baking.golden_bagel_advancement",
+    "sounds": [
+      "bagels_baking:joshemve_chime1",
+      "bagels_baking:joshemve_chime2",
+      "bagels_baking:joshemve_chime3",
+      "bagels_baking:joshemve_chime4",
+      "bagels_baking:joshemve_chime5"
+    ]
+  }
+}

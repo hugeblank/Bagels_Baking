@@ -1,12 +1,10 @@
 package dev.elexi.hugeblank.bagels_baking.item;
 
-import dev.elexi.hugeblank.bagels_baking.Baking;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -14,85 +12,44 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.UseAction;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class BasicDrink extends PotionItem implements BrewableItem {
+public class BasicDrink extends PotionItem {
 
+    private final Item type;
+    private final SoundEvent drinkSound;
 
-    private static Item.Settings genSettings(Item type) {
-        return new Item.Settings().group(ItemGroup.FOOD)
-                .maxCount(type.equals(Items.BUCKET) ? 1 : 16)
-                .recipeRemainder(type.equals(Items.BUCKET) ? Items.BUCKET : null);
+    public BasicDrink(Settings settings, FoodComponent foodComponent, Item type, SoundEvent drinkSound) {
+        super(settings.food(foodComponent));
+        this.type = type;
+        this.drinkSound = drinkSound;
     }
 
-    private boolean isBucket;
-    private final boolean brewable;
-
-
-    private void bucketDrink(Item type) {
-        this.isBucket = type.equals(Items.BUCKET);
+    public BasicDrink(Settings settings, FoodComponent foodComponent, Item type) {
+        super(settings.food(foodComponent));
+        this.type = type;
+        this.drinkSound = SoundEvents.ENTITY_GENERIC_DRINK;
     }
 
-    public BasicDrink(Item type) {
-        super(genSettings(type));
-        bucketDrink(type);
-        this.brewable = false;
+    public BasicDrink(Settings settings, Item type) {
+        super(settings);
+        this.type = type;
+        this.drinkSound = SoundEvents.ENTITY_GENERIC_DRINK;
     }
 
-    public BasicDrink(Item type, boolean brewable) {
-        super(genSettings(type));
-        bucketDrink(type);
-        this.brewable = brewable;
+    public BasicDrink(Settings settings, Item type, SoundEvent sound) {
+        super(settings);
+        this.type = type;
+        this.drinkSound = sound;
     }
 
-    public BasicDrink(Item type, int hunger, float saturation) {
-        super(genSettings(type)
-                .food(new FoodComponent.Builder()
-                        .hunger(hunger)
-                        .saturationModifier(saturation)
-                        .build()
-                )
-        );
-        bucketDrink(type);
-        this.brewable = false;
-    }
-
-    public BasicDrink(Item type, int hunger, float saturation, boolean brewable) {
-        super(genSettings(type)
-                .food(new FoodComponent.Builder()
-                        .hunger(hunger)
-                        .saturationModifier(saturation)
-                        .build()
-                )
-        );
-        bucketDrink(type);
-        this.brewable = brewable;
-    }
-
-    // Coffee-Like drinks
-    public BasicDrink(int hunger, float saturation, StatusEffectInstance effect) {
-        super(genSettings(Baking.CUP)
-                .food(new FoodComponent.Builder()
-                        .hunger(hunger)
-                        .saturationModifier(saturation)
-                        .statusEffect(effect, 1.0f)
-                        .build()
-                )
-        );
-        bucketDrink(Baking.CUP);
-        this.brewable = true;
-    }
 
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        if (user instanceof ServerPlayerEntity) {
-            ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)user;
+        if (user instanceof ServerPlayerEntity serverPlayerEntity) {
             Criteria.CONSUME_ITEM.trigger(serverPlayerEntity, stack);
             serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
         }
@@ -103,39 +60,20 @@ public class BasicDrink extends PotionItem implements BrewableItem {
             stack.decrement(1);
         }
 
-        if (stack.isEmpty()) {
-            return new ItemStack(isBucket ? Items.BUCKET : Baking.CUP);
-        } else {
-            if (user instanceof PlayerEntity && !((PlayerEntity)user).getAbilities().creativeMode) {
-                ItemStack itemStack = new ItemStack(isBucket ? Items.BUCKET : Baking.CUP);
-                PlayerEntity playerEntity = (PlayerEntity)user;
-                if (!playerEntity.getInventory().insertStack(itemStack)) {
-                    playerEntity.dropItem(itemStack, false);
-                }
+        ItemStack empty = new ItemStack(type);
+        if (user instanceof PlayerEntity playerEntity && !((PlayerEntity)user).getAbilities().creativeMode) {
+            if (!playerEntity.getInventory().insertStack(empty)) {
+                playerEntity.dropItem(empty, false);
             }
-            return stack;
         }
+        return stack;
     }
 
     public int getMaxUseTime(ItemStack stack) {
-        return isBucket ? 32 : 16;
+        return type instanceof CupItem ? 16 : super.getMaxUseTime(stack);
     }
 
-    public UseAction getUseAction(ItemStack stack) {
-        return UseAction.DRINK;
-    }
-
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        return ItemUsage.consumeHeldItem(world, user, hand);
-    }
-
-    @Override
-    public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
-        if (this.isIn(group)) {
-            stacks.add(new ItemStack(this));
-        }
-    }
-
+    // All of the below are for overwriting fancy potion stuffs.
     @Override
     @Environment(EnvType.CLIENT)
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
@@ -151,15 +89,18 @@ public class BasicDrink extends PotionItem implements BrewableItem {
         return new ItemStack(this);
     }
 
-    public boolean isBucket() {
-        return isBucket;
-    }
-
-    public boolean isBrewable() {
-        return !isBucket && this.brewable;
+    @Override
+    public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+        if (this.isIn(group)) {
+            stacks.add(new ItemStack(this));
+        }
     }
 
     public SoundEvent getEatSound() {
-        return SoundEvents.ENTITY_GENERIC_DRINK;
+        return drinkSound;
+    }
+
+    public SoundEvent getDrinkSound() {
+        return drinkSound;
     }
 }

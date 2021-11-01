@@ -1,0 +1,60 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/dough"
+		]
+	},
+	"criteria": {
+		"has_water_cup": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:water_cup"
+						]
+					}
+				]
+			}
+		},
+		"has_salt": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:salt"
+						]
+					}
+				]
+			}
+		},
+		"has_flour": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:flour"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/dough"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_flour",
+			"has_salt",
+			"has_water_cup"
+		]
+	]
+}

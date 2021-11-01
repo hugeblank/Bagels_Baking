@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "bagels_baking:cheese_block"
+    },
+    "result": "bagels_baking:cheese_slice",
+    "count": 8
+}

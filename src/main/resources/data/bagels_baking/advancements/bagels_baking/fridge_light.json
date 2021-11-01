@@ -1,0 +1,32 @@
+{
+  "parent": "bagels_baking:bagels_baking/root",
+  "display": {
+    "icon": {
+      "item": "bagels_baking:ice_box"
+    },
+    "title": {
+      "translate": "advancements.bagels_baking.fridge_light.title"
+    },
+    "description": {
+      "translate": "advancements.bagels_baking.fridge_light.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "ice_box": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "location": {
+          "block": {
+            "blocks": [
+              "bagels_baking:ice_box"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

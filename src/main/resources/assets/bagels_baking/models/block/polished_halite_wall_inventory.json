@@ -1,6 +1,6 @@
 {
-    "parent": "minecraft:block/wall_inventory",
-    "textures": {
-      "wall": "bagels_baking:block/polished_halite"
-    }
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "bagels_baking:block/polished_halite"
   }
+}

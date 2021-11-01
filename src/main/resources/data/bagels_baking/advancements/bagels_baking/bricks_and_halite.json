@@ -16,37 +16,22 @@
     "hidden": true
   },
   "criteria": {
-    "bricks": {
+    "items": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-							"minecraft:bricks"
+              "minecraft:bricks"
             ]
-          }
-        ]
-      }
-    },
-    "halite": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
+          },
           {
             "items": [
-							"bagels_baking:halite"
+              "bagels_baking:halite"
             ]
           }
         ]
       }
     }
-  },
-  "requirements": [
-    [
-      "bricks"
-    ],
-    [
-      "halite"
-    ]
-  ]
+  }
 }

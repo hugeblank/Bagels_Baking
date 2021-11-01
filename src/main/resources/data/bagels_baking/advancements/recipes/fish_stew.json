@@ -1,0 +1,112 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:stews/fish_stew"
+		]
+	},
+	"criteria": {
+		"has_red_mushroom": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:red_mushroom"
+						]
+					}
+				]
+			}
+		},
+		"has_cooked_cod": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:cooked_cod"
+						]
+					}
+				]
+			}
+		},
+		"has_brown_mushroom": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:brown_mushroom"
+						]
+					}
+				]
+			}
+		},
+		"has_baked_potato": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:baked_potato"
+						]
+					}
+				]
+			}
+		},
+		"has_cooked_salmon": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:cooked_salmon"
+						]
+					}
+				]
+			}
+		},
+		"has_bowl": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:bowl"
+						]
+					}
+				]
+			}
+		},
+		"has_carrot": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:carrot"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:stews/fish_stew"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_baked_potato",
+			"has_cooked_salmon",
+			"has_cooked_cod",
+			"has_bowl",
+			"has_carrot",
+			"has_brown_mushroom",
+			"has_red_mushroom"
+		]
+	]
+}

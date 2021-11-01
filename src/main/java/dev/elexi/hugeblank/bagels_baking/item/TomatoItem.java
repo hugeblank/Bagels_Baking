@@ -28,8 +28,10 @@ public class TomatoItem extends BlockItem {
             world.playSound(null, user.getBlockPos(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
             if (!world.isClient && user instanceof ServerPlayerEntity) {
 
-                TomatoEntity tomato = new TomatoEntity(world, user);
+                TomatoEntity tomato = new TomatoEntity(world);
+                tomato.setOwner(user);
                 tomato.setItem(itemStack);
+                tomato.setPos(user.getX(), user.getEyeY(), user.getZ());
                 tomato.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
                 world.spawnEntity(tomato);
             }

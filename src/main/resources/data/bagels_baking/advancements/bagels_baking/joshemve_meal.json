@@ -1,0 +1,33 @@
+{
+    "parent": "bagels_baking:bagels_baking/god_meal",
+    "display": {
+        "icon": {
+            "item": "minecraft:player_head",
+            "nbt": "{SkullOwner:Joshemve}"
+        },
+        "title": {
+            "translate": "advancements.bagels_baking.joshemve_meal.title"
+        },
+        "description": {
+            "translate": "advancements.bagels_baking.joshemve_meal.description"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "criteria": {
+        "items": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "bagels_baking:golden_bagel"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

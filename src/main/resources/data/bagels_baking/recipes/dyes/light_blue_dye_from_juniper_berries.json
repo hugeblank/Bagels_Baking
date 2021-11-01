@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:juniper_berries"
+        }
+    ],
+    "result": {
+        "item": "minecraft:light_blue_dye",
+        "count": 1
+    }
+}

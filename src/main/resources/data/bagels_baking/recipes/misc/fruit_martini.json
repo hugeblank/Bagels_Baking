@@ -1,0 +1,26 @@
+{
+    "type": "bagels_baking:crafting_shapeless_remainderless",
+    "ingredients": [
+        [
+            {
+                "item": "bagels_baking:vodka"
+            },
+            {
+                "item": "bagels_baking:gin"
+            }
+        ],
+        {
+            "item": "minecraft:apple"
+        },
+        {
+            "item": "bagels_baking:cherries"
+        },
+        {
+            "item": "bagels_baking:lemon"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:fruit_martini",
+        "count": 1
+    }
+}

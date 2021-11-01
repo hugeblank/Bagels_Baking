@@ -1,0 +1,47 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:tacos/rabbit_taco"
+		]
+	},
+	"criteria": {
+		"has_wheat": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:wheat"
+						]
+					}
+				]
+			}
+		},
+		"has_cooked_rabbit": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:cooked_rabbit"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:tacos/rabbit_taco"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_wheat",
+			"has_cooked_rabbit"
+		]
+	]
+}

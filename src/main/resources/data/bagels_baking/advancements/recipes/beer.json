@@ -1,0 +1,34 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:fermenting/beer"
+		]
+	},
+	"criteria": {
+		"has_wheat": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:wheat"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:fermenting/beer"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_wheat"
+		]
+	]
+}

@@ -1,0 +1,34 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:fermenting/malt_vinegar"
+		]
+	},
+	"criteria": {
+		"has_beer": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:beer"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:fermenting/malt_vinegar"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_beer"
+		]
+	]
+}

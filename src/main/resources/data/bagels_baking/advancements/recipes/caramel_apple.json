@@ -1,0 +1,60 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/caramel_apple"
+		]
+	},
+	"criteria": {
+		"has_stick": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:stick"
+						]
+					}
+				]
+			}
+		},
+		"has_apple": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:apple"
+						]
+					}
+				]
+			}
+		},
+		"has_caramel": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:caramel"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/caramel_apple"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_caramel",
+			"has_apple",
+			"has_stick"
+		]
+	]
+}

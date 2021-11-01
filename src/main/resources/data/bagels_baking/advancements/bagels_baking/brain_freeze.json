@@ -1,0 +1,269 @@
+{
+    "parent": "bagels_baking:bagels_baking/arctic_tsunami",
+    "display": {
+        "icon": {
+            "item": "bagels_baking:plain_ice_cream"
+        },
+        "title": {
+            "translate": "advancements.bagels_baking.brain_freeze.title"
+        },
+        "description": {
+            "translate": "advancements.bagels_baking.brain_freeze.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "plain_milkshake": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:plain_milkshake"
+                    ]
+                }
+            }
+        },
+        "plain_ice_cream": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:plain_ice_cream"
+                    ]
+                }
+            }
+        },
+        "chocolate_milkshake": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:chocolate_milkshake"
+                    ]
+                }
+            }
+        },
+        "chocolate_ice_cream": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:chocolate_ice_cream"
+                    ]
+                }
+            }
+        },
+        "sweet_berry_swirl_milkshake": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:sweet_berry_swirl_milkshake"
+                    ]
+                }
+            }
+        },
+        "sweet_berry_swirl_ice_cream": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:sweet_berry_swirl_ice_cream"
+                    ]
+                }
+            }
+        },
+        "glow_berry_swirl_milkshake": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:glow_berry_swirl_milkshake"
+                    ]
+                }
+            }
+        },
+        "glow_berry_swirl_ice_cream": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:glow_berry_swirl_ice_cream"
+                    ]
+                }
+            }
+        },
+        "grape_swirl_milkshake": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:grape_swirl_milkshake"
+                    ]
+                }
+            }
+        },
+        "grape_swirl_ice_cream": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:grape_swirl_ice_cream"
+                    ]
+                }
+            }
+        },
+        "apple_cinnamon_milkshake": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:apple_cinnamon_milkshake"
+                    ]
+                }
+            }
+        },
+        "apple_cinnamon_ice_cream": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:apple_cinnamon_ice_cream"
+                    ]
+                }
+            }
+        },
+        "cola_slushee": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:cola_slushee"
+                    ]
+                }
+            }
+        },
+        "root_beer_slushee": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:root_beer_slushee"
+                    ]
+                }
+            }
+        },
+        "fruity_soda_slushee": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:fruity_soda_slushee"
+                    ]
+                }
+            }
+        },
+        "mountain_fountain_slushee": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:mountain_fountain_slushee"
+                    ]
+                }
+            }
+        },
+        "cactus_chiller_slushee": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:cactus_chiller_slushee"
+                    ]
+                }
+            }
+        },
+        "grape_soda_slushee": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:grape_soda_slushee"
+                    ]
+                }
+            }
+        },
+        "frozen_lemonade": {
+            "trigger": "minecraft:consume_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "bagels_baking:frozen_lemonade"
+                    ]
+                }
+            }
+        }
+    },
+    "requirements": [
+        [
+            "plain_ice_cream"
+        ],
+        [
+            "plain_milkshake"
+        ],
+        [
+            "chocolate_ice_cream"
+        ],
+        [
+            "chocolate_milkshake"
+        ],
+        [
+            "sweet_berry_swirl_ice_cream"
+        ],
+        [
+            "sweet_berry_swirl_milkshake"
+        ],
+        [
+            "glow_berry_swirl_ice_cream"
+        ],
+        [
+            "glow_berry_swirl_milkshake"
+        ],
+        [
+            "grape_swirl_ice_cream"
+        ],
+        [
+            "grape_swirl_milkshake"
+        ],
+        [
+            "apple_cinnamon_ice_cream"
+        ],
+        [
+            "apple_cinnamon_milkshake"
+        ],
+        [
+            "cola_slushee"
+        ],
+        [
+            "root_beer_slushee"
+        ],
+        [
+            "fruity_soda_slushee"
+        ],
+        [
+            "mountain_fountain_slushee"
+        ],
+        [
+            "cactus_chiller_slushee"
+        ],
+        [
+            "grape_soda_slushee"
+        ],
+        [
+            "frozen_lemonade"
+        ]
+    ]
+}

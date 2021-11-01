@@ -1,0 +1,47 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:trellises/crimson_trellis"
+		]
+	},
+	"criteria": {
+		"has_string": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:string"
+						]
+					}
+				]
+			}
+		},
+		"has_crimson_stem": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:crimson_stem"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:trellises/crimson_trellis"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_string",
+			"has_crimson_stem"
+		]
+	]
+}

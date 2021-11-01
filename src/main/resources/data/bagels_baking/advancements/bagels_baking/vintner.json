@@ -1,0 +1,37 @@
+{
+  "parent": "bagels_baking:bagels_baking/root",
+  "display": {
+    "icon": {
+      "item": "bagels_baking:fermenter"
+    },
+    "title": {
+      "translate": "advancements.bagels_baking.vintner.title"
+    },
+    "description": {
+      "translate": "advancements.bagels_baking.vintner.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "items": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bagels_baking:fermenter"
+            ]
+          },
+          {
+            "items": [
+              "bagels_baking:grape_stem"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

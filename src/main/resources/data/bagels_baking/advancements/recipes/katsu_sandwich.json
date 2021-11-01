@@ -1,0 +1,60 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:sandwiches/katsu_sandwich"
+		]
+	},
+	"criteria": {
+		"has_tonkatsu_sauce": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:tonkatsu_sauce"
+						]
+					}
+				]
+			}
+		},
+		"has_bread": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:bread"
+						]
+					}
+				]
+			}
+		},
+		"has_fried_porkchop": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:fried_porkchop"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:sandwiches/katsu_sandwich"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_tonkatsu_sauce",
+			"has_fried_porkchop",
+			"has_bread"
+		]
+	]
+}

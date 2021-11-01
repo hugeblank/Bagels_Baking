@@ -1,13 +1,13 @@
 {
-    "variants": {
-      "type=bottom": {
-        "model": "bagels_baking:block/polished_halite_slab"
-      },
-      "type=double": {
-        "model": "bagels_baking:block/polished_halite"
-      },
-      "type=top": {
-        "model": "bagels_baking:block/polished_halite_slab_top"
-      }
+  "variants": {
+    "type=bottom": {
+      "model": "bagels_baking:block/polished_halite_slab"
+    },
+    "type=double": {
+      "model": "bagels_baking:block/polished_halite"
+    },
+    "type=top": {
+      "model": "bagels_baking:block/polished_halite_slab_top"
     }
   }
+}

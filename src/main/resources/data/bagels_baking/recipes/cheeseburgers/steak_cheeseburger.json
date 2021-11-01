@@ -5,13 +5,12 @@
     "BC",
     " #"
   ],
-
   "key": {
     "#": {
       "item": "minecraft:bread"
     },
     "B": {
-      "item": "bagels_baking:cheese_cup"
+      "item": "bagels_baking:cheese_slice"
     },
     "C": {
       "item": "minecraft:cooked_beef"

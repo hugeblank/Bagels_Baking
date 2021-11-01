@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:cherries"
+        },
+        {
+            "item": "bagels_baking:meringue"
+        },
+        {
+            "item": "minecraft:wheat"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:cherry_meringue_pie",
+        "count": 1
+    }
+}

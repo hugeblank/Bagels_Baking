@@ -1,5 +1,5 @@
 {
-    "parent": "bagels_baking:bagels_baking/root",
+    "parent": "bagels_baking:bagels_baking/soup_kitchen",
     "display": {
         "icon": {
             "item": "bagels_baking:rabbit_pocket"
@@ -10,7 +10,7 @@
         "description": {
             "translate": "advancements.bagels_baking.pocket_man.description"
         },
-        "frame": "task",
+        "frame": "goal",
         "show_toast": true,
         "announce_to_chat": true,
         "hidden": false

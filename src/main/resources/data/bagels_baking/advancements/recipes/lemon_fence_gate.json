@@ -1,0 +1,47 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:wood/lemon_fence_gate"
+		]
+	},
+	"criteria": {
+		"has_stick": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:stick"
+						]
+					}
+				]
+			}
+		},
+		"has_lemon_planks": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:lemon_planks"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:wood/lemon_fence_gate"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_stick",
+			"has_lemon_planks"
+		]
+	]
+}

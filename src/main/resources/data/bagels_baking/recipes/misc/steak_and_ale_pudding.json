@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " W ",
+        "WSW",
+        "MBT"
+    ],
+    "key": {
+        "M": {
+            "item": "minecraft:brown_mushroom"
+        },
+        "B": {
+            "item": "bagels_baking:beer"
+        },
+        "W": {
+            "item": "minecraft:wheat"
+        },
+        "T": {
+            "item": "bagels_baking:tomato"
+        },
+        "S": {
+            "item": "minecraft:cooked_beef"
+        }
+    },
+    "result": {
+        "item": "bagels_baking:steak_and_ale_pudding",
+        "count": 1
+    }
+}

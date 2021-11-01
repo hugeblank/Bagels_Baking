@@ -1,0 +1,34 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:fermenting/gin"
+		]
+	},
+	"criteria": {
+		"has_juniper_berries": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:juniper_berries"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:fermenting/gin"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_juniper_berries"
+		]
+	]
+}

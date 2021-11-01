@@ -1,0 +1,47 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:sandwiches/pork_sandwich"
+		]
+	},
+	"criteria": {
+		"has_bread": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:bread"
+						]
+					}
+				]
+			}
+		},
+		"has_cooked_porkchop": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:cooked_porkchop"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:sandwiches/pork_sandwich"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_bread",
+			"has_cooked_porkchop"
+		]
+	]
+}

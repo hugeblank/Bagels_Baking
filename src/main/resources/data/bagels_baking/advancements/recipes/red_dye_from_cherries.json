@@ -1,0 +1,34 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:dyes/red_dye_from_cherries"
+		]
+	},
+	"criteria": {
+		"has_cherries": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cherries"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:dyes/red_dye_from_cherries"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_cherries"
+		]
+	]
+}

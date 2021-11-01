@@ -1,0 +1,36 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:furnace/cheese",
+			"bagels_baking:campfire/cheese",
+			"bagels_baking:smoker/cheese"
+		]
+	},
+	"criteria": {
+		"has_milk_bucket": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:milk_bucket"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:furnace/cheese"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_milk_bucket"
+		]
+	]
+}

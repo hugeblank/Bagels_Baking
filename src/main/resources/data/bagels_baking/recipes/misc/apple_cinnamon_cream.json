@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:cup"
+        },
+        {
+            "item": "bagels_baking:apple_jam"
+        },
+        {
+            "item": "bagels_baking:cinnamon_powder"
+        },
+        {
+            "item": "bagels_baking:milk_cup"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:apple_cinnamon_cream",
+        "count": 1
+    }
+}

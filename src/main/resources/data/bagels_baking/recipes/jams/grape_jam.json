@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:grapes"
+        },
+        {
+            "item": "minecraft:sugar"
+        },
+        {
+            "item": "minecraft:glass_bottle"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:grape_jam",
+        "count": 1
+    }
+}

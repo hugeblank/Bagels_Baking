@@ -1,0 +1,47 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/tomato_soup"
+		]
+	},
+	"criteria": {
+		"has_bowl": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:bowl"
+						]
+					}
+				]
+			}
+		},
+		"has_tomato": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:tomato"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/tomato_soup"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_bowl",
+			"has_tomato"
+		]
+	]
+}

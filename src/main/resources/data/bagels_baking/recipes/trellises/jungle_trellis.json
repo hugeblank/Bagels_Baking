@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "   ",
+        "###",
+        " L "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:string"
+        },
+        "L": {
+            "item": "minecraft:jungle_log"
+        }
+    },
+    "result": {
+        "item": "bagels_baking:jungle_trellis",
+        "count": 4
+    }
+}

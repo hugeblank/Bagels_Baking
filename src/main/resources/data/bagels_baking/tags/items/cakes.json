@@ -4,6 +4,7 @@
         "bagels_baking:chocolate_cake",
         "bagels_baking:red_velvet_cake",
         "bagels_baking:carrot_cake",
+        "bagels_baking:lemon_cake",
         "minecraft:cake"
     ]
-  }
+}

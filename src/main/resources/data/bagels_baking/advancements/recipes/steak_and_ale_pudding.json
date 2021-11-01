@@ -1,0 +1,86 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/steak_and_ale_pudding"
+		]
+	},
+	"criteria": {
+		"has_beer": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:beer"
+						]
+					}
+				]
+			}
+		},
+		"has_brown_mushroom": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:brown_mushroom"
+						]
+					}
+				]
+			}
+		},
+		"has_wheat": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:wheat"
+						]
+					}
+				]
+			}
+		},
+		"has_cooked_beef": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:cooked_beef"
+						]
+					}
+				]
+			}
+		},
+		"has_tomato": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:tomato"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/steak_and_ale_pudding"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_cooked_beef",
+			"has_beer",
+			"has_brown_mushroom",
+			"has_tomato",
+			"has_wheat"
+		]
+	]
+}

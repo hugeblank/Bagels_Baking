@@ -16,7 +16,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 
-public class CupItem extends Item  {
+public class CupItem extends Item {
 
     public CupItem(Settings settings) {
         super(settings);

@@ -1,6 +1,6 @@
 {
-    "parent": "minecraft:block/cross",
-    "textures": {
-      "cross": "bagels_baking:block/tomato_stage3"
-    }
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "bagels_baking:block/tomato_stage3"
   }
+}

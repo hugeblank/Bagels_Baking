@@ -1,0 +1,100 @@
+{
+  "parent": "bagels_baking:bagels_baking/tsunami",
+  "display": {
+    "icon": {
+      "item": "bagels_baking:cola_slushee"
+    },
+    "title": {
+      "translate": "advancements.bagels_baking.arctic_tsunami.title"
+    },
+    "description": {
+      "translate": "advancements.bagels_baking.arctic_tsunami.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "cola_slushee": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:cola_slushee"
+          ]
+        }
+      }
+    },
+    "root_beer_slushee": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:root_beer_slushee"
+          ]
+        }
+      }
+    },
+    "fruity_soda_slushee": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:fruity_soda_slushee"
+          ]
+        }
+      }
+    },
+    "mountain_fountain_slushee": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:mountain_fountain_slushee"
+          ]
+        }
+      }
+    },
+    "cactus_chiller_slushee": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:cactus_chiller_slushee"
+          ]
+        }
+      }
+    },
+    "grape_soda_slushee": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:grape_soda_slushee"
+          ]
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cola_slushee"
+    ],
+    [
+      "root_beer_slushee"
+    ],
+    [
+      "fruity_soda_slushee"
+    ],
+    [
+      "mountain_fountain_slushee"
+    ],
+    [
+      "cactus_chiller_slushee"
+    ],
+    [
+      "grape_soda_slushee"
+    ]
+  ]
+}

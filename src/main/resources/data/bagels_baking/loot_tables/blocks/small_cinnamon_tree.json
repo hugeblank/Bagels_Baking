@@ -1,0 +1,381 @@
+{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "rolls": 1.0,
+            "bonus_rolls": 0.0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "conditions": [
+                        {
+                            "condition": "minecraft:match_tool",
+                            "predicate": {
+                                "items": [
+                                    "minecraft:shears"
+                                ]
+                            }
+                        }
+                    ],
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": 1.0,
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:small_cinnamon_tree"
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:block_state_property",
+                    "block": "bagels_baking:small_cinnamon_tree",
+                    "properties": {
+                        "half": "lower"
+                    }
+                },
+                {
+                    "condition": "minecraft:location_check",
+                    "predicate": {
+                        "block": {
+                            "blocks": [
+                                "bagels_baking:small_cinnamon_tree"
+                            ],
+                            "state": {
+                                "half": "upper"
+                            }
+                        }
+                    },
+                    "offsetY": 1
+                }
+            ]
+        },
+        {
+            "rolls": 0.65,
+            "bonus_rolls": 0.0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "conditions": [
+                        {
+                            "condition": "minecraft:survives_explosion"
+                        },
+                        {
+                            "condition": "minecraft:random_chance",
+                            "chance": 1.0
+                        }
+                    ],
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "min": 1.0,
+                                "max": 2.0,
+                                "type": "minecraft:uniform"
+                            }
+                        },
+                        {
+                            "function": "minecraft:apply_bonus",
+                            "enchantment": "minecraft:fortune",
+                            "formula": "minecraft:uniform_bonus_count",
+                            "parameters": {
+                                "bonusMultiplier": 1
+                            }
+                        }
+                    ],
+                    "name": "bagels_baking:cinnamon_sapling"
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:inverted",
+                    "term": {
+                        "condition": "minecraft:match_tool",
+                        "predicate": {
+                            "items": [
+                                "minecraft:shears"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "condition": "minecraft:block_state_property",
+                    "block": "bagels_baking:small_cinnamon_tree",
+                    "properties": {
+                        "half": "lower"
+                    }
+                },
+                {
+                    "condition": "minecraft:location_check",
+                    "predicate": {
+                        "block": {
+                            "blocks": [
+                                "bagels_baking:small_cinnamon_tree"
+                            ],
+                            "state": {
+                                "half": "upper"
+                            }
+                        }
+                    },
+                    "offsetY": 1
+                }
+            ]
+        },
+        {
+            "rolls": 0.5,
+            "bonus_rolls": 0.0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "conditions": [
+                        {
+                            "condition": "minecraft:survives_explosion"
+                        }
+                    ],
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "min": 0.0,
+                                "max": 2.0,
+                                "type": "minecraft:uniform"
+                            }
+                        },
+                        {
+                            "function": "minecraft:apply_bonus",
+                            "enchantment": "minecraft:fortune",
+                            "formula": "minecraft:uniform_bonus_count",
+                            "parameters": {
+                                "bonusMultiplier": 1
+                            }
+                        }
+                    ],
+                    "name": "bagels_baking:cinnamon_bark"
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:inverted",
+                    "term": {
+                        "condition": "minecraft:match_tool",
+                        "predicate": {
+                            "items": [
+                                "minecraft:shears"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "condition": "minecraft:block_state_property",
+                    "block": "bagels_baking:small_cinnamon_tree",
+                    "properties": {
+                        "half": "lower"
+                    }
+                },
+                {
+                    "condition": "minecraft:location_check",
+                    "predicate": {
+                        "block": {
+                            "blocks": [
+                                "bagels_baking:small_cinnamon_tree"
+                            ],
+                            "state": {
+                                "half": "upper"
+                            }
+                        }
+                    },
+                    "offsetY": 1
+                }
+            ]
+        },
+        {
+            "rolls": 1.0,
+            "bonus_rolls": 0.0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "conditions": [
+                        {
+                            "condition": "minecraft:match_tool",
+                            "predicate": {
+                                "items": [
+                                    "minecraft:shears"
+                                ]
+                            }
+                        }
+                    ],
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": 1.0,
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:small_cinnamon_tree"
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:block_state_property",
+                    "block": "bagels_baking:small_cinnamon_tree",
+                    "properties": {
+                        "half": "upper"
+                    }
+                },
+                {
+                    "condition": "minecraft:location_check",
+                    "predicate": {
+                        "block": {
+                            "blocks": [
+                                "bagels_baking:small_cinnamon_tree"
+                            ],
+                            "state": {
+                                "half": "lower"
+                            }
+                        }
+                    },
+                    "offsetY": -1
+                }
+            ]
+        },
+        {
+            "rolls": 0.65,
+            "bonus_rolls": 0.0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "conditions": [
+                        {
+                            "condition": "minecraft:survives_explosion"
+                        },
+                        {
+                            "condition": "minecraft:random_chance",
+                            "chance": 1.0
+                        }
+                    ],
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "min": 1.0,
+                                "max": 2.0,
+                                "type": "minecraft:uniform"
+                            }
+                        },
+                        {
+                            "function": "minecraft:apply_bonus",
+                            "enchantment": "minecraft:fortune",
+                            "formula": "minecraft:uniform_bonus_count",
+                            "parameters": {
+                                "bonusMultiplier": 1
+                            }
+                        }
+                    ],
+                    "name": "bagels_baking:cinnamon_sapling"
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:inverted",
+                    "term": {
+                        "condition": "minecraft:match_tool",
+                        "predicate": {
+                            "items": [
+                                "minecraft:shears"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "condition": "minecraft:block_state_property",
+                    "block": "bagels_baking:small_cinnamon_tree",
+                    "properties": {
+                        "half": "upper"
+                    }
+                },
+                {
+                    "condition": "minecraft:location_check",
+                    "predicate": {
+                        "block": {
+                            "blocks": [
+                                "bagels_baking:small_cinnamon_tree"
+                            ],
+                            "state": {
+                                "half": "lower"
+                            }
+                        }
+                    },
+                    "offsetY": -1
+                }
+            ]
+        },
+        {
+            "rolls": 0.5,
+            "bonus_rolls": 0.0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "conditions": [
+                        {
+                            "condition": "minecraft:survives_explosion"
+                        }
+                    ],
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "min": 0.0,
+                                "max": 2.0,
+                                "type": "minecraft:uniform"
+                            }
+                        },
+                        {
+                            "function": "minecraft:apply_bonus",
+                            "enchantment": "minecraft:fortune",
+                            "formula": "minecraft:uniform_bonus_count",
+                            "parameters": {
+                                "bonusMultiplier": 1
+                            }
+                        }
+                    ],
+                    "name": "bagels_baking:cinnamon_bark"
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:inverted",
+                    "term": {
+                        "condition": "minecraft:match_tool",
+                        "predicate": {
+                            "items": [
+                                "minecraft:shears"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "condition": "minecraft:block_state_property",
+                    "block": "bagels_baking:small_cinnamon_tree",
+                    "properties": {
+                        "half": "upper"
+                    }
+                },
+                {
+                    "condition": "minecraft:location_check",
+                    "predicate": {
+                        "block": {
+                            "blocks": [
+                                "bagels_baking:small_cinnamon_tree"
+                            ],
+                            "state": {
+                                "half": "lower"
+                            }
+                        }
+                    },
+                    "offsetY": -1
+                }
+            ]
+        }
+    ]
+}

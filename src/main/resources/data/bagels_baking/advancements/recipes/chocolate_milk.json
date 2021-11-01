@@ -1,0 +1,47 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:cups/chocolate_milk"
+		]
+	},
+	"criteria": {
+		"has_cocoa_powder": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cocoa_powder"
+						]
+					}
+				]
+			}
+		},
+		"has_milk_cup": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:milk_cup"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:cups/chocolate_milk"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_cocoa_powder",
+			"has_milk_cup"
+		]
+	]
+}

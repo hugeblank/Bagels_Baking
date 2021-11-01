@@ -1,0 +1,36 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:furnace/mayonnaise",
+			"bagels_baking:campfire/mayonnaise",
+			"bagels_baking:smoker/mayonnaise"
+		]
+	},
+	"criteria": {
+		"has_egg_yolk": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:egg_yolk"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:furnace/mayonnaise"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_egg_yolk"
+		]
+	]
+}

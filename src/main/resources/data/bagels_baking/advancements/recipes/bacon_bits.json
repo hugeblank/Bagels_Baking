@@ -1,0 +1,34 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:milling/bacon_bits"
+		]
+	},
+	"criteria": {
+		"has_smoked_bacon": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:smoked_bacon"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:milling/bacon_bits"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_smoked_bacon"
+		]
+	]
+}

@@ -2,7 +2,6 @@
   "schemaVersion": 1,
   "id": "bagels_baking",
   "version": "${version}",
-
   "name": "Bagel's Baking",
   "description": "Little baking mod for my friends and I :)",
   "authors": [
@@ -13,10 +12,8 @@
     "issues": "https://github.com/hugeblank/Bagels_Baking/issues",
     "sources": "https://github.com/hugeblank/Bagels_Baking"
   },
-
   "license": "MIT",
   "icon": "assets/bagels_baking/icon.png",
-
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -32,14 +29,13 @@
   "mixins": [
     "bagels_baking.mixins.json"
   ],
-
   "depends": {
-    "fabricloader": ">=0.7.4",
+    "fabricloader": ">=0.8",
     "fabric": "*",
     "minecraft": "1.17.x"
   },
   "suggests": {
     "another-mod": "*"
   },
-  "accessWidener" : "bagels_baking.accesswidener"
+  "accessWidener": "bagels_baking.accesswidener"
 }

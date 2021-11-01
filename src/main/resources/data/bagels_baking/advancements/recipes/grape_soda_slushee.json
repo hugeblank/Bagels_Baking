@@ -1,0 +1,34 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:freezing/grape_soda_slushee"
+		]
+	},
+	"criteria": {
+		"has_grape_soda": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:grape_soda"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:freezing/grape_soda_slushee"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_grape_soda"
+		]
+	]
+}

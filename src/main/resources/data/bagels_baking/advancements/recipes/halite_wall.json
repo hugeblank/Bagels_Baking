@@ -1,0 +1,34 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:halite/halite_wall"
+		]
+	},
+	"criteria": {
+		"has_halite": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:halite"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:halite/halite_wall"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_halite"
+		]
+	]
+}

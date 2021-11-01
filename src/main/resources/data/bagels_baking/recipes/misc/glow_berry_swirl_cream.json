@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:cup"
+        },
+        {
+            "item": "bagels_baking:glow_berry_jam"
+        },
+        {
+            "item": "bagels_baking:milk_cup"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:glow_berry_swirl_cream",
+        "count": 1
+    }
+}

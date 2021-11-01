@@ -1,0 +1,7 @@
+{
+    "type": "bagels_baking:fermenting",
+    "ingredient": {
+        "item": "minecraft:potato"
+    },
+    "result": "bagels_baking:vodka"
+}

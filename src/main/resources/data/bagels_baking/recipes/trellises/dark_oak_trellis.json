@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "   ",
+        "###",
+        " L "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:string"
+        },
+        "L": {
+            "item": "minecraft:dark_oak_log"
+        }
+    },
+    "result": {
+        "item": "bagels_baking:dark_oak_trellis",
+        "count": 4
+    }
+}

@@ -23,6 +23,7 @@ public class BrewingRecipes {
     @Inject(at = @At(value = "TAIL"), method = "registerDefaults()V")
     private static void addRecipes(CallbackInfo ci) {
         // Recipes
+        // Bottom input | Top Input | Output
         recipe(Baking.EGG_WHITES, Items.SUGAR, Baking.MERINGUE);
         recipe(Baking.WATER_CUP, Baking.GROUND_COFFEE, Baking.COFFEE_CUP);
         recipe(Baking.WATER_CUP, Baking.GROUND_TEA, Baking.TEA_CUP);
@@ -33,9 +34,9 @@ public class BrewingRecipes {
         recipe(Baking.CLUB_SODA, Items.SWEET_BERRIES, Baking.FRUITY_SODA);
         recipe(Baking.CLUB_SODA, Items.MELON_SLICE, Baking.MOUNTAIN_FOUNTAIN);
         recipe(Baking.CLUB_SODA, Items.CACTUS, Baking.CACTUS_CHILLER);
-        recipe(Baking.CLUB_SODA, Items.POPPED_CHORUS_FRUIT, Baking.GRAPE_SODA);
+        recipe(Baking.CLUB_SODA, Baking.GRAPES, Baking.GRAPE_SODA);
 
-        // Items
+        // Items that can be inserted into stand
         item(Baking.EGG_WHITES);
         item(Baking.MERINGUE);
         item(Baking.WATER_CUP);

@@ -1,0 +1,36 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:furnace/fried_porkchop",
+			"bagels_baking:campfire/fried_porkchop",
+			"bagels_baking:smoker/fried_porkchop"
+		]
+	},
+	"criteria": {
+		"has_battered_porkchop": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:battered_porkchop"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:furnace/fried_porkchop"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_battered_porkchop"
+		]
+	]
+}

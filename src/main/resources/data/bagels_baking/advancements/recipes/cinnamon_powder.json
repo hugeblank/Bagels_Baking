@@ -1,0 +1,34 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:milling/cinnamon_powder"
+		]
+	},
+	"criteria": {
+		"has_cinnamon_bark": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:cinnamon_bark"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:milling/cinnamon_powder"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_cinnamon_bark"
+		]
+	]
+}

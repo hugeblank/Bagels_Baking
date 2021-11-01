@@ -1,0 +1,8 @@
+{
+    "parent": "bagels_baking:block/vine_template_left",
+    "textures": {
+        "vine_right": "bagels_baking:block/grape_vine_age1_right",
+        "vine_left": "bagels_baking:block/grape_vine_age1_left",
+        "particle": "bagels_baking:block/grape_vine_age1"
+    }
+}

@@ -1,6 +1,6 @@
 {
-    "parent": "minecraft:item/generated",
-    "textures": {
-      "layer0": "bagels_baking:item/chocolate_cake"
-    }
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bagels_baking:item/chocolate_cake"
   }
+}

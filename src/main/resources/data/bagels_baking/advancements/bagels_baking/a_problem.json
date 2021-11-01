@@ -1,0 +1,126 @@
+{
+  "parent": "bagels_baking:bagels_baking/kimi_no_na_wa",
+  "display": {
+    "icon": {
+      "item": "bagels_baking:red_wine"
+    },
+    "title": {
+      "translate": "advancements.bagels_baking.a_problem.title"
+    },
+    "description": {
+      "translate": "advancements.bagels_baking.a_problem.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "red_wine": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:red_wine"
+          ]
+        }
+      }
+    },
+    "whiskey": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:whiskey"
+          ]
+        }
+      }
+    },
+    "beer": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:beer"
+          ]
+        }
+      }
+    },
+    "mead": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:mead"
+          ]
+        }
+      }
+    },
+    "rum": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:rum"
+          ]
+        }
+      }
+    },
+    "gin": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:gin"
+          ]
+        }
+      }
+    },
+    "vodka": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:vodka"
+          ]
+        }
+      }
+    },
+    "sake": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:sake"
+          ]
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "red_wine"
+    ],
+    [
+      "beer"
+    ],
+    [
+      "whiskey"
+    ],
+    [
+      "mead"
+    ],
+    [
+      "rum"
+    ],
+    [
+      "gin"
+    ],
+    [
+      "vodka"
+    ],
+    [
+      "sake"
+    ]
+  ]
+}

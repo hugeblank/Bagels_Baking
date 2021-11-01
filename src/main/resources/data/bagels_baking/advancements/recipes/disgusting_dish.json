@@ -1,0 +1,86 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/disgusting_dish"
+		]
+	},
+	"criteria": {
+		"has_spider_eye": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:spider_eye"
+						]
+					}
+				]
+			}
+		},
+		"has_rotten_flesh": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:rotten_flesh"
+						]
+					}
+				]
+			}
+		},
+		"has_pufferfish": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:pufferfish"
+						]
+					}
+				]
+			}
+		},
+		"has_poisonous_potato": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:poisonous_potato"
+						]
+					}
+				]
+			}
+		},
+		"has_bowl": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:bowl"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/disgusting_dish"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_poisonous_potato",
+			"has_rotten_flesh",
+			"has_spider_eye",
+			"has_pufferfish",
+			"has_bowl"
+		]
+	]
+}

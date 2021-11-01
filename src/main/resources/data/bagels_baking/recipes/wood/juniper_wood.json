@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bark",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "bagels_baking:juniper_log"
+    }
+  },
+  "result": {
+    "item": "bagels_baking:juniper_wood",
+    "count": 3
+  }
+}

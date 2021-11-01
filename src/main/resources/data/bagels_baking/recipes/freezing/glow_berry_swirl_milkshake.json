@@ -1,0 +1,7 @@
+{
+    "type": "bagels_baking:freezing",
+    "ingredient": {
+        "item": "bagels_baking:glow_berry_swirl_cream"
+    },
+    "result": "bagels_baking:glow_berry_swirl_milkshake"
+}

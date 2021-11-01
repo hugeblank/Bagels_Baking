@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "half=upper": {
+            "model": "bagels_baking:block/small_cinnamon_tree_upper"
+        },
+        "half=lower": {
+            "model": "bagels_baking:block/small_cinnamon_tree_lower"
+        }
+    }
+}

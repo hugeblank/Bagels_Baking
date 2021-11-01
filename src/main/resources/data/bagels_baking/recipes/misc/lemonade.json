@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:lemon"
+        },
+        {
+            "item": "minecraft:sugar"
+        },
+        {
+            "item": "minecraft:glass_bottle"
+        },
+        {
+            "item": "bagels_baking:water_cup"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:lemonade",
+        "count": 1
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "type": "bagels_baking:fermenting",
+    "ingredient": {
+        "item": "minecraft:wheat"
+    },
+    "result": "bagels_baking:beer"
+}

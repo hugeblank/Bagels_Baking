@@ -1,0 +1,86 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:cakes/carrot_cake"
+		]
+	},
+	"criteria": {
+		"has_carrot": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:carrot"
+						]
+					}
+				]
+			}
+		},
+		"has_sugar": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:sugar"
+						]
+					}
+				]
+			}
+		},
+		"has_wheat": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:wheat"
+						]
+					}
+				]
+			}
+		},
+		"has_milk_bucket": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:milk_bucket"
+						]
+					}
+				]
+			}
+		},
+		"has_egg": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:egg"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:cakes/carrot_cake"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_milk_bucket",
+			"has_egg",
+			"has_carrot",
+			"has_wheat",
+			"has_sugar"
+		]
+	]
+}

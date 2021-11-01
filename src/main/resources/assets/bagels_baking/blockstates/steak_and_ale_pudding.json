@@ -1,0 +1,16 @@
+{
+    "variants": {
+      "bites=1": {
+        "model": "bagels_baking:block/steak_and_ale_pudding_slice1"
+      },
+      "bites=2": {
+        "model": "bagels_baking:block/steak_and_ale_pudding_slice2"
+      },
+      "bites=3": {
+        "model": "bagels_baking:block/steak_and_ale_pudding_slice3"
+      },
+      "bites=4": {
+        "model": "bagels_baking:block/steak_and_ale_pudding"
+      }
+    }
+  }

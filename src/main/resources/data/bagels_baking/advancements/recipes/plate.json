@@ -1,0 +1,36 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:furnace/plate",
+			"bagels_baking:campfire/plate",
+			"bagels_baking:smoker/plate"
+		]
+	},
+	"criteria": {
+		"has_unfired_plate": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:unfired_plate"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:furnace/plate"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_unfired_plate"
+		]
+	]
+}

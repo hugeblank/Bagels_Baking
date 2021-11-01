@@ -1,0 +1,458 @@
+{
+    "type": "minecraft:chest",
+    "pools": [
+        {
+            "_comment": "Fruits and Jams",
+            "rolls": {
+                "type": "minecraft:uniform",
+                "min": 1.0,
+                "max": 3.0
+            },
+            "bonus_rolls": 0.0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "weight": 6,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 5.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:grapes"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 6,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 5.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "minecraft:glow_berries"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 6,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 5.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "minecraft:apple"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 6,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 5.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:cherries"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 6,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 5.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:cherries"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 6,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 3.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:grape_jam"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 6,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 3.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:glow_berry_jam"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 6,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 3.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:apple_jam"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 6,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 3.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:cherry_jam"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 6,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 5.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:cinnamon_bark"
+                }
+            ]
+        },
+        {
+            "_comment": "Alcohols",
+            "rolls": {
+                "type": "minecraft:uniform",
+                "min": 1.0,
+                "max": 3.0
+            },
+            "bonus_rolls": 0.0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "weight": 4,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 4.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:red_wine"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 4,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 4.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:beer"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 4,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 4.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:mead"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 4,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 4.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:vodka"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 4,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 4.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:gin"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 4,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 4.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:rum"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 4,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 4.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:whiskey"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 4,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 4.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:malt_vinegar"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 4,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 2.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:spiced_rum"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 2,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 2.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:fruit_martini"
+                }
+            ]
+        },
+        {
+            "_comment": "Trellises",
+            "rolls": {
+                "type": "minecraft:uniform",
+                "min": 0.0,
+                "max": 2.0
+            },
+            "bonus_rolls": 0.0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 8.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:oak_trellis"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 8.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:birch_trellis"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 8.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:spruce_trellis"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 1.0,
+                                "max": 8.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:acacia_trellis"
+                }
+            ]
+        },
+        {
+            "_comment": "Miscellaneous",
+            "rolls": {
+                "type": "minecraft:uniform",
+                "min": 0.0,
+                "max": 2.0
+            },
+            "bonus_rolls": 0.0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:emerald"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 15,
+                    "name": "bagels_baking:music_disc_coll"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 6,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 0.0,
+                                "max": 1.0
+                            },
+                            "add": false
+                        }
+                    ],
+                    "name": "bagels_baking:cup"
+                }
+            ]
+        }
+    ]
+}

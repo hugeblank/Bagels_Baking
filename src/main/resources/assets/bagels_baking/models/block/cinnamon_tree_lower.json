@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/cross",
+    "textures": {
+        "cross": "bagels_baking:block/cinnamon_tree_lower"
+    }
+}

@@ -1,0 +1,36 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:furnace/cooked_chicken_nuggets",
+			"bagels_baking:campfire/cooked_chicken_nuggets",
+			"bagels_baking:smoker/cooked_chicken_nuggets"
+		]
+	},
+	"criteria": {
+		"has_chicken_nuggets": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:chicken_nuggets"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:furnace/cooked_chicken_nuggets"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_chicken_nuggets"
+		]
+	]
+}

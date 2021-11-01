@@ -5,22 +5,104 @@
         "coffee": "bagels_baking:block/coffee_stage0"
     },
     "elements": [
-        {   "from": [ 6, 7, 11 ],
-            "to": [ 10, 12, 15 ],
+        {
+            "from": [
+                6,
+                7,
+                11
+            ],
+            "to": [
+                10,
+                12,
+                15
+            ],
             "faces": {
-                "down":  { "uv": [  0, 0,  4, 4 ], "texture": "#coffee" },
-                "up":    { "uv": [  0, 0,  4, 4 ], "texture": "#coffee" },
-                "north": { "uv": [ 11, 4, 15, 9 ], "texture": "#coffee" },
-                "south": { "uv": [ 11, 4, 15, 9 ], "texture": "#coffee" },
-                "west":  { "uv": [ 11, 4, 15, 9 ], "texture": "#coffee" },
-                "east":  { "uv": [ 11, 4, 15, 9 ], "texture": "#coffee" }
+                "down": {
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        4
+                    ],
+                    "texture": "#coffee"
+                },
+                "up": {
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        4
+                    ],
+                    "texture": "#coffee"
+                },
+                "north": {
+                    "uv": [
+                        11,
+                        4,
+                        15,
+                        9
+                    ],
+                    "texture": "#coffee"
+                },
+                "south": {
+                    "uv": [
+                        11,
+                        4,
+                        15,
+                        9
+                    ],
+                    "texture": "#coffee"
+                },
+                "west": {
+                    "uv": [
+                        11,
+                        4,
+                        15,
+                        9
+                    ],
+                    "texture": "#coffee"
+                },
+                "east": {
+                    "uv": [
+                        11,
+                        4,
+                        15,
+                        9
+                    ],
+                    "texture": "#coffee"
+                }
             }
         },
-        {   "from": [ 8, 12, 12 ],
-            "to": [ 8, 16, 16 ],
+        {
+            "from": [
+                8,
+                12,
+                12
+            ],
+            "to": [
+                8,
+                16,
+                16
+            ],
             "faces": {
-                "west": { "uv": [ 12, 0, 16, 4 ], "texture": "#coffee" },
-                "east": { "uv": [ 16, 0, 12, 4 ], "texture": "#coffee" }
+                "west": {
+                    "uv": [
+                        12,
+                        0,
+                        16,
+                        4
+                    ],
+                    "texture": "#coffee"
+                },
+                "east": {
+                    "uv": [
+                        16,
+                        0,
+                        12,
+                        4
+                    ],
+                    "texture": "#coffee"
+                }
             }
         }
     ]

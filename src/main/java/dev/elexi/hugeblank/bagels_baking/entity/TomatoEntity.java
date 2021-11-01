@@ -2,13 +2,12 @@ package dev.elexi.hugeblank.bagels_baking.entity;
 
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
-import dev.elexi.hugeblank.bagels_baking.network.TomatoSpawnPacket;
+import dev.elexi.hugeblank.bagels_baking.network.BakingPackets;
+import dev.elexi.hugeblank.bagels_baking.network.ServerPacketHandler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.ProjectileDamageSource;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
@@ -26,21 +25,13 @@ import net.minecraft.world.World;
 public class TomatoEntity extends ThrownItemEntity {
 
 
-    public TomatoEntity(EntityType<? extends TomatoEntity> entityType, World world) {
-        super(entityType, world);
-    }
-
-    public TomatoEntity(World world, LivingEntity owner) {
-        super(Baking.TOMATO_THROWABLE, owner, world);
-    }
-
-    public TomatoEntity(World world, double x, double y, double z) {
-        super(Baking.TOMATO_THROWABLE, x, y, z, world);
+    public TomatoEntity(World world) {
+        super(Baking.TOMATO_THROWABLE, world);
     }
 
     @Override
-    public Packet createSpawnPacket() {
-        return TomatoSpawnPacket.create(this, Baking.TOMATO_PACKET);
+    public Packet<?> createSpawnPacket() {
+        return ServerPacketHandler.create(this, BakingPackets.TOMATO_PACKET);
     }
 
     @Override

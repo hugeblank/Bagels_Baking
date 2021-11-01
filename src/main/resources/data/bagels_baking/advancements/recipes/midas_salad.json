@@ -1,0 +1,86 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/midas_salad"
+		]
+	},
+	"criteria": {
+		"has_honey_bottle": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:honey_bottle"
+						]
+					}
+				]
+			}
+		},
+		"has_bowl": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:bowl"
+						]
+					}
+				]
+			}
+		},
+		"has_golden_carrot": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:golden_carrot"
+						]
+					}
+				]
+			}
+		},
+		"has_golden_apple": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:golden_apple"
+						]
+					}
+				]
+			}
+		},
+		"has_glistering_melon_slice": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:glistering_melon_slice"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/midas_salad"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_glistering_melon_slice",
+			"has_golden_apple",
+			"has_golden_carrot",
+			"has_bowl",
+			"has_honey_bottle"
+		]
+	]
+}

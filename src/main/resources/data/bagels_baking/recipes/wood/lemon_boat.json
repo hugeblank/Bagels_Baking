@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "boat",
+  "pattern": [
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "bagels_baking:lemon_planks"
+    }
+  },
+  "result": {
+    "item": "bagels_baking:lemon_boat"
+  }
+}

@@ -1,88 +1,100 @@
 {
-    "parent": "bagels_baking:bagels_baking/root",
-    "display": {
-      "icon": {
-        "item": "minecraft:rabbit_stew"
-      },
-      "title": {
-        "translate": "advancements.bagels_baking.soup_kitchen.title"
-      },
-      "description": {
-        "translate": "advancements.bagels_baking.soup_kitchen.description"
-      },
-      "frame": "task",
-      "show_toast": true,
-      "announce_to_chat": true,
-      "hidden": false
+  "parent": "bagels_baking:bagels_baking/taco_ding",
+  "display": {
+    "icon": {
+      "item": "minecraft:rabbit_stew"
     },
-    "criteria": {
-      "steak_stew": {
-        "trigger": "minecraft:consume_item",
-        "conditions": {
-          "item": {
-            "item": "bagels_baking:steak_stew"
-          }
-        }
-      },
-      "chicken_stew": {
-        "trigger": "minecraft:consume_item",
-        "conditions": {
-          "item": {
-            "item": "bagels_baking:chicken_stew"
-          }
-        }
-      },
-      "pork_stew": {
-        "trigger": "minecraft:consume_item",
-        "conditions": {
-          "item": {
-            "item": "bagels_baking:pork_stew"
-          }
-        }
-      },
-      "fish_stew": {
-        "trigger": "minecraft:consume_item",
-        "conditions": {
-          "item": {
-            "item": "bagels_baking:fish_stew"
-          }
-        }
-      },
-      "mutton_stew": {
-        "trigger": "minecraft:consume_item",
-        "conditions": {
-          "item": {
-            "item": "bagels_baking:mutton_stew"
-          }
-        }
-      },
-      "rabbit_stew": {
-        "trigger": "minecraft:consume_item",
-        "conditions": {
-          "item": {
-            "item": "minecraft:rabbit_stew"
-          }
+    "title": {
+      "translate": "advancements.bagels_baking.soup_kitchen.title"
+    },
+    "description": {
+      "translate": "advancements.bagels_baking.soup_kitchen.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "steak_stew": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:steak_stew"
+          ]
         }
       }
     },
-    "requirements": [
-      [
-        "steak_stew"
-      ],
-      [
-        "pork_stew"
-      ],
-      [
-        "chicken_stew"
-      ],
-      [
-        "fish_stew"
-      ],
-      [
-        "mutton_stew"
-      ],
-      [
-        "rabbit_stew"
-      ]
+    "chicken_stew": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:chicken_stew"
+          ]
+        }
+      }
+    },
+    "pork_stew": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:pork_stew"
+          ]
+        }
+      }
+    },
+    "fish_stew": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:fish_stew"
+          ]
+        }
+      }
+    },
+    "mutton_stew": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "bagels_baking:mutton_stew"
+          ]
+        }
+      }
+    },
+    "rabbit_stew": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:rabbit_stew"
+          ]
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "steak_stew"
+    ],
+    [
+      "pork_stew"
+    ],
+    [
+      "chicken_stew"
+    ],
+    [
+      "fish_stew"
+    ],
+    [
+      "mutton_stew"
+    ],
+    [
+      "rabbit_stew"
     ]
-  }
+  ]
+}

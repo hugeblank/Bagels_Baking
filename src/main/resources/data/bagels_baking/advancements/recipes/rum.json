@@ -1,0 +1,34 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:fermenting/rum"
+		]
+	},
+	"criteria": {
+		"has_molasses": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:molasses"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:fermenting/rum"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_molasses"
+		]
+	]
+}
