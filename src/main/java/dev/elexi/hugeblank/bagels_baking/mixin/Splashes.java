@@ -31,7 +31,7 @@ public class Splashes {
     private void addSplashes(CallbackInfoReturnable<String> cir) {
         splashTexts.add("Corn Breaks Spacetime!"); // Honoring Kori's texture dilemma
         splashTexts.add("0 Rotten Tomatoes!"); // Honoring tomatoes
-        splashTexts.add("Bricks and Halite!"); // Honoring Hunter's Nieces
+        splashTexts.add("Bricks and Halite!"); // Honoring rrricohu's Nieces
         splashTexts.add("Better than Overwatch?"); // Stating a truth
         splashTexts.add("i take a bite :)"); // Honoring doordash drivers
         splashTexts.add("Cups^2!"); // Honoring the cup duplication glitch
@@ -71,7 +71,7 @@ public class Splashes {
         splashTexts.add("Respect your food delivery drivers!");
         splashTexts.add("A la minecarte!");
         if (session != null && RANDOM.nextFloat() < 0.1) {
-            switch (session.getUsername()) { // Surprises for my friends :)
+            switch (session.getUsername()) { // Surprises for people that inspired this mod
                 case "rwr" -> cir.setReturnValue("Betreucia killed Broseph!");
                 case "hugeblank" -> cir.setReturnValue("Subscribe to twitch.tv/hugeblank");
                 case "roger109z" -> cir.setReturnValue("poger! :)");

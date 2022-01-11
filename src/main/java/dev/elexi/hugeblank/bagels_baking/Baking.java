@@ -1,5 +1,6 @@
 package dev.elexi.hugeblank.bagels_baking;
 
+
 import dev.elexi.hugeblank.bagels_baking.block.*;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.BakingCauldronBehavior;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.CheeseCauldronBlock;
@@ -77,8 +78,8 @@ public class Baking implements ModInitializer {
 			return new Item(new Item.Settings().group(ItemGroup.MATERIALS).maxCount(64));
 	}
 
-	private static MushroomStewItem basicBowlFood(int hunger, float saturation) {
-		return new MushroomStewItem(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Items.BOWL).maxCount(16).food(foodComponent(hunger, saturation).build()));
+	private static StewItem basicBowlFood(int hunger, float saturation) {
+		return new StewItem(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Items.BOWL).maxCount(16).food(foodComponent(hunger, saturation).build()));
 	}
 
 	private static BottledItem basicBottleDrink(int hunger, float saturation, SoundEvent drinkSound) {
@@ -204,11 +205,11 @@ public class Baking implements ModInitializer {
 	public static final Item RABBIT_CHEESEBURGER = basicFood(8, 0.5f);
 
 	// The rest of the stews - Gives 1 item
-	public static final MushroomStewItem STEAK_STEW = basicBowlFood(12, 0.6f);
-	public static final MushroomStewItem CHICKEN_STEW = basicBowlFood(11, 0.6f);
-	public static final MushroomStewItem PORK_STEW = basicBowlFood(12, 0.6f);
-	public static final MushroomStewItem MUTTON_STEW = basicBowlFood(10, 0.6f);
-	public static final MushroomStewItem FISH_STEW = basicBowlFood(10, 0.6f);
+	public static final StewItem STEAK_STEW = basicBowlFood(12, 0.6f);
+	public static final StewItem CHICKEN_STEW = basicBowlFood(11, 0.6f);
+	public static final StewItem PORK_STEW = basicBowlFood(12, 0.6f);
+	public static final StewItem MUTTON_STEW = basicBowlFood(10, 0.6f);
+	public static final StewItem FISH_STEW = basicBowlFood(10, 0.6f);
 	// No need to add Rabbit Stew!
 
 	// Jams - Gives 1 Item
@@ -475,8 +476,8 @@ public class Baking implements ModInitializer {
 	public static final Item SQUID_SUSHI = basicFood(4, 0.2f);
 	public static final Item LOADED_FRIES = basicFood(6, 0.7f);
 	public static final Item LOADED_POTATO = basicFood(16, 0.8f);
-	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(11, 0.5f);
-	public static final MushroomStewItem FRUIT_SALAD = basicBowlFood(13, 0.2f);
+	public static final StewItem VEGGIE_MEDLEY = basicBowlFood(11, 0.5f);
+	public static final StewItem FRUIT_SALAD = basicBowlFood(13, 0.2f);
 	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem(
 			new Item.Settings()
 					.group(ItemGroup.FOOD)
@@ -490,7 +491,7 @@ public class Baking implements ModInitializer {
 							.build()
 					)
 	);
-	public static final Item DISGUSTING_DISH = new MushroomStewItem(
+	public static final Item DISGUSTING_DISH = new StewItem(
 			new Item.Settings()
 					.group(ItemGroup.FOOD)
 					.maxCount(16)
@@ -503,9 +504,9 @@ public class Baking implements ModInitializer {
 							.build()
 					)
 	);
-	public static final MushroomStewItem WHEAT_CEREAL_BOWL = basicBowlFood(3, 0.3f);
-	public static final MushroomStewItem CORN_CEREAL_BOWL = basicBowlFood(4, 0.3f);
-	public static final MushroomStewItem RICE_CEREAL_BOWL = basicBowlFood(3, 0.3f);
+	public static final StewItem WHEAT_CEREAL_BOWL = basicBowlFood(3, 0.3f);
+	public static final StewItem CORN_CEREAL_BOWL = basicBowlFood(4, 0.3f);
+	public static final StewItem RICE_CEREAL_BOWL = basicBowlFood(3, 0.3f);
 	public static final Block CHEESE_BLOCK = new Block(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).sounds(BlockSoundGroup.CANDLE));
 	public static final Block CHEESE_LAYER = new BasicLayerBlock(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).sounds(BlockSoundGroup.CANDLE));
 	public static final Item CHEESE_SLICE = new BlockItem(CHEESE_LAYER, new FabricItemSettings().group(ItemGroup.FOOD).food(foodComponent(1, 0.0f).build()));
