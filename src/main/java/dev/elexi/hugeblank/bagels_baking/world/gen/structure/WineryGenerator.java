@@ -2,11 +2,7 @@ package dev.elexi.hugeblank.bagels_baking.world.gen.structure;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.structure.SimpleStructurePiece;
-import net.minecraft.structure.StructureManager;
-import net.minecraft.structure.StructurePiecesHolder;
-import net.minecraft.structure.StructurePlacementData;
+import net.minecraft.structure.*;
 import net.minecraft.structure.processor.BlockIgnoreStructureProcessor;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
@@ -17,7 +13,7 @@ import net.minecraft.world.ServerWorldAccess;
 
 import java.util.Random;
 
-public class WineryGenerator {
+public class  WineryGenerator {
 
     private static final Identifier PLAINS_HOUSE = new Identifier(Baking.ID, "winery/plains_winery");
     private static final Identifier PLAINS_CELLAR = new Identifier(Baking.ID, "winery/plains_cellar");
@@ -26,7 +22,8 @@ public class WineryGenerator {
 
     WineryGenerator() {}
 
-    public static void generate(StructureManager manager, BlockPos pos, BlockRotation rotation, StructurePiecesHolder structurePiecesHolder, Random random, WineryFeature.Type type) {
+    public static void generate(StructureManager manager, BlockPos pos, BlockRotation rotation, StructurePiecesHolder structurePiecesHolder, WineryFeature.Type type) {
+
         switch (type) {
             case PLAINS -> {
                 structurePiecesHolder.addPiece(new WineryGenerator.Piece(manager, PLAINS_HOUSE, pos, rotation, 0));
@@ -44,12 +41,13 @@ public class WineryGenerator {
             super(BakingConfiguredStructures.WINERY_PIECE_TYPE, 0, manager, identifier, identifier.toString(), createPlacementData(rotation), pos.down(yOffset));
         }
 
-        public Piece(ServerWorld serverWorld, NbtCompound nbtCompound) {
-            super(BakingConfiguredStructures.WINERY_PIECE_TYPE, nbtCompound, serverWorld, (identifier) -> createPlacementData(BlockRotation.valueOf(nbtCompound.getString("Rot"))));
+        public Piece(StructureContext context, NbtCompound nbtCompound) {
+            super(BakingConfiguredStructures.WINERY_PIECE_TYPE, nbtCompound, context.structureManager(), (identifier) -> createPlacementData(BlockRotation.valueOf(nbtCompound.getString("Rot"))));
         }
 
-        protected void writeNbt(ServerWorld world, NbtCompound nbt) {
-            super.writeNbt(world, nbt);
+
+        protected void writeNbt(StructureContext context, NbtCompound nbt) {
+            super.writeNbt(context, nbt);
             nbt.putString("Rot", this.placementData.getRotation().name());
         }
 

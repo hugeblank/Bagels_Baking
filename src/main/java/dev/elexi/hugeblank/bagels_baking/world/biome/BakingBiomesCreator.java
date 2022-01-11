@@ -1,7 +1,7 @@
 package dev.elexi.hugeblank.bagels_baking.world.biome;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
-import dev.elexi.hugeblank.bagels_baking.world.gen.BakingPlacedFeatures;
+import dev.elexi.hugeblank.bagels_baking.world.gen.BakingClusterPlacedFeatures;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.sound.BiomeMoodSound;
@@ -16,12 +16,8 @@ import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
-public class BakingBiomes {
+public class BakingBiomesCreator {
 
-    public static final Biome CHERRY_ORCHARD = register("cherry_orchard", createCherryOrchard());
-    public static final Biome LEMON_GROVE = register("lemon_grove", createLemonGrove());
-    public static final Biome JUNIPER_TAIGA = register("juniper_taiga", createJuniperTaiga(false));
-    public static final Biome SNOWY_JUNIPER_TAIGA = register("snowy_juniper_taiga", createJuniperTaiga(true));
 
 
     private static int getSkyColor(float temperature) {
@@ -43,7 +39,7 @@ public class BakingBiomes {
         DefaultBiomeFeatures.addDefaultOres(builder);
         DefaultBiomeFeatures.addDefaultDisks(builder);
 
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, BakingPlacedFeatures.TREES_BIRCH_AND_OAK_SPARSE);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, BakingClusterPlacedFeatures.TREES_BIRCH_AND_OAK_SPARSE);
         DefaultBiomeFeatures.addForestGrass(builder);
 
         DefaultBiomeFeatures.addDefaultMushrooms(builder);
@@ -65,7 +61,7 @@ public class BakingBiomes {
 
         builder2.feature(
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                snowy ? BakingPlacedFeatures.TREES_GROVE : BakingPlacedFeatures.TREES_TAIGA
+                snowy ? BakingClusterPlacedFeatures.TREES_GROVE : BakingClusterPlacedFeatures.TREES_TAIGA
         );
         DefaultBiomeFeatures.addLandCarvers(builder2);
         DefaultBiomeFeatures.addAmethystGeodes(builder2);
@@ -110,7 +106,7 @@ public class BakingBiomes {
 
         GenerationSettings.Builder builder2 = (new GenerationSettings.Builder());
         addCustomForestFeatures(builder2);
-        builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, BakingPlacedFeatures.TREES_ORCHARD);
+        builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, BakingClusterPlacedFeatures.TREES_ORCHARD);
 
         return createBiome(builder, builder2);
     }
@@ -122,7 +118,7 @@ public class BakingBiomes {
         addCustomForestFeatures(builder2);
         DefaultBiomeFeatures.addForestTrees(builder2);
         DefaultBiomeFeatures.addDefaultFlowers(builder2);
-        builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, BakingPlacedFeatures.TREES_GROVE);
+        builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, BakingClusterPlacedFeatures.TREES_GROVE);
         return createBiome(builder, builder2);
     }
 
@@ -144,10 +140,17 @@ public class BakingBiomes {
                 .build();
     }
 
-    public static void init() {}
+    public static void init() {
+        registerBiome("cherry_orchard", BakingBiomesCreator.createCherryOrchard());
 
-    public static Biome register(String name, Biome biome) {
+        registerBiome("lemon_grove", BakingBiomesCreator.createLemonGrove());
+        registerBiome("juniper_taiga", BakingBiomesCreator.createJuniperTaiga(false));
+        registerBiome("snowy_juniper_taiga", BakingBiomesCreator.createJuniperTaiga(true));
+    }
+
+    public static Biome registerBiome(String name, Biome biome) {
         RegistryKey<Biome> KEY = RegistryKey.of(Registry.BIOME_KEY, new Identifier(Baking.ID, name));
         return Registry.register(BuiltinRegistries.BIOME, KEY.getValue(), biome);
     }
+
 }

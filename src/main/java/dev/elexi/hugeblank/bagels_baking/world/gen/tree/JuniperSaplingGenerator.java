@@ -1,6 +1,6 @@
 package dev.elexi.hugeblank.bagels_baking.world.gen.tree;
 
-import dev.elexi.hugeblank.bagels_baking.world.gen.BakingConfiguredFeatures;
+import dev.elexi.hugeblank.bagels_baking.world.gen.BakingTreeConfiguredFeatures;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
@@ -11,6 +11,6 @@ public class JuniperSaplingGenerator extends SaplingGenerator {
     public JuniperSaplingGenerator() {}
 
     protected ConfiguredFeature<TreeFeatureConfig, ?> getTreeFeature(Random random, boolean bees) {
-        return BakingConfiguredFeatures.JUNIPER_TREE;
+        return BakingTreeConfiguredFeatures.JUNIPER_TREE;
     }
 }

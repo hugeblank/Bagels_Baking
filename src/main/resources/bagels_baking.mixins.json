@@ -2,7 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "dev.elexi.hugeblank.bagels_baking.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_17",
   "mixins": [
     "Splashes",
     "block.BlockEntityTypeMixin",
@@ -32,7 +32,6 @@
     "stew.BasicStewItem",
     "stew.IStewStackIncrease",
     "stew.StewStackIncrease",
-    "world.BlockPlacerTypeAccessor",
     "world.CoffeeBeansTreeDecorator",
     "world.CropProcessorList",
     "world.FoliagePlacerTypeAccessor",

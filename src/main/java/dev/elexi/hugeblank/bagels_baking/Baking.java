@@ -18,8 +18,11 @@ import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
 import dev.elexi.hugeblank.bagels_baking.recipe.ShapelessRemainderlessRecipe;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
 import dev.elexi.hugeblank.bagels_baking.util.WoodType;
-import dev.elexi.hugeblank.bagels_baking.world.biome.BakingBiomes;
-import dev.elexi.hugeblank.bagels_baking.world.gen.BakingConfiguredFeatures;
+import dev.elexi.hugeblank.bagels_baking.world.biome.BakingBiomesCreator;
+import dev.elexi.hugeblank.bagels_baking.world.gen.BakingClusterConfiguredFeatures;
+import dev.elexi.hugeblank.bagels_baking.world.gen.BakingClusterPlacedFeatures;
+import dev.elexi.hugeblank.bagels_baking.world.gen.BakingTreeConfiguredFeatures;
+import dev.elexi.hugeblank.bagels_baking.world.gen.BakingTreePlacedFeatures;
 import dev.elexi.hugeblank.bagels_baking.world.gen.structure.BakingConfiguredStructures;
 import dev.elexi.hugeblank.bagels_baking.world.gen.tree.CherrySaplingGenerator;
 import dev.elexi.hugeblank.bagels_baking.world.gen.tree.JuniperSaplingGenerator;
@@ -909,11 +912,16 @@ public class Baking implements ModInitializer {
 		// Trades
 		BakingVillagerTrades.init();
 
-		// Configured Features
-		BakingConfiguredFeatures.init();
+		// Tree Configured/Placed Features
+		BakingTreeConfiguredFeatures.init();
+		BakingTreePlacedFeatures.init();
+
+		// Advanced Configured/Placed Features
+		BakingClusterConfiguredFeatures.init();
+		BakingClusterPlacedFeatures.init();
 
 		// Biomes
-		BakingBiomes.init();
+		BakingBiomesCreator.init();
 
 		// Configured Structures
 		BakingConfiguredStructures.init();

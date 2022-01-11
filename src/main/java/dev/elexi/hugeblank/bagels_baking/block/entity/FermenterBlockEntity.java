@@ -84,12 +84,11 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory{
     }
 
     @Override
-    public NbtCompound writeNbt(NbtCompound nbt) {
-        nbt = super.writeNbt(nbt);
+    public void writeNbt(NbtCompound nbt) {
+        super.writeNbt(nbt);
         NbtCompound snbt = new NbtCompound();
         this.stack.writeNbt(snbt);
         nbt.put("Item", snbt);
-        return nbt;
     }
 
     @Override

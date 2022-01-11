@@ -21,8 +21,8 @@ dependencies {
 
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-//	useOptional "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
-//	useOptional "me.shedaniel:RoughlyEnoughItems-api:${project.rei_version}"
+	useOptional "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
+	useOptional "me.shedaniel:RoughlyEnoughItems-api:${project.rei_version}"
 }
 
 // useOptional & useApi yoinked from BetterEnd: https://github.com/paulevsGitch/BetterEnd

@@ -30,12 +30,12 @@
     "bagels_baking.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.8",
+    "fabricloader": ">=0.11.3",
     "fabric": "*",
-    "minecraft": "1.17.x"
+    "minecraft": "1.18.x"
   },
   "suggests": {
-    "another-mod": "*"
+    "roughlyenoughitems": "*"
   },
   "accessWidener": "bagels_baking.accesswidener"
 }

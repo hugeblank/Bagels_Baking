@@ -61,7 +61,7 @@ public class GrapeVineBlock extends GrapeVineComponentBlock {
         if (!state.get(PERSISTENT)) {
             int i = getDistanceFromStem(neighborState) + 1;
             if (state.get(DISTANCE) != i) {
-                world.getBlockTickScheduler().schedule(pos, this, 1);
+                world.createAndScheduleBlockTick(pos, this, 1);
             }
         }
 

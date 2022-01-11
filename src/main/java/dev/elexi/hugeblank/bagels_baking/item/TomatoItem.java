@@ -32,7 +32,9 @@ public class TomatoItem extends BlockItem {
                 tomato.setOwner(user);
                 tomato.setItem(itemStack);
                 tomato.setPos(user.getX(), user.getEyeY(), user.getZ());
-                tomato.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
+                tomato.setPitch(user.getPitch());
+                tomato.setYaw(user.getYaw());
+                tomato.setVelocity(0.0f, 1.5f, 1.0f);
                 world.spawnEntity(tomato);
             }
 
