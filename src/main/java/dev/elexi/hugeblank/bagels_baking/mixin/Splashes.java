@@ -70,6 +70,7 @@ public class Splashes {
         splashTexts.add("Now Catering!");
         splashTexts.add("Respect your food delivery drivers!");
         splashTexts.add("A la minecarte!");
+        splashTexts.add("Going to BlanketCon!");
         if (session != null && RANDOM.nextFloat() < 0.1) {
             switch (session.getUsername()) { // Surprises for people that inspired this mod
                 case "rwr" -> cir.setReturnValue("Betreucia killed Broseph!");
