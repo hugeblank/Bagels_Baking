@@ -71,6 +71,8 @@ public class Splashes {
         splashTexts.add("Respect your food delivery drivers!");
         splashTexts.add("A la minecarte!");
         splashTexts.add("Going to BlanketCon!");
+        splashTexts.add("Standing with Ukraine");
+        splashTexts.add("Craft Singles?");
         if (session != null && RANDOM.nextFloat() < 0.1) {
             switch (session.getUsername()) { // Surprises for people that inspired this mod
                 case "rwr" -> cir.setReturnValue("Betreucia killed Broseph!");
@@ -82,6 +84,7 @@ public class Splashes {
                 case "Bu_dum_chhh" -> cir.setReturnValue("Literally the best smash player, no cap.");
                 case "Pedrospeeder" -> cir.setReturnValue("Next year is Mazdas year, swear.");
                 case "ChocolateFrog18" -> cir.setReturnValue("Any British frogs?");
+                case "ZagXC" -> cir.setReturnValue("Connor help I'm trapped in the menu screen please get me out of here");
             }
         }
     }
