@@ -35,6 +35,7 @@
     "world.CoffeeBeansTreeDecorator",
     "world.CropProcessorList",
     "world.FoliagePlacerTypeAccessor",
+    "world.StructureFeatureAccessor",
     "world.StructurePoolMixin"
   ],
   "client": [
