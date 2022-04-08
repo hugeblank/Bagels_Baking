@@ -9,16 +9,28 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.PlacedFeature;
 
-public class BakingBiomesCreator {
+public class BakingBiomes {
+    public static final RegistryKey<Biome> CHERRY_ORCHARD;
+    public static final RegistryKey<Biome> LEMON_GROVE;
+    public static final RegistryKey<Biome> JUNIPER_TAIGA;
+    public static final RegistryKey<Biome> SNOWY_JUNIPER_TAIGA;
 
-
+    static {
+        CHERRY_ORCHARD = registerBiome("cherry_orchard", BakingBiomes.createCherryOrchard());
+        LEMON_GROVE = registerBiome("lemon_grove", BakingBiomes.createLemonGrove()); // This is really awkward.
+        // Lemon groves were called lemon groves before we knew 1.18 would have grove biomes that were snowy.
+        JUNIPER_TAIGA = registerBiome("juniper_taiga", BakingBiomes.createJuniperTaiga(false));
+        SNOWY_JUNIPER_TAIGA = registerBiome("snowy_juniper_taiga", BakingBiomes.createJuniperTaiga(true));
+    }
 
     private static int getSkyColor(float temperature) {
         float f = temperature / 3.0F;
@@ -26,27 +38,7 @@ public class BakingBiomesCreator {
         return MathHelper.hsvToRgb(0.62222224F - f * 0.05F, 0.5F + f * 0.1F, 1.0F);
     }
 
-    public static void addCustomForestFeatures(GenerationSettings.Builder builder) {
-        DefaultBiomeFeatures.addLandCarvers(builder);
-        DefaultBiomeFeatures.addAmethystGeodes(builder);
-        DefaultBiomeFeatures.addDungeons(builder);
-        DefaultBiomeFeatures.addMineables(builder);
-        DefaultBiomeFeatures.addSprings(builder);
-        DefaultBiomeFeatures.addFrozenTopLayer(builder);
-        
-        DefaultBiomeFeatures.addForestFlowers(builder);
-
-        DefaultBiomeFeatures.addDefaultOres(builder);
-        DefaultBiomeFeatures.addDefaultDisks(builder);
-
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, BakingClusterPlacedFeatures.TREES_BIRCH_AND_OAK_SPARSE);
-        DefaultBiomeFeatures.addForestGrass(builder);
-
-        DefaultBiomeFeatures.addDefaultMushrooms(builder);
-        DefaultBiomeFeatures.addDefaultVegetation(builder);
-    }
-
-    public static Biome createJuniperTaiga(boolean snowy) {
+    public static Biome createJuniperTaiga(boolean cold) {
         SpawnSettings.Builder builder = new SpawnSettings.Builder();
         DefaultBiomeFeatures.addFarmAnimals(builder);
         builder
@@ -56,40 +48,34 @@ public class BakingBiomesCreator {
 
 
         DefaultBiomeFeatures.addBatsAndMonsters(builder);
-        float f = snowy ? -0.5F : 0.25F;
+        float f = cold ? -0.5F : 0.25F;
         GenerationSettings.Builder builder2 = (new GenerationSettings.Builder());
 
         builder2.feature(
-                GenerationStep.Feature.VEGETAL_DECORATION,
-                snowy ? BakingClusterPlacedFeatures.TREES_GROVE : BakingClusterPlacedFeatures.TREES_TAIGA
+                GenerationStep.Feature.VEGETAL_DECORATION, BakingClusterPlacedFeatures.TREES_TAIGA
         );
-        DefaultBiomeFeatures.addLandCarvers(builder2);
-        DefaultBiomeFeatures.addAmethystGeodes(builder2);
-        DefaultBiomeFeatures.addDungeons(builder2);
+
+        addBasicFeatures(builder2);
+
         DefaultBiomeFeatures.addLargeFerns(builder2);
-        DefaultBiomeFeatures.addMineables(builder2);
         DefaultBiomeFeatures.addDefaultOres(builder2);
         DefaultBiomeFeatures.addDefaultDisks(builder2);
-        //DefaultBiomeFeatures.addTaigaTrees(builder2);
         DefaultBiomeFeatures.addDefaultFlowers(builder2);
         DefaultBiomeFeatures.addTaigaGrass(builder2);
         DefaultBiomeFeatures.addDefaultMushrooms(builder2);
         DefaultBiomeFeatures.addDefaultVegetation(builder2);
-        DefaultBiomeFeatures.addSprings(builder2);
-        if (snowy) {
+        if (cold) {
             DefaultBiomeFeatures.addSweetBerryBushesSnowy(builder2);
         } else {
             DefaultBiomeFeatures.addSweetBerryBushes(builder2);
         }
-
-        DefaultBiomeFeatures.addFrozenTopLayer(builder2);
         return (new Biome.Builder())
-                .precipitation(snowy ? Biome.Precipitation.SNOW : Biome.Precipitation.RAIN)
+                .precipitation(cold ? Biome.Precipitation.SNOW : Biome.Precipitation.RAIN)
                 .category(Biome.Category.TAIGA)
                 .temperature(f)
-                .downfall(snowy ? 0.4F : 0.8F)
+                .downfall(cold ? 0.4F : 0.8F)
                 .effects((new net.minecraft.world.biome.BiomeEffects.Builder())
-                        .waterColor(snowy ? 4020182 : 4159204)
+                        .waterColor(cold ? 4020182 : 4159204)
                         .waterFogColor(329011)
                         .fogColor(12638463)
                         .skyColor(getSkyColor(f))
@@ -101,24 +87,42 @@ public class BakingBiomesCreator {
     }
 
     public static Biome createCherryOrchard() {
-        SpawnSettings.Builder builder = new SpawnSettings.Builder();
-        DefaultBiomeFeatures.addFarmAnimals(builder);
-
-        GenerationSettings.Builder builder2 = (new GenerationSettings.Builder());
-        addCustomForestFeatures(builder2);
-        builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, BakingClusterPlacedFeatures.TREES_ORCHARD);
-
-        return createBiome(builder, builder2);
+        return createCustomForestBiome(BakingClusterPlacedFeatures.TREES_ORCHARD);
     }
 
     public static Biome createLemonGrove() {
+        return createCustomForestBiome(BakingClusterPlacedFeatures.TREES_GROVE);
+    }
+
+    private static void addBasicFeatures(GenerationSettings.Builder generationSettings) {
+        DefaultBiomeFeatures.addLandCarvers(generationSettings);
+        DefaultBiomeFeatures.addAmethystGeodes(generationSettings);
+        DefaultBiomeFeatures.addDungeons(generationSettings);
+        DefaultBiomeFeatures.addMineables(generationSettings);
+        DefaultBiomeFeatures.addSprings(generationSettings);
+        DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
+    }
+
+    private static Biome createCustomForestBiome(RegistryEntry<PlacedFeature> customTrees) {
         SpawnSettings.Builder builder = new SpawnSettings.Builder();
+        DefaultBiomeFeatures.addFarmAnimals(builder);
+        DefaultBiomeFeatures.addBatsAndMonsters(builder);
 
         GenerationSettings.Builder builder2 = (new GenerationSettings.Builder());
-        addCustomForestFeatures(builder2);
-        DefaultBiomeFeatures.addForestTrees(builder2);
-        DefaultBiomeFeatures.addDefaultFlowers(builder2);
-        builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, BakingClusterPlacedFeatures.TREES_GROVE);
+
+        addBasicFeatures(builder2);
+
+        DefaultBiomeFeatures.addForestFlowers(builder2);
+
+        DefaultBiomeFeatures.addDefaultOres(builder2);
+        DefaultBiomeFeatures.addDefaultDisks(builder2);
+
+        builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, BakingClusterPlacedFeatures.TREES_BIRCH_AND_OAK_SPARSE);
+        builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, customTrees);
+        DefaultBiomeFeatures.addForestGrass(builder2);
+
+        DefaultBiomeFeatures.addDefaultMushrooms(builder2);
+        DefaultBiomeFeatures.addDefaultVegetation(builder2);
         return createBiome(builder, builder2);
     }
 
@@ -140,17 +144,12 @@ public class BakingBiomesCreator {
                 .build();
     }
 
-    public static void init() {
-        registerBiome("cherry_orchard", BakingBiomesCreator.createCherryOrchard());
+    public static void init() {}
 
-        registerBiome("lemon_grove", BakingBiomesCreator.createLemonGrove());
-        registerBiome("juniper_taiga", BakingBiomesCreator.createJuniperTaiga(false));
-        registerBiome("snowy_juniper_taiga", BakingBiomesCreator.createJuniperTaiga(true));
-    }
-
-    public static Biome registerBiome(String name, Biome biome) {
+    public static RegistryKey<Biome> registerBiome(String name, Biome biome) {
         RegistryKey<Biome> KEY = RegistryKey.of(Registry.BIOME_KEY, new Identifier(Baking.ID, name));
-        return Registry.register(BuiltinRegistries.BIOME, KEY.getValue(), biome);
+        Registry.register(BuiltinRegistries.BIOME, KEY.getValue(), biome);
+        return KEY;
     }
 
 }

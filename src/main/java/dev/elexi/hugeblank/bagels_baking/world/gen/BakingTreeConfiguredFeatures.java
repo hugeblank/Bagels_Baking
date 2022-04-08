@@ -16,15 +16,15 @@ import java.util.List;
 
 public class BakingTreeConfiguredFeatures {
     private static final BeehiveTreeDecorator BEES_002 = new BeehiveTreeDecorator(0.02F);
-    public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> CHERRY_TREE;
-    public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> CHERRY_TREE_BEES_002;
-    public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> LEMON_TREE;
-    public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> LEMON_TREE_BEES_002;
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> CHERRY_TREE;
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> CHERRY_TREE_BEES_002;
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> LEMON_TREE;
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> LEMON_TREE_BEES_002;
 
-    public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> JUNIPER_TREE;
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> JUNIPER_TREE;
 
-    public static final RegistryEntry<ConfiguredFeature<SimpleBlockFeatureConfig, ?>> CINNAMON_TREE;
-    public static final RegistryEntry<ConfiguredFeature<SimpleBlockFeatureConfig, ?>> SMALL_CINNAMON_TREE;
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> CINNAMON_TREE;
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> SMALL_CINNAMON_TREE;
 
     private static TreeFeatureConfig.Builder cherry() {
         return new TreeFeatureConfig.Builder(

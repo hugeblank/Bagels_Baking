@@ -11,6 +11,7 @@ version = "${project.minecraft_version}-${project.mod_version}"
 group = project.maven_group
 
 repositories {
+	maven { url = 'https://maven.minecraftforge.net/' }
 	maven { url "https://maven.shedaniel.me/" }
 }
 
@@ -21,6 +22,7 @@ dependencies {
 
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
+	modImplementation include("com.github.glitchfiend:TerraBlender-fabric:${project.minecraft_version}-${project.terrablender_version}")
 	useOptional "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 	useOptional "me.shedaniel:RoughlyEnoughItems-api:${project.rei_version}"
 }

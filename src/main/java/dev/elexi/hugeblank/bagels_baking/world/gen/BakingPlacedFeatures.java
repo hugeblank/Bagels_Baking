@@ -20,9 +20,7 @@ public class BakingPlacedFeatures {
 
     public static RegistryEntry<PlacedFeature> register(Identifier id, RegistryEntry<? extends ConfiguredFeature<?, ?>> configuredFeature, List<PlacementModifier> modifiers) {
         PlacedFeature pf = new PlacedFeature((RegistryEntry<ConfiguredFeature<?, ?>>) configuredFeature, modifiers);
-        RegistryEntry<PlacedFeature> entry = RegistryEntry.of(pf);
-        Registry.register(BuiltinRegistries.PLACED_FEATURE, id, pf);
-        return entry;
+        return BuiltinRegistries.add(BuiltinRegistries.PLACED_FEATURE, id, pf);
     }
 
     public static RegistryEntry<PlacedFeature> register(String name, RegistryEntry<? extends ConfiguredFeature<?, ?>> configuredFeature, List<PlacementModifier> modifiers) {

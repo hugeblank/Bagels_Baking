@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "bagels_baking:savanna_winery",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 32,
+    "separation": 8,
+    "salt": 420420
+  }
+}

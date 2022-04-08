@@ -24,6 +24,9 @@
     ],
     "rei_plugins": [
       "dev.elexi.hugeblank.bagels_baking.compat.rei.ClientPlugin"
+    ],
+    "terrablender": [
+      "dev.elexi.hugeblank.bagels_baking.Baking"
     ]
   },
   "mixins": [

@@ -7,6 +7,7 @@ import dev.elexi.hugeblank.bagels_baking.block.cauldron.CheeseCauldronBlock;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.SeparatorCauldron;
 import dev.elexi.hugeblank.bagels_baking.block.entity.FermenterBlockEntity;
 import dev.elexi.hugeblank.bagels_baking.block.entity.IceBoxBlockEntity;
+import dev.elexi.hugeblank.bagels_baking.compat.terrablender.BakingRegion;
 import dev.elexi.hugeblank.bagels_baking.entity.BakingVillagerProfessions;
 import dev.elexi.hugeblank.bagels_baking.entity.BakingVillagerTrades;
 import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
@@ -18,12 +19,12 @@ import dev.elexi.hugeblank.bagels_baking.recipe.MillingRecipe;
 import dev.elexi.hugeblank.bagels_baking.recipe.ShapelessRemainderlessRecipe;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
 import dev.elexi.hugeblank.bagels_baking.util.WoodType;
-import dev.elexi.hugeblank.bagels_baking.world.biome.BakingBiomesCreator;
+import dev.elexi.hugeblank.bagels_baking.world.biome.BakingBiomes;
 import dev.elexi.hugeblank.bagels_baking.world.gen.BakingClusterConfiguredFeatures;
 import dev.elexi.hugeblank.bagels_baking.world.gen.BakingClusterPlacedFeatures;
 import dev.elexi.hugeblank.bagels_baking.world.gen.BakingTreeConfiguredFeatures;
 import dev.elexi.hugeblank.bagels_baking.world.gen.BakingTreePlacedFeatures;
-import dev.elexi.hugeblank.bagels_baking.world.gen.structure.BakingConfiguredStructures;
+import dev.elexi.hugeblank.bagels_baking.world.gen.placer.BakingPlacers;
 import dev.elexi.hugeblank.bagels_baking.world.gen.tree.CherrySaplingGenerator;
 import dev.elexi.hugeblank.bagels_baking.world.gen.tree.JuniperSaplingGenerator;
 import dev.elexi.hugeblank.bagels_baking.world.gen.tree.LemonSaplingGenerator;
@@ -56,10 +57,12 @@ import net.minecraft.util.Rarity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
+import terrablender.api.Regions;
+import terrablender.api.TerraBlenderApi;
 
 import java.util.Random;
 
-public class Baking implements ModInitializer {
+public class Baking implements ModInitializer, TerraBlenderApi {
 
 	public static final String ID = "bagels_baking";
 
@@ -915,16 +918,17 @@ public class Baking implements ModInitializer {
 		// Tree Configured/Placed Features
 		BakingTreeConfiguredFeatures.init();
 		BakingTreePlacedFeatures.init();
+		BakingPlacers.init();
 
 		// Advanced Configured/Placed Features
 		BakingClusterConfiguredFeatures.init();
 		BakingClusterPlacedFeatures.init();
 
 		// Biomes
-		BakingBiomesCreator.init();
+		BakingBiomes.init();
 
 		// Configured Structures
-		BakingConfiguredStructures.init();
+		// BakingConfiguredStructureFeatures.init();
 
 		// Villager Professions
 		BakingVillagerProfessions.init();
@@ -949,5 +953,10 @@ public class Baking implements ModInitializer {
 
 		// Music Discs
 		registerItem("music_disc_coll", COLL_DISC);
+	}
+
+	@Override
+	public void onTerraBlenderInitialized() {
+		Regions.register(new BakingRegion(new Identifier(Baking.ID, "overworld"), 2));
 	}
 }

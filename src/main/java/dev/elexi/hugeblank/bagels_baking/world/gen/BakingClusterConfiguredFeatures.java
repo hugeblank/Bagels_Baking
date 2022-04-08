@@ -11,13 +11,13 @@ import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import java.util.List;
 
 public class BakingClusterConfiguredFeatures {
-    public static final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> TREES_ORCHARD; // Cherry Orchard
-    public static final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> TREES_GROVE; // Lemon Grove
-    public static final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> TREES_TAIGA; // Juniper Taiga
-    public static final RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> TREES_TAIGA_SNOWY; // Snowy Juniper Taiga
-    public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> PATCH_CINNAMON;
-    public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> PATCH_TEA;
-    public static final RegistryEntry<ConfiguredFeature<OreFeatureConfig, ?>> ORE_HALITE;
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> TREES_ORCHARD; // Cherry Orchard
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> TREES_GROVE; // Lemon Grove
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> TREES_TAIGA; // Juniper Taiga
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> TREES_TAIGA_SNOWY; // Snowy Juniper Taiga
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> PATCH_CINNAMON;
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> PATCH_TEA;
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> ORE_HALITE;
 
     public static void init() {}
 
@@ -89,7 +89,7 @@ public class BakingClusterConfiguredFeatures {
                 new OreFeatureConfig(
                         OreConfiguredFeatures.BASE_STONE_OVERWORLD,
                         Baking.HALITE.getDefaultState(),
-                        33
+                        64
                 )
         );
     }
