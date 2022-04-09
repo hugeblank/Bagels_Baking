@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "bagels_baking:onion"
+    },
+    "result": "bagels_baking:onion_rings",
+    "count": 4
+}

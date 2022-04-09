@@ -66,6 +66,7 @@ public class Splashes {
         splashTexts.add("Phantoms just need a hug"); // propaganda
         splashTexts.add("WE HAVE STICKERS"); // he has stickers
         splashTexts.add("https://ibb.co/DMqwf0y if you dare"); // Togg said no Word Documents
+        splashTexts.add("oniones"); // Todd made a find/replace resourcepack script that converted the word potato to onion. When it came across "potatoes"...
         // Miscellaneous
         splashTexts.add("Now Catering!");
         splashTexts.add("Respect your food delivery drivers!");
@@ -75,13 +76,11 @@ public class Splashes {
         splashTexts.add("Craft Singles?");
         if (session != null && RANDOM.nextFloat() < 0.1) {
             switch (session.getUsername()) { // Surprises for people that inspired this mod
-                case "rwr" -> cir.setReturnValue("Betreucia killed Broseph!");
                 case "hugeblank" -> cir.setReturnValue("Subscribe to twitch.tv/hugeblank");
                 case "roger109z" -> cir.setReturnValue("poger! :)");
                 case "Kori_A" -> cir.setReturnValue("Korea? No, Kori_A.");
                 case "He_Is_Man" -> cir.setReturnValue("balright.");
                 case "NotEnoughStar" -> cir.setReturnValue("Obamaphant moment");
-                case "Bu_dum_chhh" -> cir.setReturnValue("Literally the best smash player, no cap.");
                 case "Pedrospeeder" -> cir.setReturnValue("Next year is Mazdas year, swear.");
                 case "ChocolateFrog18" -> cir.setReturnValue("Any British frogs?");
                 case "ZagXC" -> cir.setReturnValue("Connor help I'm trapped in the menu screen please get me out of here");

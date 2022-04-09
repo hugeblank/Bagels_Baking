@@ -289,6 +289,9 @@ public class Baking implements ModInitializer, TerraBlenderApi {
 	public static final Item COOKED_RICE_BALL = basicFood(4, 0.4f);
 	public static final Item COOKED_CORN = basicFood(5, 0.6f);
 	public static final Item POPCORN = basicFood(1, 0.3f);
+	public static final Item ONION_RINGS = basicFood(1, 0.1f);
+	public static final Item BATTERED_ONION_RINGS = basicFood(2, 0.1f);
+	public static final Item FRIED_ONION_RINGS = basicFood(3, 0.3f);
 
 	// Mill
 	public static final Identifier MILL_ID = new Identifier(ID, "mill");
@@ -434,6 +437,10 @@ public class Baking implements ModInitializer, TerraBlenderApi {
 	public static final Block CORN_STALK = new TallCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item CORN = basicFood(3, 0.3f);
 	public static final Item CORN_SEEDS = new BlockItem(CORN_STALK, new Item.Settings().group(ItemGroup.MISC));
+	public static final Block ONION_PLANT = new BasicCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
+	public static final Item ONION = new BlockItem(ONION_PLANT, new Item.Settings().group(ItemGroup.FOOD).food(
+			foodComponent(2, 0.1f).build()
+	));
 	// deathypooh - requested on 3/22/21
 	// solcatowo - requested on 3/22/21
 
@@ -733,6 +740,9 @@ public class Baking implements ModInitializer, TerraBlenderApi {
 		registerItem("cooked_rice_ball", COOKED_RICE_BALL);
 		registerItem("cooked_corn", COOKED_CORN);
 		registerItem("popcorn", POPCORN);
+		registerItem("onion_rings", ONION_RINGS);
+		registerItem("battered_onion_rings", BATTERED_ONION_RINGS);
+		registerItem("fried_onion_rings", FRIED_ONION_RINGS);
 
 		// Mill
 		Registry.register(Registry.BLOCK, MILL_ID, MILL);
@@ -830,6 +840,7 @@ public class Baking implements ModInitializer, TerraBlenderApi {
 		((BasicCropBlock)CORN_STALK).setSeed(CORN_SEEDS);
 		registerItem("corn", CORN);
 		registerItem("corn_seeds", CORN_SEEDS);
+		registerBlock("onion", ONION_PLANT, (BlockItem) ONION);
 		// dreamwastaken my beloved <3 - redeemed by KoritsiAlogo on 3/22/21
 
 		// Trees
