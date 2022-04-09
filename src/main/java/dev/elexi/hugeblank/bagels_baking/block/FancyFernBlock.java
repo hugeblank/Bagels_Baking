@@ -19,6 +19,14 @@ public class FancyFernBlock extends FernBlock {
         this.growsInto = growsInto;
     }
 
+    @Override
+    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if (world.getLightLevel(pos.up()) >= 9 && random.nextInt(7) == 0) {
+            this.grow(world, random, pos, state);
+        }
+    }
+
+    @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
         PlantBlock plant = growsInto.get(random);
         if (plant instanceof TriplePlantBlock && plant.getDefaultState().canPlaceAt(world, pos) && world.isAir(pos.up()) && world.isAir(pos.up().up())) {

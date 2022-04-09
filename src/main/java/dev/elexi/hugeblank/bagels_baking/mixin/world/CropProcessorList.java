@@ -27,7 +27,8 @@ public class CropProcessorList {
                         new StructureProcessorRule(new BlockMatchRuleTest(Blocks.GRASS_BLOCK), new BlockMatchRuleTest(Blocks.WATER), Blocks.WATER.getDefaultState()),
                         new StructureProcessorRule(new BlockMatchRuleTest(Blocks.DIRT), new BlockMatchRuleTest(Blocks.WATER), Blocks.WATER.getDefaultState()),
                         new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.3F), AlwaysTrueRuleTest.INSTANCE, Baking.RICE_PLANT.getDefaultState()),
-                        new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.2F), AlwaysTrueRuleTest.INSTANCE, Baking.CORN_STALK.getDefaultState())
+                        new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.2F), AlwaysTrueRuleTest.INSTANCE, Baking.CORN_STALK.getDefaultState()),
+                        new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.1F), AlwaysTrueRuleTest.INSTANCE, Baking.ONION_PLANT.getDefaultState())
                 )));
     }
 
@@ -40,6 +41,7 @@ public class CropProcessorList {
                         new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.15F), AlwaysTrueRuleTest.INSTANCE, Baking.TOMATO_PLANT.getDefaultState()),
                         new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.1F), AlwaysTrueRuleTest.INSTANCE, Blocks.CARROTS.getDefaultState()),
                         new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.1F), AlwaysTrueRuleTest.INSTANCE, Baking.RICE_PLANT.getDefaultState()),
+                        new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.1F), AlwaysTrueRuleTest.INSTANCE, Baking.ONION_PLANT.getDefaultState()),
                         new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.05F), AlwaysTrueRuleTest.INSTANCE, Blocks.BEETROOTS.getDefaultState())
                 )));
     }
@@ -50,7 +52,8 @@ public class CropProcessorList {
                 new RuleStructureProcessor(ImmutableList.of(
                         new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.3F), AlwaysTrueRuleTest.INSTANCE, Baking.RICE_PLANT.getDefaultState()),
                         new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.2F), AlwaysTrueRuleTest.INSTANCE, Baking.CORN_STALK.getDefaultState()),
-                        new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.1F), AlwaysTrueRuleTest.INSTANCE, Blocks.MELON_STEM.getDefaultState())
+                        new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.1F), AlwaysTrueRuleTest.INSTANCE, Blocks.MELON_STEM.getDefaultState()),
+                        new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.1F), AlwaysTrueRuleTest.INSTANCE, Baking.ONION_PLANT.getDefaultState())
                 )));
     }
 
@@ -70,7 +73,8 @@ public class CropProcessorList {
                 new RuleStructureProcessor(ImmutableList.of(
                         new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.3F), AlwaysTrueRuleTest.INSTANCE, Blocks.PUMPKIN_STEM.getDefaultState()),
                         new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.2F), AlwaysTrueRuleTest.INSTANCE, Blocks.POTATOES.getDefaultState()),
-                        new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.2F), AlwaysTrueRuleTest.INSTANCE, Baking.RICE_PLANT.getDefaultState())
+                        new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.2F), AlwaysTrueRuleTest.INSTANCE, Baking.RICE_PLANT.getDefaultState()),
+                        new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.WHEAT, 0.1F), AlwaysTrueRuleTest.INSTANCE, Baking.ONION_PLANT.getDefaultState())
                 )));
     }
 

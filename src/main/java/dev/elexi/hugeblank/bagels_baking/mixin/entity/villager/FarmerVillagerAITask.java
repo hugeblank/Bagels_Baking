@@ -40,6 +40,9 @@ public class FarmerVillagerAITask {
         } else if (itemStack.isOf(Baking.WILD_RICE)) {
             serverWorld.setBlockState(currentTarget, Baking.RICE_PLANT.getDefaultState(), 3);
             executeTask();
+        } else if (itemStack.isOf(Baking.ONION)) {
+            serverWorld.setBlockState(currentTarget, Baking.ONION_PLANT.getDefaultState(), 3);
+            executeTask();
         }
     }
 
