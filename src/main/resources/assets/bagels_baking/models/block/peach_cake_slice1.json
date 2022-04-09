@@ -1,0 +1,44 @@
+{
+    "textures": {
+        "top": "bagels_baking:block/peach_cake_top",
+        "side": "bagels_baking:block/peach_cake_side",
+        "bottom": "bagels_baking:block/peach_cake_bottom",
+        "particle": "bagels_baking:block/peach_cake_side",
+        "inside": "bagels_baking:block/peach_cake_inner"
+    },
+    "elements": [
+        {
+            "faces": {
+                "west": {
+                    "texture": "#inside"
+                },
+                "up": {
+                    "texture": "#top"
+                },
+                "down": {
+                    "cullface": "down",
+                    "texture": "#bottom"
+                },
+                "south": {
+                    "texture": "#side"
+                },
+                "east": {
+                    "texture": "#side"
+                },
+                "north": {
+                    "texture": "#side"
+                }
+            },
+            "to": [
+                15,
+                8,
+                15
+            ],
+            "from": [
+                3,
+                0,
+                1
+            ]
+        }
+    ]
+}

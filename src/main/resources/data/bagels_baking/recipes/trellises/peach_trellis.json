@@ -10,7 +10,7 @@
             "item": "minecraft:string"
         },
         "L": {
-            "item": "minecraft:peach_log"
+            "item": "bagels_baking:peach_log"
         }
     },
     "result": {

@@ -238,6 +238,7 @@ public class Baking implements ModInitializer, TerraBlenderApi {
 	public static final BasicCakeBlock CHOCOLATE_CAKE = new BasicCakeBlock(FabricBlockSettings.copy(Blocks.CAKE));
 	public static final BasicCakeBlock RED_VELVET_CAKE = new BasicCakeBlock(FabricBlockSettings.copy(Blocks.CAKE));
 	public static final BasicCakeBlock LEMON_CAKE = new BasicCakeBlock(FabricBlockSettings.copy(Blocks.CAKE));
+	public static final BasicCakeBlock PEACH_CAKE = new BasicCakeBlock(FabricBlockSettings.copy(Blocks.CAKE));
 
 	// Halite Blocks
 	public static final Block HALITE = new GlassBlock(FabricBlockSettings.of(Material.STONE).requiresTool().strength(1.25F, 4.2F)
@@ -651,6 +652,7 @@ public class Baking implements ModInitializer, TerraBlenderApi {
 		registerCakeType("chocolate_cake", CHOCOLATE_CAKE);
 		registerCakeType("red_velvet_cake", RED_VELVET_CAKE);
 		registerCakeType("lemon_cake", LEMON_CAKE);
+		registerCakeType("peach_cake", PEACH_CAKE);
 
 		// Halite & Salt
 		registerBlock("halite", HALITE, ItemGroup.BUILDING_BLOCKS);

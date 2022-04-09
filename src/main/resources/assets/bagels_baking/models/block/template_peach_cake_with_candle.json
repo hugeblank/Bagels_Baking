@@ -1,0 +1,194 @@
+{
+    "textures": {
+        "top": "bagels_baking:block/peach_cake_top",
+        "particle": "bagels_baking:block/peach_cake_side",
+        "side": "bagels_baking:block/peach_cake_side",
+        "bottom": "bagels_baking:block/peach_cake_bottom"
+    },
+    "elements": [
+        {
+            "faces": {
+                "west": {
+                    "texture": "#side"
+                },
+                "up": {
+                    "texture": "#top"
+                },
+                "down": {
+                    "cullface": "down",
+                    "texture": "#bottom"
+                },
+                "south": {
+                    "texture": "#side"
+                },
+                "east": {
+                    "texture": "#side"
+                },
+                "north": {
+                    "texture": "#side"
+                }
+            },
+            "to": [
+                15,
+                8,
+                15
+            ],
+            "from": [
+                1,
+                0,
+                1
+            ]
+        },
+        {
+            "faces": {
+                "up": {
+                    "uv": [
+                        0,
+                        6,
+                        2,
+                        8
+                    ],
+                    "texture": "#candle"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        8,
+                        2,
+                        14
+                    ],
+                    "texture": "#candle"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        8,
+                        2,
+                        14
+                    ],
+                    "texture": "#candle"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        8,
+                        2,
+                        14
+                    ],
+                    "texture": "#candle"
+                },
+                "down": {
+                    "cullface": "down",
+                    "uv": [
+                        0,
+                        14,
+                        2,
+                        16
+                    ],
+                    "texture": "#candle"
+                },
+                "north": {
+                    "uv": [
+                        0,
+                        8,
+                        2,
+                        14
+                    ],
+                    "texture": "#candle"
+                }
+            },
+            "to": [
+                9,
+                14,
+                9
+            ],
+            "from": [
+                7,
+                8,
+                7
+            ]
+        },
+        {
+            "rotation": {
+                "angle": -45,
+                "axis": "y",
+                "origin": [
+                    8,
+                    14,
+                    8
+                ]
+            },
+            "to": [
+                8.5,
+                15,
+                8
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        5,
+                        1,
+                        6
+                    ],
+                    "texture": "#candle"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        5,
+                        1,
+                        6
+                    ],
+                    "texture": "#candle"
+                }
+            },
+            "from": [
+                7.5,
+                14,
+                8
+            ]
+        },
+        {
+            "rotation": {
+                "angle": 45,
+                "axis": "y",
+                "origin": [
+                    8,
+                    14,
+                    8
+                ]
+            },
+            "to": [
+                8.5,
+                15,
+                8
+            ],
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        5,
+                        1,
+                        6
+                    ],
+                    "texture": "#candle"
+                },
+                "south": {
+                    "uv": [
+                        0,
+                        5,
+                        1,
+                        6
+                    ],
+                    "texture": "#candle"
+                }
+            },
+            "from": [
+                7.5,
+                14,
+                8
+            ]
+        }
+    ]
+}
