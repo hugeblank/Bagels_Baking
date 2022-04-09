@@ -42,7 +42,7 @@ public class CupItem extends Item {
         return TypedActionResult.pass(itemStack);
     }
 
-    protected ItemStack fill(ItemStack itemStack, PlayerEntity playerEntity, ItemStack itemStack2) {
+    public ItemStack fill(ItemStack itemStack, PlayerEntity playerEntity, ItemStack itemStack2) {
         playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
         boolean bl2 = playerEntity.getAbilities().creativeMode;
         if (bl2) {

@@ -20,7 +20,7 @@ import java.util.Iterator;
 public class MilkCupItem extends BasicDrink {
 
     public MilkCupItem() {
-        super(new Item.Settings().group(ItemGroup.FOOD).maxCount(16).recipeRemainder(Baking.CUP), Baking.CUP);
+        super(new Item.Settings().group(ItemGroup.FOOD).maxCount(16), Baking.CUP);
     }
 
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {

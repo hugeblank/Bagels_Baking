@@ -2,11 +2,12 @@ package dev.elexi.hugeblank.bagels_baking.mixin.entity.passive;
 
 import dev.elexi.hugeblank.bagels_baking.Baking;
 import dev.elexi.hugeblank.bagels_baking.entity.FeedItems;
+import dev.elexi.hugeblank.bagels_baking.item.CupItem;
 import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsage;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
@@ -29,8 +30,13 @@ class CowEntityMixin {
     private void milkWithCup(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
         ItemStack itemStack = player.getStackInHand(hand);
         if (itemStack.isOf(Baking.CUP) && !((CowEntity)(Object)this).isBaby()) {
+            CupItem item = (CupItem) itemStack.getItem();
             player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.5F);
-            ItemUsage.exchangeStack(itemStack, player, Baking.MILK_CUP.getDefaultStack());
+            if (item.fill(itemStack, player, Baking.MILK_CUP.getDefaultStack()).isEmpty()) {
+                PlayerInventory invo = player.getInventory();
+                int slot = invo.getSlotWithStack(Baking.MILK_CUP.getDefaultStack());
+                player.setStackInHand(hand, invo.removeStack(slot));
+            }
             cir.setReturnValue(ActionResult.success(((CowEntity)(Object)this).world.isClient));
         }
     }
