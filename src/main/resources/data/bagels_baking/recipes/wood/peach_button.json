@@ -1,0 +1,12 @@
+{
+    "group": "wooden_button",
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "bagels_baking:peach_planks"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:peach_button"
+    }
+}

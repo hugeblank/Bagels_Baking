@@ -11,6 +11,8 @@ public class BakingTreePlacedFeatures {
     public static final RegistryEntry<PlacedFeature> CHERRY_BEES_002;
     public static final RegistryEntry<PlacedFeature> LEMON_CHECKED;
     public static final RegistryEntry<PlacedFeature> LEMON_BEES_002;
+    public static final RegistryEntry<PlacedFeature> PEACH_CHECKED;
+    public static final RegistryEntry<PlacedFeature> PEACH_BEES_002;
     public static final RegistryEntry<PlacedFeature> JUNIPER_CHECKED;
     public static final RegistryEntry<PlacedFeature> JUNIPER_ON_SNOW;
     public static final RegistryEntry<PlacedFeature> SMALL_CINNAMON_CHECKED;
@@ -38,6 +40,16 @@ public class BakingTreePlacedFeatures {
                 "lemon_bees_002",
                 BakingTreeConfiguredFeatures.LEMON_TREE_BEES_002,
                 PlacedFeatures.wouldSurvive(Baking.LEMON_SAPLING)
+        );
+        PEACH_CHECKED = PlacedFeatures.register(
+                "peach_checked",
+                BakingTreeConfiguredFeatures.PEACH_TREE,
+                PlacedFeatures.wouldSurvive(Baking.PEACH_SAPLING)
+        );
+        PEACH_BEES_002 = PlacedFeatures.register(
+                "peach_bees_002",
+                BakingTreeConfiguredFeatures.PEACH_TREE_BEES_002,
+                PlacedFeatures.wouldSurvive(Baking.PEACH_SAPLING)
         );
         JUNIPER_CHECKED = PlacedFeatures.register(
                 "juniper_checked",

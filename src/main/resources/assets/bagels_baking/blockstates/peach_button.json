@@ -1,0 +1,118 @@
+{
+    "variants": {
+        "face=floor,facing=south,powered=true": {
+            "y": 180,
+            "model": "bagels_baking:block/peach_button_pressed"
+        },
+        "face=floor,facing=south,powered=false": {
+            "y": 180,
+            "model": "bagels_baking:block/peach_button"
+        },
+        "face=ceiling,facing=west,powered=false": {
+            "y": 90,
+            "x": 180,
+            "model": "bagels_baking:block/peach_button"
+        },
+        "face=wall,facing=west,powered=false": {
+            "y": 270,
+            "x": 90,
+            "uvlock": true,
+            "model": "bagels_baking:block/peach_button"
+        },
+        "face=ceiling,facing=east,powered=false": {
+            "y": 270,
+            "x": 180,
+            "model": "bagels_baking:block/peach_button"
+        },
+        "face=wall,facing=north,powered=false": {
+            "uvlock": true,
+            "x": 90,
+            "model": "bagels_baking:block/peach_button"
+        },
+        "face=floor,facing=west,powered=false": {
+            "y": 270,
+            "model": "bagels_baking:block/peach_button"
+        },
+        "face=wall,facing=north,powered=true": {
+            "uvlock": true,
+            "x": 90,
+            "model": "bagels_baking:block/peach_button_pressed"
+        },
+        "face=floor,facing=east,powered=false": {
+            "y": 90,
+            "model": "bagels_baking:block/peach_button"
+        },
+        "face=floor,facing=east,powered=true": {
+            "y": 90,
+            "model": "bagels_baking:block/peach_button_pressed"
+        },
+        "face=ceiling,facing=east,powered=true": {
+            "y": 270,
+            "x": 180,
+            "model": "bagels_baking:block/peach_button_pressed"
+        },
+        "face=wall,facing=west,powered=true": {
+            "y": 270,
+            "x": 90,
+            "uvlock": true,
+            "model": "bagels_baking:block/peach_button_pressed"
+        },
+        "face=floor,facing=north,powered=false": {
+            "model": "bagels_baking:block/peach_button"
+        },
+        "face=floor,facing=north,powered=true": {
+            "model": "bagels_baking:block/peach_button_pressed"
+        },
+        "face=ceiling,facing=north,powered=true": {
+            "y": 180,
+            "x": 180,
+            "model": "bagels_baking:block/peach_button_pressed"
+        },
+        "face=ceiling,facing=south,powered=false": {
+            "model": "bagels_baking:block/peach_button",
+            "x": 180
+        },
+        "face=ceiling,facing=north,powered=false": {
+            "y": 180,
+            "x": 180,
+            "model": "bagels_baking:block/peach_button"
+        },
+        "face=wall,facing=east,powered=true": {
+            "y": 90,
+            "x": 90,
+            "uvlock": true,
+            "model": "bagels_baking:block/peach_button_pressed"
+        },
+        "face=ceiling,facing=west,powered=true": {
+            "y": 90,
+            "x": 180,
+            "model": "bagels_baking:block/peach_button_pressed"
+        },
+        "face=ceiling,facing=south,powered=true": {
+            "model": "bagels_baking:block/peach_button_pressed",
+            "x": 180
+        },
+        "face=wall,facing=east,powered=false": {
+            "y": 90,
+            "x": 90,
+            "uvlock": true,
+            "model": "bagels_baking:block/peach_button"
+        },
+        "face=wall,facing=south,powered=false": {
+            "y": 180,
+            "x": 90,
+            "uvlock": true,
+            "model": "bagels_baking:block/peach_button"
+        },
+        "face=wall,facing=south,powered=true": {
+            "y": 180,
+            "x": 90,
+            "uvlock": true,
+            "model": "bagels_baking:block/peach_button_pressed"
+        },
+        "face=floor,facing=west,powered=true": {
+            "y": 270,
+            "model": "bagels_baking:block/peach_button_pressed"
+        }
+    }
+}

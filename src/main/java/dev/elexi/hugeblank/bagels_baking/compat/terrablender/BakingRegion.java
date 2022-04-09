@@ -22,7 +22,7 @@ public class BakingRegion extends Region {
 
     @Override
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
-        this.addBiomeSimilar(mapper, BiomeKeys.FOREST, BakingBiomes.CHERRY_ORCHARD);
+        this.addBiomeSimilar(mapper, BiomeKeys.FOREST, BakingBiomes.ORCHARD);
         this.addBiomeSimilar(mapper, BiomeKeys.FOREST, BakingBiomes.LEMON_GROVE);
         this.addBiomeSimilar(mapper, BiomeKeys.TAIGA, BakingBiomes.JUNIPER_TAIGA);
         this.addBiomeSimilar(mapper, BiomeKeys.SNOWY_TAIGA, BakingBiomes.SNOWY_JUNIPER_TAIGA);

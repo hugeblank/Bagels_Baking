@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "   ",
+        "###",
+        " L "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:string"
+        },
+        "L": {
+            "item": "minecraft:peach-log"
+        }
+    },
+    "result": {
+        "item": "bagels_baking:peach_trellis",
+        "count": 4
+    }
+}

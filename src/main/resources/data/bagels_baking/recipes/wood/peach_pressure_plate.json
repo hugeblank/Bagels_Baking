@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "#": {
+            "item": "bagels_baking:peach_planks"
+        }
+    },
+    "group": "wooden_pressure_plate",
+    "result": {
+        "item": "bagels_baking:peach_pressure_plate"
+    },
+    "pattern": [
+        "##"
+    ]
+}

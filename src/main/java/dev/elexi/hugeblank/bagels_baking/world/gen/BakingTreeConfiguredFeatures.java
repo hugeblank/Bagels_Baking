@@ -20,8 +20,9 @@ public class BakingTreeConfiguredFeatures {
     public static final RegistryEntry<ConfiguredFeature<?, ?>> CHERRY_TREE_BEES_002;
     public static final RegistryEntry<ConfiguredFeature<?, ?>> LEMON_TREE;
     public static final RegistryEntry<ConfiguredFeature<?, ?>> LEMON_TREE_BEES_002;
-
     public static final RegistryEntry<ConfiguredFeature<?, ?>> JUNIPER_TREE;
+    public static final RegistryEntry<ConfiguredFeature<?,?>> PEACH_TREE;
+    public static final RegistryEntry<ConfiguredFeature<?, ?>> PEACH_TREE_BEES_002;
 
     public static final RegistryEntry<ConfiguredFeature<?, ?>> CINNAMON_TREE;
     public static final RegistryEntry<ConfiguredFeature<?, ?>> SMALL_CINNAMON_TREE;
@@ -31,6 +32,16 @@ public class BakingTreeConfiguredFeatures {
                 BlockStateProvider.of(Baking.CHERRY_WOOD_TYPE.getBlock(WoodBlock.LOG).getDefaultState()),
                 new StraightTrunkPlacer(4, 2, 0),
                 BlockStateProvider.of(Baking.CHERRY_WOOD_TYPE.getBlock(WoodBlock.LEAVES).getDefaultState()),
+                new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
+                new TwoLayersFeatureSize(1, 0, 1)
+        ).ignoreVines();
+    }
+
+    private static TreeFeatureConfig.Builder peach() {
+        return new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(Baking.PEACH_WOOD_TYPE.getBlock(WoodBlock.LOG).getDefaultState()),
+                new StraightTrunkPlacer(4, 2, 0),
+                BlockStateProvider.of(Baking.PEACH_WOOD_TYPE.getBlock(WoodBlock.LEAVES).getDefaultState()),
                 new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
                 new TwoLayersFeatureSize(1, 0, 1)
         ).ignoreVines();
@@ -75,7 +86,19 @@ public class BakingTreeConfiguredFeatures {
                         .decorators(List.of(BEES_002))
                         .build()
         );
-
+        PEACH_TREE = BakingConfiguredFeatures.register(
+                "peach_tree",
+                Feature.TREE,
+                peach()
+                        .build()
+        );
+        PEACH_TREE_BEES_002 = BakingConfiguredFeatures.register(
+                "peach_tree_bees",
+                Feature.TREE,
+                peach()
+                        .decorators(List.of(BEES_002))
+                        .build()
+        );
         JUNIPER_TREE = BakingConfiguredFeatures.register(
                 "juniper_tree",
                 Feature.TREE,

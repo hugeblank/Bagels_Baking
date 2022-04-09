@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "axis=x": {
+            "y": 90,
+            "x": 90,
+            "model": "bagels_baking:block/peach_wood"
+        },
+        "axis=y": {
+            "model": "bagels_baking:block/peach_wood"
+        },
+        "axis=z": {
+            "model": "bagels_baking:block/peach_wood",
+            "x": 90
+        }
+    }
+}

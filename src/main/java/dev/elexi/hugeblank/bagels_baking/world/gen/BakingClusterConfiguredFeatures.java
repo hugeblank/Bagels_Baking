@@ -26,9 +26,9 @@ public class BakingClusterConfiguredFeatures {
                 "trees_orchard",
                 Feature.RANDOM_SELECTOR,
                 new RandomFeatureConfig(ImmutableList.of(
-                        new RandomFeatureEntry(BakingTreePlacedFeatures.CHERRY_BEES_002, 0.8F),
-                        new RandomFeatureEntry(TreePlacedFeatures.OAK_BEES_0002, 0.05F)
-                ), BakingTreePlacedFeatures.CHERRY_CHECKED)
+                        new RandomFeatureEntry(BakingTreePlacedFeatures.CHERRY_BEES_002, 0.5F),
+                        new RandomFeatureEntry(BakingTreePlacedFeatures.PEACH_BEES_002, 0.7F)
+                ), TreePlacedFeatures.OAK_BEES_0002)
         );
         TREES_GROVE = BakingConfiguredFeatures.register(
                 "trees_grove",

@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "#": {
+            "item": "minecraft:stick"
+        },
+        "W": {
+            "item": "bagels_baking:peach_planks"
+        }
+    },
+    "group": "wooden_fence_gate",
+    "result": {
+        "item": "bagels_baking:peach_fence_gate"
+    },
+    "pattern": [
+        "#W#",
+        "#W#"
+    ]
+}

@@ -19,13 +19,13 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
 public class BakingBiomes {
-    public static final RegistryKey<Biome> CHERRY_ORCHARD;
+    public static final RegistryKey<Biome> ORCHARD;
     public static final RegistryKey<Biome> LEMON_GROVE;
     public static final RegistryKey<Biome> JUNIPER_TAIGA;
     public static final RegistryKey<Biome> SNOWY_JUNIPER_TAIGA;
 
     static {
-        CHERRY_ORCHARD = registerBiome("cherry_orchard", BakingBiomes.createCherryOrchard());
+        ORCHARD = registerBiome("orchard", BakingBiomes.createOrchard());
         LEMON_GROVE = registerBiome("lemon_grove", BakingBiomes.createLemonGrove()); // This is really awkward.
         // Lemon groves were called lemon groves before we knew 1.18 would have grove biomes that were snowy.
         JUNIPER_TAIGA = registerBiome("juniper_taiga", BakingBiomes.createJuniperTaiga(false));
@@ -86,7 +86,7 @@ public class BakingBiomes {
                 .build();
     }
 
-    public static Biome createCherryOrchard() {
+    public static Biome createOrchard() {
         return createCustomForestBiome(BakingClusterPlacedFeatures.TREES_ORCHARD);
     }
 
@@ -113,6 +113,7 @@ public class BakingBiomes {
         addBasicFeatures(builder2);
 
         DefaultBiomeFeatures.addForestFlowers(builder2);
+        DefaultBiomeFeatures.addDefaultFlowers(builder2);
 
         DefaultBiomeFeatures.addDefaultOres(builder2);
         DefaultBiomeFeatures.addDefaultDisks(builder2);

@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+        "bagels_baking:peach_log",
+        "bagels_baking:peach_wood",
+        "bagels_baking:stripped_peach_log",
+        "bagels_baking:stripped_peach_wood"
+    ]
+}

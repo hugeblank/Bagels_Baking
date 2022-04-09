@@ -1,0 +1,69 @@
+{
+    "variants": {
+        "facing=north,half=bottom,open=true": {
+            "model": "bagels_baking:block/peach_trapdoor_open"
+        },
+        "facing=north,half=top,open=false": {
+            "model": "bagels_baking:block/peach_trapdoor_top"
+        },
+        "facing=east,half=top,open=true": {
+            "y": 270,
+            "x": 180,
+            "model": "bagels_baking:block/peach_trapdoor_open"
+        },
+        "facing=north,half=top,open=true": {
+            "y": 180,
+            "x": 180,
+            "model": "bagels_baking:block/peach_trapdoor_open"
+        },
+        "facing=west,half=bottom,open=true": {
+            "y": 270,
+            "model": "bagels_baking:block/peach_trapdoor_open"
+        },
+        "facing=east,half=bottom,open=true": {
+            "y": 90,
+            "model": "bagels_baking:block/peach_trapdoor_open"
+        },
+        "facing=east,half=bottom,open=false": {
+            "y": 90,
+            "model": "bagels_baking:block/peach_trapdoor_bottom"
+        },
+        "facing=west,half=top,open=false": {
+            "y": 270,
+            "model": "bagels_baking:block/peach_trapdoor_top"
+        },
+        "facing=south,half=top,open=true": {
+            "y": 0,
+            "x": 180,
+            "model": "bagels_baking:block/peach_trapdoor_open"
+        },
+        "facing=north,half=bottom,open=false": {
+            "model": "bagels_baking:block/peach_trapdoor_bottom"
+        },
+        "facing=south,half=bottom,open=false": {
+            "y": 180,
+            "model": "bagels_baking:block/peach_trapdoor_bottom"
+        },
+        "facing=west,half=top,open=true": {
+            "y": 90,
+            "x": 180,
+            "model": "bagels_baking:block/peach_trapdoor_open"
+        },
+        "facing=south,half=bottom,open=true": {
+            "y": 180,
+            "model": "bagels_baking:block/peach_trapdoor_open"
+        },
+        "facing=east,half=top,open=false": {
+            "y": 90,
+            "model": "bagels_baking:block/peach_trapdoor_top"
+        },
+        "facing=south,half=top,open=false": {
+            "y": 180,
+            "model": "bagels_baking:block/peach_trapdoor_top"
+        },
+        "facing=west,half=bottom,open=false": {
+            "y": 270,
+            "model": "bagels_baking:block/peach_trapdoor_bottom"
+        }
+    }
+}

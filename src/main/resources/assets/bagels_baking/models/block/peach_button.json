@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/button",
+    "textures": {
+        "texture": "bagels_baking:block/peach_planks"
+    }
+}

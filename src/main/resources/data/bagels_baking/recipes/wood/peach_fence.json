@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "W": {
+            "item": "bagels_baking:peach_planks"
+        },
+        "#": {
+            "item": "minecraft:stick"
+        }
+    },
+    "group": "wooden_fence",
+    "result": {
+        "item": "bagels_baking:peach_fence",
+        "count": 3
+    },
+    "pattern": [
+        "W#W",
+        "W#W"
+    ]
+}
