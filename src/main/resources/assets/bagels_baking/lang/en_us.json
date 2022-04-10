@@ -297,6 +297,8 @@
   "item.bagels_baking.mountain_fountain": "Mountain Fountain",
   "item.bagels_baking.music_disc_coll.desc": "RGBMew - Coll",
   "item.bagels_baking.music_disc_coll": "Music Disc",
+  "item.bagels_baking.music_disc_cafe.desc": "RGBMew - Café",
+  "item.bagels_baking.music_disc_cafe": "Music Disc",
   "item.bagels_baking.mutton_cheeseburger": "Mutton Cheeseburger",
   "item.bagels_baking.mutton_meal": "Mutton Chop with Sweet Berry Sauce Meal",
   "item.bagels_baking.mutton_pocket": "Mutton Pocket",
@@ -380,5 +382,6 @@
   "subtitles.bagels_baking.golden_bagel_advancement": "Joshemve cheers",
   "subtitles.bagels_baking.ice_box_close": "Ice Box Closes",
   "subtitles.bagels_baking.ice_box_open": "Ice Box Opens",
+  "subtitles.bagels_baking.music_cafe_play": "Café plays",
   "subtitles.bagels_baking.music_coll_play": "Coll plays"
 }

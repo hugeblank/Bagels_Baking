@@ -433,7 +433,7 @@
                 },
                 {
                     "type": "minecraft:item",
-                    "weight": 15,
+                    "weight": 6,
                     "name": "bagels_baking:music_disc_coll"
                 },
                 {
