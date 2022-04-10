@@ -472,7 +472,7 @@ public class Baking implements ModInitializer, TerraBlenderApi {
 
 	public static final Block SMALL_CINNAMON_TREE = new TallPlantBlock(FabricBlockSettings.copy(Blocks.TALL_GRASS));
 	public static final Block CINNAMON_TREE = new TriplePlantBlock(FabricBlockSettings.copy(Blocks.TALL_GRASS));
-	public static final Block CINNAMON_SAPLING = new FancyFernBlock(FabricBlockSettings.copy(Blocks.OAK_SAPLING), (random) -> (PlantBlock) (((Random) random).nextFloat() < 0.4 ? CINNAMON_TREE : SMALL_CINNAMON_TREE) );
+	public static final Block CINNAMON_SAPLING = new WildCardSaplingBlock(FabricBlockSettings.copy(Blocks.OAK_SAPLING), (random) -> (PlantBlock) (((Random) random).nextFloat() < 0.4 ? CINNAMON_TREE : SMALL_CINNAMON_TREE) );
 	public static final Block POTTED_CINNAMON_SAPLING = new FlowerPotBlock(CINNAMON_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
 
 	public static final Block CHERRY_SAPLING = new BasicSaplingBlock(new BakingSaplingGenerator(BakingTreeConfiguredFeatures.CHERRY_TREE), FabricBlockSettings.copy(Blocks.OAK_SAPLING));

@@ -38,7 +38,7 @@ public enum WoodBlock {
         this.spread = spread;
     }
 
-    public Identifier registerBlock(String variant, Block block) { // Register block & Flammability
+    public Identifier register(String variant, Block block) { // Register block & Flammability
         Identifier id = new Identifier(Baking.ID, toString.apply(variant));
         Registry.register(Registry.BLOCK, id, block);
         FlammableBlockRegistry.getDefaultInstance().add(block, this.burn, this.spread);
