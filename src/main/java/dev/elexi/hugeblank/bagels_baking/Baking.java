@@ -475,13 +475,13 @@ public class Baking implements ModInitializer, TerraBlenderApi {
 	public static final Block CINNAMON_SAPLING = new WildCardSaplingBlock(FabricBlockSettings.copy(Blocks.OAK_SAPLING), (random) -> (PlantBlock) (((Random) random).nextFloat() < 0.4 ? CINNAMON_TREE : SMALL_CINNAMON_TREE) );
 	public static final Block POTTED_CINNAMON_SAPLING = new FlowerPotBlock(CINNAMON_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
 
-	public static final Block CHERRY_SAPLING = new BasicSaplingBlock(new BakingSaplingGenerator(BakingTreeConfiguredFeatures.CHERRY_TREE), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
+	public static final Block CHERRY_SAPLING = new BasicSaplingBlock(new BakingSaplingGenerator(() -> BakingTreeConfiguredFeatures.CHERRY_TREE), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
 	public static final Block POTTED_CHERRY_SAPLING = new FlowerPotBlock(CHERRY_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
-	public static final Block LEMON_SAPLING = new BasicSaplingBlock(new BakingSaplingGenerator(BakingTreeConfiguredFeatures.LEMON_TREE), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
+	public static final Block LEMON_SAPLING = new BasicSaplingBlock(new BakingSaplingGenerator(() -> BakingTreeConfiguredFeatures.LEMON_TREE), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
 	public static final Block POTTED_LEMON_SAPLING = new FlowerPotBlock(LEMON_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
-	public static final Block JUNIPER_SAPLING = new BasicSaplingBlock(new BakingSaplingGenerator(BakingTreeConfiguredFeatures.JUNIPER_TREE), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
+	public static final Block JUNIPER_SAPLING = new BasicSaplingBlock(new BakingSaplingGenerator(() -> BakingTreeConfiguredFeatures.JUNIPER_TREE), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
 	public static final Block POTTED_JUNIPER_SAPLING = new FlowerPotBlock(JUNIPER_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
-	public static final Block PEACH_SAPLING = new BasicSaplingBlock(new BakingSaplingGenerator(BakingTreeConfiguredFeatures.PEACH_TREE), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
+	public static final Block PEACH_SAPLING = new BasicSaplingBlock(new BakingSaplingGenerator(() -> BakingTreeConfiguredFeatures.PEACH_TREE), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
 	public static final Block POTTED_PEACH_SAPLING = new FlowerPotBlock(PEACH_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
 
 	// Misc
