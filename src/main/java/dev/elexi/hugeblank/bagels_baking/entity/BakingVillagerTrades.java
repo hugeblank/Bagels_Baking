@@ -35,6 +35,7 @@ public class BakingVillagerTrades {
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.FARMER, 1, (factories -> {
             buyItem(factories, Baking.CORN, 26, 2);
             buyItem(factories, Baking.TOMATO, 22, 2);
+            buyItem(factories, Baking.ONION, 22, 2);
             buyItem(factories, Baking.WILD_RICE, 20, 2);
             sellItem(factories, Baking.BAGEL, 1, 4, 1);
         }));
@@ -53,6 +54,8 @@ public class BakingVillagerTrades {
             sellItem(factories, Baking.CHOCOLATE_CAKE.asItem(), 1, 1, 15);
             sellItem(factories, Baking.CARROT_CAKE.asItem(), 1, 1, 15);
             sellItem(factories, Baking.RED_VELVET_CAKE.asItem(), 1, 1, 15);
+            sellItem(factories, Baking.LEMON_CAKE.asItem(), 1, 1, 15);
+            sellItem(factories, Baking.PEACH_CAKE.asItem(), 1, 1, 15);
             sellItem(factories, Baking.FRUIT_SALAD, 1, 1, 15);
             sellItem(factories, Baking.VEGGIE_MEDLEY, 1, 1, 15);
         }));
