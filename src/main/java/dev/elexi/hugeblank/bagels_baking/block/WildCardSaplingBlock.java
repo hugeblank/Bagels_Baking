@@ -27,7 +27,7 @@ public class WildCardSaplingBlock extends FernBlock {
         int age = state.get(AGE);
         if (world.getLightLevel(pos.up()) >= 9 && age == 15) {
             this.grow(world, random, pos, state);
-        } else {
+        } else if (age < 15) {
             world.setBlockState(pos, state.with(AGE, age+1));
         }
     }

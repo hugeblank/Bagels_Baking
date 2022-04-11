@@ -4,7 +4,6 @@
     "bagels_baking:mill",
     "bagels_baking:fermenter",
     "bagels_baking:ice_box",
-    "bagels_baking:halite",
-    "bagels_baking:polished_halite"
+    "#bagels_baking:halite"
   ]
 }
