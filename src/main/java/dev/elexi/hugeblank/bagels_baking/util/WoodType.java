@@ -54,7 +54,7 @@ public class WoodType {
         register(WoodBlock.FENCE_GATE, new FenceGateBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE_GATE)));
         register(WoodBlock.FENCE, new FenceBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE)));
         register(WoodBlock.SLAB, new SlabBlock(FabricBlockSettings.copy(Blocks.OAK_SLAB)));
-        register(WoodBlock.STAIRS, new StairBlock(log.getDefaultState(), FabricBlockSettings.copy(Blocks.OAK_STAIRS)));
+        register(WoodBlock.STAIRS, new StairBlock(getBlock(WoodBlock.PLANKS).getDefaultState(), FabricBlockSettings.copy(Blocks.OAK_STAIRS)));
         register(WoodBlock.TRAPDOOR, new BasicTrapdoorBlock(FabricBlockSettings.copy(Blocks.OAK_TRAPDOOR)));
         register(WoodBlock.SIGN, new SignBlock(FabricBlockSettings.copy(Blocks.OAK_SIGN), signType));
         register(WoodBlock.WALL_SIGN, new WallSignBlock(FabricBlockSettings.copy(Blocks.OAK_WALL_SIGN).dropsLike(getBlock(WoodBlock.SIGN)), signType));
