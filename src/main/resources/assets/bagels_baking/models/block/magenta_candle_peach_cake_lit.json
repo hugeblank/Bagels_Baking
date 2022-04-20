@@ -1,0 +1,10 @@
+{
+    "parent": "bagels_baking:block/template_peach_cake_with_candle",
+    "textures": {
+        "top": "bagels_baking:block/peach_cake_top",
+        "candle": "minecraft:block/magenta_candle_lit",
+        "side": "bagels_baking:block/peach_cake_side",
+        "bottom": "bagels_baking:block/peach_cake_bottom",
+        "particle": "bagels_baking:block/peach_cake_side"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "group": "planks",
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "tag": "bagels_baking:peach_logs"
+        }
+    ],
+    "result": {
+        "item": "bagels_baking:peach_planks",
+        "count": 4
+    }
+}

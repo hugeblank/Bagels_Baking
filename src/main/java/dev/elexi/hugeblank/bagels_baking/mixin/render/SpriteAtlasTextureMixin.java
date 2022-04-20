@@ -12,7 +12,7 @@ import java.util.Queue;
 
 @Mixin(SpriteAtlasTexture.class)
 public class SpriteAtlasTextureMixin {
-    @Inject(at = @At(value = "INVOKE", target = "Lorg/apache/logging/log4j/Logger;error(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V", ordinal = 1), method = "method_18160", cancellable = true)
+    @Inject(at = @At(value = "INVOKE", target = "Lorg/slf4j/Logger;error(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V", ordinal = 1), method = "method_18160", cancellable = true)
     private void cancelError(Identifier identifier, ResourceManager resourceManager, Queue queue, CallbackInfo ci) {
         // This is NOT A GOOD SOLUTION and I DON'T LIKE IT.
         if (identifier.getPath().contains("sign")) {

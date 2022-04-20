@@ -1,0 +1,60 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:pies/peach_cobbler"
+		]
+	},
+	"criteria": {
+		"has_peach": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:peach"
+						]
+					}
+				]
+			}
+		},
+		"has_sugar": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:sugar"
+						]
+					}
+				]
+			}
+		},
+		"has_egg": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:egg"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:pies/peach_cobbler"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_peach",
+			"has_sugar",
+			"has_egg"
+		]
+	]
+}

@@ -14,7 +14,7 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
 
 public class ShapelessRemainderlessRecipe extends ShapelessRecipe {
-    public static final Serializer SERIALIZER = new Serializer();
+    public static final dev.elexi.hugeblank.bagels_baking.recipe.ShapelessRemainderlessRecipe.Serializer SERIALIZER = new dev.elexi.hugeblank.bagels_baking.recipe.ShapelessRemainderlessRecipe.Serializer();
     public static final Identifier ID = new Identifier(Baking.ID, "crafting_shapeless_remainderless");
     public static final RecipeType<ShapelessRemainderlessRecipe> TYPE = Registry.register(Registry.RECIPE_TYPE, ID, new RecipeType<ShapelessRemainderlessRecipe>() {
         public String toString() {

@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "#": {
+            "item": "bagels_baking:peach_planks"
+        }
+    },
+    "group": "wooden_slab",
+    "result": {
+        "item": "bagels_baking:peach_slab",
+        "count": 6
+    },
+    "pattern": [
+        "###"
+    ]
+}

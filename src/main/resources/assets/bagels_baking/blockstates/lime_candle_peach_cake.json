@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "lit=false": {
+            "model": "bagels_baking:block/lime_candle_peach_cake"
+        },
+        "lit=true": {
+            "model": "bagels_baking:block/lime_candle_peach_cake_lit"
+        }
+    }
+}

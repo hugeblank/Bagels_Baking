@@ -8,6 +8,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.ProjectileDamageSource;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
@@ -24,6 +25,10 @@ import net.minecraft.world.World;
 
 public class TomatoEntity extends ThrownItemEntity {
 
+
+    public TomatoEntity(World world, LivingEntity owner) {
+        super(Baking.TOMATO_THROWABLE, owner, world);
+    }
 
     public TomatoEntity(World world) {
         super(Baking.TOMATO_THROWABLE, world);

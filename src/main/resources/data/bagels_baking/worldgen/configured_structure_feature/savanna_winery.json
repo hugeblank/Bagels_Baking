@@ -1,0 +1,10 @@
+ {
+   "type": "minecraft:village",
+   "config": {
+     "start_pool": "bagels_baking:savanna_winery",
+     "size": 4
+   },
+   "biomes": "#minecraft:has_structure/village_savanna",
+   "adapt_noise": true,
+   "spawn_overrides": {}
+ }

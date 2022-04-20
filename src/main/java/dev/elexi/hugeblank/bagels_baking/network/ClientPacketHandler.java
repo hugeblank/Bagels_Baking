@@ -19,7 +19,7 @@ import java.util.UUID;
 public class ClientPacketHandler {
     public static void register(Identifier id) {
         ClientPlayNetworking.registerGlobalReceiver(id, ClientPacketHandler::accept);
-    };
+    }
 
     public static void accept(MinecraftClient client, ClientPlayNetworkHandler networkHandler, PacketByteBuf buffer, PacketSender sender) {
         int id = buffer.readVarInt();

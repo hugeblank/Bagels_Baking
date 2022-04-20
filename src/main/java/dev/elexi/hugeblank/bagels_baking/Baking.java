@@ -1,11 +1,13 @@
 package dev.elexi.hugeblank.bagels_baking;
 
+
 import dev.elexi.hugeblank.bagels_baking.block.*;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.BakingCauldronBehavior;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.CheeseCauldronBlock;
 import dev.elexi.hugeblank.bagels_baking.block.cauldron.SeparatorCauldron;
 import dev.elexi.hugeblank.bagels_baking.block.entity.FermenterBlockEntity;
 import dev.elexi.hugeblank.bagels_baking.block.entity.IceBoxBlockEntity;
+import dev.elexi.hugeblank.bagels_baking.compat.terrablender.BakingRegion;
 import dev.elexi.hugeblank.bagels_baking.entity.BakingVillagerProfessions;
 import dev.elexi.hugeblank.bagels_baking.entity.BakingVillagerTrades;
 import dev.elexi.hugeblank.bagels_baking.entity.TomatoEntity;
@@ -18,11 +20,8 @@ import dev.elexi.hugeblank.bagels_baking.recipe.ShapelessRemainderlessRecipe;
 import dev.elexi.hugeblank.bagels_baking.screen.MillScreenHandler;
 import dev.elexi.hugeblank.bagels_baking.util.WoodType;
 import dev.elexi.hugeblank.bagels_baking.world.biome.BakingBiomes;
-import dev.elexi.hugeblank.bagels_baking.world.gen.BakingConfiguredFeatures;
-import dev.elexi.hugeblank.bagels_baking.world.gen.structure.BakingConfiguredStructures;
-import dev.elexi.hugeblank.bagels_baking.world.gen.tree.CherrySaplingGenerator;
-import dev.elexi.hugeblank.bagels_baking.world.gen.tree.JuniperSaplingGenerator;
-import dev.elexi.hugeblank.bagels_baking.world.gen.tree.LemonSaplingGenerator;
+import dev.elexi.hugeblank.bagels_baking.world.gen.*;
+import dev.elexi.hugeblank.bagels_baking.world.gen.placer.BakingPlacers;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -52,10 +51,12 @@ import net.minecraft.util.Rarity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
+import terrablender.api.Regions;
+import terrablender.api.TerraBlenderApi;
 
 import java.util.Random;
 
-public class Baking implements ModInitializer {
+public class Baking implements ModInitializer, TerraBlenderApi {
 
 	public static final String ID = "bagels_baking";
 
@@ -77,8 +78,8 @@ public class Baking implements ModInitializer {
 			return new Item(new Item.Settings().group(ItemGroup.MATERIALS).maxCount(64));
 	}
 
-	private static MushroomStewItem basicBowlFood(int hunger, float saturation) {
-		return new MushroomStewItem(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Items.BOWL).maxCount(16).food(foodComponent(hunger, saturation).build()));
+	private static StewItem basicBowlFood(int hunger, float saturation) {
+		return new StewItem(new Item.Settings().group(ItemGroup.FOOD).recipeRemainder(Items.BOWL).maxCount(16).food(foodComponent(hunger, saturation).build()));
 	}
 
 	private static BottledItem basicBottleDrink(int hunger, float saturation, SoundEvent drinkSound) {
@@ -204,11 +205,11 @@ public class Baking implements ModInitializer {
 	public static final Item RABBIT_CHEESEBURGER = basicFood(8, 0.5f);
 
 	// The rest of the stews - Gives 1 item
-	public static final MushroomStewItem STEAK_STEW = basicBowlFood(12, 0.6f);
-	public static final MushroomStewItem CHICKEN_STEW = basicBowlFood(11, 0.6f);
-	public static final MushroomStewItem PORK_STEW = basicBowlFood(12, 0.6f);
-	public static final MushroomStewItem MUTTON_STEW = basicBowlFood(10, 0.6f);
-	public static final MushroomStewItem FISH_STEW = basicBowlFood(10, 0.6f);
+	public static final StewItem STEAK_STEW = basicBowlFood(12, 0.6f);
+	public static final StewItem CHICKEN_STEW = basicBowlFood(11, 0.6f);
+	public static final StewItem PORK_STEW = basicBowlFood(12, 0.6f);
+	public static final StewItem MUTTON_STEW = basicBowlFood(10, 0.6f);
+	public static final StewItem FISH_STEW = basicBowlFood(10, 0.6f);
 	// No need to add Rabbit Stew!
 
 	// Jams - Gives 1 Item
@@ -226,12 +227,14 @@ public class Baking implements ModInitializer {
 	public static final Item APPLE_PIE = basicFood(9, 0.3f);
 	public static final Item LEMON_MERINGUE_PIE = basicFood(9, 0.2f);
 	public static final Item CHERRY_MERINGUE_PIE = basicFood(9, 0.3f);
+	public static final Item PEACH_COBBLER = basicFood(9, 0.3f);
 
 	// Cakes - Give 1 item
 	public static final BasicCakeBlock CARROT_CAKE = new BasicCakeBlock(FabricBlockSettings.copy(Blocks.CAKE));
 	public static final BasicCakeBlock CHOCOLATE_CAKE = new BasicCakeBlock(FabricBlockSettings.copy(Blocks.CAKE));
 	public static final BasicCakeBlock RED_VELVET_CAKE = new BasicCakeBlock(FabricBlockSettings.copy(Blocks.CAKE));
 	public static final BasicCakeBlock LEMON_CAKE = new BasicCakeBlock(FabricBlockSettings.copy(Blocks.CAKE));
+	public static final BasicCakeBlock PEACH_CAKE = new BasicCakeBlock(FabricBlockSettings.copy(Blocks.CAKE));
 
 	// Halite Blocks
 	public static final Block HALITE = new GlassBlock(FabricBlockSettings.of(Material.STONE).requiresTool().strength(1.25F, 4.2F)
@@ -283,6 +286,9 @@ public class Baking implements ModInitializer {
 	public static final Item COOKED_RICE_BALL = basicFood(4, 0.4f);
 	public static final Item COOKED_CORN = basicFood(5, 0.6f);
 	public static final Item POPCORN = basicFood(1, 0.3f);
+	public static final Item ONION_RINGS = basicFood(1, 0.1f);
+	public static final Item BATTERED_ONION_RINGS = basicFood(2, 0.1f);
+	public static final Item FRIED_ONION_RINGS = basicFood(3, 0.3f);
 
 	// Mill
 	public static final Identifier MILL_ID = new Identifier(ID, "mill");
@@ -428,10 +434,14 @@ public class Baking implements ModInitializer {
 	public static final Block CORN_STALK = new TallCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
 	public static final Item CORN = basicFood(3, 0.3f);
 	public static final Item CORN_SEEDS = new BlockItem(CORN_STALK, new Item.Settings().group(ItemGroup.MISC));
+	public static final Block ONION_PLANT = new BasicCropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
+	public static final Item ONION = new BlockItem(ONION_PLANT, new Item.Settings().group(ItemGroup.FOOD).food(
+			foodComponent(2, 0.1f).build()
+	));
 	// deathypooh - requested on 3/22/21
 	// solcatowo - requested on 3/22/21
 
-	// Trees - Here's to v0.4!
+	// Vanilla Trellises
 	public static final Block OAK_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE).nonOpaque());
 	public static final Block SPRUCE_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE).nonOpaque());
 	public static final Block BIRCH_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE).nonOpaque());
@@ -440,25 +450,35 @@ public class Baking implements ModInitializer {
 	public static final Block DARK_OAK_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE).nonOpaque());
 	public static final Block CRIMSON_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE).nonOpaque());
 	public static final Block WARPED_TRELLIS = new TrellisBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE).nonOpaque());
-	public static final Block CHERRY_SAPLING = new BasicSaplingBlock(new CherrySaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
-	public static final Block POTTED_CHERRY_SAPLING = new FlowerPotBlock(CHERRY_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
-	public static final Item CHERRIES = basicFood(2, 0.1f);
-	public static final WoodType CHERRY_WOOD_TYPE = new WoodType("cherry", CHERRIES);
-	public static final Block LEMON_SAPLING = new BasicSaplingBlock(new LemonSaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
-	public static final Block POTTED_LEMON_SAPLING = new FlowerPotBlock(LEMON_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
+
+	// Wood Types & their fruits
 	public static final Item LEMON = basicFood(1, 0.1f);
 	public static final WoodType LEMON_WOOD_TYPE = new WoodType("lemon", LEMON);
+	public static final Item CHERRIES = basicFood(2, 0.1f);
+	public static final WoodType CHERRY_WOOD_TYPE = new WoodType("cherry", CHERRIES);
+	public static final Item JUNIPER_BERRIES = basicFood(1, 0.1f);
+	public static final WoodType JUNIPER_WOOD_TYPE = new WoodType("juniper", JUNIPER_BERRIES);
+	public static final Item PEACH = basicFood(4, 0.3f);
+	public static final WoodType PEACH_WOOD_TYPE = new WoodType("peach", PEACH);
+
+	// Saplings
 	public static final Block GRAPE_STEM = new GrapeStemBlock(FabricBlockSettings.copy(Blocks.VINE));
 	public static final Block GRAPE_VINE = new GrapeVineBlock(FabricBlockSettings.copy(Blocks.VINE));
 	public static final Item GRAPES = basicFood(1, 0.1f);
+
 	public static final Block SMALL_CINNAMON_TREE = new TallPlantBlock(FabricBlockSettings.copy(Blocks.TALL_GRASS));
 	public static final Block CINNAMON_TREE = new TriplePlantBlock(FabricBlockSettings.copy(Blocks.TALL_GRASS));
-	public static final Block CINNAMON_SAPLING = new FancyFernBlock(FabricBlockSettings.copy(Blocks.OAK_SAPLING), (random) -> (PlantBlock) (((Random) random).nextFloat() < 0.4 ? CINNAMON_TREE : SMALL_CINNAMON_TREE) );
+	public static final Block CINNAMON_SAPLING = new WildCardSaplingBlock(FabricBlockSettings.copy(Blocks.OAK_SAPLING), (random) -> (PlantBlock) (((Random) random).nextFloat() < 0.4 ? CINNAMON_TREE : SMALL_CINNAMON_TREE) );
 	public static final Block POTTED_CINNAMON_SAPLING = new FlowerPotBlock(CINNAMON_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
-	public static final Block JUNIPER_SAPLING = new BasicSaplingBlock(new JuniperSaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
+
+	public static final Block CHERRY_SAPLING = new BasicSaplingBlock(new BakingSaplingGenerator(() -> BakingTreeConfiguredFeatures.CHERRY_TREE), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
+	public static final Block POTTED_CHERRY_SAPLING = new FlowerPotBlock(CHERRY_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
+	public static final Block LEMON_SAPLING = new BasicSaplingBlock(new BakingSaplingGenerator(() -> BakingTreeConfiguredFeatures.LEMON_TREE), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
+	public static final Block POTTED_LEMON_SAPLING = new FlowerPotBlock(LEMON_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
+	public static final Block JUNIPER_SAPLING = new BasicSaplingBlock(new BakingSaplingGenerator(() -> BakingTreeConfiguredFeatures.JUNIPER_TREE), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
 	public static final Block POTTED_JUNIPER_SAPLING = new FlowerPotBlock(JUNIPER_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
-	public static final Item JUNIPER_BERRIES = basicFood(1, 0.1f);
-	public static final WoodType JUNIPER_WOOD_TYPE = new WoodType("juniper", JUNIPER_BERRIES);
+	public static final Block PEACH_SAPLING = new BasicSaplingBlock(new BakingSaplingGenerator(() -> BakingTreeConfiguredFeatures.PEACH_TREE), FabricBlockSettings.copy(Blocks.OAK_SAPLING));
+	public static final Block POTTED_PEACH_SAPLING = new FlowerPotBlock(PEACH_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
 
 	// Misc
 	public static final Item BAGEL = basicFood(8, 0.6f);
@@ -475,8 +495,8 @@ public class Baking implements ModInitializer {
 	public static final Item SQUID_SUSHI = basicFood(4, 0.2f);
 	public static final Item LOADED_FRIES = basicFood(6, 0.7f);
 	public static final Item LOADED_POTATO = basicFood(16, 0.8f);
-	public static final MushroomStewItem VEGGIE_MEDLEY = basicBowlFood(11, 0.5f);
-	public static final MushroomStewItem FRUIT_SALAD = basicBowlFood(13, 0.2f);
+	public static final StewItem VEGGIE_MEDLEY = basicBowlFood(11, 0.5f);
+	public static final StewItem FRUIT_SALAD = basicBowlFood(13, 0.2f);
 	public static final MidasSaladItem MIDAS_SALAD = new MidasSaladItem(
 			new Item.Settings()
 					.group(ItemGroup.FOOD)
@@ -490,7 +510,7 @@ public class Baking implements ModInitializer {
 							.build()
 					)
 	);
-	public static final Item DISGUSTING_DISH = new MushroomStewItem(
+	public static final Item DISGUSTING_DISH = new StewItem(
 			new Item.Settings()
 					.group(ItemGroup.FOOD)
 					.maxCount(16)
@@ -503,9 +523,9 @@ public class Baking implements ModInitializer {
 							.build()
 					)
 	);
-	public static final MushroomStewItem WHEAT_CEREAL_BOWL = basicBowlFood(3, 0.3f);
-	public static final MushroomStewItem CORN_CEREAL_BOWL = basicBowlFood(4, 0.3f);
-	public static final MushroomStewItem RICE_CEREAL_BOWL = basicBowlFood(3, 0.3f);
+	public static final StewItem WHEAT_CEREAL_BOWL = basicBowlFood(3, 0.3f);
+	public static final StewItem CORN_CEREAL_BOWL = basicBowlFood(4, 0.3f);
+	public static final StewItem RICE_CEREAL_BOWL = basicBowlFood(3, 0.3f);
 	public static final Block CHEESE_BLOCK = new Block(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).sounds(BlockSoundGroup.CANDLE));
 	public static final Block CHEESE_LAYER = new BasicLayerBlock(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).sounds(BlockSoundGroup.CANDLE));
 	public static final Item CHEESE_SLICE = new BlockItem(CHEESE_LAYER, new FabricItemSettings().group(ItemGroup.FOOD).food(foodComponent(1, 0.0f).build()));
@@ -574,11 +594,14 @@ public class Baking implements ModInitializer {
 	public static final SoundEvent ICE_BOX_CLOSE = new SoundEvent(ICE_BOX_CLOSE_ID);
 	public static final Identifier COLL_ID = new Identifier(ID, "music_coll");
 	public static final SoundEvent COLL = new SoundEvent(COLL_ID);
+	public static final Identifier CAFE_ID = new Identifier(ID, "music_cafe");
+	public static final SoundEvent CAFE = new SoundEvent(CAFE_ID);
 	public static final Identifier GOLDEN_BAGEL_ADVANCEMENT_ID = new Identifier(ID, "golden_bagel_advancement");
 	public static final SoundEvent GOLDEN_BAGEL_ADVANCEMENT = new SoundEvent(GOLDEN_BAGEL_ADVANCEMENT_ID);
 
 	// Music discs
 	public static final Item COLL_DISC = new BasicMusicDiscItem(4, COLL, new FabricItemSettings().group(ItemGroup.MISC).maxCount(1));
+	public static final Item CAFE_DISC = new BasicMusicDiscItem(5, CAFE, new FabricItemSettings().group(ItemGroup.MISC).maxCount(1));
 
 	@Override
 	public void onInitialize() {
@@ -628,6 +651,7 @@ public class Baking implements ModInitializer {
 		registerCakeType("chocolate_cake", CHOCOLATE_CAKE);
 		registerCakeType("red_velvet_cake", RED_VELVET_CAKE);
 		registerCakeType("lemon_cake", LEMON_CAKE);
+		registerCakeType("peach_cake", PEACH_CAKE);
 
 		// Halite & Salt
 		registerBlock("halite", HALITE, ItemGroup.BUILDING_BLOCKS);
@@ -662,6 +686,7 @@ public class Baking implements ModInitializer {
 		registerItem("apple_pie", APPLE_PIE);
 		registerItem("lemon_meringue_pie", LEMON_MERINGUE_PIE);
 		registerItem("cherry_meringue_pie", CHERRY_MERINGUE_PIE);
+		registerItem("peach_cobbler", PEACH_COBBLER);
 
 		// Ingredients
 		registerItem("flour", FLOUR);
@@ -716,6 +741,9 @@ public class Baking implements ModInitializer {
 		registerItem("cooked_rice_ball", COOKED_RICE_BALL);
 		registerItem("cooked_corn", COOKED_CORN);
 		registerItem("popcorn", POPCORN);
+		registerItem("onion_rings", ONION_RINGS);
+		registerItem("battered_onion_rings", BATTERED_ONION_RINGS);
+		registerItem("fried_onion_rings", FRIED_ONION_RINGS);
 
 		// Mill
 		Registry.register(Registry.BLOCK, MILL_ID, MILL);
@@ -813,6 +841,7 @@ public class Baking implements ModInitializer {
 		((BasicCropBlock)CORN_STALK).setSeed(CORN_SEEDS);
 		registerItem("corn", CORN);
 		registerItem("corn_seeds", CORN_SEEDS);
+		registerBlock("onion", ONION_PLANT, (BlockItem) ONION);
 		// dreamwastaken my beloved <3 - redeemed by KoritsiAlogo on 3/22/21
 
 		// Trees
@@ -835,6 +864,10 @@ public class Baking implements ModInitializer {
 		registerBlock("juniper_sapling", JUNIPER_SAPLING, ItemGroup.DECORATIONS);
 		registerBlock("potted_juniper_sapling", POTTED_JUNIPER_SAPLING);
 		registerItem("juniper_berries", JUNIPER_BERRIES);
+		PEACH_WOOD_TYPE.init();
+		registerBlock("peach_sapling", PEACH_SAPLING, ItemGroup.DECORATIONS);
+		registerBlock("potted_peach_sapling", POTTED_PEACH_SAPLING);
+		registerItem("peach", PEACH);
 
 		// Vanilla Trellises
 		registerBlock("oak_trellis", OAK_TRELLIS, ItemGroup.DECORATIONS);
@@ -908,14 +941,17 @@ public class Baking implements ModInitializer {
 		// Trades
 		BakingVillagerTrades.init();
 
-		// Configured Features
-		BakingConfiguredFeatures.init();
+		// Tree Configured/Placed Features
+		BakingTreeConfiguredFeatures.init();
+		BakingTreePlacedFeatures.init();
+		BakingPlacers.init();
+
+		// Advanced Configured/Placed Features
+		BakingClusterConfiguredFeatures.init();
+		BakingClusterPlacedFeatures.init();
 
 		// Biomes
 		BakingBiomes.init();
-
-		// Configured Structures
-		BakingConfiguredStructures.init();
 
 		// Villager Professions
 		BakingVillagerProfessions.init();
@@ -936,9 +972,16 @@ public class Baking implements ModInitializer {
 		Registry.register(Registry.SOUND_EVENT, ICE_BOX_OPEN_ID, ICE_BOX_OPEN);
 		Registry.register(Registry.SOUND_EVENT, ICE_BOX_CLOSE_ID, ICE_BOX_CLOSE);
 		Registry.register(Registry.SOUND_EVENT, COLL_ID, COLL);
+		Registry.register(Registry.SOUND_EVENT, CAFE_ID, CAFE);
 		Registry.register(Registry.SOUND_EVENT, GOLDEN_BAGEL_ADVANCEMENT_ID, GOLDEN_BAGEL_ADVANCEMENT);
 
 		// Music Discs
 		registerItem("music_disc_coll", COLL_DISC);
+		registerItem("music_disc_cafe", CAFE_DISC);
+	}
+
+	@Override
+	public void onTerraBlenderInitialized() {
+		Regions.register(new BakingRegion(new Identifier(Baking.ID, "overworld"), 2));
 	}
 }

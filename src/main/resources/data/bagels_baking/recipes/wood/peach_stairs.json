@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "#": {
+            "item": "bagels_baking:peach_planks"
+        }
+    },
+    "group": "wooden_stairs",
+    "result": {
+        "item": "bagels_baking:peach_stairs",
+        "count": 4
+    },
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ]
+}

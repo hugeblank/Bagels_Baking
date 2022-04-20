@@ -39,6 +39,7 @@ public class ClientBaking implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.TOMATO_PLANT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.CORN_STALK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.RICE_PLANT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.ONION_PLANT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.CINNAMON_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.CINNAMON_TREE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.SMALL_CINNAMON_TREE, RenderLayer.getCutout());
@@ -47,16 +48,20 @@ public class ClientBaking implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.LEMON_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.CHERRY_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.JUNIPER_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.PEACH_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.POTTED_LEMON_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.POTTED_CHERRY_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.POTTED_JUNIPER_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.POTTED_PEACH_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.POTTED_CINNAMON_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.LEMON_WOOD_TYPE.getBlock(WoodBlock.TRAPDOOR), RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.CHERRY_WOOD_TYPE.getBlock(WoodBlock.TRAPDOOR), RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.JUNIPER_WOOD_TYPE.getBlock(WoodBlock.TRAPDOOR), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.PEACH_WOOD_TYPE.getBlock(WoodBlock.TRAPDOOR), RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.LEMON_WOOD_TYPE.getBlock(WoodBlock.DOOR), RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.CHERRY_WOOD_TYPE.getBlock(WoodBlock.DOOR), RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Baking.JUNIPER_WOOD_TYPE.getBlock(WoodBlock.DOOR), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Baking.PEACH_WOOD_TYPE.getBlock(WoodBlock.DOOR), RenderLayer.getCutout());
 
         SpriteRegistry.register(ICE_BOX_NORMAL);
         SpriteRegistry.register(ICE_BOX_LEFT);

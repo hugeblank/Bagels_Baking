@@ -28,9 +28,9 @@ public enum WoodBlock {
     WALL_SIGN((name) -> name + "_wall_sign", 5, 20),
     TRELLIS((name) -> name + "_trellis", 5, 20);
 
-    Function<String, String> toString;
-    int burn;
-    int spread;
+    final Function<String, String> toString;
+    final int burn;
+    final int spread;
 
     WoodBlock(Function<String, String> toString, int burn, int spread) {
         this.toString = toString;
@@ -38,7 +38,7 @@ public enum WoodBlock {
         this.spread = spread;
     }
 
-    public Identifier registerBlock(String variant, Block block) { // Register block & Flammability
+    public Identifier register(String variant, Block block) { // Register block & Flammability
         Identifier id = new Identifier(Baking.ID, toString.apply(variant));
         Registry.register(Registry.BLOCK, id, block);
         FlammableBlockRegistry.getDefaultInstance().add(block, this.burn, this.spread);

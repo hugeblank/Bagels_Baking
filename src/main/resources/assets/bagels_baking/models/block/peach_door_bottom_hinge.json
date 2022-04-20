@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/door_bottom_rh",
+    "textures": {
+        "top": "bagels_baking:block/peach_door_top",
+        "bottom": "bagels_baking:block/peach_door_bottom"
+    }
+}

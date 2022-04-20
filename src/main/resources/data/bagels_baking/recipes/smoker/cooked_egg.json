@@ -4,6 +4,6 @@
     "item": "minecraft:egg"
   },
   "result": "bagels_baking:cooked_egg",
-  "experience": 0.2,
+  "experience": 0.1,
   "cookingtime": 100
 }

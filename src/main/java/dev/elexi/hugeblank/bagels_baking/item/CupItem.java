@@ -25,9 +25,7 @@ public class CupItem extends Item {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
         BlockHitResult hitResult = raycast(world, user, RaycastContext.FluidHandling.SOURCE_ONLY);
-        if (hitResult.getType() == HitResult.Type.MISS) {
-            return TypedActionResult.pass(itemStack);
-        } else {
+        if (hitResult.getType() != HitResult.Type.MISS) {
             if (hitResult.getType() == HitResult.Type.BLOCK) {
                 BlockPos blockPos = hitResult.getBlockPos();
                 if (!world.canPlayerModifyAt(user, blockPos)) {
@@ -40,11 +38,11 @@ public class CupItem extends Item {
                 }
             }
 
-            return TypedActionResult.pass(itemStack);
         }
+        return TypedActionResult.pass(itemStack);
     }
 
-    protected ItemStack fill(ItemStack itemStack, PlayerEntity playerEntity, ItemStack itemStack2) {
+    public ItemStack fill(ItemStack itemStack, PlayerEntity playerEntity, ItemStack itemStack2) {
         playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
         boolean bl2 = playerEntity.getAbilities().creativeMode;
         if (bl2) {

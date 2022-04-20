@@ -37,6 +37,7 @@ public abstract class VillagerEntityFarming extends MerchantEntity {
                 .put(Items.BEETROOT, 1)
                 .put(Baking.CORN, 2)
                 .put(Baking.TOMATO, 1)
+                .put(Baking.ONION, 1)
                 .build();
     }
 
@@ -55,6 +56,7 @@ public abstract class VillagerEntityFarming extends MerchantEntity {
                 .add(Baking.CORN)
                 .add(Baking.WILD_RICE)
                 .add(Baking.TOMATO)
+                .add(Baking.ONION)
                 .build();
     }
 }

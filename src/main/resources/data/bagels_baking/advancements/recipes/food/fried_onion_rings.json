@@ -1,0 +1,36 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:furnace/fried_onion_rings",
+			"bagels_baking:campfire/fried_onion_rings",
+			"bagels_baking:smoker/fried_onion_rings"
+		]
+	},
+	"criteria": {
+		"has_battered_onion_rings": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:battered_onion_rings"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:furnace/fried_onion_rings"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_battered_onion_rings"
+		]
+	]
+}

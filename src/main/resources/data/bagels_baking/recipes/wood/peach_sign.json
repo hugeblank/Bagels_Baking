@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "#": {
+            "item": "bagels_baking:peach_planks"
+        },
+        "X": {
+            "item": "minecraft:stick"
+        }
+    },
+    "group": "wooden_sign",
+    "result": {
+        "item": "bagels_baking:peach_sign",
+        "count": 3
+    },
+    "pattern": [
+        "###",
+        "###",
+        " X "
+    ]
+}

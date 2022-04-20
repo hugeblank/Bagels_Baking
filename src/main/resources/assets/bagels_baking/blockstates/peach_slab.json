@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "type=top": {
+            "model": "bagels_baking:block/peach_slab_top"
+        },
+        "type=double": {
+            "model": "bagels_baking:block/peach_planks"
+        },
+        "type=bottom": {
+            "model": "bagels_baking:block/peach_slab"
+        }
+    }
+}

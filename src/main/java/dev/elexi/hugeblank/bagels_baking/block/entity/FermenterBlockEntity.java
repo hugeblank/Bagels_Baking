@@ -41,6 +41,7 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory{
 
     public ItemStack fillFermenter(ServerWorld world, BlockPos pos, ItemStack stack, boolean dump) {
         if (canFill(stack)) {
+            this.markDirty();
             int count = dump ? Math.min(this.getMaxCountPerStack()-this.stack.getCount(), stack.getCount()) : 1;
             if (isValid(0, stack)) {
                 this.setStack(0, stack.split(count));
@@ -59,6 +60,7 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory{
     public ItemStack drainFermenter(ServerWorld world, BlockPos pos, ItemStack stack, boolean dump) {
         FermentingRecipe recipe = world.getRecipeManager().getFirstMatch(FermentingRecipe.TYPE, this, world).orElse(null);
         if(recipe != null && !this.getCachedState().get(BakingProperties.ACTIVE) && stack.getItem() == recipe.getCollector().getItem()) {
+            this.markDirty();
             int count = dump ? Math.min(this.stack.getCount(), stack.getCount()) : 1;
             if (recipe.getCollector().getItem() instanceof GlassBottleItem) {
                 world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
@@ -82,12 +84,11 @@ public class FermenterBlockEntity extends BlockEntity implements Inventory{
     }
 
     @Override
-    public NbtCompound writeNbt(NbtCompound nbt) {
-        nbt = super.writeNbt(nbt);
+    public void writeNbt(NbtCompound nbt) {
+        super.writeNbt(nbt);
         NbtCompound snbt = new NbtCompound();
         this.stack.writeNbt(snbt);
         nbt.put("Item", snbt);
-        return nbt;
     }
 
     @Override

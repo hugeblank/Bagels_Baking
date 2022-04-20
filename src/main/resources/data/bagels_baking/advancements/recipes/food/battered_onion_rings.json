@@ -1,0 +1,47 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"bagels_baking:misc/battered_onion_rings"
+		]
+	},
+	"criteria": {
+		"has_onion_rings": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:onion_rings"
+						]
+					}
+				]
+			}
+		},
+		"has_batter": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bagels_baking:batter"
+						]
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "bagels_baking:misc/battered_onion_rings"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_the_recipe",
+			"has_batter",
+			"has_onion_rings"
+		]
+	]
+}

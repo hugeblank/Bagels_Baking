@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "#": {
+            "item": "bagels_baking:peach_log"
+        }
+    },
+    "group": "bark",
+    "result": {
+        "item": "bagels_baking:peach_wood",
+        "count": 3
+    },
+    "pattern": [
+        "##",
+        "##"
+    ]
+}

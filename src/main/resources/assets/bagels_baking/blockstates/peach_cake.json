@@ -1,0 +1,25 @@
+{
+    "variants": {
+        "bites=3": {
+            "model": "bagels_baking:block/peach_cake_slice3"
+        },
+        "bites=5": {
+            "model": "bagels_baking:block/peach_cake_slice5"
+        },
+        "bites=4": {
+            "model": "bagels_baking:block/peach_cake_slice4"
+        },
+        "bites=2": {
+            "model": "bagels_baking:block/peach_cake_slice2"
+        },
+        "bites=0": {
+            "model": "bagels_baking:block/peach_cake"
+        },
+        "bites=6": {
+            "model": "bagels_baking:block/peach_cake_slice6"
+        },
+        "bites=1": {
+            "model": "bagels_baking:block/peach_cake_slice1"
+        }
+    }
+}

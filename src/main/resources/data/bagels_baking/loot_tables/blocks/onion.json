@@ -1,0 +1,50 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "bonus_rolls": 0,
+            "entries": [
+                {
+                    "name": "bagels_baking:onion",
+                    "type": "minecraft:item"
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "conditions": [
+                {
+                    "block": "bagels_baking:onion",
+                    "condition": "minecraft:block_state_property",
+                    "properties": {
+                        "age": "7"
+                    }
+                }
+            ],
+            "bonus_rolls": 0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "bagels_baking:onion",
+                    "functions": [
+                        {
+                            "function": "minecraft:apply_bonus",
+                            "enchantment": "minecraft:fortune",
+                            "formula": "minecraft:binomial_with_bonus_count",
+                            "parameters": {
+                                "extra": 3,
+                                "probability": 0.5714286
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "type": "minecraft:block",
+    "functions": [
+        {
+            "function": "minecraft:explosion_decay"
+        }
+    ]
+}

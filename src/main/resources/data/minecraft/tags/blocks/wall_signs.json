@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "bagels_baking:cherry_wall_sign",
+    "bagels_baking:lemon_wall_sign",
+    "bagels_baking:juniper_wall_sign",
+    "bagels_baking:peach_wall_sign"
+  ]
+}
