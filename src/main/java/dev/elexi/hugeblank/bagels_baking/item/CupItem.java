@@ -15,6 +15,7 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 
 public class CupItem extends Item {
 
@@ -34,6 +35,7 @@ public class CupItem extends Item {
 
                 if (world.getFluidState(blockPos).isIn(FluidTags.WATER)) {
                     world.playSound(user, user.getX(), user.getY(), user.getZ(), SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.NEUTRAL, 1.0F, 1.0F);
+                    world.emitGameEvent(user, GameEvent.FLUID_PICKUP, blockPos);
                     return TypedActionResult.success(this.fill(itemStack, user, new ItemStack(Baking.WATER_CUP)), world.isClient());
                 }
             }
