@@ -85,10 +85,13 @@ public class BakingClusterPlacedFeatures {
                         BiomeKeys.WARM_OCEAN, BiomeKeys.RIVER, BiomeKeys.FROZEN_RIVER
                 ),
                 GenerationStep.Feature.UNDERGROUND_ORES,
-                CountPlacementModifier.of(10), // # of veins per chunk
+                CountPlacementModifier.of(2), // # of veins per chunk
                 HeightRangePlacementModifier.uniform(
                         YOffset.fixed(0),
-                        YOffset.fixed(79)
+                        YOffset.fixed(72)
+                        // Vanilla stone ores in their "lower" form go up to y=60. I choose to go higher because I like
+                        // the concept of some surface halite peeking out around the edges of rivers and along the base
+                        // of mountains. ~ hugeblank
                 ),
                 BiomePlacementModifier.of()
         );
