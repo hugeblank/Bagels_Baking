@@ -842,6 +842,7 @@ public class Baking implements ModInitializer, TerraBlenderApi {
 		registerItem("corn", CORN);
 		registerItem("corn_seeds", CORN_SEEDS);
 		registerBlock("onion", ONION_PLANT, (BlockItem) ONION);
+		((BasicCropBlock)ONION_PLANT).setSeed(ONION);
 		// dreamwastaken my beloved <3 - redeemed by KoritsiAlogo on 3/22/21
 
 		// Trees
