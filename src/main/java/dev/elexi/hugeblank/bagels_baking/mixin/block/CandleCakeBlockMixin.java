@@ -1,8 +1,10 @@
 package dev.elexi.hugeblank.bagels_baking.mixin.block;
 
 import dev.elexi.hugeblank.bagels_baking.block.BasicCandleCakeBlock;
-import net.minecraft.block.*;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.AbstractCandleBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.CandleCakeBlock;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -29,9 +31,8 @@ public abstract class CandleCakeBlockMixin extends AbstractCandleBlock {
 
     @Inject(at = @At(value = "INVOKE_ASSIGN", target = "Ljava/util/Map;put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"), method = "<init>")
     private void after(Block candle, AbstractBlock.Settings settings, CallbackInfo ci) {
+        //noinspection ConstantConditions
         if ((Object)this instanceof BasicCandleCakeBlock)
             CANDLES_TO_CANDLE_CAKES.put(candle, bagels_baking$cake_original);
     }
-
-    public abstract Iterable<Vec3d> getParticleOffsets(BlockState state);
 }
